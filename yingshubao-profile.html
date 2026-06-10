@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>婴舒宝（中国）有限公司 - 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --primary: #60a5fa;
+  --primary-light: #93c5fd;
+  --emerald: #34d399;
+  --amber: #fbbf24;
+  --violet: #a78bfa;
+  --cyan: #22d3ee;
+  --rose: #fb7185;
+  --orange: #fb923c;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:#e2e8f0; overflow-x:hidden; }
+.bento-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1280px; margin:0 auto; padding:0 20px 40px; }
+.glass-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; backdrop-filter:blur(20px); transition:all .3s ease; }
+.glass-card:hover { border-color:rgba(96,165,250,0.3); transform:translateY(-2px); box-shadow:0 8px 32px rgba(96,165,250,0.1); }
+.col-span-4 { grid-column:span 4; }
+.col-span-3 { grid-column:span 3; }
+.col-span-2 { grid-column:span 2; }
+.col-span-1 { grid-column:span 1; }
+.row-span-2 { grid-row:span 2; }
+.stat-number { font-size:2.2rem; font-weight:900; background:linear-gradient(135deg,#93c5fd,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.1; }
+.stat-number.accent { background:linear-gradient(135deg,#34d399,#10b981); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.stat-number.amber { background:linear-gradient(135deg,#fbbf24,#f59e0b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.stat-number.violet { background:linear-gradient(135deg,#a78bfa,#8b5cf6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.stat-number.rose { background:linear-gradient(135deg,#fb7185,#f43f5e); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.stat-number.orange { background:linear-gradient(135deg,#fb923c,#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.tag { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; }
+.tag-blue { background:rgba(96,165,250,0.15); color:#93c5fd; border:1px solid rgba(96,165,250,0.3); }
+.tag-emerald { background:rgba(52,211,153,0.15); color:#34d399; border:1px solid rgba(52,211,153,0.3); }
+.tag-amber { background:rgba(251,191,36,0.15); color:#fbbf24; border:1px solid rgba(251,191,36,0.3); }
+.tag-violet { background:rgba(167,139,250,0.15); color:#a78bfa; border:1px solid rgba(167,139,250,0.3); }
+.tag-cyan { background:rgba(34,211,238,0.15); color:#22d3ee; border:1px solid rgba(34,211,238,0.3); }
+.tag-rose { background:rgba(251,113,133,0.15); color:#fb7185; border:1px solid rgba(251,113,133,0.3); }
+.tag-orange { background:rgba(251,146,60,0.15); color:#fb923c; border:1px solid rgba(251,146,60,0.3); }
+.hero-section { text-align:center; padding:60px 20px 40px; position:relative; }
+.hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse,rgba(96,165,250,0.12),rgba(167,139,250,0.06),transparent 70%); pointer-events:none; }
+.pulse-dot { width:8px; height:8px; background:var(--emerald); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+@keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.reveal { opacity:0; transform:translateY(30px); transition:all .6s cubic-bezier(.16,1,.3,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--glass-border); }
+.info-row:last-child { border-bottom:none; }
+.info-key { font-size:0.8rem; color:#64748b; }
+.info-val { font-size:0.85rem; font-weight:600; color:#e2e8f0; }
+.brand-card { background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); border-radius:12px; padding:16px; text-align:center; transition:all .3s; }
+.brand-card:hover { border-color:rgba(96,165,250,0.4); background:rgba(96,165,250,0.05); }
+.progress-bar { height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; }
+.progress-fill { height:100%; border-radius:3px; transition:width 1s ease; }
+.footer { text-align:center; padding:40px 20px; color:#475569; font-size:0.75rem; border-top:1px solid var(--glass-border); margin-top:40px; }
+body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+table { width: 100%; overflow-x: auto; display: block; }
+.hero-glow { max-width: 100vw; left: 50% !important; transform: translateX(-50%) !important; width: min(600px, 100vw) !important; }
+@media (max-width: 1024px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] { grid-template-columns: repeat(2, 1fr) !important; }
+  .col-span-4, .col-span-3, [class*="col-span-4"], [class*="col-span-3"] { grid-column: span 2 !important; }
+  .col-span-2, [class*="col-span-2"] { grid-column: span 2 !important; }
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(3, 1fr) !important; }
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; }
+  .stat-number { font-size: clamp(1.3rem, 3vw, 2.2rem) !important; }
+}
+@media (max-width: 768px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .col-span-4, .col-span-3, .col-span-2, .col-span-1,
+  [class*="span-"], [class*="col-span-"] { grid-column: span 1 !important; }
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; }
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"] { grid-template-columns: 1fr !important; }
+  .hero-section { padding: 40px 16px 30px !important; }
+  h1 { font-size: clamp(1.2rem, 5vw, 1.8rem) !important; }
+  .glass-card { border-radius: 12px !important; padding: 18px !important; }
+  .glass-card:hover { transform: none !important; }
+  .stat-number { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
+  .info-row { padding: 8px 0 !important; }
+  .info-key { font-size: 0.72rem !important; }
+  .info-val { font-size: 0.75rem !important; }
+  .tag { font-size: 0.6rem !important; padding: 2px 8px !important; }
+  .brand-card { padding: 12px !important; }
+  .footer { padding: 30px 16px !important; margin-top: 30px !important; }
+}
+@media (max-width: 400px) {
+  h1 { font-size: 1.1rem !important; }
+  .stat-number { font-size: 1.1rem !important; }
+  .glass-card { padding: 14px !important; }
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero-section">
+  <div class="hero-glow"></div>
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
+    <div class="pulse-dot"></div>
+    <span style="font-size:0.8rem;color:var(--emerald);font-weight:500;">存续 · 港股上市</span>
+  </div>
+  <h1 style="font-size:2.5rem;font-weight:900;letter-spacing:-1px;margin-bottom:8px;">
+    <span style="background:linear-gradient(135deg,#93c5fd,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">婴舒宝（中国）有限公司</span>
+  </h1>
+  <p style="font-size:1rem;color:#64748b;margin-bottom:6px;">以医学的专业 做健康的事业</p>
+  <p style="font-size:0.85rem;color:#475569;margin-bottom:20px;">舒宝国际 02569.HK · 晋江第53家上市公司 · 中国出口俄罗斯婴童护理用品第二大出口商</p>
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;">
+    <span class="tag tag-blue"><i class="fas fa-baby"></i> 婴童护理</span>
+    <span class="tag tag-rose"><i class="fas fa-venus"></i> 女性护理</span>
+    <span class="tag tag-emerald"><i class="fas fa-leaf"></i> 绿色工厂</span>
+    <span class="tag tag-violet"><i class="fas fa-landmark"></i> 港股上市</span>
+    <span class="tag tag-amber"><i class="fas fa-award"></i> 专精特新</span>
+    <span class="tag tag-orange"><i class="fas fa-paw"></i> 宠物护理</span>
+  </div>
+</section>
+
+<!-- Bento Grid -->
+<div class="bento-grid" style="position:relative;z-index:1;">
+
+  <!-- Card 1: 核心数据 -->
+  <div class="glass-card col-span-4 reveal" style="padding:28px;">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:20px;text-align:center;">
+      <div>
+        <div class="stat-number">9.05<span style="font-size:1.2rem;">亿</span></div>
+        <div style="font-size:0.75rem;color:#64748b;margin-top:6px;">2025年营收</div>
+        <span class="tag tag-emerald" style="margin-top:6px;font-size:0.65rem;">+20.27%</span>
+      </div>
+      <div>
+        <div class="stat-number accent">5585<span style="font-size:1.2rem;">万</span></div>
+        <div style="font-size:0.75rem;color:#64748b;margin-top:6px;">2025年净利润</div>
+        <span class="tag tag-emerald" style="margin-top:6px;font-size:0.65rem;">+2.01%</span>
+      </div>
+      <div>
+        <div class="stat-number violet">2550<span style="font-size:1.2rem;">万$</span></div>
+        <div style="font-size:0.75rem;color:#64748b;margin-top:6px;">注册资本</div>
+      </div>
+      <div>
+        <div class="stat-number amber">44<span style="font-size:1.2rem;">+</span></div>
+        <div style="font-size:0.75rem;color:#64748b;margin-top:6px;">专利技术</div>
+      </div>
+      <div>
+        <div class="stat-number rose">10<span style="font-size:1.2rem;">亿+</span></div>
+        <div style="font-size:0.75rem;color:#64748b;margin-top:6px;">年产能(件)</div>
+      </div>
+      <div>
+        <div class="stat-number orange">385</div>
+        <div style="font-size:0.75rem;color:#64748b;margin-top:6px;">员工人数</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: 工商信息 -->
+  <div class="glass-card col-span-2 row-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+      <i class="fas fa-building" style="color:var(--primary);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">工商信息</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div class="info-row"><span class="info-key">法定代表人</span><span class="info-val" style="color:var(--primary-light);">颜培坤</span></div>
+      <div class="info-row"><span class="info-key">统一信用代码</span><span class="info-val" style="font-family:monospace;font-size:0.72rem;color:#94a3b8;">91350582563389750A</span></div>
+      <div class="info-row"><span class="info-key">成立日期</span><span class="info-val">2010-11-30</span></div>
+      <div class="info-row"><span class="info-key">企业类型</span><span class="info-val" style="font-size:0.75rem;">有限责任公司(港澳台法人独资)</span></div>
+      <div class="info-row"><span class="info-key">注册资本</span><span class="info-val">2550万美元</span></div>
+      <div class="info-row"><span class="info-key">所属行业</span><span class="info-val" style="font-size:0.75rem;">纸制卫生用品制造</span></div>
+      <div class="info-row"><span class="info-key">企业规模</span><span class="info-val">中型</span></div>
+      <div class="info-row"><span class="info-key">纳税人资质</span><span class="info-val"><span class="tag tag-emerald" style="font-size:0.65rem;">A级一般纳税人</span></span></div>
+      <div class="info-row"><span class="info-key">上市信息</span><span class="info-val"><span class="tag tag-violet" style="font-size:0.65rem;">02569.HK 舒宝国际</span></span></div>
+      <div class="info-row"><span class="info-key">注册地址</span><span class="info-val" style="font-size:0.7rem;text-align:right;max-width:60%;">福建省泉州市晋江市经济开发区（食品园）智造大道</span></div>
+      <div class="info-row"><span class="info-key">官网</span><span class="info-val" style="font-size:0.72rem;color:var(--cyan);">www.insoftb.com</span></div>
+      <div class="info-row"><span class="info-key">英文名</span><span class="info-val" style="font-size:0.72rem;">Insoftb (China) Co., Ltd.</span></div>
+    </div>
+  </div>
+
+  <!-- Card 3: 上市信息 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-chart-line" style="color:var(--violet);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">港股上市 · 舒宝国际</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:rgba(167,139,250,0.08);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:4px;">股票代码</div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--violet);">02569.HK</div>
+      </div>
+      <div style="background:rgba(96,165,250,0.08);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:4px;">上市日期</div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--primary);">2025.03.27</div>
+      </div>
+      <div style="background:rgba(251,191,36,0.08);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:4px;">总市值</div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--amber);">~10.1亿</div>
+      </div>
+      <div style="background:rgba(52,211,153,0.08);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:4px;">IPO涨幅</div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--emerald);">+31.37%</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:0.72rem;color:#64748b;text-align:center;">
+      IPO发行价 HK$0.51 · 募资净额约8600万港元 · 晋江第53家上市公司
+    </div>
+  </div>
+
+  <!-- Card 4: 财务趋势 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-chart-bar" style="color:var(--emerald);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">营收增长趋势</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:4px;">
+          <span style="color:#94a3b8;">2022年</span><span style="color:var(--primary-light);font-weight:600;">4.08亿</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:45%;background:linear-gradient(90deg,#60a5fa,#93c5fd);"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:4px;">
+          <span style="color:#94a3b8;">2023年</span><span style="color:var(--primary-light);font-weight:600;">6.55亿 <span style="color:var(--emerald);font-size:0.65rem;">+60.4%</span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:72%;background:linear-gradient(90deg,#60a5fa,#93c5fd);"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:4px;">
+          <span style="color:#94a3b8;">2024年</span><span style="color:var(--primary-light);font-weight:600;">7.52亿 <span style="color:var(--emerald);font-size:0.65rem;">+15.0%</span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:83%;background:linear-gradient(90deg,#60a5fa,#a78bfa);"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:4px;">
+          <span style="color:#94a3b8;">2025年</span><span style="color:var(--primary-light);font-weight:600;">9.05亿 <span style="color:var(--emerald);font-size:0.65rem;">+20.3%</span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);"></div></div>
+      </div>
+    </div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;">
+      <div style="background:rgba(52,211,153,0.08);border-radius:8px;padding:8px;">
+        <div style="font-size:0.65rem;color:#64748b;">毛利率</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--emerald);">34.76%</div>
+      </div>
+      <div style="background:rgba(96,165,250,0.08);border-radius:8px;padding:8px;">
+        <div style="font-size:0.65rem;color:#64748b;">净利率</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--primary);">6.16%</div>
+      </div>
+      <div style="background:rgba(251,191,36,0.08);border-radius:8px;padding:8px;">
+        <div style="font-size:0.65rem;color:#64748b;">ROE</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--amber);">13.32%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5: 业务板块 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-cubes" style="color:var(--amber);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">业务板块（2025财年）</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--primary);display:inline-block;"></span>
+            <span style="font-size:0.82rem;font-weight:600;">合同生产(ODM)</span>
+          </div>
+          <span style="font-size:0.85rem;font-weight:700;color:var(--primary-light);">5.09亿 <span style="font-size:0.65rem;color:#64748b;">56.2%</span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:56.2%;background:linear-gradient(90deg,#60a5fa,#93c5fd);"></div></div>
+        <div style="font-size:0.68rem;color:#64748b;margin-top:4px;">主要为独立零售商和纸尿裤品牌商提供ODM生产，出口至俄罗斯、东南亚、哈萨克斯坦等欧亚市场</div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--rose);display:inline-block;"></span>
+            <span style="font-size:0.82rem;font-weight:600;">品牌产品(D2C)</span>
+          </div>
+          <span style="font-size:0.85rem;font-weight:700;color:var(--rose);">2.94亿 <span style="font-size:0.65rem;color:#64748b;">32.5%</span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:32.5%;background:linear-gradient(90deg,#fb7185,#f43f5e);"></div></div>
+        <div style="font-size:0.68rem;color:#64748b;margin-top:4px;">自有品牌D2C销售，通过拼多多、天猫、京东、抖音、快手等平台直达消费者 <span style="color:var(--emerald);">同比+31.9%</span></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;"></span>
+            <span style="font-size:0.82rem;font-weight:600;">非织造布及其他</span>
+          </div>
+          <span style="font-size:0.85rem;font-weight:700;color:var(--amber);">1.02亿 <span style="font-size:0.65rem;color:#64748b;">11.3%</span></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:11.3%;background:linear-gradient(90deg,#fbbf24,#f59e0b);"></div></div>
+        <div style="font-size:0.68rem;color:#64748b;margin-top:4px;">水刺、纺粘/热风非织造布产品，应用于棉柔巾、湿巾、卫生巾等领域 <span style="color:var(--emerald);">同比+32.6%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 6: 品牌矩阵 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-tags" style="color:var(--rose);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">品牌矩阵</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="brand-card">
+        <div style="font-size:1.3rem;font-weight:900;color:var(--primary-light);margin-bottom:4px;">婴舒宝</div>
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:8px;">INSOFTB</div>
+        <span class="tag tag-blue" style="font-size:0.6rem;"><i class="fas fa-baby"></i> 婴童护理</span>
+        <div style="font-size:0.68rem;color:#94a3b8;margin-top:8px;">纸尿裤、拉拉裤、湿巾、纸尿片等，约140+SKU</div>
+      </div>
+      <div class="brand-card">
+        <div style="font-size:1.3rem;font-weight:900;color:var(--rose);margin-bottom:4px;">五月私语</div>
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:8px;">MAY WHISPER</div>
+        <span class="tag tag-rose" style="font-size:0.6rem;"><i class="fas fa-venus"></i> 女性护理</span>
+        <div style="font-size:0.68rem;color:#94a3b8;margin-top:8px;">经期裤、液体早安裤、湿巾等，约20+SKU，代言人关晓彤</div>
+      </div>
+      <div class="brand-card">
+        <div style="font-size:1.3rem;font-weight:900;color:var(--emerald);margin-bottom:4px;">康舒宝</div>
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:8px;">KANGSHUBAO</div>
+        <span class="tag tag-emerald" style="font-size:0.6rem;"><i class="fas fa-user"></i> 成人护理</span>
+        <div style="font-size:0.68rem;color:#94a3b8;margin-top:8px;">成人纸尿裤、拉拉裤、湿巾等，约15+SKU</div>
+      </div>
+      <div class="brand-card">
+        <div style="font-size:1.3rem;font-weight:900;color:var(--orange);margin-bottom:4px;">亨克斯</div>
+        <div style="font-size:0.7rem;color:#64748b;margin-bottom:8px;">HENGKS</div>
+        <span class="tag tag-orange" style="font-size:0.6rem;"><i class="fas fa-paw"></i> 宠物护理</span>
+        <div style="font-size:0.68rem;color:#94a3b8;margin-top:8px;">宠物卫生用品，2021年推出，发展势头强劲</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 7: 荣誉资质 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-trophy" style="color:var(--amber);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">荣誉资质</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(251,191,36,0.06);border-radius:10px;border:1px solid rgba(251,191,36,0.15);">
+        <i class="fas fa-landmark" style="color:var(--amber);font-size:0.9rem;"></i>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;">国家高新技术企业</div>
+          <div style="font-size:0.68rem;color:#64748b;">2021年获得</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(52,211,153,0.06);border-radius:10px;border:1px solid rgba(52,211,153,0.15);">
+        <i class="fas fa-leaf" style="color:var(--emerald);font-size:0.9rem;"></i>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;">国家级绿色工厂</div>
+          <div style="font-size:0.68rem;color:#64748b;">2025年获得国家级及省级绿色工厂认证</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(96,165,250,0.06);border-radius:10px;border:1px solid rgba(96,165,250,0.15);">
+        <i class="fas fa-award" style="color:var(--primary);font-size:0.9rem;"></i>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;">福建省专精特新企业</div>
+          <div style="font-size:0.68rem;color:#64748b;">省级专精特新中小企业认定</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(167,139,250,0.06);border-radius:10px;border:1px solid rgba(167,139,250,0.15);">
+        <i class="fas fa-medal" style="color:var(--violet);font-size:0.9rem;"></i>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;">中国婴儿纸尿裤行业十强企业</div>
+          <div style="font-size:0.68rem;color:#64748b;">中国造纸协会颁发（2018年度）</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(251,113,133,0.06);border-radius:10px;border:1px solid rgba(251,113,133,0.15);">
+        <i class="fas fa-certificate" style="color:var(--rose);font-size:0.9rem;"></i>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;">福建省名牌产品 / 福建省科技型企业</div>
+          <div style="font-size:0.68rem;color:#64748b;">福建省智能制造试点示范企业</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(34,211,238,0.06);border-radius:10px;border:1px solid rgba(34,211,238,0.15);">
+        <i class="fas fa-user-tie" style="color:var(--cyan);font-size:0.9rem;"></i>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;">福建省优秀企业家</div>
+          <div style="font-size:0.68rem;color:#64748b;">颜培坤董事长荣获（2018年）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 8: 三大生产基地 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-industry" style="color:var(--cyan);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">三大生产基地</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:rgba(96,165,250,0.06);border-radius:12px;padding:16px;border:1px solid rgba(96,165,250,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <i class="fas fa-map-marker-alt" style="color:var(--primary);"></i>
+          <span style="font-size:0.9rem;font-weight:700;color:var(--primary-light);">晋江总部</span>
+          <span class="tag tag-blue" style="font-size:0.55rem;">营销中心</span>
+        </div>
+        <div style="font-size:0.72rem;color:#94a3b8;line-height:1.6;">
+          福建省泉州市晋江市经济开发区（食品园）智造大道<br>
+          拥有17条全伺服生产线，涵盖婴儿拉拉裤、纸尿裤、成人纸尿裤、成人拉拉裤、女性卫生用品、宠物卫生用品、护理垫、湿巾、棉柔干巾、纸尿片、无纺布等<br>
+          总产能超10亿件/年，2025年新增4条生产线
+        </div>
+      </div>
+      <div style="background:rgba(52,211,153,0.06);border-radius:12px;padding:16px;border:1px solid rgba(52,211,153,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <i class="fas fa-map-marker-alt" style="color:var(--emerald);"></i>
+          <span style="font-size:0.9rem;font-weight:700;color:var(--emerald);">石狮生产基地</span>
+          <span class="tag tag-emerald" style="font-size:0.55rem;">新材料</span>
+        </div>
+        <div style="font-size:0.72rem;color:#94a3b8;line-height:1.6;">
+          福建省石狮市 · 福建婴舒宝新材料科技有限公司<br>
+          拥有水刺、纺粘/热风制品生产车间，10万级标准净化车间<br>
+          年产可达3万吨，产品应用于棉柔巾、湿巾、卫生巾、纸尿裤、一次性医疗用品等领域
+        </div>
+      </div>
+      <div style="background:rgba(167,139,250,0.06);border-radius:12px;padding:16px;border:1px solid rgba(167,139,250,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <i class="fas fa-map-marker-alt" style="color:var(--violet);"></i>
+          <span style="font-size:0.9rem;font-weight:700;color:var(--violet);">安徽滁州生产基地</span>
+          <span class="tag tag-violet" style="font-size:0.55rem;">2014投产</span>
+        </div>
+        <div style="font-size:0.72rem;color:#94a3b8;line-height:1.6;">
+          安徽省滁州市 · 2012年奠基，2014年正式投产<br>
+          配套婴舒宝华北及华东区域市场布局
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 9: 市场地位 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-globe" style="color:var(--primary);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">市场地位</h2>
+    </div>
+    <div style="text-align:center;margin-bottom:16px;">
+      <div style="font-size:3rem;font-weight:900;background:linear-gradient(135deg,#93c5fd,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">NO.2</div>
+      <div style="font-size:0.8rem;color:#94a3b8;margin-top:6px;">中国出口俄罗斯婴童护理一次性使用卫生用品</div>
+      <div style="font-size:0.7rem;color:#64748b;">市场份额 3.7%（弗若斯特沙利文报告）</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="background:rgba(96,165,250,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <div style="font-size:0.65rem;color:#64748b;margin-bottom:4px;">出口市场</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--primary-light);">俄罗斯 · 东南亚 · 哈萨克斯坦</div>
+      </div>
+      <div style="background:rgba(251,191,36,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <div style="font-size:0.65rem;color:#64748b;margin-bottom:4px;">D2C渠道</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--amber);">拼多多 · 天猫 · 京东 · 抖音 · 快手</div>
+      </div>
+      <div style="background:rgba(52,211,153,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <div style="font-size:0.65rem;color:#64748b;margin-bottom:4px;">俄罗斯大客户收入</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--emerald);">3.11亿元（2025年）</div>
+      </div>
+      <div style="background:rgba(167,139,250,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <div style="font-size:0.65rem;color:#64748b;margin-bottom:4px;">OEM合作</div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--violet);">众多品牌商长期合作</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 10: 发展历程 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+      <i class="fas fa-clock" style="color:var(--cyan);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">发展历程</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <div style="position:relative;padding:14px;background:rgba(96,165,250,0.06);border-radius:12px;border-left:3px solid var(--primary);">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--primary-light);margin-bottom:6px;">2010-2012</div>
+        <div style="font-size:0.7rem;color:#94a3b8;line-height:1.5;">
+          2010 香港注册成立婴舒宝国际集团<br>
+          2011 聘请张柏芝为品牌代言人<br>
+          2012 安徽滁州生产基地奠基
+        </div>
+      </div>
+      <div style="position:relative;padding:14px;background:rgba(52,211,153,0.06);border-radius:12px;border-left:3px solid var(--emerald);">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--emerald);margin-bottom:6px;">2014-2018</div>
+        <div style="font-size:0.7rem;color:#94a3b8;line-height:1.5;">
+          2014 福建省科技型企业<br>
+          2016 推出"五月私语"品牌<br>
+          2017 晋江基地乔迁/福建名牌<br>
+          2018 智能制造示范/推出"康舒宝"
+        </div>
+      </div>
+      <div style="position:relative;padding:14px;background:rgba(167,139,250,0.06);border-radius:12px;border-left:3px solid var(--violet);">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--violet);margin-bottom:6px;">2019-2023</div>
+        <div style="font-size:0.7rem;color:#94a3b8;line-height:1.5;">
+          2019 纸尿裤行业十强/携手日本紙業<br>
+          2020 婴舒宝新材料公司成立<br>
+          2021 推出"亨克斯"/国家高新企业<br>
+          2023 中国联通5G智慧工厂战略合作
+        </div>
+      </div>
+      <div style="position:relative;padding:14px;background:rgba(251,191,36,0.06);border-radius:12px;border-left:3px solid var(--amber);">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--amber);margin-bottom:6px;">2025</div>
+        <div style="font-size:0.7rem;color:#94a3b8;line-height:1.5;">
+          3月27日 港交所上市(02569.HK)<br>
+          获国家级绿色工厂认证<br>
+          五月私语签约关晓彤代言<br>
+          营收突破9亿，新增4条产线
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 11: 股权结构 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-sitemap" style="color:var(--violet);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">股权结构</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="text-align:center;padding:14px;background:rgba(167,139,250,0.08);border-radius:12px;border:1px solid rgba(167,139,250,0.2);">
+        <div style="font-size:0.75rem;color:#64748b;margin-bottom:4px;">实际控制人</div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--violet);">颜培坤</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">董事长兼经理 · 通过Softo Co., Ltd控制</div>
+      </div>
+      <div style="text-align:center;padding:4px 0;">
+        <i class="fas fa-arrow-down" style="color:var(--glass-border);"></i>
+      </div>
+      <div style="text-align:center;padding:14px;background:rgba(96,165,250,0.08);border-radius:12px;border:1px solid rgba(96,165,250,0.2);">
+        <div style="font-size:0.75rem;color:#64748b;margin-bottom:4px;">直接控股</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--primary-light);">Wish International Holding Ltd</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">英属处女群岛注册</div>
+      </div>
+      <div style="text-align:center;padding:4px 0;">
+        <i class="fas fa-arrow-down" style="color:var(--glass-border);"></i>
+      </div>
+      <div style="text-align:center;padding:14px;background:rgba(251,191,36,0.08);border-radius:12px;border:1px solid rgba(251,191,36,0.2);">
+        <div style="font-size:0.75rem;color:#64748b;margin-bottom:4px;">上市主体</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--amber);">舒宝国际集团 02569.HK</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">开曼群岛注册 · 2025年3月27日上市</div>
+      </div>
+      <div style="text-align:center;padding:4px 0;">
+        <i class="fas fa-arrow-down" style="color:var(--glass-border);"></i>
+      </div>
+      <div style="text-align:center;padding:14px;background:rgba(52,211,153,0.08);border-radius:12px;border:1px solid rgba(52,211,153,0.2);">
+        <div style="font-size:0.75rem;color:#64748b;margin-bottom:4px;">全资股东</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--emerald);">香港婴舒宝国际集团有限公司</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">持股100%</div>
+      </div>
+      <div style="text-align:center;padding:4px 0;">
+        <i class="fas fa-arrow-down" style="color:var(--glass-border);"></i>
+      </div>
+      <div style="text-align:center;padding:14px;background:rgba(251,113,133,0.08);border-radius:12px;border:1px solid rgba(251,113,133,0.2);">
+        <div style="font-size:0.75rem;color:#64748b;margin-bottom:4px;">境内运营实体</div>
+        <div style="font-size:0.9rem;font-weight:700;color:var(--rose);">婴舒宝（中国）有限公司</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">对外投资11家 · 分支机构6家</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 12: 核心专利 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-lightbulb" style="color:var(--amber);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">核心专利技术</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--glass-border);">
+        <i class="fas fa-file-alt" style="color:var(--primary);margin-top:2px;font-size:0.8rem;"></i>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;">一种在线高速卫生巾喷涂装饰系统及方法</div>
+          <div style="font-size:0.65rem;color:#64748b;">2026-04-17 授权 · 发明专利</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--glass-border);">
+        <i class="fas fa-file-alt" style="color:var(--emerald);margin-top:2px;font-size:0.8rem;"></i>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;">一种基于卫生巾产品的护翼折叠系统及方法</div>
+          <div style="font-size:0.65rem;color:#64748b;">2026-03-31 授权 · 发明专利</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--glass-border);">
+        <i class="fas fa-file-alt" style="color:var(--violet);margin-top:2px;font-size:0.8rem;"></i>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;">一种基于纸尿裤防漏智能检测系统及方法</div>
+          <div style="font-size:0.65rem;color:#64748b;">2026-03-27 授权 · 发明专利</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--glass-border);">
+        <i class="fas fa-file-alt" style="color:var(--amber);margin-top:2px;font-size:0.8rem;"></i>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;">一种护理裤生产用卷材上料装置</div>
+          <div style="font-size:0.65rem;color:#64748b;">2026-03-06 授权 · 发明专利</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--glass-border);">
+        <i class="fas fa-file-alt" style="color:var(--rose);margin-top:2px;font-size:0.8rem;"></i>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;">一种干爽抑菌的成人纸尿裤 / 超薄透气纸尿裤</div>
+          <div style="font-size:0.65rem;color:#64748b;">已授权 · 实用新型专利</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--glass-border);">
+        <i class="fas fa-file-alt" style="color:var(--cyan);margin-top:2px;font-size:0.8rem;"></i>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;">一种具有多组弹性腰围的复合结构 / 新型无痕婴儿纸尿裤</div>
+          <div style="font-size:0.65rem;color:#64748b;">已授权 · 实用新型专利</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 13: 经营范围 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-briefcase" style="color:var(--emerald);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">经营范围</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--amber);margin-bottom:8px;"><i class="fas fa-check-circle" style="margin-right:4px;"></i>许可项目</div>
+        <div style="font-size:0.75rem;color:#94a3b8;line-height:1.7;">
+          卫生用品和一次性使用医疗用品生产；医用口罩生产
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--emerald);margin-bottom:8px;"><i class="fas fa-check-circle" style="margin-right:4px;"></i>一般项目</div>
+        <div style="font-size:0.75rem;color:#94a3b8;line-height:1.7;">
+          个人卫生用品销售；卫生用品和一次性使用医疗用品销售；纸制品制造与销售；母婴用品制造与销售；第一类医疗器械生产与销售；日用口罩生产与销售；宠物食品及用品批发零售；货物进出口；技术进出口；食品互联网销售（仅销售预包装食品）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 14: 主要人员 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-users" style="color:var(--primary);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">主要人员</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(96,165,250,0.06);border-radius:10px;border:1px solid rgba(96,165,250,0.15);">
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:#fff;">颜</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:700;color:var(--primary-light);">颜培坤</div>
+          <div style="font-size:0.7rem;color:#64748b;">董事长 · 经理 · 实际控制人</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(167,139,250,0.06);border-radius:10px;border:1px solid rgba(167,139,250,0.15);">
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#f472b6);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:#fff;">曾</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:700;color:var(--violet);">曾国栋</div>
+          <div style="font-size:0.7rem;color:#64748b;">副董事长</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(52,211,153,0.06);border-radius:10px;border:1px solid rgba(52,211,153,0.15);">
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#34d399,#22d3ee);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:#fff;">蔡</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:700;color:var(--emerald);">蔡丕鹏</div>
+          <div style="font-size:0.7rem;color:#64748b;">董事</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(251,191,36,0.06);border-radius:10px;border:1px solid rgba(251,191,36,0.15);">
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#fb923c);display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:#fff;">颜</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:700;color:var(--amber);">颜丹彬</div>
+          <div style="font-size:0.7rem;color:#64748b;">监事</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 15: 生产体系优势 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <i class="fas fa-cogs" style="color:var(--orange);"></i>
+      <h2 style="font-size:1rem;font-weight:700;">生产体系优势</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(96,165,250,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="fas fa-flask" style="color:var(--primary);font-size:0.85rem;"></i>
+        </div>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:2px;">强大的科研能力</div>
+          <div style="font-size:0.7rem;color:#94a3b8;">甄选世界五百强原材料供应商，拥有一流研发团队和先进科研实验室</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(52,211,153,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="fas fa-robot" style="color:var(--emerald);font-size:0.85rem;"></i>
+        </div>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:2px;">先进的生产体系</div>
+          <div style="font-size:0.7rem;color:#94a3b8;">巨资引进国内外先进全伺服生产设备20余条，十万级国际化无菌标准车间，全线配备多道自动检测设备</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(167,139,250,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="fas fa-warehouse" style="color:var(--violet);font-size:0.85rem;"></i>
+        </div>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:2px;">便捷的储运系统</div>
+          <div style="font-size:0.7rem;color:#94a3b8;">建立自动化立体仓库，实现精准、高效、快速、便捷的储运体系</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(251,191,36,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="fas fa-wifi" style="color:var(--amber);font-size:0.85rem;"></i>
+        </div>
+        <div>
+          <div style="font-size:0.82rem;font-weight:600;margin-bottom:2px;">5G智慧工厂</div>
+          <div style="font-size:0.7rem;color:#94a3b8;">与中国联通战略合作，
