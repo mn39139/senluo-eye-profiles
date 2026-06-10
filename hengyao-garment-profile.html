@@ -2,745 +2,244 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>永春县恒耀服装制造有限公司 - 企业画像</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-:root{
-  --primary:#6366f1;--primary-light:#818cf8;--primary-dark:#4f46e5;
-  --accent:#f59e0b;--accent2:#d97706;
-  --cyan:#06b6d4;--emerald:#10b981;--rose:#f43f5e;
-  --bg-dark:#0a0e1a;--bg-card:rgba(15,23,42,0.75);
-  --border:rgba(99,102,241,0.15);--glow:rgba(99,102,241,0.2);
-  --text:#f1f5f9;--text-muted:#94a3b8;
+:root {
+  --bg: #0a0a0f;
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --primary: #14b8a6;
+  --primary-light: #2dd4bf;
+  --emerald: #34d399;
+  --amber: #fbbf24;
+  --violet: #a78bfa;
+  --cyan: #22d3ee;
+  --rose: #fb7185;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg-dark);color:var(--text);overflow-x:hidden;}
-::-webkit-scrollbar{width:6px;}
-::-webkit-scrollbar-track{background:var(--bg-dark);}
-::-webkit-scrollbar-thumb{background:var(--primary-dark);border-radius:3px;}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; }
+body { font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:#e2e8f0; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
 
 /* Hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(99,102,241,0.15),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(6,182,212,0.1),transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(245,158,11,0.05),transparent 70%);z-index:0;}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.03) 1px,transparent 1px);background-size:60px 60px;z-index:0;}
-.hero-content{position:relative;z-index:1;text-align:center;padding:0 24px;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);font-size:13px;color:var(--primary-light);margin-bottom:24px;backdrop-filter:blur(10px);}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse-dot 2s infinite;}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.5);}}
-.hero-title{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;}
-.hero-title .gradient{background:linear-gradient(135deg,var(--primary-light),var(--cyan),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-muted);max-width:680px;margin:0 auto 40px;line-height:1.7;}
-.hero-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;}
-.hero-stat{text-align:center;}
-.hero-stat .num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-stat .label{font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;}
-.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);animation:float 3s ease-in-out infinite;z-index:1;}
-@keyframes float{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-10px);}}
+.hero-section { text-align:center; padding:60px 20px 40px; position:relative; }
+.hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse,rgba(20,184,166,0.12),rgba(167,139,250,0.06),transparent 70%); pointer-events:none; }
+.pulse-dot { width:8px; height:8px; background:var(--emerald); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+.hero-title { font-size:clamp(1.4rem,4vw,2.5rem); font-weight:900; letter-spacing:-1px; margin-bottom:8px; background:linear-gradient(135deg,#2dd4bf,#14b8a6,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.3; }
+.hero-slogan { font-size:clamp(0.75rem,2vw,1rem); color:#64748b; margin-bottom:20px; }
+.hero-tags { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
 
-/* Bento Grid */
-.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:20px;max-width:1400px;margin:0 auto;padding:0 24px;}
-.span-2{grid-column:span 2;}.span-3{grid-column:span 3;}.span-4{grid-column:span 4;}
-.row-2{grid-row:span 2;}
-@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(2,1fr);}.span-3,.span-4{grid-column:span 2;}}
-@media(max-width:640px){.bento-grid{grid-template-columns:1fr;}.span-2,.span-3,.span-4{grid-column:span 1;}}
+/* Tags */
+.tag { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; white-space:nowrap; }
 
-/* Card */
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;overflow:hidden;backdrop-filter:blur(20px);transition:all .4s cubic-bezier(.4,0,.2,1);}
-.card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-4px);box-shadow:0 20px 60px rgba(99,102,241,0.1);}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,0.4),transparent);}
-.card-label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--primary-light);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;}
-.card-label i{font-size:10px;}
-.card-title{font-size:1.5rem;font-weight:800;margin-bottom:8px;}
-.card-desc{font-size:14px;color:var(--text-muted);line-height:1.7;}
+/* Bento Grid - 响应式核心 */
+.bento-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1280px; margin:0 auto; padding:0 20px 40px; }
 
-/* Glow accents */
-.glow-indigo{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.15),transparent 70%);pointer-events:none;}
-.glow-cyan{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,0.12),transparent 70%);pointer-events:none;}
-.glow-amber{position:absolute;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,0.1),transparent 70%);pointer-events:none;}
+/* Glass Card */
+.glass-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:all .3s ease; overflow:hidden; }
+.glass-card:hover { border-color:rgba(20,184,166,0.3); transform:translateY(-2px); box-shadow:0 8px 32px rgba(20,184,166,0.1); }
+.col-span-4 { grid-column:span 4; }
+.col-span-3 { grid-column:span 3; }
+.col-span-2 { grid-column:span 2; }
+.col-span-1 { grid-column:span 1; }
 
-/* Big number */
-.big-num{font-size:3.5rem;font-weight:900;line-height:1;margin-bottom:4px;}
-.big-num.indigo{background:linear-gradient(135deg,var(--primary-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.big-num.amber{background:linear-gradient(135deg,var(--accent),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.big-num.emerald{background:linear-gradient(135deg,var(--emerald),#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.big-num.rose{background:linear-gradient(135deg,var(--rose),#fb7185);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.big-num.cyan{background:linear-gradient(135deg,var(--cyan),#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+/* Card Header */
+.card-header { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
+.card-header h2 { font-size:1rem; font-weight:700; }
 
-/* Tag */
-.tag{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid;}
-.tag-indigo{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.25);color:var(--primary-light);}
-.tag-emerald{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25);color:var(--emerald);}
-.tag-amber{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);color:var(--accent);}
-.tag-cyan{background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.25);color:var(--cyan);}
-.tag-rose{background:rgba(244,63,94,0.1);border-color:rgba(244,63,94,0.25);color:var(--rose);}
+/* Stats */
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:16px; text-align:center; }
+.stat-item { padding:8px 4px; }
+.stat-number { font-size:clamp(1.4rem,3vw,2.2rem); font-weight:900; line-height:1.1; }
+.stat-label { font-size:0.75rem; color:#64748b; margin-top:6px; }
 
-/* Info row */
-.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(99,102,241,0.08);}
-.info-row:last-child{border-bottom:none;}
-.info-row .key{font-size:13px;color:var(--text-muted);}
-.info-row .val{font-size:13px;font-weight:600;color:var(--text);}
+/* Info Rows */
+.info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--glass-border); gap:8px; }
+.info-row:last-child { border-bottom:none; }
+.info-key { font-size:0.8rem; color:#64748b; white-space:nowrap; flex-shrink:0; }
+.info-val { font-size:0.85rem; font-weight:600; color:#e2e8f0; text-align:right; word-break:break-all; }
+
+/* Progress */
+.progress-bar { height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; }
+.progress-fill { height:100%; border-radius:3px; transition:width 1s ease; }
+
+/* Brand Grid */
+.brand-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.brand-card { background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); border-radius:12px; padding:16px; text-align:center; transition:all .3s; }
+.brand-card:hover { border-color:rgba(20,184,166,0.4); background:rgba(20,184,166,0.05); }
+
+/* Factory Stats */
+.factory-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
 
 /* Timeline */
-.timeline{position:relative;padding-left:24px;}
-.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--primary),var(--cyan),var(--accent));border-radius:1px;}
-.timeline-item{position:relative;margin-bottom:20px;}
-.timeline-item::before{content:'';position:absolute;left:-22px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--primary);border:2px solid var(--bg-dark);z-index:1;}
-.timeline-item .year{font-size:13px;font-weight:700;color:var(--primary-light);margin-bottom:2px;}
-.timeline-item .event{font-size:13px;color:var(--text-muted);line-height:1.5;}
+.timeline-item { display:flex; gap:12px; padding:10px 0; position:relative; }
+.timeline-dot { width:10px; height:10px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+.timeline-line { position:absolute; left:4px; top:22px; bottom:-10px; width:2px; background:var(--glass-border); }
 
-/* Patent list */
-.patent-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(99,102,241,0.06);}
-.patent-item:last-child{border-bottom:none;}
-.patent-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
-.patent-icon.utility{background:rgba(6,182,212,0.15);color:var(--cyan);}
-.patent-icon.invention{background:rgba(245,158,11,0.15);color:var(--accent);}
-.patent-info .name{font-size:12px;font-weight:600;color:var(--text);line-height:1.4;}
-.patent-info .date{font-size:11px;color:var(--text-muted);margin-top:2px;}
+/* Products */
+.product-item { display:flex; align-items:center; gap:10px; padding:10px; border-radius:10px; }
 
-/* Client logo */
-.client-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.client-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;border-radius:12px;background:rgba(99,102,241,0.05);border:1px solid rgba(99,102,241,0.1);transition:all .3s;}
-.client-item:hover{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.25);}
-.client-item .icon{font-size:24px;margin-bottom:6px;}
-.client-item .name{font-size:11px;font-weight:600;color:var(--text);text-align:center;}
+/* Risk */
+.risk-item { display:flex; align-items:flex-start; gap:10px; padding:10px; border-radius:10px; }
 
-/* Progress bar */
-.progress-bar{height:6px;border-radius:3px;background:rgba(99,102,241,0.1);overflow:hidden;margin-top:8px;}
-.progress-bar .fill{height:100%;border-radius:3px;transition:width 1.5s cubic-bezier(.4,0,.2,1);}
-
-/* Section */
-.section{padding:80px 0;}
-.section-header{text-align:center;margin-bottom:60px;padding:0 24px;}
-.section-header .overline{font-size:12px;font-weight:600;color:var(--primary-light);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
-.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-0.02em;}
-.section-header p{font-size:15px;color:var(--text-muted);max-width:600px;margin:12px auto 0;line-height:1.7;}
+/* Reveal Animation */
+.reveal { opacity:0; transform:translateY(30px); transition:all .6s cubic-bezier(.16,1,.3,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
 
 /* Footer */
-footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);margin-top:80px;}
-footer .brand{font-size:14px;font-weight:700;background:linear-gradient(135deg,var(--primary-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer { text-align:center; padding:40px 20px; color:#475569; font-size:0.75rem; border-top:1px solid var(--glass-border); margin-top:40px; }
 
-/* Animation */
-.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
+/* ========== 响应式 ========== */
+/* Tablet: 768px - 1024px */
+@media (max-width:1024px) {
+  .bento-grid { grid-template-columns:repeat(2,1fr); }
+  .col-span-4,.col-span-3 { grid-column:span 2; }
+  .col-span-2 { grid-column:span 2; }
+  .col-span-1 { grid-column:span 1; }
+  .stats-grid { grid-template-columns:repeat(3,1fr); }
+  .brand-grid { grid-template-columns:repeat(2,1fr); }
+}
 
-/* Smart factory animation */
-.factory-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-.factory-step{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);font-size:11px;font-weight:600;color:var(--primary-light);}
-.factory-arrow{color:var(--text-muted);font-size:10px;}
+/* Mobile: < 768px */
+@media (max-width:768px) {
+  .bento-grid { grid-template-columns:1fr; gap:12px; padding:0 16px 30px; }
+  .col-span-4,.col-span-3,.col-span-2,.col-span-1 { grid-column:span 1; }
+  .hero-section { padding:40px 16px 30px; }
+  .stats-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+  .brand-grid { grid-template-columns:repeat(2,1fr); }
+  .factory-stats-grid { grid-template-columns:1fr 1fr; }
+  .stat-number { font-size:1.4rem; }
+  .glass-card { border-radius:12px; }
+  .glass-card:hover { transform:none; }
+  .info-row { flex-wrap:nowrap; }
+  .info-key { font-size:0.75rem; }
+  .info-val { font-size:0.78rem; }
+}
 
-/* Capacity chart container */
-.chart-container{position:relative;width:100%;height:220px;}
+/* Small Mobile: < 400px */
+@media (max-width:400px) {
+  .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .brand-grid { grid-template-columns:1fr 1fr; }
+  .hero-title { font-size:1.2rem; }
+  .tag { font-size:0.6rem; padding:2px 8px; }
+}
 </style>
 </head>
 <body>
 
 <!-- Hero -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span> 存续 · 在营</div>
-    <h1 class="hero-title">
-      <span class="gradient">永春县恒耀服装</span><br>制造有限公司
-    </h1>
-    <p class="hero-sub">5G智慧工厂 · 小单快反7天交付 · 国内外知名运动品牌核心供应商<br>国家级高新技术企业 · 省级专精特新中小企业</p>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="num">2.5亿</div><div class="label">2025年目标产值</div></div>
-      <div class="hero-stat"><div class="num">900万</div><div class="label">年产能(件/套)</div></div>
-      <div class="hero-stat"><div class="num">17条</div><div class="label">智能吊挂产线</div></div>
-      <div class="hero-stat"><div class="num">7天</div><div class="label">最快交付周期</div></div>
-    </div>
+<section class="hero-section">
+  <div class="hero-glow"></div>
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
+    <div class="pulse-dot"></div>
+    <span style="font-size:0.8rem;color:var(--emerald);font-weight:500;">存续 · 在营</span>
   </div>
-  <div class="scroll-hint"><i class="fas fa-chevron-down" style="color:var(--text-muted);font-size:20px;"></i></div>
+  <h1 class="hero-title">永春县恒耀服装制造有限公司</h1>
+  <p class="hero-slogan">机织服装制造 · 纺织服装业</p>
+  <div class="hero-tags"><span class="tag" style="background:rgba(20,184,166,0.15);color:#2dd4bf;border:1px solid rgba(20,184,166,0.3)"><i class="fas fa-shirt"></i> 服装制造</span> <span class="tag" style="background:rgba(20,184,166,0.15);color:#2dd4bf;border:1px solid rgba(20,184,166,0.3)"><i class="fas fa-scissors"></i> 纺织服装</span> <span class="tag" style="background:rgba(20,184,166,0.15);color:#2dd4bf;border:1px solid rgba(20,184,166,0.3)"><i class="fas fa-industry"></i> 机织服装</span></div>
 </section>
 
-<!-- Section 1: 工商档案 & 股权结构 -->
-<section class="section">
-  <div class="section-header">
-    <div class="overline">Enterprise Profile</div>
-    <h2>工商档案 & 股权架构</h2>
-    <p>自然人独资企业，叶宏聪100%控股，实控人与最终受益人合一</p>
+<!-- Bento Grid -->
+<div class="bento-grid" style="position:relative;z-index:1;">
+
+  <!-- 核心数据 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px 20px;">
+    <div class="stats-grid"><div class="stat-item">
+        <div class="stat-number" style="background:linear-gradient(135deg,#2dd4bf,#14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">500<span style="font-size:0.5em">万</span></div>
+        <div class="stat-label">注册资本</div>
+        
+    </div><div class="stat-item">
+        <div class="stat-number" style="background:linear-gradient(135deg,#6ee7b7,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">2019</div>
+        <div class="stat-label">成立年份</div>
+        
+    </div></div>
   </div>
-  <div class="bento-grid">
-    <!-- 工商基本信息 -->
-    <div class="card span-2 reveal">
-      <div class="glow-indigo" style="top:-60px;right:-60px;"></div>
-      <div class="card-label"><i class="fas fa-building"></i> 工商档案</div>
-      <div class="info-row"><span class="key">统一社会信用代码</span><span class="val" style="font-family:monospace;font-size:12px;">91350525MA32JE9035</span></div>
-      <div class="info-row"><span class="key">法定代表人</span><span class="val">叶宏聪</span></div>
-      <div class="info-row"><span class="key">注册资本</span><span class="val">500 万元人民币</span></div>
-      <div class="info-row"><span class="key">成立日期</span><span class="val">2019-03-11</span></div>
-      <div class="info-row"><span class="key">企业类型</span><span class="val">有限责任公司(自然人独资)</span></div>
-      <div class="info-row"><span class="key">所属行业</span><span class="val">C1819 其他机织服装制造</span></div>
-      <div class="info-row"><span class="key">企业规模</span><span class="val">小型</span></div>
-      <div class="info-row"><span class="key">税务信用</span><span class="val" style="color:var(--emerald);">2025年A级</span></div>
-      <div class="info-row"><span class="key">纳税人资质</span><span class="val">一般纳税人</span></div>
-      <div class="info-row"><span class="key">注册地址</span><span class="val" style="font-size:11px;max-width:260px;text-align:right;">永春县桃城镇榜德工业园G区5号一号楼</span></div>
-      <div class="info-row"><span class="key">邮箱</span><span class="val">zqf@hengyaofz.com</span></div>
-    </div>
 
-    <!-- 股权结构 -->
-    <div class="card reveal">
-      <div class="glow-cyan" style="bottom:-40px;left:-40px;"></div>
-      <div class="card-label"><i class="fas fa-sitemap"></i> 股权结构</div>
-      <div style="text-align:center;padding:20px 0;">
-        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--cyan));display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px;font-weight:900;color:#fff;">叶</div>
-        <div style="font-size:16px;font-weight:700;">叶宏聪</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">法定代表人 · 实控人 · 最终受益人</div>
-        <div style="margin-top:16px;">
-          <span class="tag tag-indigo" style="font-size:14px;padding:6px 16px;">持股 100%</span>
-        </div>
-        <div style="margin-top:16px;padding:12px;border-radius:12px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.1);">
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">关联企业</div>
-          <div style="font-size:24px;font-weight:900;" class="big-num indigo" style="font-size:24px;">3</div>
-          <div style="font-size:11px;color:var(--text-muted);">家企业</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 资质荣誉 -->
-    <div class="card reveal">
-      <div class="glow-amber" style="top:-40px;right:-40px;"></div>
-      <div class="card-label"><i class="fas fa-award"></i> 资质荣誉</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);">
-          <i class="fas fa-certificate" style="color:var(--emerald);font-size:18px;"></i>
-          <div><div style="font-size:12px;font-weight:700;">国家级高新技术企业</div><div style="font-size:10px;color:var(--text-muted);">2024年认定</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.15);">
-          <i class="fas fa-microscope" style="color:var(--cyan);font-size:18px;"></i>
-          <div><div style="font-size:12px;font-weight:700;">科技型中小企业</div><div style="font-size:10px;color:var(--text-muted);">2025年国家级</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);">
-          <i class="fas fa-gem" style="color:var(--primary-light);font-size:18px;"></i>
-          <div><div style="font-size:12px;font-weight:700;">专精特新中小企业</div><div style="font-size:10px;color:var(--text-muted);">省级认定</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);">
-          <i class="fas fa-rocket" style="color:var(--accent);font-size:18px;"></i>
-          <div><div style="font-size:12px;font-weight:700;">科技小巨人企业</div><div style="font-size:10px;color:var(--text-muted);">省级认定</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);">
-          <i class="fas fa-bullseye" style="color:var(--rose);font-size:18px;"></i>
-          <div><div style="font-size:12px;font-weight:700;">创新型中小企业</div><div style="font-size:10px;color:var(--text-muted);">省级认定</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 经营范围 -->
-    <div class="card span-4 reveal">
-      <div class="card-label"><i class="fas fa-file-contract"></i> 经营范围</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;">
-        <span class="tag tag-indigo">服装制造</span>
-        <span class="tag tag-indigo">服饰制造</span>
-        <span class="tag tag-cyan">箱包制造</span>
-        <span class="tag tag-cyan">鞋制造</span>
-        <span class="tag tag-emerald">针纺织品及原料销售</span>
-        <span class="tag tag-emerald">针织或钩针编织物及其制品制造</span>
-        <span class="tag tag-amber">家用纺织制成品制造</span>
-        <span class="tag tag-amber">绣花加工</span>
-        <span class="tag tag-amber">面料纺织加工</span>
-        <span class="tag tag-indigo">服装辅料制造</span>
-        <span class="tag tag-cyan">皮革制品制造</span>
-        <span class="tag tag-emerald">专业设计服务</span>
-        <span class="tag tag-emerald">服饰研发</span>
-        <span class="tag tag-rose">新材料技术研发</span>
-        <span class="tag tag-rose">技术服务/开发/转让</span>
-        <span class="tag tag-rose">软件开发</span>
-        <span class="tag tag-amber">货物进出口</span>
-        <span class="tag tag-amber">技术进出口</span>
-      </div>
-    </div>
+  <!-- 工商信息 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-building" style="color:var(--primary);"></i><h2>工商信息</h2></div>
+    <div style="display:flex;flex-direction:column;gap:2px;"><div class="info-row"><span class="info-key">法定代表人</span><span class="info-val" style="color:var(--primary-light);">叶宏聪</span></div><div class="info-row"><span class="info-key">成立日期</span><span class="info-val" style="color:#e2e8f0;">2019-03-11</span></div><div class="info-row"><span class="info-key">注册资本</span><span class="info-val" style="color:#e2e8f0;">500万元</span></div><div class="info-row"><span class="info-key">所属行业</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;">其他机织服装制造</span></div><div class="info-row"><span class="info-key">注册地址</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;text-align:right;max-width:60%;">永春县</span></div></div>
   </div>
-</section>
 
-<!-- Section 2: 5G智慧工厂 & 产能 -->
-<section class="section">
-  <div class="section-header">
-    <div class="overline">Smart Factory</div>
-    <h2>5G智慧工厂 & 产能布局</h2>
-    <p>携手泉州电信，以"快"为矛、以"智"为盾，打造针织运动服装智造标杆</p>
+  <!-- 资质荣誉 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-trophy" style="color:var(--amber);"></i><h2>资质荣誉</h2></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span style="font-size:0.8rem;color:#64748b;">暂无公开荣誉信息</span></div>
   </div>
-  <div class="bento-grid">
-    <!-- 5G智慧工厂 -->
-    <div class="card span-2 row-2 reveal">
-      <div class="glow-indigo" style="top:-80px;right:-80px;"></div>
-      <div class="card-label"><i class="fas fa-industry"></i> 5G智慧工厂全景</div>
-      <div class="card-title" style="font-size:1.2rem;">数据驱动生产 · 全流程数字化</div>
-      <div style="margin-top:16px;">
-        <div class="factory-flow" style="margin-bottom:16px;">
-          <div class="factory-step"><i class="fas fa-eye"></i> AI视觉检测</div>
-          <div class="factory-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="factory-step"><i class="fas fa-cut"></i> 智能裁切</div>
-          <div class="factory-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="factory-step"><i class="fas fa-hanger"></i> 吊挂生产</div>
-        </div>
-        <div class="factory-flow" style="margin-bottom:16px;">
-          <div class="factory-step"><i class="fas fa-robot"></i> 自动模板机</div>
-          <div class="factory-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="factory-step"><i class="fas fa-search"></i> 智能验针</div>
-          <div class="factory-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="factory-step"><i class="fas fa-box"></i> 智能打包</div>
-        </div>
-        <div class="factory-flow">
-          <div class="factory-step"><i class="fas fa-database"></i> 5G数据串联</div>
-          <div class="factory-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="factory-step"><i class="fas fa-chart-line"></i> 智能排产</div>
-          <div class="factory-arrow"><i class="fas fa-arrow-right"></i></div>
-          <div class="factory-step"><i class="fas fa-qrcode"></i> 100%溯源</div>
-        </div>
-      </div>
-      <div style="margin-top:24px;padding:16px;border-radius:12px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.1);">
-        <div style="font-size:12px;color:var(--primary-light);font-weight:600;margin-bottom:8px;"><i class="fas fa-quote-left" style="margin-right:4px;"></i> 核心理念</div>
-        <div style="font-size:13px;color:var(--text-muted);line-height:1.7;">传统工厂凭借昨天的经验解决今天的问题，智慧工厂通过今天的数据提前解决明天的问题。</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">—— 生产总监 李成都</div>
-      </div>
-    </div>
 
-    <!-- 产能数据 -->
-    <div class="card reveal">
-      <div class="card-label"><i class="fas fa-chart-bar"></i> 年产能</div>
-      <div class="big-num indigo">600万</div>
-      <div style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">件/套 针织运动服装</div>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
-            <span style="color:var(--text-muted);">2023年产能</span><span style="color:var(--primary-light);font-weight:600;">~300万件</span>
-          </div>
-          <div class="progress-bar"><div class="fill" style="width:33%;background:linear-gradient(90deg,var(--primary),var(--primary-light));"></div></div>
+  <!-- 股权结构 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-sitemap" style="color:var(--violet);"></i><h2>股权结构</h2></div>
+    <div style="display:flex;flex-direction:column;gap:14px;"><div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:0.85rem;font-weight:600;">叶宏聪</span>
+            <span style="font-size:0.85rem;font-weight:700;color:#f9a8d4;">100%</span>
         </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
-            <span style="color:var(--text-muted);">2024年产能</span><span style="color:var(--cyan);font-weight:600;">~400万件</span>
-          </div>
-          <div class="progress-bar"><div class="fill" style="width:44%;background:linear-gradient(90deg,var(--primary-light),var(--cyan));"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;">
-            <span style="color:var(--text-muted);">2025年目标</span><span style="color:var(--accent);font-weight:600;">900万件</span>
-          </div>
-          <div class="progress-bar"><div class="fill" style="width:100%;background:linear-gradient(90deg,var(--cyan),var(--accent));"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 产值增长 -->
-    <div class="card reveal">
-      <div class="card-label"><i class="fas fa-coins"></i> 产值增长</div>
-      <div class="chart-container" style="height:200px;">
-        <canvas id="chartRevenue"></canvas>
-      </div>
-    </div>
-
-    <!-- 数字化转型成效 -->
-    <div class="card span-2 reveal">
-      <div class="glow-amber" style="bottom:-40px;right:-40px;"></div>
-      <div class="card-label"><i class="fas fa-bolt"></i> 数字化转型成效 (2025 vs 2020)</div>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px;">
-        <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);text-align:center;">
-          <div class="big-num emerald" style="font-size:2rem;">+16%</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">产值同比增长</div>
-        </div>
-        <div style="padding:16px;border-radius:12px;background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.12);text-align:center;">
-          <div class="big-num cyan" style="font-size:2rem;">-3%</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">品质不良率下降</div>
-        </div>
-        <div style="padding:16px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12);text-align:center;">
-          <div class="big-num amber" style="font-size:2rem;">-5%</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">生产成本降低</div>
-        </div>
-        <div style="padding:16px;border-radius:12px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.12);text-align:center;">
-          <div class="big-num indigo" style="font-size:2rem;">+200万</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">设备新增投资</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 生产基地 -->
-    <div class="card span-2 reveal">
-      <div class="card-label"><i class="fas fa-map-marker-alt"></i> 生产基地</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div style="padding:16px;border-radius:12px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.1);">
-          <div style="font-size:11px;font-weight:600;color:var(--primary-light);margin-bottom:8px;"><i class="fas fa-warehouse" style="margin-right:4px;"></i> 老厂</div>
-          <div style="font-size:12px;color:var(--text);font-weight:600;margin-bottom:4px;">桃城镇轻纺园</div>
-          <div style="font-size:11px;color:var(--text-muted);line-height:1.5;">永春县桃城镇轻纺园1号<br>欧美龙集团内</div>
-        </div>
-        <div style="padding:16px;border-radius:12px;background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.1);">
-          <div style="font-size:11px;font-weight:600;color:var(--cyan);margin-bottom:8px;"><i class="fas fa-building" style="margin-right:4px;"></i> 新厂 (5G智慧工厂)</div>
-          <div style="font-size:12px;color:var(--text);font-weight:600;margin-bottom:4px;">榜德工业区</div>
-          <div style="font-size:11px;color:var(--text-muted);line-height:1.5;">永春县榜德工业区G区5号<br>智能陶瓷家居产业园内</div>
-        </div>
-      </div>
-      <div style="margin-top:16px;display:flex;gap:16px;flex-wrap:wrap;">
-        <div style="text-align:center;">
-          <div style="font-size:20px;font-weight:900;color:var(--primary-light);">2万+</div>
-          <div style="font-size:10px;color:var(--text-muted);">总面积(㎡)</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-size:20px;font-weight:900;color:var(--cyan);">~500</div>
-          <div style="font-size:10px;color:var(--text-muted);">员工人数</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-size:20px;font-weight:900;color:var(--emerald);">17条</div>
-          <div style="font-size:10px;color:var(--text-muted);">智能吊挂线</div>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-size:20px;font-weight:900;color:var(--accent);">全年</div>
-          <div style="font-size:10px;color:var(--text-muted);">无淡季</div>
-        </div>
-      </div>
-    </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:linear-gradient(90deg,#f472b6,#f9a8d4);"></div></div>
+        <div style="font-size:0.7rem;color:#64748b;margin-top:4px;">法定代表人 · 实控人 · 最终受益人</div>
+    </div></div>
   </div>
-</section>
 
-<!-- Section 3: 核心客户 & 产品 -->
-<section class="section">
-  <div class="section-header">
-    <div class="overline">Core Clients & Products</div>
-    <h2>品牌客户 & 产品矩阵</h2>
-    <p>国内外知名运动品牌核心供应商，针织运动服装专业代工</p>
+  
+  
+  
+
+  <!-- 发展历程 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-clock-rotate-left" style="color:var(--emerald);"></i><h2>发展历程</h2></div>
+    <div style="display:flex;flex-direction:column;"><div class="timeline-item">
+            <div class="timeline-dot" style="background:#14b8a6;"></div>
+            <div class="timeline-line"></div>
+            <div><div style="font-size:0.75rem;color:#2dd4bf;font-weight:700;">2019年</div><div style="font-size:0.8rem;">公司成立，专注机织服装制造</div></div>
+        </div></div>
   </div>
-  <div class="bento-grid">
-    <!-- 核心客户 -->
-    <div class="card span-2 reveal">
-      <div class="glow-indigo" style="top:-60px;left:-60px;"></div>
-      <div class="card-label"><i class="fas fa-handshake"></i> 核心客户</div>
-      <div class="client-grid">
-        <div class="client-item">
-          <div class="icon" style="color:#fff;background:linear-gradient(135deg,#1a1a2e,#16213e);width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;">UA</div>
-          <div class="name">安德玛<br><span style="font-size:9px;color:var(--emerald);">Under Armour</span></div>
-        </div>
-        <div class="client-item">
-          <div class="icon" style="color:#fff;background:linear-gradient(135deg,#e74c3c,#c0392b);width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;">KAILAS</div>
-          <div class="name">凯乐石<br><span style="font-size:9px;color:var(--emerald);">KAILAS</span></div>
-        </div>
-        <div class="client-item">
-          <div class="icon" style="color:#fff;background:linear-gradient(135deg,#111,#333);width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;">NIKE</div>
-          <div class="name">耐克<br><span style="font-size:9px;color:var(--text-muted);">Nike</span></div>
-        </div>
-        <div class="client-item">
-          <div class="icon" style="color:#fff;background:linear-gradient(135deg,#2d3436,#636e72);width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;">ADIDAS</div>
-          <div class="name">阿迪达斯<br><span style="font-size:9px;color:var(--text-muted);">Adidas</span></div>
-        </div>
-        <div class="client-item">
-          <div class="icon" style="color:#fff;background:linear-gradient(135deg,#c0392b,#e74c3c);width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;">UNIQLO</div>
-          <div class="name">优衣库<br><span style="font-size:9px;color:var(--text-muted);">Uniqlo</span></div>
-        </div>
-        <div class="client-item">
-          <div class="icon" style="color:#fff;background:linear-gradient(135deg,var(--primary),var(--cyan));width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;"><i class="fas fa-store"></i></div>
-          <div class="name">国内一线<br><span style="font-size:9px;color:var(--text-muted);">电商企业</span></div>
-        </div>
-      </div>
-      <div style="margin-top:16px;padding:12px;border-radius:10px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);">
-        <div style="font-size:11px;color:var(--accent);font-weight:600;"><i class="fas fa-star" style="margin-right:4px;"></i> 2025年新增梭织车间，成功开拓安德玛、凯乐石等高端客户</div>
-      </div>
-    </div>
 
-    <!-- 产品矩阵 -->
-    <div class="card reveal">
-      <div class="card-label"><i class="fas fa-tshirt"></i> 产品矩阵</div>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.1);">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(99,102,241,0.15);display:flex;align-items:center;justify-content:center;"><i class="fas fa-running" style="color:var(--primary-light);"></i></div>
-          <div><div style="font-size:12px;font-weight:700;">针织运动服装</div><div style="font-size:10px;color:var(--text-muted);">核心产品 · 400-600万件/年</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.1);">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(6,182,212,0.15);display:flex;align-items:center;justify-content:center;"><i class="fas fa-wind" style="color:var(--cyan);"></i></div>
-          <div><div style="font-size:12px;font-weight:700;">梭织服装</div><div style="font-size:10px;color:var(--text-muted);">2025年新增车间</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;"><i class="fas fa-mountain" style="color:var(--emerald);"></i></div>
-          <div><div style="font-size:12px;font-weight:700;">冲锋衣/户外服</div><div style="font-size:10px;color:var(--text-muted);">多功能冲锋衣专利</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);">
-          <div style="width:36px;height:36px;border-radius:8px;background:rgba(245,158,11,0.15);display:flex;align-items:center;justify-content:center;"><i class="fas fa-vest" style="color:var(--accent);"></i></div>
-          <div><div style="font-size:12px;font-weight:700;">箱包/鞋帽/配件</div><div style="font-size:10px;color:var(--text-muted);">全品类覆盖</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 小单快反 -->
-    <div class="card reveal">
-      <div class="glow-rose" style="top:-40px;right:-40px;"></div>
-      <div class="card-label"><i class="fas fa-shipping-fast"></i> 小单快反</div>
-      <div style="text-align:center;padding:16px 0;">
-        <div class="big-num rose" style="font-size:4rem;">7天</div>
-        <div style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">最快订单交付周期</div>
-        <div style="padding:14px;border-radius:12px;background:rgba(244,63,94,0.06);border:1px solid rgba(244,63,94,0.1);text-align:left;">
-          <div style="font-size:11px;color:var(--rose);font-weight:600;margin-bottom:6px;"><i class="fas fa-fire" style="margin-right:4px;"></i> 爆款案例</div>
-          <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">5万件针织裤爆款订单，对方要求以天为单位交货。通过智能排产，扣除等待辅料时间，仅用<strong style="color:var(--rose);">7天</strong>完成交付。</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3D设计 -->
-    <div class="card span-2 reveal">
-      <div class="card-label"><i class="fas fa-cube"></i> 3D数字设计中心</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <div>
-          <div class="big-num cyan" style="font-size:2.5rem;">1000+</div>
-          <div style="font-size:12px;color:var(--text-muted);">每月新款设计</div>
-          <div style="margin-top:16px;font-size:13px;color:var(--text-muted);line-height:1.7;">配备3D模块功能的检测研发中心，同一款式样衣只需制作一件实物，其余颜色款式通过3D虚拟展示确认，大幅降低开发成本与周期。</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="padding:12px;border-radius:10px;background:rgba(6,182,212,0.06);border:1px solid rgba(6,182,212,0.1);">
-            <div style="font-size:11px;font-weight:600;color:var(--cyan);margin-bottom:4px;">传统模式</div>
-            <div style="font-size:11px;color:var(--text-muted);">需提前生产多种颜色款式样衣 → 带到客户确认 → 周期长成本高</div>
-          </div>
-          <div style="padding:12px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);">
-            <div style="font-size:11px;font-weight:600;color:var(--emerald);margin-bottom:4px;">3D模式</div>
-            <div style="font-size:11px;color:var(--text-muted);">1件实物样衣 + 3D虚拟展示 → 远程确认 → 快速投产</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 品质管控 -->
-    <div class="card span-2 reveal">
-      <div class="card-label"><i class="fas fa-shield-alt"></i> 层层品质管控</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(99,102,241,0.04);">
-          <div style="width:28px;height:28px;border-radius:50%;background:rgba(99,102,241,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--primary-light);">1</div>
-          <div style="font-size:12px;"><strong>入库检测</strong> <span style="color:var(--text-muted);">— 智能设备对面料及辅料严格检测</span></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(6,182,212,0.04);">
-          <div style="width:28px;height:28px;border-radius:50%;background:rgba(6,182,212,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--cyan);">2</div>
-          <div style="font-size:12px;"><strong>产前品检会</strong> <span style="color:var(--text-muted);">— 结合智能数据总结经验，优化方案</span></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(16,185,129,0.04);">
-          <div style="width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--emerald);">3</div>
-          <div style="font-size:12px;"><strong>产线巡检</strong> <span style="color:var(--text-muted);">— 品控人员实时巡检 + 智能数据监控</span></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(245,158,11,0.04);">
-          <div style="width:28px;height:28px;border-radius:50%;background:rgba(245,158,11,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--accent);">4</div>
-          <div style="font-size:12px;"><strong>智能验针</strong> <span style="color:var(--text-muted);">— 整烫后智能验针设备再次检测</span></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:rgba(244,63,94,0.04);">
-          <div style="width:28px;height:28px;border-radius:50%;background:rgba(244,63,94,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--rose);">5</div>
-          <div style="font-size:12px;"><strong>综合终检</strong> <span style="color:var(--text-muted);">— 无金属环境下成品综合检测，100%溯源</span></div>
-        </div>
-      </div>
-    </div>
+  <!-- 产品体系 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-boxes-stacked" style="color:var(--amber);"></i><h2>产品体系</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;"><div class="product-item" style="background:rgba(20,184,166,0.05);">
+            <i class="fas fa-shirt" style="font-size:1.2rem;color:#14b8a6;"></i>
+            <div><div style="font-size:0.85rem;font-weight:600;">机织服装</div><div style="font-size:0.65rem;color:#64748b;">服装制造与加工</div></div>
+        </div><div class="product-item" style="background:rgba(244,114,182,0.05);">
+            <i class="fas fa-scissors" style="font-size:1.2rem;color:#f472b6;"></i>
+            <div><div style="font-size:0.85rem;font-weight:600;">服装定制</div><div style="font-size:0.65rem;color:#64748b;">来料加工与定制</div></div>
+        </div></div>
   </div>
-</section>
 
-<!-- Section 4: 知识产权 & 发展历程 -->
-<section class="section">
-  <div class="section-header">
-    <div class="overline">IP & Milestones</div>
-    <h2>知识产权 & 发展历程</h2>
-    <p>42项知识产权，从代工起步到5G智慧工厂的智造跃迁</p>
+  <!-- 风险与合规 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-shield-halved" style="color:var(--amber);"></i><h2>风险与合规</h2></div>
+    <div style="display:flex;flex-direction:column;gap:10px;"><div class="risk-item" style="background:rgba(52,211,153,0.06);border-left:3px solid #34d399;">
+            <i class="fas fa-check-circle" style="color:#34d399;margin-top:2px;"></i>
+            <div><div style="font-size:0.85rem;font-weight:600;color:#6ee7b7;">经营正常</div>
+            <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px;">暂无重大风险记录</div></div>
+        </div></div>
   </div>
-  <div class="bento-grid">
-    <!-- 知识产权概览 -->
-    <div class="card reveal">
-      <div class="glow-cyan" style="top:-40px;right:-40px;"></div>
-      <div class="card-label"><i class="fas fa-lightbulb"></i> 知识产权</div>
-      <div style="text-align:center;padding:12px 0;">
-        <div class="big-num indigo" style="font-size:3.5rem;">42</div>
-        <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">项知识产权</div>
-        <div class="chart-container" style="height:160px;">
-          <canvas id="chartIP"></canvas>
-        </div>
-      </div>
-    </div>
 
-    <!-- 近期专利 -->
-    <div class="card span-2 reveal">
-      <div class="card-label"><i class="fas fa-file-alt"></i> 近期专利授权</div>
-      <div class="patent-item">
-        <div class="patent-icon utility"><i class="fas fa-cog"></i></div>
-        <div class="patent-info"><div class="name">一种无缝服饰裁剪用定向工装</div><div class="date">2026-03-24 · 实用新型</div></div>
-      </div>
-      <div class="patent-item">
-        <div class="patent-icon utility"><i class="fas fa-cut"></i></div>
-        <div class="patent-info"><div class="name">一种服装生产车间用布料裁剪设备</div><div class="date">2026-03-17 · 实用新型</div></div>
-      </div>
-      <div class="patent-item">
-        <div class="patent-icon utility"><i class="fas fa-tag"></i></div>
-        <div class="patent-info"><div class="name">一种服装加工用储物袋标记工装</div><div class="date">2026-03-06 · 实用新型</div></div>
-      </div>
-      <div class="patent-item">
-        <div class="patent-icon utility"><i class="fas fa-mountain"></i></div>
-        <div class="patent-info"><div class="name">一种多功能冲锋衣</div><div class="date">2026-02-27 · 实用新型</div></div>
-      </div>
-      <div class="patent-item">
-        <div class="patent-icon utility"><i class="fas fa-palette"></i></div>
-        <div class="patent-info"><div class="name">一种防磨性立体绣花服饰</div><div class="date">2025-03-11 · 实用新型</div></div>
-      </div>
-      <div class="patent-item">
-        <div class="patent-icon utility"><i class="fas fa-tint"></i></div>
-        <div class="patent-info"><div class="name">一种吸水后防回流的亲肤针织布</div><div class="date">2025-01-14 · 实用新型</div></div>
-      </div>
-      <div class="patent-item">
-        <div class="patent-icon utility"><i class="fas fa-wifi"></i></div>
-        <div class="patent-info"><div class="name">一种服装生产工具物联网管理工具</div><div class="date">2024-08-20 · 实用新型</div></div>
-      </div>
-      <div class="patent-item">
-        <div class="patent-icon invention"><i class="fas fa-flask"></i></div>
-        <div class="patent-info"><div class="name">一种衬布涂层吸粉装置</div><div class="date">2024-04-19 · 发明专利</div></div>
-      </div>
-    </div>
-
-    <!-- 发展历程 -->
-    <div class="card span-2 row-2 reveal">
-      <div class="glow-amber" style="bottom:-60px;left:-60px;"></div>
-      <div class="card-label"><i class="fas fa-road"></i> 发展历程</div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="year">2019以前</div>
-          <div class="event">叶宏聪在服装代工领域深耕数十载，积累丰富行业经验与品牌资源</div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2019.03</div>
-          <div class="event">永春县恒耀服装制造有限公司正式成立，老厂落户桃城镇轻纺园</div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2023年</div>
-          <div class="event">携手泉州电信启动5G数字化转型，建设智能吊挂生产线</div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2024年</div>
-          <div class="event">完成技术沉淀，获国家级高新技术企业认定；产值达1.8亿元</div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2025年</div>
-          <div class="event">获科技型中小企业认定；新增梭织车间；开拓安德玛、凯乐石等高端客户；目标产值2.5亿元；目标产能900万件</div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">2026年</div>
-          <div class="event">入选泉州市生态环境监督执法正面清单；密集专利授权；计划申请国家专精特新"小巨人"</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 企业精神 -->
-    <div class="card reveal">
-      <div class="glow-indigo" style="bottom:-40px;right:-40px;"></div>
-      <div class="card-label"><i class="fas fa-fire-alt"></i> 企业精神</div>
-      <div style="text-align:center;padding:20px 0;">
-        <div style="font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;line-height:1.3;">恒变者<br>方可闪耀</div>
-        <div style="font-size:13px;color:var(--text-muted);line-height:1.7;">以"快"为矛<br>以"智"为盾</div>
-        <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
-          <div style="padding:10px;border-radius:8px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.1);">
-            <div style="font-size:11px;font-weight:600;color:var(--primary-light);"><i class="fas fa-home" style="margin-right:4px;"></i> 家庭责任感</div>
-          </div>
-          <div style="padding:10px;border-radius:8px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);">
-            <div style="font-size:11px;font-weight:600;color:var(--emerald);"><i class="fas fa-anchor" style="margin-right:4px;"></i> 稳定就业</div>
-          </div>
-          <div style="padding:10px;border-radius:8px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);">
-            <div style="font-size:11px;font-weight:600;color:var(--accent);"><i class="fas fa-trophy" style="margin-right:4px;"></i> 追求极致</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 风险评估 -->
-    <div class="card reveal">
-      <div class="card-label"><i class="fas fa-shield-alt"></i> 风险评估</div>
-      <div style="text-align:center;padding:8px 0;">
-        <div class="chart-container" style="height:180px;">
-          <canvas id="chartRisk"></canvas>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
-        <span class="tag tag-emerald">自身风险 0</span>
-        <span class="tag tag-amber">关联风险 2</span>
-        <span class="tag tag-indigo">提示信息 7</span>
-      </div>
-    </div>
+  <!-- 经营范围 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-file-contract" style="color:var(--cyan);"></i><h2>经营范围</h2></div>
+    <div style="font-size:0.8rem;color:#94a3b8;line-height:1.7;">机织服装制造；服装服饰批发与零售。<br></div>
   </div>
-</section>
+
+</div>
 
 <!-- Footer -->
-<footer>
-  <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">数据来源：企查查 · 启信宝 · 泉州晚报 · BOSS直聘</div>
-  <div class="brand">39139@胜天半子</div>
-</footer>
+<div class="footer">
+  <p>39139@胜天半子</p>
+  <p style="margin-top:4px;">数据来源：企查查 · 天眼查 · 启信宝 · 企业官网</p>
+</div>
 
 <script>
 // Scroll reveal
-const revealElements=document.querySelectorAll('.reveal');
-const revealObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target);}});
-},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-revealElements.forEach(el=>revealObserver.observe(el));
-
-// Revenue chart
-const ctx1=document.getElementById('chartRevenue').getContext('2d');
-new Chart(ctx1,{
-  type:'bar',
-  data:{
-    labels:['2020','2021','2022','2023','2024','2025E'],
-    datasets:[{
-      label:'产值(亿元)',
-      data:[1.2,1.4,1.5,1.6,1.8,2.5],
-      backgroundColor:['rgba(99,102,241,0.3)','rgba(99,102,241,0.4)','rgba(99,102,241,0.5)','rgba(99,102,241,0.6)','rgba(99,102,241,0.8)','rgba(245,158,11,0.8)'],
-      borderColor:['rgba(99,102,241,0.6)','rgba(99,102,241,0.7)','rgba(99,102,241,0.8)','rgba(99,102,241,0.9)','rgba(99,102,241,1)','rgba(245,158,11,1)'],
-      borderWidth:1,
-      borderRadius:6
-    }]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(15,23,42,0.9)',titleColor:'#f1f5f9',bodyColor:'#94a3b8',borderColor:'rgba(99,102,241,0.3)',borderWidth:1}},
-    scales:{
-      y:{beginAtZero:true,grid:{color:'rgba(99,102,241,0.06)'},ticks:{color:'#94a3b8',font:{size:10},callback:v=>v+'亿'}},
-      x:{grid:{display:false},ticks:{color:'#94a3b8',font:{size:10}}}
-    }
-  }
-});
-
-// IP chart
-const ctx2=document.getElementById('chartIP').getContext('2d');
-new Chart(ctx2,{
-  type:'doughnut',
-  data:{
-    labels:['实用新型专利','发明专利','商标','其他'],
-    datasets:[{data:[30,2,8,2],backgroundColor:['#06b6d4','#f59e0b','#6366f1','#6b7280'],borderWidth:0,hoverOffset:6}]
-  },
-  options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10},padding:8,usePointStyle:true,pointStyleWidth:8}}}}
-});
-
-// Risk radar
-const ctx3=document.getElementById('chartRisk').getContext('2d');
-new Chart(ctx3,{
-  type:'radar',
-  data:{
-    labels:['经营活力','企业合规','内部管理','司法涉诉','企业存续','日常经营'],
-    datasets:[{
-      label:'健康指数',
-      data:[90,95,92,100,95,88],
-      backgroundColor:'rgba(16,185,129,0.12)',
-      borderColor:'rgba(16,185,129,0.6)',
-      borderWidth:2,
-      pointBackgroundColor:'#10b981',
-      pointBorderColor:'#10b981',
-      pointRadius:3
-    }]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    scales:{r:{beginAtZero:true,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(148,163,184,0.08)'},pointLabels:{color:'#94a3b8',font:{size:9}},angleLines:{color:'rgba(148,163,184,0.08)'}}},
-    plugins:{legend:{display:false}}
-  }
-});
-
-// Animate progress bars on scroll
-const progressBars=document.querySelectorAll('.progress-bar .fill');
-const progressObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const w=e.target.style.width;
-      e.target.style.width='0%';
-      setTimeout(()=>{e.target.style.width=w;},100);
-      progressObserver.unobserve(e.target);
-    }
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-},{threshold:0.5});
-progressBars.forEach(bar=>progressObserver.observe(bar));
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>

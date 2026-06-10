@@ -2,691 +2,247 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>福建云海宠物用品工贸有限公司 | 企业画像</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福建云海宠物用品工贸有限公司 - 企业画像</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
-:root{
-  --primary:#10b981;--primary-light:#34d399;--primary-dark:#059669;
-  --accent:#f59e0b;--accent2:#d97706;
-  --info:#3b82f6;--purple:#8b5cf6;
-  --bg-dark:#030712;--bg-card:rgba(15,23,42,0.8);
-  --border:rgba(16,185,129,0.15);--glow:rgba(16,185,129,0.2);
-  --text:#f1f5f9;--text-muted:#94a3b8;
+:root {
+  --bg: #0a0a0f;
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --primary: #f97316;
+  --primary-light: #fb923c;
+  --emerald: #34d399;
+  --amber: #fbbf24;
+  --violet: #a78bfa;
+  --cyan: #22d3ee;
+  --rose: #fb7185;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Noto Sans SC','Inter',sans-serif;background:var(--bg-dark);color:var(--text);overflow-x:hidden;}
-::-webkit-scrollbar{width:6px;}
-::-webkit-scrollbar-track{background:var(--bg-dark);}
-::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px;}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; }
+body { font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:#e2e8f0; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
 
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(16,185,129,0.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(245,158,11,0.06) 0%,transparent 50%),var(--bg-dark);}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(16,185,129,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.03) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
-@keyframes gridMove{0%{transform:translate(0,0)}100%{transform:translate(60px,60px)}}
-.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orbFloat 8s ease-in-out infinite;}
-.hero-orb-1{width:400px;height:400px;background:rgba(16,185,129,0.1);top:-100px;left:-100px;}
-.hero-orb-2{width:300px;height:300px;background:rgba(245,158,11,0.06);bottom:-50px;right:-50px;animation-delay:-4s;}
-@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
-.hero-content{position:relative;z-index:10;text-align:center;padding:0 24px;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:100px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);font-size:13px;color:var(--primary-light);margin-bottom:24px;backdrop-filter:blur(10px);}
-.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--primary-light);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.2;margin-bottom:16px;background:linear-gradient(135deg,#f1f5f9 0%,#10b981 50%,#f59e0b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-muted);max-width:700px;margin:0 auto 32px;line-height:1.8;}
-.hero-stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;}
-.hero-stat{text-align:center;}
-.hero-stat-num{font-size:2rem;font-weight:900;color:var(--primary-light);}
-.hero-stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+/* Hero */
+.hero-section { text-align:center; padding:60px 20px 40px; position:relative; }
+.hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse,rgba(249,115,22,0.12),rgba(167,139,250,0.06),transparent 70%); pointer-events:none; }
+.pulse-dot { width:8px; height:8px; background:var(--emerald); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+.hero-title { font-size:clamp(1.4rem,4vw,2.5rem); font-weight:900; letter-spacing:-1px; margin-bottom:8px; background:linear-gradient(135deg,#fb923c,#f97316,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.3; }
+.hero-slogan { font-size:clamp(0.75rem,2vw,1rem); color:#64748b; margin-bottom:20px; }
+.hero-tags { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
 
-.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:20px;max-width:1400px;margin:0 auto;padding:0 24px;}
-.span-2{grid-column:span 2;}.span-3{grid-column:span 3;}.span-4{grid-column:span 4;}
-.row-2{grid-row:span 2;}
-@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(2,1fr);}.span-3,.span-4{grid-column:span 2;}}
-@media(max-width:640px){.bento-grid{grid-template-columns:1fr;}.span-2,.span-3,.span-4{grid-column:span 1;}}
+/* Tags */
+.tag { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; white-space:nowrap; }
 
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px;backdrop-filter:blur(20px);position:relative;overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);}
-.card:hover{border-color:rgba(16,185,129,0.4);transform:translateY(-4px);box-shadow:0 20px 60px rgba(16,185,129,0.1);}
-.card-glow{position:absolute;top:-50%;right:-50%;width:200px;height:200px;background:radial-gradient(circle,rgba(16,185,129,0.06) 0%,transparent 70%);pointer-events:none;}
-.card-label{font-size:12px;color:var(--primary-light);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.card-label i{font-size:14px;}
-.card-value{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;line-height:1.2;}
-.card-desc{font-size:13px;color:var(--text-muted);line-height:1.8;margin-top:12px;}
+/* Bento Grid - 响应式核心 */
+.bento-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1280px; margin:0 auto; padding:0 20px 40px; }
 
-.section{padding:80px 0;}
-.section-header{text-align:center;margin-bottom:48px;}
-.section-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;}
-.section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));margin:0 auto;border-radius:2px;}
+/* Glass Card */
+.glass-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:all .3s ease; overflow:hidden; }
+.glass-card:hover { border-color:rgba(249,115,22,0.3); transform:translateY(-2px); box-shadow:0 8px 32px rgba(249,115,22,0.1); }
+.col-span-4 { grid-column:span 4; }
+.col-span-3 { grid-column:span 3; }
+.col-span-2 { grid-column:span 2; }
+.col-span-1 { grid-column:span 1; }
 
-.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(16,185,129,0.06);}
-.info-row:last-child{border-bottom:none;}
-.info-label{font-size:13px;color:var(--text-muted);}
-.info-value{font-size:14px;font-weight:600;text-align:right;max-width:60%;}
+/* Card Header */
+.card-header { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
+.card-header h2 { font-size:1rem; font-weight:700; }
 
-.share-bar{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-.share-bar-name{width:60px;font-size:14px;font-weight:600;text-align:right;}
-.share-bar-track{flex:1;height:28px;background:rgba(16,185,129,0.08);border-radius:8px;overflow:hidden;position:relative;}
-.share-bar-fill{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:700;color:#fff;transition:width 1.5s cubic-bezier(.4,0,.2,1);}
-.share-bar-amount{font-size:13px;color:var(--text-muted);width:80px;}
+/* Stats */
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:16px; text-align:center; }
+.stat-item { padding:8px 4px; }
+.stat-number { font-size:clamp(1.4rem,3vw,2.2rem); font-weight:900; line-height:1.1; }
+.stat-label { font-size:0.75rem; color:#64748b; margin-top:6px; }
 
-.scope-tag{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);font-size:13px;color:var(--text);margin:4px;transition:all .3s;}
-.scope-tag:hover{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);}
-.scope-tag i{color:var(--primary-light);font-size:12px;}
+/* Info Rows */
+.info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--glass-border); gap:8px; }
+.info-row:last-child { border-bottom:none; }
+.info-key { font-size:0.8rem; color:#64748b; white-space:nowrap; flex-shrink:0; }
+.info-val { font-size:0.85rem; font-weight:600; color:#e2e8f0; text-align:right; word-break:break-all; }
 
-.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600;}
-.badge-green{background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.3);}
-.badge-amber{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);}
-.badge-blue{background:rgba(59,130,246,0.15);color:#60a5fa;border:1px solid rgba(59,130,246,0.3);}
-.badge-purple{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.3);}
+/* Progress */
+.progress-bar { height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; }
+.progress-fill { height:100%; border-radius:3px; transition:width 1s ease; }
 
-.empire-item{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:12px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.08);margin-bottom:10px;transition:all .3s;}
-.empire-item:hover{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);}
-.empire-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.empire-info{flex:1;min-width:0;}
-.empire-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.empire-meta{font-size:12px;color:var(--text-muted);margin-top:2px;}
-.empire-status{font-size:11px;padding:3px 10px;border-radius:100px;font-weight:600;flex-shrink:0;}
+/* Brand Grid */
+.brand-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.brand-card { background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); border-radius:12px; padding:16px; text-align:center; transition:all .3s; }
+.brand-card:hover { border-color:rgba(249,115,22,0.4); background:rgba(249,115,22,0.05); }
 
-.timeline{position:relative;padding-left:32px;}
-.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--primary),var(--accent));}
-.timeline-item{position:relative;margin-bottom:24px;}
-.timeline-dot{position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid var(--bg-dark);box-shadow:0 0 10px var(--glow);}
-.timeline-date{font-size:12px;color:var(--primary-light);font-weight:600;}
-.timeline-text{font-size:14px;color:var(--text);margin-top:4px;}
+/* Factory Stats */
+.factory-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
 
-.product-card{padding:16px;border-radius:14px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.1);text-align:center;transition:all .3s;}
-.product-card:hover{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.25);transform:translateY(-2px);}
-.product-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;}
-.product-name{font-size:14px;font-weight:600;margin-bottom:4px;}
-.product-desc{font-size:11px;color:var(--text-muted);}
+/* Timeline */
+.timeline-item { display:flex; gap:12px; padding:10px 0; position:relative; }
+.timeline-dot { width:10px; height:10px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+.timeline-line { position:absolute; left:4px; top:22px; bottom:-10px; width:2px; background:var(--glass-border); }
 
-.chart-container{position:relative;width:100%;height:220px;}
+/* Products */
+.product-item { display:flex; align-items:center; gap:10px; padding:10px; border-radius:10px; }
 
-.footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);margin-top:40px;}
-.footer-text{font-size:13px;color:var(--text-muted);}
-.footer-credit{font-size:14px;font-weight:700;color:var(--primary-light);margin-top:8px;}
+/* Risk */
+.risk-item { display:flex; align-items:flex-start; gap:10px; padding:10px; border-radius:10px; }
 
-.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
+/* Reveal Animation */
+.reveal { opacity:0; transform:translateY(30px); transition:all .6s cubic-bezier(.16,1,.3,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
 
-.brand-showcase{display:flex;align-items:center;gap:20px;padding:20px;border-radius:16px;background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(245,158,11,0.05));border:1px solid rgba(16,185,129,0.15);}
-.brand-logo{width:80px;height:80px;border-radius:16px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;box-shadow:0 0 30px rgba(16,185,129,0.3);flex-shrink:0;}
+/* Footer */
+.footer { text-align:center; padding:40px 20px; color:#475569; font-size:0.75rem; border-top:1px solid var(--glass-border); margin-top:40px; }
+
+/* ========== 响应式 ========== */
+/* Tablet: 768px - 1024px */
+@media (max-width:1024px) {
+  .bento-grid { grid-template-columns:repeat(2,1fr); }
+  .col-span-4,.col-span-3 { grid-column:span 2; }
+  .col-span-2 { grid-column:span 2; }
+  .col-span-1 { grid-column:span 1; }
+  .stats-grid { grid-template-columns:repeat(3,1fr); }
+  .brand-grid { grid-template-columns:repeat(2,1fr); }
+}
+
+/* Mobile: < 768px */
+@media (max-width:768px) {
+  .bento-grid { grid-template-columns:1fr; gap:12px; padding:0 16px 30px; }
+  .col-span-4,.col-span-3,.col-span-2,.col-span-1 { grid-column:span 1; }
+  .hero-section { padding:40px 16px 30px; }
+  .stats-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+  .brand-grid { grid-template-columns:repeat(2,1fr); }
+  .factory-stats-grid { grid-template-columns:1fr 1fr; }
+  .stat-number { font-size:1.4rem; }
+  .glass-card { border-radius:12px; }
+  .glass-card:hover { transform:none; }
+  .info-row { flex-wrap:nowrap; }
+  .info-key { font-size:0.75rem; }
+  .info-val { font-size:0.78rem; }
+}
+
+/* Small Mobile: < 400px */
+@media (max-width:400px) {
+  .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .brand-grid { grid-template-columns:1fr 1fr; }
+  .hero-title { font-size:1.2rem; }
+  .tag { font-size:0.6rem; padding:2px 8px; }
+}
 </style>
 </head>
 <body>
 
 <!-- Hero -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-orb hero-orb-1"></div>
-  <div class="hero-orb hero-orb-2"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span>存续（在营） · 税务信用A级</div>
-    <h1 class="hero-title">福建云海宠物用品工贸有限公司</h1>
-    <p class="hero-sub">宠物纺织品制造出口龙头 · Truelove品牌运营商 · 覆盖全球60+国家及地区</p>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">1000<span style="font-size:0.6em">万</span></div><div class="hero-stat-label">注册资本</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">10<span style="font-size:0.6em">年</span></div><div class="hero-stat-label">经营年限</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">53<span style="font-size:0.6em">人</span></div><div class="hero-stat-label">参保员工</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">2<span style="font-size:0.6em">亿+</span></div><div class="hero-stat-label">年产值</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">60+<span style="font-size:0.6em">国</span></div><div class="hero-stat-label">出口覆盖</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">112<span style="font-size:0.6em">项</span></div><div class="hero-stat-label">知识产权</div></div>
-    </div>
+<section class="hero-section">
+  <div class="hero-glow"></div>
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
+    <div class="pulse-dot"></div>
+    <span style="font-size:0.8rem;color:var(--emerald);font-weight:500;">存续 · 在营</span>
   </div>
+  <h1 class="hero-title">福建云海宠物用品工贸有限公司</h1>
+  <p class="hero-slogan">宠物用品工贸一体 · 出口欧美日</p>
+  <div class="hero-tags"><span class="tag" style="background:rgba(249,115,22,0.15);color:#fb923c;border:1px solid rgba(249,115,22,0.3)"><i class="fas fa-paw"></i> 宠物用品</span> <span class="tag" style="background:rgba(249,115,22,0.15);color:#fb923c;border:1px solid rgba(249,115,22,0.3)"><i class="fas fa-globe"></i> 工贸一体</span> <span class="tag" style="background:rgba(249,115,22,0.15);color:#fb923c;border:1px solid rgba(249,115,22,0.3)"><i class="fas fa-industry"></i> 出口贸易</span></div>
 </section>
 
-<!-- 工商档案 -->
-<section class="section">
-  <div class="section-header"><h2 class="section-title">工商档案</h2><div class="section-line"></div></div>
-  <div class="bento-grid">
+<!-- Bento Grid -->
+<div class="bento-grid" style="position:relative;z-index:1;">
 
-    <div class="card span-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-building"></i> 基本登记信息</div>
-      <div class="info-row"><span class="info-label">统一社会信用代码</span><span class="info-value" style="font-family:monospace;letter-spacing:1px;">91350582MA3453W80J</span></div>
-      <div class="info-row"><span class="info-label">法定代表人</span><span class="info-value" style="color:var(--primary-light)">吴永金</span></div>
-      <div class="info-row"><span class="info-label">成立日期</span><span class="info-value">2015-12-18</span></div>
-      <div class="info-row"><span class="info-label">经营期限</span><span class="info-value">2015-12-18 至 2035-12-17</span></div>
-      <div class="info-row"><span class="info-label">企业类型</span><span class="info-value">有限责任公司(自然人投资或控股)</span></div>
-      <div class="info-row"><span class="info-label">登记机关</span><span class="info-value">晋江市市场监督管理局</span></div>
-      <div class="info-row"><span class="info-label">工商注册号</span><span class="info-value" style="font-family:monospace;">350582100357502</span></div>
-      <div class="info-row"><span class="info-label">英文名</span><span class="info-value" style="font-size:12px;">Fujian Winhye PET Products Manufacture and Trade Co., Ltd.</span></div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-map-marker-alt"></i> 注册地址</div>
-      <div class="card-value" style="font-size:1rem;line-height:1.8;color:var(--text);">福建省泉州市晋江市梅岭街道梅山社区桂泉路59号</div>
-      <div class="card-desc"><i class="fas fa-industry" style="color:var(--primary-light);margin-right:4px;"></i>实际运营：印刷基地中辉产业园（晋江梅岭+SM两家工厂）</div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-tags"></i> 行业与规模</div>
-      <div class="card-value" style="font-size:1.5rem;">日用杂品制造</div>
-      <div class="card-desc">
-        <div style="margin-bottom:6px;">门类：制造业 · 其他日用杂品制造(C4119)</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
-          <span class="badge badge-green">小型企业</span>
-          <span class="badge badge-amber">小微企业</span>
-          <span class="badge badge-blue">一般纳税人</span>
-          <span class="badge badge-green">税务A级</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card span-4 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-briefcase"></i> 经营范围</div>
-      <div style="display:flex;flex-wrap:wrap;gap:4px;">
-        <span class="scope-tag"><i class="fas fa-paw"></i>日用杂品制造</span>
-        <span class="scope-tag"><i class="fas fa-dog"></i>宠物食品及用品零售</span>
-        <span class="scope-tag"><i class="fas fa-dog"></i>宠物食品及用品批发</span>
-        <span class="scope-tag"><i class="fas fa-tshirt"></i>服装服饰批发/零售</span>
-        <span class="scope-tag"><i class="fas fa-shoe-prints"></i>鞋帽批发/零售</span>
-        <span class="scope-tag"><i class="fas fa-suitcase"></i>箱包销售</span>
-        <span class="scope-tag"><i class="fas fa-scroll"></i>皮革制品销售</span>
-        <span class="scope-tag"><i class="fas fa-layer-group"></i>针纺织品销售</span>
-        <span class="scope-tag"><i class="fas fa-microchip"></i>电子产品销售</span>
-        <span class="scope-tag"><i class="fas fa-globe"></i>互联网销售</span>
-        <span class="scope-tag"><i class="fas fa-ship"></i>货物进出口</span>
-        <span class="scope-tag"><i class="fas fa-exchange-alt"></i>技术进出口</span>
-      </div>
-    </div>
-
+  <!-- 核心数据 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px 20px;">
+    <div class="stats-grid"><div class="stat-item">
+        <div class="stat-number" style="background:linear-gradient(135deg,#fb923c,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">1000<span style="font-size:0.5em">万</span></div>
+        <div class="stat-label">注册资本</div>
+        
+    </div><div class="stat-item">
+        <div class="stat-number" style="background:linear-gradient(135deg,#6ee7b7,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">2015</div>
+        <div class="stat-label">成立年份</div>
+        
+    </div></div>
   </div>
-</section>
 
-<!-- 股权结构 -->
-<section class="section">
-  <div class="section-header"><h2 class="section-title">股权结构</h2><div class="section-line"></div></div>
-  <div class="bento-grid">
-
-    <div class="card span-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-users-cog"></i> 股东出资明细</div>
-      <div class="share-bar">
-        <div class="share-bar-name" style="color:var(--primary-light)">吴永金</div>
-        <div class="share-bar-track">
-          <div class="share-bar-fill" style="width:51%;background:linear-gradient(90deg,var(--primary),var(--primary-light));">51%</div>
-        </div>
-        <div class="share-bar-amount">510万</div>
-      </div>
-      <div class="share-bar">
-        <div class="share-bar-name" style="color:var(--accent)">陈锦</div>
-        <div class="share-bar-track">
-          <div class="share-bar-fill" style="width:49%;background:linear-gradient(90deg,var(--accent),var(--accent2));">49%</div>
-        </div>
-        <div class="share-bar-amount">490万</div>
-      </div>
-      <div style="margin-top:16px;padding:12px 16px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);font-size:12px;color:var(--text-muted);">
-        <i class="fas fa-coins" style="color:var(--primary-light);margin-right:6px;"></i>实缴资本：400万元 | 吴永金实缴250万，陈锦实缴150万
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-chart-pie"></i> 股权分布</div>
-      <div class="chart-container"><canvas id="chartEquity"></canvas></div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-user-tie"></i> 主要人员</div>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);">
-          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;">吴</div>
-          <div><div style="font-weight:700;font-size:15px;">吴永金</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">执行董事兼总经理 · 控股51%</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12);">
-          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;">陈</div>
-          <div><div style="font-weight:700;font-size:15px;">陈锦</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">监事 · 持股49%</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card span-4 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-crown"></i> 实际控制人 · 最终受益人</div>
-      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-        <div style="display:flex;align-items:center;gap:16px;">
-          <div style="width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--primary),#059669);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;box-shadow:0 0 30px rgba(16,185,129,0.3);">吴</div>
-          <div>
-            <div style="font-size:1.25rem;font-weight:800;">吴永金</div>
-            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">最终受益股份 <span style="color:var(--primary-light);font-weight:700;font-size:1.1em;">51%</span></div>
-          </div>
-        </div>
-        <div style="flex:1;min-width:200px;display:flex;gap:16px;flex-wrap:wrap;">
-          <div style="padding:10px 18px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);">
-            <div style="font-size:1.5rem;font-weight:900;color:var(--primary-light);">13</div>
-            <div style="font-size:11px;color:var(--text-muted);">担任法定代表人</div>
-          </div>
-          <div style="padding:10px 18px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);">
-            <div style="font-size:1.5rem;font-weight:900;color:var(--primary-light);">11</div>
-            <div style="font-size:11px;color:var(--text-muted);">控股企业</div>
-          </div>
-          <div style="padding:10px 18px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);">
-            <div style="font-size:1.5rem;font-weight:900;color:var(--accent);">5</div>
-            <div style="font-size:11px;color:var(--text-muted);">间接持股</div>
-          </div>
-          <div style="padding:10px 18px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);">
-            <div style="font-size:1.5rem;font-weight:900;color:var(--accent);">15</div>
-            <div style="font-size:11px;color:var(--text-muted);">最终受益企业</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <!-- 工商信息 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-building" style="color:var(--primary);"></i><h2>工商信息</h2></div>
+    <div style="display:flex;flex-direction:column;gap:2px;"><div class="info-row"><span class="info-key">法定代表人</span><span class="info-val" style="color:var(--primary-light);">吴永金</span></div><div class="info-row"><span class="info-key">成立日期</span><span class="info-val" style="color:#e2e8f0;">2015-12-18</span></div><div class="info-row"><span class="info-key">注册资本</span><span class="info-val" style="color:#e2e8f0;">1000万元</span></div><div class="info-row"><span class="info-key">所属行业</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;">宠物用品制造业</span></div><div class="info-row"><span class="info-key">注册地址</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;text-align:right;max-width:60%;">泉州市</span></div></div>
   </div>
-</section>
 
-<!-- 品牌与产品 -->
-<section class="section">
-  <div class="section-header"><h2 class="section-title">品牌与产品</h2><div class="section-line"></div></div>
-  <div class="bento-grid">
-
-    <!-- Truelove品牌 -->
-    <div class="card span-2 row-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-heart"></i> 核心品牌 · Truelove</div>
-      <div class="brand-showcase" style="margin-bottom:20px;">
-        <div class="brand-logo"><i class="fas fa-paw"></i></div>
-        <div>
-          <div style="font-size:1.3rem;font-weight:800;">Truelove 真爱</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">2014年10月创立 · 全球宠物户外用品知名品牌</div>
-        </div>
-      </div>
-      <div style="font-size:13px;color:var(--text-muted);line-height:2;">
-        <div><i class="fas fa-check-circle" style="color:var(--primary-light);margin-right:6px;"></i>天猫同类目销量排名首位</div>
-        <div><i class="fas fa-check-circle" style="color:var(--primary-light);margin-right:6px;"></i>亚马逊/速卖通搜索排名前列</div>
-        <div><i class="fas fa-check-circle" style="color:var(--primary-light);margin-right:6px;"></i>阿里巴巴国际站10年SKA商家</div>
-        <div><i class="fas fa-check-circle" style="color:var(--primary-light);margin-right:6px;"></i>全球68个国家分销网络</div>
-        <div><i class="fas fa-check-circle" style="color:var(--primary-light);margin-right:6px;"></i>年阿里平台广告投入90万+</div>
-        <div><i class="fas fa-check-circle" style="color:var(--primary-light);margin-right:6px;"></i>宠物KOL/YouTube网红推荐品牌</div>
-      </div>
-      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
-        <span class="badge badge-green">天猫旗舰店</span>
-        <span class="badge badge-blue">Amazon</span>
-        <span class="badge badge-amber">AliExpress</span>
-        <span class="badge badge-purple">Alibaba SKA</span>
-      </div>
-    </div>
-
-    <!-- 产品矩阵 -->
-    <div class="card span-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-boxes"></i> 产品矩阵</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-        <div class="product-card">
-          <div class="product-icon" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;"><i class="fas fa-dog"></i></div>
-          <div class="product-name">胸背带</div>
-          <div class="product-desc">核心产品 · 31款</div>
-        </div>
-        <div class="product-card">
-          <div class="product-icon" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;"><i class="fas fa-link"></i></div>
-          <div class="product-name">牵引绳</div>
-          <div class="product-desc">自动伸缩/固定</div>
-        </div>
-        <div class="product-card">
-          <div class="product-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;"><i class="fas fa-ring"></i></div>
-          <div class="product-name">项圈</div>
-          <div class="product-desc">多尺寸/反光</div>
-        </div>
-        <div class="product-card">
-          <div class="product-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;"><i class="fas fa-tshirt"></i></div>
-          <div class="product-name">宠物服装</div>
-          <div class="product-desc">四季/功能性</div>
-        </div>
-        <div class="product-card">
-          <div class="product-icon" style="background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;"><i class="fas fa-shoe-prints"></i></div>
-          <div class="product-name">宠物鞋</div>
-          <div class="product-desc">户外/防护</div>
-        </div>
-        <div class="product-card">
-          <div class="product-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;"><i class="fas fa-box"></i></div>
-          <div class="product-name">配件</div>
-          <div class="product-desc">GPS座/LED灯</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 供应链 -->
-    <div class="card span-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-link"></i> 国际供应链合作伙伴</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div style="padding:14px;border-radius:12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);text-align:center;">
-          <i class="fas fa-cog" style="font-size:20px;color:var(--primary-light);margin-bottom:6px;display:block;"></i>
-          <div style="font-size:12px;font-weight:600;">DURAFLEX 多耐福</div>
-          <div style="font-size:10px;color:var(--text-muted);">扣具供应商</div>
-        </div>
-        <div style="padding:14px;border-radius:12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);text-align:center;">
-          <i class="fas fa-eye" style="font-size:20px;color:var(--primary-light);margin-bottom:6px;display:block;"></i>
-          <div style="font-size:12px;font-weight:600;">3M 反光材料</div>
-          <div style="font-size:10px;color:var(--text-muted);">安全反光</div>
-        </div>
-        <div style="padding:14px;border-radius:12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);text-align:center;">
-          <i class="fas fa-grip-lines" style="font-size:20px;color:var(--primary-light);margin-bottom:6px;display:block;"></i>
-          <div style="font-size:12px;font-weight:600;">SBS 拉链</div>
-          <div style="font-size:10px;color:var(--text-muted);">拉链供应商</div>
-        </div>
-        <div style="padding:14px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);text-align:center;">
-          <i class="fas fa-star" style="font-size:20px;color:var(--accent);margin-bottom:6px;display:block;"></i>
-          <div style="font-size:12px;font-weight:600;">AMO (美国)</div>
-          <div style="font-size:10px;color:var(--text-muted);">OEM战略客户</div>
-        </div>
-      </div>
-      <div style="margin-top:12px;font-size:12px;color:var(--text-muted);line-height:1.8;">
-        <i class="fas fa-handshake" style="color:var(--primary-light);margin-right:4px;"></i>世界顶级宠物品牌战略生产合作伙伴
-      </div>
-    </div>
-
+  <!-- 资质荣誉 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-trophy" style="color:var(--amber);"></i><h2>资质荣誉</h2></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span class="tag" style="background:rgba(249,115,22,0.15);color:#fb923c;border:1px solid rgba(249,115,22,0.3)"><i class="fas fa-award"></i> 出口质量认证</span> <span class="tag" style="background:rgba(34,211,238,0.15);color:#67e8f9;border:1px solid rgba(34,211,238,0.3)"><i class="fas fa-globe"></i> 欧美日市场准入</span></div>
   </div>
-</section>
 
-<!-- 商业版图 -->
-<section class="section">
-  <div class="section-header"><h2 class="section-title">吴永金商业版图</h2><div class="section-line"></div></div>
-  <div class="bento-grid">
-
-    <div class="card span-2 row-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-chess-king"></i> 集团企业矩阵 · 福建云海宠物用品工贸集团</div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;"><i class="fas fa-paw"></i></div>
-        <div class="empire-info"><div class="empire-name">福建云海宠物用品工贸有限公司</div><div class="empire-meta">1000万 · 51%控股 · 2015年 · 晋江 · 核心</div></div>
-        <span class="empire-status" style="background:rgba(16,185,129,0.15);color:#34d399;">开业</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;"><i class="fas fa-shoe-prints"></i></div>
-        <div class="empire-info"><div class="empire-name">晋江市庞珀珞斯鞋服有限公司</div><div class="empire-meta">500万 · 71%控股 · 2012年 · 晋江 · 生产基地</div></div>
-        <span class="empire-status" style="background:rgba(16,185,129,0.15);color:#34d399;">开业</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;"><i class="fas fa-drumstick-bite"></i></div>
-        <div class="empire-info"><div class="empire-name">福建省博嗜嚼宠物食品有限公司</div><div class="empire-meta">1000万 · 2020年 · 晋江 · 宠物食品</div></div>
-        <span class="empire-status" style="background:rgba(16,185,129,0.15);color:#34d399;">开业</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;"><i class="fas fa-campground"></i></div>
-        <div class="empire-info"><div class="empire-name">福建省特卡户外装备有限公司</div><div class="empire-meta">1000万 · 90%控股 · 2021年 · 晋江 · 户外装备</div></div>
-        <span class="empire-status" style="background:rgba(16,185,129,0.15);color:#34d399;">开业</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;"><i class="fas fa-mountain"></i></div>
-        <div class="empire-info"><div class="empire-name">泉州庞珀珞斯户外用品有限公司</div><div class="empire-meta">100万 · 85.21%间接控股 · 2024年 · 晋江</div></div>
-        <span class="empire-status" style="background:rgba(16,185,129,0.15);color:#34d399;">开业</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;"><i class="fas fa-suitcase"></i></div>
-        <div class="empire-info"><div class="empire-name">泉州浩海箱包有限公司</div><div class="empire-meta">500万 · 2018年 · 丰泽 · 箱包制造</div></div>
-        <span class="empire-status" style="background:rgba(16,185,129,0.15);color:#34d399;">开业</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;"><i class="fas fa-industry"></i></div>
-        <div class="empire-info"><div class="empire-name">晋江精尚织造有限公司</div><div class="empire-meta">500万 · 2021年 · 晋江 · 织造</div></div>
-        <span class="empire-status" style="background:rgba(16,185,129,0.15);color:#34d399;">开业</span>
-      </div>
-    </div>
-
-    <!-- 产能数据 -->
-    <div class="card span-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-chart-bar"></i> 庞珀珞斯生产基地产能（环评公示）</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);text-align:center;">
-          <div style="font-size:1.8rem;font-weight:900;color:var(--primary-light);">60<span style="font-size:0.5em">万双</span></div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">宠物鞋/年</div>
+  <!-- 股权结构 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-sitemap" style="color:var(--violet);"></i><h2>股权结构</h2></div>
+    <div style="display:flex;flex-direction:column;gap:14px;"><div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:0.85rem;font-weight:600;">吴永金</span>
+            <span style="font-size:0.85rem;font-weight:700;color:#f9a8d4;">控股权</span>
         </div>
-        <div style="padding:16px;border-radius:12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.1);text-align:center;">
-          <div style="font-size:1.8rem;font-weight:900;color:var(--primary-light);">500<span style="font-size:0.5em">万个</span></div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">宠物背带/年</div>
-        </div>
-        <div style="padding:16px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);text-align:center;">
-          <div style="font-size:1.8rem;font-weight:900;color:var(--accent);">40<span style="font-size:0.5em">万条</span></div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">牵引绳/年</div>
-        </div>
-        <div style="padding:16px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);text-align:center;">
-          <div style="font-size:1.8rem;font-weight:900;color:var(--accent);">5<span style="font-size:0.5em">万件</span></div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">宠物服装/年</div>
-        </div>
-      </div>
-      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.8;">
-        <i class="fas fa-hard-hat" style="color:var(--primary-light);margin-right:4px;"></i>2026年庞珀珞斯厂区(一期)建设中 · 晋江保税区
-      </div>
-    </div>
-
-    <!-- 对外投资 -->
-    <div class="card span-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-rocket"></i> 战略投资布局</div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:14px;"><i class="fas fa-bolt"></i></div>
-        <div class="empire-info"><div class="empire-name">虎与派科技（深圳）有限公司</div><div class="empire-meta">15%持股 · 2026年1月新增 · 深圳科技</div></div>
-        <span class="badge badge-amber">新投</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-size:14px;"><i class="fas fa-lightbulb"></i></div>
-        <div class="empire-info"><div class="empire-name">致折创新（深圳）有限公司</div><div class="empire-meta">2025年10月新增 · 深圳创新</div></div>
-        <span class="badge badge-purple">新投</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;font-size:14px;"><i class="fas fa-running"></i></div>
-        <div class="empire-info"><div class="empire-name">趴跑商业（深圳）有限公司</div><div class="empire-meta">20%持股 · 2025年8月增持</div></div>
-        <span class="badge badge-blue">增持</span>
-      </div>
-      <div class="empire-item">
-        <div class="empire-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;font-size:14px;"><i class="fas fa-map-marker-alt"></i></div>
-        <div class="empire-info"><div class="empire-name">成都市特卡户外用品有限公司</div><div class="empire-meta">91%控股 · 2025年7月 · 西南布局</div></div>
-        <span class="badge badge-green">控股</span>
-      </div>
-    </div>
-
+        <div class="progress-bar"><div class="progress-fill" style="width:70%;background:linear-gradient(90deg,#f472b6,#f9a8d4);"></div></div>
+        <div style="font-size:0.7rem;color:#64748b;margin-top:4px;">法定代表人 · 实控人</div>
+    </div></div>
   </div>
-</section>
 
-<!-- 知识产权与市场 -->
-<section class="section">
-  <div class="section-header"><h2 class="section-title">知识产权与市场</h2><div class="section-line"></div></div>
-  <div class="bento-grid">
+  
+  
+  
 
-    <div class="card reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-lightbulb"></i> 知识产权总量</div>
-      <div style="text-align:center;padding:10px 0;">
-        <div style="font-size:3rem;font-weight:900;color:var(--primary-light);">112</div>
-        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">项知识产权</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
-        <div style="display:flex;justify-content:space-between;font-size:13px;"><span>外观设计专利</span><span style="font-weight:700;color:var(--primary-light);">90+</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;"><span>实用新型专利</span><span style="font-weight:700;color:var(--primary-light);">10+</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;"><span>商标</span><span style="font-weight:700;color:var(--primary-light);">12+</span></div>
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-globe-americas"></i> 出口市场</div>
-      <div class="chart-container"><canvas id="chartMarket"></canvas></div>
-    </div>
-
-    <div class="card span-2 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-award"></i> 核心专利产品</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div style="padding:12px;border-radius:10px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.08);">
-          <div style="font-size:13px;font-weight:600;"><i class="fas fa-dog" style="color:var(--primary-light);margin-right:6px;"></i>宠物胸背带</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">CN201721070790.6 · 实用新型</div>
-        </div>
-        <div style="padding:12px;border-radius:10px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.08);">
-          <div style="font-size:13px;font-weight:600;"><i class="fas fa-link" style="color:var(--primary-light);margin-right:6px;"></i>宠物牵引绳</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">2026年5月新授权 · 自动伸缩</div>
-        </div>
-        <div style="padding:12px;border-radius:10px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.08);">
-          <div style="font-size:13px;font-weight:600;"><i class="fas fa-backpack" style="color:var(--primary-light);margin-right:6px;"></i>宠物自背包</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">CN202130736910.7 · 外观设计</div>
-        </div>
-        <div style="padding:12px;border-radius:10px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.08);">
-          <div style="font-size:13px;font-weight:600;"><i class="fas fa-lock" style="color:var(--primary-light);margin-right:6px;"></i>宠物固定扣</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">CN202130690503.7 · 外观设计</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 行业地位 -->
-    <div class="card span-4 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-trophy"></i> 行业地位与竞争力</div>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;">
-        <div style="flex:1;min-width:200px;padding:20px;border-radius:14px;background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129,0.02));border:1px solid rgba(16,185,129,0.15);">
-          <div style="font-size:2rem;font-weight:900;color:var(--primary-light);">TOP 5</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">国内宠物用品行业排名</div>
-        </div>
-        <div style="flex:1;min-width:200px;padding:20px;border-radius:14px;background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(245,158,11,0.02));border:1px solid rgba(245,158,11,0.15);">
-          <div style="font-size:2rem;font-weight:900;color:var(--accent);">2亿+</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">2020年生产总值突破</div>
-        </div>
-        <div style="flex:1;min-width:200px;padding:20px;border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(59,130,246,0.02));border:1px solid rgba(59,130,246,0.15);">
-          <div style="font-size:2rem;font-weight:900;color:#60a5fa;">15年</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">行业深耕经验</div>
-        </div>
-        <div style="flex:1;min-width:200px;padding:20px;border-radius:14px;background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(139,92,246,0.02));border:1px solid rgba(139,92,246,0.15);">
-          <div style="font-size:2rem;font-weight:900;color:#a78bfa;">30+</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">专利产品数量</div>
-        </div>
-      </div>
-    </div>
-
+  <!-- 发展历程 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-clock-rotate-left" style="color:var(--emerald);"></i><h2>发展历程</h2></div>
+    <div style="display:flex;flex-direction:column;"><div class="timeline-item">
+            <div class="timeline-dot" style="background:#f97316;"></div>
+            <div class="timeline-line"></div>
+            <div><div style="font-size:0.75rem;color:#fb923c;font-weight:700;">2015年</div><div style="font-size:0.8rem;">公司成立，专注宠物用品工贸</div></div>
+        </div></div>
   </div>
-</section>
 
-<!-- 发展历程 -->
-<section class="section">
-  <div class="section-header"><h2 class="section-title">发展历程</h2><div class="section-line"></div></div>
-  <div class="bento-grid">
-    <div class="card span-3 reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-history"></i> 关键节点</div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2012-02</div>
-          <div class="timeline-text">晋江市庞珀珞斯鞋服有限公司成立（前身），开始宠物用品生产制造</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--accent);"></div>
-          <div class="timeline-date">2014-10</div>
-          <div class="timeline-text">创立Truelove品牌，正式进军宠物用品品牌赛道</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--primary);"></div>
-          <div class="timeline-date">2015-12</div>
-          <div class="timeline-text">福建云海宠物用品工贸有限公司正式注册成立</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--info);"></div>
-          <div class="timeline-date">2018-04</div>
-          <div class="timeline-text">关联企业福建虹海宠物用品有限公司成立，扩展宠物用品版图</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--accent);"></div>
-          <div class="timeline-date">2020年</div>
-          <div class="timeline-text">年生产总值突破2亿元人民币，成为行业标杆</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--purple);"></div>
-          <div class="timeline-date">2021-05</div>
-          <div class="timeline-text">成立福建省特卡户外装备有限公司，布局户外装备赛道</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--info);"></div>
-          <div class="timeline-date">2024-01</div>
-          <div class="timeline-text">成立泉州庞珀珞斯户外用品有限公司，拓展户外用品品类</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--accent);"></div>
-          <div class="timeline-date">2025-07</div>
-          <div class="timeline-text">成立成都市特卡户外用品有限公司，西南市场布局</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot" style="background:var(--primary);"></div>
-          <div class="timeline-date">2026-05</div>
-          <div class="timeline-text">新授权"一种宠物牵引绳"专利，庞珀珞斯厂区(一期)建设中</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card reveal">
-      <div class="card-glow"></div>
-      <div class="card-label"><i class="fas fa-file-alt"></i> 年报与税务</div>
-      <div style="text-align:center;padding:16px 0;">
-        <div style="font-size:2.5rem;font-weight:900;color:var(--primary-light);">11</div>
-        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">已披露年报</div>
-      </div>
-      <div style="font-size:12px;color:var(--text-muted);line-height:1.8;">
-        <div>2015 - 2024年度</div>
-        <div style="margin-top:8px;">2024年报员工：<span style="color:var(--primary-light);font-weight:600;">53人</span></div>
-        <div>2025年报员工：<span style="color:var(--primary-light);font-weight:600;">51人</span></div>
-        <div style="margin-top:8px;"><span class="badge badge-green">税务A级(2024)</span></div>
-        <div style="margin-top:6px;"><span class="badge badge-blue">一般纳税人</span></div>
-      </div>
-    </div>
+  <!-- 产品体系 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-boxes-stacked" style="color:var(--amber);"></i><h2>产品体系</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;"><div class="product-item" style="background:rgba(249,115,22,0.05);">
+            <i class="fas fa-paw" style="font-size:1.2rem;color:#f97316;"></i>
+            <div><div style="font-size:0.85rem;font-weight:600;">宠物玩具</div><div style="font-size:0.65rem;color:#64748b;">互动玩具 · 咬胶</div></div>
+        </div><div class="product-item" style="background:rgba(244,114,182,0.05);">
+            <i class="fas fa-house" style="font-size:1.2rem;color:#f472b6;"></i>
+            <div><div style="font-size:0.85rem;font-weight:600;">宠物窝垫</div><div style="font-size:0.65rem;color:#64748b;">宠物床 · 垫子</div></div>
+        </div><div class="product-item" style="background:rgba(52,211,153,0.05);">
+            <i class="fas fa-globe" style="font-size:1.2rem;color:#34d399;"></i>
+            <div><div style="font-size:0.85rem;font-weight:600;">OEM/ODM</div><div style="font-size:0.65rem;color:#64748b;">出口定制生产</div></div>
+        </div></div>
   </div>
-</section>
+
+  <!-- 风险与合规 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-shield-halved" style="color:var(--amber);"></i><h2>风险与合规</h2></div>
+    <div style="display:flex;flex-direction:column;gap:10px;"><div class="risk-item" style="background:rgba(52,211,153,0.06);border-left:3px solid #34d399;">
+            <i class="fas fa-check-circle" style="color:#34d399;margin-top:2px;"></i>
+            <div><div style="font-size:0.85rem;font-weight:600;color:#6ee7b7;">经营正常</div>
+            <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px;">暂无重大风险记录</div></div>
+        </div></div>
+  </div>
+
+  <!-- 经营范围 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px;">
+    <div class="card-header"><i class="fas fa-file-contract" style="color:var(--cyan);"></i><h2>经营范围</h2></div>
+    <div style="font-size:0.8rem;color:#94a3b8;line-height:1.7;">宠物用品制造与销售；货物或技术进出口（国家禁止或涉及行政审批的货物和技术进出口除外）。<br></div>
+  </div>
+
+</div>
 
 <!-- Footer -->
-<footer class="footer">
-  <div class="footer-text">数据来源：启信宝 · 企查查 · BOSS直聘 · 天猫 · Truelove官网 · 晋江市生态环境局</div>
-  <div class="footer-credit">39139@胜天半子</div>
-</footer>
+<div class="footer">
+  <p>39139@胜天半子</p>
+  <p style="margin-top:4px;">数据来源：企查查 · 天眼查 · 启信宝 · 企业官网</p>
+</div>
 
 <script>
-// Scroll Reveal
-const reveals=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
-},{threshold:0.1});
-reveals.forEach(el=>observer.observe(el));
-
-// Equity Chart
-const ctx1=document.getElementById('chartEquity').getContext('2d');
-new Chart(ctx1,{
-  type:'doughnut',
-  data:{
-    labels:['吴永金 51%','陈锦 49%'],
-    datasets:[{data:[51,49],backgroundColor:['#10b981','#f59e0b'],borderWidth:0,hoverOffset:8}]
-  },
-  options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:11},padding:10}}}}
-});
-
-// Market Chart
-const ctx2=document.getElementById('chartMarket').getContext('2d');
-new Chart(ctx2,{
-  type:'doughnut',
-  data:{
-    labels:['欧洲','美洲','亚洲','中东','其他'],
-    datasets:[{data:[30,28,22,12,8],backgroundColor:['#10b981','#3b82f6','#f59e0b','#8b5cf6','#6b7280'],borderWidth:0,hoverOffset:8}]
-  },
-  options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{color:'#94a3b8',font:{size:10},padding:8}}}}
-});
-
-// Animate share bars on scroll
-const shareBars=document.querySelectorAll('.share-bar-fill');
-const barObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const bar=e.target;const w=bar.style.width;
-      bar.style.width='0%';
-      setTimeout(()=>{bar.style.width=w;},100);
-      barObserver.unobserve(bar);
-    }
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-},{threshold:0.3});
-shareBars.forEach(b=>barObserver.observe(b));
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
