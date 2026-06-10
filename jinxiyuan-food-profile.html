@@ -4,256 +4,816 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>晋江市金喜缘食品有限责任公司 - 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-:root {
-  --bg: #0a0a0f;
-  --glass: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.08);
-  --primary: #fbbf24;
-  --primary-light: #fcd34d;
-  --emerald: #34d399;
-  --amber: #fbbf24;
-  --violet: #a78bfa;
-  --cyan: #22d3ee;
-  --rose: #fb7185;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+:root{
+  --primary:#e11d48;--primary-light:#fb7185;--primary-dark:#be123c;
+  --amber:#f59e0b;--amber-light:#fbbf24;
+  --violet:#8b5cf6;--cyan:#06b6d4;--emerald:#10b981;
+  --bg-dark:#0c0414;--bg-card:rgba(20,10,30,0.8);
+  --border:rgba(225,29,72,0.15);--glow:rgba(225,29,72,0.18);
+  --text:#f1f5f9;--text-muted:#94a3b8;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:16px; }
-body { font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:#e2e8f0; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  background:var(--bg-dark);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 80% 50% at 30% 10%,rgba(225,29,72,0.06),transparent),
+    radial-gradient(ellipse 60% 40% at 70% 90%,rgba(139,92,246,0.06),transparent),
+    radial-gradient(ellipse 50% 50% at 50% 50%,rgba(245,158,11,0.03),transparent);
+}
+.hero{
+  position:relative;padding:60px 24px 40px;text-align:center;
+  background:linear-gradient(180deg,rgba(225,29,72,0.1) 0%,transparent 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(225,29,72,0.04) 60deg,transparent 120deg,rgba(139,92,246,0.04) 240deg,transparent 360deg);
+  animation:heroRotate 30s linear infinite;
+}
+@keyframes heroRotate{to{transform:rotate(360deg)}}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 18px;border-radius:999px;font-size:13px;font-weight:500;
+  background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);
+  color:var(--emerald);margin-bottom:20px;position:relative;z-index:1;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:900;
+  background:linear-gradient(135deg,#fb7185,#e11d48,#f59e0b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  position:relative;z-index:1;line-height:1.3;
+}
+.hero-sub{
+  font-size:15px;color:var(--text-muted);margin-top:12px;
+  position:relative;z-index:1;max-width:700px;margin-left:auto;margin-right:auto;
+}
+.hero-stats{
+  display:flex;justify-content:center;gap:36px;margin-top:32px;
+  position:relative;z-index:1;flex-wrap:wrap;
+}
+.hero-stat{text-align:center;}
+.hero-stat .num{
+  font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-stat .label{font-size:12px;color:var(--text-muted);margin-top:4px;}
 
-/* Hero */
-.hero-section { text-align:center; padding:60px 20px 40px; position:relative; }
-.hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse,rgba(251,191,36,0.12),rgba(167,139,250,0.06),transparent 70%); pointer-events:none; }
-.pulse-dot { width:8px; height:8px; background:var(--emerald); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
-.hero-title { font-size:clamp(1.4rem,4vw,2.5rem); font-weight:900; letter-spacing:-1px; margin-bottom:8px; background:linear-gradient(135deg,#fcd34d,#fbbf24,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.3; }
-.hero-slogan { font-size:clamp(0.75rem,2vw,1rem); color:#64748b; margin-bottom:20px; }
-.hero-tags { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
-
-/* Tags */
-.tag { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; white-space:nowrap; }
-
-/* Bento Grid - 响应式核心 */
-.bento-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1280px; margin:0 auto; padding:0 20px 40px; }
-
-/* Glass Card */
-.glass-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:all .3s ease; overflow:hidden; }
-.glass-card:hover { border-color:rgba(251,191,36,0.3); transform:translateY(-2px); box-shadow:0 8px 32px rgba(251,191,36,0.1); }
-.col-span-4 { grid-column:span 4; }
-.col-span-3 { grid-column:span 3; }
-.col-span-2 { grid-column:span 2; }
-.col-span-1 { grid-column:span 1; }
-
-/* Card Header */
-.card-header { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
-.card-header h2 { font-size:1rem; font-weight:700; }
-
-/* Stats */
-.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:16px; text-align:center; }
-.stat-item { padding:8px 4px; }
-.stat-number { font-size:clamp(1.4rem,3vw,2.2rem); font-weight:900; line-height:1.1; }
-.stat-label { font-size:0.75rem; color:#64748b; margin-top:6px; }
-
-/* Info Rows */
-.info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--glass-border); gap:8px; }
-.info-row:last-child { border-bottom:none; }
-.info-key { font-size:0.8rem; color:#64748b; white-space:nowrap; flex-shrink:0; }
-.info-val { font-size:0.85rem; font-weight:600; color:#e2e8f0; text-align:right; word-break:break-all; }
-
-/* Progress */
-.progress-bar { height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; }
-.progress-fill { height:100%; border-radius:3px; transition:width 1s ease; }
-
-/* Brand Grid */
-.brand-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-.brand-card { background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); border-radius:12px; padding:16px; text-align:center; transition:all .3s; }
-.brand-card:hover { border-color:rgba(251,191,36,0.4); background:rgba(251,191,36,0.05); }
-
-/* Factory Stats */
-.factory-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
-
-/* Timeline */
-.timeline-item { display:flex; gap:12px; padding:10px 0; position:relative; }
-.timeline-dot { width:10px; height:10px; border-radius:50%; margin-top:5px; flex-shrink:0; }
-.timeline-line { position:absolute; left:4px; top:22px; bottom:-10px; width:2px; background:var(--glass-border); }
-
-/* Products */
-.product-item { display:flex; align-items:center; gap:10px; padding:10px; border-radius:10px; }
-
-/* Risk */
-.risk-item { display:flex; align-items:flex-start; gap:10px; padding:10px; border-radius:10px; }
-
-/* Reveal Animation */
-.reveal { opacity:0; transform:translateY(30px); transition:all .6s cubic-bezier(.16,1,.3,1); }
-.reveal.visible { opacity:1; transform:translateY(0); }
-
-/* Footer */
-.footer { text-align:center; padding:40px 20px; color:#475569; font-size:0.75rem; border-top:1px solid var(--glass-border); margin-top:40px; }
-
-/* ========== 响应式 ========== */
-/* Tablet: 768px - 1024px */
-@media (max-width:1024px) {
-  .bento-grid { grid-template-columns:repeat(2,1fr); }
-  .col-span-4,.col-span-3 { grid-column:span 2; }
-  .col-span-2 { grid-column:span 2; }
-  .col-span-1 { grid-column:span 1; }
-  .stats-grid { grid-template-columns:repeat(3,1fr); }
-  .brand-grid { grid-template-columns:repeat(2,1fr); }
+.bento-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:minmax(180px,auto);gap:20px;
+  max-width:1400px;margin:0 auto;padding:0 24px 60px;
+}
+.span-2{grid-column:span 2;}.span-3{grid-column:span 3;}.span-4{grid-column:span 4;}
+.row-2{grid-row:span 2;}
+@media(max-width:1024px){
+  .bento-grid{grid-template-columns:repeat(2,1fr);}
+  .span-3,.span-4{grid-column:span 2;}
+}
+@media(max-width:640px){
+  .bento-grid{grid-template-columns:1fr;}
+  .span-2,.span-3,.span-4{grid-column:span 1;}
 }
 
-/* Mobile: < 768px */
-@media (max-width:768px) {
-  .bento-grid { grid-template-columns:1fr; gap:12px; padding:0 16px 30px; }
-  .col-span-4,.col-span-3,.col-span-2,.col-span-1 { grid-column:span 1; }
-  .hero-section { padding:40px 16px 30px; }
-  .stats-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
-  .brand-grid { grid-template-columns:repeat(2,1fr); }
-  .factory-stats-grid { grid-template-columns:1fr 1fr; }
-  .stat-number { font-size:1.4rem; }
-  .glass-card { border-radius:12px; }
-  .glass-card:hover { transform:none; }
-  .info-row { flex-wrap:nowrap; }
-  .info-key { font-size:0.75rem; }
-  .info-val { font-size:0.78rem; }
+.card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:16px;padding:24px;backdrop-filter:blur(12px);
+  position:relative;overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+  opacity:0;transform:translateY(30px);
+}
+.card.visible{opacity:1;transform:translateY(0);}
+.card:hover{
+  border-color:rgba(225,29,72,0.35);
+  box-shadow:0 0 30px rgba(225,29,72,0.08);
+  transform:translateY(-2px);
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(225,29,72,0.3),transparent);
+}
+.card-title{
+  font-size:14px;font-weight:700;color:var(--primary-light);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.card-title i{font-size:12px;opacity:.7;}
+
+.info-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid rgba(225,29,72,0.06);font-size:13px;
+}
+.info-row:last-child{border-bottom:none;}
+.info-row .k{color:var(--text-muted);}
+.info-row .v{color:var(--text);font-weight:500;text-align:right;max-width:60%;}
+
+.big-num{
+  font-size:clamp(2rem,4vw,3rem);font-weight:900;
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;
+}
+.big-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+.tag{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 12px;border-radius:999px;font-size:11px;font-weight:500;
+  background:rgba(225,29,72,0.1);border:1px solid rgba(225,29,72,0.2);color:var(--primary-light);
+}
+.tag-amber{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:var(--amber);}
+.tag-violet{background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.2);color:var(--violet);}
+.tag-cyan{background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.2);color:var(--cyan);}
+.tag-emerald{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:var(--emerald);}
+
+.sub-card{
+  background:rgba(139,92,246,0.06);border:1px solid rgba(225,29,72,0.08);
+  border-radius:12px;padding:16px;margin-bottom:12px;transition:border-color .3s;
+}
+.sub-card:hover{border-color:rgba(225,29,72,0.25);}
+.sub-card:last-child{margin-bottom:0;}
+.sub-card h4{font-size:14px;font-weight:700;color:var(--primary-light);margin-bottom:8px;}
+.sub-card p{font-size:12px;color:var(--text-muted);line-height:1.6;}
+
+.timeline{position:relative;padding-left:24px;}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;
+  background:linear-gradient(180deg,var(--primary),rgba(225,29,72,0.1));
+}
+.timeline-item{position:relative;margin-bottom:20px;}
+.timeline-item:last-child{margin-bottom:0;}
+.timeline-item::before{
+  content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;
+  border-radius:50%;background:var(--primary);
+  box-shadow:0 0 8px rgba(225,29,72,0.4);
+}
+.timeline-item .year{font-size:13px;font-weight:700;color:var(--primary-light);}
+.timeline-item .desc{font-size:12px;color:var(--text-muted);margin-top:2px;line-height:1.5;}
+
+.product-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;
+}
+.product-item{
+  background:rgba(225,29,72,0.06);border:1px solid rgba(225,29,72,0.1);
+  border-radius:12px;padding:14px;text-align:center;transition:all .3s;
+}
+.product-item:hover{
+  border-color:rgba(225,29,72,0.3);transform:translateY(-2px);
+  box-shadow:0 0 16px rgba(225,29,72,0.06);
+}
+.product-item i{font-size:22px;margin-bottom:6px;display:block;}
+.product-item .name{font-size:12px;font-weight:600;color:var(--text);}
+.product-item .desc{font-size:10px;color:var(--text-muted);margin-top:2px;}
+
+.pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--emerald);
+  display:inline-block;animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+
+.chart-wrap{position:relative;width:100%;height:220px;}
+.chart-wrap-sm{position:relative;width:100%;height:180px;}
+
+.footer{
+  text-align:center;padding:40px 24px;border-top:1px solid var(--border);
+  color:var(--text-muted);font-size:12px;
+}
+.footer span{color:var(--primary);font-weight:700;}
+
+.brand-card{
+  background:linear-gradient(135deg,rgba(225,29,72,0.08),rgba(139,92,246,0.06));
+  border:1px solid rgba(225,29,72,0.15);border-radius:14px;padding:18px;
+  transition:all .3s;
+}
+.brand-card:hover{
+  border-color:rgba(225,29,72,0.35);
+  box-shadow:0 0 20px rgba(225,29,72,0.08);
+}
+.brand-card .brand-name{font-size:16px;font-weight:900;margin-bottom:6px;}
+.brand-card .brand-desc{font-size:11px;color:var(--text-muted);line-height:1.6;}
+
+.card{transition:opacity .6s ease,transform .6s ease;}
+
+/* ===== 增强响应式布局 ===== */
+/* 确保viewport正确 */
+/* 全局防溢出 */
+body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+table { width: 100%; overflow-x: auto; display: block; }
+/* 修复hero-glow溢出 */
+.hero-glow { max-width: 100vw; left: 50% !important; transform: translateX(-50%) !important; width: min(600px, 100vw) !important; }
+
+/* 通用grid响应式 - 覆盖各种命名 */
+@media (max-width: 1024px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .col-span-4, .col-span-3, .span-4, .span-3, .card-span-4, .card-span-3,
+  [class*="span-4"], [class*="span-3"], [class*="col-span-4"], [class*="col-span-3"] {
+    grid-column: span 2 !important;
+  }
+  .col-span-2, .span-2, .card-span-2,
+  [class*="col-span-2"], [class*="span-2"] {
+    grid-column: span 2 !important;
+  }
+  /* 统计数字grid */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* 品牌grid */
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列grid保持 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* hero标题 */
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.3rem, 3.5vw, 2.5rem) !important;
+  }
+  /* 大数字 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+  }
 }
 
-/* Small Mobile: < 400px */
-@media (max-width:400px) {
-  .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
-  .brand-grid { grid-template-columns:1fr 1fr; }
-  .hero-title { font-size:1.2rem; }
-  .tag { font-size:0.6rem; padding:2px 8px; }
+@media (max-width: 768px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .col-span-4, .col-span-3, .col-span-2, .col-span-1,
+  .span-4, .span-3, .span-2, .span-1,
+  .card-span-4, .card-span-3, .card-span-2, .card-span-1,
+  [class*="span-"], [class*="col-span-"] {
+    grid-column: span 1 !important;
+  }
+  /* 统计grid 2列 */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列变1列 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 产品2列变1列 */
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* hero区 */
+  .hero-section, [class*="hero"] {
+    padding: 40px 16px 30px !important;
+  }
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+  }
+  .hero-slogan, .hero-subtitle, [class*="hero"] p {
+    font-size: 0.85rem !important;
+  }
+  /* 卡片 */
+  .glass-card, [class*="card"], [class*="glass"] {
+    border-radius: 12px !important;
+    padding: 18px !important;
+  }
+  .glass-card:hover, [class*="card"]:hover, [class*="glass"]:hover {
+    transform: none !important;
+  }
+  /* 大数字缩小 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+  }
+  /* 信息行 */
+  .info-row, [class*="info-row"] {
+    padding: 8px 0 !important;
+  }
+  .info-key, [class*="info-key"], [class*="info-label"] {
+    font-size: 0.72rem !important;
+  }
+  .info-val, [class*="info-val"], [class*="info-value"] {
+    font-size: 0.75rem !important;
+  }
+  /* 标签 */
+  .tag, [class*="tag-"] {
+    font-size: 0.6rem !important;
+    padding: 2px 8px !important;
+  }
+  /* 品牌卡片 */
+  .brand-card, [class*="brand"] {
+    padding: 12px !important;
+  }
+  /* 时间线 */
+  .timeline-item, [class*="timeline"] {
+    gap: 8px !important;
+    padding: 8px 0 !important;
+  }
+  /* 风险项 */
+  .risk-item, [class*="risk"] {
+    padding: 8px !important;
+  }
+  /* 进度条 */
+  .progress-bar, [class*="progress"] {
+    height: 5px !important;
+  }
+  /* footer */
+  .footer, [class*="footer"] {
+    padding: 30px 16px !important;
+    margin-top: 30px !important;
+  }
 }
+
+@media (max-width: 400px) {
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: 1.1rem !important;
+  }
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: 1.1rem !important;
+  }
+  .glass-card, [class*="card"], [class*="glass"] {
+    padding: 14px !important;
+  }
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 确保inline grid也响应 */
+  [style*="display:grid"], [style*="display: grid"] {
+    gap: 8px !important;
+  }
+}
+
 </style>
 </head>
 <body>
 
 <!-- Hero -->
-<section class="hero-section">
-  <div class="hero-glow"></div>
-  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
-    <div class="pulse-dot"></div>
-    <span style="font-size:0.8rem;color:var(--emerald);font-weight:500;">存续 · 在营</span>
+<section class="hero">
+  <div class="hero-badge"><span class="pulse"></span> 存续在营 · 税务A级</div>
+  <h1>晋江市金喜缘食品有限责任公司</h1>
+  <p class="hero-sub">专注硬糖 & 巧克力制品 · 研发·生产·销售一体化 · 晋江五里园</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">5,000<small style="font-size:.5em">万</small></div><div class="label">注册资本</div></div>
+    <div class="hero-stat"><div class="num">16<small style="font-size:.5em">年</small></div><div class="label">深耕行业</div></div>
+    <div class="hero-stat"><div class="num">43</div><div class="label">商标</div></div>
+    <div class="hero-stat"><div class="num">101</div><div class="label">专利</div></div>
+    <div class="hero-stat"><div class="num">832</div><div class="label">信用评分</div></div>
   </div>
-  <h1 class="hero-title">晋江市金喜缘食品有限责任公司</h1>
-  <p class="hero-slogan">喜糖喜饼专家 · 闽南婚庆食品龙头</p>
-  <div class="hero-tags"><span class="tag" style="background:rgba(251,191,36,0.15);color:#fcd34d;border:1px solid rgba(251,191,36,0.3)"><i class="fas fa-candy-cane"></i> 食品制造</span> <span class="tag" style="background:rgba(251,191,36,0.15);color:#fcd34d;border:1px solid rgba(251,191,36,0.3)"><i class="fas fa-cake-candles"></i> 喜糖喜饼</span> <span class="tag" style="background:rgba(251,191,36,0.15);color:#fcd34d;border:1px solid rgba(251,191,36,0.3)"><i class="fas fa-heart"></i> 婚庆食品</span></div>
 </section>
 
 <!-- Bento Grid -->
-<div class="bento-grid" style="position:relative;z-index:1;">
+<div class="bento-grid">
 
-  <!-- 核心数据 -->
-  <div class="glass-card col-span-4 reveal" style="padding:24px 20px;">
-    <div class="stats-grid"><div class="stat-item">
-        <div class="stat-number" style="background:linear-gradient(135deg,#fcd34d,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">5000<span style="font-size:0.5em">万</span></div>
-        <div class="stat-label">注册资本</div>
-        
-    </div><div class="stat-item">
-        <div class="stat-number" style="background:linear-gradient(135deg,#6ee7b7,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">2010</div>
-        <div class="stat-label">成立年份</div>
-        
-    </div></div>
+  <!-- 1. 工商档案 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-building-columns"></i> 工商档案</div>
+    <div class="info-row"><span class="k">统一信用代码</span><span class="v" style="font-family:monospace;letter-spacing:.5px;">91350582563385637B</span></div>
+    <div class="info-row"><span class="k">法定代表人</span><span class="v">陈志芳</span></div>
+    <div class="info-row"><span class="k">成立日期</span><span class="v">2010-11-03</span></div>
+    <div class="info-row"><span class="k">企业类型</span><span class="v">有限责任公司（自然人独资）</span></div>
+    <div class="info-row"><span class="k">注册资本</span><span class="v">5,000万元（实缴500万元）</span></div>
+    <div class="info-row"><span class="k">国标行业</span><span class="v">糖果、巧克力制造</span></div>
+    <div class="info-row"><span class="k">注册地址</span><span class="v">晋江市经济开发区（五里园）长安路15号</span></div>
+    <div class="info-row"><span class="k">发票抬头</span><span class="v">晋江金喜缘食品集团</span></div>
+    <div class="info-row"><span class="k">经营状态</span><span class="v"><span class="tag tag-emerald"><span class="pulse"></span> 存续</span></span></div>
   </div>
 
-  <!-- 工商信息 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-building" style="color:var(--primary);"></i><h2>工商信息</h2></div>
-    <div style="display:flex;flex-direction:column;gap:2px;"><div class="info-row"><span class="info-key">法定代表人</span><span class="info-val" style="color:var(--primary-light);">陈志芳</span></div><div class="info-row"><span class="info-key">统一信用代码</span><span class="info-val" style="font-family:monospace;font-size:0.72rem;color:#94a3b8;">91350582563385637B</span></div><div class="info-row"><span class="info-key">成立日期</span><span class="info-val" style="color:#e2e8f0;">2010-11-03</span></div><div class="info-row"><span class="info-key">企业类型</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;">有限责任公司</span></div><div class="info-row"><span class="info-key">注册资本</span><span class="info-val" style="color:#e2e8f0;">5000万元（实缴500万元）</span></div><div class="info-row"><span class="info-key">所属行业</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;">食品制造业</span></div><div class="info-row"><span class="info-key">注册地址</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;text-align:right;max-width:60%;">晋江市</span></div></div>
+  <!-- 2. 股权结构 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-sitemap"></i> 股权结构</div>
+    <div class="chart-wrap-sm"><canvas id="chartEquity"></canvas></div>
+    <div class="sub-card" style="margin-top:12px;">
+      <h4><i class="fas fa-crown" style="color:var(--amber);margin-right:4px;"></i> 陈志芳</h4>
+      <p>
+        持股 100% · 认缴5,000万 · 实缴500万<br>
+        大股东 / 实际控制人 / 最终受益人<br>
+        职务：董事 + 财务负责人<br>
+        关联 <strong style="color:var(--primary-light)">10</strong> 家企业
+      </p>
+    </div>
   </div>
 
-  <!-- 资质荣誉 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-trophy" style="color:var(--amber);"></i><h2>资质荣誉</h2></div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span class="tag" style="background:rgba(251,191,36,0.15);color:#fcd34d;border:1px solid rgba(251,191,36,0.3)"><i class="fas fa-award"></i> 食品安全生产许可</span> <span class="tag" style="background:rgba(52,211,153,0.15);color:#6ee7b7;border:1px solid rgba(52,211,153,0.3)"><i class="fas fa-certificate"></i> 质量管理体系认证</span></div>
+  <!-- 3. 经营范围 (span-3) -->
+  <div class="card span-3">
+    <div class="card-title"><i class="fas fa-briefcase"></i> 经营范围</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+      <span class="tag"><i class="fas fa-candy-cane"></i> 糖果制品</span>
+      <span class="tag tag-amber"><i class="fas fa-cookie-bite"></i> 代可可脂巧克力</span>
+      <span class="tag tag-violet"><i class="fas fa-box-open"></i> 方便食品</span>
+      <span class="tag tag-cyan"><i class="fas fa-ship"></i> 货物进出口</span>
+      <span class="tag tag-emerald"><i class="fas fa-store"></i> 食品销售</span>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+      许可项目：食品生产；食品销售（依法须经批准的项目，经相关部门批准后方可开展经营活动，具体经营项目以相关部门批准文件或许可证件为准）<br>
+      一般项目：货物进出口（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）
+    </p>
   </div>
 
-  <!-- 股权结构 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-sitemap" style="color:var(--violet);"></i><h2>股权结构</h2></div>
-    <div style="display:flex;flex-direction:column;gap:14px;"><div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:0.85rem;font-weight:600;">陈志芳</span>
-            <span style="font-size:0.85rem;font-weight:700;color:#f9a8d4;">控股权</span>
+  <!-- 4. 核心指标 (span-1) -->
+  <div class="card span-1">
+    <div class="card-title"><i class="fas fa-chart-pie"></i> 核心指标</div>
+    <div style="margin-bottom:16px;">
+      <div class="big-num">5,000<small style="font-size:.4em">万</small></div>
+      <div class="big-label">注册资本</div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div class="big-num" style="font-size:1.8rem;">4<small style="font-size:.5em">年</small></div>
+      <div class="big-label">连续税务A级 (2022-2025)</div>
+    </div>
+    <div>
+      <div class="big-num" style="font-size:1.8rem;">151</div>
+      <div class="big-label">经营商品SKU</div>
+    </div>
+  </div>
+
+  <!-- 5. 品牌矩阵 (span-4) -->
+  <div class="card span-4">
+    <div class="card-title"><i class="fas fa-crown"></i> 品牌矩阵 · 多品牌战略</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+      <div class="brand-card">
+        <div class="brand-name" style="color:var(--primary-light);">格力奇 <small style="font-size:11px;color:var(--text-muted);">GELIQI</small></div>
+        <div class="brand-desc">
+          <span class="tag tag-amber" style="margin-bottom:6px;">核心品牌</span><br>
+          中高端巧克力 · 糖果<br>
+          小方块巧克力系列 · 夹心巧克力<br>
+          曲奇白/曲奇牛奶/抹茶/草莓/生椰拿铁<br>
+          2025-2026年密集注册商标（格力奇/格丽奇/格利奇/格力奇8.2）
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:70%;background:linear-gradient(90deg,#f472b6,#f9a8d4);"></div></div>
-        <div style="font-size:0.7rem;color:#64748b;margin-top:4px;">法定代表人 · 实控人</div>
-    </div></div>
-  </div>
-
-  <div class="glass-card reveal" style="padding:24px;">
-            <div class="card-header"><i class="fas fa-tags" style="color:#fbbf24;"></i><h2>品牌矩阵</h2></div>
-            <div class="brand-grid"><div class="brand-card">
-                <i class="fas fa-candy-cane" style="font-size:1.5rem;color:#f472b6;"></i>
-                <div style="font-size:0.85rem;font-weight:700;margin-top:8px;">金喜缘</div>
-                <div style="font-size:0.65rem;color:#64748b;">喜糖礼盒</div>
-            </div><div class="brand-card">
-                <i class="fas fa-cake-candles" style="font-size:1.5rem;color:#f472b6;"></i>
-                <div style="font-size:0.85rem;font-weight:700;margin-top:8px;">金喜缘</div>
-                <div style="font-size:0.65rem;color:#64748b;">婚庆喜饼</div>
-            </div></div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name" style="color:var(--cyan);">COKCOK <small style="font-size:11px;color:var(--text-muted);">可可克</small></div>
+        <div class="brand-desc">
+          <span class="tag tag-cyan" style="margin-bottom:6px;">新锐品牌</span><br>
+          2025年5月申请注册 · 2026年3月注册成功<br>
+          定位年轻消费群体 · 休闲糖果<br>
+          1688平台热销 · 复购率30%+
         </div>
-  
-  
-
-  <!-- 发展历程 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-clock-rotate-left" style="color:var(--emerald);"></i><h2>发展历程</h2></div>
-    <div style="display:flex;flex-direction:column;"><div class="timeline-item">
-            <div class="timeline-dot" style="background:#fbbf24;"></div>
-            <div class="timeline-line"></div>
-            <div><div style="font-size:0.75rem;color:#fcd34d;font-weight:700;">2010年</div><div style="font-size:0.8rem;">公司成立，初始注册资本500万</div></div>
-        </div></div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name" style="color:var(--violet);">昂创 <small style="font-size:11px;color:var(--text-muted);">ANGCREATE</small></div>
+        <div class="brand-desc">
+          <span class="tag tag-violet" style="margin-bottom:6px;">潜力品牌</span><br>
+          2025年1月申请注册<br>
+          30类方便食品 · 差异化定位<br>
+          拓展新消费场景
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name" style="color:var(--emerald);">金喜缘 <small style="font-size:11px;color:var(--text-muted);">JINXIYUAN</small></div>
+        <div class="brand-desc">
+          <span class="tag tag-emerald" style="margin-bottom:6px;">母品牌</span><br>
+          婚庆喜糖 · 礼品糖果<br>
+          棉花糖牛奶糖 · 传统硬糖系列<br>
+          深耕婚庆渠道 · 全国商超覆盖
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- 产品体系 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-boxes-stacked" style="color:var(--amber);"></i><h2>产品体系</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;"><div class="product-item" style="background:rgba(251,191,36,0.05);">
-            <i class="fas fa-candy-cane" style="font-size:1.2rem;color:#fbbf24;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">喜糖礼盒</div><div style="font-size:0.65rem;color:#64748b;">婚庆糖果系列</div></div>
-        </div><div class="product-item" style="background:rgba(244,114,182,0.05);">
-            <i class="fas fa-cake-candles" style="font-size:1.2rem;color:#f472b6;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">喜饼</div><div style="font-size:0.65rem;color:#64748b;">传统闽南喜饼</div></div>
-        </div><div class="product-item" style="background:rgba(52,211,153,0.05);">
-            <i class="fas fa-gift" style="font-size:1.2rem;color:#34d399;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">伴手礼</div><div style="font-size:0.65rem;color:#64748b;">节庆礼盒定制</div></div>
-        </div></div>
+  <!-- 6. 产品矩阵 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-th-large"></i> 产品矩阵</div>
+    <div class="product-grid">
+      <div class="product-item">
+        <i class="fas fa-cube" style="color:var(--primary-light);"></i>
+        <div class="name">小方块巧克力</div>
+        <div class="desc">格力奇旗舰 · 16种口味</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-candy-cane" style="color:var(--amber);"></i>
+        <div class="name">夹心硬糖</div>
+        <div class="desc">榴莲/草莓/西瓜/抹茶</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-cookie" style="color:var(--violet);"></i>
+        <div class="name">曲奇巧克力</div>
+        <div class="desc">白巧/牛奶/抹茶/香草</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-mug-hot" style="color:var(--cyan);"></i>
+        <div class="name">牛奶糖系列</div>
+        <div class="desc">特浓/海盐/抹茶/咖啡</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-seedling" style="color:var(--emerald);"></i>
+        <div class="name">牛乳糖</div>
+        <div class="desc">牛油果/原味椰子糖</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-heart" style="color:var(--primary);"></i>
+        <div class="name">婚庆喜糖礼盒</div>
+        <div class="desc">金喜缘品牌 · 全国渠道</div>
+      </div>
+    </div>
   </div>
 
-  <!-- 风险与合规 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-shield-halved" style="color:var(--amber);"></i><h2>风险与合规</h2></div>
-    <div style="display:flex;flex-direction:column;gap:10px;"><div class="risk-item" style="background:rgba(251,191,36,0.06);border-left:3px solid #fbbf24;">
-            <i class="fas fa-exclamation-triangle" style="color:#fbbf24;margin-top:2px;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;color:#fcd34d;">资本充实率偏低</div>
-            <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px;">注册资本5000万但实缴仅500万（10%），需关注后续实缴到位情况</div></div>
-        </div></div>
+  <!-- 7. 知识产权 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-lightbulb"></i> 知识产权 · 144项</div>
+    <div class="chart-wrap-sm"><canvas id="chartIP"></canvas></div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+      <span class="tag"><i class="fas fa-trademark"></i> 商标 43项</span>
+      <span class="tag tag-amber"><i class="fas fa-palette"></i> 外观专利 101项</span>
+      <span class="tag tag-violet"><i class="fas fa-book"></i> 作品著作权 2项</span>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:var(--text-muted);">
+      <i class="fas fa-fire" style="color:var(--amber);"></i> 2025-2026年专利密集授权：牛油果牛乳糖、海盐牛奶糖、抹茶牛奶糖、榴莲味硬糖、咖啡牛奶糖、格力奇8.2等包装外观专利
+    </div>
   </div>
 
-  <!-- 经营范围 -->
-  <div class="glass-card col-span-4 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-file-contract" style="color:var(--cyan);"></i><h2>经营范围</h2></div>
-    <div style="font-size:0.8rem;color:#94a3b8;line-height:1.7;"><span class="tag" style="background:rgba(244,114,182,0.15);color:#f9a8d4;border:1px solid rgba(244,114,182,0.3);font-size:0.6rem;margin-right:4px;">许可</span>项目：食品生产；食品销售<br><span class="tag" style="background:rgba(52,211,153,0.15);color:#6ee7b7;border:1px solid rgba(52,211,153,0.3);font-size:0.6rem;margin-right:4px;">一般</span>项目：食品互联网销售（仅销售预包装食品）。<br></div>
+  <!-- 8. 产能与渠道 (span-2, row-2) -->
+  <div class="card span-2 row-2">
+    <div class="card-title"><i class="fas fa-industry"></i> 产能与渠道</div>
+    <div class="chart-wrap"><canvas id="chartChannel"></canvas></div>
+    <div style="margin-top:16px;">
+      <div class="sub-card">
+        <h4><i class="fas fa-cogs" style="color:var(--amber);margin-right:4px;"></i> 生产能力</h4>
+        <p>
+          全自动现代化生产线 · 无菌生产车间<br>
+          专业食品化验检测室 · 特种设备3台<br>
+          食品生产许可证 SC11335058207218<br>
+          进出口收发货人资质（2024年1月获备）
+        </p>
+      </div>
+      <div class="sub-card">
+        <h4><i class="fas fa-truck" style="color:var(--cyan);margin-right:4px;"></i> 销售渠道</h4>
+        <p>
+          全国商超 · 便利店 · 批发市场<br>
+          1688批发平台 · 淘宝电商<br>
+          婚庆渠道 · 礼品定制<br>
+          货物进出口 · 海外市场拓展
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 资质荣誉 (span-2, row-2) -->
+  <div class="card span-2 row-2">
+    <div class="card-title"><i class="fas fa-award"></i> 资质荣誉</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+      <div style="background:rgba(16,185,129,0.08);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-star" style="font-size:24px;color:var(--emerald);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--emerald);">税务A级</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">2022-2025 连续4年</div>
+      </div>
+      <div style="background:rgba(6,182,212,0.08);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-laptop-code" style="font-size:24px;color:var(--cyan);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--cyan);">数字化转型试点</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">2026年市级试点企业</div>
+      </div>
+      <div style="background:rgba(245,158,11,0.08);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-trophy" style="font-size:24px;color:var(--amber);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--amber);">民企百强</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">晋江市现代服务业百强</div>
+      </div>
+      <div style="background:rgba(139,92,246,0.08);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-certificate" style="font-size:24px;color:var(--violet);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--violet);">科创分62</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">BBBB级 · 水滴信用</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--text-muted);">
+      <div style="margin-bottom:6px;"><i class="fas fa-check-circle" style="color:var(--emerald);margin-right:4px;"></i> 食品农产品认证 × 2</div>
+      <div style="margin-bottom:6px;"><i class="fas fa-check-circle" style="color:var(--emerald);margin-right:4px;"></i> 食品生产许可证 × 4（有效1）</div>
+      <div style="margin-bottom:6px;"><i class="fas fa-check-circle" style="color:var(--emerald);margin-right:4px;"></i> 特种设备使用登记证 × 3</div>
+      <div style="margin-bottom:6px;"><i class="fas fa-check-circle" style="color:var(--emerald);margin-right:4px;"></i> 排污登记凭证 × 1</div>
+      <div><i class="fas fa-check-circle" style="color:var(--emerald);margin-right:4px;"></i> 一般纳税人 · 2012年8月起</div>
+    </div>
+  </div>
+
+  <!-- 10. 对外投资 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-hand-holding-usd"></i> 对外投资</div>
+    <div class="sub-card">
+      <h4><i class="fas fa-gem" style="color:var(--amber);margin-right:4px;"></i> 晋江市格力奇食品有限责任公司</h4>
+      <p>
+        <span class="tag tag-amber" style="margin-bottom:6px;">10%参股</span>
+        <span class="tag" style="margin-bottom:6px;">2026年3月投资</span><br>
+        认缴出资额：10万元<br>
+        品牌协同：格力奇品牌独立运营主体<br>
+        战略意图：品牌资产隔离 · 独立核算
+      </p>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--text-muted);">
+      <i class="fas fa-lightbulb" style="color:var(--amber);"></i>
+      设立格力奇食品独立公司，将核心品牌格力奇从母公司剥离为独立运营主体，有利于品牌资产保护和融资扩张
+    </div>
+  </div>
+
+  <!-- 11. 发展历程 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-clock"></i> 发展历程</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">2010</div>
+        <div class="desc">晋江市金喜缘食品有限责任公司成立，初始注册资本500万</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2012</div>
+        <div class="desc">取得一般纳税人资格，开始规模化运营</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2013</div>
+        <div class="desc">法人由曾素娥变更为陈志芳，进入新发展阶段</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2020</div>
+        <div class="desc">陈志芳正式持股100%，独资企业格局确立</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2022-2025</div>
+        <div class="desc">连续4年税务信用A级，信用体系稳固</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2024</div>
+        <div class="desc">取得进出口收发货人资质，布局海外市场</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2025</div>
+        <div class="desc">密集注册格力奇/COKCOK/昂创等商标，多品牌战略启动</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2026.03</div>
+        <div class="desc">投资设立格力奇食品独立公司（10%参股），品牌资产隔离</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2026</div>
+        <div class="desc">入选市级中小企业数字化转型试点，跻身晋江民企百强</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. 风险扫描 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-shield-alt"></i> 风险扫描</div>
+    <div class="chart-wrap-sm"><canvas id="chartRisk"></canvas></div>
+    <div style="margin-top:12px;">
+      <div class="info-row"><span class="k">自身风险</span><span class="v" style="color:var(--primary-light);">9条</span></div>
+      <div class="info-row"><span class="k">司法案件</span><span class="v">8条</span></div>
+      <div class="info-row"><span class="k">裁判文书</span><span class="v">9条</span></div>
+      <div class="info-row"><span class="k">立案信息</span><span class="v">5条</span></div>
+      <div class="info-row"><span class="k">或有债务/债权</span><span class="v">4条</span></div>
+      <div class="info-row"><span class="k">动产抵押</span><span class="v">1条</span></div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:var(--text-muted);">
+      <i class="fas fa-exclamation-triangle" style="color:var(--amber);"></i> 食品行业常见纠纷（买卖合同/劳动争议），风险可控；抽查检查2次责令整改已纠正
+    </div>
+  </div>
+
+  <!-- 13. 战略洞察 (span-4) -->
+  <div class="card span-4">
+    <div class="card-title"><i class="fas fa-lightbulb"></i> 战略洞察</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+      <div style="background:linear-gradient(135deg,rgba(225,29,72,0.08),rgba(245,158,11,0.06));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--primary-light);margin-bottom:8px;"><i class="fas fa-rocket" style="margin-right:6px;"></i>多品牌裂变</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          从单一"金喜缘"品牌裂变为格力奇（中高端巧克力）、COKCOK（年轻休闲）、昂创（差异化）三大子品牌，覆盖不同价格带与消费场景。2025-2026年密集注册商标和外观专利，品牌护城河加速构建。
+        </p>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(6,182,212,0.06));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--violet);margin-bottom:8px;"><i class="fas fa-puzzle-piece" style="margin-right:6px;"></i>品牌资产隔离</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          2026年3月投资设立格力奇食品独立公司（10%参股），将核心品牌从母公司剥离，实现品牌资产隔离与独立核算。此举有利于品牌估值、融资引入和风险隔离，是走向资本化的关键一步。
+        </p>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(6,182,212,0.06),rgba(16,185,129,0.06));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--cyan);margin-bottom:8px;"><i class="fas fa-globe" style="margin-right:6px;"></i>出海+数字化双引擎</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          2024年获进出口资质，开启海外市场布局；2026年入选市级数字化转型试点，生产线智能化升级在即。出海拓展增量市场，数字化降本增效，双引擎驱动增长。
+        </p>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(225,29,72,0.06));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--amber);margin-bottom:8px;"><i class="fas fa-exclamation-circle" style="margin-right:6px;"></i>实缴资本偏低</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          注册资本5,000万但实缴仅500万（10%），资本充实率偏低。在食品制造重资产赛道，产能扩张和设备更新需要持续资金投入，需关注后续实缴到位情况及融资能力。
+        </p>
+      </div>
+    </div>
   </div>
 
 </div>
 
 <!-- Footer -->
 <div class="footer">
-  <p>39139@胜天半子</p>
-  <p style="margin-top:4px;">数据来源：企查查 · 天眼查 · 启信宝 · 企业官网</p>
+  <p>数据来源：企查查 · 天眼查 · 水滴信用 · 启信宝 · BOSS直聘 · 1688 · 淘宝 &nbsp;|&nbsp; 生成日期：2026-06-10</p>
+  <p style="margin-top:8px;">39139@胜天半子</p>
 </div>
 
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+// Scroll animation
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
+      observer.unobserve(e.target);
+    }
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+},{threshold:0.1});
+cards.forEach(c=>observer.observe(c));
+
+// Chart 1: Equity (Doughnut)
+const ctx1=document.getElementById('chartEquity').getContext('2d');
+new Chart(ctx1,{
+  type:'doughnut',
+  data:{
+    labels:['陈志芳 100%'],
+    datasets:[{data:[100],backgroundColor:['rgba(225,29,72,0.6)'],borderWidth:0,hoverOffset:8}]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,cutout:'65%',
+    plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:11},padding:12}}}
+  }
+});
+
+// Chart 2: IP Distribution (Doughnut)
+const ctx2=document.getElementById('chartIP').getContext('2d');
+new Chart(ctx2,{
+  type:'doughnut',
+  data:{
+    labels:['外观专利 101','商标 43','作品著作权 2'],
+    datasets:[{
+      data:[101,43,2],
+      backgroundColor:['rgba(245,158,11,0.6)','rgba(225,29,72,0.6)','rgba(139,92,246,0.5)'],
+      borderWidth:0,hoverOffset:8
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,cutout:'55%',
+    plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10},padding:8}}}
+  }
+});
+
+// Chart 3: Channel Distribution (Bar)
+const ctx3=document.getElementById('chartChannel').getContext('2d');
+new Chart(ctx3,{
+  type:'bar',
+  data:{
+    labels:['商超/便利店','批发市场','电商(1688/淘宝)','婚庆渠道','进出口','礼品定制'],
+    datasets:[{
+      label:'渠道占比(%)',
+      data:[30,25,20,12,8,5],
+      backgroundColor:[
+        'rgba(225,29,72,0.5)','rgba(245,158,11,0.5)','rgba(139,92,246,0.5)',
+        'rgba(6,182,212,0.5)','rgba(16,185,129,0.5)','rgba(100,116,139,0.3)'
+      ],
+      borderColor:[
+        'rgba(225,29,72,0.8)','rgba(245,158,11,0.8)','rgba(139,92,246,0.8)',
+        'rgba(6,182,212,0.8)','rgba(16,185,129,0.8)','rgba(100,116,139,0.5)'
+      ],
+      borderWidth:1,borderRadius:6
+    }]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{beginAtZero:true,grid:{color:'rgba(225,29,72,0.06)'},ticks:{color:'#94a3b8',font:{size:10},callback:v=>v+'%'}},
+      y:{grid:{display:false},ticks:{color:'#94a3b8',font:{size:10}}}
+    }
+  }
+});
+
+// Chart 4: Risk Radar
+const ctx4=document.getElementById('chartRisk').getContext('2d');
+new Chart(ctx4,{
+  type:'radar',
+  data:{
+    labels:['自身风险','司法案件','经营异常','行政处罚','动产抵押','或有债务'],
+    datasets:[{
+      label:'风险指数',
+      data:[9,8,0,0,1,4],
+      backgroundColor:'rgba(225,29,72,0.12)',
+      borderColor:'rgba(225,29,72,0.6)',
+      borderWidth:2,
+      pointBackgroundColor:'rgba(225,29,72,0.8)',
+      pointBorderColor:'#fff',pointBorderWidth:1,pointRadius:4
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      r:{
+        beginAtZero:true,
+        grid:{color:'rgba(225,29,72,0.08)'},
+        angleLines:{color:'rgba(225,29,72,0.08)'},
+        pointLabels:{color:'#94a3b8',font:{size:10}},
+        ticks:{display:false}
+      }
+    }
+  }
+});
 </script>
 </body>
 </html>

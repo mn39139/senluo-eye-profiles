@@ -3,246 +3,1365 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>泉州市云福科技发展有限公司 - 企业画像</title>
+<title>泉州市云福科技发展有限公司 | 数字云谷</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Noto Sans SC', 'Inter', 'sans-serif'],
+        mono: ['Inter', 'monospace'],
+      },
+    }
+  }
+}
+</script>
 <style>
 :root {
-  --bg: #0a0a0f;
-  --glass: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.08);
-  --primary: #22d3ee;
-  --primary-light: #67e8f9;
-  --emerald: #34d399;
-  --amber: #fbbf24;
-  --violet: #a78bfa;
-  --cyan: #22d3ee;
-  --rose: #fb7185;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:16px; }
-body { font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:#e2e8f0; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-
-/* Hero */
-.hero-section { text-align:center; padding:60px 20px 40px; position:relative; }
-.hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse,rgba(34,211,238,0.12),rgba(167,139,250,0.06),transparent 70%); pointer-events:none; }
-.pulse-dot { width:8px; height:8px; background:var(--emerald); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
-.hero-title { font-size:clamp(1.4rem,4vw,2.5rem); font-weight:900; letter-spacing:-1px; margin-bottom:8px; background:linear-gradient(135deg,#67e8f9,#22d3ee,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.3; }
-.hero-slogan { font-size:clamp(0.75rem,2vw,1rem); color:#64748b; margin-bottom:20px; }
-.hero-tags { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
-
-/* Tags */
-.tag { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; white-space:nowrap; }
-
-/* Bento Grid - 响应式核心 */
-.bento-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1280px; margin:0 auto; padding:0 20px 40px; }
-
-/* Glass Card */
-.glass-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:all .3s ease; overflow:hidden; }
-.glass-card:hover { border-color:rgba(34,211,238,0.3); transform:translateY(-2px); box-shadow:0 8px 32px rgba(34,211,238,0.1); }
-.col-span-4 { grid-column:span 4; }
-.col-span-3 { grid-column:span 3; }
-.col-span-2 { grid-column:span 2; }
-.col-span-1 { grid-column:span 1; }
-
-/* Card Header */
-.card-header { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
-.card-header h2 { font-size:1rem; font-weight:700; }
-
-/* Stats */
-.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:16px; text-align:center; }
-.stat-item { padding:8px 4px; }
-.stat-number { font-size:clamp(1.4rem,3vw,2.2rem); font-weight:900; line-height:1.1; }
-.stat-label { font-size:0.75rem; color:#64748b; margin-top:6px; }
-
-/* Info Rows */
-.info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--glass-border); gap:8px; }
-.info-row:last-child { border-bottom:none; }
-.info-key { font-size:0.8rem; color:#64748b; white-space:nowrap; flex-shrink:0; }
-.info-val { font-size:0.85rem; font-weight:600; color:#e2e8f0; text-align:right; word-break:break-all; }
-
-/* Progress */
-.progress-bar { height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; }
-.progress-fill { height:100%; border-radius:3px; transition:width 1s ease; }
-
-/* Brand Grid */
-.brand-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-.brand-card { background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); border-radius:12px; padding:16px; text-align:center; transition:all .3s; }
-.brand-card:hover { border-color:rgba(34,211,238,0.4); background:rgba(34,211,238,0.05); }
-
-/* Factory Stats */
-.factory-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
-
-/* Timeline */
-.timeline-item { display:flex; gap:12px; padding:10px 0; position:relative; }
-.timeline-dot { width:10px; height:10px; border-radius:50%; margin-top:5px; flex-shrink:0; }
-.timeline-line { position:absolute; left:4px; top:22px; bottom:-10px; width:2px; background:var(--glass-border); }
-
-/* Products */
-.product-item { display:flex; align-items:center; gap:10px; padding:10px; border-radius:10px; }
-
-/* Risk */
-.risk-item { display:flex; align-items:flex-start; gap:10px; padding:10px; border-radius:10px; }
-
-/* Reveal Animation */
-.reveal { opacity:0; transform:translateY(30px); transition:all .6s cubic-bezier(.16,1,.3,1); }
-.reveal.visible { opacity:1; transform:translateY(0); }
-
-/* Footer */
-.footer { text-align:center; padding:40px 20px; color:#475569; font-size:0.75rem; border-top:1px solid var(--glass-border); margin-top:40px; }
-
-/* ========== 响应式 ========== */
-/* Tablet: 768px - 1024px */
-@media (max-width:1024px) {
-  .bento-grid { grid-template-columns:repeat(2,1fr); }
-  .col-span-4,.col-span-3 { grid-column:span 2; }
-  .col-span-2 { grid-column:span 2; }
-  .col-span-1 { grid-column:span 1; }
-  .stats-grid { grid-template-columns:repeat(3,1fr); }
-  .brand-grid { grid-template-columns:repeat(2,1fr); }
+  --primary: #0ea5e9;
+  --primary-dark: #0369a1;
+  --accent: #06b6d4;
+  --accent2: #8b5cf6;
+  --bg-dark: #0a0e1a;
+  --bg-card: rgba(15, 23, 42, 0.7);
+  --border: rgba(56, 189, 248, 0.15);
+  --glow: rgba(14, 165, 233, 0.3);
 }
 
-/* Mobile: < 768px */
-@media (max-width:768px) {
-  .bento-grid { grid-template-columns:1fr; gap:12px; padding:0 16px 30px; }
-  .col-span-4,.col-span-3,.col-span-2,.col-span-1 { grid-column:span 1; }
-  .hero-section { padding:40px 16px 30px; }
-  .stats-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
-  .brand-grid { grid-template-columns:repeat(2,1fr); }
-  .factory-stats-grid { grid-template-columns:1fr 1fr; }
-  .stat-number { font-size:1.4rem; }
-  .glass-card { border-radius:12px; }
-  .glass-card:hover { transform:none; }
-  .info-row { flex-wrap:nowrap; }
-  .info-key { font-size:0.75rem; }
-  .info-val { font-size:0.78rem; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-dark);
 }
 
-/* Small Mobile: < 400px */
-@media (max-width:400px) {
-  .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
-  .brand-grid { grid-template-columns:1fr 1fr; }
-  .hero-title { font-size:1.2rem; }
-  .tag { font-size:0.6rem; padding:2px 8px; }
+body {
+  background: var(--bg-dark);
+  color: #e2e8f0;
+  font-family: 'Noto Sans SC', 'Inter', sans-serif;
+  overflow-x: hidden;
 }
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.5));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.12);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #38bdf8, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #0a0e1a, #0c1a3a, #0a1628, #0e1a2e);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #22c55e;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+.number-glow {
+  text-shadow: 0 0 40px rgba(14, 165, 233, 0.4), 0 0 80px rgba(14, 165, 233, 0.2);
+}
+
+.tag-badge {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(139, 92, 246, 0.15));
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #7dd3fc;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--accent2), transparent);
+}
+
+.timeline-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--bg-dark);
+  box-shadow: 0 0 12px var(--glow);
+  position: absolute;
+  left: 11px;
+  top: 4px;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: 1fr; }
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.data-flow {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--primary), transparent);
+  animation: dataFlow 3s linear infinite;
+}
+@keyframes dataFlow {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.share-bar {
+  height: 8px;
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 3px; }
+
+/* ===== 增强响应式布局 ===== */
+/* 确保viewport正确 */
+/* 全局防溢出 */
+body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+table { width: 100%; overflow-x: auto; display: block; }
+/* 修复hero-glow溢出 */
+.hero-glow { max-width: 100vw; left: 50% !important; transform: translateX(-50%) !important; width: min(600px, 100vw) !important; }
+
+/* 通用grid响应式 - 覆盖各种命名 */
+@media (max-width: 1024px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .col-span-4, .col-span-3, .span-4, .span-3, .card-span-4, .card-span-3,
+  [class*="span-4"], [class*="span-3"], [class*="col-span-4"], [class*="col-span-3"] {
+    grid-column: span 2 !important;
+  }
+  .col-span-2, .span-2, .card-span-2,
+  [class*="col-span-2"], [class*="span-2"] {
+    grid-column: span 2 !important;
+  }
+  /* 统计数字grid */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* 品牌grid */
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列grid保持 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* hero标题 */
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.3rem, 3.5vw, 2.5rem) !important;
+  }
+  /* 大数字 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .col-span-4, .col-span-3, .col-span-2, .col-span-1,
+  .span-4, .span-3, .span-2, .span-1,
+  .card-span-4, .card-span-3, .card-span-2, .card-span-1,
+  [class*="span-"], [class*="col-span-"] {
+    grid-column: span 1 !important;
+  }
+  /* 统计grid 2列 */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列变1列 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 产品2列变1列 */
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* hero区 */
+  .hero-section, [class*="hero"] {
+    padding: 40px 16px 30px !important;
+  }
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+  }
+  .hero-slogan, .hero-subtitle, [class*="hero"] p {
+    font-size: 0.85rem !important;
+  }
+  /* 卡片 */
+  .glass-card, [class*="card"], [class*="glass"] {
+    border-radius: 12px !important;
+    padding: 18px !important;
+  }
+  .glass-card:hover, [class*="card"]:hover, [class*="glass"]:hover {
+    transform: none !important;
+  }
+  /* 大数字缩小 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+  }
+  /* 信息行 */
+  .info-row, [class*="info-row"] {
+    padding: 8px 0 !important;
+  }
+  .info-key, [class*="info-key"], [class*="info-label"] {
+    font-size: 0.72rem !important;
+  }
+  .info-val, [class*="info-val"], [class*="info-value"] {
+    font-size: 0.75rem !important;
+  }
+  /* 标签 */
+  .tag, [class*="tag-"] {
+    font-size: 0.6rem !important;
+    padding: 2px 8px !important;
+  }
+  /* 品牌卡片 */
+  .brand-card, [class*="brand"] {
+    padding: 12px !important;
+  }
+  /* 时间线 */
+  .timeline-item, [class*="timeline"] {
+    gap: 8px !important;
+    padding: 8px 0 !important;
+  }
+  /* 风险项 */
+  .risk-item, [class*="risk"] {
+    padding: 8px !important;
+  }
+  /* 进度条 */
+  .progress-bar, [class*="progress"] {
+    height: 5px !important;
+  }
+  /* footer */
+  .footer, [class*="footer"] {
+    padding: 30px 16px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: 1.1rem !important;
+  }
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: 1.1rem !important;
+  }
+  .glass-card, [class*="card"], [class*="glass"] {
+    padding: 14px !important;
+  }
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 确保inline grid也响应 */
+  [style*="display:grid"], [style*="display: grid"] {
+    gap: 8px !important;
+  }
+}
+
 </style>
 </head>
-<body>
+<body class="bg-grid">
 
-<!-- Hero -->
-<section class="hero-section">
-  <div class="hero-glow"></div>
-  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
-    <div class="pulse-dot"></div>
-    <span style="font-size:0.8rem;color:var(--emerald);font-weight:500;">存续 · 在营</span>
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden animated-gradient">
+  <div class="hero-orb w-96 h-96 bg-sky-500/20 -top-20 -left-20" style="animation-delay: 0s;"></div>
+  <div class="hero-orb w-80 h-80 bg-violet-500/20 bottom-10 right-10" style="animation-delay: -3s;"></div>
+  <div class="hero-orb w-64 h-64 bg-cyan-500/15 top-1/2 left-1/3" style="animation-delay: -5s;"></div>
+
+  <div class="data-flow h-40 top-20 left-[15%]" style="animation-delay: 0s;"></div>
+  <div class="data-flow h-56 top-40 left-[45%]" style="animation-delay: -1s;"></div>
+  <div class="data-flow h-32 top-10 right-[20%]" style="animation-delay: -2s;"></div>
+  <div class="data-flow h-48 bottom-20 left-[70%]" style="animation-delay: -0.5s;"></div>
+
+  <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+    <div class="reveal-item inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-sky-500/20 bg-sky-500/5">
+      <div class="pulse-dot"></div>
+      <span class="text-sky-300 text-sm font-medium tracking-wide">存续运营中</span>
+      <span class="text-slate-500 text-sm">|</span>
+      <span class="text-slate-400 text-sm">国有控股 · 混合所有制</span>
+    </div>
+
+    <h1 class="reveal-item text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+      <span class="gradient-text">云福科技</span>
+    </h1>
+    <p class="reveal-item text-lg md:text-xl text-slate-400 mb-2 font-light tracking-wider">
+      泉州市云福科技发展有限公司
+    </p>
+    <p class="reveal-item text-sm text-slate-500 mb-10 tracking-widest uppercase font-mono">
+      Quanzhou Yunfu Technology Development Co., Ltd.
+    </p>
+
+    <div class="reveal-item flex items-center justify-center gap-3 mb-12">
+      <div class="h-px w-16 bg-gradient-to-r from-transparent to-sky-500/50"></div>
+      <span class="text-sky-400 font-bold text-xl tracking-[0.3em]">数字云谷</span>
+      <div class="h-px w-16 bg-gradient-to-l from-transparent to-sky-500/50"></div>
+    </div>
+
+    <p class="reveal-item text-lg md:text-2xl text-slate-300 font-light max-w-3xl mx-auto leading-relaxed mb-12">
+      深耕<span class="text-sky-400 font-medium">政务云</span> · 筑基<span class="text-cyan-400 font-medium">数字福建</span> · 赋能<span class="text-violet-400 font-medium">智慧城市</span>
+    </p>
+
+    <div class="reveal-item flex flex-wrap justify-center gap-8 md:gap-14">
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="5000">0</div>
+        <div class="text-xs text-slate-500 mt-1 tracking-wider">注册资本 (万元)</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="8667">0</div>
+        <div class="text-xs text-slate-500 mt-1 tracking-wider">2025营收 (万元)</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="431">0</div>
+        <div class="text-xs text-slate-500 mt-1 tracking-wider">累计中标项目</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="13">0</div>
+        <div class="text-xs text-slate-500 mt-1 tracking-wider">覆盖区县</div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600">
+      <span class="text-xs tracking-widest">SCROLL</span>
+      <div class="w-5 h-8 border border-slate-600 rounded-full flex items-start justify-center p-1">
+        <div class="w-1 h-2 bg-sky-400 rounded-full animate-bounce"></div>
+      </div>
+    </div>
   </div>
-  <h1 class="hero-title">泉州市云福科技发展有限公司</h1>
-  <p class="hero-slogan">软件和信息技术服务 · 数字化转型</p>
-  <div class="hero-tags"><span class="tag" style="background:rgba(34,211,238,0.15);color:#67e8f9;border:1px solid rgba(34,211,238,0.3)"><i class="fas fa-code"></i> 软件开发</span> <span class="tag" style="background:rgba(34,211,238,0.15);color:#67e8f9;border:1px solid rgba(34,211,238,0.3)"><i class="fas fa-cloud"></i> 信息技术</span> <span class="tag" style="background:rgba(34,211,238,0.15);color:#67e8f9;border:1px solid rgba(34,211,238,0.3)"><i class="fas fa-database"></i> 数字化转型</span></div>
 </section>
 
-<!-- Bento Grid -->
-<div class="bento-grid" style="position:relative;z-index:1;">
-
-  <!-- 核心数据 -->
-  <div class="glass-card col-span-4 reveal" style="padding:24px 20px;">
-    <div class="stats-grid"><div class="stat-item">
-        <div class="stat-number" style="background:linear-gradient(135deg,#67e8f9,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">500<span style="font-size:0.5em">万</span></div>
-        <div class="stat-label">注册资本</div>
-        
-    </div><div class="stat-item">
-        <div class="stat-number" style="background:linear-gradient(135deg,#6ee7b7,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">2018</div>
-        <div class="stat-label">成立年份</div>
-        
-    </div></div>
+<!-- BENTO: CORE INFO -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-cube"></i> 核心画像</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">企业全景</h2>
+    <p class="text-slate-500 mt-3 text-lg">福建省电子信息集团旗下 · 国有绝对控股混合所有制企业</p>
   </div>
 
-  <!-- 工商信息 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-building" style="color:var(--primary);"></i><h2>工商信息</h2></div>
-    <div style="display:flex;flex-direction:column;gap:2px;"><div class="info-row"><span class="info-key">法定代表人</span><span class="info-val" style="color:var(--primary-light);">林福全</span></div><div class="info-row"><span class="info-key">成立日期</span><span class="info-val" style="color:#e2e8f0;">2018年</span></div><div class="info-row"><span class="info-key">注册资本</span><span class="info-val" style="color:#e2e8f0;">500万元</span></div><div class="info-row"><span class="info-key">所属行业</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;">软件和信息技术服务业</span></div><div class="info-row"><span class="info-key">注册地址</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;text-align:right;max-width:60%;">泉州市</span></div></div>
-  </div>
-
-  <!-- 资质荣誉 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-trophy" style="color:var(--amber);"></i><h2>资质荣誉</h2></div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span class="tag" style="background:rgba(34,211,238,0.15);color:#67e8f9;border:1px solid rgba(34,211,238,0.3)"><i class="fas fa-code"></i> 软件企业</span> <span class="tag" style="background:rgba(167,139,250,0.15);color:#c4b5fd;border:1px solid rgba(167,139,250,0.3)"><i class="fas fa-cloud"></i> 云计算服务</span></div>
-  </div>
-
-  <!-- 股权结构 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-sitemap" style="color:var(--violet);"></i><h2>股权结构</h2></div>
-    <div style="display:flex;flex-direction:column;gap:14px;"><div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:0.85rem;font-weight:600;">林福全</span>
-            <span style="font-size:0.85rem;font-weight:700;color:#f9a8d4;">控股权</span>
+  <div class="bento-grid">
+    <!-- Company Profile -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-sky-500/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center">
+            <i class="fas fa-building text-sky-400 text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">企业概况</h3>
+            <p class="text-xs text-slate-500">Company Profile</p>
+          </div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:70%;background:linear-gradient(90deg,#f472b6,#f9a8d4);"></div></div>
-        <div style="font-size:0.7rem;color:#64748b;margin-top:4px;">法定代表人</div>
-    </div></div>
+        <p class="text-slate-300 leading-relaxed mb-6">
+          泉州市云福科技发展有限公司（曾用名：泉州市数字云谷信息产业发展有限公司），成立于2016年2月，由<span class="text-sky-400">福建省数字福建云计算运营有限公司</span>（福建省电子信息集团全资子公司）、<span class="text-cyan-400">国富瑞（福建）信息技术产业园有限公司</span>共同出资组建，2017年引入<span class="text-violet-400">南威软件</span>作为战略投资方。
+        </p>
+        <p class="text-slate-400 leading-relaxed mb-8">
+          公司主营业务包括数据中心机房建设运营、云计算和大数据整体解决方案，在数字福建（安溪）产业园开展政务云、行业云、企业云和灾备云等业务，致力于推进"数字泉州"建设，打造全国数字城市样板区。
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-slate-800/50 rounded-xl p-4">
+            <div class="text-xs text-slate-500 mb-1">统一社会信用代码</div>
+            <div class="text-sm text-slate-300 font-mono">91350524MA345X7403</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-xl p-4">
+            <div class="text-xs text-slate-500 mb-1">营业期限</div>
+            <div class="text-sm text-slate-300">2016-02-02 至 2046-02-01</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-xl p-4">
+            <div class="text-xs text-slate-500 mb-1">企业类型</div>
+            <div class="text-sm text-slate-300">有限责任公司(国有控股)</div>
+          </div>
+          <div class="bg-slate-800/50 rounded-xl p-4">
+            <div class="text-xs text-slate-500 mb-1">行业分类</div>
+            <div class="text-sm text-slate-300">软件和信息技术服务业</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="glass-card p-6 col-span-2 reveal-item relative overflow-hidden">
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-cyan-500/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+          <i class="fas fa-map-marker-alt text-cyan-400"></i>
+        </div>
+        <h3 class="font-bold text-white">区位优势</h3>
+      </div>
+      <p class="text-slate-400 text-sm mb-3">福建省泉州市安溪县南翼新城高新技术产业园</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-crosshairs"></i> 闽南金三角中心</span>
+        <span class="tag-badge text-xs"><i class="fas fa-ship"></i> 海丝桥头堡</span>
+        <span class="tag-badge text-xs"><i class="fas fa-globe-asia"></i> 辐射海峡两岸</span>
+        <span class="tag-badge text-xs"><i class="fas fa-industry"></i> 数字福建产业园</span>
+      </div>
+      <div class="mt-4 bg-slate-800/40 rounded-lg p-3">
+        <p class="text-xs text-slate-500 leading-relaxed">地处厦漳泉经济圈中心结合部，占福建省经济总量50%。全面融入福建自贸区，具备构建覆盖福建周边、辐射海西、呼应全国的数字化产业园区位条件。</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center">
+          <i class="fas fa-address-card text-violet-400"></i>
+        </div>
+        <h3 class="font-bold text-white">联系方式</h3>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <i class="fas fa-phone text-sky-400/60 w-4 text-center text-sm"></i>
+          <span class="text-sm text-slate-300">0595-29010066</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fas fa-globe text-sky-400/60 w-4 text-center text-sm"></i>
+          <a href="https://www.dataquanzhou.com" target="_blank" class="text-sm text-sky-400 hover:text-sky-300 transition">www.dataquanzhou.com</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fas fa-envelope text-sky-400/60 w-4 text-center text-sm"></i>
+          <span class="text-sm text-slate-300">qzszyg@dataquanzhou.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Rep -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+          <i class="fas fa-user-tie text-emerald-400"></i>
+        </div>
+        <h3 class="font-bold text-white">法定代表人</h3>
+      </div>
+      <div class="text-3xl font-black text-white mb-1">吴茗芳</div>
+      <div class="text-xs text-slate-500">董事 · 经理</div>
+      <div class="mt-4 pt-4 border-t border-slate-700/50">
+        <div class="text-xs text-slate-500 mb-1">董事长</div>
+        <div class="text-sm text-slate-300 font-medium">翁志明</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONORS -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-trophy"></i> 资质荣誉</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">荣誉资质</h2>
+    <p class="text-slate-500 mt-3 text-lg">2025年度三项重要荣誉加身</p>
   </div>
 
-  
-  
-  
+  <div class="bento-grid">
+    <!-- Major honors -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl"></div>
+      <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+        <i class="fas fa-medal text-amber-400"></i> 核心荣誉
+      </h3>
+      <div class="space-y-5">
+        <div class="bg-gradient-to-r from-amber-500/10 to-transparent rounded-xl p-5 border border-amber-500/15">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
+              <i class="fas fa-star text-amber-400 text-sm"></i>
+            </div>
+            <span class="font-bold text-amber-300">国家级高新技术企业</span>
+          </div>
+          <p class="text-xs text-slate-500 pl-11">2025年认定 · 国家级资质</p>
+        </div>
+        <div class="bg-gradient-to-r from-sky-500/10 to-transparent rounded-xl p-5 border border-sky-500/15">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-sky-500/20 flex items-center justify-center">
+              <i class="fas fa-rocket text-sky-400 text-sm"></i>
+            </div>
+            <span class="font-bold text-sky-300">省级瞪羚企业</span>
+          </div>
+          <p class="text-xs text-slate-500 pl-11">2025年认定 · 福建省数字经济领域</p>
+        </div>
+        <div class="bg-gradient-to-r from-violet-500/10 to-transparent rounded-xl p-5 border border-violet-500/15">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center">
+              <i class="fas fa-lightbulb text-violet-400 text-sm"></i>
+            </div>
+            <span class="font-bold text-violet-300">省级创新型中小企业</span>
+          </div>
+          <p class="text-xs text-slate-500 pl-11">2025年认定 · 福建省工业和信息化厅</p>
+        </div>
+        <div class="bg-gradient-to-r from-emerald-500/10 to-transparent rounded-xl p-5 border border-emerald-500/15">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+              <i class="fas fa-gem text-emerald-400 text-sm"></i>
+            </div>
+            <span class="font-bold text-emerald-300">专精特新中小企业</span>
+          </div>
+          <p class="text-xs text-slate-500 pl-11">专业化 · 精细化 · 特色化 · 新颖化</p>
+        </div>
+      </div>
+    </div>
 
-  <!-- 发展历程 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-clock-rotate-left" style="color:var(--emerald);"></i><h2>发展历程</h2></div>
-    <div style="display:flex;flex-direction:column;"><div class="timeline-item">
-            <div class="timeline-dot" style="background:#22d3ee;"></div>
-            <div class="timeline-line"></div>
-            <div><div style="font-size:0.75rem;color:#67e8f9;font-weight:700;">2018年</div><div style="font-size:0.8rem;">公司成立，专注软件与信息技术服务</div></div>
-        </div></div>
+    <!-- IP Stats -->
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+        <i class="fas fa-brain text-cyan-400"></i> 知识产权
+      </h3>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="text-center bg-slate-800/40 rounded-xl p-4">
+          <div class="text-3xl font-black text-sky-400 number-glow">64</div>
+          <div class="text-xs text-slate-500 mt-1">软件著作权</div>
+        </div>
+        <div class="text-center bg-slate-800/40 rounded-xl p-4">
+          <div class="text-3xl font-black text-cyan-400">11</div>
+          <div class="text-xs text-slate-500 mt-1">商标信息</div>
+        </div>
+        <div class="text-center bg-slate-800/40 rounded-xl p-4">
+          <div class="text-3xl font-black text-violet-400">5</div>
+          <div class="text-xs text-slate-500 mt-1">专利信息</div>
+        </div>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-certificate"></i> 云平台三级等保</span>
+        <span class="tag-badge text-xs"><i class="fas fa-id-card"></i> 增值电信经营许可</span>
+        <span class="tag-badge text-xs"><i class="fas fa-shield-alt"></i> 13项资质证书</span>
+      </div>
+    </div>
+
+    <!-- Other honors -->
+    <div class="glass-card p-6 reveal-item">
+      <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+        <i class="fas fa-award text-sky-400 text-xs"></i> 历年荣誉
+      </h3>
+      <div class="space-y-2.5 text-xs text-slate-400">
+        <div class="flex items-start gap-2"><span class="text-sky-400 mt-0.5">•</span>2018中国云计算产业领军企业</div>
+        <div class="flex items-start gap-2"><span class="text-sky-400 mt-0.5">•</span>2019灾备安全领域大数据领军企业</div>
+        <div class="flex items-start gap-2"><span class="text-sky-400 mt-0.5">•</span>2020数字赋能先锋企业30强</div>
+        <div class="flex items-start gap-2"><span class="text-sky-400 mt-0.5">•</span>福建省科技小巨人领军企业</div>
+      </div>
+    </div>
+
+    <!-- Credibility -->
+    <div class="glass-card p-6 reveal-item flex flex-col justify-between">
+      <div>
+        <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+          <i class="fas fa-check-circle text-emerald-400 text-xs"></i> 信用评级
+        </h3>
+        <div class="flex items-end gap-2 mb-3">
+          <span class="text-5xl font-black text-emerald-400">83</span>
+          <span class="text-slate-500 text-sm mb-2">/100 天眼查评分</span>
+        </div>
+        <div class="flex items-end gap-2">
+          <span class="text-4xl font-black text-sky-400">740</span>
+          <span class="text-slate-500 text-sm mb-2">/1000 启信分</span>
+        </div>
+      </div>
+      <div class="mt-4 text-xs text-slate-500">
+        <i class="fas fa-info-circle"></i> 数据来源：天眼查 / 启信宝
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUITY STRUCTURE -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-sitemap"></i> 股权架构</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">股权结构</h2>
+    <p class="text-slate-500 mt-3 text-lg">国有绝对控股 · 疑似实控人：福建省人民政府国有资产监督管理委员会</p>
   </div>
 
-  <!-- 产品体系 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-boxes-stacked" style="color:var(--amber);"></i><h2>产品体系</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;"><div class="product-item" style="background:rgba(34,211,238,0.05);">
-            <i class="fas fa-code" style="font-size:1.2rem;color:#22d3ee;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">软件开发</div><div style="font-size:0.65rem;color:#64748b;">企业信息化系统</div></div>
-        </div><div class="product-item" style="background:rgba(167,139,250,0.05);">
-            <i class="fas fa-cloud" style="font-size:1.2rem;color:#a78bfa;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">云服务</div><div style="font-size:0.65rem;color:#64748b;">云计算与数据服务</div></div>
-        </div><div class="product-item" style="background:rgba(52,211,153,0.05);">
-            <i class="fas fa-database" style="font-size:1.2rem;color:#34d399;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">数据服务</div><div style="font-size:0.65rem;color:#64748b;">大数据分析与处理</div></div>
-        </div></div>
+  <div class="bento-grid">
+    <!-- Shareholders -->
+    <div class="glass-card p-8 col-span-3 row-span-2 reveal-item">
+      <h3 class="text-lg font-bold text-white mb-8 flex items-center gap-2">
+        <i class="fas fa-chart-pie text-sky-400"></i> 股东构成
+      </h3>
+      <div class="space-y-6">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-sky-500/15 flex items-center justify-center">
+                <i class="fas fa-landmark text-sky-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white">福建省数字福建云计算运营有限公司</div>
+                <div class="text-xs text-slate-500">福建省电子信息集团全资子公司 · 大股东</div>
+              </div>
+            </div>
+            <span class="text-2xl font-black text-sky-400">51%</span>
+          </div>
+          <div class="w-full bg-slate-800 rounded-full h-2.5">
+            <div class="share-bar bg-gradient-to-r from-sky-500 to-sky-400" style="width: 0%" data-width="51%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/15 flex items-center justify-center">
+                <i class="fas fa-city text-cyan-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white">泉州市金同信息科技有限公司</div>
+                <div class="text-xs text-slate-500">地方国资</div>
+              </div>
+            </div>
+            <span class="text-2xl font-black text-cyan-400">25%</span>
+          </div>
+          <div class="w-full bg-slate-800 rounded-full h-2.5">
+            <div class="share-bar bg-gradient-to-r from-cyan-500 to-cyan-400" style="width: 0%" data-width="25%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-violet-500/15 flex items-center justify-center">
+                <i class="fas fa-database text-violet-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white">国富瑞（福建）信息技术产业园有限公司</div>
+                <div class="text-xs text-slate-500">商务部中国国际电子商务中心关联企业</div>
+              </div>
+            </div>
+            <span class="text-2xl font-black text-violet-400">24%</span>
+          </div>
+          <div class="w-full bg-slate-800 rounded-full h-2.5">
+            <div class="share-bar bg-gradient-to-r from-violet-500 to-violet-400" style="width: 0%" data-width="24%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 flex rounded-xl overflow-hidden h-4">
+        <div class="bg-sky-500" style="width: 51%"></div>
+        <div class="bg-cyan-500" style="width: 25%"></div>
+        <div class="bg-violet-500" style="width: 24%"></div>
+      </div>
+      <div class="flex justify-between mt-2 text-xs text-slate-500">
+        <span>国有控股 76%+</span>
+        <span>战略投资 24%</span>
+      </div>
+    </div>
+
+    <!-- Group info -->
+    <div class="glass-card p-6 reveal-item flex flex-col justify-between">
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center mb-4">
+          <i class="fas fa-network-wired text-sky-400 text-xl"></i>
+        </div>
+        <h3 class="font-bold text-white mb-2">所属集团</h3>
+        <p class="text-sky-400 font-medium text-sm">福建省电子信息集团</p>
+        <p class="text-xs text-slate-500 mt-2">成员企业 271+</p>
+        <p class="text-xs text-slate-500">省属国企序列</p>
+      </div>
+      <div class="mt-4 pt-4 border-t border-slate-700/50">
+        <div class="text-xs text-slate-500">疑似实控人</div>
+        <div class="text-sm text-slate-300 mt-1">福建省国资委</div>
+        <div class="text-xs text-sky-400">穿透持股 26.7%</div>
+      </div>
+    </div>
+
+    <!-- Financing -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+          <i class="fas fa-chart-line text-emerald-400"></i>
+        </div>
+        <h3 class="font-bold text-white">融资历程</h3>
+      </div>
+      <div class="space-y-3">
+        <div class="bg-slate-800/40 rounded-lg p-3">
+          <div class="flex items-center justify-between">
+            <span class="tag-badge text-xs">A轮</span>
+            <span class="text-xs text-slate-500">2018-08</span>
+          </div>
+          <div class="text-sm text-slate-300 mt-2">南威软件战略投资</div>
+        </div>
+        <div class="bg-slate-800/40 rounded-lg p-3">
+          <div class="flex items-center justify-between">
+            <span class="tag-badge text-xs">股权转让</span>
+            <span class="text-xs text-slate-500">2025-09</span>
+          </div>
+          <div class="text-sm text-slate-300 mt-2">累计融资3次</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE BUSINESS -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-cloud"></i> 核心业务</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">四大云服务</h2>
+    <p class="text-slate-500 mt-3 text-lg">数据中心机房建设运营 + 云计算与大数据整体解决方案</p>
   </div>
 
-  <!-- 风险与合规 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-shield-halved" style="color:var(--amber);"></i><h2>风险与合规</h2></div>
-    <div style="display:flex;flex-direction:column;gap:10px;"><div class="risk-item" style="background:rgba(52,211,153,0.06);border-left:3px solid #34d399;">
-            <i class="fas fa-check-circle" style="color:#34d399;margin-top:2px;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;color:#6ee7b7;">经营正常</div>
-            <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px;">暂无重大风险记录</div></div>
-        </div></div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="glass-card p-7 reveal-item group relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div class="relative z-10">
+        <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+          <i class="fas fa-landmark text-sky-400 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">政务云</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">覆盖泉州13个区县，服务60+单位、280+业务系统，承建晋江政务云、南安政务云、石狮政务云、德化政务云等标杆项目。</p>
+        <div class="mt-5 flex items-center gap-2 text-sky-400 text-sm font-medium">
+          <span>核心业务</span><i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-7 reveal-item group relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div class="relative z-10">
+        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+          <i class="fas fa-industry text-cyan-400 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">行业云</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">面向医疗、教育、制造等行业提供定制化云服务，承建泉州医疗云、教育云、制造云等，赋能千行百业数字化转型。</p>
+        <div class="mt-5 flex items-center gap-2 text-cyan-400 text-sm font-medium">
+          <span>垂直深耕</span><i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-7 reveal-item group relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div class="relative z-10">
+        <div class="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+          <i class="fas fa-building text-violet-400 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">企业云</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">中小企业创新云平台，为泉州市中小企业提供弹性计算、云存储、云安全等一站式上云服务，降低企业IT成本。</p>
+        <div class="mt-5 flex items-center gap-2 text-violet-400 text-sm font-medium">
+          <span>普惠赋能</span><i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-7 reveal-item group relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div class="relative z-10">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+          <i class="fas fa-shield-alt text-emerald-400 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">灾备云</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">同城双活+异地备份"两地三中心"灾备架构，T4等级标准机房，承建福建省政务云灾备、厦门自贸区数据灾备等关键项目。</p>
+        <div class="mt-5 flex items-center gap-2 text-emerald-400 text-sm font-medium">
+          <span>安全基石</span><i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- 经营范围 -->
-  <div class="glass-card col-span-4 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-file-contract" style="color:var(--cyan);"></i><h2>经营范围</h2></div>
-    <div style="font-size:0.8rem;color:#94a3b8;line-height:1.7;">软件开发；信息系统集成服务；信息技术咨询服务；数据处理和存储支持服务；集成电路设计。<br></div>
+  <!-- Data Center -->
+  <div class="glass-card p-8 mt-8 reveal-item relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-80 h-80 bg-sky-500/3 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl"></div>
+    <div class="relative z-10 flex flex-col lg:flex-row gap-8">
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-sky-500/10 flex items-center justify-center">
+            <i class="fas fa-server text-sky-400"></i>
+          </div>
+          数据中心基础设施
+        </h3>
+        <p class="text-slate-400 leading-relaxed">
+          位于国家级数据灾备中心——数字福建（安溪）产业园，机房整体按照国际最高<span class="text-sky-400 font-medium">T4等级标准</span>设计和施工，是"数字福建"规划建设的两大数据中心之一。可安装<span class="text-sky-400 font-medium">5000个标准机柜</span>，园区总规划2万个T4等级标准机柜。
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 lg:w-1/3">
+        <div class="bg-slate-800/40 rounded-xl p-5 text-center">
+          <div class="text-3xl font-black text-sky-400">T4</div>
+          <div class="text-xs text-slate-500 mt-1">机房等级</div>
+        </div>
+        <div class="bg-slate-800/40 rounded-xl p-5 text-center">
+          <div class="text-3xl font-black text-cyan-400">5000</div>
+          <div class="text-xs text-slate-500 mt-1">标准机柜</div>
+        </div>
+        <div class="bg-slate-800/40 rounded-xl p-5 text-center">
+          <div class="text-3xl font-black text-violet-400">3</div>
+          <div class="text-xs text-slate-500 mt-1">灾备中心</div>
+        </div>
+        <div class="bg-slate-800/40 rounded-xl p-5 text-center">
+          <div class="text-3xl font-black text-emerald-400">2</div>
+          <div class="text-xs text-slate-500 mt-1">双活架构</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY PROJECTS -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-project-diagram"></i> 典型案例</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">标杆项目</h2>
+    <p class="text-slate-500 mt-3 text-lg">深耕政务云领域 · 泉州13区县全覆盖</p>
   </div>
 
-</div>
+  <div class="bento-grid">
+    <!-- Jinjiang -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-48 h-48 bg-sky-500/5 rounded-full -translate-y-1/3 translate-x-1/3 blur-3xl"></div>
+      <div class="relative z-10">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="tag-badge text-xs"><i class="fas fa-crown"></i> 旗舰项目</span>
+          <span class="tag-badge text-xs bg-amber-500/10 border-amber-500/25 text-amber-300"><i class="fas fa-award"></i> 信通院优秀案例</span>
+        </div>
+        <h3 class="text-2xl font-black text-white mt-4 mb-2">云上晋江</h3>
+        <p class="text-sky-400 text-sm mb-4">晋江政务云（一/二/三期）· 中标金额 3422.67万元</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+          采用"前店后厂"区县政务云晋江模式，兼具冗余动态扩容能力和双活备份设计，提供云计算、云存储、云网络、云安全、云密码、物理机租用等全栈服务。获评中国信通院"2023年度政务云创新实践优秀案例"。
+        </p>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="bg-slate-800/40 rounded-xl p-4 text-center">
+            <div class="text-2xl font-black text-sky-400">60+</div>
+            <div class="text-xs text-slate-500 mt-1">服务单位</div>
+          </div>
+          <div class="bg-slate-800/40 rounded-xl p-4 text-center">
+            <div class="text-2xl font-black text-cyan-400">280+</div>
+            <div class="text-xs text-slate-500 mt-1">业务系统</div>
+          </div>
+          <div class="bg-slate-800/40 rounded-xl p-4 text-center">
+            <div class="text-2xl font-black text-violet-400">3期</div>
+            <div class="text-xs text-slate-500 mt-1">持续建设</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- Footer -->
-<div class="footer">
-  <p>39139@胜天半子</p>
-  <p style="margin-top:4px;">数据来源：企查查 · 天眼查 · 启信宝 · 企业官网</p>
-</div>
+    <div class="glass-card p-6 reveal-item">
+      <h3 class="font-bold text-white mb-3 flex items-center gap-2">
+        <i class="fas fa-cloud text-sky-400 text-sm"></i> 泉州政务云
+      </h3>
+      <p class="text-xs text-slate-500 mb-2">市级政务云平台</p>
+      <p class="text-sm text-slate-400">泉州市政务信息网云平台、政务数据汇聚与共享应用平台，覆盖全市13区县。</p>
+    </div>
 
+    <div class="glass-card p-6 reveal-item">
+      <h3 class="font-bold text-white mb-3 flex items-center gap-2">
+        <i class="fas fa-heartbeat text-rose-400 text-sm"></i> 安溪医疗云
+      </h3>
+      <p class="text-xs text-slate-500 mb-2">医疗健康行业云</p>
+      <p class="text-sm text-slate-400">安溪县卫生健康局医疗云资源服务，推动区域医疗信息化升级。</p>
+    </div>
+
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <h3 class="font-bold text-white mb-3 flex items-center gap-2">
+        <i class="fas fa-shield-alt text-emerald-400 text-sm"></i> 省级灾备体系
+      </h3>
+      <p class="text-sm text-slate-400 mb-3">承建福建省政务云灾备、厦门自贸区数据灾备等关键项目。福建省规划构建由福州和安溪、宁夏等异地灾备节点构成的"多地多中心"灾备体系，公司安溪数据中心为核心节点。</p>
+      <div class="flex gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-map-marker-alt"></i> 福州主中心</span>
+        <span class="tag-badge text-xs"><i class="fas fa-map-marker-alt"></i> 安溪灾备</span>
+        <span class="tag-badge text-xs"><i class="fas fa-map-marker-alt"></i> 宁夏异地</span>
+      </div>
+    </div>
+
+    <!-- Recent bids -->
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <h3 class="font-bold text-white mb-4 flex items-center gap-2">
+        <i class="fas fa-bolt text-amber-400 text-sm"></i> 2026年最新中标动态
+      </h3>
+      <div class="space-y-2.5 text-sm">
+        <div class="flex items-center gap-3 text-slate-400">
+          <span class="text-xs text-slate-600 font-mono shrink-0">06-03</span>
+          <span>中国电信南安分公司石井镇政务云主机服务</span>
+        </div>
+        <div class="flex items-center gap-3 text-slate-400">
+          <span class="text-xs text-slate-600 font-mono shrink-0">05-18</span>
+          <span>中国电信泉州分公司政务云安全服务项目</span>
+        </div>
+        <div class="flex items-center gap-3 text-slate-400">
+          <span class="text-xs text-slate-600 font-mono shrink-0">05-13</span>
+          <span>泉州台商投资区政务云平台服务采购</span>
+        </div>
+        <div class="flex items-center gap-3 text-slate-400">
+          <span class="text-xs text-slate-600 font-mono shrink-0">05-08</span>
+          <span>中国电信泉港分公司政务云项目</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-history"></i> 发展历程</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">成长轨迹</h2>
+    <p class="text-slate-500 mt-3 text-lg">从数字云谷到云福科技 · 十年深耕</p>
+  </div>
+
+  <div class="relative pl-10 reveal-item">
+    <div class="timeline-line"></div>
+    <div class="space-y-10">
+      <div class="relative">
+        <div class="timeline-dot"></div>
+        <div class="glass-card p-6 ml-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sky-400 font-bold font-mono">2016.02</span>
+            <span class="tag-badge text-xs">创立</span>
+          </div>
+          <p class="text-slate-300 font-medium">公司成立</p>
+          <p class="text-sm text-slate-500 mt-1">福建省数字福建云计算运营有限公司与国富瑞（福建）共同出资组建"泉州市数字云谷信息产业发展有限公司"</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot"></div>
+        <div class="glass-card p-6 ml-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sky-400 font-bold font-mono">2016.05</span>
+          </div>
+          <p class="text-slate-300 font-medium">泉州政务云项目落地</p>
+          <p class="text-sm text-slate-500 mt-1">开启公司业务拓展新篇章</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot"></div>
+        <div class="glass-card p-6 ml-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sky-400 font-bold font-mono">2017.06</span>
+          </div>
+          <p class="text-slate-300 font-medium">灾备云服务上线</p>
+          <p class="text-sm text-slate-500 mt-1">签约福建省政务云灾备、厦门自贸区数据灾备等项目</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot"></div>
+        <div class="glass-card p-6 ml-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sky-400 font-bold font-mono">2017.08</span>
+            <span class="tag-badge text-xs">融资</span>
+          </div>
+          <p class="text-slate-300 font-medium">引入南威软件战略投资</p>
+          <p class="text-sm text-slate-500 mt-1">A轮融资，公司发展壮大势不可挡</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot"></div>
+        <div class="glass-card p-6 ml-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sky-400 font-bold font-mono">2020.09</span>
+            <span class="tag-badge text-xs bg-emerald-500/10 border-emerald-500/25 text-emerald-300">里程碑</span>
+          </div>
+          <p class="text-slate-300 font-medium">泉州13区县政务云全覆盖</p>
+          <p class="text-sm text-slate-500 mt-1">实现泉州市13个县（市、区）政务云业务全覆盖</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot"></div>
+        <div class="glass-card p-6 ml-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sky-400 font-bold font-mono">2021.12</span>
+          </div>
+          <p class="text-slate-300 font-medium">上云规模突破</p>
+          <p class="text-sm text-slate-500 mt-1">上云用户超250户，上云系统超350套，云主机近1500台</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot"></div>
+        <div class="glass-card p-6 ml-6">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sky-400 font-bold font-mono">2023.12</span>
+          </div>
+          <p class="text-slate-300 font-medium">中标晋江政务云三期</p>
+          <p class="text-sm text-slate-500 mt-1">中标金额3422.67万元，"云上晋江"获中国信通院优秀案例</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot" style="background: var(--accent2);"></div>
+        <div class="glass-card p-6 ml-6 border-violet-500/20">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-violet-400 font-bold font-mono">2025</span>
+            <span class="tag-badge text-xs bg-amber-500/10 border-amber-500/25 text-amber-300">三项荣誉</span>
+          </div>
+          <p class="text-slate-300 font-medium">国家级高新技术企业 + 省级瞪羚企业 + 省级创新型中小企业</p>
+          <p class="text-sm text-slate-500 mt-1">入选福建省第一批入库数据企业名单</p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="timeline-dot" style="background: var(--accent2);"></div>
+        <div class="glass-card p-6 ml-6 border-violet-500/20">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-violet-400 font-bold font-mono">2026.02</span>
+            <span class="tag-badge text-xs bg-violet-500/10 border-violet-500/25 text-violet-300">更名</span>
+          </div>
+          <p class="text-slate-300 font-medium">正式更名为"泉州市云福科技发展有限公司"</p>
+          <p class="text-sm text-slate-500 mt-1">原"泉州市数字云谷信息产业发展有限公司"品牌升级</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL FUJIAN PARK -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-map-marked-alt"></i> 产业生态</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">数字福建产业园</h2>
+    <p class="text-slate-500 mt-3 text-lg">全省唯二数字经济产业园 · 闽西南协同发展区核心数据中心</p>
+  </div>
+
+  <div class="bento-grid">
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item relative overflow-hidden">
+      <div class="absolute bottom-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full translate-y-1/3 translate-x-1/3 blur-3xl"></div>
+      <div class="relative z-10">
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+            <i class="fas fa-industry text-cyan-400"></i>
+          </div>
+          数字福建（安溪）产业园
+        </h3>
+        <p class="text-slate-400 leading-relaxed mb-6">
+          我省与商务部合作共建的产业园区，也是全省唯二数字经济产业园，旨在打造闽西南协同发展区最主要数据中心和数字福建大数据中心的核心骨干节点。总规划面积<span class="text-cyan-400 font-medium">5000亩</span>，一期核心区投资概算<span class="text-cyan-400 font-medium">100亿元</span>。
+        </p>
+        <h4 class="text-sm font-bold text-white mb-3">"三中心、三链条"产业格局</h4>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-slate-800/40 rounded-lg p-3 flex items-center gap-3">
+            <i class="fas fa-database text-sky-400"></i>
+            <span class="text-sm text-slate-300">数据中心</span>
+          </div>
+          <div class="bg-slate-800/40 rounded-lg p-3 flex items-center gap-3">
+            <i class="fas fa-microchip text-cyan-400"></i>
+            <span class="text-sm text-slate-300">超算中心</span>
+          </div>
+          <div class="bg-slate-800/40 rounded-lg p-3 flex items-center gap-3">
+            <i class="fas fa-lightbulb text-violet-400"></i>
+            <span class="text-sm text-slate-300">创新中心</span>
+          </div>
+          <div class="bg-slate-800/40 rounded-lg p-3 flex items-center gap-3">
+            <i class="fas fa-satellite text-emerald-400"></i>
+            <span class="text-sm text-slate-300">空天大数据链</span>
+          </div>
+          <div class="bg-slate-800/40 rounded-lg p-3 flex items-center gap-3">
+            <i class="fas fa-film text-amber-400"></i>
+            <span class="text-sm text-slate-300">影视大数据链</span>
+          </div>
+          <div class="bg-slate-800/40 rounded-lg p-3 flex items-center gap-3">
+            <i class="fas fa-shopping-cart text-rose-400"></i>
+            <span class="text-sm text-slate-300">电商大数据链</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-sky-500/10 flex items-center justify-center">
+          <i class="fas fa-bolt text-sky-400"></i>
+        </div>
+        <h3 class="font-bold text-white">算力规划</h3>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <div class="text-3xl font-black text-sky-400">10000</div>
+          <div class="text-xs text-slate-500">PFLOPS · 2026年全省公共算力目标</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-cyan-400">>80%</div>
+          <div class="text-xs text-slate-500">智能算力占比目标</div>
+        </div>
+        <div class="tag-badge text-xs"><i class="fas fa-crosshairs"></i> "一核两区多点"布局核心</div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+          <i class="fas fa-file-alt text-emerald-400"></i>
+        </div>
+        <h3 class="font-bold text-white">政策加持</h3>
+      </div>
+      <div class="space-y-2.5 text-sm text-slate-400">
+        <div class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span>福建省数字化全面赋能总体方案</div>
+        <div class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span>福建省算力基础设施发展若干措施</div>
+        <div class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span>福建省"人工智能+"行动方案</div>
+        <div class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">•</span>福建省第一批入库数据企业</div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <h3 class="font-bold text-white mb-4 flex items-center gap-2">
+        <i class="fas fa-handshake text-sky-400 text-sm"></i> 生态合作伙伴
+      </h3>
+      <div class="flex flex-wrap gap-3">
+        <span class="tag-badge"><i class="fas fa-phone"></i> 中国电信</span>
+        <span class="tag-badge"><i class="fas fa-phone"></i> 中国移动</span>
+        <span class="tag-badge"><i class="fas fa-phone"></i> 中国联通</span>
+        <span class="tag-badge"><i class="fas fa-laptop-code"></i> 南威软件</span>
+        <span class="tag-badge"><i class="fas fa-shield-alt"></i> 奇安信</span>
+        <span class="tag-badge"><i class="fas fa-shield-alt"></i> 启明星辰</span>
+        <span class="tag-badge"><i class="fas fa-server"></i> 华为</span>
+        <span class="tag-badge"><i class="fas fa-cloud"></i> 华云</span>
+        <span class="tag-badge"><i class="fas fa-database"></i> 爱数</span>
+        <span class="tag-badge"><i class="fas fa-microchip"></i> 中科曙光</span>
+        <span class="tag-badge"><i class="fas fa-film"></i> 中国电影资料馆</span>
+        <span class="tag-badge"><i class="fas fa-satellite"></i> 中科数遥</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-users"></i> 核心团队</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">管理团队</h2>
+    <p class="text-slate-500 mt-3 text-lg">9名核心高管 · 本科学历超80% · 职称覆盖率超40%</p>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-sky-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-sky-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">翁志明</div>
+      <div class="text-xs text-sky-400 mt-1">董事长</div>
+      <div class="text-xs text-slate-500 mt-1">关联17家企业</div>
+    </div>
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-cyan-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-cyan-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">吴茗芳</div>
+      <div class="text-xs text-cyan-400 mt-1">董事 · 经理</div>
+      <div class="text-xs text-slate-500 mt-1">法定代表人</div>
+    </div>
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-violet-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-violet-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">苏进金</div>
+      <div class="text-xs text-violet-400 mt-1">董事</div>
+      <div class="text-xs text-slate-500 mt-1">关联3家企业</div>
+    </div>
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-emerald-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">吴明清</div>
+      <div class="text-xs text-emerald-400 mt-1">董事</div>
+      <div class="text-xs text-slate-500 mt-1">关联8家企业</div>
+    </div>
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-amber-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">徐剑</div>
+      <div class="text-xs text-amber-400 mt-1">董事</div>
+      <div class="text-xs text-slate-500 mt-1">关联6家企业</div>
+    </div>
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-rose-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-rose-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">林宏</div>
+      <div class="text-xs text-rose-400 mt-1">副总经理</div>
+      <div class="text-xs text-slate-500 mt-1">关联4家企业</div>
+    </div>
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-teal-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-teal-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">梅凡</div>
+      <div class="text-xs text-teal-400 mt-1">副总经理</div>
+    </div>
+    <div class="glass-card p-5 text-center reveal-item">
+      <div class="w-14 h-14 rounded-full bg-orange-500/10 flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-user text-orange-400 text-xl"></i>
+      </div>
+      <div class="font-bold text-white">陈志军</div>
+      <div class="text-xs text-orange-400 mt-1">监事</div>
+      <div class="text-xs text-slate-500 mt-1">关联2家企业</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative py-16 px-6 md:px-12 border-t border-slate-800/50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center">
+            <i class="fas fa-cloud text-sky-400"></i>
+          </div>
+          <div>
+            <div class="font-bold text-white text-lg">云福科技</div>
+            <div class="text-xs text-slate-500">Yunfu Technology</div>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500 leading-relaxed">泉州市云福科技发展有限公司，深耕政务云服务，筑基数字福建，赋能智慧城市。</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-white mb-4">快速链接</h4>
+        <div class="space-y-2 text-sm text-slate-500">
+          <div><a href="#" class="hover:text-sky-400 transition">企业概况</a></div>
+          <div><a href="#" class="hover:text-sky-400 transition">核心业务</a></div>
+          <div><a href="#" class="hover:text-sky-400 transition">标杆项目</a></div>
+          <div><a href="#" class="hover:text-sky-400 transition">资质荣誉</a></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold text-white mb-4">联系方式</h4>
+        <div class="space-y-2 text-sm text-slate-500">
+          <div class="flex items-center gap-2"><i class="fas fa-phone text-sky-400/60 w-4 text-center"></i>0595-29010066</div>
+          <div class="flex items-center gap-2"><i class="fas fa-globe text-sky-400/60 w-4 text-center"></i><a href="https://www.dataquanzhou.com" target="_blank" class="hover:text-sky-400 transition">www.dataquanzhou.com</a></div>
+          <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-sky-400/60 w-4 text-center"></i>福建省泉州市安溪县</div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-slate-600">&copy; 2016-2026 泉州市云福科技发展有限公司 版权所有</div>
+      <div class="text-sm font-bold text-slate-500">39139@胜天半子</div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+gsap.registerPlugin(ScrollTrigger);
+
+// Reveal animations
+gsap.utils.toArray('.reveal-item').forEach((el, i) => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1, y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      },
+      delay: i % 4 * 0.1
+    }
+  );
+});
+
+// Counter animation
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  const target = parseInt(counter.dataset.target);
+  ScrollTrigger.create({
+    trigger: counter,
+    start: 'top 85%',
+    onEnter: () => {
+      gsap.to(counter, {
+        duration: 2,
+        ease: 'power2.out',
+        onUpdate: function() {
+          counter.textContent = Math.round(this.progress() * target).toLocaleString();
+        }
+      });
+    },
+    once: true
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
+
+// Share bar animation
+document.querySelectorAll('.share-bar').forEach(bar => {
+  const width = bar.dataset.width;
+  ScrollTrigger.create({
+    trigger: bar,
+    start: 'top 90%',
+    onEnter: () => {
+      bar.style.width = width;
+    },
+    once: true
+  });
+});
+
+// Parallax orbs
+gsap.utils.toArray('.hero-orb').forEach(orb => {
+  gsap.to(orb, {
+    y: -60,
+    scrollTrigger: {
+      trigger: orb,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1
+    }
+  });
+});
 </script>
 </body>
 </html>

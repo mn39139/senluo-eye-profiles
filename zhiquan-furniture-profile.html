@@ -3,254 +3,1216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>泉州志全家具有限公司 - 企业画像</title>
+<title>泉州志全家具有限公司 | 柜冠家居</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Noto Sans SC', 'Inter', 'sans-serif'],
+        mono: ['Inter', 'monospace'],
+      },
+    }
+  }
+}
+</script>
 <style>
 :root {
-  --bg: #0a0a0f;
-  --glass: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.08);
-  --primary: #78716c;
-  --primary-light: #a8a29e;
-  --emerald: #34d399;
-  --amber: #fbbf24;
-  --violet: #a78bfa;
-  --cyan: #22d3ee;
-  --rose: #fb7185;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:16px; }
-body { font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:#e2e8f0; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-
-/* Hero */
-.hero-section { text-align:center; padding:60px 20px 40px; position:relative; }
-.hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse,rgba(120,113,108,0.12),rgba(167,139,250,0.06),transparent 70%); pointer-events:none; }
-.pulse-dot { width:8px; height:8px; background:var(--emerald); border-radius:50%; animation:pulse 2s infinite; display:inline-block; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
-.hero-title { font-size:clamp(1.4rem,4vw,2.5rem); font-weight:900; letter-spacing:-1px; margin-bottom:8px; background:linear-gradient(135deg,#a8a29e,#78716c,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1.3; }
-.hero-slogan { font-size:clamp(0.75rem,2vw,1rem); color:#64748b; margin-bottom:20px; }
-.hero-tags { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
-
-/* Tags */
-.tag { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:0.7rem; font-weight:600; white-space:nowrap; }
-
-/* Bento Grid - 响应式核心 */
-.bento-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1280px; margin:0 auto; padding:0 20px 40px; }
-
-/* Glass Card */
-.glass-card { background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); transition:all .3s ease; overflow:hidden; }
-.glass-card:hover { border-color:rgba(120,113,108,0.3); transform:translateY(-2px); box-shadow:0 8px 32px rgba(120,113,108,0.1); }
-.col-span-4 { grid-column:span 4; }
-.col-span-3 { grid-column:span 3; }
-.col-span-2 { grid-column:span 2; }
-.col-span-1 { grid-column:span 1; }
-
-/* Card Header */
-.card-header { display:flex; align-items:center; gap:8px; margin-bottom:18px; }
-.card-header h2 { font-size:1rem; font-weight:700; }
-
-/* Stats */
-.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:16px; text-align:center; }
-.stat-item { padding:8px 4px; }
-.stat-number { font-size:clamp(1.4rem,3vw,2.2rem); font-weight:900; line-height:1.1; }
-.stat-label { font-size:0.75rem; color:#64748b; margin-top:6px; }
-
-/* Info Rows */
-.info-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--glass-border); gap:8px; }
-.info-row:last-child { border-bottom:none; }
-.info-key { font-size:0.8rem; color:#64748b; white-space:nowrap; flex-shrink:0; }
-.info-val { font-size:0.85rem; font-weight:600; color:#e2e8f0; text-align:right; word-break:break-all; }
-
-/* Progress */
-.progress-bar { height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; }
-.progress-fill { height:100%; border-radius:3px; transition:width 1s ease; }
-
-/* Brand Grid */
-.brand-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-.brand-card { background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); border-radius:12px; padding:16px; text-align:center; transition:all .3s; }
-.brand-card:hover { border-color:rgba(120,113,108,0.4); background:rgba(120,113,108,0.05); }
-
-/* Factory Stats */
-.factory-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
-
-/* Timeline */
-.timeline-item { display:flex; gap:12px; padding:10px 0; position:relative; }
-.timeline-dot { width:10px; height:10px; border-radius:50%; margin-top:5px; flex-shrink:0; }
-.timeline-line { position:absolute; left:4px; top:22px; bottom:-10px; width:2px; background:var(--glass-border); }
-
-/* Products */
-.product-item { display:flex; align-items:center; gap:10px; padding:10px; border-radius:10px; }
-
-/* Risk */
-.risk-item { display:flex; align-items:flex-start; gap:10px; padding:10px; border-radius:10px; }
-
-/* Reveal Animation */
-.reveal { opacity:0; transform:translateY(30px); transition:all .6s cubic-bezier(.16,1,.3,1); }
-.reveal.visible { opacity:1; transform:translateY(0); }
-
-/* Footer */
-.footer { text-align:center; padding:40px 20px; color:#475569; font-size:0.75rem; border-top:1px solid var(--glass-border); margin-top:40px; }
-
-/* ========== 响应式 ========== */
-/* Tablet: 768px - 1024px */
-@media (max-width:1024px) {
-  .bento-grid { grid-template-columns:repeat(2,1fr); }
-  .col-span-4,.col-span-3 { grid-column:span 2; }
-  .col-span-2 { grid-column:span 2; }
-  .col-span-1 { grid-column:span 1; }
-  .stats-grid { grid-template-columns:repeat(3,1fr); }
-  .brand-grid { grid-template-columns:repeat(2,1fr); }
+  --primary: #d97706;
+  --primary-light: #f59e0b;
+  --accent: #92400e;
+  --accent2: #78350f;
+  --bg-dark: #0c0a09;
+  --bg-card: rgba(28, 25, 23, 0.8);
+  --border: rgba(217, 119, 6, 0.15);
+  --glow: rgba(245, 158, 11, 0.3);
+  --warm: #b45309;
 }
 
-/* Mobile: < 768px */
-@media (max-width:768px) {
-  .bento-grid { grid-template-columns:1fr; gap:12px; padding:0 16px 30px; }
-  .col-span-4,.col-span-3,.col-span-2,.col-span-1 { grid-column:span 1; }
-  .hero-section { padding:40px 16px 30px; }
-  .stats-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
-  .brand-grid { grid-template-columns:repeat(2,1fr); }
-  .factory-stats-grid { grid-template-columns:1fr 1fr; }
-  .stat-number { font-size:1.4rem; }
-  .glass-card { border-radius:12px; }
-  .glass-card:hover { transform:none; }
-  .info-row { flex-wrap:nowrap; }
-  .info-key { font-size:0.75rem; }
-  .info-val { font-size:0.78rem; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-dark);
 }
 
-/* Small Mobile: < 400px */
-@media (max-width:400px) {
-  .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
-  .brand-grid { grid-template-columns:1fr 1fr; }
-  .hero-title { font-size:1.2rem; }
-  .tag { font-size:0.6rem; padding:2px 8px; }
+body {
+  background: var(--bg-dark);
+  color: #e7e5e4;
+  font-family: 'Noto Sans SC', 'Inter', sans-serif;
+  overflow-x: hidden;
 }
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(217, 119, 6, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 119, 6, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(28, 25, 23, 0.85), rgba(28, 25, 23, 0.5));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(245, 158, 11, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(217, 119, 6, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fbbf24, #d97706, #92400e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #0c0a09, #1c1917, #1a1412, #171412);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #22c55e;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+.number-glow {
+  text-shadow: 0 0 40px rgba(245, 158, 11, 0.4), 0 0 80px rgba(217, 119, 6, 0.2);
+}
+
+.tag-badge {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(146, 64, 14, 0.15));
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fbbf24;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary-light), var(--accent2), transparent);
+}
+
+.timeline-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  border: 2px solid var(--bg-dark);
+  box-shadow: 0 0 12px var(--glow);
+  position: absolute;
+  left: 11px;
+  top: 4px;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: 1fr; }
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.data-flow {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--primary-light), transparent);
+  animation: dataFlow 3s linear infinite;
+}
+@keyframes dataFlow {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.share-bar {
+  height: 8px;
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wood-texture {
+  background: linear-gradient(135deg, rgba(146, 64, 14, 0.08), rgba(120, 53, 15, 0.04));
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--warm); border-radius: 3px; }
+
+/* ===== 增强响应式布局 ===== */
+/* 确保viewport正确 */
+/* 全局防溢出 */
+body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+table { width: 100%; overflow-x: auto; display: block; }
+/* 修复hero-glow溢出 */
+.hero-glow { max-width: 100vw; left: 50% !important; transform: translateX(-50%) !important; width: min(600px, 100vw) !important; }
+
+/* 通用grid响应式 - 覆盖各种命名 */
+@media (max-width: 1024px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .col-span-4, .col-span-3, .span-4, .span-3, .card-span-4, .card-span-3,
+  [class*="span-4"], [class*="span-3"], [class*="col-span-4"], [class*="col-span-3"] {
+    grid-column: span 2 !important;
+  }
+  .col-span-2, .span-2, .card-span-2,
+  [class*="col-span-2"], [class*="span-2"] {
+    grid-column: span 2 !important;
+  }
+  /* 统计数字grid */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* 品牌grid */
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列grid保持 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* hero标题 */
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.3rem, 3.5vw, 2.5rem) !important;
+  }
+  /* 大数字 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .col-span-4, .col-span-3, .col-span-2, .col-span-1,
+  .span-4, .span-3, .span-2, .span-1,
+  .card-span-4, .card-span-3, .card-span-2, .card-span-1,
+  [class*="span-"], [class*="col-span-"] {
+    grid-column: span 1 !important;
+  }
+  /* 统计grid 2列 */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列变1列 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 产品2列变1列 */
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* hero区 */
+  .hero-section, [class*="hero"] {
+    padding: 40px 16px 30px !important;
+  }
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+  }
+  .hero-slogan, .hero-subtitle, [class*="hero"] p {
+    font-size: 0.85rem !important;
+  }
+  /* 卡片 */
+  .glass-card, [class*="card"], [class*="glass"] {
+    border-radius: 12px !important;
+    padding: 18px !important;
+  }
+  .glass-card:hover, [class*="card"]:hover, [class*="glass"]:hover {
+    transform: none !important;
+  }
+  /* 大数字缩小 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+  }
+  /* 信息行 */
+  .info-row, [class*="info-row"] {
+    padding: 8px 0 !important;
+  }
+  .info-key, [class*="info-key"], [class*="info-label"] {
+    font-size: 0.72rem !important;
+  }
+  .info-val, [class*="info-val"], [class*="info-value"] {
+    font-size: 0.75rem !important;
+  }
+  /* 标签 */
+  .tag, [class*="tag-"] {
+    font-size: 0.6rem !important;
+    padding: 2px 8px !important;
+  }
+  /* 品牌卡片 */
+  .brand-card, [class*="brand"] {
+    padding: 12px !important;
+  }
+  /* 时间线 */
+  .timeline-item, [class*="timeline"] {
+    gap: 8px !important;
+    padding: 8px 0 !important;
+  }
+  /* 风险项 */
+  .risk-item, [class*="risk"] {
+    padding: 8px !important;
+  }
+  /* 进度条 */
+  .progress-bar, [class*="progress"] {
+    height: 5px !important;
+  }
+  /* footer */
+  .footer, [class*="footer"] {
+    padding: 30px 16px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: 1.1rem !important;
+  }
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: 1.1rem !important;
+  }
+  .glass-card, [class*="card"], [class*="glass"] {
+    padding: 14px !important;
+  }
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 确保inline grid也响应 */
+  [style*="display:grid"], [style*="display: grid"] {
+    gap: 8px !important;
+  }
+}
+
 </style>
 </head>
-<body>
+<body class="bg-grid">
 
-<!-- Hero -->
-<section class="hero-section">
-  <div class="hero-glow"></div>
-  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
-    <div class="pulse-dot"></div>
-    <span style="font-size:0.8rem;color:var(--emerald);font-weight:500;">存续 · 在营</span>
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden animated-gradient">
+  <div class="hero-orb w-96 h-96 bg-amber-500/20 -top-20 -left-20" style="animation-delay: 0s;"></div>
+  <div class="hero-orb w-80 h-80 bg-orange-600/15 bottom-10 right-10" style="animation-delay: -3s;"></div>
+  <div class="hero-orb w-64 h-64 bg-yellow-500/10 top-1/2 left-1/3" style="animation-delay: -5s;"></div>
+
+  <div class="data-flow h-40 top-20 left-[15%]" style="animation-delay: 0s;"></div>
+  <div class="data-flow h-56 top-40 left-[45%]" style="animation-delay: -1s;"></div>
+  <div class="data-flow h-32 top-10 right-[20%]" style="animation-delay: -2s;"></div>
+  <div class="data-flow h-48 bottom-20 left-[70%]" style="animation-delay: -0.5s;"></div>
+
+  <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+    <div class="reveal-item inline-flex items-center gap-2 mb-8 px-5 py-2.5 rounded-full border border-amber-500/20 bg-amber-500/5">
+      <div class="pulse-dot"></div>
+      <span class="text-amber-300 text-sm font-medium tracking-wide">存续开业</span>
+      <span class="text-stone-600 text-sm">|</span>
+      <span class="text-stone-400 text-sm">民营 · 小微企业</span>
+    </div>
+
+    <h1 class="reveal-item text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+      <span class="gradient-text">志全家具</span>
+    </h1>
+    <p class="reveal-item text-lg md:text-xl text-stone-400 mb-2 font-light tracking-wider">
+      泉州志全家具有限公司
+    </p>
+    <p class="reveal-item text-sm text-stone-500 mb-10 tracking-widest uppercase font-mono">
+      Quanzhou Zhiquan Furniture Co., Ltd.
+    </p>
+
+    <div class="reveal-item flex items-center justify-center gap-3 mb-12">
+      <div class="h-px w-16 bg-gradient-to-r from-transparent to-amber-500/50"></div>
+      <span class="text-amber-400 font-bold text-xl tracking-[0.3em]">柜冠家居</span>
+      <div class="h-px w-16 bg-gradient-to-l from-transparent to-amber-500/50"></div>
+    </div>
+
+    <p class="reveal-item text-lg md:text-2xl text-stone-300 font-light max-w-3xl mx-auto leading-relaxed mb-12">
+      深耕<span class="text-amber-400 font-medium">木质家居</span> · 拓展<span class="text-orange-400 font-medium">铁件工艺</span> · 布局<span class="text-yellow-500 font-medium">跨境电商</span>
+    </p>
+
+    <div class="reveal-item flex flex-wrap justify-center gap-8 md:gap-14">
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="100">0</div>
+        <div class="text-xs text-stone-500 mt-1 tracking-wider">注册资本 (万元)</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="50">0</div>
+        <div class="text-xs text-stone-500 mt-1 tracking-wider">年产家居 (万套)</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="13">0</div>
+        <div class="text-xs text-stone-500 mt-1 tracking-wider">经营年限 (年)</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-5xl font-black gradient-text number-glow counter" data-target="19390">0</div>
+        <div class="text-xs text-stone-500 mt-1 tracking-wider">厂房面积 (m²)</div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-stone-600">
+      <span class="text-xs tracking-widest">SCROLL</span>
+      <div class="w-5 h-8 border border-stone-600 rounded-full flex items-start justify-center p-1">
+        <div class="w-1 h-2 bg-amber-400 rounded-full animate-bounce"></div>
+      </div>
+    </div>
   </div>
-  <h1 class="hero-title">泉州志全家具有限公司</h1>
-  <p class="hero-slogan">家具制造 · 铁件工艺品 · 出口贸易</p>
-  <div class="hero-tags"><span class="tag" style="background:rgba(120,113,108,0.15);color:#a8a29e;border:1px solid rgba(120,113,108,0.3)"><i class="fas fa-couch"></i> 家具制造</span> <span class="tag" style="background:rgba(120,113,108,0.15);color:#a8a29e;border:1px solid rgba(120,113,108,0.3)"><i class="fas fa-hammer"></i> 铁件工艺</span> <span class="tag" style="background:rgba(120,113,108,0.15);color:#a8a29e;border:1px solid rgba(120,113,108,0.3)"><i class="fas fa-globe"></i> 出口贸易</span></div>
 </section>
 
-<!-- Bento Grid -->
-<div class="bento-grid" style="position:relative;z-index:1;">
-
-  <!-- 核心数据 -->
-  <div class="glass-card col-span-4 reveal" style="padding:24px 20px;">
-    <div class="stats-grid"><div class="stat-item">
-        <div class="stat-number" style="background:linear-gradient(135deg,#a8a29e,#78716c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">100<span style="font-size:0.5em">万</span></div>
-        <div class="stat-label">注册资本</div>
-        
-    </div><div class="stat-item">
-        <div class="stat-number" style="background:linear-gradient(135deg,#fcd34d,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">变更</div>
-        <div class="stat-label">由恒威贸易更名</div>
-        
-    </div></div>
+<!-- BENTO: CORE INFO -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-cube"></i> 核心画像</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">企业全景</h2>
+    <p class="text-stone-500 mt-3 text-lg">泉州惠安 · 木质家居智造 · 跨境电商新锐</p>
   </div>
 
-  <!-- 工商信息 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-building" style="color:var(--primary);"></i><h2>工商信息</h2></div>
-    <div style="display:flex;flex-direction:column;gap:2px;"><div class="info-row"><span class="info-key">法定代表人</span><span class="info-val" style="color:var(--primary-light);">蔡永南</span></div><div class="info-row"><span class="info-key">成立日期</span><span class="info-val" style="color:#e2e8f0;">更名后运营</span></div><div class="info-row"><span class="info-key">注册资本</span><span class="info-val" style="color:#e2e8f0;">100万元</span></div><div class="info-row"><span class="info-key">所属行业</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;">家具制造业</span></div><div class="info-row"><span class="info-key">注册地址</span><span class="info-val" style="color:#e2e8f0;font-size:0.75rem;text-align:right;max-width:60%;">泉州市鲤城区</span></div></div>
-  </div>
-
-  <!-- 资质荣誉 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-trophy" style="color:var(--amber);"></i><h2>资质荣誉</h2></div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;"><span style="font-size:0.8rem;color:#64748b;">暂无公开荣誉信息</span></div>
-  </div>
-
-  <!-- 股权结构 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-sitemap" style="color:var(--violet);"></i><h2>股权结构</h2></div>
-    <div style="display:flex;flex-direction:column;gap:14px;"><div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-            <span style="font-size:0.85rem;font-weight:600;">蔡永南</span>
-            <span style="font-size:0.85rem;font-weight:700;color:#f9a8d4;">控股权</span>
+  <div class="bento-grid">
+    <!-- Company Profile -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <i class="fas fa-building text-amber-400 text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">企业概况</h3>
+            <p class="text-xs text-stone-500">Company Profile</p>
+          </div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width:70%;background:linear-gradient(90deg,#f472b6,#f9a8d4);"></div></div>
-        <div style="font-size:0.7rem;color:#64748b;margin-top:4px;">法定代表人 · 实控人</div>
-    </div></div>
+        <p class="text-stone-300 leading-relaxed mb-6">
+          泉州志全家具有限公司（曾用名：泉州鲤城恒威贸易有限公司），成立于2013年5月，位于福建省泉州市惠安县。公司由<span class="text-amber-400">蔡永南</span>（持股88%）与<span class="text-orange-400">王华煌</span>（持股12%）共同出资组建，历经从贸易公司向家具制造企业的战略转型。
+        </p>
+        <p class="text-stone-400 leading-relaxed mb-8">
+          公司主营木质家居用品制造与销售、铁件工艺品加工，拥有年产室内家居用品50万套、铁件工艺品10万件的生产能力。同时布局互联网电商与跨境进出口业务，天猫旗舰店"恒威家居"持续运营中。
+        </p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-stone-800/50 rounded-xl p-4">
+            <div class="text-xs text-stone-500 mb-1">统一社会信用代码</div>
+            <div class="text-sm text-stone-300 font-mono">91350502699033630K</div>
+          </div>
+          <div class="bg-stone-800/50 rounded-xl p-4">
+            <div class="text-xs text-stone-500 mb-1">营业期限</div>
+            <div class="text-sm text-stone-300">2013-05-06 起 长期</div>
+          </div>
+          <div class="bg-stone-800/50 rounded-xl p-4">
+            <div class="text-xs text-stone-500 mb-1">企业类型</div>
+            <div class="text-sm text-stone-300">有限责任公司(自然人控股)</div>
+          </div>
+          <div class="bg-stone-800/50 rounded-xl p-4">
+            <div class="text-xs text-stone-500 mb-1">行业分类</div>
+            <div class="text-sm text-stone-300">家具制造业 / 批发业</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="glass-card p-6 col-span-2 reveal-item relative overflow-hidden">
+      <div class="absolute bottom-0 left-0 w-40 h-40 bg-orange-500/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
+          <i class="fas fa-map-marker-alt text-orange-400"></i>
+        </div>
+        <h3 class="font-bold text-white">区位优势</h3>
+      </div>
+      <p class="text-stone-400 text-sm mb-3">福建省泉州市惠安县螺阳镇上坂村上坂918号</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-crosshairs"></i> 闽南金三角</span>
+        <span class="tag-badge text-xs"><i class="fas fa-ship"></i> 海丝起点</span>
+        <span class="tag-badge text-xs"><i class="fas fa-industry"></i> 台商创业基地</span>
+        <span class="tag-badge text-xs"><i class="fas fa-globe-asia"></i> 跨境出口便利</span>
+      </div>
+      <div class="mt-4 bg-stone-800/40 rounded-lg p-3">
+        <p class="text-xs text-stone-500 leading-relaxed">地处惠安县黄塘镇台商创业基地，租用家世比科技厂房19390m²，紧邻沈海高速与福厦高铁，具备便捷的陆海空物流条件，辐射东南亚及全球市场。</p>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center">
+          <i class="fas fa-address-card text-yellow-500"></i>
+        </div>
+        <h3 class="font-bold text-white">联系方式</h3>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <i class="fas fa-phone text-amber-400/60 w-4 text-center text-sm"></i>
+          <span class="text-sm text-stone-300">181****1210</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fas fa-store text-amber-400/60 w-4 text-center text-sm"></i>
+          <a href="https://hengweijiaju.tmall.com" target="_blank" class="text-sm text-amber-400 hover:text-amber-300 transition">恒威家居天猫店</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fas fa-envelope text-amber-400/60 w-4 text-center text-sm"></i>
+          <span class="text-sm text-stone-300">1373096023@qq.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Rep -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+          <i class="fas fa-user-tie text-amber-400"></i>
+        </div>
+        <h3 class="font-bold text-white">法定代表人</h3>
+      </div>
+      <div class="text-3xl font-black text-white mb-1">蔡永南</div>
+      <div class="text-xs text-amber-400">董事 · 经理 · 财务负责人</div>
+      <div class="mt-4 pt-4 border-t border-stone-700/50">
+        <div class="text-xs text-stone-500 mb-1">实控人持股</div>
+        <div class="text-lg font-bold text-amber-400">88%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUITY STRUCTURE -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-sitemap"></i> 股权架构</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">股权结构</h2>
+    <p class="text-stone-500 mt-3 text-lg">自然人控股 · 蔡永南绝对控股</p>
   </div>
 
-  
-  
-  
+  <div class="bento-grid">
+    <!-- Equity Chart -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item">
+      <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+        <i class="fas fa-chart-pie text-amber-400"></i> 股权分布
+      </h3>
+      <div class="space-y-6">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center">
+                <i class="fas fa-crown text-amber-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="font-bold text-white">蔡永南</div>
+                <div class="text-xs text-stone-500">法定代表人 · 实控人</div>
+              </div>
+            </div>
+            <div class="text-2xl font-black text-amber-400">88%</div>
+          </div>
+          <div class="w-full bg-stone-800/50 rounded-full h-3">
+            <div class="share-bar bg-gradient-to-r from-amber-500 to-amber-400 h-3 rounded-full" data-width="88%" style="width: 0;"></div>
+          </div>
+          <div class="text-xs text-stone-500 mt-1">认缴出资 88万元 · 实缴 88万元</div>
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
+                <i class="fas fa-user text-orange-400 text-sm"></i>
+              </div>
+              <div>
+                <div class="font-bold text-white">王华煌</div>
+                <div class="text-xs text-stone-500">股东</div>
+              </div>
+            </div>
+            <div class="text-2xl font-black text-orange-400">12%</div>
+          </div>
+          <div class="w-full bg-stone-800/50 rounded-full h-3">
+            <div class="share-bar bg-gradient-to-r from-orange-500 to-orange-400 h-3 rounded-full" data-width="12%" style="width: 0;"></div>
+          </div>
+          <div class="text-xs text-stone-500 mt-1">认缴出资 12万元 · 实缴 12万元</div>
+        </div>
+      </div>
+      <div class="mt-6 bg-stone-800/40 rounded-xl p-4">
+        <div class="text-xs text-stone-500 mb-2">股权穿透</div>
+        <div class="text-sm text-stone-300">蔡永南通过直接持股88%实现对公司的绝对控制，同时控股泉州成志家具有限公司（80%），形成"志全+成志"双品牌布局。</div>
+      </div>
+    </div>
 
-  <!-- 发展历程 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-clock-rotate-left" style="color:var(--emerald);"></i><h2>发展历程</h2></div>
-    <div style="display:flex;flex-direction:column;"><div class="timeline-item">
-            <div class="timeline-dot" style="background:#78716c;"></div>
-            <div class="timeline-line"></div>
-            <div><div style="font-size:0.75rem;color:#a8a29e;font-weight:700;">早期年</div><div style="font-size:0.8rem;">泉州鲤城恒威贸易有限公司成立</div></div>
-        </div><div class="timeline-item">
-            <div class="timeline-dot" style="background:#fbbf24;"></div>
-            <div class="timeline-line"></div>
-            <div><div style="font-size:0.75rem;color:#fcd34d;font-weight:700;">更名年</div><div style="font-size:0.8rem;">正式更名为泉州志全家具有限公司</div></div>
-        </div><div class="timeline-item">
-            <div class="timeline-dot" style="background:#f472b6;"></div>
-            <div class="timeline-line"></div>
-            <div><div style="font-size:0.75rem;color:#f9a8d4;font-weight:700;">扩产年</div><div style="font-size:0.8rem;">新增铁件工艺品喷粉线2条，年增产10万件</div></div>
-        </div></div>
+    <!-- Company Group -->
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+        <i class="fas fa-project-diagram text-orange-400"></i> 企业族群
+      </h3>
+      <div class="space-y-4">
+        <div class="flex items-center gap-4 bg-stone-800/40 rounded-xl p-4">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-couch text-amber-400"></i>
+          </div>
+          <div class="flex-1">
+            <div class="font-bold text-white text-sm">泉州志全家具有限公司</div>
+            <div class="text-xs text-stone-500">本企业 · 100万 · 2013年成立</div>
+          </div>
+          <span class="tag-badge text-xs">核心</span>
+        </div>
+        <div class="flex items-center gap-4 bg-stone-800/40 rounded-xl p-4">
+          <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-chair text-orange-400"></i>
+          </div>
+          <div class="flex-1">
+            <div class="font-bold text-white text-sm">泉州成志家具有限公司</div>
+            <div class="text-xs text-stone-500">关联企业 · 100万 · 2021年成立 · 蔡永南持股80%</div>
+          </div>
+          <span class="tag-badge text-xs">兄弟</span>
+        </div>
+        <div class="flex items-center gap-4 bg-stone-800/40 rounded-xl p-4">
+          <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-laptop-code text-yellow-500"></i>
+          </div>
+          <div class="flex-1">
+            <div class="font-bold text-white text-sm">泉州市松大科技有限公司</div>
+            <div class="text-xs text-stone-500">蔡永南任监事 · 500万 · 2012年成立</div>
+          </div>
+          <span class="tag-badge text-xs">关联</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE BUSINESS -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-industry"></i> 核心业务</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">三大业务板块</h2>
+    <p class="text-stone-500 mt-3 text-lg">制造 + 电商 + 跨境 · 全产业链布局</p>
   </div>
 
-  <!-- 产品体系 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-boxes-stacked" style="color:var(--amber);"></i><h2>产品体系</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;"><div class="product-item" style="background:rgba(120,113,108,0.05);">
-            <i class="fas fa-couch" style="font-size:1.2rem;color:#78716c;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">家具制造</div><div style="font-size:0.65rem;color:#64748b;">铁艺家具 · 户外家具</div></div>
-        </div><div class="product-item" style="background:rgba(244,114,182,0.05);">
-            <i class="fas fa-hammer" style="font-size:1.2rem;color:#f472b6;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">铁件工艺品</div><div style="font-size:0.65rem;color:#64748b;">喷粉工艺 · 出口品质</div></div>
-        </div><div class="product-item" style="background:rgba(52,211,153,0.05);">
-            <i class="fas fa-globe" style="font-size:1.2rem;color:#34d399;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;">出口贸易</div><div style="font-size:0.65rem;color:#64748b;">欧美市场出口</div></div>
-        </div></div>
+  <div class="bento-grid">
+    <!-- Wooden Furniture -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item relative overflow-hidden wood-texture">
+      <div class="absolute -top-10 -right-10 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl"></div>
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-14 h-14 rounded-xl bg-amber-500/15 flex items-center justify-center">
+            <i class="fas fa-tree text-amber-400 text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">木质家居制造</h3>
+            <p class="text-xs text-stone-500">核心业务 · 年产50万套</p>
+          </div>
+        </div>
+        <p class="text-stone-400 leading-relaxed mb-6">
+          以中纤板为核心基材，配套封边皮、五金配件，采用数控化生产线，年产室内木质家居用品50万套（含40万套木质家居 + 10万件铁件工艺品），产品涵盖衣柜、鞋柜、书柜、玄关隔断等全品类室内家具。
+        </p>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-stone-800/40 rounded-lg p-3 text-center">
+            <div class="text-xl font-black text-amber-400">720m³</div>
+            <div class="text-xs text-stone-500">年耗中纤板</div>
+          </div>
+          <div class="bg-stone-800/40 rounded-lg p-3 text-center">
+            <div class="text-xl font-black text-orange-400">20万m</div>
+            <div class="text-xs text-stone-500">年耗封边皮</div>
+          </div>
+          <div class="bg-stone-800/40 rounded-lg p-3 text-center">
+            <div class="text-xl font-black text-yellow-500">9.0t</div>
+            <div class="text-xs text-stone-500">年耗油漆</div>
+          </div>
+          <div class="bg-stone-800/40 rounded-lg p-3 text-center">
+            <div class="text-xl font-black text-amber-300">2条</div>
+            <div class="text-xs text-stone-500">喷粉线</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- E-commerce -->
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center">
+          <i class="fas fa-shopping-cart text-orange-400 text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-white">互联网电商</h3>
+          <p class="text-xs text-stone-500">线上渠道 · 天猫旗舰店</p>
+        </div>
+      </div>
+      <p class="text-stone-400 text-sm leading-relaxed mb-4">
+        运营天猫旗舰店"恒威家居"（hengweijiaju.tmall.com），持有第二类增值电信业务经营许可证，具备合法电商运营资质。线上销售覆盖衣柜、鞋柜、玄关柜、屏风隔断等品类。
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-store"></i> 天猫旗舰店</span>
+        <span class="tag-badge text-xs"><i class="fas fa-certificate"></i> 增值电信许可</span>
+        <span class="tag-badge text-xs"><i class="fas fa-truck"></i> 全国配送</span>
+      </div>
+    </div>
+
+    <!-- Import/Export -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center">
+          <i class="fas fa-globe text-yellow-500"></i>
+        </div>
+        <h3 class="font-bold text-white">跨境进出口</h3>
+      </div>
+      <p class="text-stone-400 text-sm leading-relaxed mb-3">
+        持有货物进出口、技术进出口、进出口代理资质，依托泉州海丝起点区位优势，拓展海外市场。
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-ship"></i> 货物进出口</span>
+        <span class="tag-badge text-xs"><i class="fas fa-sync"></i> 技术进出口</span>
+      </div>
+    </div>
+
+    <!-- Iron Crafts -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-lg bg-stone-500/10 flex items-center justify-center">
+          <i class="fas fa-hammer text-stone-400"></i>
+        </div>
+        <h3 class="font-bold text-white">铁件工艺品</h3>
+      </div>
+      <p class="text-stone-400 text-sm leading-relaxed mb-3">
+        年加工铁件工艺品10万件，配备2条静电粉末喷涂线，年耗铁件半成品10万件、静电粉末涂料10吨。
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-fire"></i> 静电喷粉</span>
+        <span class="tag-badge text-xs"><i class="fas fa-cog"></i> 10万件/年</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-hard-hat"></i> 产能项目</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">核心项目</h2>
+    <p class="text-stone-500 mt-3 text-lg">环评审批 · 合规运营 · 产能持续扩张</p>
   </div>
 
-  <!-- 风险与合规 -->
-  <div class="glass-card col-span-2 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-shield-halved" style="color:var(--amber);"></i><h2>风险与合规</h2></div>
-    <div style="display:flex;flex-direction:column;gap:10px;"><div class="risk-item" style="background:rgba(52,211,153,0.06);border-left:3px solid #34d399;">
-            <i class="fas fa-check-circle" style="color:#34d399;margin-top:2px;"></i>
-            <div><div style="font-size:0.85rem;font-weight:600;color:#6ee7b7;">经营正常</div>
-            <div style="font-size:0.75rem;color:#94a3b8;margin-top:2px;">暂无重大风险记录</div></div>
-        </div></div>
+  <div class="bento-grid">
+    <!-- Main Project -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center">
+          <i class="fas fa-warehouse text-amber-400 text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-white">室内木质家居数控生产基地</h3>
+          <p class="text-xs text-stone-500">核心产能 · 年产50万套</p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-stone-800/40 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-stone-300">项目规模</span>
+            <span class="text-amber-400 font-bold">年产室内家居用品50万套</span>
+          </div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-stone-300">其中木质家居</span>
+            <span class="text-orange-400 font-bold">40万套/年</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-stone-300">其中铁件工艺品</span>
+            <span class="text-yellow-500 font-bold">10万件/年</span>
+          </div>
+        </div>
+        <div class="bg-stone-800/40 rounded-xl p-4">
+          <div class="text-xs text-stone-500 mb-2">审批信息</div>
+          <div class="text-sm text-stone-300">环评审批：惠环保审[2018]表97号</div>
+          <div class="text-sm text-stone-300 mt-1">审批机关：泉州市惠安生态环境局</div>
+          <div class="text-sm text-stone-300 mt-1">建设地点：黄塘镇黄塘村台商创业基地1#-2#</div>
+        </div>
+        <div class="bg-stone-800/40 rounded-xl p-4">
+          <div class="text-xs text-stone-500 mb-2">投资规模</div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-stone-300">总投资</span>
+            <span class="text-amber-400 font-bold">1100万元</span>
+          </div>
+          <div class="flex items-center justify-between mt-1">
+            <span class="text-sm text-stone-300">环保投资</span>
+            <span class="text-green-400 font-bold">10万元</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expansion Project -->
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+        <i class="fas fa-expand-arrows-alt text-orange-400"></i> 扩建项目
+      </h3>
+      <div class="bg-stone-800/40 rounded-xl p-4 mb-4">
+        <div class="font-bold text-white mb-2">年加工铁件工艺品10万件项目</div>
+        <div class="text-sm text-stone-400 leading-relaxed">
+          2020年扩建，新增铁件工艺品喷粉线2条，新增投资100万元。扩建后年总产室内木质家居用品50万套 + 铁件工艺品10万件。新增静电粉末涂料10t/a，新增天然气10万m³/a。
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-check-circle"></i> 环评办结</span>
+        <span class="tag-badge text-xs"><i class="fas fa-file-alt"></i> 闽发改备[2020]C080283号</span>
+        <span class="tag-badge text-xs"><i class="fas fa-leaf"></i> 静电粉末低VOCs</span>
+      </div>
+    </div>
+
+    <!-- Forest Cert -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+          <i class="fas fa-leaf text-green-400"></i>
+        </div>
+        <h3 class="font-bold text-white">森林认证</h3>
+      </div>
+      <p class="text-stone-400 text-sm leading-relaxed">
+        2024年2月获得森林认证资质，证明木材来源合法合规，符合可持续林业管理标准，为出口贸易提供绿色通行证。
+      </p>
+      <div class="mt-3">
+        <span class="tag-badge text-xs"><i class="fas fa-certificate"></i> 2024年获证</span>
+      </div>
+    </div>
+
+    <!-- Tax Rating -->
+    <div class="glass-card p-6 reveal-item">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+          <i class="fas fa-star text-amber-400"></i>
+        </div>
+        <h3 class="font-bold text-white">税务信用</h3>
+      </div>
+      <div class="text-4xl font-black text-amber-400 mb-1">A级</div>
+      <div class="text-xs text-stone-500">2024年度纳税信用等级</div>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <span class="tag-badge text-xs"><i class="fas fa-check"></i> 一般纳税人</span>
+        <span class="tag-badge text-xs"><i class="fas fa-file-invoice"></i> 3年税务评级</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-clock"></i> 发展历程</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">成长轨迹</h2>
+    <p class="text-stone-500 mt-3 text-lg">从贸易公司到家居智造的蜕变之路</p>
   </div>
 
-  <!-- 经营范围 -->
-  <div class="glass-card col-span-4 reveal" style="padding:24px;">
-    <div class="card-header"><i class="fas fa-file-contract" style="color:var(--cyan);"></i><h2>经营范围</h2></div>
-    <div style="font-size:0.8rem;color:#94a3b8;line-height:1.7;">家具制造；家具销售；铁件工艺品制造与销售；货物进出口。<br></div>
+  <div class="relative pl-10">
+    <div class="timeline-line"></div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2013.05</div>
+        <div class="font-bold text-white text-lg mb-2">公司成立</div>
+        <p class="text-stone-400 text-sm">泉州鲤城恒威贸易有限公司注册成立，初始法定代表人王立忠，注册资本100万元，主营批发零售业务。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2018.10</div>
+        <div class="font-bold text-white text-lg mb-2">转型家具制造</div>
+        <p class="text-stone-400 text-sm">入驻惠安县黄塘镇台商创业基地，租用家世比科技厂房19390m²，启动室内木质家居数控生产基地项目，获惠环保审[2018]表97号环评批复。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2019.10</div>
+        <div class="font-bold text-white text-lg mb-2">项目竣工验收</div>
+        <p class="text-stone-400 text-sm">年产室内木质家居用品50万套项目通过自主验收，正式投产运营。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2020.07</div>
+        <div class="font-bold text-white text-lg mb-2">更名志全家具</div>
+        <p class="text-stone-400 text-sm">由"泉州鲤城恒威贸易有限公司"正式更名为"泉州志全家具有限公司"，法定代表人变更为赖松文，全面聚焦家具制造赛道。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2020.11</div>
+        <div class="font-bold text-white text-lg mb-2">扩建铁件产线</div>
+        <p class="text-stone-400 text-sm">新增铁件工艺品喷粉线2条，年增产铁件工艺品10万件，总投资增至1100万元。法定代表人变更为蔡永南。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2021.11</div>
+        <div class="font-bold text-white text-lg mb-2">双品牌布局</div>
+        <p class="text-stone-400 text-sm">蔡永南成立泉州成志家具有限公司（持股80%），形成"志全+成志"双品牌矩阵，进一步扩大产能与市场覆盖。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2023.11</div>
+        <div class="font-bold text-white text-lg mb-2">股权优化</div>
+        <p class="text-stone-400 text-sm">赖松文退出股东行列，王华煌入股12%，蔡永南持股提升至88%，股权结构进一步集中优化。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative mb-10">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6">
+        <div class="text-amber-400 font-bold text-sm mb-1">2024.02</div>
+        <div class="font-bold text-white text-lg mb-2">森林认证 · A级纳税</div>
+        <p class="text-stone-400 text-sm">获得森林认证资质，2024年度纳税信用等级评定为A级，企业合规经营水平持续提升。</p>
+      </div>
+    </div>
+
+    <div class="reveal-item relative">
+      <div class="timeline-dot"></div>
+      <div class="glass-card p-6 ml-6 border-amber-500/30">
+        <div class="text-amber-400 font-bold text-sm mb-1">2024.08</div>
+        <div class="font-bold text-white text-lg mb-2">新址搬迁</div>
+        <p class="text-stone-400 text-sm">注册地址变更至惠安县螺阳镇上坂村上坂918号，开启发展新篇章。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IP & BRAND -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-award"></i> 品牌资产</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">品牌与知识产权</h2>
+    <p class="text-stone-500 mt-3 text-lg">柜冠品牌 · 商标矩阵 · 资质认证</p>
   </div>
 
-</div>
+  <div class="bento-grid">
+    <!-- Trademark -->
+    <div class="glass-card p-8 col-span-2 row-span-2 reveal-item">
+      <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+        <i class="fas fa-trademark text-amber-400"></i> 核心商标
+      </h3>
+      <div class="bg-gradient-to-r from-amber-500/10 to-transparent rounded-xl p-6 border border-amber-500/15 mb-6">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-16 h-16 rounded-xl bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl font-black text-amber-400">柜冠</span>
+          </div>
+          <div>
+            <div class="font-bold text-amber-300 text-xl">柜冠</div>
+            <div class="text-xs text-stone-500">注册号：17331018 · 第20类 家具</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div><span class="text-stone-500">申请日期：</span><span class="text-stone-300">2015-07-01</span></div>
+          <div><span class="text-stone-500">注册日期：</span><span class="text-stone-300">2016-09-07</span></div>
+          <div><span class="text-stone-500">有效期至：</span><span class="text-amber-400">2026-09-06</span></div>
+          <div><span class="text-stone-500">商标类型：</span><span class="text-stone-300">普通商标</span></div>
+        </div>
+      </div>
+      <div class="text-xs text-stone-500 mb-3">覆盖商品/服务群组</div>
+      <div class="flex flex-wrap gap-2">
+        <span class="tag-badge text-xs">家具</span>
+        <span class="tag-badge text-xs">非金属容器</span>
+        <span class="tag-badge text-xs">镜子画框</span>
+        <span class="tag-badge text-xs">竹藤草制品</span>
+        <span class="tag-badge text-xs">工艺品</span>
+        <span class="tag-badge text-xs">非金属牌照</span>
+        <span class="tag-badge text-xs">家具部件</span>
+        <span class="tag-badge text-xs">垫枕</span>
+        <span class="tag-badge text-xs">非金属紧固件</span>
+      </div>
+    </div>
 
-<!-- Footer -->
-<div class="footer">
-  <p>39139@胜天半子</p>
-  <p style="margin-top:4px;">数据来源：企查查 · 天眼查 · 启信宝 · 企业官网</p>
-</div>
+    <!-- Qualifications -->
+    <div class="glass-card p-6 col-span-2 reveal-item">
+      <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+        <i class="fas fa-id-card text-orange-400"></i> 资质认证
+      </h3>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-stone-800/40 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-leaf text-green-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">森林认证</div>
+            <div class="text-xs text-stone-500">2024年获证</div>
+          </div>
+        </div>
+        <div class="bg-stone-800/40 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-star text-amber-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">A级纳税人</div>
+            <div class="text-xs text-stone-500">2024年度</div>
+          </div>
+        </div>
+        <div class="bg-stone-800/40 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-broadcast-tower text-blue-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">增值电信许可</div>
+            <div class="text-xs text-stone-500">第二类</div>
+          </div>
+        </div>
+        <div class="bg-stone-800/40 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-passport text-purple-400 text-sm"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">进出口资质</div>
+            <div class="text-xs text-stone-500">货物+技术</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- IP Stats -->
+    <div class="glass-card p-6 reveal-item">
+      <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+        <i class="fas fa-brain text-amber-400 text-xs"></i> 知识产权
+      </h3>
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-stone-400">商标信息</span>
+          <span class="text-lg font-black text-amber-400">2</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-stone-400">资质证书</span>
+          <span class="text-lg font-black text-orange-400">2</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-stone-400">行政许可</span>
+          <span class="text-lg font-black text-yellow-500">4</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Credit -->
+    <div class="glass-card p-6 reveal-item">
+      <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+        <i class="fas fa-shield-alt text-green-400 text-xs"></i> 信用评价
+      </h3>
+      <div class="text-center mb-3">
+        <div class="text-3xl font-black text-green-400">832</div>
+        <div class="text-xs text-stone-500">水滴信用分 · 优秀</div>
+      </div>
+      <div class="flex flex-wrap gap-2 justify-center">
+        <span class="tag-badge text-xs"><i class="fas fa-check-circle"></i> 存续</span>
+        <span class="tag-badge text-xs"><i class="fas fa-file-invoice"></i> A级</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+  <div class="reveal-item mb-16">
+    <span class="tag-badge mb-4"><i class="fas fa-users"></i> 核心团队</span>
+    <h2 class="text-3xl md:text-5xl font-black gradient-text mt-4">管理团队</h2>
+    <p class="text-stone-500 mt-3 text-lg">精干团队 · 高效运营</p>
+  </div>
+
+  <div class="bento-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="glass-card p-6 text-center reveal-item">
+      <div class="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-crown text-amber-400 text-2xl"></i>
+      </div>
+      <div class="font-bold text-white text-lg">蔡永南</div>
+      <div class="text-xs text-amber-400 mt-1">法定代表人 · 实控人</div>
+      <div class="text-xs text-stone-500 mt-1">持股88% · 董事 · 经理 · 财务负责人</div>
+      <div class="mt-3 pt-3 border-t border-stone-700/50 text-xs text-stone-500">
+        关联4家企业 · 10位商业合作伙伴
+      </div>
+    </div>
+    <div class="glass-card p-6 text-center reveal-item">
+      <div class="w-16 h-16 rounded-full bg-orange-500/10 flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-user text-orange-400 text-2xl"></i>
+      </div>
+      <div class="font-bold text-white text-lg">王华煌</div>
+      <div class="text-xs text-orange-400 mt-1">股东</div>
+      <div class="text-xs text-stone-500 mt-1">持股12%</div>
+      <div class="mt-3 pt-3 border-t border-stone-700/50 text-xs text-stone-500">
+        同时持股泉州成志家具20%
+      </div>
+    </div>
+    <div class="glass-card p-6 text-center reveal-item">
+      <div class="w-16 h-16 rounded-full bg-yellow-500/10 flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-user-tie text-yellow-500 text-2xl"></i>
+      </div>
+      <div class="font-bold text-white text-lg">周毛初</div>
+      <div class="text-xs text-yellow-500 mt-1">高管</div>
+      <div class="text-xs text-stone-500 mt-1">公司主要人员</div>
+      <div class="mt-3 pt-3 border-t border-stone-700/50 text-xs text-stone-500">
+        同时任职泉州成志家具
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative py-16 px-6 md:px-12 border-t border-stone-800/50">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <i class="fas fa-couch text-amber-400"></i>
+          </div>
+          <div>
+            <div class="font-bold text-white text-lg">志全家具</div>
+            <div class="text-xs text-stone-500">Zhiquan Furniture</div>
+          </div>
+        </div>
+        <p class="text-sm text-stone-500 leading-relaxed">泉州志全家具有限公司，深耕木质家居智造，拓展铁件工艺品，布局跨境电商，致力于打造闽南家居产业新标杆。</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-white mb-4">快速链接</h4>
+        <div class="space-y-2 text-sm text-stone-500">
+          <div><a href="#" class="hover:text-amber-400 transition">企业概况</a></div>
+          <div><a href="#" class="hover:text-amber-400 transition">核心业务</a></div>
+          <div><a href="#" class="hover:text-amber-400 transition">产能项目</a></div>
+          <div><a href="#" class="hover:text-amber-400 transition">品牌资产</a></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold text-white mb-4">联系方式</h4>
+        <div class="space-y-2 text-sm text-stone-500">
+          <div class="flex items-center gap-2"><i class="fas fa-phone text-amber-400/60 w-4 text-center"></i>181****1210</div>
+          <div class="flex items-center gap-2"><i class="fas fa-store text-amber-400/60 w-4 text-center"></i><a href="https://hengweijiaju.tmall.com" target="_blank" class="hover:text-amber-400 transition">恒威家居天猫店</a></div>
+          <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-amber-400/60 w-4 text-center"></i>福建省泉州市惠安县</div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-stone-800/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-stone-600">&copy; 2013-2026 泉州志全家具有限公司 版权所有</div>
+      <div class="text-sm font-bold text-stone-500">39139@胜天半子</div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+gsap.registerPlugin(ScrollTrigger);
+
+// Reveal animations
+gsap.utils.toArray('.reveal-item').forEach((el, i) => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1, y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        toggleActions: 'play none none none'
+      },
+      delay: i % 4 * 0.1
+    }
+  );
+});
+
+// Counter animation
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  const target = parseInt(counter.dataset.target);
+  ScrollTrigger.create({
+    trigger: counter,
+    start: 'top 85%',
+    onEnter: () => {
+      gsap.to(counter, {
+        duration: 2,
+        ease: 'power2.out',
+        onUpdate: function() {
+          counter.textContent = Math.round(this.progress() * target).toLocaleString();
+        }
+      });
+    },
+    once: true
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
+
+// Share bar animation
+document.querySelectorAll('.share-bar').forEach(bar => {
+  const width = bar.dataset.width;
+  ScrollTrigger.create({
+    trigger: bar,
+    start: 'top 90%',
+    onEnter: () => {
+      bar.style.width = width;
+    },
+    once: true
+  });
+});
+
+// Parallax orbs
+gsap.utils.toArray('.hero-orb').forEach(orb => {
+  gsap.to(orb, {
+    y: -60,
+    scrollTrigger: {
+      trigger: orb,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1
+    }
+  });
+});
 </script>
 </body>
 </html>
