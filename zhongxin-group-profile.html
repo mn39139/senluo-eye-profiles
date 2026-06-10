@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>福建忠信集团有限公司 - 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+:root{
+  --primary:#d4a017;--primary-light:#f0c040;--primary-dark:#b8860b;
+  --blue:#1e3a5f;--blue-light:#2c5282;--blue-dark:#0f2440;
+  --emerald:#10b981;--rose:#f43f5e;--cyan:#06b6d4;
+  --bg-dark:#070b14;--bg-card:rgba(15,23,42,0.78);
+  --border:rgba(212,160,23,0.15);--glow:rgba(212,160,23,0.18);
+  --text:#f1f5f9;--text-muted:#94a3b8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  background:var(--bg-dark);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%,rgba(212,160,23,0.06),transparent),
+    radial-gradient(ellipse 60% 40% at 80% 80%,rgba(30,58,95,0.1),transparent),
+    radial-gradient(ellipse 50% 50% at 50% 50%,rgba(212,160,23,0.03),transparent);
+}
+/* Hero */
+.hero{
+  position:relative;padding:60px 24px 40px;text-align:center;
+  background:linear-gradient(180deg,rgba(30,58,95,0.25) 0%,transparent 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(212,160,23,0.04) 60deg,transparent 120deg,rgba(30,58,95,0.06) 240deg,transparent 360deg);
+  animation:heroRotate 30s linear infinite;
+}
+@keyframes heroRotate{to{transform:rotate(360deg)}}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 18px;border-radius:999px;font-size:13px;font-weight:500;
+  background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.25);
+  color:var(--primary-light);margin-bottom:20px;
+  position:relative;z-index:1;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:900;
+  background:linear-gradient(135deg,#f0c040,#d4a017,#b8860b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  position:relative;z-index:1;line-height:1.3;
+}
+.hero-sub{
+  font-size:15px;color:var(--text-muted);margin-top:12px;
+  position:relative;z-index:1;max-width:700px;margin-left:auto;margin-right:auto;
+}
+.hero-stats{
+  display:flex;justify-content:center;gap:40px;margin-top:32px;
+  position:relative;z-index:1;flex-wrap:wrap;
+}
+.hero-stat{text-align:center;}
+.hero-stat .num{
+  font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-stat .label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+/* Bento Grid */
+.bento-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:minmax(180px,auto);gap:20px;
+  max-width:1400px;margin:0 auto;padding:0 24px 60px;
+}
+.span-2{grid-column:span 2;}.span-3{grid-column:span 3;}.span-4{grid-column:span 4;}
+.row-2{grid-row:span 2;}
+@media(max-width:1024px){
+  .bento-grid{grid-template-columns:repeat(2,1fr);}
+  .span-3,.span-4{grid-column:span 2;}
+}
+@media(max-width:640px){
+  .bento-grid{grid-template-columns:1fr;}
+  .span-2,.span-3,.span-4{grid-column:span 1;}
+}
+
+/* Card */
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  backdrop-filter:blur(12px);
+  position:relative;overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+  opacity:0;transform:translateY(30px);
+}
+.card.visible{opacity:1;transform:translateY(0);}
+.card:hover{
+  border-color:rgba(212,160,23,0.35);
+  box-shadow:0 0 30px rgba(212,160,23,0.08);
+  transform:translateY(-2px);
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,160,23,0.3),transparent);
+}
+.card-title{
+  font-size:14px;font-weight:700;color:var(--primary-light);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.card-title i{font-size:12px;opacity:.7;}
+
+/* Info Row */
+.info-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid rgba(212,160,23,0.06);
+  font-size:13px;
+}
+.info-row:last-child{border-bottom:none;}
+.info-row .k{color:var(--text-muted);}
+.info-row .v{color:var(--text);font-weight:500;text-align:right;max-width:60%;}
+
+/* Big Number */
+.big-num{
+  font-size:clamp(2rem,4vw,3rem);font-weight:900;
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1.1;
+}
+.big-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+/* Tag */
+.tag{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 12px;border-radius:999px;font-size:11px;font-weight:500;
+  background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.2);
+  color:var(--primary-light);
+}
+.tag-blue{background:rgba(30,58,95,0.3);border-color:rgba(44,82,130,0.4);color:var(--blue-light);}
+.tag-emerald{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:var(--emerald);}
+.tag-rose{background:rgba(244,63,94,0.1);border-color:rgba(244,63,94,0.2);color:var(--rose);}
+.tag-cyan{background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.2);color:var(--cyan);}
+
+/* Sub Card */
+.sub-card{
+  background:rgba(30,58,95,0.15);border:1px solid rgba(212,160,23,0.08);
+  border-radius:12px;padding:16px;margin-bottom:12px;
+  transition:border-color .3s;
+}
+.sub-card:hover{border-color:rgba(212,160,23,0.25);}
+.sub-card:last-child{margin-bottom:0;}
+.sub-card h4{font-size:14px;font-weight:700;color:var(--primary-light);margin-bottom:8px;}
+.sub-card p{font-size:12px;color:var(--text-muted);line-height:1.6;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:24px;}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;
+  background:linear-gradient(180deg,var(--primary),rgba(212,160,23,0.1));
+}
+.timeline-item{position:relative;margin-bottom:20px;}
+.timeline-item:last-child{margin-bottom:0;}
+.timeline-item::before{
+  content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;
+  border-radius:50%;background:var(--primary);
+  box-shadow:0 0 8px rgba(212,160,23,0.4);
+}
+.timeline-item .year{font-size:13px;font-weight:700;color:var(--primary-light);}
+.timeline-item .desc{font-size:12px;color:var(--text-muted);margin-top:2px;line-height:1.5;}
+
+/* Ecosystem Map */
+.eco-node{
+  display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+  padding:14px 18px;border-radius:12px;text-align:center;
+  background:rgba(30,58,95,0.2);border:1px solid rgba(212,160,23,0.12);
+  transition:all .3s;min-width:120px;
+}
+.eco-node:hover{
+  border-color:rgba(212,160,23,0.4);
+  box-shadow:0 0 20px rgba(212,160,23,0.1);
+  transform:translateY(-3px);
+}
+.eco-node i{font-size:20px;color:var(--primary);}
+.eco-node .name{font-size:12px;font-weight:600;color:var(--text);}
+.eco-node .role{font-size:10px;color:var(--text-muted);}
+.eco-center{
+  background:linear-gradient(135deg,rgba(212,160,23,0.15),rgba(30,58,95,0.2));
+  border-color:rgba(212,160,23,0.3);
+}
+.eco-center i{color:var(--primary-light);font-size:24px;}
+.eco-center .name{color:var(--primary-light);font-size:14px;}
+
+/* Risk Bar */
+.risk-bar{
+  display:flex;align-items:center;gap:8px;margin-bottom:10px;
+}
+.risk-bar .bar-bg{
+  flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,0.06);
+  overflow:hidden;
+}
+.risk-bar .bar-fill{height:100%;border-radius:3px;transition:width 1.5s ease;}
+.risk-bar .bar-label{font-size:11px;color:var(--text-muted);min-width:60px;}
+.risk-bar .bar-val{font-size:12px;font-weight:600;min-width:30px;text-align:right;}
+
+/* Pulse */
+.pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--emerald);
+  display:inline-block;animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+
+/* Footer */
+.footer{
+  text-align:center;padding:40px 24px;
+  border-top:1px solid var(--border);
+  color:var(--text-muted);font-size:12px;
+}
+.footer span{color:var(--primary);font-weight:700;}
+
+/* Chart Container */
+.chart-wrap{position:relative;width:100%;height:220px;}
+.chart-wrap-sm{position:relative;width:100%;height:180px;}
+
+/* Scroll anim */
+.card{transition:opacity .6s ease,transform .6s ease;}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge"><span class="pulse"></span> 存续在营</div>
+  <h1>福建忠信集团有限公司</h1>
+  <p class="hero-sub">多元化投资控股平台 · 房地产 + 金融服务 + 信息技术 · 泉州丰泽区</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">7,100<small style="font-size:.5em">万</small></div><div class="label">注册资本</div></div>
+    <div class="hero-stat"><div class="num">7,100<small style="font-size:.5em">万</small></div><div class="label">实缴资本</div></div>
+    <div class="hero-stat"><div class="num">4</div><div class="label">对外投资</div></div>
+    <div class="hero-stat"><div class="num">11</div><div class="label">集团成员</div></div>
+    <div class="hero-stat"><div class="num">815</div><div class="label">信用评分</div></div>
+  </div>
+</section>
+
+<!-- Bento Grid -->
+<div class="bento-grid">
+
+  <!-- 1. 工商档案 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-building-columns"></i> 工商档案</div>
+    <div class="info-row"><span class="k">统一信用代码</span><span class="v" style="font-family:monospace;letter-spacing:.5px;">9135050007504709X8</span></div>
+    <div class="info-row"><span class="k">法定代表人</span><span class="v">欧阳国煌</span></div>
+    <div class="info-row"><span class="k">成立日期</span><span class="v">2013-08-26</span></div>
+    <div class="info-row"><span class="k">企业类型</span><span class="v">有限责任公司（自然人投资或控股）</span></div>
+    <div class="info-row"><span class="k">注册资本</span><span class="v">7,100万元（实缴7,100万元）</span></div>
+    <div class="info-row"><span class="k">曾用名</span><span class="v">福建忠信实业有限公司</span></div>
+    <div class="info-row"><span class="k">英文名</span><span class="v">Fujian Zhongxin Group Co., Ltd.</span></div>
+    <div class="info-row"><span class="k">注册地址</span><span class="v">泉州市丰泽区北峰工业区北清路380号</span></div>
+    <div class="info-row"><span class="k">所属行业</span><span class="v">软件和信息技术服务业</span></div>
+    <div class="info-row"><span class="k">经营状态</span><span class="v"><span class="tag tag-emerald"><span class="pulse"></span> 存续</span></span></div>
+  </div>
+
+  <!-- 2. 股权结构 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-sitemap"></i> 股权结构</div>
+    <div class="chart-wrap-sm"><canvas id="chartEquity"></canvas></div>
+    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+      <div class="sub-card" style="flex:1;min-width:140px;">
+        <h4><i class="fas fa-crown" style="color:var(--primary);margin-right:4px;"></i> 欧阳国煌</h4>
+        <p>持股 95% · 实缴6,745万<br>大股东 / 实际控制人 / 最终受益人<br>关联 <strong style="color:var(--primary-light)">20</strong> 家企业 · 职务：董事</p>
+      </div>
+      <div class="sub-card" style="flex:1;min-width:140px;">
+        <h4><i class="fas fa-user" style="color:var(--cyan);margin-right:4px;"></i> 欧阳忠琦</h4>
+        <p>持股 5% · 实缴355万<br>首次持股 2019-12-06<br>关联 <strong style="color:var(--cyan)">6</strong> 家企业</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 经营范围 (span-3) -->
+  <div class="card span-3">
+    <div class="card-title"><i class="fas fa-briefcase"></i> 经营范围</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+      <span class="tag"><i class="fas fa-laptop-code"></i> 信息系统集成</span>
+      <span class="tag tag-blue"><i class="fas fa-handshake"></i> 贸易代理</span>
+      <span class="tag tag-emerald"><i class="fas fa-building"></i> 房地产投资</span>
+      <span class="tag tag-cyan"><i class="fas fa-hard-hat"></i> 建筑业投资</span>
+      <span class="tag tag-rose"><i class="fas fa-chart-line"></i> 投资管理</span>
+      <span class="tag"><i class="fas fa-random"></i> 企业重组并购</span>
+      <span class="tag tag-blue"><i class="fas fa-coins"></i> 投资咨询</span>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+      信息系统集成服务；贸易代理（不含危险化学品等需经前置许可的项目）；对房地产业、建筑业等国家法律、法规未禁止且无需经过前置许可的行业及项目投资并且进行投资管理；企业重组及并购咨询；投资咨询（不含证券、期货投资咨询、金融咨询等需经前置许可的项目）。
+    </p>
+  </div>
+
+  <!-- 4. 核心指标 (span-1) -->
+  <div class="card span-1">
+    <div class="card-title"><i class="fas fa-chart-pie"></i> 核心指标</div>
+    <div style="margin-bottom:16px;">
+      <div class="big-num">7,100<small style="font-size:.4em">万</small></div>
+      <div class="big-label">注册资本（2025年减资2,900万）</div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div class="big-num" style="font-size:1.8rem;">100<small style="font-size:.5em">%</small></div>
+      <div class="big-label">实缴率 · 资本充实</div>
+    </div>
+    <div>
+      <div class="big-num" style="font-size:1.8rem;">0</div>
+      <div class="big-label">自身风险 · 信用优良</div>
+    </div>
+  </div>
+
+  <!-- 5. 集团生态版图 (span-4) -->
+  <div class="card span-4">
+    <div class="card-title"><i class="fas fa-network-wired"></i> 集团生态版图 · 福建忠信</div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;">
+      <!-- Center -->
+      <div class="eco-node eco-center">
+        <i class="fas fa-landmark"></i>
+        <div class="name">福建忠信集团有限公司</div>
+        <div class="role">控股母公司 · 7,100万</div>
+      </div>
+      <i class="fas fa-arrows-left-right" style="color:var(--primary);opacity:.4;"></i>
+      <!-- Row of subsidiaries -->
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <div class="eco-node">
+          <i class="fas fa-coins"></i>
+          <div class="name">忠信民间资本</div>
+          <div class="role">96%控股 · 10,000万</div>
+        </div>
+        <div class="eco-node">
+          <i class="fas fa-university"></i>
+          <div class="name">忠信金融服务</div>
+          <div class="role">100%控股 · 500万</div>
+        </div>
+        <div class="eco-node">
+          <i class="fas fa-city"></i>
+          <div class="name">万户置业</div>
+          <div class="role">100%控股 · 1,000万</div>
+        </div>
+        <div class="eco-node">
+          <i class="fas fa-gem"></i>
+          <div class="name">塔前陶瓷工艺</div>
+          <div class="role">欧阳国煌100% · 100万</div>
+        </div>
+        <div class="eco-node" style="opacity:.5;">
+          <i class="fas fa-home"></i>
+          <div class="name">裕丰投资</div>
+          <div class="role">67.5% · 已注销</div>
+        </div>
+      </div>
+    </div>
+    <!-- Extended network -->
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px;"><i class="fas fa-link" style="margin-right:4px;"></i> 实控人欧阳国煌关联网络（20家）</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="tag tag-blue">福建津汇房地产 <small>·董事关联</small></span>
+        <span class="tag tag-blue">碧桂园海景房产 <small>·董事关联</small></span>
+        <span class="tag">泉州春雨咨询 <small>·家族关联</small></span>
+        <span class="tag tag-cyan">厦门兴湖盈满电商 <small>·家族关联</small></span>
+        <span class="tag tag-cyan">厦门碁石网络 <small>·家族关联</small></span>
+        <span class="tag tag-emerald">福建仟家置业 <small>·家族关联</small></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 投资版图 (span-2, row-2) -->
+  <div class="card span-2 row-2">
+    <div class="card-title"><i class="fas fa-chart-bar"></i> 投资版图 · 资本分布</div>
+    <div class="chart-wrap"><canvas id="chartInvest"></canvas></div>
+    <div style="margin-top:12px;">
+      <div class="info-row"><span class="k">控股总资本</span><span class="v" style="color:var(--primary-light);font-weight:700;">≈ 1.76 亿元</span></div>
+      <div class="info-row"><span class="k">核心赛道</span><span class="v">金融 + 房地产</span></div>
+      <div class="info-row"><span class="k">金融牌照</span><span class="v"><span class="tag tag-emerald">民间资本管理</span> <span class="tag tag-blue">金融服务</span></span></div>
+    </div>
+  </div>
+
+  <!-- 7. 子公司详情 (span-2, row-2) -->
+  <div class="card span-2 row-2">
+    <div class="card-title"><i class="fas fa-cubes"></i> 核心子公司</div>
+    <div class="sub-card">
+      <h4><i class="fas fa-coins" style="color:var(--primary);margin-right:4px;"></i> 泉州市忠信民间资本管理股份有限公司</h4>
+      <p>
+        <span class="tag tag-emerald" style="margin-bottom:6px;">96%控股</span>
+        <span class="tag" style="margin-bottom:6px;">注册资本1亿</span><br>
+        法人：杨峰 · 成立：2013-10-28<br>
+        丰泽区范围内资本投资咨询、资本管理、项目投资<br>
+        地址：泉州市丰泽区建行大厦18楼
+      </p>
+    </div>
+    <div class="sub-card">
+      <h4><i class="fas fa-university" style="color:var(--cyan);margin-right:4px;"></i> 泉州市忠信金融服务有限公司</h4>
+      <p>
+        <span class="tag tag-cyan" style="margin-bottom:6px;">100%控股</span>
+        <span class="tag tag-blue" style="margin-bottom:6px;">500万</span><br>
+        法人：杨峰 · 成立：2014-09-05<br>
+        市金融局批准区域内从事金融服务
+      </p>
+    </div>
+    <div class="sub-card">
+      <h4><i class="fas fa-city" style="color:var(--blue-light);margin-right:4px;"></i> 福建万户置业有限公司</h4>
+      <p>
+        <span class="tag tag-blue" style="margin-bottom:6px;">100%控股</span>
+        <span class="tag" style="margin-bottom:6px;">1,000万</span><br>
+        法人：王秋莉 · 成立：2016-04-28 · 房地产业
+      </p>
+    </div>
+  </div>
+
+  <!-- 8. 业务矩阵 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-th-large"></i> 业务矩阵</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:rgba(212,160,23,0.08);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-building" style="font-size:24px;color:var(--primary);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--primary-light);">房地产投资</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">万户置业 · 津汇房产<br>碧桂园海景 · 仟家置业</div>
+      </div>
+      <div style="background:rgba(30,58,95,0.2);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-hand-holding-usd" style="font-size:24px;color:var(--blue-light);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--blue-light);">金融服务</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">民间资本管理1亿<br>金融服务500万</div>
+      </div>
+      <div style="background:rgba(6,182,212,0.08);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-laptop-code" style="font-size:24px;color:var(--cyan);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--cyan);">信息技术</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">信息系统集成服务<br>贸易代理</div>
+      </div>
+      <div style="background:rgba(16,185,129,0.08);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-gem" style="font-size:24px;color:var(--emerald);margin-bottom:8px;"></i>
+        <div style="font-size:14px;font-weight:700;color:var(--emerald);">工艺品制造</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">塔前陶瓷工艺<br>1992年创立 · 6人</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 风险雷达 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-shield-alt"></i> 风险扫描</div>
+    <div class="chart-wrap-sm"><canvas id="chartRisk"></canvas></div>
+    <div style="margin-top:12px;">
+      <div class="risk-bar">
+        <span class="bar-label">自身风险</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:0%;background:var(--emerald);"></div></div>
+        <span class="bar-val" style="color:var(--emerald);">0</span>
+      </div>
+      <div class="risk-bar">
+        <span class="bar-label">周边风险</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:40%;background:var(--primary);"></div></div>
+        <span class="bar-val" style="color:var(--primary);">4</span>
+      </div>
+      <div class="risk-bar">
+        <span class="bar-label">历史风险</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:10%;background:var(--primary);"></div></div>
+        <span class="bar-val" style="color:var(--primary);">1</span>
+      </div>
+      <div class="risk-bar">
+        <span class="bar-label">预警提醒</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:60%;background:var(--rose);"></div></div>
+        <span class="bar-val" style="color:var(--rose);">21</span>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:var(--text-muted);">
+      <i class="fas fa-exclamation-triangle" style="color:var(--primary);"></i> 对外投资中有股权冻结警示(2条) · 历史股权出质(1条)
+    </div>
+  </div>
+
+  <!-- 10. 发展历程 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-clock"></i> 发展历程</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">1992</div>
+        <div class="desc">欧阳国煌创立泉州市丰泽塔前陶瓷工艺厂，实业起步</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2011</div>
+        <div class="desc">投资福建裕丰投资有限公司（房地产业），拓展投资版图</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2013.08</div>
+        <div class="desc">成立福建忠信实业有限公司，注册资本1亿元</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2013.10</div>
+        <div class="desc">发起设立泉州市忠信民间资本管理股份有限公司（1亿元），布局民间资本管理</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2014</div>
+        <div class="desc">设立泉州市忠信金融服务有限公司，获取金融服务牌照</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2016</div>
+        <div class="desc">投资设立福建万户置业有限公司，深耕房地产赛道</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2019</div>
+        <div class="desc">欧阳忠琦入股5%，家族资本格局形成</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">更名</div>
+        <div class="desc">福建忠信实业有限公司 → 福建忠信集团有限公司，集团化运营</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2025</div>
+        <div class="desc">注册资本从1亿元减至7,100万元，优化资本结构</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2026</div>
+        <div class="desc">塔前陶瓷工艺厂改制为有限公司，集团持续进化</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. 关键人物 (span-2) -->
+  <div class="card span-2">
+    <div class="card-title"><i class="fas fa-users"></i> 关键人物网络</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="sub-card">
+        <h4><i class="fas fa-crown" style="color:var(--primary);margin-right:4px;"></i> 欧阳国煌</h4>
+        <p>
+          <span class="tag" style="margin-bottom:4px;">实际控制人</span>
+          <span class="tag tag-emerald" style="margin-bottom:4px;">最终受益人</span><br>
+          集团董事长 · 持股95%<br>
+          关联20家企业 · 实缴6,745万<br>
+          商业版图：房地产+金融+陶瓷+IT
+        </p>
+      </div>
+      <div class="sub-card">
+        <h4><i class="fas fa-user-tie" style="color:var(--cyan);margin-right:4px;"></i> 杨峰</h4>
+        <p>
+          <span class="tag tag-blue" style="margin-bottom:4px;">职业经理人</span><br>
+          忠信民间资本 法人/经理<br>
+          忠信金融服务 法人/执行董事<br>
+          津汇房产 董事 · 碧桂园海景 董事
+        </p>
+      </div>
+      <div class="sub-card">
+        <h4><i class="fas fa-user" style="color:var(--emerald);margin-right:4px;"></i> 欧阳忠琦</h4>
+        <p>
+          <span class="tag tag-cyan" style="margin-bottom:4px;">家族成员</span><br>
+          持股5% · 忠信民间资本监事<br>
+          关联6家企业 · 厦门电商/投资布局
+        </p>
+      </div>
+      <div class="sub-card">
+        <h4><i class="fas fa-user-cog" style="color:var(--blue-light);margin-right:4px;"></i> 黄珍玲</h4>
+        <p>
+          <span class="tag tag-blue" style="margin-bottom:4px;">核心高管</span><br>
+          忠信民间资本 董事<br>
+          关联12家企业 · 财务负责人
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. 战略洞察 (span-4) -->
+  <div class="card span-4">
+    <div class="card-title"><i class="fas fa-lightbulb"></i> 战略洞察</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+      <div style="background:linear-gradient(135deg,rgba(212,160,23,0.08),rgba(30,58,95,0.12));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--primary-light);margin-bottom:8px;"><i class="fas fa-chess-king" style="margin-right:6px;"></i>资本运作型集团</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          忠信集团本质为投资控股平台，自身不直接从事生产经营，通过资本纽带控制房地产、金融、信息技术、工艺品制造四大板块，形成"以钱生钱"的资本运作模式。
+        </p>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(30,58,95,0.15),rgba(6,182,212,0.06));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--cyan);margin-bottom:8px;"><i class="fas fa-balance-scale" style="margin-right:6px;"></i>减资信号</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          2025年注册资本从1亿减至7,100万，减少2,900万。减资可能反映：战略收缩、资本回报股东、或调整投资节奏。需关注后续资本动向。
+        </p>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(244,63,94,0.06),rgba(212,160,23,0.06));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--rose);margin-bottom:8px;"><i class="fas fa-exclamation-circle" style="margin-right:6px;"></i>风险关注</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          对外投资中存在股权冻结警示（2条），忠信民间资本涉及司法案件12条、或有债务债权12条。民间资本管理业务风险敞口需持续监控。
+        </p>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(212,160,23,0.06));border-radius:12px;padding:20px;">
+        <div style="font-size:15px;font-weight:700;color:var(--emerald);margin-bottom:8px;"><i class="fas fa-route" style="margin-right:6px;"></i>家族企业特征</div>
+        <p style="font-size:12px;color:var(--text-muted);line-height:1.7;">
+          欧阳国煌95%绝对控股，欧阳忠琦5%参股，实控人/最终受益人合一，决策链极短。关联网络覆盖房地产（津汇/碧桂园/万户）、金融、电商等多元赛道。
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>数据来源：企查查 · 天眼查 · 水滴信用 · 启信宝 · 爱企查 &nbsp;|&nbsp; 生成日期：2026-06-10</p>
+  <p style="margin-top:8px;">39139@胜天半子</p>
+</div>
+
+<script>
+// Scroll animation
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+cards.forEach(c=>observer.observe(c));
+
+// Chart 1: Equity Structure (Doughnut)
+const ctx1=document.getElementById('chartEquity').getContext('2d');
+new Chart(ctx1,{
+  type:'doughnut',
+  data:{
+    labels:['欧阳国煌 95%','欧阳忠琦 5%'],
+    datasets:[{
+      data:[95,5],
+      backgroundColor:['rgba(212,160,23,0.7)','rgba(6,182,212,0.5)'],
+      borderWidth:0,hoverOffset:8
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,cutout:'60%',
+    plugins:{
+      legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:11},padding:12}},
+      tooltip:{backgroundColor:'rgba(15,23,42,0.9)',titleColor:'#f1f5f9',bodyColor:'#94a3b8',borderColor:'rgba(212,160,23,0.3)',borderWidth:1}
+    }
+  }
+});
+
+// Chart 2: Investment Portfolio (Bar)
+const ctx2=document.getElementById('chartInvest').getContext('2d');
+new Chart(ctx2,{
+  type:'bar',
+  data:{
+    labels:['忠信民间资本','万户置业','忠信金融服务','塔前陶瓷','裕丰投资(注销)'],
+    datasets:[{
+      label:'注册资本(万元)',
+      data:[10000,1000,500,100,1000],
+      backgroundColor:[
+        'rgba(212,160,23,0.6)',
+        'rgba(30,58,95,0.6)',
+        'rgba(6,182,212,0.5)',
+        'rgba(16,185,129,0.5)',
+        'rgba(100,116,139,0.3)'
+      ],
+      borderColor:[
+        'rgba(212,160,23,0.9)',
+        'rgba(44,82,130,0.9)',
+        'rgba(6,182,212,0.8)',
+        'rgba(16,185,129,0.8)',
+        'rgba(100,116,139,0.5)'
+      ],
+      borderWidth:1,borderRadius:6
+    }]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(15,23,42,0.9)',titleColor:'#f1f5f9',bodyColor:'#94a3b8',borderColor:'rgba(212,160,23,0.3)',borderWidth:1,callbacks:{label:c=>c.raw+'万元'}}},
+    scales:{
+      x:{beginAtZero:true,grid:{color:'rgba(212,160,23,0.06)'},ticks:{color:'#94a3b8',font:{size:10},callback:v=>v+'万'}},
+      y:{grid:{display:false},ticks:{color:'#94a3b8',font:{size:10}}}
+    }
+  }
+});
+
+// Chart 3: Risk Radar
+const ctx3=document.getElementById('chartRisk').getContext('2d');
+new Chart(ctx3,{
+  type:'radar',
+  data:{
+    labels:['自身风险','周边风险','历史风险','预警提醒','司法案件','经营异常'],
+    datasets:[{
+      label:'风险指数',
+      data:[0,4,1,21,0,0],
+      backgroundColor:'rgba(212,160,23,0.15)',
+      borderColor:'rgba(212,160,23,0.7)',
+      borderWidth:2,
+      pointBackgroundColor:'rgba(212,160,23,0.9)',
+      pointBorderColor:'#fff',
+      pointBorderWidth:1,
+      pointRadius:4
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      r:{
+        beginAtZero:true,
+        grid:{color:'rgba(212,160,23,0.08)'},
+        angleLines:{color:'rgba(212,160,23,0.08)'},
+        pointLabels:{color:'#94a3b8',font:{size:10}},
+        ticks:{display:false}
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

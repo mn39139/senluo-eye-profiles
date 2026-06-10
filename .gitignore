@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.DS_Store
+.gh-config/
+synced_companies.json
+deploy_info.json
+auto_sync_itable.py
+debug_sync.py
+test_parse.py
+deploy_to_netlify.py
+deploy_github_pages.py
+start_tunnel.py
+get_unionid.py
+dingtalk_itable_config.json

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州制造业专精特新企业全景图谱</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --primary: #dc2626;
+  --primary-light: #ef4444;
+  --primary-dark: #b91c1c;
+  --accent: #f59e0b;
+  --accent2: #d97706;
+  --gold: #eab308;
+  --info: #3b82f6;
+  --bg-dark: #0a0a0a;
+  --bg-card: rgba(23, 23, 23, 0.85);
+  --border: rgba(220, 38, 38, 0.12);
+  --glow: rgba(239, 68, 68, 0.2);
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans SC',sans-serif; background:var(--bg-dark); color:var(--text); overflow-x:hidden; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--primary); border-radius:3px; }
+
+/* Hero */
+.hero { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px 20px; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 30% 20%, rgba(220,38,38,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(245,158,11,0.06) 0%, transparent 60%); }
+.hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size:60px 60px; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; padding:8px 20px; border-radius:100px; background:rgba(220,38,38,0.1); border:1px solid rgba(220,38,38,0.2); color:var(--primary-light); font-size:13px; font-weight:600; margin-bottom:24px; }
+.hero-title { font-size:clamp(2.5rem,6vw,5rem); font-weight:900; line-height:1.1; margin-bottom:16px; }
+.hero-title .highlight { background:linear-gradient(135deg, var(--primary-light), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-sub { font-size:clamp(1rem,2vw,1.3rem); color:var(--text-muted); max-width:700px; line-height:1.6; margin-bottom:40px; }
+.hero-stats { display:flex; gap:40px; flex-wrap:wrap; justify-content:center; }
+.hero-stat { text-align:center; }
+.hero-stat-value { font-size:3rem; font-weight:900; line-height:1; }
+.hero-stat-label { font-size:12px; color:var(--text-muted); margin-top:4px; letter-spacing:1px; }
+
+/* Bento Grid */
+.bento-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:minmax(180px,auto); gap:20px; max-width:1400px; margin:0 auto; padding:0 24px; }
+.span-2 { grid-column:span 2; }
+.span-3 { grid-column:span 3; }
+.span-4 { grid-column:span 4; }
+.row-2 { grid-row:span 2; }
+@media(max-width:1024px) { .bento-grid { grid-template-columns:repeat(2,1fr); } .span-3,.span-4 { grid-column:span 2; } }
+@media(max-width:640px) { .bento-grid { grid-template-columns:1fr; } .span-2,.span-3,.span-4 { grid-column:span 1; } }
+
+/* Glass Card */
+.glass-card { background:linear-gradient(135deg, rgba(23,23,23,0.9), rgba(23,23,23,0.5)); backdrop-filter:blur(20px); border:1px solid var(--border); border-radius:20px; padding:28px; position:relative; overflow:hidden; transition:all 0.4s cubic-bezier(0.4,0,0.2,1); }
+.glass-card:hover { border-color:rgba(220,38,38,0.25); transform:translateY(-2px); box-shadow:0 8px 40px rgba(220,38,38,0.08); }
+.glass-card .card-glow { position:absolute; width:150px; height:150px; border-radius:50%; filter:blur(60px); opacity:0.08; pointer-events:none; }
+.card-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.card-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:16px; }
+.card-title { font-size:15px; font-weight:700; }
+.card-subtitle { font-size:11px; color:var(--text-muted); }
+
+/* Section */
+.section { padding:80px 0; }
+.section-header { text-align:center; margin-bottom:48px; padding:0 24px; }
+.section-tag { display:inline-flex; align-items:center; gap:6px; padding:6px 16px; border-radius:100px; background:rgba(220,38,38,0.08); border:1px solid rgba(220,38,38,0.15); color:var(--primary-light); font-size:12px; font-weight:600; margin-bottom:16px; }
+.section-title { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; margin-bottom:12px; }
+.section-desc { font-size:15px; color:var(--text-muted); max-width:600px; margin:0 auto; line-height:1.6; }
+
+/* Badge */
+.badge { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:100px; font-size:11px; font-weight:600; }
+.badge-red { background:rgba(220,38,38,0.1); color:#ef4444; border:1px solid rgba(220,38,38,0.2); }
+.badge-gold { background:rgba(234,179,8,0.1); color:#eab308; border:1px solid rgba(234,179,8,0.2); }
+.badge-blue { background:rgba(59,130,246,0.1); color:#3b82f6; border:1px solid rgba(59,130,246,0.2); }
+.badge-green { background:rgba(34,197,94,0.1); color:#22c55e; border:1px solid rgba(34,197,94,0.2); }
+.badge-gray { background:rgba(161,161,170,0.1); color:#a1a1aa; border:1px solid rgba(161,161,170,0.2); }
+
+/* Enterprise Card */
+.ent-card { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:14px; padding:16px; transition:all 0.2s; cursor:pointer; }
+.ent-card:hover { border-color:rgba(220,38,38,0.2); background:rgba(220,38,38,0.02); }
+.ent-rank { width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0; }
+.ent-rank.top3 { background:linear-gradient(135deg, var(--primary), var(--accent)); color:white; }
+.ent-rank.top10 { background:rgba(234,179,8,0.15); color:#eab308; border:1px solid rgba(234,179,8,0.2); }
+.ent-rank.normal { background:rgba(255,255,255,0.05); color:var(--text-muted); }
+.ent-name { font-size:14px; font-weight:600; line-height:1.3; }
+.ent-info { font-size:11px; color:var(--text-muted); margin-top:4px; }
+.ent-tags { display:flex; gap:4px; flex-wrap:wrap; margin-top:8px; }
+
+/* Table */
+.data-table { width:100%; border-collapse:collapse; font-size:13px; }
+.data-table th { text-align:left; padding:10px 12px; color:var(--text-muted); font-weight:600; font-size:11px; letter-spacing:1px; border-bottom:1px solid var(--border); }
+.data-table td { padding:10px 12px; border-bottom:1px solid rgba(255,255,255,0.03); }
+.data-table tr:hover td { background:rgba(220,38,38,0.02); }
+
+/* Chart */
+.chart-container { position:relative; height:240px; }
+
+/* Stat */
+.big-stat { font-size:3.5rem; font-weight:900; line-height:1; }
+.big-stat-label { font-size:13px; color:var(--text-muted); margin-top:4px; }
+
+/* Progress bar */
+.progress-bar { height:8px; background:rgba(255,255,255,0.05); border-radius:4px; overflow:hidden; }
+.progress-fill { height:100%; border-radius:4px; transition:width 1s ease; }
+
+/* Filter */
+.filter-bar { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
+.filter-btn { padding:6px 14px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; border:1px solid var(--border); background:transparent; color:var(--text-muted); transition:all 0.2s; font-family:inherit; }
+.filter-btn.active { background:var(--primary); color:white; border-color:var(--primary); }
+.filter-btn:hover:not(.active) { border-color:var(--primary); color:var(--primary-light); }
+
+/* Search */
+.search-box { width:100%; padding:10px 16px 10px 40px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; color:var(--text); font-size:14px; font-family:inherit; outline:none; transition:border-color 0.2s; }
+.search-box:focus { border-color:var(--primary); }
+.search-wrap { position:relative; margin-bottom:16px; }
+.search-wrap i { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:14px; }
+
+/* Footer */
+.footer { text-align:center; padding:40px 20px; border-top:1px solid var(--border); color:var(--text-muted); font-size:13px; }
+.footer .credit { color:var(--primary-light); font-weight:700; }
+
+/* Animations */
+.fade-up { opacity:0; transform:translateY(30px); transition:all 0.6s cubic-bezier(0.4,0,0.2,1); }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-badge"><i class="fas fa-fire"></i> 专精特新 · 制造强市</div>
+    <h1 class="hero-title">泉州制造业<br><span class="highlight">专精特新</span>企业全景图谱</h1>
+    <p class="hero-sub">传承弘扬"晋江经验"，泉州以1016家省级专精特新中小企业、49家国家级"小巨人"领跑全省，构建万亿级产业链生态圈</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value" style="color:var(--primary-light);">49</div>
+        <div class="hero-stat-label">国家级"小巨人"</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" style="color:var(--accent);">19</div>
+        <div class="hero-stat-label">重点"小巨人"</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" style="color:var(--info);">1,016</div>
+        <div class="hero-stat-label">省级专精特新</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" style="color:var(--gold);">1,869</div>
+        <div class="hero-stat-label">创新型中小企业</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 核心数据看板 -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-tag"><i class="fas fa-chart-line"></i> 核心数据</div>
+    <h2 class="section-title">专精特新培育<span style="color:var(--primary-light);">全景数据</span></h2>
+    <p class="section-desc">截至2026年2月，泉州专精特新企业数量持续领跑全省</p>
+  </div>
+  <div class="bento-grid">
+    <!-- 梯度培育 -->
+    <div class="glass-card span-2 fade-up">
+      <div class="card-glow" style="background:var(--primary);top:-40px;right:-40px;"></div>
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(220,38,38,0.1);color:var(--primary-light);border:1px solid rgba(220,38,38,0.2);"><i class="fas fa-layer-group"></i></div>
+        <div><div class="card-title">梯度培育体系</div><div class="card-subtitle">创新型 → 专精特新 → 小巨人 → 重点小巨人</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:stretch;">
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(59,130,246,0.05);border-radius:12px;border:1px solid rgba(59,130,246,0.1);">
+          <div style="font-size:2rem;font-weight:900;color:#3b82f6;">1,869</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">创新型中小企业</div>
+          <div style="font-size:10px;color:#3b82f6;margin-top:2px;">全省第一</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-muted);"><i class="fas fa-chevron-right"></i></div>
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(245,158,11,0.05);border-radius:12px;border:1px solid rgba(245,158,11,0.1);">
+          <div style="font-size:2rem;font-weight:900;color:var(--accent);">1,016</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">省级专精特新</div>
+          <div style="font-size:10px;color:var(--accent);margin-top:2px;">全省第一</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-muted);"><i class="fas fa-chevron-right"></i></div>
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(220,38,38,0.05);border-radius:12px;border:1px solid rgba(220,38,38,0.1);">
+          <div style="font-size:2rem;font-weight:900;color:var(--primary-light);">49</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">国家级"小巨人"</div>
+          <div style="font-size:10px;color:var(--primary-light);margin-top:2px;">全省第二</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--text-muted);"><i class="fas fa-chevron-right"></i></div>
+        <div style="flex:1;text-align:center;padding:16px;background:rgba(234,179,8,0.05);border-radius:12px;border:1px solid rgba(234,179,8,0.1);">
+          <div style="font-size:2rem;font-weight:900;color:var(--gold);">19</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">重点"小巨人"</div>
+          <div style="font-size:10px;color:var(--gold);margin-top:2px;">全省第二</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 区域分布 -->
+    <div class="glass-card span-2 fade-up">
+      <div class="card-glow" style="background:var(--accent);top:-40px;right:-40px;"></div>
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(245,158,11,0.1);color:var(--accent);border:1px solid rgba(245,158,11,0.2);"><i class="fas fa-map-location-dot"></i></div>
+        <div><div class="card-title">省级专精特新区域分布 TOP10</div><div class="card-subtitle">晋江市以273家遥遥领先</div></div>
+      </div>
+      <div class="chart-container"><canvas id="chartRegion"></canvas></div>
+    </div>
+
+    <!-- 行业分布 -->
+    <div class="glass-card span-2 fade-up">
+      <div class="card-glow" style="background:var(--info);top:-40px;right:-40px;"></div>
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(59,130,246,0.1);color:var(--info);border:1px solid rgba(59,130,246,0.2);"><i class="fas fa-industry"></i></div>
+        <div><div class="card-title">行业分布</div><div class="card-subtitle">机械装备、电子信息、新材料为主力</div></div>
+      </div>
+      <div class="chart-container"><canvas id="chartIndustry"></canvas></div>
+    </div>
+
+    <!-- 政策扶持 -->
+    <div class="glass-card span-2 fade-up">
+      <div class="card-glow" style="background:var(--gold);top:-40px;right:-40px;"></div>
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(234,179,8,0.1);color:var(--gold);border:1px solid rgba(234,179,8,0.2);"><i class="fas fa-hand-holding-dollar"></i></div>
+        <div><div class="card-title">政策扶持力度</div><div class="card-subtitle">真金白银培优扶强</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.05);">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--primary-light);">150万</div>
+          <div style="font-size:11px;color:var(--text-muted);">"小巨人"认定省市叠加奖励</div>
+        </div>
+        <div style="padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.05);">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--accent);">2%</div>
+          <div style="font-size:11px;color:var(--text-muted);">技术创新基金年利率·最高3000万</div>
+        </div>
+        <div style="padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.05);">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--info);">200亿</div>
+          <div style="font-size:11px;color:var(--text-muted);">年度专精特新贷款额度</div>
+        </div>
+        <div style="padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid rgba(255,255,255,0.05);">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--gold);">2.5亿+</div>
+          <div style="font-size:11px;color:var(--text-muted);">累计省级以上专项奖补资金</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 国家级"小巨人"企业名录 -->
+<section class="section" style="background:rgba(255,255,255,0.01);">
+  <div class="section-header">
+    <div class="section-tag"><i class="fas fa-crown"></i> 国家级"小巨人"</div>
+    <h2 class="section-title">国家级专精特新<span style="color:var(--primary-light);">"小巨人"企业</span>名录</h2>
+    <p class="section-desc">泉州49家国家级专精特新"小巨人"企业，覆盖机械装备、新材料、电子信息等核心制造领域</p>
+  </div>
+  <div style="max-width:1400px;margin:0 auto;padding:0 24px;">
+    <div class="search-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" class="search-box" id="searchInput" placeholder="搜索企业名称、行业、区域..." oninput="filterGiants()">
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" onclick="setFilter('all',this)">全部</button>
+      <button class="filter-btn" onclick="setFilter('机械装备',this)">机械装备</button>
+      <button class="filter-btn" onclick="setFilter('新材料',this)">新材料</button>
+      <button class="filter-btn" onclick="setFilter('电子信息',this)">电子信息</button>
+      <button class="filter-btn" onclick="setFilter('纺织鞋服',this)">纺织鞋服</button>
+      <button class="filter-btn" onclick="setFilter('智能装备',this)">智能装备</button>
+      <button class="filter-btn" onclick="setFilter('电力电气',this)">电力电气</button>
+      <button class="filter-btn" onclick="setFilter('其他',this)">其他制造</button>
+    </div>
+    <div id="giantGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;"></div>
+  </div>
+</section>
+
+<!-- 重点"小巨人" -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-tag"><i class="fas fa-gem"></i> 重点"小巨人"</div>
+    <h2 class="section-title">中央财政重点支持<span style="color:var(--gold);">"小巨人"企业</span></h2>
+    <p class="section-desc">19家获中央财政奖补资金支持的重点"小巨人"企业，每家最高可获得600万元</p>
+  </div>
+  <div style="max-width:1400px;margin:0 auto;padding:0 24px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;" id="keyGiantGrid"></div>
+  </div>
+</section>
+
+<!-- 制造业纳税百强 -->
+<section class="section" style="background:rgba(255,255,255,0.01);">
+  <div class="section-header">
+    <div class="section-tag"><i class="fas fa-trophy"></i> 纳税百强</div>
+    <h2 class="section-title">2025年度泉州民营经济<span style="color:var(--accent);">纳税百强</span></h2>
+    <p class="section-desc">制造业企业占据主导地位，安踏以超30亿纳税额领跑全市</p>
+  </div>
+  <div style="max-width:1400px;margin:0 auto;padding:0 24px;">
+    <div class="glass-card" style="padding:0;overflow:hidden;">
+      <div style="overflow-x:auto;">
+        <table class="data-table" id="taxTable">
+          <thead>
+            <tr><th>排名</th><th>企业名称</th><th>区域</th><th>纳税等级</th><th>专精特新</th></tr>
+          </thead>
+          <tbody id="taxTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 产业集群 -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-tag"><i class="fas fa-diagram-project"></i> 产业集群</div>
+    <h2 class="section-title">国家级中小企业<span style="color:var(--info);">特色产业集群</span></h2>
+    <p class="section-desc">5个国家级特色产业集群，数量居全省、全国地级市首位</p>
+  </div>
+  <div class="bento-grid" style="max-width:1400px;margin:0 auto;">
+    <div class="glass-card span-2 fade-up">
+      <div class="card-glow" style="background:var(--primary);top:-40px;right:-40px;"></div>
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(220,38,38,0.1);color:var(--primary-light);border:1px solid rgba(220,38,38,0.2);"><i class="fas fa-city"></i></div>
+        <div><div class="card-title">5大国家级特色产业集群</div><div class="card-subtitle">全国地级市首位</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:white;">1</div>
+          <div><div style="font-size:14px;font-weight:600;">洛江区 · 卫生护理用品产业集群</div><div style="font-size:11px;color:var(--text-muted);">天娇妇幼为链主，5G全连接工厂，年产值20亿+</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:white;">2</div>
+          <div><div style="font-size:14px;font-weight:600;">洛江区 · 智能装备制造产业集群</div><div style="font-size:11px;color:var(--text-muted);">铁拓机械、新源重工等7家小巨人集聚</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:white;">3</div>
+          <div><div style="font-size:14px;font-weight:600;">晋江市 · 纺织鞋服产业集群</div><div style="font-size:11px;color:var(--text-muted);">安踏、百宏、向兴等龙头引领，万亿级产业链群</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:white;">4</div>
+          <div><div style="font-size:14px;font-weight:600;">南安市 · 水暖卫浴产业集群</div><div style="font-size:11px;color:var(--text-muted);">九牧为龙头，数字卫浴+高端阀门智造</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:white;">5</div>
+          <div><div style="font-size:14px;font-weight:600;">德化县 · 陶瓷产业集群</div><div style="font-size:11px;color:var(--text-muted);">96家省级专精特新，传统工艺+智能制造融合</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="glass-card span-2 fade-up">
+      <div class="card-glow" style="background:var(--info);top:-40px;right:-40px;"></div>
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(59,130,246,0.1);color:var(--info);border:1px solid rgba(59,130,246,0.2);"><i class="fas fa-link"></i></div>
+        <div><div class="card-title">万亿级产业链群</div><div class="card-subtitle">3条万亿级产业链群</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="padding:14px;background:rgba(220,38,38,0.04);border-radius:12px;border-left:3px solid var(--primary);">
+          <div style="font-size:14px;font-weight:700;">石化—纺织鞋服 <span class="badge badge-red">两万亿级</span></div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">安踏·百宏·恒安·特步·361°·中乔·七匹狼·柒牌·利郎·九牧王</div>
+        </div>
+        <div style="padding:14px;background:rgba(245,158,11,0.04);border-radius:12px;border-left:3px solid var(--accent);">
+          <div style="font-size:14px;font-weight:700;">建材—家居 <span class="badge badge-gold">万亿级</span></div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">九牧·华宇织造·兴业皮革·信泰科技</div>
+        </div>
+        <div style="padding:14px;background:rgba(59,130,246,0.04);border-radius:12px;border-left:3px solid var(--info);">
+          <div style="font-size:14px;font-weight:700;">机械—电子 <span class="badge badge-blue">万亿级</span></div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">铁拓机械·新源重工·科盛智能·力达机电·田中机械</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 创新指标 -->
+<section class="section" style="background:rgba(255,255,255,0.01);">
+  <div class="section-header">
+    <div class="section-tag"><i class="fas fa-flask"></i> 创新驱动</div>
+    <h2 class="section-title">专精特新企业<span style="color:var(--primary-light);">创新指标</span></h2>
+  </div>
+  <div class="bento-grid" style="max-width:1400px;margin:0 auto;">
+    <div class="glass-card fade-up" style="text-align:center;">
+      <div style="font-size:3rem;font-weight:900;color:var(--primary-light);">5.85</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">平均发明专利（件/家）</div>
+    </div>
+    <div class="glass-card fade-up" style="text-align:center;">
+      <div style="font-size:3rem;font-weight:900;color:var(--accent);">907万</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">年均研发经费投入</div>
+    </div>
+    <div class="glass-card fade-up" style="text-align:center;">
+      <div style="font-size:3rem;font-weight:900;color:var(--info);">82.14亿</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">百强民企研发费用总额</div>
+    </div>
+    <div class="glass-card fade-up" style="text-align:center;">
+      <div style="font-size:3rem;font-weight:900;color:var(--gold);">16,619</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">百强民企有效专利（件）</div>
+    </div>
+    <div class="glass-card span-2 fade-up">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(220,38,38,0.1);color:var(--primary-light);border:1px solid rgba(220,38,38,0.2);"><i class="fas fa-rocket"></i></div>
+        <div><div class="card-title">标杆企业创新亮点</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:13px;font-weight:600;">铁拓机械 <span class="badge badge-red">小巨人·北交所上市</span></div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">562项专利·90余项发明专利·产品出口60+国家·制造业单项冠军</div>
+        </div>
+        <div style="padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:13px;font-weight:600;">科盛智能 <span class="badge badge-red">小巨人</span></div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">智能分拣效率提升3倍·AI准确率99.98%·单日处理4.8万订单</div>
+        </div>
+        <div style="padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:13px;font-weight:600;">新源重工 <span class="badge badge-red">小巨人</span></div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">国内首台5吨级轮挖·小型轮挖市占率全国第一·年产1万台+</div>
+        </div>
+        <div style="padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:13px;font-weight:600;">天娇妇幼 <span class="badge badge-gold">省级专精特新</span></div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">5G全连接工厂·自动化率97%·月推新品·年产值20亿</div>
+        </div>
+      </div>
+    </div>
+    <div class="glass-card span-2 fade-up">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(234,179,8,0.1);color:var(--gold);border:1px solid rgba(234,179,8,0.2);"><i class="fas fa-award"></i></div>
+        <div><div class="card-title">百强民企创新成果</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:1.8rem;font-weight:900;color:var(--primary-light);">4,017</div>
+          <div style="font-size:11px;color:var(--text-muted);">发明专利（件）</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:1.8rem;font-weight:900;color:var(--accent);">432</div>
+          <div style="font-size:11px;color:var(--text-muted);">主导/参与国家标准</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:1.8rem;font-weight:900;color:var(--info);">1.76万</div>
+          <div style="font-size:11px;color:var(--text-muted);">研发人员</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;">
+          <div style="font-size:1.8rem;font-weight:900;color:var(--gold);">1.85%</div>
+          <div style="font-size:11px;color:var(--text-muted);">整体研发强度</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  <p>数据来源：泉州市工信局、工信部、福建省工信厅、泉州市人民政府</p>
+  <p style="margin-top:8px;">创作者：<span class="credit">39139@胜天半子</span></p>
+</div>
+
+<script>
+// ==================== DATA ====================
+const giantCompanies = [
+  {name:"福建省铁拓机械股份有限公司",area:"洛江区",industry:"机械装备",batch:"第三批",key:true,desc:"沥青搅拌设备·562项专利·北交所上市·出口60+国",revenue:"5亿+"},
+  {name:"福建新源重工有限公司",area:"洛江区",industry:"机械装备",batch:"第七批",key:true,desc:"小型轮挖国内第一·年产1万台·5G智能产业园",revenue:"25亿+"},
+  {name:"科盛智能物流装备有限公司",area:"洛江区",industry:"智能装备",batch:"第六批",key:true,desc:"智能分拣系统·AI准确率99.98%·日处理4.8万单",revenue:"3亿+"},
+  {name:"北峰通信科技股份有限公司",area:"丰泽区",industry:"电子信息",batch:"第六批",key:false,desc:"专业无线通信设备·对讲机领军企业",revenue:"5亿+"},
+  {name:"金石能源有限公司",area:"惠安县",industry:"新材料",batch:"第六批",key:false,desc:"光伏新能源材料·HJT电池技术",revenue:"10亿+"},
+  {name:"福建田中机械科技股份有限公司",area:"南安市",industry:"机械装备",batch:"第三批",key:true,desc:"工程机械零部件·液压系统专家",revenue:"3亿+"},
+  {name:"福建立信换热设备制造股份公司",area:"南安市",industry:"机械装备",batch:"第三批",key:false,desc:"换热设备制造·节能技术领先",revenue:"2亿+"},
+  {name:"福建科立讯通信有限公司",area:"鲤城区",industry:"电子信息",batch:"第三批",key:true,desc:"专网通信设备·数字对讲机技术",revenue:"4亿+"},
+  {name:"福建烟草机械有限公司",area:"鲤城区",industry:"机械装备",batch:"第三批",key:false,desc:"烟草专用机械制造",revenue:"3亿+"},
+  {name:"泉州众志新材料科技有限公司",area:"洛江区",industry:"新材料",batch:"第三批",key:false,desc:"金刚石工具·超硬材料",revenue:"2亿+"},
+  {name:"福建省百川资源再生科技股份有限公司",area:"石狮市",industry:"新材料",batch:"第三批",key:false,desc:"再生资源科技·环保材料",revenue:"3亿+"},
+  {name:"福建路通管业科技股份有限公司",area:"南安市",industry:"新材料",batch:"第三批",key:false,desc:"新型管材制造·市政工程",revenue:"2亿+"},
+  {name:"泉州恒毅机械有限公司",area:"南安市",industry:"机械装备",batch:"第三批",key:false,desc:"纺织机械制造",revenue:"2亿+"},
+  {name:"福建华清电子材料科技有限公司",area:"南安市",industry:"新材料",batch:"第三批",key:true,desc:"电子陶瓷材料·MLCC基础材料",revenue:"5亿+"},
+  {name:"德林智能科技有限公司",area:"南安市",industry:"智能装备",batch:"第三批",key:false,desc:"智能纺织装备·自动化系统",revenue:"2亿+"},
+  {name:"蓉中电气股份有限公司",area:"南安市",industry:"电力电气",batch:"第三批",key:true,desc:"配电设备·智能电网",revenue:"3亿+"},
+  {name:"福建群峰机械有限公司",area:"南安市",industry:"机械装备",batch:"第三批",key:false,desc:"环保机械·固废处理设备",revenue:"2亿+"},
+  {name:"泉州市南安特易通电子有限公司",area:"南安市",industry:"电子信息",batch:"第三批",key:true,desc:"卫星导航·车联网终端",revenue:"2亿+"},
+  {name:"泉州市华茂机械设备有限公司",area:"南安市",industry:"机械装备",batch:"第三批",key:false,desc:"石材机械制造",revenue:"1亿+"},
+  {name:"泉州市凯鹰电源电器有限公司",area:"南安市",industry:"电力电气",batch:"第三批",key:false,desc:"蓄电池·电源系统",revenue:"2亿+"},
+  {name:"泉州嘉德利电子材料有限公司",area:"南安市",industry:"新材料",batch:"第三批",key:false,desc:"电子薄膜材料·电容器用膜",revenue:"2亿+"},
+  {name:"力达(中国)机电有限公司",area:"南安市",industry:"机械装备",batch:"第三批",key:false,desc:"空压机制造·节能动力设备",revenue:"5亿+"},
+  {name:"福建立亚新材有限公司",area:"安溪县",industry:"新材料",batch:"第三批",key:false,desc:"高性能纤维·特种复合材料",revenue:"2亿+"},
+  {name:"福建省向兴纺织科技有限公司",area:"晋江市",industry:"纺织鞋服",batch:"第七批",key:false,desc:"功能性面料·染整技术·全国领先",revenue:"10亿+"},
+  {name:"科一(福建)超纤有限责任公司",area:"晋江市",industry:"新材料",batch:"第七批",key:false,desc:"超细纤维合成革·环保材料",revenue:"5亿+"},
+  {name:"福建兵工装备有限公司",area:"南安市",industry:"机械装备",batch:"第七批",key:false,desc:"特种装备制造·军民融合",revenue:"3亿+"},
+  {name:"福建同晟新材料科技股份公司",area:"晋江市",industry:"新材料",batch:"第七批",key:false,desc:"功能高分子材料",revenue:"3亿+"},
+  {name:"福建强纶新材料股份有限公司",area:"晋江市",industry:"新材料",batch:"第七批",key:false,desc:"金属纤维·过滤材料",revenue:"2亿+"},
+  {name:"泉州宇极新材料科技有限公司",area:"泉港区",industry:"新材料",batch:"第七批",key:false,desc:"含氟新材料·高端化学品",revenue:"3亿+"},
+  {name:"福建华南重工机械制造有限公司",area:"南安市",industry:"机械装备",batch:"第七批",key:false,desc:"重型工程机械·港口机械",revenue:"3亿+"},
+  {name:"福建伊普思实业有限公司",area:"南安市",industry:"机械装备",batch:"第七批",key:false,desc:"压缩空气净化设备",revenue:"2亿+"},
+  {name:"华益机电有限公司",area:"南安市",industry:"机械装备",batch:"第七批",key:false,desc:"精密机电·微型电机",revenue:"2亿+"},
+  {name:"福建爱的电器有限公司",area:"南安市",industry:"电力电气",batch:"第七批",key:false,desc:"智能开关·低压电器",revenue:"2亿+"},
+  {name:"华英阀业有限公司",area:"南安市",industry:"机械装备",batch:"第七批",key:false,desc:"工业阀门·流体控制",revenue:"2亿+"},
+  {name:"伊瓦特机器人设备制造有限公司",area:"南安市",industry:"智能装备",batch:"第七批",key:false,desc:"工业机器人·自动化产线",revenue:"2亿+"},
+  {name:"沪航科技集团有限公司",area:"南安市",industry:"机械装备",batch:"第七批",key:false,desc:"阀门智造·智慧水务",revenue:"3亿+"},
+  {name:"泉州云卓科技有限公司",area:"丰泽区",industry:"电子信息",batch:"第七批",key:false,desc:"无人机系统·飞行控制",revenue:"1亿+"},
+  {name:"福建科源新材料股份有限公司",area:"晋江市",industry:"新材料",batch:"第七批",key:false,desc:"功能性母粒·改性塑料",revenue:"2亿+"},
+  {name:"福建佰源智能装备股份有限公司",area:"鲤城区",industry:"智能装备",batch:"第七批",key:false,desc:"智能针织机械·圆机装备",revenue:"3亿+"},
+  {name:"福耀集团(福建)机械制造有限公司",area:"福清市",industry:"机械装备",batch:"第七批",key:false,desc:"汽车玻璃生产线设备",revenue:"5亿+"},
+  {name:"泉州市琪祥电子科技有限公司",area:"南安市",industry:"电子信息",batch:"复核通过",key:false,desc:"汽车电子·智能座舱",revenue:"2亿+"},
+  {name:"泉州市一鸣交通电器有限公司",area:"南安市",industry:"电力电气",batch:"复核通过",key:false,desc:"汽车电器·线束系统",revenue:"2亿+"},
+  {name:"晋江市安海联诚机械有限公司",area:"晋江市",industry:"机械装备",batch:"复核通过",key:false,desc:"陶瓷机械·深加工设备",revenue:"2亿+"},
+  {name:"军鹏特种装备股份公司",area:"晋江市",industry:"机械装备",batch:"复核通过",key:false,desc:"军用特种装备·训练器材",revenue:"3亿+"},
+  {name:"泛科轴承集团有限公司",area:"南安市",industry:"机械装备",batch:"复核通过",key:false,desc:"精密轴承·汽车轴承",revenue:"3亿+"},
+  {name:"信和新材料股份有限公司",area:"惠安县",industry:"新材料",batch:"复核通过",key:false,desc:"工业涂料·防腐材料",revenue:"3亿+"},
+  {name:"固美金属股份有限公司",area:"南安市",industry:"新材料",batch:"复核通过",key:false,desc:"不锈钢型材·金属制品",revenue:"5亿+"},
+  {name:"龙合智能装备制造有限公司",area:"南安市",industry:"智能装备",batch:"复核通过",key:false,desc:"智能搬运·无人叉车",revenue:"3亿+"},
+  {name:"福建省德源智能科技有限公司",area:"南安市",industry:"智能装备",batch:"复核通过",key:false,desc:"智能缝制设备·自动化",revenue:"2亿+"},
+];
+
+const keyGiants = [
+  {name:"福建科立讯通信有限公司",area:"鲤城区",industry:"电子信息",fund:"600万",desc:"专网通信设备·数字对讲机技术"},
+  {name:"福建田中机械科技股份有限公司",area:"南安市",industry:"机械装备",fund:"600万",desc:"工程机械零部件·液压系统"},
+  {name:"福建华清电子材料科技有限公司",area:"南安市",industry:"新材料",fund:"600万",desc:"电子陶瓷材料·MLCC基础材料"},
+  {name:"博纯材料有限公司",area:"泉港区",industry:"新材料",fund:"600万",desc:"超高纯电子特气·半导体材料"},
+  {name:"蓉中电气股份有限公司",area:"南安市",industry:"电力电气",fund:"600万",desc:"配电设备·智能电网"},
+  {name:"泉州市南安特易通电子有限公司",area:"南安市",industry:"电子信息",fund:"600万",desc:"卫星导航·车联网终端"},
+  {name:"福建省铁拓机械股份有限公司",area:"洛江区",industry:"机械装备",fund:"600万",desc:"沥青搅拌设备·562项专利·北交所上市"},
+  {name:"福建新源重工有限公司",area:"洛江区",industry:"机械装备",fund:"600万",desc:"小型轮挖国内第一·5G智能产业园"},
+  {name:"科盛智能物流装备有限公司",area:"洛江区",industry:"智能装备",fund:"600万",desc:"智能分拣系统·AI准确率99.98%"},
+];
+
+const taxTop100 = [
+  {rank:1,name:"安踏体育用品集团有限公司",area:"晋江市",level:"超30亿",zjtx:"龙头"},
+  {rank:2,name:"达利食品集团有限公司",area:"惠安县",level:"超10亿",zjtx:"龙头"},
+  {rank:3,name:"九牧集团有限公司",area:"南安市",level:"超9亿",zjtx:"龙头"},
+  {rank:4,name:"福建恒安集团有限公司",area:"晋江市",level:"超7亿",zjtx:"龙头"},
+  {rank:5,name:"特步集团有限公司",area:"泉州开发区",level:"超7亿",zjtx:"龙头"},
+  {rank:6,name:"三六一度(中国)有限公司",area:"晋江市",level:"超6亿",zjtx:"龙头"},
+  {rank:7,name:"福建百宏集团有限公司",area:"晋江市",level:"超3亿",zjtx:"龙头"},
+  {rank:8,name:"中乔体育股份有限公司",area:"晋江市",level:"超2亿",zjtx:"龙头"},
+  {rank:9,name:"利郎(中国)有限公司",area:"晋江市",level:"超2亿",zjtx:"龙头"},
+  {rank:10,name:"泉州三安半导体科技有限公司",area:"南安市",level:"超1亿",zjtx:"专精特新"},
+  {rank:11,name:"通达(石狮)科技有限公司",area:"石狮市",level:"超1亿",zjtx:"专精特新"},
+  {rank:12,name:"渠梁电子有限公司",area:"晋江市",level:"超1亿",zjtx:"高新"},
+  {rank:13,name:"福建火炬电子科技股份有限公司",area:"鲤城区",level:"超1亿",zjtx:"专精特新"},
+  {rank:14,name:"福建七匹狼实业股份有限公司",area:"晋江市",level:"超1亿",zjtx:"龙头"},
+  {rank:15,name:"福建鸿星尔克体育用品有限公司",area:"鲤城区",level:"超1亿",zjtx:"龙头"},
+  {rank:16,name:"九牧王股份有限公司",area:"泉州开发区",level:"超1亿",zjtx:"龙头"},
+  {rank:17,name:"信泰(福建)科技有限公司",area:"晋江市",level:"超1亿",zjtx:"专精特新"},
+  {rank:18,name:"盼盼食品集团有限公司",area:"晋江市",level:"超1亿",zjtx:"龙头"},
+  {rank:19,name:"福建烯石新材料科技有限公司",area:"台商区",level:"超1亿",zjtx:"专精特新"},
+  {rank:20,name:"兴业皮革科技股份有限公司",area:"晋江市",level:"超1亿",zjtx:"专精特新"},
+  {rank:21,name:"舒华体育股份有限公司",area:"晋江市",level:"超1亿",zjtx:"龙头"},
+  {rank:22,name:"福建柒牌时装科技股份有限公司",area:"晋江市",level:"超1亿",zjtx:"龙头"},
+  {rank:23,name:"泉州市嘉华卫生用品有限公司",area:"洛江区",level:"超1亿",zjtx:"专精特新"},
+  {rank:24,name:"福建匹克集团有限公司",area:"丰泽区",level:"超5000万",zjtx:"龙头"},
+  {rank:25,name:"晋江国盛新材料科技有限公司",area:"晋江市",level:"超5000万",zjtx:"专精特新"},
+  {rank:26,name:"福建省力诚食品有限公司",area:"晋江市",level:"超5000万",zjtx:"龙头"},
+  {rank:27,name:"卡宾服饰(中国)有限公司",area:"石狮市",level:"超5000万",zjtx:"龙头"},
+  {rank:28,name:"泉州天娇妇幼卫生用品有限公司",area:"洛江区",level:"超5000万",zjtx:"专精特新"},
+  {rank:29,name:"福建兴迅新材料科技有限公司",area:"石狮市",level:"超5000万",zjtx:"专精特新"},
+  {rank:30,name:"福建浔兴拉链科技股份有限公司",area:"晋江市",level:"超1亿",zjtx:"专精特新"},
+];
+
+// ==================== RENDER ====================
+let currentFilter = 'all';
+
+function renderGiants(filter='all', search='') {
+  const grid = document.getElementById('giantGrid');
+  let data = [...giantCompanies];
+  if (filter !== 'all') data = data.filter(c => c.industry === filter);
+  if (search) data = data.filter(c => c.name.includes(search) || c.area.includes(search) || c.industry.includes(search) || c.desc.includes(search));
+
+  grid.innerHTML = data.map((c, i) => `
+    <div class="ent-card">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="ent-rank ${i<3?'top3':i<10?'top10':'normal'}">${i+1}</div>
+        <div style="flex:1;min-width:0;">
+          <div class="ent-name">${c.name}</div>
+          <div class="ent-info">${c.area} · ${c.industry} · ${c.batch}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px;line-height:1.4;">${c.desc}</div>
+          <div class="ent-tags">
+            ${c.key?'<span class="badge badge-gold">重点小巨人</span>':''}
+            <span class="badge badge-red">小巨人</span>
+            <span class="badge badge-blue">${c.revenue}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterGiants();
+}
+
+function filterGiants() {
+  const search = document.getElementById('searchInput').value;
+  renderGiants(currentFilter, search);
+}
+
+function renderKeyGiants() {
+  const grid = document.getElementById('keyGiantGrid');
+  grid.innerHTML = keyGiants.map((c, i) => `
+    <div class="glass-card" style="padding:20px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#000;flex-shrink:0;">${i+1}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:15px;font-weight:700;">${c.name}</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${c.area} · ${c.industry}</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.4;">${c.desc}</div>
+          <div style="margin-top:8px;display:flex;gap:6px;">
+            <span class="badge badge-gold">中央财政${c.fund}</span>
+            <span class="badge badge-red">小巨人</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTaxTable() {
+  const tbody = document.getElementById('taxTableBody');
+  tbody.innerHTML = taxTop100.map(c => `
+    <tr>
+      <td><span class="ent-rank ${c.rank<=3?'top3':c.rank<=10?'top10':'normal'}" style="display:inline-flex;">${c.rank}</span></td>
+      <td style="font-weight:600;">${c.name}</td>
+      <td style="font-size:12px;">${c.area}</td>
+      <td><span class="badge ${c.level.includes('超30')||c.level.includes('超10')?'badge-red':c.level.includes('超1')?'badge-gold':'badge-blue'}">${c.level}</span></td>
+      <td><span class="badge ${c.zjtx==='专精特新'?'badge-green':c.zjtx==='小巨人'?'badge-red':'badge-gray'}">${c.zjtx}</span></td>
+    </tr>
+  `).join('');
+}
+
+// ==================== CHARTS ====================
+function initCharts() {
+  // Region chart
+  const regions = [
+    {name:'晋江市',value:273},{name:'南安市',value:183},{name:'德化县',value:112},
+    {name:'石狮市',value:86},{name:'惠安县',value:67},{name:'洛江区',value:55},
+    {name:'丰泽区',value:35},{name:'安溪县',value:28},{name:'泉港区',value:22},
+    {name:'鲤城区',value:20}
+  ];
+  const ctx1 = document.getElementById('chartRegion').getContext('2d');
+  new Chart(ctx1, {
+    type:'bar',
+    data:{
+      labels:regions.map(r=>r.name.replace('市','').replace('县','').replace('区','')),
+      datasets:[{data:regions.map(r=>r.value), backgroundColor:regions.map((_,i)=>i<3?'rgba(220,38,38,0.7)':'rgba(220,38,38,0.3)'), borderRadius:6, borderSkipped:false}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#a1a1aa',font:{size:11}},grid:{display:false}},y:{ticks:{color:'#a1a1aa'},grid:{color:'rgba(255,255,255,0.03)'},beginAtZero:true}}}
+  });
+
+  // Industry chart
+  const industries = [
+    {name:'机械装备',value:18,color:'#ef4444'},
+    {name:'新材料',value:14,color:'#f59e0b'},
+    {name:'电子信息',value:7,color:'#3b82f6'},
+    {name:'智能装备',value:5,color:'#8b5cf6'},
+    {name:'电力电气',value:3,color:'#06b6d4'},
+    {name:'纺织鞋服',value:2,color:'#22c55e'}
+  ];
+  const ctx2 = document.getElementById('chartIndustry').getContext('2d');
+  new Chart(ctx2, {
+    type:'doughnut',
+    data:{
+      labels:industries.map(i=>i.name),
+      datasets:[{data:industries.map(i=>i.value), backgroundColor:industries.map(i=>i.color), borderWidth:0}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'right',labels:{color:'#a1a1aa',font:{size:12},padding:12}}}}
+  });
+}
+
+// ==================== SCROLL ANIMATION ====================
+function initScrollAnim() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  renderGiants();
+  renderKeyGiants();
+  renderTaxTable();
+  initCharts();
+  initScrollAnim();
+});
+</script>
+</body>
+</html>

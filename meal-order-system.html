@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>报餐系统 - Meal Order System</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --primary: #059669;
+  --primary-light: #10b981;
+  --primary-dark: #047857;
+  --accent: #f59e0b;
+  --accent2: #d97706;
+  --warm: #ef4444;
+  --info: #3b82f6;
+  --bg-dark: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.85);
+  --bg-sidebar: rgba(15, 23, 42, 0.95);
+  --border: rgba(5, 150, 105, 0.15);
+  --glow: rgba(16, 185, 129, 0.25);
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg-dark); color: var(--text); overflow: hidden; height: 100vh; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+/* Layout */
+.app-layout { display: flex; height: 100vh; }
+.sidebar { width: 240px; background: var(--bg-sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; transition: width 0.3s; }
+.sidebar.collapsed { width: 64px; }
+.sidebar.collapsed .nav-text, .sidebar.collapsed .sidebar-title, .sidebar.collapsed .sidebar-subtitle { display: none; }
+.sidebar.collapsed .nav-item { justify-content: center; padding: 12px 0; }
+.main-content { flex: 1; overflow-y: auto; overflow-x: hidden; }
+
+/* Sidebar */
+.sidebar-header { padding: 20px 16px; border-bottom: 1px solid var(--border); }
+.sidebar-title { font-size: 18px; font-weight: 900; color: var(--primary-light); display: flex; align-items: center; gap: 8px; }
+.sidebar-subtitle { font-size: 11px; color: var(--text-muted); margin-top: 4px; letter-spacing: 1px; }
+.sidebar-nav { flex: 1; padding: 12px 8px; overflow-y: auto; }
+.nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; cursor: pointer; transition: all 0.2s; color: var(--text-muted); font-size: 14px; margin-bottom: 2px; }
+.nav-item:hover { background: rgba(5,150,105,0.08); color: var(--text); }
+.nav-item.active { background: rgba(5,150,105,0.15); color: var(--primary-light); border: 1px solid rgba(5,150,105,0.2); }
+.nav-item i { width: 20px; text-align: center; font-size: 15px; }
+.nav-divider { height: 1px; background: var(--border); margin: 8px 12px; }
+.sidebar-footer { padding: 12px 16px; border-top: 1px solid var(--border); }
+.user-info { display: flex; align-items: center; gap: 10px; }
+.user-avatar { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, rgba(5,150,105,0.3), rgba(245,158,11,0.3)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--primary-light); font-size: 14px; }
+.user-name { font-size: 13px; font-weight: 600; }
+.user-role { font-size: 11px; color: var(--text-muted); }
+
+/* Page header */
+.page-header { padding: 20px 28px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(15,23,42,0.5); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50; }
+.page-title { font-size: 20px; font-weight: 900; }
+.page-title span { color: var(--primary-light); }
+.page-actions { display: flex; gap: 10px; }
+
+/* Buttons */
+.btn { padding: 8px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px var(--glow); }
+.btn-accent { background: var(--accent); color: #000; }
+.btn-accent:hover { background: var(--accent2); }
+.btn-outline { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary-light); }
+.btn-danger { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+.btn-danger:hover { background: rgba(239,68,68,0.25); }
+.btn-sm { padding: 5px 12px; font-size: 12px; border-radius: 8px; }
+
+/* Cards */
+.stat-card { background: linear-gradient(135deg, rgba(30,41,59,0.9), rgba(30,41,59,0.5)); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; transition: all 0.3s; }
+.stat-card:hover { border-color: rgba(5,150,105,0.3); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(5,150,105,0.1); }
+.stat-card .card-glow { position: absolute; width: 120px; height: 120px; border-radius: 50%; filter: blur(60px); opacity: 0.1; pointer-events: none; }
+.stat-card .stat-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
+.stat-card .stat-value { font-size: 2rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+.stat-card .stat-label { font-size: 12px; color: var(--text-muted); }
+.stat-card .stat-source { font-size: 10px; color: var(--text-muted); opacity: 0.6; margin-top: 8px; display: flex; align-items: center; gap: 4px; }
+
+.glass-panel { background: linear-gradient(135deg, rgba(30,41,59,0.9), rgba(30,41,59,0.5)); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.panel-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.panel-title { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.panel-title i { color: var(--primary-light); }
+.panel-body { padding: 16px 20px; }
+
+/* Table */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { text-align: left; padding: 10px 12px; color: var(--text-muted); font-weight: 600; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.data-table tr:hover td { background: rgba(5,150,105,0.03); }
+
+/* Badge */
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; }
+.badge-green { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.badge-yellow { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+.badge-red { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+.badge-blue { background: rgba(59,130,246,0.1); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
+.badge-gray { background: rgba(148,163,184,0.1); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
+
+/* Form */
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 1px; }
+.form-input, .form-select, .form-textarea { width: 100%; padding: 10px 14px; background: rgba(15,23,42,0.6); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 14px; font-family: inherit; transition: border-color 0.2s; outline: none; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(5,150,105,0.1); }
+.form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+.form-textarea { resize: vertical; min-height: 80px; }
+.form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; }
+.modal-overlay.show { display: flex; }
+.modal { background: var(--bg-sidebar); border: 1px solid var(--border); border-radius: 20px; width: 90%; max-width: 560px; max-height: 85vh; overflow-y: auto; }
+.modal-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.modal-title { font-size: 16px; font-weight: 700; }
+.modal-close { width: 32px; height: 32px; border-radius: 8px; border: none; background: rgba(255,255,255,0.05); color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.modal-close:hover { background: rgba(239,68,68,0.15); color: #ef4444; }
+.modal-body { padding: 24px; }
+.modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
+
+/* Menu card */
+.menu-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px; transition: all 0.2s; }
+.menu-card:hover { border-color: rgba(5,150,105,0.2); background: rgba(5,150,105,0.03); }
+.menu-dish-name { font-size: 14px; font-weight: 600; }
+.menu-dish-type { font-size: 11px; color: var(--text-muted); }
+
+/* Deadline item */
+.deadline-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.deadline-item:last-child { border-bottom: none; }
+.deadline-canteen { font-size: 13px; font-weight: 600; }
+.deadline-meal { font-size: 12px; color: var(--text-muted); }
+.deadline-time { font-size: 13px; font-weight: 700; }
+.deadline-time.urgent { color: #ef4444; }
+.deadline-time.ok { color: #22c55e; }
+
+/* Toast */
+.toast-container { position: fixed; top: 20px; right: 20px; z-index: 200; display: flex; flex-direction: column; gap: 8px; }
+.toast { padding: 12px 20px; border-radius: 12px; font-size: 13px; font-weight: 500; animation: toastIn 0.3s ease; display: flex; align-items: center; gap: 8px; }
+.toast-success { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); color: #22c55e; }
+.toast-warning { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #f59e0b; }
+.toast-error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; }
+@keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Tab */
+.tab-bar { display: flex; gap: 4px; padding: 4px; background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 20px; }
+.tab-item { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; color: var(--text-muted); }
+.tab-item.active { background: var(--primary); color: white; }
+.tab-item:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.05); }
+
+/* Approval card */
+.approval-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 16px; margin-bottom: 12px; transition: all 0.2s; }
+.approval-card:hover { border-color: rgba(5,150,105,0.2); }
+.approval-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.approval-user { font-size: 14px; font-weight: 600; }
+.approval-detail { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+.approval-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+/* Page content */
+.page-content { padding: 24px 28px; }
+.page-section { display: none; }
+.page-section.active { display: block; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { position: fixed; z-index: 80; transform: translateX(-100%); }
+  .sidebar.mobile-open { transform: translateX(0); }
+  .page-content { padding: 16px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* Chart container */
+.chart-container { position: relative; height: 220px; }
+
+/* Empty state */
+.empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+.empty-state i { font-size: 40px; margin-bottom: 12px; opacity: 0.3; display: block; }
+.empty-state p { font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title"><i class="fas fa-utensils"></i> <span class="nav-text">报餐系统</span></div>
+      <div class="sidebar-subtitle nav-text">MEAL ORDER SYSTEM</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" data-page="dashboard" onclick="switchPage('dashboard')">
+        <i class="fas fa-th-large"></i> <span class="nav-text">首页看板</span>
+      </div>
+      <div class="nav-item" data-page="order" onclick="switchPage('order')">
+        <i class="fas fa-clipboard-list"></i> <span class="nav-text">报餐管理</span>
+      </div>
+      <div class="nav-item" data-page="menu" onclick="switchPage('menu')">
+        <i class="fas fa-bowl-food"></i> <span class="nav-text">菜单管理</span>
+      </div>
+      <div class="nav-item" data-page="approval" onclick="switchPage('approval')">
+        <i class="fas fa-check-double"></i> <span class="nav-text">审批中心</span>
+        <span class="badge badge-red nav-text" id="approvalBadge" style="margin-left:auto;font-size:10px;padding:2px 6px;">0</span>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-item" data-page="statistics" onclick="switchPage('statistics')">
+        <i class="fas fa-chart-bar"></i> <span class="nav-text">统计报表</span>
+      </div>
+      <div class="nav-item" data-page="config" onclick="switchPage('config')">
+        <i class="fas fa-cog"></i> <span class="nav-text">系统配置</span>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">张</div>
+        <div class="nav-text">
+          <div class="user-name">张明远</div>
+          <div class="user-role">系统管理员</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ==================== 首页看板 ==================== -->
+    <div class="page-section active" id="page-dashboard">
+      <div class="page-header">
+        <div class="page-title">首页<span>看板</span></div>
+        <div class="page-actions">
+          <button class="btn btn-primary" onclick="openOrderModal()"><i class="fas fa-plus"></i> 快速报餐</button>
+        </div>
+      </div>
+      <div class="page-content">
+        <!-- Stat Cards Row -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px;">
+          <div class="stat-card">
+            <div class="card-glow" style="background:var(--primary);top:-30px;right:-30px;"></div>
+            <div class="stat-icon" style="background:rgba(5,150,105,0.1);color:var(--primary-light);border:1px solid rgba(5,150,105,0.2);"><i class="fas fa-users"></i></div>
+            <div class="stat-value" style="color:var(--primary-light);" id="stat-today">0</div>
+            <div class="stat-label">今日报餐人数</div>
+            <div class="stat-source"><i class="fas fa-database"></i> 数据源: 报餐记录表 WHERE order_date=TODAY</div>
+          </div>
+          <div class="stat-card">
+            <div class="card-glow" style="background:var(--info);top:-30px;right:-30px;"></div>
+            <div class="stat-icon" style="background:rgba(59,130,246,0.1);color:#3b82f6;border:1px solid rgba(59,130,246,0.2);"><i class="fas fa-calendar-week"></i></div>
+            <div class="stat-value" style="color:#3b82f6;" id="stat-week">0</div>
+            <div class="stat-label">本周报餐人数</div>
+            <div class="stat-source"><i class="fas fa-database"></i> 数据源: 报餐记录表 WHERE 本周</div>
+          </div>
+          <div class="stat-card">
+            <div class="card-glow" style="background:var(--accent);top:-30px;right:-30px;"></div>
+            <div class="stat-icon" style="background:rgba(245,158,11,0.1);color:var(--accent);border:1px solid rgba(245,158,11,0.2);"><i class="fas fa-coins"></i></div>
+            <div class="stat-value" style="color:var(--accent);" id="stat-cost">¥0</div>
+            <div class="stat-label">本月费用预估</div>
+            <div class="stat-source"><i class="fas fa-database"></i> 数据源: 统计聚合表 WHERE 本月</div>
+          </div>
+          <div class="stat-card">
+            <div class="card-glow" style="background:var(--warm);top:-30px;right:-30px;"></div>
+            <div class="stat-icon" style="background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);"><i class="fas fa-clock"></i></div>
+            <div class="stat-value" style="color:#ef4444;" id="stat-pending">0</div>
+            <div class="stat-label">待审批</div>
+            <div class="stat-source"><i class="fas fa-database"></i> 数据源: 审批表 WHERE result=待审批</div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px;">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div class="panel-title"><i class="fas fa-chart-column"></i> 今日各食堂报餐分布</div>
+              <span style="font-size:10px;color:var(--text-muted);">数据源: 聚合表 GROUP BY canteen</span>
+            </div>
+            <div class="panel-body"><div class="chart-container"><canvas id="chartCanteen"></canvas></div></div>
+          </div>
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div class="panel-title"><i class="fas fa-bell"></i> 报餐截止提醒</div>
+              <span style="font-size:10px;color:var(--text-muted);">数据源: 食堂配置表</span>
+            </div>
+            <div class="panel-body" id="deadlineList"></div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div class="panel-title"><i class="fas fa-bowl-food"></i> 今日菜单</div>
+              <span style="font-size:10px;color:var(--text-muted);">数据源: 菜单管理表 WHERE date=TODAY</span>
+            </div>
+            <div class="panel-body" id="todayMenuList"></div>
+          </div>
+          <div class="glass-panel">
+            <div class="panel-header">
+              <div class="panel-title"><i class="fas fa-ranking-star"></i> 部门报餐排行</div>
+              <span style="font-size:10px;color:var(--text-muted);">数据源: 聚合表 GROUP BY dept</span>
+            </div>
+            <div class="panel-body" id="deptRankList"></div>
+          </div>
+        </div>
+
+        <div class="glass-panel">
+          <div class="panel-header">
+            <div class="panel-title"><i class="fas fa-chart-line"></i> 近7日报餐趋势</div>
+            <span style="font-size:10px;color:var(--text-muted);">数据源: 聚合表 近7日数据</span>
+          </div>
+          <div class="panel-body"><div class="chart-container"><canvas id="chartTrend"></canvas></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 报餐管理 ==================== -->
+    <div class="page-section" id="page-order">
+      <div class="page-header">
+        <div class="page-title">报餐<span>管理</span></div>
+        <div class="page-actions">
+          <button class="btn btn-outline" onclick="filterOrders('all')">全部</button>
+          <button class="btn btn-outline" onclick="filterOrders('已报餐')">已报餐</button>
+          <button class="btn btn-outline" onclick="filterOrders('已取消')">已取消</button>
+          <button class="btn btn-primary" onclick="openOrderModal()"><i class="fas fa-plus"></i> 新建报餐</button>
+        </div>
+      </div>
+      <div class="page-content">
+        <div class="glass-panel">
+          <div class="panel-body" style="padding:0;overflow-x:auto;">
+            <table class="data-table" id="orderTable">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>餐段</th>
+                  <th>食堂</th>
+                  <th>报餐人</th>
+                  <th>部门</th>
+                  <th>餐标</th>
+                  <th>来宾</th>
+                  <th>状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="orderTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 菜单管理 ==================== -->
+    <div class="page-section" id="page-menu">
+      <div class="page-header">
+        <div class="page-title">菜单<span>管理</span></div>
+        <div class="page-actions">
+          <button class="btn btn-primary" onclick="openMenuModal()"><i class="fas fa-plus"></i> 添加菜品</button>
+        </div>
+      </div>
+      <div class="page-content">
+        <div class="tab-bar" id="menuTabBar">
+          <div class="tab-item active" onclick="switchMenuTab('all')">全部</div>
+          <div class="tab-item" onclick="switchMenuTab('早餐')">早餐</div>
+          <div class="tab-item" onclick="switchMenuTab('午餐')">午餐</div>
+          <div class="tab-item" onclick="switchMenuTab('晚餐')">晚餐</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;" id="menuGrid"></div>
+      </div>
+    </div>
+
+    <!-- ==================== 审批中心 ==================== -->
+    <div class="page-section" id="page-approval">
+      <div class="page-header">
+        <div class="page-title">审批<span>中心</span></div>
+        <div class="page-actions">
+          <div class="tab-bar" style="margin-bottom:0;">
+            <div class="tab-item active" onclick="switchApprovalTab('pending')">待审批</div>
+            <div class="tab-item" onclick="switchApprovalTab('approved')">已审批</div>
+          </div>
+        </div>
+      </div>
+      <div class="page-content" id="approvalList"></div>
+    </div>
+
+    <!-- ==================== 统计报表 ==================== -->
+    <div class="page-section" id="page-statistics">
+      <div class="page-header">
+        <div class="page-title">统计<span>报表</span></div>
+        <div class="page-actions">
+          <button class="btn btn-outline"><i class="fas fa-download"></i> 导出</button>
+        </div>
+      </div>
+      <div class="page-content">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+          <div class="glass-panel">
+            <div class="panel-header"><div class="panel-title"><i class="fas fa-chart-pie"></i> 餐段分布</div></div>
+            <div class="panel-body"><div class="chart-container"><canvas id="chartMealType"></canvas></div></div>
+          </div>
+          <div class="glass-panel">
+            <div class="panel-header"><div class="panel-title"><i class="fas fa-chart-bar"></i> 部门对比</div></div>
+            <div class="panel-body"><div class="chart-container"><canvas id="chartDept"></canvas></div></div>
+          </div>
+        </div>
+        <div class="glass-panel">
+          <div class="panel-header"><div class="panel-title"><i class="fas fa-table"></i> 月度汇总</div></div>
+          <div class="panel-body" style="padding:0;overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr><th>日期</th><th>餐段</th><th>食堂</th><th>报餐人数</th><th>来宾人数</th><th>预估费用</th></tr>
+              </thead>
+              <tbody id="statTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 系统配置 ==================== -->
+    <div class="page-section" id="page-config">
+      <div class="page-header">
+        <div class="page-title">系统<span>配置</span></div>
+      </div>
+      <div class="page-content">
+        <div class="tab-bar">
+          <div class="tab-item active" onclick="switchConfigTab('canteen')">食堂配置</div>
+          <div class="tab-item" onclick="switchConfigTab('standard')">餐标配置</div>
+        </div>
+        <div id="configContent"></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Order Modal -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-utensils" style="color:var(--primary-light);margin-right:6px;"></i> 新建报餐</div>
+      <button class="modal-close" onclick="closeModal('orderModal')"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">用餐日期</label>
+          <input type="date" class="form-input" id="orderDate">
+        </div>
+        <div class="form-group">
+          <label class="form-label">餐段</label>
+          <select class="form-select" id="orderMealType">
+            <option value="早餐">早餐</option>
+            <option value="午餐" selected>午餐</option>
+            <option value="晚餐">晚餐</option>
+            <option value="夜宵">夜宵</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">食堂</label>
+          <select class="form-select" id="orderCanteen">
+            <option value="一食堂">一食堂</option>
+            <option value="二食堂">二食堂</option>
+            <option value="三食堂">三食堂</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">餐标</label>
+          <select class="form-select" id="orderStandard">
+            <option value="普通餐">普通餐</option>
+            <option value="加班餐">加班餐</option>
+            <option value="接待餐">接待餐</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">陪同来宾人数</label>
+          <input type="number" class="form-input" id="orderGuests" value="0" min="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">报餐人</label>
+          <input type="text" class="form-input" id="orderApplicant" value="张明远" readonly style="opacity:0.6;">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">备注</label>
+        <textarea class="form-textarea" id="orderRemark" placeholder="如有特殊需求请填写..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('orderModal')">取消</button>
+      <button class="btn btn-primary" onclick="submitOrder()"><i class="fas fa-check"></i> 提交报餐</button>
+    </div>
+  </div>
+</div>
+
+<!-- Menu Modal -->
+<div class="modal-overlay" id="menuModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-bowl-food" style="color:var(--primary-light);margin-right:6px;"></i> 添加菜品</div>
+      <button class="modal-close" onclick="closeModal('menuModal')"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">菜品名称</label>
+          <input type="text" class="form-input" id="dishName" placeholder="请输入菜品名称">
+        </div>
+        <div class="form-group">
+          <label class="form-label">菜品类型</label>
+          <select class="form-select" id="dishType">
+            <option value="荤菜">荤菜</option>
+            <option value="素菜">素菜</option>
+            <option value="汤品">汤品</option>
+            <option value="主食">主食</option>
+            <option value="水果">水果</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">适用餐段</label>
+          <select class="form-select" id="dishMealType">
+            <option value="早餐">早餐</option>
+            <option value="午餐" selected>午餐</option>
+            <option value="晚餐">晚餐</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">适用食堂</label>
+          <select class="form-select" id="dishCanteen">
+            <option value="一食堂">一食堂</option>
+            <option value="二食堂">二食堂</option>
+            <option value="三食堂">三食堂</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('menuModal')">取消</button>
+      <button class="btn btn-primary" onclick="submitDish()"><i class="fas fa-check"></i> 添加</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ==================== DATA STORE ====================
+const today = new Date().toISOString().split('T')[0];
+const depts = ['技术研发部','市场营销部','财务部','人力资源部','行政部','生产制造部','品质管理部','供应链管理部'];
+const names = ['张明远','李思涵','王建国','陈晓燕','刘志强','赵雅琴','周伟民','吴秀英','黄海波','林美玲','杨志豪','郑丽华','孙鹏飞','朱晓红','马天宇'];
+const canteens = ['一食堂','二食堂','三食堂'];
+const mealTypes = ['早餐','午餐','晚餐'];
+const standards = ['普通餐','加班餐','接待餐'];
+const standardAmounts = {'普通餐':25,'加班餐':35,'接待餐':60};
+
+function randomDate(daysBack) {
+  const d = new Date(); d.setDate(d.getDate() - Math.floor(Math.random()*daysBack));
+  return d.toISOString().split('T')[0];
+}
+function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+
+// Generate meal orders
+let mealOrders = [];
+for (let i = 0; i < 180; i++) {
+  const date = randomDate(7);
+  const std = pick(standards);
+  mealOrders.push({
+    id: 'MO' + String(i+1).padStart(4,'0'),
+    order_date: date,
+    meal_type: pick(mealTypes),
+    canteen: pick(canteens),
+    applicant: pick(names),
+    dept: pick(depts),
+    meal_standard: std,
+    guest_count: std==='接待餐' ? Math.floor(Math.random()*5)+1 : 0,
+    remark: '',
+    order_status: date < today ? pick(['已报餐','已用餐']) : pick(['已报餐','已报餐','已取消']),
+    create_time: date + ' ' + (8+Math.floor(Math.random()*10)) + ':' + String(Math.floor(Math.random()*60)).padStart(2,'0')
+  });
+}
+
+// Generate menu items
+const dishNames = {
+  '荤菜': ['红烧肉','糖醋排骨','宫保鸡丁','鱼香肉丝','清蒸鲈鱼','回锅肉','水煮牛肉','可乐鸡翅','梅菜扣肉','辣子鸡'],
+  '素菜': ['麻婆豆腐','地三鲜','蒜蓉西兰花','清炒时蔬','醋溜白菜','干煸四季豆','凉拌黄瓜','香菇青菜'],
+  '汤品': ['紫菜蛋花汤','番茄蛋汤','排骨莲藕汤','银耳红枣汤','冬瓜排骨汤'],
+  '主食': ['米饭','馒头','花卷','炒面','水饺','包子','煎饼'],
+  '水果': ['苹果','香蕉','橙子','西瓜','葡萄']
+};
+let menuItems = [];
+let dishId = 1;
+Object.entries(dishNames).forEach(([type, names]) => {
+  names.forEach(name => {
+    menuItems.push({
+      id: dishId++,
+      menu_date: today,
+      meal_type: type==='主食'||type==='汤品' ? pick(mealTypes) : pick(['午餐','晚餐']),
+      canteen: pick(canteens),
+      dish_name: name,
+      dish_type: type,
+      is_available: '上架'
+    });
+  });
+});
+
+// Generate approvals
+let approvals = mealOrders.filter(o => o.meal_standard !== '普通餐' && o.order_status === '已报餐').slice(0,8).map((o,i) => ({
+  id: 'AP' + String(i+1).padStart(4,'0'),
+  order_id: o.id,
+  order_date: o.order_date,
+  meal_type: o.meal_type,
+  canteen: o.canteen,
+  applicant: o.applicant,
+  dept: o.dept,
+  meal_standard: o.meal_standard,
+  guest_count: o.guest_count,
+  approver: '张明远',
+  approval_result: i < 3 ? '待审批' : pick(['同意','拒绝']),
+  approval_opinion: '',
+  approval_time: i < 3 ? '' : o.order_date + ' ' + (10+Math.floor(Math.random()*8)) + ':' + String(Math.floor(Math.random()*60)).padStart(2,'0')
+}));
+
+// Canteen config
+let canteenConfigs = [
+  { canteen_name:'一食堂', meal_types:['早餐','午餐','晚餐'], deadline_times:{'早餐':'07:30','午餐':'10:30','晚餐':'16:30'}, max_capacity:300, contact_person:'王厨师', status:'启用' },
+  { canteen_name:'二食堂', meal_types:['午餐','晚餐'], deadline_times:{'午餐':'10:00','晚餐':'16:00'}, max_capacity:200, contact_person:'李厨师', status:'启用' },
+  { canteen_name:'三食堂', meal_types:['午餐'], deadline_times:{'午餐':'10:30'}, max_capacity:150, contact_person:'陈厨师', status:'启用' }
+];
+
+// Meal standard config
+let standardConfigs = [
+  { standard_name:'普通餐', standard_amount:25, applicable_dept:['全部'], require_approval:'否', status:'启用' },
+  { standard_name:'加班餐', standard_amount:35, applicable_dept:['技术研发部','生产制造部'], require_approval:'是', status:'启用' },
+  { standard_name:'接待餐', standard_amount:60, applicable_dept:['全部'], require_approval:'是', status:'启用' }
+];
+
+// ==================== UTILITY FUNCTIONS ====================
+function showToast(msg, type='success') {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast toast-' + type;
+  t.innerHTML = '<i class="fas fa-' + (type==='success'?'check-circle':type==='warning'?'exclamation-triangle':'xmark-circle') + '"></i> ' + msg;
+  c.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+function openModal(id) { document.getElementById(id).classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+function switchPage(page) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelector(`.nav-item[data-page="${page}"]`).classList.add('active');
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('mainContent').scrollTop = 0;
+  if (page === 'dashboard') refreshDashboard();
+  if (page === 'order') renderOrderTable();
+  if (page === 'menu') renderMenuGrid();
+  if (page === 'approval') renderApprovalList();
+  if (page === 'statistics') renderStatistics();
+  if (page === 'config') renderConfig();
+}
+
+function openOrderModal() {
+  document.getElementById('orderDate').value = today;
+  openModal('orderModal');
+}
+
+function openMenuModal() { openModal('menuModal'); }
+
+// ==================== ORDER FUNCTIONS ====================
+function submitOrder() {
+  const date = document.getElementById('orderDate').value;
+  const mealType = document.getElementById('orderMealType').value;
+  const canteen = document.getElementById('orderCanteen').value;
+  const standard = document.getElementById('orderStandard').value;
+  const guests = parseInt(document.getElementById('orderGuests').value) || 0;
+  const remark = document.getElementById('orderRemark').value;
+
+  if (!date) { showToast('请选择用餐日期','warning'); return; }
+
+  const order = {
+    id: 'MO' + String(mealOrders.length+1).padStart(4,'0'),
+    order_date: date, meal_type: mealType, canteen: canteen,
+    applicant: '张明远', dept: '技术研发部',
+    meal_standard: standard, guest_count: guests, remark: remark,
+    order_status: '已报餐',
+    create_time: new Date().toLocaleString('zh-CN')
+  };
+  mealOrders.unshift(order);
+
+  if (standard !== '普通餐') {
+    approvals.unshift({
+      id: 'AP' + String(approvals.length+1).padStart(4,'0'),
+      order_id: order.id, order_date: date, meal_type: mealType,
+      canteen: canteen, applicant: order.applicant, dept: order.dept,
+      meal_standard: standard, guest_count: guests,
+      approver: '张明远', approval_result: '待审批', approval_opinion: '', approval_time: ''
+    });
+  }
+
+  closeModal('orderModal');
+  showToast('报餐提交成功！');
+  document.getElementById('orderRemark').value = '';
+  document.getElementById('orderGuests').value = '0';
+  refreshDashboard();
+}
+
+function cancelOrder(id) {
+  const o = mealOrders.find(x => x.id === id);
+  if (o) { o.order_status = '已取消'; showToast('已取消报餐','warning'); renderOrderTable(); refreshDashboard(); }
+}
+
+function filterOrders(status) {
+  renderOrderTable(status);
+}
+
+function renderOrderTable(filter='all') {
+  const tbody = document.getElementById('orderTableBody');
+  let data = [...mealOrders].sort((a,b) => b.order_date.localeCompare(a.order_date));
+  if (filter !== 'all') data = data.filter(o => o.order_status === filter);
+  data = data.slice(0, 50);
+  tbody.innerHTML = data.map(o => `
+    <tr>
+      <td>${o.order_date}</td>
+      <td><span class="badge badge-blue">${o.meal_type}</span></td>
+      <td>${o.canteen}</td>
+      <td>${o.applicant}</td>
+      <td style="font-size:12px;">${o.dept}</td>
+      <td><span class="badge ${o.meal_standard==='普通餐'?'badge-green':o.meal_standard==='加班餐'?'badge-yellow':'badge-red'}">${o.meal_standard}</span></td>
+      <td>${o.guest_count>0?o.guest_count:'-'}</td>
+      <td><span class="badge ${o.order_status==='已报餐'?'badge-green':o.order_status==='已用餐'?'badge-blue':o.order_status==='已取消'?'badge-gray':'badge-yellow'}">${o.order_status}</span></td>
+      <td>${o.order_status==='已报餐'?`<button class="btn btn-danger btn-sm" onclick="cancelOrder('${o.id}')">取消</button>`:''}</td>
+    </tr>
+  `).join('');
+}
+
+// ==================== MENU FUNCTIONS ====================
+let currentMenuTab = 'all';
+function switchMenuTab(tab) {
+  currentMenuTab = tab;
+  document.querySelectorAll('#menuTabBar .tab-item').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderMenuGrid();
+}
+
+function renderMenuGrid() {
+  const grid = document.getElementById('menuGrid');
+  let data = menuItems.filter(m => m.menu_date === today);
+  if (currentMenuTab !== 'all') data = data.filter(m => m.meal_type === currentMenuTab);
+  const typeIcons = {'荤菜':'fa-drumstick-bite','素菜':'fa-leaf','汤品':'fa-mug-hot','主食':'fa-bread-slice','水果':'fa-apple-whole'};
+  const typeColors = {'荤菜':'#ef4444','素菜':'#22c55e','汤品':'#f59e0b','主食':'#8b5cf6','水果':'#06b6d4'};
+  grid.innerHTML = data.map(m => `
+    <div class="menu-card">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:${typeColors[m.dish_type]}15;display:flex;align-items:center;justify-content:center;">
+          <i class="fas ${typeIcons[m.dish_type]}" style="color:${typeColors[m.dish_type]};font-size:14px;"></i>
+        </div>
+        <div>
+          <div class="menu-dish-name">${m.dish_name}</div>
+          <div class="menu-dish-type">${m.dish_type} · ${m.meal_type} · ${m.canteen}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function submitDish() {
+  const name = document.getElementById('dishName').value;
+  if (!name) { showToast('请输入菜品名称','warning'); return; }
+  menuItems.push({
+    id: dishId++, menu_date: today,
+    meal_type: document.getElementById('dishMealType').value,
+    canteen: document.getElementById('dishCanteen').value,
+    dish_name: name, dish_type: document.getElementById('dishType').value, is_available: '上架'
+  });
+  closeModal('menuModal');
+  showToast('菜品添加成功！');
+  document.getElementById('dishName').value = '';
+  renderMenuGrid();
+}
+
+// ==================== APPROVAL FUNCTIONS ====================
+let currentApprovalTab = 'pending';
+function switchApprovalTab(tab) {
+  currentApprovalTab = tab;
+  document.querySelectorAll('#page-approval .tab-item').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderApprovalList();
+}
+
+function renderApprovalList() {
+  const container = document.getElementById('approvalList');
+  let data = currentApprovalTab === 'pending' ? approvals.filter(a => a.approval_result === '待审批') : approvals.filter(a => a.approval_result !== '待审批');
+  if (data.length === 0) {
+    container.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>暂无' + (currentApprovalTab==='pending'?'待审批':'已审批') + '记录</p></div>';
+    return;
+  }
+  container.innerHTML = data.map(a => `
+    <div class="approval-card">
+      <div class="approval-header">
+        <div class="approval-user">${a.applicant} <span style="font-size:12px;color:var(--text-muted);font-weight:400;">${a.dept}</span></div>
+        <span class="badge ${a.approval_result==='待审批'?'badge-yellow':a.approval_result==='同意'?'badge-green':'badge-red'}">${a.approval_result}</span>
+      </div>
+      <div class="approval-detail">
+        ${a.order_date} ${a.meal_type} · ${a.canteen} · ${a.meal_standard}${a.guest_count>0?' · 来宾'+a.guest_count+'人':''}
+      </div>
+      ${a.approval_result==='待审批'?`
+      <div class="approval-actions">
+        <button class="btn btn-primary btn-sm" onclick="approveItem('${a.id}','同意')"><i class="fas fa-check"></i> 同意</button>
+        <button class="btn btn-danger btn-sm" onclick="approveItem('${a.id}','拒绝')"><i class="fas fa-xmark"></i> 拒绝</button>
+      </div>`:''}
+    </div>
+  `).join('');
+  updateApprovalBadge();
+}
+
+function approveItem(id, result) {
+  const a = approvals.find(x => x.id === id);
+  if (a) {
+    a.approval_result = result;
+    a.approval_time = new Date().toLocaleString('zh-CN');
+    if (result === '拒绝') {
+      const o = mealOrders.find(x => x.id === a.order_id);
+      if (o) o.order_status = '已取消';
+    }
+    showToast(result === '同意' ? '已同意' : '已拒绝', result==='同意'?'success':'warning');
+    renderApprovalList();
+    refreshDashboard();
+  }
+}
+
+function updateApprovalBadge() {
+  const count = approvals.filter(a => a.approval_result === '待审批').length;
+  const badge = document.getElementById('approvalBadge');
+  badge.textContent = count;
+  badge.style.display = count > 0 ? '' : 'none';
+}
+
+// ==================== STATISTICS ====================
+function renderStatistics() {
+  // Meal type chart
+  const mealTypeCounts = {};
+  mealTypes.forEach(m => mealTypeCounts[m] = 0);
+  mealOrders.filter(o => o.order_status !== '已取消').forEach(o => mealTypeCounts[o.meal_type] = (mealTypeCounts[o.meal_type]||0) + 1);
+
+  const ctx1 = document.getElementById('chartMealType').getContext('2d');
+  if (window._chartMealType) window._chartMealType.destroy();
+  window._chartMealType = new Chart(ctx1, {
+    type: 'doughnut',
+    data: {
+      labels: mealTypes,
+      datasets: [{ data: mealTypes.map(m => mealTypeCounts[m]), backgroundColor: ['#10b981','#3b82f6','#f59e0b'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 12 } } } } }
+  });
+
+  // Dept chart
+  const deptCounts = {};
+  mealOrders.filter(o => o.order_status !== '已取消').forEach(o => deptCounts[o.dept] = (deptCounts[o.dept]||0) + 1);
+  const sortedDepts = Object.entries(deptCounts).sort((a,b) => b[1]-a[1]).slice(0,8);
+
+  const ctx2 = document.getElementById('chartDept').getContext('2d');
+  if (window._chartDept) window._chartDept.destroy();
+  window._chartDept = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: sortedDepts.map(d => d[0].replace('部','')),
+      datasets: [{ data: sortedDepts.map(d => d[1]), backgroundColor: 'rgba(16,185,129,0.6)', borderRadius: 6, borderSkipped: false }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#94a3b8', font: { size: 11 } }, grid: { display: false } }, y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.03)' } } } }
+  });
+
+  // Stat table
+  const statBody = document.getElementById('statTableBody');
+  const statMap = {};
+  mealOrders.filter(o => o.order_status !== '已取消').forEach(o => {
+    const key = o.order_date + '|' + o.meal_type + '|' + o.canteen;
+    if (!statMap[key]) statMap[key] = { date: o.order_date, meal: o.meal_type, canteen: o.canteen, count: 0, guests: 0, cost: 0 };
+    statMap[key].count++;
+    statMap[key].guests += o.guest_count;
+    statMap[key].cost += standardAmounts[o.meal_standard] || 25;
+  });
+  const statRows = Object.values(statMap).sort((a,b) => b.date.localeCompare(a.date)).slice(0,20);
+  statBody.innerHTML = statRows.map(r => `
+    <tr>
+      <td>${r.date}</td><td><span class="badge badge-blue">${r.meal}</span></td><td>${r.canteen}</td>
+      <td style="font-weight:700;color:var(--primary-light);">${r.count}</td><td>${r.guests||'-'}</td>
+      <td style="color:var(--accent);">¥${r.cost}</td>
+    </tr>
+  `).join('');
+}
+
+// ==================== CONFIG ====================
+let currentConfigTab = 'canteen';
+function switchConfigTab(tab) {
+  currentConfigTab = tab;
+  document.querySelectorAll('#page-config .tab-item').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderConfig();
+}
+
+function renderConfig() {
+  const container = document.getElementById('configContent');
+  if (currentConfigTab === 'canteen') {
+    container.innerHTML = `<div class="glass-panel"><div class="panel-body" style="padding:0;overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>食堂</th><th>提供餐段</th><th>报餐截止时间</th><th>最大容量</th><th>负责人</th><th>状态</th></tr></thead>
+        <tbody>${canteenConfigs.map(c => `
+          <tr>
+            <td style="font-weight:600;">${c.canteen_name}</td>
+            <td>${c.meal_types.map(m => `<span class="badge badge-blue" style="margin:2px;">${m}</span>`).join('')}</td>
+            <td>${Object.entries(c.deadline_times).map(([k,v]) => `${k}:${v}`).join(' / ')}</td>
+            <td>${c.max_capacity}人</td>
+            <td>${c.contact_person}</td>
+            <td><span class="badge badge-green">${c.status}</span></td>
+          </tr>
+        `).join('')}</tbody>
+      </table>
+    </div></div>`;
+  } else {
+    container.innerHTML = `<div class="glass-panel"><div class="panel-body" style="padding:0;overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>餐标名称</th><th>金额</th><th>适用部门</th><th>需要审批</th><th>状态</th></tr></thead>
+        <tbody>${standardConfigs.map(s => `
+          <tr>
+            <td style="font-weight:600;">${s.standard_name}</td>
+            <td style="color:var(--accent);font-weight:700;">¥${s.standard_amount}/人</td>
+            <td>${s.applicable_dept.join('、')}</td>
+            <td><span class="badge ${s.require_approval==='是'?'badge-yellow':'badge-green'}">${s.require_approval}</span></td>
+            <td><span class="badge badge-green">${s.status}</span></td>
+          </tr>
+        `).join('')}</tbody>
+      </table>
+    </div></div>`;
+  }
+}
+
+// ==================== DASHBOARD ====================
+function refreshDashboard() {
+  const todayOrders = mealOrders.filter(o => o.order_date === today && o.order_status !== '已取消');
+  const weekStart = new Date(); weekStart.setDate(weekStart.getDate() - weekStart.getDay() + 1);
+  const weekStartStr = weekStart.toISOString().split('T')[0];
+  const weekOrders = mealOrders.filter(o => o.order_date >= weekStartStr && o.order_status !== '已取消');
+  const monthStr = today.substring(0,7);
+  const monthOrders = mealOrders.filter(o => o.order_date.startsWith(monthStr) && o.order_status !== '已取消');
+  const monthCost = monthOrders.reduce((sum,o) => sum + (standardAmounts[o.meal_standard]||25) * (1 + o.guest_count), 0);
+  const pendingCount = approvals.filter(a => a.approval_result === '待审批').length;
+
+  document.getElementById('stat-today').textContent = todayOrders.length;
+  document.getElementById('stat-week').textContent = weekOrders.length;
+  document.getElementById('stat-cost').textContent = '¥' + monthCost.toLocaleString();
+  document.getElementById('stat-pending').textContent = pendingCount;
+
+  // Canteen chart
+  const canteenCounts = {};
+  canteens.forEach(c => canteenCounts[c] = 0);
+  todayOrders.forEach(o => canteenCounts[o.canteen] = (canteenCounts[o.canteen]||0) + 1);
+
+  const ctx = document.getElementById('chartCanteen').getContext('2d');
+  if (window._chartCanteen) window._chartCanteen.destroy();
+  window._chartCanteen = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: canteens,
+      datasets: [{
+        label: '报餐人数',
+        data: canteens.map(c => canteenCounts[c]),
+        backgroundColor: ['rgba(16,185,129,0.6)','rgba(59,130,246,0.6)','rgba(245,158,11,0.6)'],
+        borderRadius: 8, borderSkipped: false, barThickness: 40
+      }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#94a3b8' }, grid: { display: false } }, y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.03)' }, beginAtZero: true } } }
+  });
+
+  // Trend chart
+  const trendData = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const ds = d.toISOString().split('T')[0];
+    const count = mealOrders.filter(o => o.order_date === ds && o.order_status !== '已取消').length;
+    trendData.push({ date: (d.getMonth()+1)+'/'+d.getDate(), count });
+  }
+  const ctx2 = document.getElementById('chartTrend').getContext('2d');
+  if (window._chartTrend) window._chartTrend.destroy();
+  window._chartTrend = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: trendData.map(t => t.date),
+      datasets: [{
+        label: '报餐人数',
+        data: trendData.map(t => t.count),
+        borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.1)',
+        fill: true, tension: 0.4, pointRadius: 4, pointBackgroundColor: '#10b981'
+      }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#94a3b8' }, grid: { display: false } }, y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.03)' }, beginAtZero: true } } }
+  });
+
+  // Deadline list
+  const deadlineList = document.getElementById('deadlineList');
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMin = now.getMinutes();
+  deadlineList.innerHTML = canteenConfigs.flatMap(c =>
+    Object.entries(c.deadline_times).map(([meal, time]) => {
+      const [h,m] = time.split(':').map(Number);
+      const diff = (h*60+m) - (currentHour*60+currentMin);
+      const isUrgent = diff > 0 && diff <= 60;
+      const isPast = diff <= 0;
+      return `<div class="deadline-item">
+        <div><div class="deadline-canteen">${c.canteen} · ${meal}</div><div class="deadline-meal">截止 ${time}</div></div>
+        <div class="deadline-time ${isPast?'':isUrgent?'urgent':'ok'}">${isPast?'已截止':isUrgent?'剩余'+diff+'分钟':time}</div>
+      </div>`;
+    })
+  ).join('');
+
+  // Today menu
+  const todayMenu = document.getElementById('todayMenuList');
+  const todayDishes = menuItems.filter(m => m.menu_date === today).slice(0,12);
+  const typeIcons = {'荤菜':'fa-drumstick-bite','素菜':'fa-leaf','汤品':'fa-mug-hot','主食':'fa-bread-slice','水果':'fa-apple-whole'};
+  const typeColors = {'荤菜':'#ef4444','素菜':'#22c55e','汤品':'#f59e0b','主食':'#8b5cf6','水果':'#06b6d4'};
+  todayMenu.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;">` +
+    todayDishes.map(m => `
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);">
+        <i class="fas ${typeIcons[m.dish_type]}" style="color:${typeColors[m.dish_type]};font-size:12px;"></i>
+        <span style="font-size:12px;">${m.dish_name}</span>
+        <span style="font-size:10px;color:var(--text-muted);margin-left:auto;">${m.meal_type}</span>
+      </div>
+    `).join('') + '</div>';
+
+  // Dept rank
+  const deptRank = document.getElementById('deptRankList');
+  const deptCounts = {};
+  mealOrders.filter(o => o.order_date === today && o.order_status !== '已取消').forEach(o => deptCounts[o.dept] = (deptCounts[o.dept]||0) + 1);
+  const sortedDepts = Object.entries(deptCounts).sort((a,b) => b[1]-a[1]).slice(0,6);
+  const maxCount = sortedDepts.length > 0 ? sortedDepts[0][1] : 1;
+  deptRank.innerHTML = sortedDepts.map((d,i) => `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <span style="width:20px;height:20px;border-radius:6px;background:${i<3?'var(--primary)':'rgba(255,255,255,0.1)'};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:${i<3?'white':'var(--text-muted)'};">${i+1}</span>
+      <span style="font-size:13px;flex:1;">${d[0]}</span>
+      <div style="flex:2;height:6px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden;">
+        <div style="height:100%;width:${d[1]/maxCount*100}%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:3px;"></div>
+      </div>
+      <span style="font-size:13px;font-weight:700;color:var(--primary-light);width:30px;text-align:right;">${d[1]}</span>
+    </div>
+  `).join('');
+
+  updateApprovalBadge();
+}
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  refreshDashboard();
+  renderOrderTable();
+  renderMenuGrid();
+  renderApprovalList();
+});
+</script>
+</body>
+</html>
