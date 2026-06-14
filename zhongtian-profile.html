@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中天（中国）工业有限公司 - 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08);--primary:#f59e0b;--primary-light:#fbbf24;--emerald:#34d399;--amber:#fbbf24;--violet:#a78bfa;--cyan:#22d3ee;--rose:#fb7185;--orange:#fb923c;--blue:#60a5fa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:#e2e8f0;font-family:'Inter',system-ui,-apple-system,sans-serif;overflow-x:hidden;}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 20%,rgba(245,158,11,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(251,191,36,0.04) 0%,transparent 50%);pointer-events:none;z-index:0;}
+
+/* Hero */
+.hero-section{position:relative;padding:60px 20px 40px;text-align:center;overflow:hidden;}
+.hero-glow{position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,0.12) 0%,transparent 70%);pointer-events:none;}
+.pulse-dot{width:8px;height:8px;background:var(--emerald);border-radius:50%;display:inline-block;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);}}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:0.7rem;font-weight:500;backdrop-filter:blur(10px);}
+.tag-blue{background:rgba(96,165,250,0.15);color:#93c5fd;border:1px solid rgba(96,165,250,0.2);}
+.tag-rose{background:rgba(251,113,133,0.15);color:#fda4af;border:1px solid rgba(251,113,133,0.2);}
+.tag-emerald{background:rgba(52,211,153,0.15);color:#6ee7b7;border:1px solid rgba(52,211,153,0.2);}
+.tag-violet{background:rgba(167,139,250,0.15);color:#c4b5fd;border:1px solid rgba(167,139,250,0.2);}
+.tag-amber{background:rgba(251,191,36,0.15);color:#fde68a;border:1px solid rgba(251,191,36,0.2);}
+.tag-orange{background:rgba(251,146,60,0.15);color:#fdba74;border:1px solid rgba(251,146,60,0.2);}
+.tag-cyan{background:rgba(34,211,238,0.15);color:#67e8f9;border:1px solid rgba(34,211,238,0.2);}
+
+/* Bento Grid */
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1280px;margin:0 auto;padding:0 20px 40px;}
+.glass-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;backdrop-filter:blur(20px);transition:all .3s ease;overflow:hidden;}
+.glass-card:hover{border-color:rgba(245,158,11,0.2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(245,158,11,0.06);}
+.col-span-4{grid-column:span 4;}.col-span-3{grid-column:span 3;}.col-span-2{grid-column:span 2;}.col-span-1{grid-column:span 1;}
+.row-span-2{grid-row:span 2;}
+
+/* Section Title */
+.section-title{font-size:0.85rem;font-weight:700;color:#f1f5f9;margin-bottom:16px;display:flex;align-items:center;gap:8px;letter-spacing:0.5px;}
+.section-title i{font-size:0.9rem;}
+
+/* Info Rows */
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.info-row:last-child{border-bottom:none;}
+.info-key{font-size:0.72rem;color:#64748b;white-space:nowrap;min-width:80px;}
+.info-val{font-size:0.75rem;color:#cbd5e1;text-align:right;flex:1;margin-left:12px;word-break:break-all;}
+
+/* Stat */
+.stat-number{font-size:1.8rem;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,var(--primary-light),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-label{font-size:0.65rem;color:#64748b;margin-top:2px;}
+.stat-change{font-size:0.6rem;font-weight:600;padding:1px 6px;border-radius:10px;display:inline-block;margin-top:4px;}
+.stat-change.up{background:rgba(52,211,153,0.15);color:#6ee7b7;}
+.stat-change.down{background:rgba(251,113,133,0.15);color:#fda4af;}
+
+/* Progress Bar */
+.progress-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;margin-top:6px;}
+.progress-fill{height:100%;border-radius:3px;transition:width 1.5s ease;}
+
+/* Brand Card */
+.brand-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);margin-bottom:8px;}
+.brand-item:last-child{margin-bottom:0;}
+.brand-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:800;flex-shrink:0;}
+.brand-name{font-size:0.78rem;font-weight:600;color:#e2e8f0;}
+.brand-desc{font-size:0.62rem;color:#64748b;margin-top:1px;}
+
+/* Cert Badge */
+.cert-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:6px;font-size:0.62rem;font-weight:500;margin:3px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);}
+
+/* Timeline */
+.timeline-item{position:relative;padding-left:20px;padding-bottom:16px;border-left:2px solid rgba(245,158,11,0.2);}
+.timeline-item:last-child{border-left:2px solid transparent;padding-bottom:0;}
+.timeline-dot{position:absolute;left:-5px;top:2px;width:8px;height:8px;border-radius:50%;background:var(--primary);}
+.timeline-year{font-size:0.68rem;color:var(--primary-light);font-weight:600;}
+.timeline-text{font-size:0.7rem;color:#94a3b8;margin-top:2px;}
+
+/* Reveal Animation */
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1);}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+/* Footer */
+.footer{text-align:center;padding:30px 20px;border-top:1px solid rgba(255,255,255,0.05);margin-top:20px;}
+.footer p{font-size:0.7rem;color:#475569;}
+.footer span{color:var(--primary);font-weight:600;}
+
+/* Responsive */
+@media(max-width:1024px){
+  .bento-grid{grid-template-columns:repeat(2,1fr);}
+  .col-span-4{grid-column:span 2;}.col-span-3{grid-column:span 2;}
+}
+@media(max-width:768px){
+  .bento-grid{grid-template-columns:1fr !important;gap:12px !important;}
+  .col-span-4,.col-span-3,.col-span-2,.col-span-1{grid-column:span 1 !important;}
+  .hero-section{padding:40px 16px 24px;}
+  .stat-number{font-size:1.4rem;}
+  .stat-grid-6{grid-template-columns:repeat(3,1fr) !important;gap:12px !important;}
+  .stat-grid-4{grid-template-columns:repeat(2,1fr) !important;}
+}
+@media(max-width:480px){
+  .stat-grid-6{grid-template-columns:repeat(2,1fr) !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero-section">
+  <div class="hero-glow"></div>
+  <div style="position:relative;z-index:1;">
+    <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <div class="pulse-dot"></div>
+      <span style="font-size:0.8rem;color:var(--emerald);font-weight:500;">存续 · 国家高新技术企业</span>
+    </div>
+    <h1 style="font-size:2.2rem;font-weight:900;letter-spacing:-1px;margin-bottom:8px;">
+      <span style="background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">中天（中国）工业有限公司</span>
+    </h1>
+    <p style="font-size:0.95rem;color:#94a3b8;margin-bottom:4px;">可爱宝贝 · 品质呵护每一天</p>
+    <p style="font-size:0.8rem;color:#64748b;margin-bottom:20px;">Zhongtian (China) Industrial Co., Ltd. · 中天集团（中国）有限公司全资子公司 · AAB品牌运营主体</p>
+    <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;">
+      <span class="tag tag-amber"><i class="fas fa-baby"></i> 婴儿纸尿裤</span>
+      <span class="tag tag-rose"><i class="fas fa-venus"></i> 女性护理</span>
+      <span class="tag tag-blue"><i class="fas fa-user-nurse"></i> 成人失禁</span>
+      <span class="tag tag-cyan"><i class="fas fa-mask-face"></i> 医用口罩</span>
+      <span class="tag tag-emerald"><i class="fas fa-award"></i> 驰名商标</span>
+      <span class="tag tag-violet"><i class="fas fa-flask"></i> 高新技术</span>
+      <span class="tag tag-orange"><i class="fas fa-globe"></i> 出口68国</span>
+    </div>
+  </div>
+</section>
+
+<!-- Bento Grid -->
+<div class="bento-grid" style="position:relative;z-index:1;">
+
+  <!-- 核心数据 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-chart-line" style="color:var(--primary);"></i> 核心经营数据</div>
+    <div class="stat-grid-6" style="display:grid;grid-template-columns:repeat(6,1fr);gap:16px;text-align:center;">
+      <div>
+        <div class="stat-number">23600<span style="font-size:0.9rem;">万港币</span></div>
+        <div class="stat-label">注册资本</div>
+        <span class="stat-change up">实缴100%</span>
+      </div>
+      <div>
+        <div class="stat-number">30<span style="font-size:0.9rem;">亿片</span></div>
+        <div class="stat-label">年产能</div>
+        <span class="stat-label" style="margin-top:2px;">23条产线</span>
+      </div>
+      <div>
+        <div class="stat-number">171<span style="font-size:0.9rem;">项</span></div>
+        <div class="stat-label">专利总数</div>
+        <span class="stat-change up">含发明授权</span>
+      </div>
+      <div>
+        <div class="stat-number">68<span style="font-size:0.9rem;">国</span></div>
+        <div class="stat-label">出口覆盖</div>
+        <span class="stat-label" style="margin-top:2px;">5大洲</span>
+      </div>
+      <div>
+        <div class="stat-number">600<span style="font-size:0.9rem;">+</span></div>
+        <div class="stat-label">员工规模</div>
+        <span class="stat-label" style="margin-top:2px;">参保134人</span>
+      </div>
+      <div>
+        <div class="stat-number">59<span style="font-size:0.9rem;">件</span></div>
+        <div class="stat-label">商标注册</div>
+        <span class="stat-change up">2件驰名</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 工商信息 -->
+  <div class="glass-card col-span-2 row-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-building" style="color:var(--primary);"></i> 工商信息</div>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div class="info-row"><span class="info-key">法定代表人</span><span class="info-val" style="color:var(--primary-light);font-weight:600;">黄家齐</span></div>
+      <div class="info-row"><span class="info-key">统一信用代码</span><span class="info-val" style="font-family:monospace;font-size:0.68rem;color:#94a3b8;">91350583777549414P</span></div>
+      <div class="info-row"><span class="info-key">成立日期</span><span class="info-val">2005-12-02</span></div>
+      <div class="info-row"><span class="info-key">注册资本</span><span class="info-val" style="color:var(--amber);">23600万港币</span></div>
+      <div class="info-row"><span class="info-key">实缴资本</span><span class="info-val" style="color:var(--emerald);">23600万港币(100%)</span></div>
+      <div class="info-row"><span class="info-key">企业类型</span><span class="info-val" style="font-size:0.68rem;">有限责任公司(港澳台法人独资)</span></div>
+      <div class="info-row"><span class="info-key">登记状态</span><span class="info-val"><span style="color:var(--emerald);font-weight:600;">存续（在营）</span></span></div>
+      <div class="info-row"><span class="info-key">所属行业</span><span class="info-val">造纸和纸制品业(C2231)</span></div>
+      <div class="info-row"><span class="info-key">参保人数</span><span class="info-val">134人(2025)</span></div>
+      <div class="info-row"><span class="info-key">纳税人资质</span><span class="info-val"><span class="tag tag-emerald" style="margin:0;">A级一般纳税人</span></span></div>
+      <div class="info-row"><span class="info-key">营业期限</span><span class="info-val">2005-12-02 至 无固定期限</span></div>
+      <div class="info-row"><span class="info-key">注册地址</span><span class="info-val" style="font-size:0.66rem;max-width:200px;">福建省泉州市南安市洪濑镇中天工业园</span></div>
+    </div>
+  </div>
+
+  <!-- 股权结构 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-sitemap" style="color:var(--violet);"></i> 股权结构</div>
+    <div style="text-align:center;padding:10px 0;">
+      <div style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:12px;padding:16px;margin-bottom:12px;">
+        <div style="font-size:0.75rem;color:#c4b5fd;font-weight:600;">中天集團（中國）有限公司</div>
+        <div style="font-size:0.62rem;color:#64748b;margin-top:2px;">香港注册 · 外商独资</div>
+      </div>
+      <div style="color:var(--primary);font-size:1.2rem;margin:8px 0;"><i class="fas fa-arrow-down"></i></div>
+      <div style="font-size:0.72rem;color:var(--primary-light);font-weight:700;margin-bottom:4px;">持股 100%</div>
+      <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:16px;">
+        <div style="font-size:0.8rem;color:var(--primary-light);font-weight:700;">中天（中国）工业有限公司</div>
+        <div style="font-size:0.62rem;color:#64748b;margin-top:2px;">运营主体 · AAB品牌</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;">
+      <div class="info-row"><span class="info-key">执行董事</span><span class="info-val" style="color:var(--primary-light);">黄家齐</span></div>
+      <div class="info-row"><span class="info-key">总经理</span><span class="info-val" style="color:var(--primary-light);">黄家齐</span></div>
+      <div class="info-row"><span class="info-key">监事</span><span class="info-val">戴国元</span></div>
+    </div>
+  </div>
+
+  <!-- 品牌矩阵 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-crown" style="color:var(--amber);"></i> 品牌矩阵</div>
+    <div class="brand-item">
+      <div class="brand-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;">可</div>
+      <div><div class="brand-name">可爱宝贝 <span style="font-size:0.6rem;color:var(--primary-light);">★ 驰名商标</span></div><div class="brand-desc">婴儿纸尿裤 · 拉拉裤 · 5G芯呵护系列</div></div>
+    </div>
+    <div class="brand-item">
+      <div class="brand-icon" style="background:linear-gradient(135deg,#60a5fa,#3b82f6);color:#fff;">A</div>
+      <div><div class="brand-name">AAB <span style="font-size:0.6rem;color:var(--primary-light);">★ 驰名商标</span></div><div class="brand-desc">个人卫生护理 · 国际品牌线</div></div>
+    </div>
+    <div class="brand-item">
+      <div class="brand-icon" style="background:linear-gradient(135deg,#fb7185,#e11d48);color:#fff;">丝</div>
+      <div><div class="brand-name">丝婷</div><div class="brand-desc">女性卫生巾 · 护垫 · 丝丝薄薄婷婷玉立</div></div>
+    </div>
+    <div class="brand-item">
+      <div class="brand-icon" style="background:linear-gradient(135deg,#34d399,#059669);color:#fff;">康</div>
+      <div><div class="brand-name">可爱康</div><div class="brand-desc">成人纸尿裤 · 失禁护理 · 多一份关爱</div></div>
+    </div>
+  </div>
+
+  <!-- 生产基地 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-industry" style="color:var(--cyan);"></i> 生产基地</div>
+    <div style="margin-bottom:12px;">
+      <div style="font-size:0.78rem;color:var(--primary-light);font-weight:600;margin-bottom:8px;">南安洪濑中天工业园（总部）</div>
+      <div class="info-row"><span class="info-key">园区占地</span><span class="info-val">36亩</span></div>
+      <div class="info-row"><span class="info-key">建筑面积</span><span class="info-val">10万+ 平方米</span></div>
+      <div class="info-row"><span class="info-key">无菌车间</span><span class="info-val">3万平方米</span></div>
+      <div class="info-row"><span class="info-key">洁净车间</span><span class="info-val">2500平方米(10万级)</span></div>
+      <div class="info-row"><span class="info-key">研发检测中心</span><span class="info-val">1000平方米</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:rgba(245,158,11,0.08);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.2rem;font-weight:900;color:var(--primary-light);">23</div>
+        <div style="font-size:0.6rem;color:#64748b;">卫生护理产线</div>
+      </div>
+      <div style="background:rgba(34,211,238,0.08);border-radius:8px;padding:10px;text-align:center;">
+        <div style="font-size:1.2rem;font-weight:900;color:var(--cyan);">24</div>
+        <div style="font-size:0.6rem;color:#64748b;">口罩产线</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 办公地址 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-map-marker-alt" style="color:var(--rose);"></i> 办公地址</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:0.72rem;color:var(--primary-light);font-weight:600;margin-bottom:4px;"><i class="fas fa-industry" style="margin-right:4px;"></i>总部工厂</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">南安市洪濑镇中天工业园</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:0.72rem;color:var(--blue);font-weight:600;margin-bottom:4px;"><i class="fas fa-building" style="margin-right:4px;"></i>国际贸易中心</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">泉州市丰泽区万达中心A座30层整层</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:0.72rem;color:var(--emerald);font-weight:600;margin-bottom:4px;"><i class="fas fa-shopping-cart" style="margin-right:4px;"></i>电商运营中心</div>
+        <div style="font-size:0.68rem;color:#94a3b8;">泉州市清濛经济开发区美泰路26号</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 认证体系 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-certificate" style="color:var(--emerald);"></i> 认证与资质</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="cert-badge" style="color:#6ee7b7;border-color:rgba(52,211,153,0.2);"><i class="fas fa-check-circle"></i> ISO 9001</span>
+      <span class="cert-badge" style="color:#6ee7b7;border-color:rgba(52,211,153,0.2);"><i class="fas fa-check-circle"></i> ISO 14001</span>
+      <span class="cert-badge" style="color:#6ee7b7;border-color:rgba(52,211,153,0.2);"><i class="fas fa-check-circle"></i> ISO 45001</span>
+      <span class="cert-badge" style="color:#93c5fd;border-color:rgba(96,165,250,0.2);"><i class="fas fa-flag-usa"></i> 美国FDA</span>
+      <span class="cert-badge" style="color:#93c5fd;border-color:rgba(96,165,250,0.2);"><i class="fas fa-globe-americas"></i> 欧盟CE</span>
+      <span class="cert-badge" style="color:#93c5fd;border-color:rgba(96,165,250,0.2);"><i class="fas fa-hard-hat"></i> GMP820</span>
+      <span class="cert-badge" style="color:#c4b5fd;border-color:rgba(167,139,250,0.2);"><i class="fas fa-users"></i> SA8000</span>
+      <span class="cert-badge" style="color:#fde68a;border-color:rgba(251,191,36,0.2);"><i class="fas fa-shield-alt"></i> 商务部白名单</span>
+      <span class="cert-badge" style="color:#fda4af;border-color:rgba(251,113,133,0.2);"><i class="fas fa-award"></i> 出口质量安全示范</span>
+    </div>
+    <div style="margin-top:14px;">
+      <div style="font-size:0.7rem;color:#94a3b8;margin-bottom:8px;">企业荣誉</div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>国家高新技术企业</div>
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>省级专精特新中小企业</div>
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>省级企业技术中心</div>
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>中国婴儿纸尿裤行业十强</div>
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>泉州市政府质量奖</div>
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>泉州市专利一等奖</div>
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>省级守合同重信用企业</div>
+        <div style="font-size:0.66rem;color:#cbd5e1;"><i class="fas fa-trophy" style="color:var(--primary);margin-right:4px;"></i>省民营企业纳税百强</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 经营范围 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-file-contract" style="color:var(--orange);"></i> 经营范围</div>
+    <div style="margin-bottom:12px;">
+      <div style="font-size:0.7rem;color:var(--rose);font-weight:600;margin-bottom:6px;">许可项目</div>
+      <div style="font-size:0.66rem;color:#94a3b8;line-height:1.6;">卫生用品和一次性使用医疗用品生产</div>
+    </div>
+    <div>
+      <div style="font-size:0.7rem;color:var(--emerald);font-weight:600;margin-bottom:6px;">一般项目</div>
+      <div style="font-size:0.66rem;color:#94a3b8;line-height:1.6;">货物进出口 · 技术进出口 · 进出口代理 · 卫生用品和一次性使用医疗用品销售 · 母婴用品制造 · 纸制品制造 · 产业用纺织制成品制造 · 第一类医疗器械销售</div>
+    </div>
+  </div>
+
+  <!-- 产品体系 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-boxes-stacked" style="color:var(--blue);"></i> 产品体系</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:rgba(245,158,11,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <i class="fas fa-baby" style="font-size:1.2rem;color:var(--primary);margin-bottom:6px;display:block;"></i>
+        <div style="font-size:0.72rem;color:#e2e8f0;font-weight:600;">婴儿纸尿裤</div>
+        <div style="font-size:0.6rem;color:#64748b;margin-top:2px;">纸尿片 · 拉拉裤 · 5G芯</div>
+      </div>
+      <div style="background:rgba(251,113,133,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <i class="fas fa-venus" style="font-size:1.2rem;color:var(--rose);margin-bottom:6px;display:block;"></i>
+        <div style="font-size:0.72rem;color:#e2e8f0;font-weight:600;">女性卫生巾</div>
+        <div style="font-size:0.6rem;color:#64748b;margin-top:2px;">卫生巾 · 护垫 · 气垫系列</div>
+      </div>
+      <div style="background:rgba(52,211,153,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <i class="fas fa-user-nurse" style="font-size:1.2rem;color:var(--emerald);margin-bottom:6px;display:block;"></i>
+        <div style="font-size:0.72rem;color:#e2e8f0;font-weight:600;">成人失禁裤</div>
+        <div style="font-size:0.6rem;color:#64748b;margin-top:2px;">成人纸尿裤 · 干湿分离</div>
+      </div>
+      <div style="background:rgba(34,211,238,0.06);border-radius:10px;padding:12px;text-align:center;">
+        <i class="fas fa-mask-face" style="font-size:1.2rem;color:var(--cyan);margin-bottom:6px;display:block;"></i>
+        <div style="font-size:0.72rem;color:#e2e8f0;font-weight:600;">医用口罩</div>
+        <div style="font-size:0.6rem;color:#64748b;margin-top:2px;">KN95 · 3D立体 · 平面</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 出口市场 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-globe" style="color:var(--violet);"></i> 出口市场覆盖</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center;margin-bottom:12px;">
+      <div style="background:rgba(96,165,250,0.08);border-radius:8px;padding:8px 4px;">
+        <div style="font-size:0.9rem;">🇺🇸</div>
+        <div style="font-size:0.58rem;color:#94a3b8;margin-top:2px;">美国</div>
+      </div>
+      <div style="background:rgba(96,165,250,0.08);border-radius:8px;padding:8px 4px;">
+        <div style="font-size:0.9rem;">🇪🇺</div>
+        <div style="font-size:0.58rem;color:#94a3b8;margin-top:2px;">欧洲</div>
+      </div>
+      <div style="background:rgba(96,165,250,0.08);border-radius:8px;padding:8px 4px;">
+        <div style="font-size:0.9rem;">🇯🇵</div>
+        <div style="font-size:0.58rem;color:#94a3b8;margin-top:2px;">日本</div>
+      </div>
+      <div style="background:rgba(96,165,250,0.08);border-radius:8px;padding:8px 4px;">
+        <div style="font-size:0.9rem;">🇰🇷</div>
+        <div style="font-size:0.58rem;color:#94a3b8;margin-top:2px;">韩国</div>
+      </div>
+      <div style="background:rgba(96,165,250,0.08);border-radius:8px;padding:8px 4px;">
+        <div style="font-size:0.9rem;">🌍</div>
+        <div style="font-size:0.58rem;color:#94a3b8;margin-top:2px;">非洲</div>
+      </div>
+    </div>
+    <div style="text-align:center;padding:8px;background:rgba(167,139,250,0.06);border-radius:8px;">
+      <span style="font-size:1.6rem;font-weight:900;color:var(--violet);">68</span>
+      <span style="font-size:0.72rem;color:#94a3b8;"> 个国家和地区</span>
+      <div style="font-size:0.6rem;color:#64748b;margin-top:2px;">覆盖国内28个省市自治区 · 出口额居全国前列</div>
+    </div>
+  </div>
+
+  <!-- 发展历程 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-clock-rotate-left" style="color:var(--primary);"></i> 发展历程</div>
+    <div style="padding-left:4px;">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2000年</div>
+        <div class="timeline-text">中天集团（中国）有限公司在福建泉州设立</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2005年</div>
+        <div class="timeline-text">中天（中国）工业有限公司正式注册成立</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2015年</div>
+        <div class="timeline-text">注册资本增至23600万港币 · 投资总额增至70000万港币</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2020年</div>
+        <div class="timeline-text">新增医用口罩产线 · 获商务部出口白名单</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2024年</div>
+        <div class="timeline-text">入选国家级高新技术企业 · 市级工业龙头企业</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2025年</div>
+        <div class="timeline-text">入选省级专精特新中小企业 · 多项发明专利授权</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--emerald);"></div>
+        <div class="timeline-year" style="color:var(--emerald);">2026年</div>
+        <div class="timeline-text">持续创新 · 导流槽热压装置等新专利授权</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 集团关联 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-network-wired" style="color:var(--amber);"></i> 集团关联企业</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:0.75rem;color:var(--primary-light);font-weight:600;">中天集團（中國）有限公司</div>
+        <div style="font-size:0.62rem;color:#64748b;margin-top:2px;">母公司 · 香港注册 · 100%控股</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:0.75rem;color:var(--blue);font-weight:600;">新中天（泉州）实业有限公司</div>
+        <div style="font-size:0.62rem;color:#64748b;margin-top:2px;">集团关联企业 · 清濛经济开发区</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:0.75rem;color:var(--emerald);font-weight:600;">福建中天妇幼用品集团</div>
+        <div style="font-size:0.62rem;color:#64748b;margin-top:2px;">企业族群 · 成员企业5家</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 联系方式 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-address-book" style="color:var(--cyan);"></i> 联系方式</div>
+    <div class="info-row"><span class="info-key">官网</span><span class="info-val"><a href="http://www.aab.com" target="_blank" style="color:var(--cyan);text-decoration:none;">www.aab.com</a></span></div>
+    <div class="info-row"><span class="info-key">电话</span><span class="info-val">0595-68989789</span></div>
+    <div class="info-row"><span class="info-key">邮箱</span><span class="info-val" style="font-size:0.68rem;">linahuang@aab.com</span></div>
+    <div class="info-row"><span class="info-key">招聘</span><span class="info-val">hr@aab.com · 0595-68970111</span></div>
+    <div class="info-row"><span class="info-key">备案号</span><span class="info-val">闽ICP备2023011103号</span></div>
+  </div>
+
+  <!-- 信用评分 -->
+  <div class="glass-card col-span-2 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-shield-halved" style="color:var(--emerald);"></i> 信用评估</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="text-align:center;">
+        <div style="font-size:2rem;font-weight:900;color:var(--emerald);">873</div>
+        <div style="font-size:0.65rem;color:#64748b;">水滴信用评分</div>
+        <div class="progress-bar" style="margin-top:8px;"><div class="progress-fill" style="width:87.3%;background:linear-gradient(90deg,var(--emerald),#10b981);"></div></div>
+        <div style="font-size:0.58rem;color:var(--emerald);margin-top:4px;">优秀</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem;font-weight:900;color:var(--primary);">725</div>
+        <div style="font-size:0.65rem;color:#64748b;">启信分</div>
+        <div class="progress-bar" style="margin-top:8px;"><div class="progress-fill" style="width:72.5%;background:linear-gradient(90deg,var(--primary),#d97706);"></div></div>
+        <div style="font-size:0.58rem;color:var(--primary);margin-top:4px;">良好</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;display:flex;flex-direction:column;gap:4px;">
+      <div style="font-size:0.66rem;color:#94a3b8;"><i class="fas fa-check" style="color:var(--emerald);margin-right:4px;"></i>税务信用A级 · 一般纳税人</div>
+      <div style="font-size:0.66rem;color:#94a3b8;"><i class="fas fa-check" style="color:var(--emerald);margin-right:4px;"></i>省级上市后备企业</div>
+      <div style="font-size:0.66rem;color:#94a3b8;"><i class="fas fa-check" style="color:var(--emerald);margin-right:4px;"></i>市级上市后备企业</div>
+      <div style="font-size:0.66rem;color:#fda4af;"><i class="fas fa-exclamation-triangle" style="margin-right:4px;"></i>司法案件18条 · 买卖合同纠纷为主</div>
+    </div>
+  </div>
+
+  <!-- 曾用名 -->
+  <div class="glass-card col-span-4 reveal" style="padding:24px;">
+    <div class="section-title"><i class="fas fa-history" style="color:var(--violet);"></i> 曾用名变更记录</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+      <span style="padding:6px 12px;border-radius:8px;font-size:0.7rem;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);color:#c4b5fd;">泉州中天生活用品有限公司</span>
+      <i class="fas fa-arrow-right" style="color:#475569;font-size:0.7rem;"></i>
+      <span style="padding:6px 12px;border-radius:8px;font-size:0.7rem;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);color:#c4b5fd;">福建中天生活用品有限公司</span>
+      <i class="fas fa-arrow-right" style="color:#475569;font-size:0.7rem;"></i>
+      <span style="padding:6px 12px;border-radius:8px;font-size:0.7rem;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:var(--primary-light);font-weight:600;">中天（中国）工业有限公司</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>数据来源：企查查 · 天眼查 · 启信宝 · 水滴信用 · BOSS直聘 · 公司官网 | <span>39139@胜天半子</span></p>
+  <p style="margin-top:4px;font-size:0.6rem;color:#334155;">森罗之眼智能体 · 企业画像 · 信息仅供参考</p>
+</div>
+
+<script>
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('active');
+      }, index * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+revealElements.forEach(el => observer.observe(el));
+
+// Animate progress bars on reveal
+const progressBars = document.querySelectorAll('.progress-fill');
+const progressObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const width = entry.target.style.width;
+      entry.target.style.width = '0%';
+      setTimeout(() => { entry.target.style.width = width; }, 200);
+      progressObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+progressBars.forEach(bar => progressObserver.observe(bar));
+</script>
+</body>
+</html>

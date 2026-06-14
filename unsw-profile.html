@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The University of New South Wales (UNSW Sydney) - Profile</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+:root{
+  --yellow:#FFD100;--yellow-light:#FFCC00;--yellow-glow:rgba(255,209,0,0.15);
+  --navy:#00255A;--navy-light:#003580;--navy-dark:#001E44;
+  --bg-dark:#050A18;--bg-card:rgba(0,37,90,0.18);
+  --border:rgba(255,209,0,0.12);--text:#f1f5f9;--text-muted:#8899aa;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter','Noto Sans SC',sans-serif;
+  background:var(--bg-dark);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 70% 40% at 15% 25%,rgba(255,209,0,0.04),transparent),
+    radial-gradient(ellipse 60% 35% at 85% 75%,rgba(0,37,90,0.12),transparent),
+    radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,209,0,0.02),transparent);
+}
+
+/* Hero */
+.hero{
+  position:relative;padding:72px 24px 48px;text-align:center;overflow:hidden;
+  background:linear-gradient(180deg,rgba(0,37,90,0.3) 0%,transparent 100%);
+}
+.hero::before{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(255,209,0,0.03) 60deg,transparent 120deg,rgba(0,37,90,0.05) 240deg,transparent 360deg);
+  animation:heroRotate 35s linear infinite;
+}
+@keyframes heroRotate{to{transform:rotate(360deg)}}
+
+/* Gradient orbs */
+.hero-glow{
+  position:absolute;border-radius:50%;filter:blur(80px);opacity:.25;
+  pointer-events:none;z-index:0;
+}
+.hero-glow-1{width:320px;height:320px;background:var(--yellow);top:-40px;right:10%;animation:orbFloat 8s ease-in-out infinite;}
+.hero-glow-2{width:260px;height:260px;background:var(--navy-light);bottom:-30px;left:15%;animation:orbFloat 10s ease-in-out infinite 2s;}
+.hero-glow-3{width:180px;height:180px;background:var(--yellow);top:30%;left:60%;animation:orbFloat 12s ease-in-out infinite 4s;opacity:.15;}
+@keyframes orbFloat{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-30px) scale(1.1);}
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 18px;border-radius:999px;font-size:13px;font-weight:500;
+  background:var(--yellow-glow);border:1px solid rgba(255,209,0,0.25);
+  color:var(--yellow-light);margin-bottom:20px;position:relative;z-index:1;
+}
+.hero-badge .pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--yellow);
+  display:inline-block;animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.4);}}
+.hero h1{
+  font-size:clamp(1.8rem,4.5vw,3rem);font-weight:900;
+  background:linear-gradient(135deg,#FFD100,#e6bb00,#cc9900);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  position:relative;z-index:1;line-height:1.25;
+}
+.hero-cn{
+  font-size:clamp(1rem,2vw,1.4rem);font-weight:300;color:var(--text-muted);
+  margin-top:6px;position:relative;z-index:1;
+}
+.hero-motto{
+  font-style:italic;font-size:clamp(0.85rem,1.5vw,1rem);color:var(--yellow);opacity:.7;
+  margin-top:8px;position:relative;z-index:1;
+}
+.hero-desc{
+  font-size:14px;color:var(--text-muted);margin-top:14px;max-width:650px;margin-left:auto;margin-right:auto;
+  position:relative;z-index:1;line-height:1.6;
+}
+.hero-stats{
+  display:flex;justify-content:center;gap:36px;margin-top:36px;
+  position:relative;z-index:1;flex-wrap:wrap;
+}
+.hero-stat{text-align:center;}
+.hero-stat .num{
+  font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;
+  background:linear-gradient(135deg,var(--yellow-light),var(--yellow));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-stat .label{font-size:11px;color:var(--text-muted);margin-top:4px;}
+
+/* Bento Grid */
+.bento-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:minmax(160px,auto);gap:20px;
+  max-width:1400px;margin:0 auto;padding:0 24px 60px;
+}
+.span-2{grid-column:span 2;}.span-3{grid-column:span 3;}.span-4{grid-column:span 4;}
+.row-2{grid-row:span 2;}
+@media(max-width:1024px){
+  .bento-grid{grid-template-columns:repeat(2,1fr);}
+  .span-3,.span-4{grid-column:span 2;}
+}
+@media(max-width:640px){
+  .bento-grid{grid-template-columns:1fr;}
+  .span-2,.span-3,.span-4{grid-column:span 1;}
+}
+
+/* Card */
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:16px;padding:24px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  position:relative;overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+  opacity:0;transform:translateY(30px);
+}
+.card.visible{opacity:1;transform:translateY(0);}
+.card:hover{
+  border-color:rgba(255,209,0,0.35);
+  box-shadow:0 0 30px rgba(255,209,0,0.06);
+  transform:translateY(-2px);
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,209,0,0.25),transparent);
+}
+.card-title{
+  font-size:13px;font-weight:700;color:var(--yellow-light);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.card-title i{font-size:12px;opacity:.7;}
+
+/* Info Row */
+.info-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid rgba(255,209,0,0.06);
+  font-size:13px;
+}
+.info-row:last-child{border-bottom:none;}
+.info-row .k{color:var(--text-muted);}
+.info-row .v{color:var(--text);font-weight:500;text-align:right;max-width:60%;}
+
+/* Big Number */
+.big-num{
+  font-size:clamp(2rem,4vw,2.8rem);font-weight:900;
+  background:linear-gradient(135deg,var(--yellow-light),var(--yellow));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1.1;
+}
+.big-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+/* Tags */
+.tag{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 12px;border-radius:999px;font-size:11px;font-weight:500;
+  background:var(--yellow-glow);border:1px solid rgba(255,209,0,0.2);
+  color:var(--yellow-light);
+}
+.tag-navy{background:rgba(0,37,90,0.35);border-color:rgba(0,53,128,0.5);color:rgba(136,153,170,0.9);}
+.tag-green{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399;}
+.tag-red{background:rgba(244,63,94,0.1);border-color:rgba(244,63,94,0.2);color:#fb7185;}
+.tag-blue{background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.2);color:#22d3ee;}
+
+/* Sub Card */
+.sub-card{
+  background:rgba(0,37,90,0.2);border:1px solid rgba(255,209,0,0.08);
+  border-radius:12px;padding:16px;margin-bottom:12px;
+  transition:border-color .3s;
+}
+.sub-card:hover{border-color:rgba(255,209,0,0.25);}
+.sub-card:last-child{margin-bottom:0;}
+.sub-card h4{font-size:14px;font-weight:700;color:var(--yellow-light);margin-bottom:8px;}
+.sub-card p{font-size:12px;color:var(--text-muted);line-height:1.6;}
+
+/* Rank Badge */
+.rank-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(255,209,0,0.15),rgba(0,37,90,0.3));
+  border:1px solid rgba(255,209,0,0.2);
+  font-size:18px;font-weight:900;color:var(--yellow-light);
+}
+
+/* Discipline Row */
+.disc-row{
+  display:flex;align-items:center;gap:12px;padding:10px 0;
+  border-bottom:1px solid rgba(255,209,0,0.06);
+}
+.disc-row:last-child{border-bottom:none;}
+.disc-name{flex:1;font-size:13px;font-weight:600;}
+.disc-rank{
+  font-size:14px;font-weight:800;color:var(--yellow-light);
+}
+.disc-bar-bg{
+  width:80px;height:4px;border-radius:2px;background:rgba(255,255,255,0.06);overflow:hidden;
+}
+.disc-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--yellow),var(--yellow-light));transition:width 1.5s ease;}
+
+/* Progress Bar */
+.progress-bar-wrap{margin-bottom:12px;}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;}
+.progress-label .pl{color:var(--text-muted);}
+.progress-label .pv{color:var(--yellow-light);font-weight:600;}
+.progress-bg{height:6px;border-radius:3px;background:rgba(255,255,255,0.06);overflow:hidden;}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--navy-light),var(--yellow));transition:width 1.8s ease;}
+
+/* Membership */
+.member-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:10px;font-size:12px;font-weight:500;
+  background:rgba(0,37,90,0.2);border:1px solid rgba(255,209,0,0.12);
+  color:var(--text);transition:all .3s;
+}
+.member-chip:hover{border-color:rgba(255,209,0,0.35);transform:translateY(-2px);}
+.member-chip i{color:var(--yellow);font-size:14px;}
+
+/* Alumni */
+.alumni-card{
+  background:rgba(0,37,90,0.15);border:1px solid rgba(255,209,0,0.08);
+  border-radius:12px;padding:14px;text-align:center;transition:all .3s;
+}
+.alumni-card:hover{border-color:rgba(255,209,0,0.25);transform:translateY(-3px);}
+.alumni-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--yellow-glow),rgba(0,37,90,0.3));
+  border:1px solid rgba(255,209,0,0.2);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 8px;font-size:18px;color:var(--yellow);
+}
+.alumni-card .name{font-size:13px;font-weight:700;margin-bottom:2px;}
+.alumni-card .role{font-size:11px;color:var(--text-muted);}
+
+/* Timeline */
+.timeline{position:relative;padding-left:24px;}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;
+  background:linear-gradient(180deg,var(--yellow),rgba(255,209,0,0.1));
+}
+.timeline-item{position:relative;margin-bottom:18px;}
+.timeline-item:last-child{margin-bottom:0;}
+.timeline-item::before{
+  content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;
+  border-radius:50%;background:var(--yellow);
+  box-shadow:0 0 8px var(--yellow-glow);
+}
+.timeline-item .year{font-size:13px;font-weight:700;color:var(--yellow-light);}
+.timeline-item .desc{font-size:12px;color:var(--text-muted);margin-top:2px;line-height:1.5;}
+
+/* Contact Card */
+.contact-item{
+  display:flex;align-items:center;gap:12px;padding:12px 0;
+  border-bottom:1px solid rgba(255,209,0,0.06);
+}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--yellow-glow);border:1px solid rgba(255,209,0,0.15);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--yellow);font-size:14px;flex-shrink:0;
+}
+.contact-text .ct-label{font-size:11px;color:var(--text-muted);}
+.contact-text .ct-value{font-size:13px;font-weight:500;margin-top:1px;}
+
+/* Footer */
+.footer{
+  text-align:center;padding:40px 24px;
+  border-top:1px solid var(--border);
+  color:var(--text-muted);font-size:12px;
+}
+.footer span{color:var(--yellow);font-weight:700;}
+.footer .brand{color:var(--yellow);font-size:14px;font-weight:700;margin-top:8px;}
+
+/* Chart Container */
+.chart-wrap{position:relative;width:100%;height:220px;}
+.chart-wrap-sm{position:relative;width:100%;height:180px;}
+
+/* ===== Responsive ===== */
+@media (max-width:1024px){
+  .bento-grid{grid-template-columns:repeat(2,1fr) !important;}
+  .span-3,.span-4{grid-column:span 2 !important;}
+  .span-2{grid-column:span 2 !important;}
+}
+@media (max-width:768px){
+  .bento-grid{grid-template-columns:1fr !important;gap:12px !important;}
+  .span-2,.span-3,.span-4{grid-column:span 1 !important;}
+  .hero{padding:48px 16px 32px !important;}
+  .hero h1{font-size:clamp(1.3rem,5vw,2rem) !important;}
+  .hero-stats{gap:20px !important;}
+  .hero-stat .num{font-size:clamp(1.2rem,4vw,1.6rem) !important;}
+  .card{border-radius:12px !important;padding:18px !important;}
+  .card:hover{transform:none !important;}
+  .big-num{font-size:clamp(1.4rem,4vw,2rem) !important;}
+  .info-row{padding:8px 0 !important;}
+  .info-row .k,.info-row .v{font-size:12px !important;}
+  .tag{font-size:10px !important;padding:2px 8px !important;}
+  .footer{padding:30px 16px !important;margin-top:30px !important;}
+}
+@media (max-width:400px){
+  .hero h1{font-size:1.1rem !important;}
+  .big-num{font-size:1.2rem !important;}
+  .card{padding:14px !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-glow hero-glow-3"></div>
+
+  <div class="hero-badge"><span class="pulse"></span> Public Research University · Est. 1949</div>
+  <h1>The University of New South Wales</h1>
+  <p class="hero-cn">新南威尔士大学 · UNSW Sydney</p>
+  <p class="hero-motto">"Scientia Manu et Mente" — Knowledge by Hand and Mind</p>
+  <p class="hero-desc">
+    A founding member of the Group of Eight, UNSW Sydney is one of Australia's leading research and teaching universities, ranked #19 globally by QS 2025-2026.
+  </p>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num" data-count="19">#19</div><div class="label">QS World 2025-26</div></div>
+    <div class="hero-stat"><div class="num" data-count="70238">70,238</div><div class="label">Total Students</div></div>
+    <div class="hero-stat"><div class="num">$3.7B</div><div class="label">Research Income</div></div>
+    <div class="hero-stat"><div class="num">387K+</div><div class="label">Alumni Worldwide</div></div>
+    <div class="hero-stat"><div class="num">75+</div><div class="label">Years of Excellence</div></div>
+  </div>
+</section>
+
+<!-- Bento Grid -->
+<div class="bento-grid">
+
+  <!-- 1. Basic Information (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-university"></i> Basic Information</div>
+    <div class="info-row"><span class="k">Full Name</span><span class="v">The University of New South Wales (UNSW Sydney)</span></div>
+    <div class="info-row"><span class="k">Chinese Name</span><span class="v">新南威尔士大学</span></div>
+    <div class="info-row"><span class="k">Founded</span><span class="v">1949 (75+ years)</span></div>
+    <div class="info-row"><span class="k">Type</span><span class="v"><span class="tag"><i class="fas fa-landmark"></i> Public Research University</span></span></div>
+    <div class="info-row"><span class="k">Location</span><span class="v">Kensington, Sydney, NSW, Australia</span></div>
+    <div class="info-row"><span class="k">Campus</span><span class="v">38 hectares (~7km from Sydney CBD)</span></div>
+    <div class="info-row"><span class="k">Motto</span><span class="v" style="font-style:italic;color:var(--yellow);">Scientia Manu et Mente</span></div>
+    <div class="info-row"><span class="k">Vice-Chancellor</span><span class="v">Professor Attila Brungs</span></div>
+    <div class="info-row"><span class="k">Website</span><span class="v"><a href="https://www.unsw.edu.au" target="_blank" style="color:var(--yellow-light);text-decoration:none;">www.unsw.edu.au</a></span></div>
+  </div>
+
+  <!-- 2. Global Rankings (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-trophy"></i> Global Rankings 2025-2026</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="sub-card" style="text-align:center;">
+        <div class="rank-badge">#19</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">QS World Rankings</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">2025-2026</div>
+      </div>
+      <div class="sub-card" style="text-align:center;">
+        <div class="rank-badge" style="background:linear-gradient(135deg,rgba(0,37,90,0.3),rgba(0,53,128,0.4));">#79</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">THE World Rankings</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">2026</div>
+      </div>
+      <div class="sub-card" style="text-align:center;">
+        <div class="rank-badge" style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(16,185,129,0.1));">#72</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">ARWU Shanghai</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">Global</div>
+      </div>
+      <div class="sub-card" style="text-align:center;">
+        <div class="rank-badge" style="background:linear-gradient(135deg,rgba(6,182,212,0.15),rgba(6,182,212,0.1));">#32</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:6px;">QS Employment</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);">#1 Australia</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+      <span class="tag tag-green"><i class="fas fa-medal"></i> QS Sustainability #7 Global</span>
+      <span class="tag"><i class="fas fa-globe"></i> QS Social Impact #1 Global</span>
+      <span class="tag tag-blue"><i class="fas fa-rocket"></i> AFR Most Employable 7 Years</span>
+    </div>
+  </div>
+
+  <!-- 3. Ranking Highlights (span-4) -->
+  <div class="card span-4" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-crown"></i> Ranking Highlights</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div style="background:linear-gradient(135deg,rgba(255,209,0,0.06),rgba(0,37,90,0.1));border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,209,0,0.1);">
+        <div style="font-size:28px;font-weight:900;color:var(--yellow-light);">#1</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">QS Social Impact<br><strong style="color:var(--text);">Globally & in Australia</strong></div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(255,209,0,0.06),rgba(0,37,90,0.1));border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,209,0,0.1);">
+        <div style="font-size:28px;font-weight:900;color:var(--yellow-light);">#1</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">QS Employment Outcomes<br><strong style="color:var(--text);">In Australia</strong></div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(255,209,0,0.06),rgba(0,37,90,0.1));border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,209,0,0.1);">
+        <div style="font-size:28px;font-weight:900;color:var(--yellow-light);">#1</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">QS Sustainability<br><strong style="color:var(--text);">In Australia</strong></div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(255,209,0,0.06),rgba(0,37,90,0.1));border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,209,0,0.1);">
+        <div style="font-size:28px;font-weight:900;color:var(--yellow-light);">7 Years</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">AFR Most Employable<br><strong style="color:var(--text);">2020-2026 Consecutive</strong></div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(255,209,0,0.06),rgba(0,37,90,0.1));border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,209,0,0.1);">
+        <div style="font-size:28px;font-weight:900;color:var(--yellow-light);">#2</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">QS World Rankings<br><strong style="color:var(--text);">In Australia</strong></div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(255,209,0,0.06),rgba(0,37,90,0.1));border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,209,0,0.1);">
+        <div style="font-size:28px;font-weight:900;color:var(--yellow-light);">2024</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Most Entrepreneurial<br><strong style="color:var(--text);">Most Startups/Spinouts</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Student Data (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-user-graduate"></i> Student Population (2023)</div>
+    <div style="text-align:center;margin-bottom:16px;">
+      <div class="big-num">70,238</div>
+      <div class="big-label">Total Enrolled Students</div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span class="pl">Local Students</span><span class="pv">42,543 (60.6%)</span></div>
+      <div class="progress-bg"><div class="progress-fill" data-width="60.6"></div></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span class="pl">International</span><span class="pv">27,695 (39.4%)</span></div>
+      <div class="progress-bg"><div class="progress-fill" data-width="39.4"></div></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span class="pl">HDR Students</span><span class="pv">4,271</span></div>
+      <div class="progress-bg"><div class="progress-fill" data-width="6.1"></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;">
+      <div class="sub-card" style="text-align:center;">
+        <div style="font-size:22px;font-weight:800;color:var(--yellow-light);">3,452</div>
+        <div style="font-size:11px;color:var(--text-muted);">Academic Staff</div>
+      </div>
+      <div class="sub-card" style="text-align:center;">
+        <div style="font-size:22px;font-weight:800;color:var(--yellow-light);">4,136</div>
+        <div style="font-size:11px;color:var(--text-muted);">Professional Staff</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Alumni & Scale (span-1) -->
+  <div class="card span-1" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-chart-line"></i> At a Glance</div>
+    <div style="margin-bottom:16px;">
+      <div class="big-num">387,263</div>
+      <div class="big-label">Alumni Worldwide</div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div class="big-num" style="font-size:1.6rem;">45</div>
+      <div class="big-label">Schools</div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div class="big-num" style="font-size:1.6rem;">57</div>
+      <div class="big-label">Centres & Institutes</div>
+    </div>
+    <div>
+      <div class="big-num" style="font-size:1.6rem;">4,100+</div>
+      <div class="big-label">Campus Beds</div>
+    </div>
+  </div>
+
+  <!-- 6. Student Chart (span-1) -->
+  <div class="card span-1" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-chart-pie"></i> Student Mix</div>
+    <div class="chart-wrap-sm"><canvas id="chartStudents"></canvas></div>
+  </div>
+
+  <!-- 7. Faculties (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-building"></i> Seven Faculties</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div class="alumni-card">
+        <i class="fas fa-palette" style="font-size:22px;color:var(--yellow);"></i>
+        <div class="name" style="margin-top:6px;">Arts, Design & Architecture</div>
+      </div>
+      <div class="alumni-card">
+        <i class="fas fa-briefcase" style="font-size:22px;color:var(--yellow);"></i>
+        <div class="name" style="margin-top:6px;">Business</div>
+      </div>
+      <div class="alumni-card">
+        <i class="fas fa-cogs" style="font-size:22px;color:var(--yellow);"></i>
+        <div class="name" style="margin-top:6px;">Engineering</div>
+      </div>
+      <div class="alumni-card">
+        <i class="fas fa-gavel" style="font-size:22px;color:var(--yellow);"></i>
+        <div class="name" style="margin-top:6px;">Law & Justice</div>
+      </div>
+      <div class="alumni-card">
+        <i class="fas fa-heartbeat" style="font-size:22px;color:var(--yellow);"></i>
+        <div class="name" style="margin-top:6px;">Medicine & Health</div>
+      </div>
+      <div class="alumni-card">
+        <i class="fas fa-flask" style="font-size:22px;color:var(--yellow);"></i>
+        <div class="name" style="margin-top:6px;">Science</div>
+      </div>
+      <div class="alumni-card" style="grid-column:span 2;">
+        <i class="fas fa-shield-alt" style="font-size:22px;color:var(--yellow);"></i>
+        <div class="name" style="margin-top:6px;">UNSW Canberra</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Top Disciplines (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-star"></i> Top Disciplines (QS 2026)</div>
+    <div class="disc-row">
+      <div class="disc-rank">#2</div>
+      <div class="disc-name">Minerals & Mining Engineering</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="95"></div></div>
+    </div>
+    <div class="disc-row">
+      <div class="disc-rank">#10</div>
+      <div class="disc-name">Petroleum Engineering</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="85"></div></div>
+    </div>
+    <div class="disc-row">
+      <div class="disc-rank">#12</div>
+      <div class="disc-name">Civil & Structural Engineering</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="82"></div></div>
+    </div>
+    <div class="disc-row">
+      <div class="disc-rank">#12</div>
+      <div class="disc-name">Law</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="82"></div></div>
+    </div>
+    <div class="disc-row">
+      <div class="disc-rank">#19</div>
+      <div class="disc-name">Electrical & Electronic Eng.</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="72"></div></div>
+    </div>
+    <div class="disc-row">
+      <div class="disc-rank">#20</div>
+      <div class="disc-name">Marketing</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="70"></div></div>
+    </div>
+    <div class="disc-row">
+      <div class="disc-rank">#22</div>
+      <div class="disc-name">Accounting & Finance</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="68"></div></div>
+    </div>
+    <div class="disc-row">
+      <div class="disc-rank">#35</div>
+      <div class="disc-name">Computer Science</div>
+      <div class="disc-bar-bg"><div class="disc-bar-fill" data-width="55"></div></div>
+    </div>
+  </div>
+
+  <!-- 9. Research Data (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-atom"></i> Research Excellence</div>
+    <div style="text-align:center;margin-bottom:20px;">
+      <div class="big-num">$3.7B</div>
+      <div class="big-label">Research & Knowledge Exchange Income (last 5 years)</div>
+    </div>
+    <div class="chart-wrap-sm"><canvas id="chartResearch"></canvas></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;">
+      <div class="sub-card" style="text-align:center;">
+        <div style="font-size:22px;font-weight:800;color:var(--yellow-light);">16,547</div>
+        <div style="font-size:11px;color:var(--text-muted);">Publications in 2023</div>
+      </div>
+      <div class="sub-card" style="text-align:center;">
+        <div style="font-size:22px;font-weight:800;color:var(--yellow-light);">801</div>
+        <div style="font-size:11px;color:var(--text-muted);">HDR Completions 2023</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Global Partnerships (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-globe-americas"></i> Global Partnerships & Memberships</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+      <div class="member-chip"><i class="fas fa-crown"></i> Group of Eight (Go8)</div>
+      <div class="member-chip"><i class="fas fa-award"></i> Founding Member</div>
+      <div class="member-chip"><i class="fas fa-globe"></i> Universitas 21</div>
+      <div class="member-chip"><i class="fas fa-water"></i> APRU</div>
+      <div class="member-chip"><i class="fas fa-handshake"></i> PLUS Alliance</div>
+      <div class="member-chip"><i class="fas fa-heart"></i> George Institute</div>
+    </div>
+    <div class="sub-card">
+      <h4><i class="fas fa-handshake" style="color:var(--yellow);margin-right:4px;"></i> PLUS Alliance</h4>
+      <p>Strategic partnership with <strong style="color:var(--text);">Arizona State University</strong> & <strong style="color:var(--text);">King's College London</strong>, fostering global research collaboration and student exchange.</p>
+    </div>
+    <div class="sub-card">
+      <h4><i class="fas fa-heartbeat" style="color:var(--yellow);margin-right:4px;"></i> The George Institute</h4>
+      <p>A global leader in medical research for non-communicable diseases, co-founded with UNSW and based in Sydney with global hubs.</p>
+    </div>
+  </div>
+
+  <!-- 11. Campus & Location (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-map-marked-alt"></i> Campus & Location</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+      <div style="background:rgba(0,37,90,0.2);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-tree" style="font-size:24px;color:var(--yellow);margin-bottom:6px;"></i>
+        <div style="font-size:20px;font-weight:800;color:var(--yellow-light);">38</div>
+        <div style="font-size:11px;color:var(--text-muted);">Hectares Campus</div>
+      </div>
+      <div style="background:rgba(0,37,90,0.2);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-bed" style="font-size:24px;color:var(--yellow);margin-bottom:6px;"></i>
+        <div style="font-size:20px;font-weight:800;color:var(--yellow-light);">4,100+</div>
+        <div style="font-size:11px;color:var(--text-muted);">Campus Beds</div>
+      </div>
+      <div style="background:rgba(0,37,90,0.2);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-city" style="font-size:24px;color:var(--yellow);margin-bottom:6px;"></i>
+        <div style="font-size:20px;font-weight:800;color:var(--yellow-light);">7km</div>
+        <div style="font-size:11px;color:var(--text-muted);">From Sydney CBD</div>
+      </div>
+      <div style="background:rgba(0,37,90,0.2);border-radius:12px;padding:16px;text-align:center;">
+        <i class="fas fa-school" style="font-size:24px;color:var(--yellow);margin-bottom:6px;"></i>
+        <div style="font-size:20px;font-weight:800;color:var(--yellow-light);">Kensington</div>
+        <div style="font-size:11px;color:var(--text-muted);">Sydney, NSW</div>
+      </div>
+    </div>
+    <div class="sub-card">
+      <h4><i class="fas fa-map-pin" style="color:var(--yellow);margin-right:4px;"></i> Address</h4>
+      <p>UNSW Sydney NSW 2052 Australia</p>
+    </div>
+  </div>
+
+  <!-- 12. Notable Alumni (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-medal"></i> Notable Alumni</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="alumni-card">
+        <div class="alumni-avatar"><i class="fas fa-user-tie"></i></div>
+        <div class="name">Scott Morrison</div>
+        <div class="role">Former Australian Prime Minister</div>
+      </div>
+      <div class="alumni-card">
+        <div class="alumni-avatar"><i class="fas fa-user-tie"></i></div>
+        <div class="name">Gladys Berejiklian</div>
+        <div class="role">Former NSW Premier</div>
+      </div>
+      <div class="alumni-card">
+        <div class="alumni-avatar"><i class="fas fa-award"></i></div>
+        <div class="name">Rhodes Scholars</div>
+        <div class="role">Multiple recipients</div>
+      </div>
+      <div class="alumni-card">
+        <div class="alumni-avatar"><i class="fas fa-trophy"></i></div>
+        <div class="name">Nobel Laureates</div>
+        <div class="role">Affiliated winners</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Contact (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-envelope"></i> Contact Information</div>
+    <div class="contact-item">
+      <div class="contact-icon"><i class="fas fa-globe"></i></div>
+      <div class="contact-text">
+        <div class="ct-label">Official Website</div>
+        <div class="ct-value"><a href="https://www.unsw.edu.au" target="_blank" style="color:var(--yellow-light);text-decoration:none;">www.unsw.edu.au</a></div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="contact-text">
+        <div class="ct-label">Address</div>
+        <div class="ct-value">UNSW Sydney NSW 2052 Australia</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+      <div class="contact-text">
+        <div class="ct-label">Campus</div>
+        <div class="ct-value">Kensington, Sydney, NSW</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon"><i class="fas fa-clock"></i></div>
+      <div class="contact-text">
+        <div class="ct-label">Established</div>
+        <div class="ct-value">1949 · 75+ Years of Excellence</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. Key Milestones Timeline (span-2) -->
+  <div class="card span-2" data-gsap="fadeUp">
+    <div class="card-title"><i class="fas fa-history"></i> Key Milestones</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">1949</div>
+        <div class="desc">UNSW founded as New South Wales University of Technology</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">1958</div>
+        <div class="desc">Renamed University of New South Wales, expanding beyond technology</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">1960s</div>
+        <div class="desc">Established faculties of Arts, Medicine, Law & Science</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2000s</div>
+        <div class="desc">UNSW Canberra established; global research expansion</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2020s</div>
+        <div class="desc">QS Top 20 global; #1 in Australia for social impact & employability</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2025</div>
+        <div class="desc">#19 QS World Rankings; 70,000+ students; Australia's most entrepreneurial university</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p style="color:var(--text-muted);margin-bottom:4px;">Data sourced from official UNSW publications, QS/THE/ARWU rankings · Generated: 2026-06-12</p>
+  <p class="brand">39139@胜天半子</p>
+  <p style="margin-top:6px;color:var(--text-muted);font-size:11px;">森罗之眼 Enterprise Intelligence System</p>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// GSAP Scroll Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate cards on scroll
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, i) => {
+  gsap.fromTo(card, {
+    opacity: 0,
+    y: 40
+  }, {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: card,
+      start: 'top 88%',
+      toggleActions: 'play none none none'
+    },
+    delay: (i % 4) * 0.1
+  });
+});
+
+// Animate hero stats
+gsap.fromTo('.hero-stat', {
+  opacity: 0,
+  y: 20,
+  scale: 0.9
+}, {
+  opacity: 1,
+  y: 0,
+  scale: 1,
+  duration: 0.5,
+  ease: 'back.out(1.7)',
+  stagger: 0.1,
+  delay: 0.5
+});
+
+// Animate progress bars on scroll
+const progressFills = document.querySelectorAll('.progress-fill');
+const progressObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const width = entry.target.getAttribute('data-width');
+      entry.target.style.width = width + '%';
+      progressObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+progressFills.forEach(fill => progressObserver.observe(fill));
+
+// Animate discipline bars
+const discBars = document.querySelectorAll('.disc-bar-fill');
+const discObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const width = entry.target.getAttribute('data-width');
+      entry.target.style.width = width + '%';
+      discObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+discBars.forEach(bar => discObserver.observe(bar));
+
+// Chart: Student Mix (Doughnut)
+const ctxStudents = document.getElementById('chartStudents').getContext('2d');
+new Chart(ctxStudents, {
+  type: 'doughnut',
+  data: {
+    labels: ['Local 60.6%', 'International 39.4%'],
+    datasets: [{
+      data: [42543, 27695],
+      backgroundColor: ['rgba(255,209,0,0.6)', 'rgba(0,53,128,0.6)'],
+      borderWidth: 0,
+      hoverOffset: 6
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '55%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: '#8899aa', font: { size: 10 }, padding: 8 }
+      }
+    }
+  }
+});
+
+// Chart: Research Output (Bar)
+const ctxResearch = document.getElementById('chartResearch').getContext('2d');
+new Chart(ctxResearch, {
+  type: 'bar',
+  data: {
+    labels: ['Publications', 'HDR Completions', 'Academic Staff', 'Professional Staff'],
+    datasets: [{
+      label: 'Count',
+      data: [16547, 801, 3452, 4136],
+      backgroundColor: [
+        'rgba(255,209,0,0.5)',
+        'rgba(0,53,128,0.5)',
+        'rgba(6,182,212,0.4)',
+        'rgba(16,185,129,0.4)'
+      ],
+      borderColor: [
+        'rgba(255,209,0,0.8)',
+        'rgba(0,53,128,0.8)',
+        'rgba(6,182,212,0.7)',
+        'rgba(16,185,129,0.7)'
+      ],
+      borderWidth: 1,
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(5,10,24,0.9)',
+        titleColor: '#f1f5f9',
+        bodyColor: '#8899aa',
+        borderColor: 'rgba(255,209,0,0.2)',
+        borderWidth: 1
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,209,0,0.04)' },
+        ticks: { color: '#8899aa', font: { size: 9 }, maxRotation: 45 }
+      },
+      y: {
+        beginAtZero: true,
+        grid: { color: 'rgba(255,209,0,0.04)' },
+        ticks: { color: '#8899aa', font: { size: 9 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>森罗之眼 - 企业画像导航</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#0a0a0f;color:#e2e8f0;min-height:100vh;padding:40px 20px;-webkit-font-smoothing:antialiased}
+.container{max-width:1200px;margin:0 auto}
+h1{text-align:center;font-size:clamp(1.6rem,4vw,2.2rem);background:linear-gradient(135deg,#f9a8d4,#f472b6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;letter-spacing:-1px}
+.subtitle{text-align:center;color:#64748b;margin-bottom:40px;font-size:0.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;text-decoration:none;color:#e2e8f0;transition:all .3s ease;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f472b6,#a78bfa);opacity:0;transition:opacity .3s}
+.card:hover{border-color:rgba(244,114,182,0.4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(244,114,182,0.12)}
+.card:hover::before{opacity:1}
+.card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:#f9a8d4;line-height:1.4}
+.card p{font-size:0.8rem;color:#64748b;line-height:1.5}
+.card .tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.65rem;margin-top:10px;background:rgba(244,114,182,0.12);color:#f9a8d4;border:1px solid rgba(244,114,182,0.25)}
+.footer{text-align:center;margin-top:60px;color:#475569;font-size:0.75rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px}
+@media(max-width:768px){
+  body{padding:30px 16px}
+  .grid{grid-template-columns:1fr;gap:12px}
+  .card{padding:20px;border-radius:12px}
+  .card:hover{transform:none}
+  h1{font-size:1.4rem}
+}
+@media(max-width:400px){
+  .card h3{font-size:0.95rem}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>森罗之眼</h1>
+<p class="subtitle">企业画像导航 · 39139@胜天半子</p>
+<div class="grid">
+  <a class="card" href="tianjiao-hygiene-profile.html"><h3>泉州天娇妇幼卫生用品有限公司</h3><p>妇幼卫生用品智造龙头 · 5G全连接工厂 · 专精特新</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="ruisheng-electronics-profile.html"><h3>泉州市锐生电子科技有限公司</h3><p>电子科技研发制造 · 智能电子产品</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="jinxiyuan-food-profile.html"><h3>晋江市金喜缘食品有限责任公司</h3><p>喜糖喜饼专家 · 闽南婚庆食品龙头</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="zhongxin-group-profile.html"><h3>福建忠信集团有限公司</h3><p>多元化实业集团 · 软件与信息技术服务</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="hengyao-garment-profile.html"><h3>永春县恒耀服装制造有限公司</h3><p>机织服装制造 · 纺织服装业</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="yunhai-pet-profile.html"><h3>福建云海宠物用品工贸有限公司</h3><p>宠物用品工贸一体 · 出口欧美日</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="oufanda-finance-profile.html"><h3>厦门欧凡达金融服务有限公司</h3><p>金融服务 · 资本运作 · 投资管理</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="haotian-garment-profile.html"><h3>石狮市好田服饰实业有限公司</h3><p>服饰实业 · 服装制造 · 品牌运营</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="liwang-sports-profile.html"><h3>福建省力王体育发展有限公司</h3><p>体育用品制造 · 健身器材 · 品牌运营</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="zhiquan-furniture-profile.html"><h3>泉州志全家具有限公司</h3><p>家具制造 · 铁件工艺品 · 出口贸易</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="yunfu-tech-profile.html"><h3>泉州市云福科技发展有限公司</h3><p>软件和信息技术服务 · 数字化转型</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+  <a class="card" href="pengxiang-company-profile.html"><h3>福建鹏翔实业有限公司</h3><p>多元化实业 · 综合投资 · 产业运营</p><span class="tag"><i class="fas fa-eye"></i> 查看画像</span></a>
+</div>
+<div class="footer">39139@胜天半子</div>
+</div>
+</body>
+</html>

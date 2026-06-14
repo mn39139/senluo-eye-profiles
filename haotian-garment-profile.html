@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石狮市好田服饰实业有限公司 - 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --accent: #06b6d4;
+  --accent2: #0891b2;
+  --warm: #8b5cf6;
+  --bg-dark: #030712;
+  --bg-card: rgba(15, 23, 42, 0.85);
+  --border: rgba(37, 99, 235, 0.15);
+  --glow: rgba(59, 130, 246, 0.3);
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg-dark); color: var(--text); overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(37,99,235,0.1) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 80% 20%, rgba(6,182,212,0.06) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(139,92,246,0.06) 0%, transparent 60%); z-index: 0; }
+.hero-grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px); background-size: 60px 60px; z-index: 0; }
+.hero-particles { position: absolute; inset: 0; z-index: 0; }
+.particle { position: absolute; width: 3px; height: 3px; background: var(--primary); border-radius: 50%; opacity: 0; animation: particleFloat 6s infinite; }
+@keyframes particleFloat { 0% { opacity: 0; transform: translateY(100vh) scale(0); } 10% { opacity: 0.6; } 90% { opacity: 0.15; } 100% { opacity: 0; transform: translateY(-20vh) scale(1.5); } }
+.hero-content { position: relative; z-index: 10; text-align: center; padding: 0 20px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.3); border-radius: 100px; font-size: 13px; color: var(--primary-light); margin-bottom: 24px; backdrop-filter: blur(10px); }
+.hero-badge .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+.hero-title { font-size: clamp(2.2rem, 5.5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(135deg, #ffffff 0%, #3b82f6 50%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-subtitle { font-size: clamp(0.9rem, 1.8vw, 1.3rem); color: var(--text-muted); font-weight: 300; margin-bottom: 40px; letter-spacing: 3px; }
+.hero-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat-value { font-size: 2.5rem; font-weight: 900; color: var(--primary-light); line-height: 1; }
+.hero-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; letter-spacing: 2px; }
+.scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-muted); font-size: 12px; animation: scrollBounce 2s infinite; }
+@keyframes scrollBounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+.section { padding: 80px 20px; max-width: 1400px; margin: 0 auto; }
+.section-header { margin-bottom: 48px; }
+.section-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--primary-light); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+.section-tag::before { content: ''; width: 20px; height: 2px; background: var(--primary); }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; line-height: 1.2; }
+.section-title span { color: var(--primary-light); }
+
+.bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(180px, auto); gap: 20px; }
+@media (max-width: 1024px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .bento-grid { grid-template-columns: 1fr; } }
+
+.glass-card { background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.5)); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 20px; padding: 28px; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+.glass-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(37,99,235,0.3), transparent); }
+.glass-card:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(37,99,235,0.1); }
+.glass-card .card-glow { position: absolute; width: 200px; height: 200px; border-radius: 50%; filter: blur(80px); opacity: 0.08; pointer-events: none; }
+
+.card-span-2 { grid-column: span 2; }
+.card-span-3 { grid-column: span 3; }
+.card-span-4 { grid-column: span 4; }
+.card-row-2 { grid-row: span 2; }
+@media (max-width: 1024px) { .card-span-3, .card-span-4 { grid-column: span 2; } }
+@media (max-width: 640px) { .card-span-2, .card-span-3, .card-span-4 { grid-column: span 1; } }
+
+.card-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; background: rgba(37,99,235,0.1); color: var(--primary-light); border: 1px solid rgba(37,99,235,0.2); }
+.card-label { font-size: 12px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.card-value { font-size: 2.2rem; font-weight: 900; color: var(--primary-light); line-height: 1; margin-bottom: 8px; }
+.card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+.card-value-lg { font-size: 3.5rem; font-weight: 900; }
+
+.equity-bar { margin-bottom: 16px; }
+.equity-bar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.equity-bar-name { font-size: 14px; font-weight: 500; }
+.equity-bar-pct { font-size: 14px; font-weight: 700; color: var(--primary-light); }
+.equity-bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+.equity-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1.5s cubic-bezier(0.4,0,0.2,1); width: 0; }
+
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary), rgba(37,99,235,0.1)); }
+.timeline-item { position: relative; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.timeline-item::before { content: ''; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); border: 3px solid var(--bg-dark); box-shadow: 0 0 12px var(--glow); }
+.timeline-year { font-size: 13px; font-weight: 700; color: var(--primary-light); margin-bottom: 4px; }
+.timeline-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+.team-member { display: flex; align-items: center; gap: 16px; padding: 14px; border-radius: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); margin-bottom: 12px; transition: all 0.3s; }
+.team-member:hover { background: rgba(37,99,235,0.05); border-color: rgba(37,99,235,0.15); }
+.team-avatar { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(6,182,212,0.2)); color: var(--primary-light); flex-shrink: 0; }
+.team-info { flex: 1; min-width: 0; }
+.team-name { font-size: 15px; font-weight: 700; }
+.team-role { font-size: 12px; color: var(--text-muted); }
+
+.biz-tag { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; font-size: 12px; background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.15); color: var(--primary-light); margin: 4px; transition: all 0.3s; }
+.biz-tag:hover { background: rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.3); }
+
+.project-card { padding: 20px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 16px; transition: all 0.3s; }
+.project-card:hover { background: rgba(37,99,235,0.05); border-color: rgba(37,99,235,0.2); }
+.project-year { font-size: 11px; color: var(--accent); font-weight: 700; letter-spacing: 1px; }
+.project-title { font-size: 16px; font-weight: 700; margin: 6px 0; }
+.project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+.affiliate-chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); font-size: 13px; margin: 4px; transition: all 0.3s; }
+.affiliate-chip:hover { background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.2); }
+.affiliate-chip i { color: var(--primary-light); font-size: 12px; }
+
+.status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; }
+.status-active { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.status-honor { background: rgba(139,92,246,0.1); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.2); }
+
+.risk-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.risk-item:last-child { border-bottom: none; }
+.risk-label { font-size: 13px; color: var(--text-muted); }
+.risk-value { font-size: 14px; font-weight: 700; }
+.risk-high { color: #ef4444; }
+.risk-medium { color: #f59e0b; }
+.risk-low { color: #22c55e; }
+
+.honor-card { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.1); margin-bottom: 10px; transition: all 0.3s; }
+.honor-card:hover { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.2); }
+.honor-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(139,92,246,0.15); color: #8b5cf6; font-size: 14px; flex-shrink: 0; }
+.honor-text { font-size: 13px; font-weight: 500; }
+.honor-year { font-size: 11px; color: var(--text-muted); }
+
+.data-source { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text-muted); opacity: 0.6; transition: opacity 0.3s; text-decoration: none; }
+.data-source:hover { opacity: 1; color: var(--primary-light); }
+
+.footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); font-size: 13px; }
+.footer-brand { font-weight: 700; color: var(--primary-light); }
+
+.gradient-border { position: relative; }
+.gradient-border::after { content: ''; position: absolute; inset: -1px; border-radius: 21px; padding: 1px; background: linear-gradient(135deg, var(--primary), var(--accent), var(--primary)); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s; }
+.gradient-border:hover::after { opacity: 1; }
+
+.brand-showcase { display: flex; flex-wrap: wrap; gap: 10px; }
+.brand-item { flex: 1; min-width: 120px; padding: 14px; border-radius: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); text-align: center; transition: all 0.3s; }
+.brand-item:hover { background: rgba(37,99,235,0.05); border-color: rgba(37,99,235,0.2); transform: translateY(-2px); }
+.brand-item .brand-name { font-size: 14px; font-weight: 700; margin-top: 6px; }
+.brand-item .brand-type { font-size: 11px; color: var(--text-muted); }
+.brand-item i { font-size: 22px; color: var(--primary-light); }
+
+/* ===== 增强响应式布局 ===== */
+/* 确保viewport正确 */
+/* 全局防溢出 */
+body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+table { width: 100%; overflow-x: auto; display: block; }
+/* 修复hero-glow溢出 */
+.hero-glow { max-width: 100vw; left: 50% !important; transform: translateX(-50%) !important; width: min(600px, 100vw) !important; }
+
+/* 通用grid响应式 - 覆盖各种命名 */
+@media (max-width: 1024px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .col-span-4, .col-span-3, .span-4, .span-3, .card-span-4, .card-span-3,
+  [class*="span-4"], [class*="span-3"], [class*="col-span-4"], [class*="col-span-3"] {
+    grid-column: span 2 !important;
+  }
+  .col-span-2, .span-2, .card-span-2,
+  [class*="col-span-2"], [class*="span-2"] {
+    grid-column: span 2 !important;
+  }
+  /* 统计数字grid */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* 品牌grid */
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列grid保持 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* hero标题 */
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.3rem, 3.5vw, 2.5rem) !important;
+  }
+  /* 大数字 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .col-span-4, .col-span-3, .col-span-2, .col-span-1,
+  .span-4, .span-3, .span-2, .span-1,
+  .card-span-4, .card-span-3, .card-span-2, .card-span-1,
+  [class*="span-"], [class*="col-span-"] {
+    grid-column: span 1 !important;
+  }
+  /* 统计grid 2列 */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列变1列 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 产品2列变1列 */
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* hero区 */
+  .hero-section, [class*="hero"] {
+    padding: 40px 16px 30px !important;
+  }
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+  }
+  .hero-slogan, .hero-subtitle, [class*="hero"] p {
+    font-size: 0.85rem !important;
+  }
+  /* 卡片 */
+  .glass-card, [class*="card"], [class*="glass"] {
+    border-radius: 12px !important;
+    padding: 18px !important;
+  }
+  .glass-card:hover, [class*="card"]:hover, [class*="glass"]:hover {
+    transform: none !important;
+  }
+  /* 大数字缩小 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+  }
+  /* 信息行 */
+  .info-row, [class*="info-row"] {
+    padding: 8px 0 !important;
+  }
+  .info-key, [class*="info-key"], [class*="info-label"] {
+    font-size: 0.72rem !important;
+  }
+  .info-val, [class*="info-val"], [class*="info-value"] {
+    font-size: 0.75rem !important;
+  }
+  /* 标签 */
+  .tag, [class*="tag-"] {
+    font-size: 0.6rem !important;
+    padding: 2px 8px !important;
+  }
+  /* 品牌卡片 */
+  .brand-card, [class*="brand"] {
+    padding: 12px !important;
+  }
+  /* 时间线 */
+  .timeline-item, [class*="timeline"] {
+    gap: 8px !important;
+    padding: 8px 0 !important;
+  }
+  /* 风险项 */
+  .risk-item, [class*="risk"] {
+    padding: 8px !important;
+  }
+  /* 进度条 */
+  .progress-bar, [class*="progress"] {
+    height: 5px !important;
+  }
+  /* footer */
+  .footer, [class*="footer"] {
+    padding: 30px 16px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: 1.1rem !important;
+  }
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: 1.1rem !important;
+  }
+  .glass-card, [class*="card"], [class*="glass"] {
+    padding: 14px !important;
+  }
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 确保inline grid也响应 */
+  [style*="display:grid"], [style*="display: grid"] {
+    gap: 8px !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>存续企业 · 外商独资 · 高新技术企业</span>
+    </div>
+    <h1 class="hero-title">石狮市好田服饰<br>实业有限公司</h1>
+    <p class="hero-subtitle">季季乐集团中国运营主体 · 校服产业领航者 · 中国十大童装品牌</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value"><span class="counter" data-target="1183">0</span>万$</div>
+        <div class="hero-stat-label">注册资本</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">2004</div>
+        <div class="hero-stat-label">成立年份</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value"><span class="counter" data-target="22">0</span>年</div>
+        <div class="hero-stat-label">深耕年限</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value"><span class="counter" data-target="120">0</span>万+</div>
+        <div class="hero-stat-label">服务学生</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>向下滚动</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- Section 1: Enterprise Overview -->
+<section class="section" id="overview">
+  <div class="section-header">
+    <div class="section-tag">ENTERPRISE OVERVIEW</div>
+    <h2 class="section-title">企业<span>概览</span></h2>
+  </div>
+  <div class="bento-grid">
+    <!-- Company Name Card -->
+    <div class="glass-card card-span-2 card-row-2 gradient-border">
+      <div class="card-glow" style="background: var(--primary); top: -50px; right: -50px;"></div>
+      <div class="card-icon"><i class="fas fa-building"></i></div>
+      <div class="card-label">企业全称</div>
+      <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 16px; line-height: 1.3;">石狮市好田服饰<br>实业有限公司</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <span class="status-badge status-active"><i class="fas fa-circle" style="font-size:6px"></i> 存续</span>
+        <span class="status-badge status-honor"><i class="fas fa-award" style="font-size:10px"></i> 高新技术企业</span>
+        <span class="status-badge status-honor"><i class="fas fa-star" style="font-size:10px"></i> 专精特新</span>
+      </div>
+      <div class="card-desc" style="margin-bottom: 12px;">
+        季季乐集团旗下中国运营主体，主营品牌童装、校服和服装进出口贸易。2010年通过反向收购新加坡Friven&Co集团成功登录新交所上市。旗下"季季乐"品牌为中国十大童装品牌，校服渠道覆盖10余省份，服务超120万学生。
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; font-size: 12px; color: var(--text-muted);">
+        <span><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 4px;"></i>石狮市宝盖镇</span>
+        <span><i class="fas fa-industry" style="color: var(--primary); margin-right: 4px;"></i>纺织服装、服饰业</span>
+        <span><i class="fas fa-globe" style="color: var(--primary); margin-right: 4px;"></i>外国法人独资</span>
+      </div>
+    </div>
+    <!-- Registered Capital -->
+    <div class="glass-card gradient-border">
+      <div class="card-glow" style="background: var(--accent); bottom: -30px; left: -30px;"></div>
+      <div class="card-icon" style="background: rgba(6,182,212,0.1); color: var(--accent); border-color: rgba(6,182,212,0.2);"><i class="fas fa-coins"></i></div>
+      <div class="card-label">注册资本</div>
+      <div class="card-value card-value-lg">1183.95<span style="font-size:1rem">万美元</span></div>
+      <div class="card-desc">实缴 907.2万美元</div>
+    </div>
+    <!-- Credit Code -->
+    <div class="glass-card gradient-border">
+      <div class="card-icon"><i class="fas fa-fingerprint"></i></div>
+      <div class="card-label">统一社会信用代码</div>
+      <div style="font-size: 13px; font-weight: 700; font-family: monospace; letter-spacing: 1px; word-break: break-all;">91350581764056100W</div>
+      <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted);">科创分: 74分 · 信用分: 888</div>
+    </div>
+    <!-- Legal Rep -->
+    <div class="glass-card gradient-border">
+      <div class="card-icon"><i class="fas fa-user-tie"></i></div>
+      <div class="card-label">法定代表人</div>
+      <div class="card-value">施小红</div>
+      <div class="card-desc">执行董事兼总经理 · 关联7家企业</div>
+    </div>
+    <!-- Established -->
+    <div class="glass-card gradient-border">
+      <div class="card-icon" style="background: rgba(34,197,94,0.1); color: #22c55e; border-color: rgba(34,197,94,0.2);"><i class="fas fa-calendar-check"></i></div>
+      <div class="card-label">成立日期</div>
+      <div class="card-value">2004<span style="font-size:1rem">.08.03</span></div>
+      <div class="card-desc">营业期限至无固定期限</div>
+    </div>
+    <!-- Contact -->
+    <div class="glass-card card-span-2 gradient-border">
+      <div class="card-icon"><i class="fas fa-address-book"></i></div>
+      <div class="card-label">联系方式</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 8px;">
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 2px;">电话</div>
+          <div style="font-size: 14px; font-weight: 500;">0595-83025533</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 2px;">邮箱</div>
+          <div style="font-size: 14px; font-weight: 500;">8340278@qq.com</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 2px;">官网</div>
+          <div style="font-size: 14px; font-weight: 500;">www.jjlschooluniform.com</div>
+        </div>
+      </div>
+      <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">
+        <i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 4px;"></i>
+        福建省泉州市石狮市宝盖镇锦峰路159号
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Equity Structure -->
+<section class="section" id="equity">
+  <div class="section-header">
+    <div class="section-tag">EQUITY STRUCTURE</div>
+    <h2 class="section-title">股权<span>架构</span></h2>
+  </div>
+  <div class="bento-grid">
+    <!-- Main Shareholders -->
+    <div class="glass-card card-span-2 card-row-2 gradient-border">
+      <div class="card-glow" style="background: var(--primary); top: -40px; right: -40px;"></div>
+      <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+      <div class="card-label">股东结构</div>
+      <div style="margin-top: 16px;">
+        <div class="equity-bar">
+          <div class="equity-bar-header">
+            <span class="equity-bar-name"><i class="fas fa-globe" style="color: var(--accent); margin-right: 6px; font-size: 12px;"></i>CHINA CHILDREN FASHION HOLDINGS PTE. LTD.</span>
+            <span class="equity-bar-pct">100%</span>
+          </div>
+          <div class="equity-bar-track">
+            <div class="equity-bar-fill" data-width="100"></div>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">新加坡注册 · 外国法人独资 · 实际控制人 · 首次持股2009.04.13</div>
+        </div>
+      </div>
+      <div style="margin-top: 20px; padding: 16px; border-radius: 12px; background: rgba(6,182,212,0.05); border: 1px solid rgba(6,182,212,0.15);">
+        <div style="font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">
+          <i class="fas fa-landmark" style="margin-right: 4px;"></i> 上市背景
+        </div>
+        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+          2010年，好田实业以反向收购形式收购新加坡Friven&Co集团，成功登录新加坡证券交易所，成为新交所为数不多的童装上市企业，也是石狮首家上市的童装企业。
+        </div>
+      </div>
+    </div>
+    <!-- Investment -->
+    <div class="glass-card card-span-2 gradient-border">
+      <div class="card-glow" style="background: var(--warm); bottom: -30px; left: -30px;"></div>
+      <div class="card-icon" style="background: rgba(139,92,246,0.1); color: var(--warm); border-color: rgba(139,92,246,0.2);"><i class="fas fa-diagram-project"></i></div>
+      <div class="card-label">对外投资</div>
+      <div style="margin-top: 12px;">
+        <div class="team-member">
+          <div class="team-avatar" style="background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(37,99,235,0.2)); color: var(--warm);">季</div>
+          <div class="team-info">
+            <div class="team-name">福建省季季乐实业有限责任公司</div>
+            <div class="team-role">注册资本700万 · 施小红持股95% · 2018年成立</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar" style="background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(37,99,235,0.2)); color: var(--accent);">鹰</div>
+          <div class="team-info">
+            <div class="team-name">鹰高顿（厦门）进出口有限公司</div>
+            <div class="team-role">全资子公司 · 市场推广职能 · JJLKIDS品牌运营</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Brand Matrix -->
+    <div class="glass-card card-span-4 gradient-border">
+      <div class="card-glow" style="background: var(--primary); top: -30px; left: 50%; transform: translateX(-50%);"></div>
+      <div class="card-icon"><i class="fas fa-tags"></i></div>
+      <div class="card-label">季季乐集团 · 品牌矩阵</div>
+      <div class="brand-showcase" style="margin-top: 12px;">
+        <div class="brand-item">
+          <i class="fas fa-child"></i>
+          <div class="brand-name">JJLKIDS</div>
+          <div class="brand-type">童装快时尚</div>
+        </div>
+        <div class="brand-item">
+          <i class="fas fa-fire"></i>
+          <div class="brand-name">FRIVEN</div>
+          <div class="brand-type">潮童品牌</div>
+        </div>
+        <div class="brand-item">
+          <i class="fas fa-school"></i>
+          <div class="brand-name">JLSCHOOLUNIFORM</div>
+          <div class="brand-type">校服品牌</div>
+        </div>
+        <div class="brand-item">
+          <i class="fas fa-gem"></i>
+          <div class="brand-name">YEEWA</div>
+          <div class="brand-type">时尚品牌</div>
+        </div>
+        <div class="brand-item">
+          <i class="fas fa-shirt"></i>
+          <div class="brand-name">HAOTIAN</div>
+          <div class="brand-type">好田服饰</div>
+        </div>
+        <div class="brand-item">
+          <i class="fas fa-bolt"></i>
+          <div class="brand-name">HI-5</div>
+          <div class="brand-type">运动品牌</div>
+        </div>
+        <div class="brand-item">
+          <i class="fas fa-star"></i>
+          <div class="brand-name">HOTINE.J</div>
+          <div class="brand-type">新注册商标</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Core Business -->
+<section class="section" id="business">
+  <div class="section-header">
+    <div class="section-tag">CORE BUSINESS</div>
+    <h2 class="section-title">核心<span>业务</span></h2>
+  </div>
+  <div class="bento-grid">
+    <!-- School Uniform -->
+    <div class="glass-card card-span-2 card-row-2 gradient-border">
+      <div class="card-glow" style="background: var(--primary); top: -60px; right: -40px;"></div>
+      <div class="card-icon"><i class="fas fa-school"></i></div>
+      <div class="card-label">核心业务 · 校服</div>
+      <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 8px; line-height: 1.3;">
+        季季乐<span style="color: var(--primary-light);">校服</span>
+      </div>
+      <div class="card-desc" style="margin-bottom: 16px;">
+        季季乐校服是好田服饰旗下核心品牌，拥有多年专业校服研发、生产与销售经验。产品涵盖针织、梭织多工艺，制式、运动多品类，中小学全年龄段，多款式多风格校服。渠道遍布福建、安徽、湖北、新疆、重庆、山东、广西、河南、陕西、山西等10余省份，为超过120万学生提供专业学生装服务。
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        <span class="biz-tag"><i class="fas fa-vest"></i>针织校服</span>
+        <span class="biz-tag"><i class="fas fa-tshirt"></i>梭织校服</span>
+        <span class="biz-tag"><i class="fas fa-running"></i>运动校服</span>
+        <span class="biz-tag"><i class="fas fa-user-graduate"></i>制式校服</span>
+        <span class="biz-tag"><i class="fas fa-child"></i>全年龄段</span>
+        <span class="biz-tag"><i class="fas fa-tools"></i>驻校售后站</span>
+      </div>
+    </div>
+    <!-- Kids Fashion -->
+    <div class="glass-card card-span-2 gradient-border">
+      <div class="card-glow" style="background: var(--accent); bottom: -30px; left: -30px;"></div>
+      <div class="card-icon" style="background: rgba(6,182,212,0.1); color: var(--accent); border-color: rgba(6,182,212,0.2);"><i class="fas fa-child-reaching"></i></div>
+      <div class="card-label">核心业务 · 童装</div>
+      <div style="font-size: 1.3rem; font-weight: 900; margin-bottom: 8px;">
+        JJLKIDS<span style="color: var(--accent); font-size: 0.9rem;"> 季季乐童装 · 中国十大童装品牌</span>
+      </div>
+      <div class="card-desc">
+        中国童装快时尚品牌，2013年启动品牌推广战略，在大陆27个省份覆盖1200+线下体验店，线上全网络覆盖。2015年启动海外零售业务，在台湾设立全资子公司。FRIVEN斐杋潮童为旗下核心潮牌，2019年成立至今全国近千家专卖店，2021年获评中国十大童装品牌。
+      </div>
+    </div>
+    <!-- Business Scope -->
+    <div class="glass-card card-span-2 gradient-border">
+      <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+      <div class="card-label">经营范围</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;">
+        <span class="biz-tag"><i class="fas fa-shirt"></i>服装制造</span>
+        <span class="biz-tag"><i class="fas fa-vest"></i>服饰制造</span>
+        <span class="biz-tag"><i class="fas fa-store"></i>服装批发零售</span>
+        <span class="biz-tag"><i class="fas fa-scissors"></i>面料纺织加工</span>
+        <span class="biz-tag"><i class="fas fa-shoe-prints"></i>鞋帽制造</span>
+        <span class="biz-tag"><i class="fas fa-suitcase"></i>箱包制造</span>
+        <span class="biz-tag"><i class="fas fa-laptop-code"></i>绣花加工</span>
+        <span class="biz-tag"><i class="fas fa-plane-departure"></i>货物进出口</span>
+        <span class="biz-tag"><i class="fas fa-microchip"></i>技术进出口</span>
+        <span class="biz-tag"><i class="fas fa-head-side-mask"></i>日用口罩生产</span>
+      </div>
+    </div>
+    <!-- Production Scale -->
+    <div class="glass-card gradient-border">
+      <div class="card-glow" style="background: var(--warm); top: -30px; right: -30px;"></div>
+      <div class="card-icon" style="background: rgba(139,92,246,0.1); color: var(--warm); border-color: rgba(139,92,246,0.2);"><i class="fas fa-industry"></i></div>
+      <div class="card-label">生产规模</div>
+      <div style="margin-top: 12px;">
+        <div style="margin-bottom: 12px;">
+          <div style="font-size: 2rem; font-weight: 900; color: var(--warm);">50000<span style="font-size:0.8rem">m²</span></div>
+          <div style="font-size: 12px; color: var(--text-muted);">厂房面积</div>
+        </div>
+        <div style="margin-bottom: 12px;">
+          <div style="font-size: 2rem; font-weight: 900; color: var(--accent);">1400<span style="font-size:0.8rem">+</span></div>
+          <div style="font-size: 12px; color: var(--text-muted);">集团员工</div>
+        </div>
+        <div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--primary-light);">2000<span style="font-size:0.8rem">万+件</span></div>
+          <div style="font-size: 12px; color: var(--text-muted);">年产量</div>
+        </div>
+      </div>
+    </div>
+    <!-- Bidding -->
+    <div class="glass-card gradient-border">
+      <div class="card-icon" style="background: rgba(34,197,94,0.1); color: #22c55e; border-color: rgba(34,197,94,0.2);"><i class="fas fa-gavel"></i></div>
+      <div class="card-label">招投标</div>
+      <div style="margin-top: 12px;">
+        <div style="margin-bottom: 12px;">
+          <div style="font-size: 2rem; font-weight: 900; color: #22c55e;">90<span style="font-size:0.8rem">次</span></div>
+          <div style="font-size: 12px; color: var(--text-muted);">参与招投标</div>
+        </div>
+        <div>
+          <div style="font-size: 2rem; font-weight: 900; color: var(--primary-light);">43<span style="font-size:0.8rem">次</span></div>
+          <div style="font-size: 12px; color: var(--text-muted);">中标次数</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Honors & IP -->
+<section class="section" id="honors">
+  <div class="section-header">
+    <div class="section-tag">HONORS & INTELLECTUAL PROPERTY</div>
+    <h2 class="section-title">荣誉<span>资质</span></h2>
+  </div>
+  <div class="bento-grid">
+    <!-- Honors -->
+    <div class="glass-card card-span-2 card-row-2 gradient-border">
+      <div class="card-glow" style="background: var(--warm); top: -50px; right: -50px;"></div>
+      <div class="card-icon" style="background: rgba(139,92,246,0.1); color: var(--warm); border-color: rgba(139,92,246,0.2);"><i class="fas fa-trophy"></i></div>
+      <div class="card-label">荣誉奖项</div>
+      <div style="margin-top: 12px;">
+        <div class="honor-card">
+          <div class="honor-icon"><i class="fas fa-crown"></i></div>
+          <div><div class="honor-text">国家级高新技术企业</div><div class="honor-year">2023年</div></div>
+        </div>
+        <div class="honor-card">
+          <div class="honor-icon"><i class="fas fa-star"></i></div>
+          <div><div class="honor-text">省级专精特新中小企业</div><div class="honor-year">2026年</div></div>
+        </div>
+        <div class="honor-card">
+          <div class="honor-icon"><i class="fas fa-lightbulb"></i></div>
+          <div><div class="honor-text">省级创新型中小企业</div><div class="honor-year">2025年</div></div>
+        </div>
+        <div class="honor-card">
+          <div class="honor-icon"><i class="fas fa-award"></i></div>
+          <div><div class="honor-text">中国服装行业百强企业</div><div class="honor-year">2011-2013年连续三年</div></div>
+        </div>
+        <div class="honor-card">
+          <div class="honor-icon"><i class="fas fa-medal"></i></div>
+          <div><div class="honor-text">中国十大童装品牌（FRIVEN斐杋）</div><div class="honor-year">2021年</div></div>
+        </div>
+        <div class="honor-card">
+          <div class="honor-icon"><i class="fas fa-ship"></i></div>
+          <div><div class="honor-text">校服产业领航奖 + 品牌创新奖 + 先锋领袖奖</div><div class="honor-year">2023-2024年</div></div>
+        </div>
+        <div class="honor-card">
+          <div class="honor-icon"><i class="fas fa-certificate"></i></div>
+          <div><div class="honor-text">ISO9001国际认证 · 福建省国际商会理事</div><div class="honor-year">持续</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- IP -->
+    <div class="glass-card gradient-border">
+      <div class="card-icon" style="background: rgba(6,182,212,0.1); color: var(--accent); border-color: rgba(6,182,212,0.2);"><i class="fas fa-shield-halved"></i></div>
+      <div class="card-label">知识产权</div>
+      <div style="margin-top: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(37,99,235,0.1); display: flex; align-items: center; justify-content: center;"><i class="fas fa-tags" style="color: var(--primary-light); font-size: 14px;"></i></div>
+          <div><div style="font-size: 18px; font-weight: 700; color: var(--primary-light);">53条</div><div style="font-size: 12px; color: var(--text-muted);">商标信息</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(6,182,212,0.1); display: flex; align-items: center; justify-content: center;"><i class="fas fa-file-alt" style="color: var(--accent); font-size: 14px;"></i></div>
+          <div><div style="font-size: 18px; font-weight: 700; color: var(--accent);">25条</div><div style="font-size: 12px; color: var(--text-muted);">专利信息</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(139,92,246,0.1); display: flex; align-items: center; justify-content: center;"><i class="fas fa-code" style="color: var(--warm); font-size: 14px;"></i></div>
+          <div><div style="font-size: 18px; font-weight: 700; color: var(--warm);">3条</div><div style="font-size: 12px; color: var(--text-muted);">著作权</div></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center;"><i class="fas fa-certificate" style="color: #22c55e; font-size: 14px;"></i></div>
+          <div><div style="font-size: 18px; font-weight: 700; color: #22c55e;">31个</div><div style="font-size: 12px; color: var(--text-muted);">资质证书</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Recent Patents -->
+    <div class="glass-card gradient-border">
+      <div class="card-icon" style="background: rgba(139,92,246,0.1); color: var(--warm); border-color: rgba(139,92,246,0.2);"><i class="fas fa-flask"></i></div>
+      <div class="card-label">近期专利</div>
+      <div style="margin-top: 12px; font-size: 12px;">
+        <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+          <div style="color: var(--accent); font-weight: 600;">2026.02</div>
+          <div style="color: var(--text-muted);">一种保暖防寒的防寒服</div>
+        </div>
+        <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+          <div style="color: var(--accent); font-weight: 600;">2026.01</div>
+          <div style="color: var(--text-muted);">一种工业缝纫机的防静电装置</div>
+        </div>
+        <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03);">
+          <div style="color: var(--accent); font-weight: 600;">2025.12</div>
+          <div style="color: var(--text-muted);">一种具有温度调节功能的套头衫</div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div style="color: var(--accent); font-weight: 600;">2025.12</div>
+          <div style="color: var(--text-muted);">一种具有拉布功能的精修裁剪装置</div>
+        </div>
+      </div>
+    </div>
+    <!-- Risk -->
+    <div class="glass-card gradient-border">
+      <div class="card-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b; border-color: rgba(245,158,11,0.2);"><i class="fas fa-triangle-exclamation"></i></div>
+      <div class="card-label">风险概览</div>
+      <div style="margin-top: 12px;">
+        <div class="risk-item"><span class="risk-label">司法案件</span><span class="risk-value risk-medium">4条</span></div>
+        <div class="risk-item"><span class="risk-label">裁判文书</span><span class="risk-value risk-medium">3条</span></div>
+        <div class="risk-item"><span class="risk-label">立案信息</span><span class="risk-value risk-medium">4条</span></div>
+        <div class="risk-item"><span class="risk-label">开庭公告</span><span class="risk-value risk-medium">5条</span></div>
+        <div class="risk-item"><span class="risk-label">经营状态</span><span class="risk-value risk-low">存续</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Development Timeline -->
+<section class="section" id="timeline">
+  <div class="section-header">
+    <div class="section-tag">DEVELOPMENT TIMELINE</div>
+    <h2 class="section-title">发展<span>历程</span></h2>
+  </div>
+  <div class="bento-grid">
+    <div class="glass-card card-span-3 card-row-2 gradient-border">
+      <div class="card-glow" style="background: var(--primary); top: -40px; left: -40px;"></div>
+      <div class="card-icon"><i class="fas fa-clock-rotate-left"></i></div>
+      <div class="card-label">关键里程碑</div>
+      <div class="timeline" style="margin-top: 16px;">
+        <div class="timeline-item">
+          <div class="timeline-year">1984</div>
+          <div class="timeline-text">季季乐集团成立，作为中国第一批从事纺织童装生产的企业创立于福建石狮</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1985</div>
+          <div class="timeline-text">第一件标注"季季乐"商标的童装出口至东南亚市场</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1999</div>
+          <div class="timeline-text">"季季乐"以独特"三原色"设计理念，引领产品进入欧洲、东南亚市场</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2004.08</div>
+          <div class="timeline-text">石狮市好田服饰实业有限公司正式成立</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2005</div>
+          <div class="timeline-text">集团重塑品牌，于新加坡启用全新品牌标识"JJLKIDS"，全面焕新全球经营网点</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2008</div>
+          <div class="timeline-text">JJLKIDS中国第一家儿童体验乐园旗舰店开业；中国童装（新加坡）控股有限公司创立</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2010</div>
+          <div class="timeline-text">反向收购新加坡Friven&Co集团，成功登录新交所上市，成为石狮首家上市童装企业</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2011-2013</div>
+          <div class="timeline-text">连续三年被中国服装协会评为"中国服装行业百强企业"</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2013</div>
+          <div class="timeline-text">启动JJLKIDS品牌推广战略，在中国大陆27个省份覆盖1200+线下体验店</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2018</div>
+          <div class="timeline-text">成立福建省季季乐实业有限责任公司，深耕校服赛道</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2019</div>
+          <div class="timeline-text">推出FRIVEN斐杋潮童品牌，全国近千家专卖店</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-text">FRIVEN斐杋潮童获评第五届"中国十大童装品牌"</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-text">获评国家级高新技术企业；校服产业领航奖、品牌创新奖、先锋领袖奖三项大奖</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-text">入选省级创新型中小企业</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-text">入选省级专精特新中小企业；中标新疆、辅警服装等多项采购</div>
+        </div>
+      </div>
+    </div>
+    <!-- Global Coverage -->
+    <div class="glass-card gradient-border">
+      <div class="card-glow" style="background: var(--accent); bottom: -30px; right: -30px;"></div>
+      <div class="card-icon" style="background: rgba(6,182,212,0.1); color: var(--accent); border-color: rgba(6,182,212,0.2);"><i class="fas fa-earth-asia"></i></div>
+      <div class="card-label">全球覆盖</div>
+      <div style="margin-top: 12px;">
+        <div style="margin-bottom: 16px;">
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--accent);">29</div>
+          <div style="font-size: 12px; color: var(--text-muted);">覆盖国家和地区</div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--primary-light);">1200<span style="font-size:0.8rem">+</span></div>
+          <div style="font-size: 12px; color: var(--text-muted);">线下体验店</div>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 900; color: var(--warm);">27</div>
+          <div style="font-size: 12px; color: var(--text-muted);">省份覆盖</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Team -->
+<section class="section" id="team">
+  <div class="section-header">
+    <div class="section-tag">CORE TEAM</div>
+    <h2 class="section-title">核心<span>团队</span></h2>
+  </div>
+  <div class="bento-grid">
+    <div class="glass-card card-span-2 gradient-border">
+      <div class="card-glow" style="background: var(--primary); top: -40px; right: -40px;"></div>
+      <div class="card-icon"><i class="fas fa-users-gear"></i></div>
+      <div class="card-label">工商登记人员</div>
+      <div style="margin-top: 12px;">
+        <div class="team-member">
+          <div class="team-avatar">施</div>
+          <div class="team-info">
+            <div class="team-name">施小红</div>
+            <div class="team-role">法定代表人 · 执行董事兼总经理 · 关联7家企业</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar" style="background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(37,99,235,0.2)); color: var(--accent);">张</div>
+          <div class="team-info">
+            <div class="team-name">张至泽</div>
+            <div class="team-role">监事 · 关联2家企业</div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar" style="background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(37,99,235,0.2)); color: var(--warm);">施</div>
+          <div class="team-info">
+            <div class="team-name">施连捷</div>
+            <div class="team-role">董事长助理</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Brand Spirit -->
+    <div class="glass-card card-span-2 gradient-border">
+      <div class="card-glow" style="background: var(--warm); bottom: -40px; left: -40px;"></div>
+      <div class="card-icon" style="background: rgba(139,92,246,0.1); color: var(--warm); border-color: rgba(139,92,246,0.2);"><i class="fas fa-heart"></i></div>
+      <div class="card-label">品牌精神</div>
+      <div style="margin-top: 16px; text-align: center;">
+        <div style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; background: linear-gradient(135deg, #3b82f6, #06b6d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          JUST JOYFUL LIFE
+        </div>
+        <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-muted); margin-bottom: 20px;">有梦想更快乐</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+          <div style="padding: 12px; border-radius: 12px; background: rgba(37,99,235,0.05); border: 1px solid rgba(37,99,235,0.1); text-align: center;">
+            <i class="fas fa-handshake" style="font-size: 20px; color: var(--primary-light); margin-bottom: 6px; display: block;"></i>
+            <div style="font-size: 12px; font-weight: 700;">伙伴</div>
+          </div>
+          <div style="padding: 12px; border-radius: 12px; background: rgba(6,182,212,0.05); border: 1px solid rgba(6,182,212,0.1); text-align: center;">
+            <i class="fas fa-rocket" style="font-size: 20px; color: var(--accent); margin-bottom: 6px; display: block;"></i>
+            <div style="font-size: 12px; font-weight: 700;">梦想</div>
+          </div>
+          <div style="padding: 12px; border-radius: 12px; background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.1); text-align: center;">
+            <i class="fas fa-face-smile" style="font-size: 20px; color: var(--warm); margin-bottom: 6px; display: block;"></i>
+            <div style="font-size: 12px; font-weight: 700;">快乐</div>
+          </div>
+        </div>
+        <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted); line-height: 1.6;">
+          企业宗旨：以技带贸扶工<br>
+          发展原则：质量第一 · 服务第一 · 信誉第一<br>
+          品牌愿景：致力于成为国内校服品牌NO.1
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Data Sources -->
+<section class="section" style="padding-bottom: 20px;">
+  <div class="glass-card card-span-4 gradient-border" style="padding: 20px;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+      <i class="fas fa-database" style="color: var(--primary-light);"></i>
+      <span style="font-size: 13px; font-weight: 700;">数据来源</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+      <a href="https://www.qcc.com/firm/0c0da334709931db32a1beff20acd818.html" target="_blank" class="data-source"><i class="fas fa-external-link-alt"></i> 企查查</a>
+      <a href="https://www.tianyancha.com/company/2321487767" target="_blank" class="data-source"><i class="fas fa-external-link-alt"></i> 天眼查</a>
+      <a href="https://shuidi.cn/company-b94b4f8fedc841b6254ad66c0da71c61.html" target="_blank" class="data-source"><i class="fas fa-external-link-alt"></i> 水滴信用</a>
+      <a href="https://www.aiqicha.com/company_detail_76305084002140" target="_blank" class="data-source"><i class="fas fa-external-link-alt"></i> 爱企查</a>
+      <a href="https://www.caigou.com.cn/news/2023102326.shtml" target="_blank" class="data-source"><i class="fas fa-external-link-alt"></i> 教育装备采购网</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div style="margin-bottom: 8px;"><span class="footer-brand">39139@胜天半子</span></div>
+  <div>数据来源于公开工商信息，仅供参考 · 更新于 2026.06</div>
+</footer>
+
+<script>
+// Particles
+(function() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 6 + 's';
+    p.style.animationDuration = (4 + Math.random() * 4) + 's';
+    if (Math.random() > 0.5) p.style.background = 'var(--accent)';
+    if (Math.random() > 0.8) p.style.background = 'var(--warm)';
+    container.appendChild(p);
+  }
+})();
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// Equity bars animation
+function animateEquityBars() {
+  document.querySelectorAll('.equity-bar-fill').forEach(bar => {
+    const width = bar.dataset.width;
+    setTimeout(() => { bar.style.width = width + '%'; }, 300);
+  });
+}
+
+// GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+document.querySelectorAll('.section').forEach(section => {
+  gsap.from(section.querySelectorAll('.glass-card'), {
+    scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' },
+    y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'
+  });
+});
+
+gsap.from('.hero-badge', { y: 20, opacity: 0, duration: 0.8, delay: 0.2 });
+gsap.from('.hero-title', { y: 30, opacity: 0, duration: 1, delay: 0.4 });
+gsap.from('.hero-subtitle', { y: 20, opacity: 0, duration: 0.8, delay: 0.6 });
+gsap.from('.hero-stat', { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, delay: 0.8 });
+
+setTimeout(animateCounters, 1000);
+
+ScrollTrigger.create({
+  trigger: '#equity',
+  start: 'top 80%',
+  onEnter: animateEquityBars
+});
+</script>
+</body>
+</html>

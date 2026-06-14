@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>厦门欧凡达金融服务有限公司 | 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+:root{
+  --primary:#0ea5e9;--primary-light:#38bdf8;--primary-dark:#0284c7;
+  --accent:#f59e0b;--accent2:#d97706;
+  --danger:#ef4444;--danger-dark:#dc2626;
+  --success:#22c55e;
+  --bg-dark:#030712;--bg-card:rgba(15,23,42,0.8);
+  --border:rgba(14,165,233,0.15);--glow:rgba(14,165,233,0.2);
+  --text:#f1f5f9;--text-muted:#94a3b8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans SC','Inter',sans-serif;background:var(--bg-dark);color:var(--text);overflow-x:hidden;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg-dark);}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px;}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(14,165,233,0.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(245,158,11,0.08) 0%,transparent 50%),var(--bg-dark);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(14,165,233,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.03) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
+@keyframes gridMove{0%{transform:translate(0,0)}100%{transform:translate(60px,60px)}}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orbFloat 8s ease-in-out infinite;}
+.hero-orb-1{width:400px;height:400px;background:rgba(14,165,233,0.12);top:-100px;left:-100px;}
+.hero-orb-2{width:300px;height:300px;background:rgba(245,158,11,0.08);bottom:-50px;right:-50px;animation-delay:-4s;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+.hero-content{position:relative;z-index:10;text-align:center;padding:0 24px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:100px;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.3);font-size:13px;color:var(--primary-light);margin-bottom:24px;backdrop-filter:blur(10px);}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--success);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.2;margin-bottom:16px;background:linear-gradient(135deg,#f1f5f9 0%,#0ea5e9 50%,#f59e0b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-muted);max-width:600px;margin:0 auto 32px;line-height:1.8;}
+.hero-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;}
+.hero-stat{text-align:center;}
+.hero-stat-num{font-size:2rem;font-weight:900;color:var(--primary-light);}
+.hero-stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+/* Bento Grid */
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);gap:20px;max-width:1400px;margin:0 auto;padding:0 24px;}
+.span-2{grid-column:span 2;}.span-3{grid-column:span 3;}.span-4{grid-column:span 4;}
+.row-2{grid-row:span 2;}
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(2,1fr);}.span-3,.span-4{grid-column:span 2;}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr;}.span-2,.span-3,.span-4{grid-column:span 1;}}
+
+/* Card */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px;backdrop-filter:blur(20px);position:relative;overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);}
+.card:hover{border-color:rgba(14,165,233,0.4);transform:translateY(-4px);box-shadow:0 20px 60px rgba(14,165,233,0.1);}
+.card-glow{position:absolute;top:-50%;right:-50%;width:200px;height:200px;background:radial-gradient(circle,rgba(14,165,233,0.06) 0%,transparent 70%);pointer-events:none;}
+.card-label{font-size:12px;color:var(--primary-light);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.card-label i{font-size:14px;}
+.card-value{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;line-height:1.2;}
+.card-desc{font-size:13px;color:var(--text-muted);line-height:1.8;margin-top:12px;}
+
+/* Section */
+.section{padding:80px 0;}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;}
+.section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));margin:0 auto;border-radius:2px;}
+
+/* Risk Card */
+.risk-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600;}
+.risk-high{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.3);}
+.risk-medium{background:rgba(245,158,11,0.15);color:#fbbf24;border:1px solid rgba(245,158,11,0.3);}
+.risk-low{background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.3);}
+
+/* Timeline */
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--primary),var(--accent));}
+.timeline-item{position:relative;margin-bottom:24px;}
+.timeline-dot{position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid var(--bg-dark);box-shadow:0 0 10px var(--glow);}
+.timeline-date{font-size:12px;color:var(--primary-light);font-weight:600;}
+.timeline-text{font-size:14px;color:var(--text);margin-top:4px;}
+
+/* Shareholder Bar */
+.share-bar{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.share-bar-name{width:60px;font-size:14px;font-weight:600;text-align:right;}
+.share-bar-track{flex:1;height:28px;background:rgba(14,165,233,0.08);border-radius:8px;overflow:hidden;position:relative;}
+.share-bar-fill{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:700;color:#fff;transition:width 1.5s cubic-bezier(.4,0,.2,1);}
+.share-bar-amount{font-size:13px;color:var(--text-muted);width:80px;}
+
+/* Business Empire Card */
+.empire-item{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:12px;background:rgba(14,165,233,0.04);border:1px solid rgba(14,165,233,0.08);margin-bottom:10px;transition:all .3s;}
+.empire-item:hover{background:rgba(14,165,233,0.08);border-color:rgba(14,165,233,0.2);}
+.empire-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.empire-info{flex:1;min-width:0;}
+.empire-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.empire-meta{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.empire-status{font-size:11px;padding:3px 10px;border-radius:100px;font-weight:600;flex-shrink:0;}
+
+/* Scope Tags */
+.scope-tag{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);font-size:13px;color:var(--text);margin:4px;transition:all .3s;}
+.scope-tag:hover{background:rgba(14,165,233,0.12);border-color:rgba(14,165,233,0.3);}
+.scope-tag i{color:var(--primary-light);font-size:12px;}
+
+/* Footer */
+.footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);margin-top:40px;}
+.footer-text{font-size:13px;color:var(--text-muted);}
+.footer-credit{font-size:14px;font-weight:700;color:var(--primary-light);margin-top:8px;}
+
+/* Scroll Animation */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* Info Row */
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(14,165,233,0.06);}
+.info-row:last-child{border-bottom:none;}
+.info-label{font-size:13px;color:var(--text-muted);}
+.info-value{font-size:14px;font-weight:600;text-align:right;max-width:60%;}
+
+/* Chart Container */
+.chart-container{position:relative;width:100%;height:220px;}
+
+/* ===== 增强响应式布局 ===== */
+/* 确保viewport正确 */
+/* 全局防溢出 */
+body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; height: auto; }
+table { width: 100%; overflow-x: auto; display: block; }
+/* 修复hero-glow溢出 */
+.hero-glow { max-width: 100vw; left: 50% !important; transform: translateX(-50%) !important; width: min(600px, 100vw) !important; }
+
+/* 通用grid响应式 - 覆盖各种命名 */
+@media (max-width: 1024px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .col-span-4, .col-span-3, .span-4, .span-3, .card-span-4, .card-span-3,
+  [class*="span-4"], [class*="span-3"], [class*="col-span-4"], [class*="col-span-3"] {
+    grid-column: span 2 !important;
+  }
+  .col-span-2, .span-2, .card-span-2,
+  [class*="col-span-2"], [class*="span-2"] {
+    grid-column: span 2 !important;
+  }
+  /* 统计数字grid */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* 品牌grid */
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列grid保持 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* hero标题 */
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.3rem, 3.5vw, 2.5rem) !important;
+  }
+  /* 大数字 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.3rem, 3vw, 2.2rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid, .grid, [class*="bento"], [class*="grid-"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .col-span-4, .col-span-3, .col-span-2, .col-span-1,
+  .span-4, .span-3, .span-2, .span-1,
+  .card-span-4, .card-span-3, .card-span-2, .card-span-1,
+  [class*="span-"], [class*="col-span-"] {
+    grid-column: span 1 !important;
+  }
+  /* 统计grid 2列 */
+  [style*="grid-template-columns:repeat(6"], [style*="grid-template-columns: repeat(6"],
+  [style*="grid-template-columns:repeat(4"], [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 工厂2列变1列 */
+  [style*="grid-template-columns:1fr 1fr"], [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 产品2列变1列 */
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* hero区 */
+  .hero-section, [class*="hero"] {
+    padding: 40px 16px 30px !important;
+  }
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem) !important;
+  }
+  .hero-slogan, .hero-subtitle, [class*="hero"] p {
+    font-size: 0.85rem !important;
+  }
+  /* 卡片 */
+  .glass-card, [class*="card"], [class*="glass"] {
+    border-radius: 12px !important;
+    padding: 18px !important;
+  }
+  .glass-card:hover, [class*="card"]:hover, [class*="glass"]:hover {
+    transform: none !important;
+  }
+  /* 大数字缩小 */
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+  }
+  /* 信息行 */
+  .info-row, [class*="info-row"] {
+    padding: 8px 0 !important;
+  }
+  .info-key, [class*="info-key"], [class*="info-label"] {
+    font-size: 0.72rem !important;
+  }
+  .info-val, [class*="info-val"], [class*="info-value"] {
+    font-size: 0.75rem !important;
+  }
+  /* 标签 */
+  .tag, [class*="tag-"] {
+    font-size: 0.6rem !important;
+    padding: 2px 8px !important;
+  }
+  /* 品牌卡片 */
+  .brand-card, [class*="brand"] {
+    padding: 12px !important;
+  }
+  /* 时间线 */
+  .timeline-item, [class*="timeline"] {
+    gap: 8px !important;
+    padding: 8px 0 !important;
+  }
+  /* 风险项 */
+  .risk-item, [class*="risk"] {
+    padding: 8px !important;
+  }
+  /* 进度条 */
+  .progress-bar, [class*="progress"] {
+    height: 5px !important;
+  }
+  /* footer */
+  .footer, [class*="footer"] {
+    padding: 30px 16px !important;
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title, h1, [class*="hero"] h1 {
+    font-size: 1.1rem !important;
+  }
+  .stat-number, .big-number, [class*="stat-num"], [class*="big-num"] {
+    font-size: 1.1rem !important;
+  }
+  .glass-card, [class*="card"], [class*="glass"] {
+    padding: 14px !important;
+  }
+  [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 确保inline grid也响应 */
+  [style*="display:grid"], [style*="display: grid"] {
+    gap: 8px !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span>存续（在营）</div>
+    <h1 class="hero-title">厦门欧凡达金融服务有限公司</h1>
+    <p class="hero-sub">金融信息服务 · 金融业务流程外包 · 汽车金融生态链关键节点</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">100<span style="font-size:0.6em">万</span></div><div class="hero-stat-label">注册资本</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">9<span style="font-size:0.6em">年</span></div><div class="hero-stat-label">经营年限</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">8<span style="font-size:0.6em">人</span></div><div class="hero-stat-label">员工规模</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">12<span style="font-size:0.6em">家</span></div><div class="hero-stat-label">关联企业</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: 工商档案 -->
+<section class="section">
+  <div class="section-header"><h2 class="section-title">工商档案</h2><div class="section-line"></div></div>
+  <div class="bento-grid">
+
+    <!-- 基本信息 -->
+    <div class="card span-2 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-building"></i> 基本登记信息</div>
+      <div class="info-row"><span class="info-label">统一社会信用代码</span><span class="info-value" style="font-family:monospace;letter-spacing:1px;">91350212MA346YQQX5</span></div>
+      <div class="info-row"><span class="info-label">法定代表人</span><span class="info-value" style="color:var(--primary-light)">陈建强</span></div>
+      <div class="info-row"><span class="info-label">成立日期</span><span class="info-value">2016-03-28</span></div>
+      <div class="info-row"><span class="info-label">经营期限</span><span class="info-value">2016-03-28 至 2066-03-27</span></div>
+      <div class="info-row"><span class="info-label">企业类型</span><span class="info-value">有限责任公司(自然人投资或控股)</span></div>
+      <div class="info-row"><span class="info-label">登记机关</span><span class="info-value">厦门市同安区市场监督管理局</span></div>
+      <div class="info-row"><span class="info-label">工商注册号</span><span class="info-value" style="font-family:monospace;">350212200124249</span></div>
+      <div class="info-row"><span class="info-label">组织机构代码</span><span class="info-value" style="font-family:monospace;">MA346YQQ-X</span></div>
+    </div>
+
+    <!-- 地址 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-map-marker-alt"></i> 注册地址</div>
+      <div class="card-value" style="font-size:1rem;line-height:1.8;color:var(--text);">厦门市同安区大同街道洪塘路84-96号店第二层A区房屋</div>
+      <div class="card-desc"><i class="fas fa-layer-group" style="color:var(--primary-light);margin-right:4px;"></i>所属区域：福建省 · 厦门市 · 同安区</div>
+    </div>
+
+    <!-- 行业分类 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-industry"></i> 行业分类</div>
+      <div class="card-value" style="font-size:1.5rem;">商务服务业</div>
+      <div class="card-desc">
+        <div style="margin-bottom:6px;">门类：租赁和商务服务业</div>
+        <div>大类：其他未列明商务服务业</div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;">
+        <span class="risk-badge risk-low">微型企业</span>
+        <span class="risk-badge risk-medium">小微企业</span>
+      </div>
+    </div>
+
+    <!-- 经营范围 -->
+    <div class="card span-4 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-briefcase"></i> 经营范围</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="scope-tag"><i class="fas fa-coins"></i>金融信息服务</span>
+        <span class="scope-tag"><i class="fas fa-handshake"></i>金融信息技术外包</span>
+        <span class="scope-tag"><i class="fas fa-cogs"></i>金融业务流程外包</span>
+        <span class="scope-tag"><i class="fas fa-brain"></i>金融知识流程外包</span>
+        <span class="scope-tag"><i class="fas fa-comments-dollar"></i>商务信息咨询</span>
+        <span class="scope-tag"><i class="fas fa-chart-line"></i>投资咨询</span>
+        <span class="scope-tag"><i class="fas fa-balance-scale"></i>投资管理咨询</span>
+        <span class="scope-tag"><i class="fas fa-users"></i>社会经济咨询</span>
+        <span class="scope-tag"><i class="fas fa-sitemap"></i>企业管理咨询</span>
+        <span class="scope-tag"><i class="fas fa-search"></i>市场调查</span>
+        <span class="scope-tag"><i class="fas fa-gem"></i>资产管理</span>
+        <span class="scope-tag"><i class="fas fa-car"></i>汽车零售</span>
+      </div>
+      <div style="margin-top:16px;padding:12px 16px;border-radius:10px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);font-size:12px;color:var(--accent);">
+        <i class="fas fa-info-circle" style="margin-right:6px;"></i>2016年10月变更：新增"汽车零售"经营范围，与关联企业福建捷瀚科技汽车金融业务形成协同
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Section: 股权结构 -->
+<section class="section">
+  <div class="section-header"><h2 class="section-title">股权结构</h2><div class="section-line"></div></div>
+  <div class="bento-grid">
+
+    <!-- 股东出资 -->
+    <div class="card span-2 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-users-cog"></i> 股东出资明细</div>
+      <div class="share-bar">
+        <div class="share-bar-name" style="color:var(--primary-light)">陈建强</div>
+        <div class="share-bar-track">
+          <div class="share-bar-fill" style="width:50%;background:linear-gradient(90deg,var(--primary),var(--primary-light));">50%</div>
+        </div>
+        <div class="share-bar-amount">50万</div>
+      </div>
+      <div class="share-bar">
+        <div class="share-bar-name" style="color:var(--accent)">曾思勇</div>
+        <div class="share-bar-track">
+          <div class="share-bar-fill" style="width:25%;background:linear-gradient(90deg,var(--accent),var(--accent2));">25%</div>
+        </div>
+        <div class="share-bar-amount">25万</div>
+      </div>
+      <div class="share-bar">
+        <div class="share-bar-name" style="color:var(--success)">蔡争取</div>
+        <div class="share-bar-track">
+          <div class="share-bar-fill" style="width:25%;background:linear-gradient(90deg,#22c55e,#16a34a);">25%</div>
+        </div>
+        <div class="share-bar-amount">25万</div>
+      </div>
+      <div style="margin-top:16px;padding:12px 16px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);font-size:12px;color:var(--text-muted);">
+        <i class="fas fa-calendar" style="color:var(--primary-light);margin-right:6px;"></i>出资日期：2026-03-20 | 认缴币种：人民币
+      </div>
+    </div>
+
+    <!-- 股权饼图 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-chart-pie"></i> 股权分布</div>
+      <div class="chart-container"><canvas id="chartEquity"></canvas></div>
+    </div>
+
+    <!-- 主要人员 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-user-tie"></i> 主要人员</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);">
+          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;">陈</div>
+          <div><div style="font-weight:700;font-size:15px;">陈建强</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">执行董事兼总经理 · 控股50%</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12);">
+          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;">曾</div>
+          <div><div style="font-weight:700;font-size:15px;">曾思勇</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">监事 · 持股25%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 实际控制人 -->
+    <div class="card span-4 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-crown"></i> 实际控制人 · 最终受益人</div>
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div style="width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--primary),#7c3aed);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;box-shadow:0 0 30px rgba(14,165,233,0.3);">陈</div>
+          <div>
+            <div style="font-size:1.25rem;font-weight:800;">陈建强</div>
+            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">最终受益股份 <span style="color:var(--primary-light);font-weight:700;font-size:1.1em;">50%</span></div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:200px;display:flex;gap:16px;flex-wrap:wrap;">
+          <div style="padding:10px 18px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);">
+            <div style="font-size:1.5rem;font-weight:900;color:var(--primary-light);">12</div>
+            <div style="font-size:11px;color:var(--text-muted);">关联企业</div>
+          </div>
+          <div style="padding:10px 18px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);">
+            <div style="font-size:1.5rem;font-weight:900;color:var(--primary-light);">9</div>
+            <div style="font-size:11px;color:var(--text-muted);">担任法定代表人</div>
+          </div>
+          <div style="padding:10px 18px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);">
+            <div style="font-size:1.5rem;font-weight:900;color:var(--primary-light);">9</div>
+            <div style="font-size:11px;color:var(--text-muted);">控股企业</div>
+          </div>
+          <div style="padding:10px 18px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.12);">
+            <div style="font-size:1.5rem;font-weight:900;color:var(--accent);">5</div>
+            <div style="font-size:11px;color:var(--text-muted);">间接持股</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Section: 商业版图 -->
+<section class="section">
+  <div class="section-header"><h2 class="section-title">陈建强商业版图</h2><div class="section-line"></div></div>
+  <div class="bento-grid">
+
+    <!-- 核心企业 -->
+    <div class="card span-2 row-2 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-chess-king"></i> 核心企业 · 福建捷瀚科技</div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:1.1rem;font-weight:800;margin-bottom:8px;">福建捷瀚科技有限公司</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8;">
+          成立于2015年5月，专注汽车金融落地服务，总部位于福建泉州泉商大厦滨江商务区。与瑞福德汽车金融、上汽通用金融、奇瑞徽银汽车金融、吉致汽车金融等主流资方深度合作。
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="padding:12px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);text-align:center;">
+          <div style="font-size:1.3rem;font-weight:900;color:var(--primary-light);">1000<span style="font-size:0.6em">万</span></div>
+          <div style="font-size:11px;color:var(--text-muted);">注册资本</div>
+        </div>
+        <div style="padding:12px;border-radius:10px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);text-align:center;">
+          <div style="font-size:1.3rem;font-weight:900;color:var(--primary-light);">60+<span style="font-size:0.6em">人</span></div>
+          <div style="font-size:11px;color:var(--text-muted);">直营团队</div>
+        </div>
+        <div style="padding:12px;border-radius:10px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);text-align:center;">
+          <div style="font-size:1.3rem;font-weight:900;color:var(--accent);">2000+<span style="font-size:0.6em">家</span></div>
+          <div style="font-size:11px;color:var(--text-muted);">合作商户</div>
+        </div>
+        <div style="padding:12px;border-radius:10px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.1);text-align:center;">
+          <div style="font-size:1.3rem;font-weight:900;color:var(--accent);">5<span style="font-size:0.6em">亿</span></div>
+          <div style="font-size:11px;color:var(--text-muted);">年放款额</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.8;">
+        <i class="fas fa-map-marked-alt" style="color:var(--primary-light);margin-right:4px;"></i>业务覆盖：福建 · 江西 · 浙江 · 海南<br>
+        <i class="fas fa-car" style="color:var(--primary-light);margin-right:4px;"></i>年放款车辆超10,000台<br>
+        <i class="fas fa-users" style="color:var(--primary-light);margin-right:4px;"></i>累计服务超10,000消费者
+      </div>
+    </div>
+
+    <!-- 关联企业列表 -->
+    <div class="card span-2 row-2 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-project-diagram"></i> 关联企业矩阵</div>
+      <div class="empire-item">
+        <div class="empire-icon" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;"><i class="fas fa-car"></i></div>
+        <div class="empire-info"><div class="empire-name">泉州市恋车汽车服务有限公司</div><div class="empire-meta">100万 · 95%控股 · 2021年 · 晋江</div></div>
+        <span class="empire-status" style="background:rgba(34,197,94,0.15);color:#4ade80;">开业</span>
+      </div>
+      <div class="empire-item">
+        <div class="empire-icon" style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;"><i class="fas fa-microchip"></i></div>
+        <div class="empire-info"><div class="empire-name">福建捷瀚科技有限公司</div><div class="empire-meta">1000万 · 95%控股 · 2019年 · 晋江</div></div>
+        <span class="empire-status" style="background:rgba(34,197,94,0.15);color:#4ade80;">开业</span>
+      </div>
+      <div class="empire-item">
+        <div class="empire-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;"><i class="fas fa-store"></i></div>
+        <div class="empire-info"><div class="empire-name">泉州市鸿晟汽车贸易有限公司</div><div class="empire-meta">1000万 · 95%控股 · 2015年 · 晋江</div></div>
+        <span class="empire-status" style="background:rgba(34,197,94,0.15);color:#4ade80;">开业</span>
+      </div>
+      <div class="empire-item">
+        <div class="empire-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:#fff;"><i class="fas fa-coins"></i></div>
+        <div class="empire-info"><div class="empire-name">厦门欧凡达金融服务有限公司</div><div class="empire-meta">100万 · 50%控股 · 2016年 · 厦门同安</div></div>
+        <span class="empire-status" style="background:rgba(34,197,94,0.15);color:#4ade80;">开业</span>
+      </div>
+      <div class="empire-item">
+        <div class="empire-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;"><i class="fas fa-info-circle"></i></div>
+        <div class="empire-info"><div class="empire-name">金华市恋车信息咨询有限公司</div><div class="empire-meta">200万 · 95%间接控股 · 2024年 · 浙江义乌</div></div>
+        <span class="empire-status" style="background:rgba(34,197,94,0.15);color:#4ade80;">开业</span>
+      </div>
+      <div class="empire-item" style="opacity:0.5;">
+        <div class="empire-icon" style="background:rgba(100,100,100,0.3);color:#999;"><i class="fas fa-times"></i></div>
+        <div class="empire-info"><div class="empire-name">湖南恋车科技有限公司</div><div class="empire-meta">200万 · 2019年 · 长沙</div></div>
+        <span class="empire-status" style="background:rgba(100,100,100,0.15);color:#999;">注销</span>
+      </div>
+    </div>
+
+    <!-- 业务生态 -->
+    <div class="card span-2 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-network-wired"></i> 汽车金融生态链</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0;"><i class="fas fa-car"></i></div>
+          <div style="flex:1;"><div style="font-size:13px;font-weight:600;">汽车销售</div><div style="font-size:11px;color:var(--text-muted);">恋车汽车 · 鸿晟汽车贸易</div></div>
+        </div>
+        <div style="text-align:center;color:var(--primary-light);font-size:18px;"><i class="fas fa-arrow-down"></i></div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0;"><i class="fas fa-hand-holding-usd"></i></div>
+          <div style="flex:1;"><div style="font-size:13px;font-weight:600;">汽车金融</div><div style="font-size:11px;color:var(--text-muted);">捷瀚科技 · 欧凡达金融</div></div>
+        </div>
+        <div style="text-align:center;color:var(--primary-light);font-size:18px;"><i class="fas fa-arrow-down"></i></div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0;"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div style="flex:1;"><div style="font-size:13px;font-weight:600;">贷后管理</div><div style="font-size:11px;color:var(--text-muted);">催收 · 结清 · 贷后服务</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 合作资方 -->
+    <div class="card span-2 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-handshake"></i> 合作资方</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="padding:14px;border-radius:12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);text-align:center;">
+          <i class="fas fa-university" style="font-size:20px;color:var(--primary-light);margin-bottom:6px;display:block;"></i>
+          <div style="font-size:12px;font-weight:600;">瑞福德汽车金融</div>
+        </div>
+        <div style="padding:14px;border-radius:12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);text-align:center;">
+          <i class="fas fa-university" style="font-size:20px;color:var(--primary-light);margin-bottom:6px;display:block;"></i>
+          <div style="font-size:12px;font-weight:600;">上汽通用金融</div>
+        </div>
+        <div style="padding:14px;border-radius:12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);text-align:center;">
+          <i class="fas fa-university" style="font-size:20px;color:var(--primary-light);margin-bottom:6px;display:block;"></i>
+          <div style="font-size:12px;font-weight:600;">奇瑞徽银汽车金融</div>
+        </div>
+        <div style="padding:14px;border-radius:12px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.1);text-align:center;">
+          <i class="fas fa-university" style="font-size:20px;color:var(--primary-light);margin-bottom:6px;display:block;"></i>
+          <div style="font-size:12px;font-weight:600;">吉致汽车金融</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Section: 风险扫描 -->
+<section class="section">
+  <div class="section-header"><h2 class="section-title">风险扫描</h2><div class="section-line"></div></div>
+  <div class="bento-grid">
+
+    <!-- 风险概览 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-shield-alt"></i> 风险概览</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:14px;">自身风险</span>
+          <span class="risk-badge risk-high"><i class="fas fa-exclamation-triangle"></i> 2项</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:14px;">关联风险</span>
+          <span class="risk-badge risk-low"><i class="fas fa-check-circle"></i> 0项</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:14px;">提示信息</span>
+          <span class="risk-badge risk-medium"><i class="fas fa-info-circle"></i> 1项</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行政处罚 -->
+    <div class="card span-2 reveal" style="border-color:rgba(239,68,68,0.3);">
+      <div class="card-glow" style="background:radial-gradient(circle,rgba(239,68,68,0.08) 0%,transparent 70%);"></div>
+      <div class="card-label" style="color:#f87171;"><i class="fas fa-gavel"></i> 行政处罚</div>
+      <div style="padding:16px;border-radius:12px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span class="risk-badge risk-high"><i class="fas fa-exclamation-circle"></i> 偷税</span>
+          <span style="font-size:12px;color:var(--text-muted);">2026-01-26</span>
+        </div>
+        <div style="font-size:13px;line-height:1.8;color:var(--text);">
+          <div style="margin-bottom:6px;"><strong>决定文书号：</strong><span style="font-family:monospace;">厦税二稽罚﹝2026﹞53号</span></div>
+          <div style="margin-bottom:6px;"><strong>违法事实：</strong>偷税</div>
+          <div><strong>处罚单位：</strong>国家税务总局厦门市税务局第二稽查局</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 减资公告 -->
+    <div class="card reveal" style="border-color:rgba(245,158,11,0.3);">
+      <div class="card-glow" style="background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 70%);"></div>
+      <div class="card-label" style="color:#fbbf24;"><i class="fas fa-minus-circle"></i> 减资公告</div>
+      <div style="padding:14px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);">
+        <div style="font-size:13px;line-height:1.8;">
+          <div style="margin-bottom:6px;"><strong>公告类型：</strong>减少注册资本</div>
+          <div><strong>公告期限：</strong>2026-02-14 至 2026-03-31</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--text-muted);">
+        <i class="fas fa-exclamation-triangle" style="color:var(--accent);margin-right:4px;"></i>减资可能影响偿债能力，债权人有权要求清偿
+      </div>
+    </div>
+
+    <!-- 司法案件 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-balance-scale"></i> 司法案件</div>
+      <div style="text-align:center;padding:20px 0;">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--danger);">1</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">涉及案件</div>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);text-align:center;">
+        <i class="fas fa-file-alt" style="margin-right:4px;"></i>含送达公告1条
+      </div>
+    </div>
+
+    <!-- 风险雷达图 -->
+    <div class="card span-2 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-crosshairs"></i> 风险雷达</div>
+      <div class="chart-container" style="height:260px;"><canvas id="chartRisk"></canvas></div>
+    </div>
+
+    <!-- 风险提示总结 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-lightbulb"></i> 风险提示</div>
+      <div style="font-size:13px;line-height:2;color:var(--text-muted);">
+        <div><span style="color:var(--danger);">●</span> 税务处罚记录（偷税）</div>
+        <div><span style="color:var(--accent);">●</span> 减资进行中</div>
+        <div><span style="color:var(--accent);">●</span> 涉及司法案件</div>
+        <div><span style="color:var(--text-muted);">●</span> 实缴资本未公示</div>
+        <div><span style="color:var(--text-muted);">●</span> 注册资本偏低（100万）</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Section: 发展历程 -->
+<section class="section">
+  <div class="section-header"><h2 class="section-title">发展历程</h2><div class="section-line"></div></div>
+  <div class="bento-grid">
+    <div class="card span-3 reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-history"></i> 关键节点</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2016-03-28</div>
+          <div class="timeline-text">公司成立，初始经营范围含金融信息服务、金融业务流程外包等</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--accent);"></div>
+          <div class="timeline-date">2016-10-25</div>
+          <div class="timeline-text">经营范围变更，新增"汽车零售"，与关联企业汽车金融业务形成协同</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--accent);"></div>
+          <div class="timeline-date">2019-12</div>
+          <div class="timeline-text">关联核心企业福建捷瀚科技成立，汽车金融业务加速扩张</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--success);"></div>
+          <div class="timeline-date">2021-07</div>
+          <div class="timeline-text">关联企业恋车汽车服务成立，汽车销售+金融全链条布局</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--danger);"></div>
+          <div class="timeline-date">2026-01-26</div>
+          <div class="timeline-text">因偷税被厦门市税务局第二稽查局行政处罚</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--accent);"></div>
+          <div class="timeline-date">2026-02-14</div>
+          <div class="timeline-text">发布减少注册资本公告</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 年报信息 -->
+    <div class="card reveal">
+      <div class="card-glow"></div>
+      <div class="card-label"><i class="fas fa-file-alt"></i> 年报披露</div>
+      <div style="text-align:center;padding:16px 0;">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--primary-light);">10</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">已披露年报</div>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.8;">
+        <div>2016 - 2024年度</div>
+        <div style="margin-top:8px;">2024年报员工：<span style="color:var(--primary-light);font-weight:600;">8人</span></div>
+        <div>企业规模：<span style="color:var(--accent);font-weight:600;">微型</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-text">数据来源：国家企业信用信息公示系统 · 水滴信用 · 爱企查 · BOSS直聘</div>
+  <div class="footer-credit">39139@胜天半子</div>
+</footer>
+
+<script>
+// Scroll Reveal
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.1});
+reveals.forEach(el=>observer.observe(el));
+
+// Equity Chart
+const ctx1=document.getElementById('chartEquity').getContext('2d');
+new Chart(ctx1,{
+  type:'doughnut',
+  data:{
+    labels:['陈建强','曾思勇','蔡争取'],
+    datasets:[{data:[50,25,25],backgroundColor:['#0ea5e9','#f59e0b','#22c55e'],borderWidth:0,hoverOffset:8}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:11},padding:10}}}}
+});
+
+// Risk Radar Chart
+const ctx2=document.getElementById('chartRisk').getContext('2d');
+new Chart(ctx2,{
+  type:'radar',
+  data:{
+    labels:['税务风险','法律风险','经营风险','资本风险','信用风险','合规风险'],
+    datasets:[{
+      label:'风险指数',
+      data:[85,40,55,70,45,60],
+      backgroundColor:'rgba(239,68,68,0.15)',
+      borderColor:'rgba(239,68,68,0.6)',
+      borderWidth:2,
+      pointBackgroundColor:'#ef4444',
+      pointBorderColor:'#ef4444',
+      pointRadius:4
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    scales:{r:{beginAtZero:true,max:100,ticks:{display:false,stepSize:20},grid:{color:'rgba(148,163,184,0.1)'},pointLabels:{color:'#94a3b8',font:{size:11}},angleLines:{color:'rgba(148,163,184,0.1)'}}},
+    plugins:{legend:{display:false}}
+  }
+});
+
+// Animate share bars on scroll
+const shareBars=document.querySelectorAll('.share-bar-fill');
+const barObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const bar=e.target;
+      const w=bar.style.width;
+      bar.style.width='0%';
+      setTimeout(()=>{bar.style.width=w;},100);
+      barObserver.unobserve(bar);
+    }
+  });
+},{threshold:0.3});
+shareBars.forEach(b=>barObserver.observe(b));
+</script>
+</body>
+</html>

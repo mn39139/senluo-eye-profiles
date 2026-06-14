@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聚隆（福建）包装 | 企业全景画像</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        orange: { 350: '#fdba74', 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
+                        amber: { 400: '#fbbf24', 500: '#f59e0b' },
+                        rose: { 400: '#fb7185' },
+                        slate: { 850: '#1a1f2e', 900: '#141824', 950: '#0c1017' }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'system-ui', 'sans-serif'],
+                        display: ['DIN Alternate', 'Helvetica Neue', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: #0c1017;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        .bg-mesh {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; z-index: -1;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(249, 115, 22, .07) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 70%, rgba(251, 146, 60, .05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(251, 191, 36, .03) 0%, transparent 60%),
+                linear-gradient(180deg, #0c1017 0%, #111827 40%, #0c1017 100%);
+        }
+        .glass-card {
+            background: rgba(255,255,255,.025);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 20px;
+            transition: all .4s cubic-bezier(.25,.46,.45,.94);
+            position: relative; overflow: hidden;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(249,115,22,.25);
+            box-shadow: 0 20px 60px rgba(249,115,22,.08), 0 0 0 1px rgba(249,115,22,.1);
+        }
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(249,115,22,.4), transparent);
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 18px; border-radius: 50px;
+            background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.2);
+            color: #fb923c; font-size: .8rem; font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+        .live-indicator {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 50px;
+            background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2);
+            color: #4ade80; font-size: .75rem;
+        }
+        .stat-num { font-family: 'DIN Alternate', 'Helvetica Neue', monospace; }
+        .bento-grid {
+            display: grid; gap: 16px;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .bento-col-3 { grid-column: span 3; }
+        .bento-col-4 { grid-column: span 4; }
+        .bento-col-6 { grid-column: span 6; }
+        .bento-col-8 { grid-column: span 8; }
+        .bento-col-12 { grid-column: span 12; }
+        @media (max-width: 1024px) {
+            .bento-col-3, .bento-col-4, .bento-col-6, .bento-col-8 { grid-column: span 6; }
+        }
+        @media (max-width: 640px) {
+            .bento-col-3, .bento-col-4, .bento-col-6, .bento-col-8 { grid-column: span 12; }
+        }
+        .progress-bar {
+            height: 6px; border-radius: 3px; background: rgba(255,255,255,.06); overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%; border-radius: 3px;
+            background: linear-gradient(90deg, #f97316, #fbbf24);
+            transition: width 1.5s cubic-bezier(.25,.46,.45,.94);
+        }
+        .tag {
+            display: inline-block; padding: 4px 12px; border-radius: 6px;
+            background: rgba(249,115,22,.1); color: #fb923c;
+            font-size: .75rem; font-weight: 500; margin: 3px;
+            border: 1px solid rgba(249,115,22,.15);
+        }
+        .data-card-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(249,115,22,.12); color: #fb923c;
+            font-size: 1.1rem; margin-bottom: 12px;
+        }
+        .timeline-item {
+            position: relative; padding-left: 28px; padding-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: 7px; top: 8px; bottom: 0; width: 2px;
+            background: rgba(249,115,22,.15);
+        }
+        .timeline-item::after {
+            content: ''; position: absolute; left: 3px; top: 6px;
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #f97316; border: 2px solid #0c1017;
+        }
+        .timeline-item:last-child::before { display: none; }
+        .glow-orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); pointer-events: none; opacity: .15;
+        }
+        footer { text-align: center; padding: 40px 20px; color: #64748b; font-size: .8rem; }
+        .h-divider {
+            height: 1px; background: linear-gradient(90deg, transparent, rgba(249,115,22,.3), transparent);
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+
+    <!-- HERO -->
+    <section class="relative min-h-[65vh] flex items-center justify-center px-6 py-16">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-[15%] left-[20%] w-[500px] h-[500px] bg-orange-500/4 rounded-full blur-[130px]"></div>
+            <div class="absolute bottom-[20%] right-[20%] w-[400px] h-[400px] bg-amber-500/4 rounded-full blur-[110px]"></div>
+            <div class="absolute top-[50%] right-[30%] w-[250px] h-[250px] bg-rose-400/3 rounded-full blur-[90px]"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-4xl mx-auto" id="hero-content">
+            <div class="flex justify-center gap-3 mb-6 flex-wrap">
+                <div class="hero-badge"><i class="fas fa-box-open"></i> 中国印刷包装百强企业</div>
+                <div class="live-indicator"><i class="fas fa-circle" style="font-size:6px"></i> 数据更新至 2026.06</div>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-5 leading-tight tracking-tight">
+                <span class="text-white">聚隆包装</span><br>
+                <span class="stat-num text-orange-400">JULONG Packing</span>
+            </h1>
+            <p class="text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-4 leading-relaxed">
+                始创于<span class="text-orange-400 font-semibold">1997年</span> · 28年纸品包装深耕 · 总投资超<span class="text-orange-400 font-semibold">3亿元</span><br>
+                纸板年产<span class="text-amber-400 font-semibold">3亿㎡</span> · 纸箱年产<span class="text-amber-400 font-semibold">6000万㎡</span> · 年消耗原纸<span class="text-amber-400 font-semibold">20万吨</span><br>
+                <span class="text-slate-500 text-sm mt-2 inline-block">聚隆（福建）包装有限公司 · 前称：晋江市振隆纸业包装有限公司</span>
+            </p>
+            <div class="flex justify-center gap-4 mt-8 flex-wrap">
+                <a href="#overview" class="px-6 py-3 rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-400 font-medium hover:bg-orange-500/25 transition text-sm"><i class="fas fa-chart-pie mr-2"></i>企业概览</a>
+                <a href="#honors" class="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-medium hover:bg-white/10 transition text-sm"><i class="fas fa-award mr-2"></i>荣誉资质</a>
+                <a href="#products" class="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 font-medium hover:bg-white/10 transition text-sm"><i class="fas fa-industry mr-2"></i>产能规模</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENTO GRID -->
+    <section class="max-w-[1400px] mx-auto px-4 md:px-8 pb-20">
+
+        <!-- ROW 1: 核心数据 -->
+        <div class="bento-grid mb-4">
+            <div class="bento-col-3 bento-card" id="overview">
+                <div class="glass-card p-6 h-full flex flex-col">
+                    <div class="data-card-icon"><i class="fas fa-coins"></i></div>
+                    <div class="stat-num text-3xl font-bold text-white mb-1">5000<span class="text-lg text-orange-400">万</span></div>
+                    <div class="text-slate-400 text-sm">注册资本（实缴5000万）</div>
+                    <div class="progress-bar mt-3"><div class="progress-bar-fill" style="width:100%"></div></div>
+                </div>
+            </div>
+            <div class="bento-col-3 bento-card">
+                <div class="glass-card p-6 h-full flex flex-col">
+                    <div class="data-card-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-num text-3xl font-bold text-white mb-1">279<span class="text-lg text-amber-400">人</span></div>
+                    <div class="text-slate-400 text-sm">参保人数（2025年）</div>
+                    <div class="progress-bar mt-3"><div class="progress-bar-fill" style="width:70%"></div></div>
+                </div>
+            </div>
+            <div class="bento-col-3 bento-card">
+                <div class="glass-card p-6 h-full flex flex-col">
+                    <div class="data-card-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="stat-num text-3xl font-bold text-white mb-1">2010<span class="text-lg text-orange-400">年</span></div>
+                    <div class="text-slate-400 text-sm">注册成立（创办于1997）</div>
+                    <div class="progress-bar mt-3"><div class="progress-bar-fill" style="width:85%"></div></div>
+                </div>
+            </div>
+            <div class="bento-col-3 bento-card">
+                <div class="glass-card p-6 h-full flex flex-col">
+                    <div class="data-card-icon"><i class="fas fa-star"></i></div>
+                    <div class="stat-num text-3xl font-bold text-white mb-1">669<span class="text-lg text-amber-400">分</span></div>
+                    <div class="text-slate-400 text-sm">启信分 / A级纳税人</div>
+                    <div class="progress-bar mt-3"><div class="progress-bar-fill" style="width:67%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2: 企业简介 + 基本信息 -->
+        <div class="bento-grid mb-4">
+            <div class="bento-col-8 bento-card">
+                <div class="glass-card p-8 h-full">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                        <i class="fas fa-building text-orange-400"></i>企业简介
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed text-[15px] mb-4">
+                        聚隆（福建）包装有限公司位于东南沿海品牌之都——晋江，前身为<strong class="text-orange-400">晋江市振隆纸业包装有限公司</strong>，创办于1997年，现落户于中国包装印刷产业（晋江）基地园区。公司总投资超过<strong class="text-orange-400">3亿元</strong>，占地面积<strong class="text-amber-400">六万多平米</strong>，配备现代化办公楼、生产厂房、员工宿舍及娱乐活动中心。
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-[15px] mb-4">
+                        公司不断引进先进、高效、节能的生产设备，打造了<strong>马贵、富利品牌纸板线</strong>、<strong>东方精工联动线</strong>等多条自动化和智能制造水平高的瓦楞纸板、纸箱生产线，跻身国内大型纸品包装企业。
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-[15px]">
+                        秉承"<span class="text-orange-400">质量稳定、超值服务</span>"的经营理念，"<span class="text-amber-400">聚智汇力、慎德臻隆</span>"的管理理念，公司致力于打造幸福企业，携手客户共同成长，为员工创造发展空间。
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span class="tag"><i class="fas fa-recycle mr-1"></i>环保包装</span>
+                        <span class="tag"><i class="fas fa-print mr-1"></i>印刷包装</span>
+                        <span class="tag"><i class="fas fa-cube mr-1"></i>瓦楞纸板</span>
+                        <span class="tag"><i class="fas fa-box mr-1"></i>瓦楞纸箱</span>
+                        <span class="tag"><i class="fas fa-globe mr-1"></i>出口贸易</span>
+                        <span class="tag"><i class="fas fa-robot mr-1"></i>智能制造</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-col-4 bento-card">
+                <div class="glass-card p-6 h-full">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-id-card text-orange-400"></i>工商信息
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between"><span class="text-slate-500">企业全称</span><span class="text-slate-300 text-right max-w-[60%]">聚隆（福建）包装有限公司</span></div>
+                        <div class="h-divider" style="margin:8px 0"></div>
+                        <div class="flex justify-between"><span class="text-slate-500">统一信用代码</span><span class="text-orange-400 font-mono">91350582557598265T</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">法定代表人</span><span class="text-slate-300">吴世约</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">注册资本</span><span class="text-slate-300">5000万元（实缴）</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">成立日期</span><span class="text-slate-300">2010-07-20</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">企业类型</span><span class="text-slate-300">有限责任公司</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">所属行业</span><span class="text-slate-300">造纸和纸制品业</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">纳税人资质</span><span class="text-green-400">一般纳税人 / A级</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">企业规模</span><span class="text-slate-300">小型 / 参保279人</span></div>
+                        <div class="h-divider" style="margin:8px 0"></div>
+                        <div class="flex justify-between"><span class="text-slate-500">登记状态</span><span class="text-green-400"><i class="fas fa-check-circle mr-1"></i>存续</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">登记机关</span><span class="text-slate-300">晋江市市场监督管理局</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 3: 产能规模 -->
+        <div class="bento-grid mb-4" id="products">
+            <div class="bento-col-4 bento-card">
+                <div class="glass-card p-6 h-full flex flex-col justify-center items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-layer-group text-2xl text-orange-400"></i>
+                    </div>
+                    <div class="stat-num text-4xl font-bold text-white mb-2">3<span class="text-2xl text-orange-400">亿㎡</span></div>
+                    <div class="text-slate-400 text-sm">瓦楞纸板年产量</div>
+                    <div class="mt-3 text-xs text-slate-500">马贵/富利品牌纸板线</div>
+                </div>
+            </div>
+            <div class="bento-col-4 bento-card">
+                <div class="glass-card p-6 h-full flex flex-col justify-center items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-box text-2xl text-amber-400"></i>
+                    </div>
+                    <div class="stat-num text-4xl font-bold text-white mb-2">6000<span class="text-2xl text-amber-400">万㎡</span></div>
+                    <div class="text-slate-400 text-sm">瓦楞纸箱年产量</div>
+                    <div class="mt-3 text-xs text-slate-500">东方精工联动线</div>
+                </div>
+            </div>
+            <div class="bento-col-4 bento-card">
+                <div class="glass-card p-6 h-full flex flex-col justify-center items-center text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-tree text-2xl text-orange-400"></i>
+                    </div>
+                    <div class="stat-num text-4xl font-bold text-white mb-2">20<span class="text-2xl text-orange-400">万吨+</span></div>
+                    <div class="text-slate-400 text-sm">年消耗原纸量</div>
+                    <div class="mt-3 text-xs text-slate-500">国内大型纸品包装企业</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 4: 产值 + 覆盖区域 -->
+        <div class="bento-grid mb-4">
+            <div class="bento-col-6 bento-card">
+                <div class="glass-card p-6 h-full">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-chart-line text-orange-400"></i>产能与产值
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">年总产值</span>
+                                <span class="text-orange-400 font-bold">8亿+ 元</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">占地面积</span>
+                                <span class="text-amber-400 font-bold">6万+ ㎡</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">总投资规模</span>
+                                <span class="text-orange-400 font-bold">3亿+ 元</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:85%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">纸板年产量</span>
+                                <span class="text-amber-400 font-bold">3亿 ㎡</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:95%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-slate-300 text-sm">纸箱年产量</span>
+                                <span class="text-orange-400 font-bold">6000万 ㎡</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-col-6 bento-card">
+                <div class="glass-card p-6 h-full">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-map-marked-alt text-orange-400"></i>服务覆盖区域
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5 hover:border-orange-500/20 transition">
+                            <div class="text-orange-400 text-2xl mb-1"><i class="fas fa-city"></i></div>
+                            <div class="text-white font-semibold">泉州市</div>
+                            <div class="text-slate-500 text-xs mt-1">各县市核心服务区</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5 hover:border-orange-500/20 transition">
+                            <div class="text-amber-400 text-2xl mb-1"><i class="fas fa-landmark"></i></div>
+                            <div class="text-white font-semibold">厦门市</div>
+                            <div class="text-slate-500 text-xs mt-1">经济特区覆盖</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5 hover:border-orange-500/20 transition">
+                            <div class="text-orange-400 text-2xl mb-1"><i class="fas fa-water"></i></div>
+                            <div class="text-white font-semibold">漳州市</div>
+                            <div class="text-slate-500 text-xs mt-1">闽南三角区域</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5 hover:border-orange-500/20 transition">
+                            <div class="text-amber-400 text-2xl mb-1"><i class="fas fa-building"></i></div>
+                            <div class="text-white font-semibold">福州市</div>
+                            <div class="text-slate-500 text-xs mt-1">省会城市布局</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5 hover:border-orange-500/20 transition">
+                            <div class="text-orange-400 text-2xl mb-1"><i class="fas fa-mountain"></i></div>
+                            <div class="text-white font-semibold">三明市</div>
+                            <div class="text-slate-500 text-xs mt-1">闽西北延伸</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5 hover:border-orange-500/20 transition">
+                            <div class="text-amber-400 text-2xl mb-1"><i class="fas fa-globe-asia"></i></div>
+                            <div class="text-white font-semibold">海外市场</div>
+                            <div class="text-slate-500 text-xs mt-1">货物/技术进出口</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 5: 荣誉资质 -->
+        <div class="bento-grid mb-4" id="honors">
+            <div class="bento-col-12 bento-card">
+                <div class="glass-card p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-trophy text-amber-400"></i>荣誉资质与认证
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5 hover:border-orange-500/30 transition">
+                            <div class="text-3xl text-orange-400 mb-2"><i class="fas fa-certificate"></i></div>
+                            <div class="text-white font-semibold text-sm">ISO9001</div>
+                            <div class="text-slate-500 text-xs">质量管理认证</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5 hover:border-orange-500/30 transition">
+                            <div class="text-3xl text-amber-400 mb-2"><i class="fas fa-leaf"></i></div>
+                            <div class="text-white font-semibold text-sm">ISO14001</div>
+                            <div class="text-slate-500 text-xs">环境管理认证</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5 hover:border-orange-500/30 transition">
+                            <div class="text-3xl text-green-400 mb-2"><i class="fas fa-seedling"></i></div>
+                            <div class="text-white font-semibold text-sm">绿色包装</div>
+                            <div class="text-slate-500 text-xs">产品认证</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5 hover:border-orange-500/30 transition">
+                            <div class="text-3xl text-orange-400 mb-2"><i class="fas fa-tree"></i></div>
+                            <div class="text-white font-semibold text-sm">FSC</div>
+                            <div class="text-slate-500 text-xs">森林认证</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5 hover:border-orange-500/30 transition">
+                            <div class="text-3xl text-amber-400 mb-2"><i class="fas fa-award"></i></div>
+                            <div class="text-white font-semibold text-sm">中国印刷包装</div>
+                            <div class="text-slate-500 text-xs">百强企业</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/5 hover:border-orange-500/30 transition">
+                            <div class="text-3xl text-orange-400 mb-2"><i class="fas fa-microchip"></i></div>
+                            <div class="text-white font-semibold text-sm">泉州市数字化</div>
+                            <div class="text-slate-500 text-xs">车间认定</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div class="flex items-center gap-3 bg-white/5 rounded-lg p-3">
+                            <i class="fas fa-medal text-orange-400"></i>
+                            <div>
+                                <div class="text-white text-sm font-medium">泉州市产业龙头企业</div>
+                                <div class="text-slate-500 text-xs">市级认定</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 rounded-lg p-3">
+                            <i class="fas fa-medal text-amber-400"></i>
+                            <div>
+                                <div class="text-white text-sm font-medium">晋江市龙头企业</div>
+                                <div class="text-slate-500 text-xs">县级认定</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 rounded-lg p-3">
+                            <i class="fas fa-lightbulb text-orange-400"></i>
+                            <div>
+                                <div class="text-white text-sm font-medium">福建省科技型企业</div>
+                                <div class="text-slate-500 text-xs">省级认定</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 rounded-lg p-3">
+                            <i class="fas fa-rocket text-amber-400"></i>
+                            <div>
+                                <div class="text-white text-sm font-medium">晋江市专精特新企业</div>
+                                <div class="text-slate-500 text-xs">县级认定</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 6: 知识产权 + 股东结构 -->
+        <div class="bento-grid mb-4">
+            <div class="bento-col-6 bento-card">
+                <div class="glass-card p-6 h-full">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-lightbulb text-amber-400"></i>知识产权
+                    </h3>
+                    <div class="grid grid-cols-3 gap-4 mb-4">
+                        <div class="text-center">
+                            <div class="stat-num text-3xl font-bold text-orange-400">13</div>
+                            <div class="text-slate-500 text-xs mt-1">专利信息</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-num text-3xl font-bold text-amber-400">4</div>
+                            <div class="text-slate-500 text-xs mt-1">注册商标</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-num text-3xl font-bold text-orange-400">1</div>
+                            <div class="text-slate-500 text-xs mt-1">品牌项目</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-green-400 mt-0.5 text-xs"></i>
+                            <span class="text-slate-300">环保水性油墨技术专利</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-green-400 mt-0.5 text-xs"></i>
+                            <span class="text-slate-300">环保型高强度减震瓦楞纸箱专利</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-green-400 mt-0.5 text-xs"></i>
+                            <span class="text-slate-300">多项自主知识产权专利组合</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-col-6 bento-card">
+                <div class="glass-card p-6 h-full">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-users text-orange-400"></i>股东结构
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-300 text-sm">吴世约 <span class="text-slate-500">（大股东/实控人）</span></span>
+                                <span class="text-orange-400 font-bold">51%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:51%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-300 text-sm">吴清荣</span>
+                                <span class="text-amber-400 font-bold">34%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:34%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-300 text-sm">赖钦满 <span class="text-slate-500">（监事）</span></span>
+                                <span class="text-orange-400 font-bold">15%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-bar-fill" style="width:15%"></div></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-slate-500">
+                        <i class="fas fa-info-circle mr-1"></i>2025年10月股权变更：新增吴清荣、赖钦满为股东
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 7: 发展历程 -->
+        <div class="bento-grid mb-4">
+            <div class="bento-col-12 bento-card">
+                <div class="glass-card p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <i class="fas fa-history text-orange-400"></i>发展历程
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                        <div>
+                            <div class="timeline-item">
+                                <div class="text-orange-400 font-bold text-sm">1997年</div>
+                                <div class="text-white font-medium">公司创办</div>
+                                <div class="text-slate-500 text-sm">前身为晋江市振隆纸业包装有限公司</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="text-orange-400 font-bold text-sm">2010年</div>
+                                <div class="text-white font-medium">法人主体成立</div>
+                                <div class="text-slate-500 text-sm">聚隆（福建）包装有限公司注册成立</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="text-orange-400 font-bold text-sm">2019年</div>
+                                <div class="text-white font-medium">行业百强</div>
+                                <div class="text-slate-500 text-sm">入选"中国印刷包装百强企业"</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="timeline-item">
+                                <div class="text-amber-400 font-bold text-sm">2020年</div>
+                                <div class="text-white font-medium">数字化升级</div>
+                                <div class="text-slate-500 text-sm">纸板生产车间被认定为"泉州市数字化车间"</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="text-amber-400 font-bold text-sm">2021年</div>
+                                <div class="text-white font-medium">产能扩建</div>
+                                <div class="text-slate-500 text-sm">年生产瓦楞纸板4.2亿㎡、纸箱7000万㎡项目环评备案</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="text-orange-400 font-bold text-sm">2026年</div>
+                                <div class="text-white font-medium">技改升级</div>
+                                <div class="text-slate-500 text-sm">年增产2500万平方米纸制品技改项目启动</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 8: 联系方式 + 企业文化 -->
+        <div class="bento-grid mb-4">
+            <div class="bento-col-6 bento-card">
+                <div class="glass-card p-6 h-full">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-address-card text-orange-400"></i>联系方式
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-orange-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-slate-500 text-xs">电话</div>
+                                <div class="text-slate-300">0595-82557028</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-orange-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-slate-500 text-xs">邮箱</div>
+                                <div class="text-slate-300">139059856@qq.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-amber-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-slate-500 text-xs">注册地址</div>
+                                <div class="text-slate-300">福建省泉州市晋江市磁灶镇中国包装印刷产业（晋江）基地延泽社区永昇路8号</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-pin text-amber-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="text-slate-500 text-xs">交通</div>
+                                <div class="text-slate-300">距晋江高速出口5km / 晋江动车站6km / 晋江机场10km</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-col-6 bento-card">
+                <div class="glass-card p-6 h-full">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-heart text-rose-400"></i>企业文化
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                            <div class="text-orange-400 font-bold text-sm mb-1">企业精神</div>
+                            <div class="text-slate-300 text-sm">团结 · 拼搏 · 担当 · 进取</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                            <div class="text-amber-400 font-bold text-sm mb-1">经营理念</div>
+                            <div class="text-slate-300 text-sm">质量稳定 · 超值服务 / 诚信 · 和谐 · 勤劳 · 进取</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                            <div class="text-orange-400 font-bold text-sm mb-1">管理理念</div>
+                            <div class="text-slate-300 text-sm">聚智汇力 · 慎德臻隆</div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                            <div class="text-amber-400 font-bold text-sm mb-1">人才观</div>
+                            <div class="text-slate-300 text-sm">唯德 · 唯才 · 唯信 · 唯勤</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 9: 信用与风险 -->
+        <div class="bento-grid mb-4">
+            <div class="bento-col-12 bento-card">
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-shield-alt text-green-400"></i>信用与风险概况
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-white/5 rounded-xl">
+                            <div class="text-green-400 text-2xl mb-1"><i class="fas fa-check-circle"></i></div>
+                            <div class="text-white font-bold">A级纳税人</div>
+                            <div class="text-slate-500 text-xs">2024-2025年连续</div>
+                        </div>
+                        <div class="text-center p-4 bg-white/5 rounded-xl">
+                            <div class="text-green-400 text-2xl mb-1"><i class="fas fa-file-contract"></i></div>
+                            <div class="text-white font-bold">排污许可证</div>
+                            <div class="text-slate-500 text-xs">有效（2025年核发）</div>
+                        </div>
+                        <div class="text-center p-4 bg-white/5 rounded-xl">
+                            <div class="text-green-400 text-2xl mb-1"><i class="fas fa-tools"></i></div>
+                            <div class="text-white font-bold">特种设备</div>
+                            <div class="text-slate-500 text-xs">使用登记证有效</div>
+                        </div>
+                        <div class="text-center p-4 bg-white/5 rounded-xl">
+                            <div class="text-yellow-400 text-2xl mb-1"><i class="fas fa-gavel"></i></div>
+                            <div class="text-white font-bold">涉诉信息</div>
+                            <div class="text-slate-500 text-xs">买卖合同纠纷为主（行业常态）</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="h-divider max-w-[1400px] mx-auto"></div>
+
+    <footer>
+        <div class="max-w-4xl mx-auto">
+            <p class="mb-2">数据来源：企查查 / 爱企查 / 启信宝 / 晋江市人民政府 / BOSS直聘 / 中国包装网</p>
+            <p class="text-orange-400/60 font-semibold">39139@胜天半子</p>
+            <p class="mt-2 text-xs text-slate-600">本页面由 AI 智能体自动生成 · 森罗之眼 Enterprise Intelligence System</p>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        // Hero entrance
+        gsap.from('#hero-content > *', { y: 30, opacity: 0, duration: .8, stagger: .12, ease: 'power3.out' });
+        // Bento cards
+        gsap.utils.toArray('.bento-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' },
+                y: 40, opacity: 0, duration: .6, delay: (i % 4) * .08, ease: 'power2.out'
+            });
+        });
+        // Progress bars
+        gsap.utils.toArray('.progress-bar-fill').forEach(bar => {
+            const target = bar.style.width;
+            bar.style.width = '0%';
+            gsap.to(bar, {
+                scrollTrigger: { trigger: bar, start: 'top 90%' },
+                width: target, duration: 1.5, ease: 'power2.out'
+            });
+        });
+    </script>
+</body>
+</html>
