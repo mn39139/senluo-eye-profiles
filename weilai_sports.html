@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来体育 · 泉州未来文化体育用品有限公司</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',sans-serif;background:#06080e;color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0a0c14}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#f97316,#ea580c);border-radius:3px}
+
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;max-width:1400px;margin:0 auto;padding:0 20px}
+.bento-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:18px;padding:26px;position:relative;overflow:hidden;backdrop-filter:blur(10px);transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease,border-color .4s ease}
+.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(249,115,22,.08);border-color:rgba(249,115,22,.15)}
+.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,.25),transparent)}
+
+.gradient-text-orange{background:linear-gradient(135deg,#fb923c,#f97316,#ea580c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-amber{background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-red{background:linear-gradient(135deg,#f87171,#ef4444,#dc2626);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-cyan{background:linear-gradient(135deg,#22d3ee,#06b6d4,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.tag{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:500;letter-spacing:.02em}
+.tag-orange{background:rgba(249,115,22,.15);color:#fdba74;border:1px solid rgba(249,115,22,.25)}
+.tag-amber{background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.25)}
+.tag-red{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.25)}
+.tag-cyan{background:rgba(6,182,212,.15);color:#67e8f9;border:1px solid rgba(6,182,212,.25)}
+.tag-white{background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.1)}
+
+.icon-box{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.icon-box-orange{background:linear-gradient(135deg,rgba(249,115,22,.18),rgba(234,88,12,.12));color:#fb923c}
+.icon-box-amber{background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(217,119,6,.12));color:#fbbf24}
+.icon-box-red{background:linear-gradient(135deg,rgba(239,68,68,.18),rgba(220,38,38,.12));color:#f87171}
+.icon-box-cyan{background:linear-gradient(135deg,rgba(6,182,212,.18),rgba(8,145,178,.12));color:#22d3ee}
+
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.pulse-glow{animation:pulseG 4s ease-in-out infinite}
+@keyframes pulseG{0%,100%{opacity:.12}50%{opacity:.22}}
+
+.scroll-reveal{opacity:1;transform:translateY(36px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+.brand-logo{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.timeline-dot{width:12px;height:12px;border-radius:50%;position:relative;z-index:2;flex-shrink:0}
+.timeline-line{position:absolute;left:5px;top:28px;width:2px;height:calc(100% - 28px);background:linear-gradient(180deg,rgba(249,115,22,.3),transparent)}
+.data-number{font-size:32px;font-weight:900;line-height:1}
+.stat-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.05);overflow:hidden;margin-top:8px}
+.stat-fill{height:100%;border-radius:3px;transition:width 1.5s cubic-bezier(.25,.46,.45,.94)}
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section style="padding:40px 0 30px">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 8;padding:40px;min-height:320px;display:flex;flex-direction:column;justify-content:center">
+<div class="hero-glow pulse-glow" style="top:-80px;right:-60px;width:340px;height:340px;background:radial-gradient(circle,#f97316,transparent)"></div>
+<span class="tag tag-orange mb-4 inline-block w-fit"><i class="fas fa-running"></i> 福建体育用品经销领军企业</span>
+<h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4">
+泉州未来文化体育用品<br><span class="gradient-text-orange">未来体育</span>
+</h1>
+<p class="text-white/35 text-sm md:text-base max-w-xl leading-relaxed mb-5">
+成立于2006年，位于泉州市丰泽区领SHOW天地。历经二十载耕耘，已发展为集<strong class="text-white/60">国际品牌代理、自有品牌孵化、全渠道运营</strong>为一体的综合性体育用品公司。代理李宁、Nike、adidas、SKECHERS等国内外知名品牌，是福建地区政企采购的核心供应商。
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="tag tag-orange"><i class="fas fa-trophy"></i> 李宁优秀合作伙伴</span>
+<span class="tag tag-amber"><i class="fas fa-store"></i> 全渠道运营</span>
+<span class="tag tag-red"><i class="fas fa-fire"></i> 市值过亿</span>
+<span class="tag tag-cyan"><i class="fas fa-building"></i> 500+员工</span>
+</div>
+</div>
+
+<!-- 核心数据卡片 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 4;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:320px">
+<div class="hero-glow pulse-glow" style="bottom:-60px;left:-60px;width:260px;height:260px;background:radial-gradient(circle,#ea580c,transparent)"></div>
+<span class="text-xs text-white/30 mb-3 tracking-widest uppercase">Core Data</span>
+<div class="data-number gradient-text-orange mb-1">20</div>
+<div class="text-sm text-white/45 mb-6">年行业深耕</div>
+<div class="grid grid-cols-2 gap-4 w-full px-2">
+<div class="p-3 rounded-xl" style="background:rgba(249,115,22,.04)">
+<div class="text-xl font-bold text-orange-400">500+</div><div class="text-[10px] text-white/35 mt-1">在职员工</div></div>
+<div class="p-3 rounded-xl" style="background:rgba(245,158,11,.04)">
+<div class="text-xl font-bold text-amber-400">1亿+</div><div class="text-[10px] text-white/35 mt-1">公司市值(RMB)</div></div>
+<div class="p-3 rounded-xl" style="background:rgba(239,68,68,.04)">
+<div class="text-xl font-bold text-red-400">12+</div><div class="text-[10px] text-white/35 mt-1">代理品牌</div></div>
+<div class="p-3 rounded-xl" style="background:rgba(6,182,212,.04)">
+<div class="text-xl font-bold text-cyan-400">10000m²</div><div class="text-[10px] text-white/35 mt-1">办公面积</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 工商信息 -->
+<section style="padding:16px 0 30px">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 7">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-orange"><i class="fas fa-file-contract"></i></div>
+<h2 class="text-lg font-bold">工商信息</h2>
+</div>
+<div class="grid grid-cols-2 gap-x-5 gap-y-3 text-sm">
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">公司全称</span><span class="text-white/70 text-right max-w-[60%] truncate">泉州未来文化体育用品有限公司</span></div>
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">统一信用代码</span><span class="text-white/60 text-right font-mono text-xs">913505037845496662</span></div>
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">法定代表人</span><span class="text-white/70">叶雪容</span></div>
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">注册资本</span><span class="text-white/70">100万人民币（实缴100万）</span></div>
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">成立日期</span><span class="text-white/70">2006年03月15日</span></div>
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">企业类型</span><span class="text-white/60 text-xs">有限责任公司（自然人投资或控股）</span></div>
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">经营状态</span><span class="text-emerald-400 font-medium">存续 / 在业</span></div>
+<div class="flex justify-between py-2 border-b border-white/4"><span class="text-white/35">企业规模</span><span class="text-white/70">小型企业（企查查）</span></div>
+<div class="col-span-2 flex justify-between py-2 border-b border-white/4"><span class="text-white/35">注册地址</span><span class="text-white/60 text-xs text-right max-w-[65%]">福建省泉州市丰泽区刺桐路112号领SHOW天地C座301室</span></div>
+<div class="col-span-2 flex justify-between py-2"><span class="text-white/35">联系电话</span><span class="text-white/60">15359591888</span></div>
+</div>
+</div>
+
+<!-- 经营范围 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 5">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-amber"><i class="fas fa-list-check"></i></div>
+<h2 class="text-lg font-bold">经营范围</h2>
+</div>
+<div class="space-y-3">
+<div class="p-3 rounded-xl" style="background:rgba(249,115,22,.04);border-left:3px solid #f97316">
+<div class="font-medium text-sm mb-1"><i class="fas fa-shirt mr-2 text-orange-400 text-xs"></i>体育用品销售</div>
+<div class="text-xs text-white/35 leading-relaxed">运动鞋服、健身器材、泳衣泳镜泳帽、鞋服箱包、文具玩具、办公用品、日用百货</div>
+</div>
+<div class="p-3 rounded-xl" style="background:rgba(245,158,11,.04);border-left:3px solid #f59e0b">
+<div class="font-medium text-sm mb-1"><i class="fas fa-futbol mr-2 text-amber-400 text-xs"></i>场地设施设备</div>
+<div class="text-xs text-white/35 leading-relaxed">运动场地设备、塑胶跑道、木地板、人造草皮、看台座椅、游乐设施</div>
+</div>
+<div class="p-3 rounded-xl" style="background:rgba(239,68,68,.04);border-left:3px solid #ef4444">
+<div class="font-medium text-sm mb-1"><i class="fas fa-hammer mr-2 text-red-400 text-xs"></i>工程施工服务</div>
+<div class="text-xs text-white/35 leading-relaxed">体育场地场馆工程、园林景观工程、交通环卫设施工程施工</div>
+</div>
+<div class="p-3 rounded-xl" style="background:rgba(6,182,212,.04);border-left:3px solid #06b6d4">
+<div class="font-medium text-sm mb-1"><i class="fas fa-school mr-2 text-cyan-400 text-xs"></i>其他配套</div>
+<div class="text-xs text-white/35 leading-relaxed">教学设备、课桌椅、家具、交通/环卫/园林景观设施</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 业务体系 -->
+<section style="padding:16px 0 30px">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:32px">
+<div class="flex items-center gap-3 mb-6">
+<div class="icon-box icon-box-orange"><i class="fas fa-diagram-project"></i></div>
+<h2 class="text-lg font-bold">四大业务板块</h2>
+<span class="tag tag-orange ml-auto"><i class="fas fa-arrow-trend-up"></i> 全渠道覆盖</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- 政采团购 -->
+<div class="p-5 rounded-2xl relative overflow-hidden" style="background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(249,115,22,.02));border:1px solid rgba(249,115,22,.12)">
+<div class="absolute top-0 right-0 w-24 h-24 rounded-full opacity-6" style="background:radial-gradient(circle,#f97316,transparent)"></div>
+<div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(249,115,22,.15)"><i class="fas fa-landmark text-orange-400 text-lg"></i></div>
+<h3 class="font-bold mb-2">政采团购</h3>
+<p class="text-xs text-white/40 leading-relaxed">福建地区体育系统、教育系统、公安系统、部队系统和行政机关单位的主要供应商和服务商</p>
+<div class="mt-3 pt-3 border-t border-white/5"><span class="text-[10px] text-orange-400/60"><i class="fas fa-star mr-1"></i> 核心优势业务</span></div>
+</div>
+<!-- 电商零售 -->
+<div class="p-5 rounded-2xl relative overflow-hidden" style="background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(245,158,11,.02));border:1px solid rgba(245,158,11,.12)">
+<div class="absolute top-0 right-0 w-24 h-24 rounded-full opacity-6" style="background:radial-gradient(circle,#f59e0b,transparent)"></div>
+<div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(245,158,11,.15)"><i class="fas fa-shopping-cart text-amber-400 text-lg"></i></div>
+<h3 class="font-bold mb-2">电商零售</h3>
+<p class="text-xs text-white/40 leading-relaxed">2017年进军电商，覆盖天猫、京东、抖音等主流电商平台，市值已过亿</p>
+<div class="mt-3 pt-3 border-t border-white/5"><span class="text-[10px] text-amber-400/60"><i class="fas fa-rocket mr-1"></i> 2017年起航</span></div>
+</div>
+<!-- 批发渠道 -->
+<div class="p-5 rounded-2xl relative overflow-hidden" style="background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(239,68,68,.02));border:1px solid rgba(239,68,68,.12)">
+<div class="absolute top-0 right-0 w-24 h-24 rounded-full opacity-6" style="background:radial-gradient(circle,#ef4444,transparent)"></div>
+<div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(239,68,68,.15)"><i class="fas fa-warehouse text-red-400 text-lg"></i></div>
+<h3 class="font-bold mb-2">批发分销</h3>
+<p class="text-xs text-white/40 leading-relaxed">面向B端客户的批量供应网络，覆盖福建及周边地区经销商和零售终端</p>
+<div class="mt-3 pt-3 border-t border-white/5"><span class="text-[10px] text-red-400/60"><i class="fas fa-network-wired mr-1"></i> 渠道深耕</span></div>
+</div>
+<!-- 连锁商超 + 实体店 -->
+<div class="p-5 rounded-2xl relative overflow-hidden" style="background:linear-gradient(135deg,rgba(6,182,212,.08),rgba(6,182,212,.02));border:1px solid rgba(6,182,212,.12)">
+<div class="absolute top-0 right-0 w-24 h-24 rounded-full opacity-6" style="background:radial-gradient(circle,#06b6d4,transparent)"></div>
+<div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(6,182,212,.15)"><i class="fas fa-shop text-cyan-400 text-lg"></i></div>
+<h3 class="font-bold mb-2">实体门店</h3>
+<p class="text-xs text-white/40 leading-relaxed">侨乡体育馆内550㎡综合体验店——泉州地区最大的体育用品综合体验店</p>
+<div class="mt-3 pt-3 border-t border-white/5"><span class="text-[10px] text-cyan-400/60"><i class="fas fa-ruler-combined mr-1"></i> 550㎡旗舰</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 品牌矩阵 -->
+<section style="padding:16px 0 30px">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:32px">
+<div class="flex items-center gap-3 mb-6">
+<div class="icon-box icon-box-amber"><i class="fas fa-gem"></i></div>
+<h2 class="text-lg font-bold">品牌矩阵</h2>
+<span class="tag tag-amber ml-auto"><i class="fas fa-handshake"></i> 12+ 合作品牌</span>
+</div>
+<p class="text-xs text-white/35 mb-5">代理国内外一线运动品牌，涵盖鞋服、器材、场地设施全品类</p>
+<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-3">
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#E60012,#C41230)"><i class="fas fa-bolt mb-1"></i><span class="text-[9px]">李宁</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#000,#333)"><i class="fab fa-nike mb-1"></i><span class="text-[9px]">Nike</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#006DAE,#004D80)"><span class="text-[10px] font-black mb-1">adidas</span><span class="text-[9px]">阿迪达斯</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#1976D2,#0D47A1)"><span class="text-[10px] font-black mb-1">SKECHERS</span><span class="text-[9px]">斯凯奇</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#0D47A1,#002171)"><span class="text-[10px] font-black mb-1">YONEX</span><span class="text-[9px]">尤尼克斯</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#C41E3A,#8B0000)"><span class="text-[9px] font-bold">红双喜</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#FF6B00,#CC5500)"><span class="text-[9px] font-bold">KAWASAKI</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#37474F,#102027)"><span class="text-[9px] font-bold">舒华</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#E65100,#BF360C)"><span class="text-[9px] font-bold">好家庭</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#1565C0,#0D47A1)"><span class="text-[9px] font-bold">杰锐</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,#43A047,#2E7D32)"><span class="text-[9px] font-bold">英利奥</span></div>
+<div class="brand-logo flex-col justify-center text-center p-2" style="background:linear-gradient(135deg,rgba(249,115,22,.3),rgba(249,115,22,.1))"><i class="fas fa-plus mb-1"></i><span class="text-[9px]">更多...</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 发展历程 & 荣誉资质 -->
+<section style="padding:16px 0 30px">
+<div class="bento-grid">
+<!-- 发展历程 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 7">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-orange"><i class="fas fa-road"></i></div>
+<h2 class="text-lg font-bold">发展历程</h2>
+</div>
+<div class="relative pl-8">
+<div class="timeline-line" style="left:5px;top:0;height:100%"></div>
+<div class="relative pb-6">
+<div class="timeline-dot" style="background:#f97316;box-shadow:0 0 8px rgba(249,115,22,.5)"></div>
+<div class="ml-4">
+<div class="text-xs font-bold text-orange-400 mb-1">2006年 <span class="text-white/30 font-normal">· 公司成立</span></div>
+<div class="text-xs text-white/40">在泉州正式注册成立，专注体育用品销售与服务</div>
+</div>
+</div>
+<div class="relative pb-6">
+<div class="timeline-dot" style="background:#f59e0b;box-shadow:0 0 8px rgba(245,158,11,.5)"></div>
+<div class="ml-4">
+<div class="text-xs font-bold text-amber-400 mb-1">2017年 <span class="text-white/30 font-normal">· 进军电商</span></div>
+<div class="text-xs text-white/40">全面布局天猫、京东等主流电商平台，开启线上零售新赛道</div>
+</div>
+</div>
+<div class="relative pb-6">
+<div class="timeline-dot" style="background:#ef4444;box-shadow:0 0 8px rgba(239,68,68,.5)"></div>
+<div class="ml-4">
+<div class="text-xs font-bold text-red-400 mb-1">2020-2023 <span class="text-white/30 font-normal">· 快速扩张</span></div>
+<div class="text-xs text-white/40">团队规模突破百人，办公场所扩展至约10000㎡，多次获评优秀合作伙伴</div>
+</div>
+</div>
+<div class="relative">
+<div class="timeline-dot" style="background:#06b6d4;box-shadow:0 0 8px rgba(6,182,212,.5)"></div>
+<div class="ml-4">
+<div class="text-xs font-bold text-cyan-400 mb-1">至今 <span class="text-white/30 font-normal">· 全面发展</span></div>
+<div class="text-xs text-white/40">自有品牌孵化启动（攻剑系列），关联公司员工500+，市值过亿</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 荣誉资质 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 5">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-amber"><i class="fas fa-medal"></i></div>
+<h2 class="text-lg font-bold">荣誉与资质</h2>
+</div>
+<div class="space-y-3">
+<div class="p-4 rounded-xl flex items-start gap-3" style="background:linear-gradient(135deg,rgba(249,115,22,.05),transparent);border:1px solid rgba(249,115,22,.1)">
+<i class="fas fa-trophy text-orange-400 mt-0.5"></i>
+<div>
+<div class="text-sm font-medium mb-1">品牌方荣誉</div>
+<div class="text-xs text-white/35 space-y-0.5">
+<div>· 李宁高端鞋TOP 经销商</div>
+<div>· 李宁专业比赛鞋TOP</div>
+<div>· 李宁2023最佳业务成长奖</div>
+<div>· 斯凯奇/红双喜/川崎优秀合作伙伴</div>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl flex items-start gap-3" style="background:linear-gradient(135deg,rgba(245,158,11,.05),transparent);border:1px solid rgba(245,158,11,.1)">
+<i class="fas fa-certificate text-amber-400 mt-0.5"></i>
+<div>
+<div class="text-sm font-medium mb-1">政府荣誉</div>
+<div class="text-xs text-white/35 space-y-0.5">
+<div>· 守合同重信用企业</div>
+<div>· 丰泽区重点企业</div>
+<div>· 丰泽区功勋企业</div>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl flex items-start gap-3" style="background:linear-gradient(135deg,rgba(6,182,212,.05),transparent);border:1px solid rgba(6,182,212,.1)">
+<i class="fas fa-trademark text-cyan-400 mt-0.5"></i>
+<div>
+<div class="text-sm font-medium mb-1">知识产权</div>
+<div class="text-xs text-white/35 space-y-0.5">
+<div>· 商标 75+ 条（攻剑/YKSI/ATTSWORD等）</div>
+<div>· 外观专利 1 项（羽毛球鞋攻剑系列）</div>
+<div>· 软件著作权 4 项</div>
+<div>· 招投标项目 21 次</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 自有品牌 & 企业文化 -->
+<section style="padding:16px 0 30px">
+<div class="bento-grid">
+<!-- 自有品牌 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 6">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-red"><i class="fas fa-fire-flame-curved"></i></div>
+<h2 class="text-lg font-bold">自有品牌孵化</h2>
+<span class="tag tag-red text-[10px]">NEW</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 rounded-xl" style="background:linear-gradient(135deg,rgba(239,68,68,.06),transparent);border:1px solid rgba(239,68,68,.12)">
+<div class="flex items-center gap-3 mb-2">
+<div class="text-2xl font-black gradient-text-red">攻剑</div>
+<span class="tag tag-red text-[10px]">核心品牌</span>
+</div>
+<div class="text-xs text-white/35 leading-relaxed">主打羽毛球运动装备系列，已注册商标并推出攻剑系列-FU02羽毛球鞋外观专利产品</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="p-3 rounded-xl text-center" style="background:rgba(239,68,68,.04)"><div class="text-sm font-bold text-red-300">ATTSWORD</div><div class="text-[10px] text-white/30 mt-1">英文标识</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(245,158,11,.04)"><div class="text-sm font-bold text-amber-300">YKSI</div><div class="text-[10px] text-white/30 mt-1">系列代号</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(249,115,22,.04)"><div class="text-sm font-bold text-orange-300">雅凯诗</div><div class="text-[10px] text-white/30 mt-1">健身器材线</div></div>
+</div>
+<div class="text-xs text-white/30 p-3 rounded-xl" style="background:rgba(255,255,255,.02)">
+<i class="fas fa-info-circle mr-1"></i> 此外还拥有「糖刃」「跃凯石」等在申请商标，品牌矩阵持续扩展中
+</div>
+</div>
+</div>
+
+<!-- 企业文化 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 6">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-cyan"><i class="fas fa-heart-pulse"></i></div>
+<h2 class="text-lg font-bold">企业文化</h2>
+</div>
+<div class="space-y-3">
+<div class="p-3 rounded-xl" style="background:rgba(6,182,212,.04);border-left:3px solid #06b6d4">
+<div class="text-[10px] text-cyan-400/60 mb-1">MISSION 使命</div>
+<div class="text-sm font-medium">全民体育无极限，助力健康有未来</div>
+</div>
+<div class="p-3 rounded-xl" style="background:rgba(249,115,22,.04);border-left:3px solid #f97316">
+<div class="text-[10px] text-orange-400/60 mb-1">VISION 愿景</div>
+<div class="text-sm font-medium">成为全龄运动健康产业的引领者</div>
+</div>
+<div class="p-3 rounded-xl" style="background:rgba(245,158,11,.04);border-left:3px solid #f59e0b">
+<div class="text-[10px] text-amber-400/60 mb-1">VALUES 价值观</div>
+<div class="text-xs text-white/50 leading-relaxed">以人为本 · 从善出发 · 诚信立事 · 靠谱立人 · 向新而行 · 以质致远</div>
+</div>
+<div class="p-3 rounded-xl" style="background:rgba(239,68,68,.04);border-left:3px solid #ef4444">
+<div class="text-[10px] text-red-400/60 mb-1">SPIRIT 团队精神</div>
+<div class="text-xs text-white/50">同心 · 同向 · 同行 | 共享 · 共赢 · 共荣</div>
+</div>
+<div class="p-3 rounded-xl" style="background:rgba(255,255,255,.02)">
+<div class="text-[10px] text-white/30 mb-1">MOTTO 口号</div>
+<div class="text-xs text-white/50 italic">"以老板的立场、用生意的思维，指导工作、权衡利弊"</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 办公地点 & 行业地位 -->
+<section style="padding:16px 0 30px">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 7">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-orange"><i class="fas fa-location-dot"></i></div>
+<h2 class="text-lg font-bold">办公地点</h2>
+<span class="tag tag-orange text-[10px]"><i class="fas fa-building"></i> 3处</span>
+</div>
+<div class="space-y-3">
+<div class="p-4 rounded-xl flex items-start gap-4" style="background:rgba(249,115,22,.03);border:1px solid rgba(249,115,22,.08)">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,.12)"><i class="fas fa-building text-orange-400"></i></div>
+<div>
+<div class="font-medium text-sm mb-1">总部 · 领SHOW天地</div>
+<div class="text-xs text-white/40">泉州市丰泽区刺桐路112号领SHOW天地C座301室</div>
+<span class="inline-block mt-2 text-[10px] px-2 py-0.5 rounded bg-orange-500/10 text-orange-400/60">总部办公</span>
+</div>
+</div>
+<div class="p-4 rounded-xl flex items-start gap-4" style="background:rgba(245,158,11,.03);border:1px solid rgba(245,158,11,.08)">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(245,158,11,.12)"><i class="fas fa-office text-amber-400"></i></div>
+<div>
+<div class="font-medium text-sm mb-1">东区办公 · 领袖天地</div>
+<div class="text-xs text-white/40">泉州丰泽区领袖天地-办公E栋E座1-5楼（整层）</div>
+<span class="inline-block mt-2 text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400/60">主要运营中心</span>
+</div>
+</div>
+<div class="p-4 rounded-xl flex items-start gap-4" style="background:rgba(6,182,212,.03);border:1px solid rgba(6,182,212,.08)">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(6,182,212,.12)"><i class="fas fa-warehouse text-cyan-400"></i></div>
+<div>
+<div class="font-medium text-sm mb-1">供应链中心 · 惠安</div>
+<div class="text-xs text-white/40">泉州惠安县泉州市沁和供应链管理有限公司4楼</div>
+<span class="inline-block mt-2 text-[10px] px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400/60">仓储物流</span>
+</div>
+</div>
+<div class="p-4 rounded-xl flex items-start gap-4" style="background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.08)">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,.12)"><i class="fas fa-store text-red-400"></i></div>
+<div>
+<div class="font-medium text-sm mb-1">实体体验店 · 侨乡体育馆</div>
+<div class="text-xs text-white/40">泉州市侨乡体育馆内 · 面积550㎡ · 泉州最大体育用品综合体验店</div>
+<span class="inline-block mt-2 text-[10px] px-2 py-0.5 rounded bg-red-500/10 text-red-400/60">线下旗舰店</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 行业地位 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 5">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-amber"><i class="fas fa-chart-line"></i></div>
+<h2 class="text-lg font-bold">行业地位</h2>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs text-white/50">BOSS直聘 · 泉州电商服务排名</span>
+<span class="text-xs font-bold text-amber-400">#7</span>
+</div>
+<div class="stat-bar"><div class="stat-fill" style="width:94%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div></div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs text-white/50">BOSS直聘 · 泉州人气总排名</span>
+<span class="text-xs font-bold text-orange-400">#381</span>
+</div>
+<div class="stat-bar"><div class="stat-fill" style="width:78%;background:linear-gradient(90deg,#f97316,#fb923c)"></div></div>
+</div>
+<div class="p-4 rounded-xl mt-4" style="background:linear-gradient(135deg,rgba(249,115,22,.05),rgba(245,158,11,.03));border:1px solid rgba(249,115,22,.1)">
+<div class="text-xs text-white/35 mb-3">区域产业背景</div>
+<div class="text-xs text-white/55 leading-relaxed space-y-2">
+<div><i class="fas fa-map-pin text-orange-400 mr-2"></i>位于泉州——<strong class="text-white/70">全国最大、全球知名的现代体育产品生产基地</strong></div>
+<div><i class="fas fa-industry text-amber-400 mr-2"></i>同域品牌：安踏、特步、361°、乔丹等国内头部运动品牌</div>
+<div><i class="fas fa-city text-red-400 mr-2"></i>泉州体育产业规模全国领先，2025年赛事带动消费超7亿元</div>
+<div><i class="fas fa-globe text-cyan-400 mr-2"></i>世界遗产城市 + 海丝核心区，文体旅融合发展战略高地</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 组织架构 & 招聘情况 -->
+<section style="padding:16px 0 30px">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 6">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-cyan"><i class="fas fa-users"></i></div>
+<h2 class="text-lg font-bold">团队概况</h2>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-4 rounded-xl text-center" style="background:rgba(249,115,22,.04)">
+<div class="text-2xl font-black gradient-text-orange">500+</div>
+<div class="text-[10px] text-white/35 mt-1">关联公司在职员工</div>
+</div>
+<div class="p-4 rounded-xl text-center" style="background:rgba(245,158,11,.04)">
+<div class="text-2xl font-black gradient-text-amber">100-499</div>
+<div class="text-[10px] text-white/35 mt-1">主体公司规模(直聘)</div>
+</div>
+<div class="p-4 rounded-xl text-center" style="background:rgba(239,68,68,.04)">
+<div class="text-2xl font-black gradient-text-red">68.8%</div>
+<div class="text-[10px] text-white/35 mt-1">大专及以上学历占比</div>
+</div>
+<div class="p-4 rounded-xl text-center" style="background:rgba(6,182,212,.04)">
+<div class="text-2xl font-black gradient-text-cyan">3Y+</div>
+<div class="text-[10px] text-white/35 mt-1">员工平均工作年限</div>
+</div>
+</div>
+<div class="mt-4 p-3 rounded-xl text-xs text-white/35" style="background:rgba(255,255,255,.02)">
+<i class="fas fa-lightbulb text-amber-400 mr-1"></i> 高学历人才已成为主要团队支柱，队伍年轻有活力、高执行力
+</div>
+</div>
+
+<div class="bento-card scroll-reveal" style="grid-column:span 6">
+<div class="flex items-center gap-3 mb-5">
+<div class="icon-box icon-box-orange"><i class="fas fa-briefcase"></i></div>
+<h2 class="text-lg font-bold">招聘动态</h2>
+<span class="tag tag-orange text-[10px]">25个热招职位</span>
+</div>
+<div class="text-xs text-white/35 mb-4">2025年招聘需求较2024年增长3%，核心岗位集中在以下方向：</div>
+<div class="space-y-2">
+<div class="p-3 rounded-xl flex items-center justify-between" style="background:rgba(249,115,22,.04)">
+<div class="flex items-center gap-3">
+<i class="fas fa-cart-shopping text-orange-400"></i>
+<span class="text-sm">电商运营 / 店长</span>
+</div>
+<span class="text-xs text-white/30">5-8K</span>
+</div>
+<div class="p-3 rounded-xl flex items-center justify-between" style="background:rgba(245,158,11,.04)">
+<div class="flex items-center gap-3">
+<i class="fas fa-chart-simple text-amber-400"></i>
+<span class="text-sm">电商数据分析</span>
+</div>
+<span class="text-xs text-white/30">核心岗</span>
+</div>
+<div class="p-3 rounded-xl flex items-center justify-between" style="background:rgba(239,68,68,.04)">
+<div class="flex items-center gap-3">
+<i class="fas fa-user-tie text-red-400"></i>
+<span class="text-sm">HRBP（仓储方向）</span>
+</div>
+<span class="text-xs text-white/30">5-7K 包住</span>
+</div>
+<div class="p-3 rounded-xl flex items-center justify-between" style="background:rgba(6,182,212,.04)">
+<div class="flex items-center gap-3">
+<i class="fas fa-camera text-cyan-400"></i>
+<span class="text-sm">短视频模特 / 试穿模特</span>
+</div>
+<span class="text-xs text-white/30">内容创作</span>
+</div>
+</div>
+<div class="mt-3 text-[10px] text-white/25 text-center">62.5%的岗位薪资区间：6-10K | 学历要求：大专为主(68.8%)</div>
+</div>
+</div>
+</section>
+
+<!-- 信息来源 -->
+<section style="padding:16px 0 40px">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:24px">
+<div class="text-xs text-white/25 text-center mb-3">信息来源</div>
+<div class="flex flex-wrap justify-center gap-3 text-[10px]">
+<a href="https://m.zhipin.com/gongsi/e64d9f99b52a07ce1XN63dm0GA~~.html" target="_blank" class="px-3 py-1.5 rounded-full text-white/40 hover:text-orange-400 transition-colors" style="background:rgba(255,255,255,.04)"><i class="fas fa-link mr-1"></i> BOSS直聘</a>
+<a href="https://www.qcc.com/firm/270ec95241ffffba32b8432eb40893b7.html" target="_blank" class="px-3 py-1.5 rounded-full text-white/40 hover:text-orange-400 transition-colors" style="background:rgba(255,255,255,.04)"><i class="fas fa-link mr-1"></i> 企查查</a>
+<a href="https://m.tianyancha.com/company/765583058" target="_blank" class="px-3 py-1.5 rounded-full text-white/40 hover:text-orange-400 transition-colors" style="background:rgba(255,255,255,.04)"><i class="fas fa-link mr-1"></i> 天眼查</a>
+<a href="https://m.jobui.com/company/8880298/" target="_blank" class="px-3 py-1.5 rounded-full text-white/40 hover:text-orange-400 transition-colors" style="background:rgba(255,255,255,.04)"><i class="fas fa-link mr-1"></i> 职友集</a>
+<a href="https://shuidi.cn/company-ad23150d1265b2d72d656e179e502804.html" target="_blank" class="px-3 py-1.5 rounded-full text-white/40 hover:text-orange-400 transition-colors" style="background:rgba(255,255,255,.04)"><i class="fas fa-link mr-1"></i> 水滴信用</a>
+<a href="http://tyj.quanzhou.gov.cn/" target="_blank" class="px-3 py-1.5 rounded-full text-white/40 hover:text-orange-400 transition-colors" style="background:rgba(255,255,255,.04)"><i class="fas fa-link mr-1"></i> 泉州市体育局</a>
+</div>
+<div class="text-center mt-5 pt-4 border-t border-white/5">
+<span class="text-[10px] text-white/20">Creator: <strong class="text-white/35">39139@胜天半子</strong> · Data updated: 2026-06</span>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, {threshold: 0.1});
+
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

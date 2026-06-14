@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鹏翔实业 · AI产品推荐方案</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',sans-serif;background:#06080e;color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0a0c14}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#6366f1,#8b5cf6);border-radius:3px}
+
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;max-width:1400px;margin:0 auto;padding:0 20px}
+.bento-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:18px;padding:26px;position:relative;overflow:hidden;backdrop-filter:blur(10px);transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease,border-color .4s ease}
+.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(99,102,241,.08);border-color:rgba(99,102,241,.15)}
+.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.25),transparent)}
+
+.gradient-text-indigo{background:linear-gradient(135deg,#818cf8,#6366f1,#4f46e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-purple{background:linear-gradient(135deg,#a78bfa,#8b5cf6,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-cyan{background:linear-gradient(135deg,#22d3ee,#06b6d4,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-emerald{background:linear-gradient(135deg,#34d399,#10b981,#059669);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-amber{background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.tag{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:500;letter-spacing:.02em}
+.tag-indigo{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.25)}
+.tag-purple{background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.25)}
+.tag-cyan{background:rgba(6,182,212,.15);color:#67e8f9;border:1px solid rgba(6,182,212,.25)}
+.tag-emerald{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.tag-amber{background:rgba(245,158,11,.15);color:#fcd34d;border:1px solid rgba(245,158,11,.25)}
+.tag-white{background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.1)}
+
+.icon-box{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.icon-box-indigo{background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(79,70,229,.12));color:#a5b4fc}
+.icon-box-purple{background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(124,58,237,.12));color:#c4b5fd}
+.icon-box-cyan{background:linear-gradient(135deg,rgba(6,182,212,.18),rgba(8,145,178,.12));color:#67e8f9}
+.icon-box-emerald{background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(5,150,105,.12));color:#6ee7b7}
+.icon-box-amber{background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(217,119,6,.12));color:#fcd34d}
+
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.pulse-glow{animation:pulseG 4s ease-in-out infinite}
+@keyframes pulseG{0%,100%{opacity:.12}50%{opacity:.22}}
+
+.scroll-reveal{opacity:1;transform:translateY(36px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+.spin-letter{font-size:28px;font-weight:900;background:linear-gradient(135deg,#818cf8,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.product-tier-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.tier1-bg{background:linear-gradient(135deg,rgba(16,185,129,.2),rgba(5,150,105,.1));color:#6ee7b7;border:1px solid rgba(16,185,129,.3)}
+.tier2-bg{background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(217,119,6,.1));color:#fcd34d;border:1px solid rgba(245,158,11,.3)}
+.tier3-bg{background:linear-gradient(135deg,rgba(148,163,184,.2),rgba(100,116,139,.1));color:#cbd5e1;border:1px solid rgba(148,163,184,.3)}
+
+.roi-bar{height:8px;border-radius:4px;background:rgba(255,255,255,.06);overflow:hidden;position:relative}
+.roi-fill{height:100%;border-radius:4px;transition:width 1.5s cubic-bezier(.4,0,.2,1) 0.8s;width:0}
+.roi-fill.animated{width:var(--fill-width)}
+
+.star-rating{display:flex;gap:2px}.star-rating .fas{color:#fbbf24;font-size:12px}
+
+.talk-bubble{background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.05));border-left:3px solid #6366f1;border-radius:0 12px 12px 0;padding:16px 20px;position:relative}
+.talk-bubble::before{content:'"';position:absolute;top:-2px;left:8px;font-size:32px;color:rgba(99,102,241,.3);font-family:serif;line-height:1}
+
+.compare-table{width:100%;font-size:12px}
+.compare-table th{text-align:left;padding:8px 12px;color:rgba(255,255,255,.35);font-weight:500;border-bottom:1px solid rgba(255,255,255,.06);font-size:11px}
+.compare-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;color:rgba(255,255,255,.6);line-height:1.6}
+
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.feature-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:14px 16px;transition:all .3s}
+.feature-item:hover{border-color:rgba(99,102,241,.2);transform:scale(1.02)}
+.feature-item i{color:#818cf8;margin-right:8px;font-size:13px}
+
+.roadmap-line{position:absolute;left:19px;top:40px;bottom:0;width:2px;background:linear-gradient(180deg,#6366f1,rgba(99,102,241,.1))}
+.roadmap-dot{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;position:relative}
+.roadmap-dot-inner{width:8px;height:8px;border-radius:50%}
+
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr);gap:10px;padding:0 14px}[style*="span 8"]{grid-column:span 6!important}[style*="span 7"]{grid-column:span 6!important}[style*="span 5"]{grid-column:span 6!important}[style*="span 4"]{grid-column:span 6!important}[style*="span 3"]{grid-column:span 3!important}[style*="span 6"]{grid-column:span 6!important}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr;gap:8px;padding:0 10px}[style*="grid-column"]{grid-column:span 1!important}}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#06080e]/80 border-b border-white/5">
+<div class="max-w-[1400px] mx-auto px-5 h-14 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center"><i class="fas fa-brain text-white text-xs"></i></div>
+<div><span class="font-bold text-sm">鹏翔实业 · AI产品推荐方案</span><span class="text-[10px] text-white/25 ml-2">基于SPIN+挑战式销售方法论</span></div>
+</div>
+<div class="hidden md:flex items-center gap-5 text-xs text-white/40">
+<a href="#profile" class="hover:text-indigo-400 transition-colors">客户画像</a>
+<a href="#spin" class="hover:text-indigo-400 transition-colors">需求分析</a>
+<a href="#products" class="hover:text-indigo-400 transition-colors">产品矩阵</a>
+<a href="#strategy" class="hover:text-indigo-400 transition-colors">销售策略</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<div class="pt-20 pb-6 relative overflow-hidden">
+<div class="hero-glow pulse-glow" style="top:-180px;left:-80px;width:520px;height:520px;background:radial-gradient(circle,#6366f1,transparent)"></div>
+<div class="hero-glow pulse-glow" style="top:80px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,#8b5cf6,transparent);animation-delay:2s"></div>
+<div class="hero-glow pulse-glow" style="bottom:-120px;left:30%;width:360px;height:360px;background:radial-gradient(circle,rgba(6,182,212,.3),transparent);animation-delay:3s"></div>
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 8;padding:40px;min-height:320px;display:flex;flex-direction:column;justify-content:center">
+<div class="hero-glow pulse-glow" style="top:-80px;right:-60px;width:340px;height:340px;background:radial-gradient(circle,#6366f1,transparent)"></div>
+<span class="tag tag-indigo mb-4 inline-block w-fit"><i class="fas fa-magic"></i> AI驱动的智能制造升级路径</span>
+<h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4">鹏翔实业<br><span class="gradient-text-indigo">AI产品推荐方案</span></h1>
+<p class="text-white/35 text-sm md:text-base max-w-xl leading-relaxed mb-5">基于鹏翔实业的业务画像——年产能850万㎡、5大基地、800人、出口120+国家——从<strong class="text-white/60">痛点诊断 → 需求挖掘 → 产品匹配 → 销售切入</strong>，系统化构建AI赋能路线图。以SPIN销售法为底层逻辑，挑战式销售为沟通框架，确保每个推荐都有据可依。</p>
+<div class="flex flex-wrap gap-2">
+<span class="tag tag-indigo"><i class="fas fa-search"></i> SPIN需求分析</span>
+<span class="tag tag-purple"><i class="fas fa-chess-knight"></i> 挑战式销售</span>
+<span class="tag tag-emerald"><i class="fas fa-route"></i> 三级落地路线图</span>
+<span class="tag tag-cyan"><i class="fas fa-comments"></i> 实战话术</span>
+</div>
+</div>
+<div class="bento-card scroll-reveal" style="grid-column:span 4;padding:28px;display:flex;flex-direction:column;justify-content:center;min-height:320px">
+<div class="text-xs text-white/25 uppercase tracking-widest mb-4">核心数据</div>
+<div class="space-y-5">
+<div><div class="text-3xl font-black gradient-text-indigo">6<span class="text-lg ml-1">款</span></div><div class="text-xs text-white/40 mt-1">AI产品按优先级分级推荐</div></div>
+<div class="h-px bg-white/5"></div>
+<div><div class="text-3xl font-black gradient-text-purple">3<span class="text-lg ml-1">级</span></div><div class="text-xs text-white/40 mt-1">Tier 1→Tier 3 落地时间线（3~12月+）</div></div>
+<div class="h-px bg-white/5"></div>
+<div><div class="text-3xl font-black gradient-text-cyan">4<span class="text-lg ml-1">步</span></div><div class="text-xs text-white/40 mt-1">SPIN四步提问法深度挖掘需求</div></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Section 1: Customer Profile -->
+<section id="profile" class="py-6">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+<div class="flex items-center gap-3 mb-1"><div class="icon-box icon-box-indigo"><i class="fas fa-user-tie"></i></div><h2 class="text-xl font-bold">Step 1 — 客户画像：第一性原理拆解</h2></div>
+<p class="text-white/25 text-xs mt-2">在推荐任何AI产品之前，先理解客户的真实处境与隐含痛点</p>
+</div>
+<div class="bento-card scroll-reveal" style="grid-column:span 3;padding:24px;transition-delay:0s">
+<div class="icon-box icon-box-indigo mb-3" style="width:38px;height:38px;border-radius:10px;font-size:15px"><i class="fas fa-industry"></i></div>
+<div class="text-sm font-bold mb-1">生产规模</div>
+<div class="text-2xl font-black gradient-text-indigo mb-2">850万㎡<span class="text-sm text-white/30 font-normal">/年</span></div>
+<div class="text-xs text-white/40 leading-relaxed">5大生产基地 · 800人团队<br>10条自动化石英石线</div>
+<div class="mt-3 p-2.5 rounded-lg" style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12)"><div class="text-[10px] text-red-400/80"><i class="fas fa-exclamation-triangle mr-1"></i> 规模越大，管理复杂度和边际成本越高</div></div>
+</div>
+<div class="bento-card scroll-reveal" style="grid-column:span 3;padding:24px;transition-delay:.06s">
+<div class="icon-box icon-box-purple mb-3" style="width:38px;height:38px;border-radius:10px;font-size:15px"><i class="fas fa-sitemap"></i></div>
+<div class="text-sm font-bold mb-1">工艺链路</div>
+<div class="text-2xl font-black gradient-text-purple mb-2">10道工序</div>
+<div class="text-xs text-white/40 leading-relaxed">废料收集→破碎→配料→压制→固化→打磨→切割→质检→包装→出口</div>
+<div class="mt-3 p-2.5 rounded-lg" style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12)"><div class="text-[10px] text-red-400/80"><i class="fas fa-exclamation-triangle mr-1"></i> 每个环节都有损耗和质量波动风险</div></div>
+</div>
+<div class="bento-card scroll-reveal" style="grid-column:span 3;padding:24px;transition-delay:.12s">
+<div class="icon-box icon-box-cyan mb-3" style="width:38px;height:38px;border-radius:10px;font-size:15px"><i class="fas fa-globe-asia"></i></div>
+<div class="text-sm font-bold mb-1">全球市场</div>
+<div class="text-2xl font-black gradient-text-cyan mb-2">120+国家</div>
+<div class="text-xs text-white/40 leading-relaxed">多语言 · 多标准 · 多认证<br>COSTCO级大客户供应链</div>
+<div class="mt-3 p-2.5 rounded-lg" style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12)"><div class="text-[10px] text-red-400/80"><i class="fas fa-exclamation-triangle mr-1"></i> 国际贸易合规 + 汇率风险 + 响应效率</div></div>
+</div>
+<div class="bento-card scroll-reveal" style="grid-column:span 3;padding:24px;transition-delay:.18s">
+<div class="icon-box icon-box-emerald mb-3" style="width:38px;height:38px;border-radius:10px;font-size:15px"><i class="fas fa-flask"></i></div>
+<div class="text-sm font-bold mb-1">技术壁垒</div>
+<div class="text-2xl font-black gradient-text-emerald mb-2">固废耦合</div>
+<div class="text-xs text-white/40 leading-relaxed">省科技进步奖 · 国家十三五项目<br>纺织+石材双废料再生</div>
+<div class="mt-3 p-2.5 rounded-lg" style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.12)"><div class="text-[10px] text-emerald-400/80"><i class="fas fa-lightbulb mr-1"></i> 配方迭代是核心竞争力，但试错成本高</div></div>
+</div>
+<!-- Summary Table -->
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:28px;transition-delay:.1s">
+<div class="flex items-center gap-3 mb-4"><div class="icon-box icon-box-amber"><i class="fas fa-table-list"></i></div><h3 class="text-base font-bold">现状 vs 痛点矩阵</h3></div>
+<div class="overflow-x-auto">
+<table class="compare-table">
+<thead><tr><th style="width:16%">维度</th><th style="width:42%">当前现状</th><th style="width:42%">隐含痛点</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-indigo text-[10px]">生产规模</span></td><td>850万㎡年产能，5大基地，800人，满产运行</td><td><span class="text-red-400/70">规模越大管理复杂度和边际成本越高</span></td></tr>
+<tr><td><span class="tag tag-purple text-[10px]">工艺链路</span></td><td>10道工序，多产品线共用设备，换型频繁</td><td><span class="text-red-400/70">每环节均有损耗和质量波动；非标品排产报价困难</span></td></tr>
+<tr><td><span class="tag tag-cyan text-[10px]">出口市场</span></td><td>120+国家，COSTCO级供应商，多语言多标准</td><td><span class="text-red-400/70">贸易合规、汇率风险、海外客户响应效率低</span></td></tr>
+<tr><td><span class="tag tag-emerald text-[10px]">工程运营</span></td><td>异形加工、水刀拼花、弧形板定制，年200万㎡</td><td><span class="text-red-400/70">定制化程度高，非标品排产和报价困难</span></td></tr>
+<tr><td><span class="tag tag-amber text-[10px]">研发能力</span></td><td>省科技进步奖、固废耦合技术、8项核心技术</td><td><span class="text-amber-400/70">配方迭代周期长（2-4周），试错成本高</span></td></tr>
+<tr><td><span class="tag tag-white text-[10px]">数字化基础</span></td><td>耀升智能园（工业4.0）、10条自动化线</td><td><span class="text-cyan-400/70">有自动化基础但智能化可能未深入</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section 2: SPIN -->
+<section id="spin" class="py-6">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+<div class="flex items-center gap-3 mb-1"><div class="icon-box icon-box-purple"><i class="fas fa-comments-question"></i></div><h2 class="text-xl font-bold">Step 2 — SPIN四步提问法：深度挖掘需求</h2></div>
+<p class="text-white/25 text-xs mt-2">出色的销售人员问需求-效益问题的频率是普通销售的10倍。以下是与鹏翔高管对话的实战话术模板。</p>
+</div>
+<!-- S -->
+<div class="bento-card scroll-reveal" style="grid-column:span 6;padding:28px;transition-delay:0s">
+<div class="flex items-center gap-3 mb-4"><div class="spin-letter">S</div><div><div class="text-sm font-bold">Situation · 背景问题</div><div class="text-[10px] text-white/30">了解客户现状，建立对话基础</div></div></div>
+<div class="space-y-3">
+<div class="talk-bubble"><div class="text-xs text-white/65 leading-relaxed">"王总，目前耀升智能园<strong class='text-indigo-300'>10条自动化线满产运行时</strong>，良率大概能稳定在什么水平？"</div></div>
+<div class="talk-bubble"><div class="text-xs text-white/65 leading-relaxed">"出口<strong class='text-indigo-300'>120个国家</strong>，不同国家的质量标准和认证要求，目前是怎么管理的？"</div></div>
+<div class="talk-bubble"><div class="text-xs text-white/65 leading-relaxed">"异形加工订单越来越多，从<strong class='text-indigo-300'>接单到报价到排产</strong>，平均需要多长时间？"</div></div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-[10px] text-white/25"><i class="fas fa-info-circle"></i> 目标：收集事实信息，让客户开口说话</div>
+</div>
+<!-- P -->
+<div class="bento-card scroll-reveal" style="grid-column:span 6;padding:28px;transition-delay:.08s">
+<div class="flex items-center gap-3 mb-4"><div class="spin-letter" style="background:linear-gradient(135deg,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">P</div><div><div class="text-sm font-bold">Problem · 难点问题</div><div class="text-[10px] text-white/30">挖掘痛点，让客户意识到问题存在</div></div></div>
+<div class="space-y-3">
+<div class="talk-bubble" style="border-left-color:#f59e0b;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(217,119,6,.04))"><div class="text-xs text-white/65 leading-relaxed">"<strong class='text-amber-300'>石材行业原料波动大</strong>（废石粉来源不一），配方调整主要靠老师傅经验吗？每批次之间的色差和性能一致性怎么控制？"</div></div>
+<div class="talk-bubble" style="border-left-color:#f59e0b;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(217,119,6,.04))"><div class="text-xs text-white/65 leading-relaxed">"800人的工厂里，<strong class='text-amber-300'>质检环节占了多少人</strong>？人工漏检导致的客诉，一年大概多少起？"</div></div>
+<div class="talk-bubble" style="border-left-color:#f59e0b;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(217,119,6,.04))"><div class="text-xs text-white/65 leading-relaxed">"有没有出现过<strong class='text-amber-300'>算错成本</strong>的情况？特别是定制件，材料利用率怎么核算的？"</div></div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-[10px] text-white/25"><i class="fas fa-info-circle"></i> 目标：让客户自己说出痛处，而非你告诉他</div>
+</div>
+<!-- I -->
+<div class="bento-card scroll-reveal" style="grid-column:span 6;padding:28px;transition-delay:.14s">
+<div class="flex items-center gap-3 mb-4"><div class="spin-letter" style="background:linear-gradient(135deg,#ef4444,#dc2626);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">I</div><div><div class="text-sm font-bold">Implication · 暗示问题</div><div class="text-[10px] text-white/30">放大影响，将小问题转化为严重后果</div></div></div>
+<div class="space-y-3">
+<div class="talk-bubble" style="border-left-color:#ef4444;background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(220,38,38,.04))"><div class="text-xs text-white/65 leading-relaxed">"如果一批货因为<strong class='text-red-300'>色差问题被海外客户退运</strong>，海运费加仓储费加上品牌损失……这个账您算过大概多少？"</div></div>
+<div class="talk-bubble" style="border-left-color:#ef4444;background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(220,38,38,.04))"><div class="text-xs text-white/65 leading-relaxed">"土耳其和印度的石材企业正在用<strong class='text-red-300'>更低的价格抢欧洲市场</strong>。如果价格战打起来，您的利润空间还能撑多久？"</div></div>
+<div class="talk-bubble" style="border-left-color:#ef4444;background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(220,38,38,.04))"><div class="text-xs text-white/65 leading-relaxed">"老师傅的经验<strong class='text-red-300'>存在脑子里而不是系统里</strong>。如果他离职了，这些配方知识怎么办？"</div></div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-[10px] text-white/25"><i class="fas fa-info-circle"></i> 目标：把"有点烦"变成"必须解决"</div>
+</div>
+<!-- N -->
+<div class="bento-card scroll-reveal glow-emerald" style="grid-column:span 6;padding:28px;transition-delay:.2s">
+<div class="flex items-center gap-3 mb-4"><div class="spin-letter" style="background:linear-gradient(135deg,#10b981,#059669);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">N</div><div><div class="text-sm font-bold">Need-Payoff · 需求-效益问题</div><div class="text-[10px] text-white/30">引导客户自己说出解决方案的价值</div></div></div>
+<div class="space-y-3">
+<div class="talk-bubble" style="border-left-color:#10b981;background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(5,150,105,.06));box-shadow:0 0 20px rgba(16,185,129,.05)"><div class="text-xs text-white/75 leading-relaxed">"如果有一套系统能把每批次产品的<strong class='text-emerald-300'>色差控制在肉眼不可见的范围</strong>，同时减少30%的人工质检工作量，这对您的出口竞争力意味着什么？"</div></div>
+<div class="talk-bubble" style="border-left-color:#10b981;background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(5,150,105,.06));box-shadow:0 0 20px rgba(16,185,129,.05)"><div class="text-xs text-white/75 leading-relaxed">"如果把<strong class='text-emerald-300'>新产品的研发周期从2-4周缩短到2-3天</strong>，一年能多出多少新品推向市场？"</div></div>
+<div class="talk-bubble" style="border-left-color:#10b981;background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(5,150,105,.06));box-shadow:0 0 20px rgba(16,185,129,.05)"><div class="text-xs text-white/75 leading-relaxed">"如果能用极低成本触达那<strong class='text-emerald-300'>100个沉睡国家市场</strong>的潜在客户，对营收增长意味着什么？"</div></div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-[10px] text-emerald-400/60"><i class="fas fa-check-circle"></i> 关键：让客户自己说出"我想要"，而非你去推销</div>
+</div>
+</div>
+</section>
+
+<!-- Section 3: Products -->
+<section id="products" class="py-6">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+<div class="flex items-center gap-3 mb-1"><div class="icon-box icon-box-emerald"><i class="fas fa-layer-group"></i></div><h2 class="text-xl font-bold">Step 3 — AI产品推荐矩阵（按优先级排序）</h2></div>
+<p class="text-white/25 text-xs mt-2">6款AI产品分三级部署，从最快见效到长期布局</p>
+</div>
+
+<!-- TIER 1 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:32px;transition-delay:0s;border-color:rgba(16,185,129,.12)">
+<div class="flex items-center gap-3 mb-6"><div class="product-tier-badge tier1-bg"><i class="fas fa-bolt"></i> Tier 1 · 立即产生ROI</div><span class="text-xs text-white/30">3-6个月见效</span></div>
+<!-- Product 1 -->
+<div class="mb-8">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.1))"><i class="fas fa-eye text-emerald-400 text-xl"></i></div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-lg font-bold">AI视觉质检系统</h3>
+<div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<span class="tag tag-emerald text-[10px]">最强刚需</span>
+</div>
+<div class="text-xs text-white/40">适用场景：生产线末端全检 + 关键工序抽检 | 部署方式：边缘计算盒子 + 云端模型训练</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="p-4 rounded-xl" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.1)">
+<div class="text-xs font-bold text-emerald-400 mb-3"><i class="fas fa-crosshairs mr-1"></i> 为什么鹏翔最需要这个</div>
+<ul class="space-y-2 text-xs text-white/50">
+<li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-0.5 text-[10px]"></i>石材板材表面缺陷（裂纹、气泡、色差、划痕）是最高频质量问题</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-0.5 text-[10px]"></i>依赖人工目视检测，800人中质检占比不低，且人眼会疲劳漏检</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-emerald-500 mt-0.5 text-[10px]"></i>出口欧美市场品质敏感，一次退货损失巨大（海运费+仓储+品牌）</li>
+</ul>
+</div>
+<div class="feature-grid">
+<div class="feature-item"><i class="fas fa-bug"></i><div class="text-xs font-semibold">表面缺陷AI检测</div><div class="text-[10px] text-white/30">裂纹/气泡/砂眼自动识别</div></div>
+<div class="feature-item"><i class="fas fa-palette"></i><div class="text-xs font-semibold">色差分级AI</div><div class="text-[10px] text-white/30">比对标准色卡自动分级</div></div>
+<div class="feature-item"><i class="fas fa-ruler-combined"></i><div class="text-xs font-semibold">尺寸精度测量</div><div class="text-[10px] text-white/30">厚度/平整度/对角线偏差</div></div>
+<div class="feature-item"><i class="fas fa-qrcode"></i><div class="text-xs font-semibold">全流程追溯</div><div class="text-[10px] text-white/30">每块板唯一二维码溯源</div></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div class="p-3 rounded-xl text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)"><div class="text-xl font-black text-emerald-400">90%+</div><div class="text-[10px] text-white/35">漏检率降低</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)"><div class="text-xl font-black text-emerald-400">60%</div><div class="text-[10px] text-white/35">客诉降低</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)"><div class="text-xl font-black text-emerald-400">40%</div><div class="text-[10px] text-white/35">质量成本下降</div></div>
+</div>
+</div>
+<!-- Product 2 -->
+<div>
+<div class="flex items-start gap-4 mb-4">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.1))"><i class="fas fa-calendar-check text-emerald-400 text-xl"></i></div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-lg font-bold">AI智能排产与APS系统</h3>
+<div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color:rgba(255,255,255,.2)"></i></div>
+<span class="tag tag-emerald text-[10px]">高效刚需</span>
+</div>
+<div class="text-xs text-white/40">适用场景：多品种小批量 + 大批量标准品混线生产 | 部署方式：私有化部署 + MES对接</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="feature-grid">
+<div class="feature-item"><i class="fas fa-brain"></i><div class="text-xs font-semibold">智能排产算法</div><div class="text-[10px] text-white/30">产能×模具×原料×交期综合优化</div></div>
+<div class="feature-item"><i class="fas fa-plus-circle"></i><div class="text-xs font-semibold">插单模拟</div><div class="text-[10px] text-white/30">一键评估急单影响，给最优方案</div></div>
+<div class="feature-item"><i class="fas fa-clock"></i><div class="text-xs font-semibold">交期承诺</div><div class="text-[10px] text-white/30">基于实时产能给出准确交付时间</div></div>
+<div class="feature-item"><i class="fas fa-chart-line"></i><div class="text-xs font-semibold">OEE实时监控</div><div class="text-[10px] text-white/30">设备综合效率可视化分析</div></div>
+</div>
+<div class="grid grid-cols-2 gap-3 content-end">
+<div class="p-3 rounded-xl text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)"><div class="text-xl font-black text-emerald-400">30秒</div><div class="text-[10px] text-white/35">排产响应速度</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)"><div class="text-xl font-black text-emerald-400">30%</div><div class="text-[10px] text-white/35">交期准确率提升</div></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TIER 2 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:32px;transition-delay:.1s;border-color:rgba(245,158,11,.1)">
+<div class="flex items-center gap-3 mb-6"><div class="product-tier-badge tier2-bg"><i class="fas fa-rocket"></i> Tier 2 · 中期战略价值</div><span class="text-xs text-white/30">6-12个月见效</span></div>
+<!-- Product 3 - HIGHLIGHTED -->
+<div class="mb-8 p-5 rounded-2xl relative overflow-hidden" style="background:linear-gradient(135deg,rgba(139,92,246,.06),rgba(99,102,241,.04));border:1px solid rgba(139,92,246,.15)">
+<div class="absolute top-0 right-0 px-3 py-1 rounded-bl-xl text-[10px] font-bold" style="background:rgba(139,92,246,.2);color:#c4b5fd"><i class="fas fa-crown mr-1"></i> 重点推荐 · 技术匹配度极高</div>
+<div class="flex items-start gap-4 mb-4">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(99,102,241,.12))"><i class="fas fa-flask-vial text-purple-300 text-xl"></i></div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-lg font-bold">AI配方优化系统（材料科学AI）</h3>
+<div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+</div>
+<div class="text-xs text-white/40">适用场景：再生石配方研发 + 生产过程参数调优 | 核心价值：加速研发10x+，构建下一代技术护城河</div>
+</div>
+</div>
+<div class="text-xs text-purple-300/80 mb-4 font-medium"><i class="fas fa-lightbulb mr-1"></i> 为什么这是最值得重点推荐的：</div>
+<p class="text-xs text-white/45 leading-relaxed mb-4">鹏翔的核心技术壁垒是<strong class="text-purple-300">"纺织/石材固废耦合制备再生石"</strong>——这本质上是一个<strong class="text-indigo-300">材料配方优化问题</strong>：废石粉来源不稳定（不同矿区成分差异大）+ 纺织废弃纤维种类多变 + 需要找到最优配比（强度↑ + 成本↓ + 环保达标）。传统方式靠老师傅经验穷举试错，周期2-4周。AI能在超高维参数空间中快速找到最优解。</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<table class="compare-table" style="background:rgba(0,0,0,.2);border-radius:12px;overflow:hidden"><thead><tr><th colspan="2" class="text-center py-2" style="background:rgba(239,68,68,.08)">传统方式</th></tr></thead><tbody>
+<tr><td style="width:24px"><i class="fas fa-times text-red-400/50 text-[10px]"></i></td><td>老师傅凭经验调配方，试错周期2-4周</td></tr>
+<tr><td><i class="fas fa-times text-red-400/50 text-[10px]"></i></td><td>每次更换原料来源都要重新调试</td></tr>
+<tr><td><i class="fas fa-times text-red-400/50 text-[10px]"></i></td><td>新产品开发靠穷举法，效率低下</td></tr>
+<tr><td><i class="fas fa-times text-red-400/50 text-[10px]"></i></td><td>配方知识存在老师傅脑子里，不可复制</td></tr>
+</tbody></table>
+<table class="compare-table" style="background:rgba(0,0,0,.2);border-radius:12px;overflow:hidden"><thead><tr><th colspan="2" class="text-center py-2" style="background:rgba(16,185,129,.08)">AI辅助方式</th></tr></thead><tbody>
+<tr><td style="width:24px"><i class="fas fa-check text-emerald-400 text-[10px]"></i></td><td>AI预测模型，虚拟实验筛选最优配方</td></tr>
+<tr><td><i class="fas fa-check text-emerald-400 text-[10px]"></i></td><td>AI自动适配原料变化，推荐参数微调</td></tr>
+<tr><td><i class="fas fa-check text-emerald-400 text-[10px]"></i></td><td>AI生成式设计，探索人类想不到的组合</td></tr>
+<tr><td><i class="fas fa-check text-emerald-400 text-[10px]"></i></td><td>配方数字化沉淀为企业核心资产</td></tr>
+</tbody></table>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div class="p-3 rounded-xl text-center" style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12)"><div class="text-xl font-black gradient-text-purple">10x</div><div class="text-[10px] text-white/35">研发效率提升</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12)"><div class="text-xl font-black gradient-text-purple">11%+</div><div class="text-[10px] text-white/35">生产成本下降</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12)"><div class="text-xl font-black gradient-text-purple">N代</div><div class="text-[10px] text-white/35">技术护城河</div></div>
+</div>
+</div>
+<!-- Product 4 -->
+<div>
+<div class="flex items-start gap-4 mb-4">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(217,119,6,.1))"><i class="fas fa-globe text-amber-400 text-xl"></i></div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h3 class="text-lg font-bold">AI外贸营销助手</h3>
+<div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color:rgba(255,255,255,.2)"></i></div>
+<span class="tag tag-amber text-[10px]">增量工具</span>
+</div>
+<div class="text-xs text-white/40">适用场景：120+国家市场开拓 + 大客户维护 | 部署方式：SaaS订阅 / 私有化部署</div>
+</div>
+</div>
+<div class="feature-grid mb-4">
+<div class="feature-item"><i class="fas fa-language"></i><div class="text-xs font-semibold">AI多语言内容生成</div><div class="text-[10px] text-white/30">目录/邮件/案例 一键生成多语言</div></div>
+<div class="feature-item"><i class="fas fa-user-secret"></i><div class="text-xs font-semibold">AI客户洞察</div><div class="text-[10px] text-white/30">分析目标客户网站判断需求阶段</div></div>
+<div class="feature-item"><i class="fas fa-calculator-dollar"></i><div class="text-xs font-semibold">AI智能报价</div><div class="text-[10px] text-white/30">行情×汇率×运费 自动生成FOB/CIF</div></div>
+<div class="feature-item"><i class="fas fa-calendar-day"></i><div class="text-xs font-semibold">AI展会跟进</div><div class="text-[10px] text-white/30">名片录入+分类+跟进提醒自动化</div></div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 rounded-xl text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)"><div class="text-xl font-black text-amber-400">50%</div><div class="text-[10px] text-white/35">新客户获取成本下降</div></div>
+<div class="p-3 rounded-xl text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05)"><div class="text-xl font-black text-amber-400">100国</div><div class="text-[10px] text-white/35">沉睡市场的金矿待激活</div></div>
+</div>
+</div>
+</div>
+
+<!-- TIER 3 -->
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:32px;transition-delay:.15s;border-color:rgba(148,163,184,.1)">
+<div class="flex items-center gap-3 mb-6"><div class="product-tier-badge tier3-bg"><i class="fas fa-seedling"></i> Tier 3 · 长期布局</div><span class="text-xs text-white/30">12个月+见效</span></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-5 rounded-xl" style="background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05)">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(6,182,212,.12)"><i class="fas fa-leaf text-cyan-400"></i></div>
+<div>
+<h4 class="text-sm font-bold">AI能源管理与碳足迹追踪</h4>
+<div class="star-rating mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color:rgba(255,255,255,.2)"></i><i class="fas fa-star" style="color:rgba(255,255,255,.2)"></i></div>
+</div>
+</div>
+<p class="text-xs text-white/40 leading-relaxed mb-3">欧盟CBAM碳边境调节机制2026年全面实施，石材行业能耗大户需提前布局ESG合规。</p>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-[11px] text-white/50"><i class="fas fa-bolt text-cyan-400 text-[10px] w-4"></i>各工序能耗实时监控+AI优化调度</div>
+<div class="flex items-center gap-2 text-[11px] text-white/50"><i class="fas fa-chart-pie text-cyan-400 text-[10px] w-4"></i>产品级碳足迹计算（满足CBAM申报）</div>
+<div class="flex items-center gap-2 text-[11px] text-white/50"><i class="fas fa-road text-cyan-400 text-[10px] w-4"></i>碳中和路径规划与绿色品牌建设</div>
+</div>
+</div>
+<div class="p-5 rounded-xl" style="background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05)">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(148,163,184,.12)"><i class="fas fa-warehouse text-slate-400"></i></div>
+<div>
+<h4 class="text-sm font-bold">AI供应链预测系统</h4>
+<div class="star-rating mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star" style="color:rgba(255,255,255,.2)"></i><i class="fas fa-star" style="color:rgba(255,255,255,.2)"></i></div>
+</div>
+</div>
+<p class="text-xs text-white/40 leading-relaxed mb-3">石材行业库存周转慢是大痛点。AI预测帮助优化采购节奏和库存水位。</p>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-[11px] text-white/50"><i class="fas fa-boxes-stacking text-slate-400 text-[10px] w-4"></i>预测各基地原料需求量，优化采购节奏</div>
+<div class="flex items-center gap-2 text-[11px] text-white/50"><i class="fas fa-chart-line text-slate-400 text-[10px] w-4"></i>历史出口数据+季节趋势预判销量</div>
+<div class="flex items-center gap-2 text-[11px] text-white/50"><i class="fas fa-piggy-bank text-slate-400 text-[10px] w-4"></i>降低库存资金占用，提升现金流</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section 4: Strategy & Roadmap -->
+<section id="strategy" class="py-6">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 7;padding:32px;transition-delay:0s">
+<div class="flex items-center gap-3 mb-6"><div class="icon-box icon-box-indigo"><i class="fas fa-road"></i></div><h2 class="text-lg font-bold">AI落地路线图</h2></div>
+<div class="relative pl-8"><div class="roadmap-line"></div>
+<div class="relative pb-8">
+<div class="roadmap-dot absolute -left-8"><div class="roadmap-dot-inner" style="background:#10b981;box-shadow:0 0 12px rgba(16,185,129,.5)"></div></div>
+<div class="p-4 rounded-xl" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12)">
+<div class="flex items-center gap-2 mb-2"><span class="tag tag-emerald text-[10px]">Phase 1 · 第1-3月</span><span class="text-[10px] text-white/30">信任基石</span></div>
+<div class="text-sm font-bold mb-1">AI视觉质检系统</div>
+<div class="text-xs text-white/40">部署生产线末端全检，3个月内看到数据改善。第一个项目做好了，后续才有信任基础。</div>
+<div class="mt-2 roi-bar"><div class="roi-fill animated" style="--fill-width:95%;background:linear-gradient(90deg,#059669,#10b981,#34d399)"></div></div>
+<div class="text-[10px] text-emerald-400/60 mt-1">ROI置信度 95%</div>
+</div>
+</div>
+<div class="relative pb-8">
+<div class="roadmap-dot absolute -left-8"><div class="roadmap-dot-inner" style="background:#f59e0b;box-shadow:0 0 12px rgba(245,158,11,.5)"></div></div>
+<div class="p-4 rounded-xl" style="background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.12)">
+<div class="flex items-center gap-2 mb-2"><span class="tag tag-amber text-[10px]">Phase 2 · 第3-6月</span><span class="text-[10px] text-white/30">并行推进</span></div>
+<div class="text-sm font-bold mb-1">AI智能排产 + AI外贸营销</div>
+<div class="text-xs text-white/40">排产系统对接MES提升交付效率，外贸助手同步开拓新市场。两线并进扩大战果。</div>
+<div class="mt-2 roi-bar"><div class="roi-fill animated" style="--fill-width:82%;background:linear-gradient(90deg,#d97706,#f59e0b,#fbbf24)"></div></div>
+<div class="text-[10px] text-amber-400/60 mt-1">ROI置信度 82%</div>
+</div>
+</div>
+<div class="relative pb-8">
+<div class="roadmap-dot absolute -left-8"><div class="roadmap-dot-inner" style="background:#8b5cf6;box-shadow:0 0 12px rgba(139,92,246,.5)"></div></div>
+<div class="p-4 rounded-xl" style="background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12)">
+<div class="flex items-center gap-2 mb-2"><span class="tag tag-purple text-[10px]">Phase 3 · 第6-12月</span><span class="text-[10px] text-white/30">战略高地</span></div>
+<div class="text-sm font-bold mb-1">AI配方优化系统（材料科学AI）</div>
+<div class="text-xs text-white/40">这是最关键的一步——将研发效率提升10倍以上，构建真正的技术护城河。</div>
+<div class="mt-2 roi-bar"><div class="roi-fill animated" style="--fill-width:88%;background:linear-gradient(90deg,#7c3aed,#8b5cf6,#a78bfa)"></div></div>
+<div class="text-[10px] text-purple-400/60 mt-1">ROI置信度 88%（长期价值极大）</div>
+</div>
+</div>
+<div class="relative">
+<div class="roadmap-dot absolute -left-8"><div class="roadmap-dot-inner" style="background:rgba(148,163,184,.5)"></div></div>
+<div class="p-4 rounded-xl" style="background:rgba(148,163,184,.04);border:1px solid rgba(148,163,184,.12)">
+<div class="flex items-center gap-2 mb-2"><span class="tag tag-white text-[10px]">Phase 4 · 第12月+</span><span class="text-[10px] text-white/30">未来布局</span></div>
+<div class="text-sm font-bold mb-1">AI碳足迹 + AI供应链预测</div>
+<div class="text-xs text-white/40">ESG合规应对CBAM + 库存优化降本增效，为下一轮竞争储备弹药。</div>
+<div class="mt-2 roi-bar"><div class="roi-fill animated" style="--fill-width:65%;background:linear-gradient(90deg,#475569,#64748b,#94a3b8)"></div></div>
+<div class="text-[10px] text-slate-400/60 mt-1">ROI置信度 65%</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Strategy Panel -->
+<div class="bento-card scroll-reveal" style="grid-column:span 5;padding:32px;transition-delay:.1s">
+<div class="flex items-center gap-3 mb-5"><div class="icon-box icon-box-purple"><i class="fas fa-chess-knight"></i></div><h2 class="text-lg font-bold">销售策略</h2></div>
+<div class="space-y-4">
+<div class="p-4 rounded-xl" style="background:linear-gradient(135deg,rgba(99,102,241,.06),rgba(139,92,246,.03));border:1px solid rgba(99,102,241,.12)">
+<div class="flex items-center gap-2 mb-2"><i class="fas fa-bullseye text-indigo-400 text-sm"></i><div class="text-sm font-bold">推荐方法：挑战式销售</div></div>
+<p class="text-xs text-white/45 leading-relaxed">不要去问"您需不需要AI"，而是带着<strong class="text-indigo-300">行业洞见</strong>去对话。好的销售不是说服，而是帮助客户认识到购买的价值。</p>
+</div>
+<div class="p-4 rounded-xl" style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.1)">
+<div class="flex items-center gap-2 mb-2"><i class="fas fa-crosshairs text-emerald-400 text-sm"></i><div class="text-sm font-bold">切入点选择：AI视觉质检</div></div>
+<p class="text-xs text-white/45 leading-relaxed mb-3">如果只能推一个产品作为突破口，选它。<strong class="text-emerald-300">三原因：</strong></p>
+<ul class="space-y-1.5 text-xs text-white/40">
+<li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">①</span>痛点最显性——老板一眼看懂"少漏检=少赔钱"</li>
+<li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">②</span>见效最快——3个月内看到数据改善</li>
+<li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">③</span>信任基石——做好第一个才有后续合作</li>
+</ul>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-white/5">
+<div class="text-xs font-bold text-white/50 mb-3"><i class="fas fa-quote-left mr-1 text-indigo-400"></i> 核心话术模板</div>
+<div class="talk-bubble mb-3">
+<div class="text-xs text-white/65 leading-relaxed">"王总，石材行业有个很痛的点——一块板的表面缺陷，人眼看久了会疲劳，漏检是必然的。<strong class='text-indigo-300'>AI视觉不一样，它不会累，而且它能记住你们过去三年所有客诉样品的特征。</strong>这不是替代质检员，而是让你们的老师傅经验变成可复制的算法资产。"</div>
+</div>
+<div class="talk-bubble mb-3" style="border-left-color:#8b5cf6;background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.04))">
+<div class="text-xs text-white/65 leading-relaxed">"我研究了石材行业的现状。头部企业已经在用AI视觉做质检了，良率能稳定在99.5%以上。而行业平均水平还在96%-97%。<strong class='text-purple-300'>这3个百分点的差距，一年就是几百万的纯利润差距。</strong>鹏翔作为省级单项冠军，在这个维度上不应该落后。"</div>
+</div>
+<div class="talk-bubble" style="border-left-color:#10b981;background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(5,150,105,.04))">
+<div class="text-xs text-white/65 leading-relaxed">"关于AI配方优化——您的固废耦合技术本质上是<strong class='text-emerald-300'>在超高维度的参数空间里找最优解</strong>。传统穷举法需要2-4周。AI材料科学平台能把这个过程加速10倍以上，<strong class='text-emerald-300">而且能发现人类经验盲区里的更优配方</strong>。这不是省成本的事，这是构建下一代技术护城河。"</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer Summary Table -->
+<section class="py-6 pb-12">
+<div class="bento-grid">
+<div class="bento-card scroll-reveal" style="grid-column:span 12;padding:32px;transition-delay:0s">
+<div class="flex items-center gap-3 mb-6"><div class="icon-box icon-box-indigo"><i class="fas fa-list-check"></i></div><h2 class="text-lg font-bold">推荐方案总览</h2></div>
+<div class="overflow-x-auto">
+<table class="compare-table">
+<thead><tr><th style="width:6%">优先级</th><th style="width:22%">产品名称</th><th style="width:14%">投入周期</th><th style="width:14%">预期ROI</th><th style="width:44%">核心价值</th></tr></thead>
+<tbody>
+<tr>
+<td><span class="tag tag-emerald text-[10px]">★★★★★</span></td>
+<td><div class="flex items-center gap-2"><i class="fas fa-eye text-emerald-400"></i><span class="font-semibold">AI视觉质检系统</span></div></td>
+<td>3-6月</td>
+<td><span class="text-emerald-400 font-semibold">质量成本↓40%</span></td>
+<td>漏检率↓90%+ / 客诉↓60% / 全流程追溯 / 老师傅经验算法化</td>
+</tr>
+<tr>
+<td><span class="tag tag-emerald text-[10px]">★★★★☆</span></td>
+<td><div class="flex items-center gap-2"><i class="fas fa-calendar-check text-emerald-400"></i><span class="font-semibold">AI智能排产APS</span></div></td>
+<td>3-6月</td>
+<td><span class="text-emerald-400 font-semibold">交期准确率↑30%</span></td>
+<td>30秒排产响应 / 插单模拟 / OEE监控 / 多线协同优化</td>
+</tr>
+<tr>
+<td><span class="tag tag-purple text-[10px]">★★★★★</span></td>
+<td><div class="flex items-center gap-2"><i class="fas fa-flask-vial text-purple-300"></i><span class="font-semibold">AI配方优化系统</span></div></td>
+<td>6-12月</td>
+<td><span class="text-purple-300 font-semibold">研发效率↑10x</span></td>
+<td>材料科学AI / 配方数字化 / 成本↓11%+ / 构建技术护城河</td>
+</tr>
+<tr>
+<td><span class="tag tag-amber text-[10px]">★★★★☆</span></td>
+<td><div class="flex items-center gap-2"><i class="fas fa-globe text-amber-400"></i><span class="font-semibold">AI外贸营销助手</span></div></td>
+<td>6-12月</td>
+<td><span class="text-amber-400 font-semibold">获客成本↓50%</span></div>
+<td>多语言内容生成 / 客户洞察 / 智能报价 / 展会跟进自动化</td>
+</tr>
+<tr>
+<td><span class="tag tag-white text-[10px]">★★★☆☆</span></td>
+<td><div class="flex items-center gap-2"><i class="fas fa-leaf text-cyan-400"></i><span class="font-semibold">AI碳足迹追踪</span></div></td>
+<td>12月+</td>
+<td><span class="text-cyan-400 font-semibold">ESG合规+品牌溢价</span></td>
+<td>CBAM申报 / 能耗优化 / 碳中和路径规划</td>
+</tr>
+<tr>
+<td><span class="tag tag-white text-[10px]">★★★☆☆</span></td>
+<td><div class="flex items-center gap-2"><i class="fas fa-warehouse text-slate-400"></i><span class="font-semibold">AI供应链预测</span></div></td>
+<td>12月+</td>
+<td><span class="text-slate-400 font-semibold">库存周转↑25%</span></td>
+<td>需求预测 / 采购优化 / 季节趋势分析 / 现金流改善</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-6 p-4 rounded-xl text-center" style="background:linear-gradient(135deg,rgba(99,102,241,.05),rgba(139,92,246,.03));border:1px dashed rgba(99,102,241,.2)">
+<div class="text-xs text-white/40">建议切入点：<strong class="text-emerald-400">AI视觉质检</strong> → 以此建立信任 → 逐步展开Tier 2/Tier 3产品 → 最终实现全方位AI智能制造升级</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Scroll Animation Script -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, {threshold: 0.1});
+
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

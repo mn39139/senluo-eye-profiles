@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福州经济技术开发区雅迪斯贸易有限公司 - 企业全景</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',sans-serif;background:#0a0a0f;color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0f}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#d97706,#92400e);border-radius:3px}
+
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;padding:16px;max-width:1400px;margin:0 auto}
+.bento-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:20px;position:relative;overflow:hidden;backdrop-filter:blur(12px);transition:all .4s cubic-bezier(.4,0,.2,1)}
+.bento-card:hover{border-color:rgba(217,119,6,0.3);transform:translateY(-4px);box-shadow:0 20px 60px rgba(217,119,6,0.08)}
+
+.hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.pulse-glow{animation:pulseG 4s ease-in-out infinite}
+@keyframes pulseG{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.6;transform:scale(1.1)}}
+
+.scroll-reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+.tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:.02em;backdrop-filter:blur(8px)}
+.tag-amber{background:rgba(217,119,6,0.15);color:#fbbf24;border:1px solid rgba(217,119,6,0.25)}
+.tag-emerald{background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.25)}
+.tag-cyan{background:rgba(6,182,212,0.15);color:#22d3ee;border:1px solid rgba(6,182,212,0.25)}
+.tag-rose{background:rgba(244,63,94,0.15);color:#fb7185;border:1px solid rgba(244,63,94,0.25)}
+.tag-white{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.12)}
+
+.gradient-text-amber{background:linear-gradient(135deg,#fbbf24,#d97706,#92400e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-cedar{background:linear-gradient(135deg,#fcd34d,#b45309,#78350f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.stat-number{font-size:3rem;font-weight:900;line-height:1;background:linear-gradient(135deg,#fbbf24,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;font-weight:400}
+
+.progress-bar{height:6px;border-radius:3px;background:rgba(255,255,255,0.06);overflow:hidden;position:relative}
+.progress-fill{height:100%;border-radius:3px;transition:width 1.5s cubic-bezier(.4,0,.2,1)}
+.progress-fill.amber{background:linear-gradient(90deg,#92400e,#d97706,#fbbf24)}
+.progress-fill.emerald{background:linear-gradient(90deg,#065f46,#10b981,#34d399)}
+.progress-fill.cyan{background:linear-gradient(90deg,#164e63,#06b6d4,#22d3ee)}
+
+.timeline-item{position:relative;padding-left:28px;padding-bottom:24px;border-left:2px solid rgba(217,119,6,0.2)}
+.timeline-item:last-child{border-left-color:transparent;padding-bottom:0}
+.timeline-dot{position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:#d97706;box-shadow:0 0 12px rgba(217,119,6,0.5)}
+
+.glow-amber{box-shadow:0 0 40px rgba(217,119,6,0.06)}
+.glow-emerald{box-shadow:0 0 40px rgba(16,185,129,0.06)}
+.glow-cyan{box-shadow:0 0 40px rgba(6,182,212,0.06)}
+
+.market-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:20px;text-align:center;transition:all .3s}
+.market-card:hover{border-color:rgba(217,119,6,0.3);background:rgba(217,119,6,0.04)}
+.market-card .flag{font-size:2rem;margin-bottom:8px}
+.market-card .name{font-size:13px;color:rgba(255,255,255,0.5)}
+
+.product-showcase{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.product-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:20px 16px;text-align:center;transition:all .3s}
+.product-item:hover{border-color:rgba(217,119,6,0.3);transform:scale(1.03)}
+.product-item i{font-size:2rem;margin-bottom:10px;color:#d97706}
+.product-item .p-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.product-item .p-desc{font-size:11px;color:rgba(255,255,255,0.35)}
+
+.cert-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;font-size:13px;transition:all .3s}
+.cert-badge:hover{border-color:rgba(217,119,6,0.3)}
+.cert-badge i{color:#d97706}
+
+footer{border-top:1px solid rgba(255,255,255,0.06);margin-top:40px;padding:32px 16px;text-align:center}
+footer a{color:#d97706;text-decoration:none;transition:color .3s}
+footer a:hover{color:#fbbf24}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.float-anim{animation:float 6s ease-in-out infinite}
+
+@media(max-width:768px){
+  .bento-grid{grid-template-columns:1fr;gap:12px;padding:12px}
+  .bento-card{grid-column:span 1!important}
+  .stat-number{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="relative py-6 px-4" style="background:linear-gradient(180deg,rgba(217,119,6,0.06),transparent)">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#d97706,#92400e)">
+        <i class="fas fa-tree text-white text-lg"></i>
+      </div>
+      <div>
+        <div class="text-sm font-bold tracking-wide" style="color:#fbbf24">YARDISTRY</div>
+        <div class="text-xs text-white/30">Since 2016 · Fuzhou, China</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://yardistrystructures.com" target="_blank" class="text-xs text-white/40 hover:text-amber-400 transition-colors"><i class="fas fa-external-link-alt mr-1"></i>Official Site</a>
+      <a href="https://shuidi.cn/company-c52f537c2aeb2b19835ea068ea384f8f.html" target="_blank" class="text-xs text-white/40 hover:text-amber-400 transition-colors"><i class="fas fa-building mr-1"></i>企查查</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Card -->
+<div class="bento-grid" style="padding-top:0">
+  <div class="bento-card scroll-reveal glow-amber" style="grid-column:span 8;padding:40px;min-height:340px;display:flex;flex-direction:column;justify-content:center">
+    <div class="hero-glow pulse-glow" style="top:-100px;right:-100px;width:420px;height:420px;background:radial-gradient(circle,#d97706,transparent)"></div>
+    <div class="hero-glow pulse-glow" style="bottom:-80px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,#92400e,transparent);animation-delay:2s"></div>
+    <span class="tag tag-amber mb-4 inline-block w-fit"><i class="fas fa-home"></i> 庭院户外产品领军制造商</span>
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4">
+      福州雅迪斯贸易<br><span class="gradient-text-amber">Yardistry 中国制造基地</span>
+    </h1>
+    <p class="text-white/35 text-sm md:text-base max-w-xl leading-relaxed mb-6">
+      加拿大Yardistry Ltd.全资子公司，集设计生产于一体的RTA（Ready-To-Assemble）户外庭院产品制造商。专注木凉亭、阳光房、户外游戏屋等产品，COSTCO、山姆核心供应商，年产值超10亿元，产品远销北美、欧洲、澳洲、日本等全球市场。
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <span class="tag tag-amber"><i class="fas fa-crown"></i> COSTCO核心供应商</span>
+      <span class="tag tag-emerald"><i class="fas fa-leaf"></i> FSC森林认证</span>
+      <span class="tag tag-cyan"><i class="fas fa-globe"></i> 远销5大洲</span>
+      <span class="tag tag-rose"><i class="fas fa-flask"></i> 保税研发</span>
+    </div>
+  </div>
+
+  <!-- Key Stats -->
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px">
+    <div class="hero-glow" style="top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(16,185,129,0.3),transparent)"></div>
+    <div>
+      <div class="stat-number">10亿+</div>
+      <div class="stat-label">年产值（人民币）</div>
+    </div>
+    <div>
+      <div class="stat-number">73.35%</div>
+      <div class="stat-label">出口同比增长（2024年1-7月）</div>
+    </div>
+    <div>
+      <div class="stat-number">463</div>
+      <div class="stat-label">2024年Q1出口集装箱数</div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 2: Company Profile + Timeline -->
+<div class="bento-grid">
+  <div class="bento-card scroll-reveal glow-amber" style="grid-column:span 5;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(217,119,6,0.15)">
+        <i class="fas fa-id-card text-amber-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">企业工商信息</h2>
+    </div>
+    <div class="space-y-3 text-sm">
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">公司全称</span>
+        <span class="text-white/80 text-right max-w-[60%]">福州经济技术开发区雅迪斯贸易有限公司</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">统一社会信用代码</span>
+        <span class="text-white/80 font-mono text-xs">91350105MA2XNQPM6N</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">法定代表人</span>
+        <span class="text-white/80">Jan Lambacher</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">注册资本</span>
+        <span class="text-white/80">50万美元</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">成立日期</span>
+        <span class="text-white/80">2016年9月19日</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">企业类型</span>
+        <span class="text-white/80">外商独资</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">企业规模</span>
+        <span class="text-white/80">中型 · 71人（2025年）</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-white/5">
+        <span class="text-white/40">信用评分</span>
+        <span class="text-amber-400 font-bold">836分 · 优秀</span>
+      </div>
+      <div class="flex justify-between py-2">
+        <span class="text-white/40">股东</span>
+        <span class="text-white/80">YARDISTRY LIMITED (100%)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-emerald" style="grid-column:span 4;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(16,185,129,0.15)">
+        <i class="fas fa-clock text-emerald-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">发展历程</h2>
+    </div>
+    <div class="space-y-0">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="text-amber-400 text-xs font-bold mb-1">2016</div>
+        <div class="text-sm text-white/60">公司成立，落户福州经济技术开发区</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="text-amber-400 text-xs font-bold mb-1">2019</div>
+        <div class="text-sm text-white/60">新厂区通过出境竹木草制品企业注册，木凉亭系列招标启动</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="text-amber-400 text-xs font-bold mb-1">2024 Q1</div>
+        <div class="text-sm text-white/60">出口463个集装箱，货值1.6亿元，实现开门红</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="text-amber-400 text-xs font-bold mb-1">2024</div>
+        <div class="text-sm text-white/60">1-7月出口2.69亿元，同比增长73.35%；新开拓西班牙、英国市场</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:#10b981;box-shadow:0 0 12px rgba(16,185,129,0.5)"></div>
+        <div class="text-emerald-400 text-xs font-bold mb-1">2026</div>
+        <div class="text-sm text-white/60">新增保税研发业务，加速庭院产品创新设计与技术升级</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 3;padding:32px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+    <div class="hero-glow" style="top:-30px;left:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(6,182,212,0.3),transparent)"></div>
+    <div class="float-anim mb-4">
+      <i class="fas fa-map-marker-alt text-4xl text-cyan-400"></i>
+    </div>
+    <div class="text-sm font-bold mb-2">注册地址</div>
+    <div class="text-xs text-white/40 leading-relaxed mb-4">福州市马尾区亭江镇长洋路177-11号<br>福州综合保税区<br>（自贸试验区内）</div>
+    <div class="tag tag-cyan text-xs"><i class="fas fa-shield-alt"></i> 自贸试验区企业</div>
+  </div>
+</div>
+
+<!-- Row 3: Products + Market -->
+<div class="bento-grid">
+  <div class="bento-card scroll-reveal glow-amber" style="grid-column:span 7;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(217,119,6,0.15)">
+        <i class="fas fa-boxes-stacked text-amber-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">核心产品线</h2>
+    </div>
+    <div class="product-showcase">
+      <div class="product-item">
+        <i class="fas fa-tent"></i>
+        <div class="p-name">木凉亭</div>
+        <div class="p-desc">Gazebo · 铝顶/木顶<br>8'×8' 至 12'×24'</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-sun"></i>
+        <div class="p-name">阳光房</div>
+        <div class="p-desc">Sunroom · 简易安装<br>庭院休闲空间</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-gamepad"></i>
+        <div class="p-name">户外游戏屋</div>
+        <div class="p-desc">Playhouse · 儿童专属<br>安全环保材质</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-archway"></i>
+        <div class="p-name">木棚架</div>
+        <div class="p-desc">Pergola · 庭院遮阳<br>花架装饰结构</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-seedling"></i>
+        <div class="p-name">温室花房</div>
+        <div class="p-desc">Greenhouse · 自动通风<br>热敏屋顶开启</div>
+      </div>
+      <div class="product-item">
+        <i class="fas fa-glass-cheers"></i>
+        <div class="p-name">户外吧台</div>
+        <div class="p-desc">Cantina · 庭院社交<br>现代设计风格</div>
+      </div>
+    </div>
+    <div class="mt-5 p-4 rounded-xl" style="background:rgba(217,119,6,0.05);border:1px solid rgba(217,119,6,0.12)">
+      <div class="flex items-center gap-2 mb-2">
+        <i class="fas fa-cogs text-amber-400 text-sm"></i>
+        <span class="text-sm font-bold">7道核心工序</span>
+      </div>
+      <div class="flex items-center gap-2 flex-wrap text-xs text-white/40">
+        <span class="px-3 py-1 rounded-full" style="background:rgba(217,119,6,0.1)">收料</span>
+        <i class="fas fa-chevron-right text-amber-600/40 text-[10px]"></i>
+        <span class="px-3 py-1 rounded-full" style="background:rgba(217,119,6,0.1)">检验</span>
+        <i class="fas fa-chevron-right text-amber-600/40 text-[10px]"></i>
+        <span class="px-3 py-1 rounded-full" style="background:rgba(217,119,6,0.1)">切割</span>
+        <i class="fas fa-chevron-right text-amber-600/40 text-[10px]"></i>
+        <span class="px-3 py-1 rounded-full" style="background:rgba(217,119,6,0.1)">打磨</span>
+        <i class="fas fa-chevron-right text-amber-600/40 text-[10px]"></i>
+        <span class="px-3 py-1 rounded-full" style="background:rgba(217,119,6,0.1)">拼接</span>
+        <i class="fas fa-chevron-right text-amber-600/40 text-[10px]"></i>
+        <span class="px-3 py-1 rounded-full" style="background:rgba(217,119,6,0.1)">包装</span>
+        <i class="fas fa-chevron-right text-amber-600/40 text-[10px]"></i>
+        <span class="px-3 py-1 rounded-full" style="background:rgba(217,119,6,0.15);color:#fbbf24">确认</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 5;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(6,182,212,0.15)">
+        <i class="fas fa-earth-americas text-cyan-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">全球市场布局</h2>
+    </div>
+    <div class="grid grid-cols-3 gap-3 mb-5">
+      <div class="market-card">
+        <div class="flag">🇺🇸</div>
+        <div class="name">美国</div>
+      </div>
+      <div class="market-card">
+        <div class="flag">🇨🇦</div>
+        <div class="name">加拿大</div>
+      </div>
+      <div class="market-card">
+        <div class="flag">🇪🇺</div>
+        <div class="name">欧洲</div>
+      </div>
+      <div class="market-card">
+        <div class="flag">🇦🇺</div>
+        <div class="name">澳大利亚</div>
+      </div>
+      <div class="market-card">
+        <div class="flag">🇯🇵</div>
+        <div class="name">日本</div>
+      </div>
+      <div class="market-card" style="border-color:rgba(217,119,6,0.3)">
+        <div class="flag">🇪🇸🇬🇧</div>
+        <div class="name text-amber-400">新市场</div>
+      </div>
+    </div>
+    <div class="p-4 rounded-xl" style="background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.12)">
+      <div class="text-xs text-white/40 mb-2">2024年1-7月出口竹木草制品</div>
+      <div class="flex items-end gap-3">
+        <div class="stat-number text-2xl">2.69亿</div>
+        <div class="text-emerald-400 text-sm font-bold mb-1"><i class="fas fa-arrow-up text-xs"></i> 73.35%</div>
+      </div>
+      <div class="progress-bar mt-3">
+        <div class="progress-fill cyan" style="width:0%" data-width="73%"></div>
+      </div>
+      <div class="text-xs text-white/30 mt-1">同比增长率</div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 4: Parent Company + Quality + Certifications -->
+<div class="bento-grid">
+  <div class="bento-card scroll-reveal glow-amber" style="grid-column:span 6;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(217,119,6,0.15)">
+        <i class="fas fa-sitemap text-amber-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">母公司 · Yardistry Ltd.</h2>
+    </div>
+    <div class="hero-glow" style="bottom:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(217,119,6,0.15),transparent)"></div>
+    <p class="text-white/40 text-sm leading-relaxed mb-5">
+      总部位于加拿大安大略省滑铁卢市（Waterloo, Ontario），在亚洲和美国设有分公司。过去25年成功投资多家国际公司，拥有全球公认的行业领导地位。Yardistry致力于将建筑创意与娱乐融入安全、优质和高性价比的产品设计中。
+    </p>
+    <div class="text-xs font-bold text-white/50 mb-3">品牌家族</div>
+    <div class="grid grid-cols-2 gap-3">
+      <div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)">
+        <div class="text-sm font-bold mb-1">Tortuga Outdoor</div>
+        <div class="text-xs text-white/30">高端户外家具</div>
+      </div>
+      <div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)">
+        <div class="text-sm font-bold mb-1">Gorilla Playsets</div>
+        <div class="text-xs text-white/30">儿童游乐设施</div>
+      </div>
+      <div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)">
+        <div class="text-sm font-bold mb-1">Heartland</div>
+        <div class="text-xs text-white/30">美国No.1木制储物棚</div>
+      </div>
+      <div class="p-3 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)">
+        <div class="text-sm font-bold mb-1">Studio Shed</div>
+        <div class="text-xs text-white/30">工作室与微型住宅</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-emerald" style="grid-column:span 3;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(16,185,129,0.15)">
+        <i class="fas fa-shield-halved text-emerald-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">品质保障</h2>
+    </div>
+    <div class="space-y-4">
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm text-white/60">抗风能力</span>
+          <span class="text-amber-400 text-sm font-bold">100 mph</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill amber" style="width:0%" data-width="85%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm text-white/60">积雪承重</span>
+          <span class="text-amber-400 text-sm font-bold">36英寸</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill amber" style="width:0%" data-width="78%"></div>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm text-white/60">紧固件密度</span>
+          <span class="text-amber-400 text-sm font-bold">300%+</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill emerald" style="width:0%" data-width="90%"></div>
+        </div>
+      </div>
+      <div class="pt-3 border-t border-white/5">
+        <div class="text-xs text-white/30 mb-2">材质标准</div>
+        <div class="text-sm text-white/60">100% 窑干杉木 · 铝合金屋顶 · 防锈设计</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 3;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(6,182,212,0.15)">
+        <i class="fas fa-certificate text-cyan-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">资质认证</h2>
+    </div>
+    <div class="space-y-3">
+      <div class="cert-badge">
+        <i class="fas fa-leaf"></i>
+        <div>
+          <div class="text-sm font-bold">FSC® C132338</div>
+          <div class="text-xs text-white/30">森林管理委员会认证</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <i class="fas fa-file-shield"></i>
+        <div>
+          <div class="text-sm font-bold">出境竹木草注册</div>
+          <div class="text-xs text-white/30">海关出口资质</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <i class="fas fa-flask"></i>
+        <div>
+          <div class="text-sm font-bold">保税研发</div>
+          <div class="text-xs text-white/30">综保区研发资质(2026)</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <div class="text-sm font-bold">知识产权 19项</div>
+          <div class="text-xs text-white/30">专利与商标</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 5: Core Clients + Business Scope -->
+<div class="bento-grid">
+  <div class="bento-card scroll-reveal glow-amber" style="grid-column:span 4;padding:32px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center">
+    <div class="hero-glow" style="top:-40px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(circle,rgba(217,119,6,0.2),transparent)"></div>
+    <div class="text-xs text-white/30 mb-3">核心客户</div>
+    <div class="text-4xl font-black gradient-text-amber mb-2">COSTCO</div>
+    <div class="text-sm text-white/50 mb-4">全球最大会员制仓储超市</div>
+    <div class="w-16 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent mb-4"></div>
+    <div class="text-4xl font-black gradient-text-cedar mb-2">Sam's Club</div>
+    <div class="text-sm text-white/50 mb-4">山姆会员店</div>
+    <div class="tag tag-amber"><i class="fas fa-star"></i> 核心供应商</div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(217,119,6,0.15)">
+        <i class="fas fa-briefcase text-amber-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">经营范围</h2>
+    </div>
+    <div class="space-y-2">
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02)">
+        <i class="fas fa-hammer text-amber-400/60 text-sm w-5"></i>
+        <span class="text-sm text-white/60">建筑装饰材料销售</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02)">
+        <i class="fas fa-tree text-emerald-400/60 text-sm w-5"></i>
+        <span class="text-sm text-white/60">建筑用木料及木材组件加工</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02)">
+        <i class="fas fa-cube text-cyan-400/60 text-sm w-5"></i>
+        <span class="text-sm text-white/60">软木制品制造与销售</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02)">
+        <i class="fas fa-couch text-rose-400/60 text-sm w-5"></i>
+        <span class="text-sm text-white/60">家具 / 玩具 / 游艺用品销售</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02)">
+        <i class="fas fa-wrench text-amber-400/60 text-sm w-5"></i>
+        <span class="text-sm text-white/60">五金产品批发与零售</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-lg" style="background:rgba(255,255,255,0.02)">
+        <i class="fas fa-ship text-cyan-400/60 text-sm w-5"></i>
+        <span class="text-sm text-white/60">货物/技术进出口 · 供应链管理</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-emerald" style="grid-column:span 4;padding:32px">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(16,185,129,0.15)">
+        <i class="fas fa-chart-line text-emerald-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">增长引擎</h2>
+    </div>
+    <div class="space-y-5">
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm text-white/50">北美市场渗透</span>
+          <span class="text-emerald-400 text-sm font-bold">领先</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill emerald" style="width:0%" data-width="92%"></div>
+        </div>
+        <div class="text-xs text-white/25 mt-1">COSTCO独家供应 · 多款Gazebo评分4.6+</div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm text-white/50">欧洲市场拓展</span>
+          <span class="text-amber-400 text-sm font-bold">加速中</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill amber" style="width:0%" data-width="45%"></div>
+        </div>
+        <div class="text-xs text-white/25 mt-1">2024年新开拓西班牙、英国市场</div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm text-white/50">保税研发创新</span>
+          <span class="text-cyan-400 text-sm font-bold">新业务</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill cyan" style="width:0%" data-width="30%"></div>
+        </div>
+        <div class="text-xs text-white/25 mt-1">2026年综保区保税研发业务落地</div>
+      </div>
+      <div class="p-3 rounded-lg mt-2" style="background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.12)">
+        <div class="text-xs text-emerald-400/80"><i class="fas fa-quote-left mr-1"></i> "轻户外"是更适合竹木草制品的应用场景，我们设计研发的木凉亭、简易阳光房、户外游戏屋等产品在欧美市场受到追捧</div>
+        <div class="text-xs text-white/25 mt-2 text-right">— 供应链总监 刘骥</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 6: Competitive Advantages -->
+<div class="bento-grid">
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:36px">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(217,119,6,0.15)">
+        <i class="fas fa-trophy text-amber-400"></i>
+      </div>
+      <h2 class="text-lg font-bold">核心竞争力</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="p-5 rounded-xl text-center" style="background:rgba(217,119,6,0.04);border:1px solid rgba(217,119,6,0.1)">
+        <div class="text-3xl font-black gradient-text-amber mb-2">25年</div>
+        <div class="text-sm text-white/50">行业深耕</div>
+        <div class="text-xs text-white/25 mt-2">母公司Yardistry近25年户外产品经验</div>
+      </div>
+      <div class="p-5 rounded-xl text-center" style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.1)">
+        <div class="text-3xl font-black gradient-text-amber mb-2">RTA</div>
+        <div class="text-sm text-white/50">即装即用</div>
+        <div class="text-xs text-white/25 mt-2">Ready-To-Assemble便捷安装设计</div>
+      </div>
+      <div class="p-5 rounded-xl text-center" style="background:rgba(6,182,212,0.04);border:1px solid rgba(6,182,212,0.1)">
+        <div class="text-3xl font-black gradient-text-amber mb-2">FSC®</div>
+        <div class="text-sm text-white/50">环保认证</div>
+        <div class="text-xs text-white/25 mt-2">100% FSC认证杉木 · 可持续林业</div>
+      </div>
+      <div class="p-5 rounded-xl text-center" style="background:rgba(244,63,94,0.04);border:1px solid rgba(244,63,94,0.1)">
+        <div class="text-3xl font-black gradient-text-amber mb-2">50%+</div>
+        <div class="text-sm text-white/50">通关提速</div>
+        <div class="text-xs text-white/25 mt-2">云签发+互联网海关 · 属地查检时间压缩</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#d97706,#92400e)">
+          <i class="fas fa-tree text-white text-sm"></i>
+        </div>
+        <div>
+          <div class="text-sm font-bold" style="color:#fbbf24">YARDISTRY</div>
+          <div class="text-xs text-white/25">The Art of Strength</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-white/30">
+        <a href="https://yardistrystructures.com" target="_blank" class="hover:text-amber-400 transition-colors"><i class="fas fa-globe mr-1"></i>Yardistry Structures</a>
+        <a href="https://yardistrystructures.ca/pages/why-yardistry" target="_blank" class="hover:text-amber-400 transition-colors"><i class="fas fa-info-circle mr-1"></i>Why Yardistry</a>
+        <a href="https://shuidi.cn/company-c52f537c2aeb2b19835ea068ea384f8f.html" target="_blank" class="hover:text-amber-400 transition-colors"><i class="fas fa-building mr-1"></i>水滴信用</a>
+        <a href="http://gdfs.customs.gov.cn/fuzhou_customs/484123/484126/zt62/yqfkhlwlb/6073398/index.html" target="_blank" class="hover:text-amber-400 transition-colors"><i class="fas fa-newspaper mr-1"></i>福州海关</a>
+      </div>
+    </div>
+    <div class="text-xs text-white/20">
+      数据来源：水滴信用 · 福州海关 · 马尾新闻网 · 福建省商务厅 · BOSS直聘 · Yardistry官网 · 综合保税区管理局<br>
+      © 2026 39139@胜天半子
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll Reveal Animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Animate progress bars
+      const bars = entry.target.querySelectorAll('.progress-fill');
+      bars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        if (width) {
+          setTimeout(() => { bar.style.width = width; }, 300);
+        }
+      });
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+// Stagger animation for bento cards
+document.querySelectorAll('.bento-card').forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.08}s`;
+});
+</script>
+
+</body>
+</html>

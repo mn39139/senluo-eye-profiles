@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>钉钉AI表格+OA审批 开票流程数字化解决方案</title>
+<style>
+/* ========== Reset & Base ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  color: #333; background: #f5f7fa; line-height: 1.6; overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ========== Utility ========== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section-title {
+  text-align: center; font-size: 32px; font-weight: 700; color: #1a2a6c;
+  margin-bottom: 12px; position: relative;
+}
+.section-subtitle {
+  text-align: center; font-size: 16px; color: #666; margin-bottom: 48px;
+}
+.fade-in {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== Navigation ========== */
+.navbar {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  background: rgba(26, 42, 108, 0.92); backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.15); transition: background 0.3s;
+}
+.navbar .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 18px; font-weight: 700; color: #fff;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo .logo-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; color: #1a2a6c;
+}
+.nav-links { display: flex; gap: 6px; }
+.nav-links a {
+  color: rgba(255,255,255,0.8); font-size: 14px; padding: 6px 12px;
+  border-radius: 6px; transition: all 0.3s;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.12); }
+.nav-toggle { display: none; cursor: pointer; }
+.nav-toggle span {
+  display: block; width: 24px; height: 2px; background: #fff;
+  margin: 5px 0; transition: 0.3s;
+}
+
+/* ========== Hero ========== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f 60%, #fdbb2d);
+  position: relative; padding-top: 64px; text-align: center; color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content { position: relative; z-index: 1; padding: 40px 24px; }
+.hero h1 {
+  font-size: 52px; font-weight: 800; margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  animation: heroFadeUp 1s ease forwards;
+}
+.hero .subtitle {
+  font-size: 20px; max-width: 700px; margin: 0 auto 60px;
+  opacity: 0.9; line-height: 1.8;
+  animation: heroFadeUp 1s ease 0.3s forwards; opacity: 0;
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-stats {
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+  animation: heroFadeUp 1s ease 0.6s forwards; opacity: 0;
+}
+.stat-card {
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 16px;
+  padding: 32px 40px; min-width: 200px; transition: transform 0.3s, box-shadow 0.3s;
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+.stat-number {
+  font-size: 56px; font-weight: 800; line-height: 1;
+  background: linear-gradient(to right, #fff, #ffd700);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label { font-size: 15px; margin-top: 8px; opacity: 0.9; }
+
+/* ========== Pain Points ========== */
+.pain-points { background: #fff; }
+.pain-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.pain-card {
+  background: #fff; border: 1px solid #eee; border-radius: 12px;
+  padding: 28px 24px; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.pain-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  background: linear-gradient(to bottom, #b21f1f, #fdbb2d); transition: width 0.3s;
+}
+.pain-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.pain-card:hover::before { width: 6px; }
+.pain-icon {
+  width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.pain-icon.red { background: #fff0f0; color: #b21f1f; }
+.pain-icon.orange { background: #fff8e6; color: #d48806; }
+.pain-icon.blue { background: #e6f7ff; color: #1a2a6c; }
+.pain-card h3 { font-size: 18px; color: #1a2a6c; margin-bottom: 8px; }
+.pain-card p { font-size: 14px; color: #666; line-height: 1.6; }
+
+/* ========== Architecture ========== */
+.architecture {
+  background: linear-gradient(180deg, #0d1b4a 0%, #1a2a6c 100%); color: #fff;
+}
+.architecture .section-title { color: #fff; }
+.architecture .section-subtitle { color: rgba(255,255,255,0.6); }
+.arch-layers { max-width: 900px; margin: 0 auto; }
+.arch-layer {
+  border-radius: 12px; padding: 24px 28px; margin-bottom: 0;
+  position: relative; cursor: pointer; transition: all 0.3s;
+}
+.arch-layer:hover { transform: scale(1.02); }
+.arch-layer-display {
+  background: rgba(79, 172, 254, 0.2); border: 1px solid rgba(79, 172, 254, 0.4);
+}
+.arch-layer-app {
+  background: rgba(37, 99, 235, 0.3); border: 1px solid rgba(37, 99, 235, 0.5);
+}
+.arch-layer-cap {
+  background: rgba(26, 42, 108, 0.6); border: 1px solid rgba(100, 130, 255, 0.4);
+}
+.arch-layer-data {
+  background: rgba(60, 60, 80, 0.5); border: 1px solid rgba(150, 150, 180, 0.4);
+}
+.arch-layer-label {
+  font-size: 14px; font-weight: 600; margin-bottom: 12px;
+  text-transform: uppercase; letter-spacing: 2px; opacity: 0.8;
+}
+.arch-layer-items {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.arch-item {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px; padding: 8px 16px; font-size: 14px;
+  transition: all 0.3s; cursor: default;
+}
+.arch-item:hover { background: rgba(255,255,255,0.22); transform: translateY(-2px); }
+.arch-arrow {
+  display: flex; justify-content: center; padding: 6px 0;
+}
+.arch-arrow svg { opacity: 0.5; }
+.arch-detail {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease;
+  font-size: 13px; color: rgba(255,255,255,0.7); padding: 0 4px;
+}
+.arch-layer:hover .arch-detail {
+  max-height: 100px; padding: 8px 4px 0;
+}
+
+/* ========== AS-IS vs TO-BE ========== */
+.comparison { background: #f5f7fa; }
+.compare-wrapper {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px;
+  align-items: start;
+}
+.compare-col { border-radius: 16px; padding: 28px; }
+.compare-col.as-is {
+  background: #fff; border: 2px solid #ffccc7;
+}
+.compare-col.to-be {
+  background: #fff; border: 2px solid #b7eb8f;
+}
+.compare-col h3 {
+  font-size: 20px; margin-bottom: 20px; display: flex;
+  align-items: center; gap: 8px;
+}
+.compare-col.as-is h3 { color: #cf1322; }
+.compare-col.to-be h3 { color: #389e0d; }
+.compare-step {
+  padding: 14px 16px; border-radius: 10px; margin-bottom: 12px;
+  font-size: 14px; position: relative;
+}
+.as-is .compare-step {
+  background: #fff1f0; border-left: 3px solid #ff7875;
+}
+.to-be .compare-step {
+  background: #f6ffed; border-left: 3px solid #95de64;
+}
+.compare-step .step-num {
+  font-weight: 700; font-size: 12px; display: inline-block;
+  width: 22px; height: 22px; line-height: 22px; text-align: center;
+  border-radius: 50%; margin-right: 8px;
+}
+.as-is .step-num { background: #ff7875; color: #fff; }
+.to-be .step-num { background: #95de64; color: #fff; }
+.compare-step .step-tag {
+  display: inline-block; font-size: 11px; padding: 2px 8px;
+  border-radius: 4px; margin-top: 6px;
+}
+.as-is .step-tag { background: #ffa39e; color: #820014; }
+.to-be .step-tag { background: #d9f7be; color: #135200; }
+.compare-arrows {
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: center; gap: 0; padding-top: 60px;
+}
+.compare-arrows .arrow-row {
+  height: 60px; display: flex; align-items: center;
+}
+
+/* ========== Modules ========== */
+.modules { background: #fff; }
+.module-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.module-card {
+  background: #fff; border: 1px solid #eee; border-radius: 14px;
+  padding: 24px; transition: all 0.3s; position: relative;
+}
+.module-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(26, 42, 108, 0.1);
+  border-color: #4facfe;
+}
+.module-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.module-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, #1a2a6c, #4facfe);
+}
+.module-name { font-size: 17px; font-weight: 700; color: #1a2a6c; }
+.module-id { font-size: 12px; color: #999; }
+.module-funcs { margin-bottom: 12px; }
+.module-func {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 0; border-bottom: 1px solid #f5f5f5; font-size: 14px;
+}
+.module-func:last-child { border-bottom: none; }
+.priority {
+  font-size: 11px; font-weight: 700; padding: 2px 8px;
+  border-radius: 4px; letter-spacing: 0.5px;
+}
+.priority.p0 { background: #fff0f0; color: #cf1322; }
+.priority.p1 { background: #fff8e6; color: #d48806; }
+.priority.p2 { background: #e6f7ff; color: #096dd9; }
+.module-tag {
+  display: inline-block; font-size: 11px; padding: 3px 10px;
+  border-radius: 20px; background: #f0f5ff; color: #1a2a6c;
+  border: 1px solid #d6e4ff;
+}
+
+/* ========== Data Model ========== */
+.data-model { background: #f5f7fa; }
+.er-container {
+  position: relative; max-width: 1000px; margin: 0 auto;
+  min-height: 600px;
+}
+.er-table {
+  position: absolute; background: #fff; border: 2px solid #1a2a6c;
+  border-radius: 10px; min-width: 180px; overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s;
+}
+.er-table:hover { transform: scale(1.04); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.er-table.center { border-color: #b21f1f; }
+.er-table-header {
+  background: #1a2a6c; color: #fff; padding: 10px 14px;
+  font-size: 14px; font-weight: 700;
+}
+.er-table.center .er-table-header { background: #b21f1f; }
+.er-table-field {
+  padding: 6px 14px; font-size: 12px; color: #555;
+  border-bottom: 1px solid #f0f0f0;
+}
+.er-table-field:last-child { border-bottom: none; }
+.er-table-field .key { color: #b21f1f; font-weight: 600; margin-right: 4px; }
+.er-line {
+  position: absolute; pointer-events: none;
+}
+.er-line line, .er-line path {
+  stroke: #aab; stroke-width: 1.5; fill: none;
+}
+
+/* ========== Approval Flow ========== */
+.approval { background: #fff; }
+.flow-list { display: flex; flex-direction: column; gap: 32px; }
+.flow-item { }
+.flow-title {
+  font-size: 17px; font-weight: 700; color: #1a2a6c;
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.flow-title .flow-badge {
+  font-size: 12px; padding: 3px 10px; border-radius: 20px;
+  background: linear-gradient(135deg, #1a2a6c, #4facfe); color: #fff;
+}
+.flow-nodes {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+}
+.flow-node {
+  background: #fff; border: 2px solid #1a2a6c; border-radius: 10px;
+  padding: 10px 18px; font-size: 13px; font-weight: 600;
+  color: #1a2a6c; transition: all 0.3s; cursor: default;
+  white-space: nowrap;
+}
+.flow-node:hover {
+  background: #1a2a6c; color: #fff; transform: scale(1.06);
+}
+.flow-node.start { border-color: #52c41a; color: #52c41a; }
+.flow-node.start:hover { background: #52c41a; color: #fff; }
+.flow-node.end { border-color: #b21f1f; color: #b21f1f; }
+.flow-node.end:hover { background: #b21f1f; color: #fff; }
+.flow-node.condition {
+  border-color: #fa8c16; color: #fa8c16; border-style: dashed;
+  transform: rotate(0deg);
+}
+.flow-node.condition:hover { background: #fa8c16; color: #fff; }
+.flow-arrow {
+  display: flex; align-items: center; padding: 0 4px; color: #bbb;
+  font-size: 18px;
+}
+.flow-branch {
+  display: flex; flex-direction: column; gap: 8px; margin: 0 4px;
+}
+.flow-branch-row {
+  display: flex; align-items: center; gap: 0;
+}
+.flow-branch-label {
+  font-size: 11px; color: #999; padding: 0 6px;
+}
+
+/* ========== AI Capabilities ========== */
+.ai-section {
+  background: linear-gradient(180deg, #0d1b4a, #1a2a6c); color: #fff;
+}
+.ai-section .section-title { color: #fff; }
+.ai-section .section-subtitle { color: rgba(255,255,255,0.6); }
+.ai-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.ai-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px; padding: 24px; transition: all 0.3s;
+}
+.ai-card:hover {
+  background: rgba(255,255,255,0.12); transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+.ai-card-name { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.ai-card-tag {
+  display: inline-block; font-size: 11px; padding: 3px 10px;
+  border-radius: 20px; background: rgba(79, 172, 254, 0.2);
+  color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.3);
+  margin-bottom: 12px;
+}
+.ai-card-desc { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 16px; line-height: 1.6; }
+.ai-card-effect {
+  font-size: 28px; font-weight: 800;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ai-card-effect-label { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ========== Implementation ========== */
+.timeline { background: #f5f7fa; }
+.timeline-track {
+  position: relative; display: flex; justify-content: space-between;
+  padding-top: 40px; overflow-x: auto;
+}
+.timeline-track::before {
+  content: ''; position: absolute; top: 58px; left: 5%; right: 5%;
+  height: 4px; background: linear-gradient(to right, #1a2a6c, #4facfe, #fdbb2d);
+  border-radius: 2px;
+}
+.timeline-phase {
+  flex: 1; min-width: 160px; text-align: center; position: relative;
+  padding: 0 8px;
+}
+.timeline-dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #1a2a6c; border: 4px solid #fff;
+  box-shadow: 0 0 0 3px #1a2a6c;
+  margin: 0 auto 16px; position: relative; z-index: 1;
+  transition: all 0.3s;
+}
+.timeline-phase:hover .timeline-dot {
+  transform: scale(1.3); background: #4facfe;
+  box-shadow: 0 0 0 3px #4facfe, 0 0 20px rgba(79,172,254,0.4);
+}
+.timeline-phase-label {
+  font-size: 15px; font-weight: 700; color: #1a2a6c; margin-bottom: 4px;
+}
+.timeline-phase-sub { font-size: 12px; color: #999; margin-bottom: 8px; }
+.timeline-deliverables {
+  background: #fff; border-radius: 8px; padding: 10px 12px;
+  font-size: 12px; color: #555; text-align: left;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid #eee;
+}
+.timeline-deliverables li {
+  padding: 3px 0; position: relative; padding-left: 14px;
+}
+.timeline-deliverables li::before {
+  content: '✓'; position: absolute; left: 0; color: #52c41a; font-size: 11px;
+}
+
+/* ========== Pricing ========== */
+.pricing { background: #fff; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; max-width: 960px; margin: 0 auto;
+}
+.pricing-card {
+  background: #fff; border: 2px solid #eee; border-radius: 16px;
+  padding: 32px 28px; text-align: center; transition: all 0.3s;
+  position: relative;
+}
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.pricing-card.recommended {
+  border-color: #1a2a6c; transform: scale(1.04);
+}
+.pricing-card.recommended:hover { transform: scale(1.04) translateY(-6px); }
+.pricing-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, #1a2a6c, #4facfe); color: #fff;
+  font-size: 12px; padding: 4px 16px; border-radius: 20px; font-weight: 600;
+}
+.pricing-name { font-size: 22px; font-weight: 700; color: #1a2a6c; margin-bottom: 8px; }
+.pricing-price {
+  font-size: 36px; font-weight: 800; color: #b21f1f; margin-bottom: 4px;
+}
+.pricing-price span { font-size: 14px; color: #999; font-weight: 400; }
+.pricing-period { font-size: 13px; color: #999; margin-bottom: 24px; }
+.pricing-features { text-align: left; margin-bottom: 24px; }
+.pricing-features li {
+  padding: 6px 0; font-size: 14px; color: #555;
+  display: flex; align-items: center; gap: 8px;
+}
+.pricing-features li::before {
+  content: '✓'; color: #52c41a; font-weight: 700; flex-shrink: 0;
+}
+.pricing-btn {
+  display: inline-block; padding: 12px 32px; border-radius: 8px;
+  font-size: 15px; font-weight: 600; transition: all 0.3s; cursor: pointer;
+  border: 2px solid #1a2a6c; color: #1a2a6c; background: #fff;
+}
+.pricing-btn:hover { background: #1a2a6c; color: #fff; }
+.pricing-card.recommended .pricing-btn {
+  background: #1a2a6c; color: #fff;
+}
+.pricing-card.recommended .pricing-btn:hover {
+  background: #4facfe; border-color: #4facfe;
+}
+
+/* ========== Footer ========== */
+.footer {
+  background: #0d1b4a; color: rgba(255,255,255,0.6);
+  padding: 40px 0; text-align: center; font-size: 14px;
+}
+.footer a { color: #4facfe; }
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 64px; left: 0; right: 0; background: rgba(26, 42, 108, 0.98);
+    padding: 16px; gap: 4px;
+  }
+  .nav-toggle { display: block; }
+  .hero h1 { font-size: 32px; }
+  .hero .subtitle { font-size: 15px; }
+  .stat-card { min-width: 140px; padding: 20px 24px; }
+  .stat-number { font-size: 36px; }
+  .section { padding: 48px 0; }
+  .section-title { font-size: 24px; }
+  .compare-wrapper { grid-template-columns: 1fr; }
+  .compare-arrows { display: none; }
+  .er-container { min-height: auto; }
+  .er-table { position: relative !important; margin-bottom: 16px; left: auto !important; top: auto !important; }
+  .er-line { display: none; }
+  .flow-nodes { flex-direction: column; align-items: stretch; }
+  .flow-arrow { justify-content: center; padding: 4px 0; }
+  .flow-branch { flex-direction: column; }
+  .timeline-track { flex-direction: column; align-items: stretch; padding-top: 0; }
+  .timeline-track::before { display: none; }
+  .timeline-phase { min-width: auto; text-align: left; padding: 12px 0; display: flex; gap: 16px; align-items: flex-start; }
+  .timeline-dot { margin: 4px 0 0 0; flex-shrink: 0; }
+  .pricing-card.recommended { transform: none; }
+  .pricing-card.recommended:hover { transform: translateY(-6px); }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-logo">
+      <div class="logo-icon">D</div>
+      <span>钉钉AI表格+OA审批 解决方案</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#overview">项目概览</a>
+      <a href="#architecture">架构设计</a>
+      <a href="#modules">功能清单</a>
+      <a href="#datamodel">数据模型</a>
+      <a href="#approval">审批流程</a>
+      <a href="#ai">AI能力</a>
+      <a href="#timeline">实施路径</a>
+    </div>
+    <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="overview">
+  <div class="hero-content">
+    <h1>开票流程数字化解决方案</h1>
+    <p class="subtitle">基于钉钉AI表格 + OA审批，构建"数据驱动+流程自动化+AI赋能"的新一代开票管理体系</p>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number"><span class="counter" data-target="50">0</span>%</div>
+        <div class="stat-label">流程效率提升</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span class="counter" data-target="80">0</span>%</div>
+        <div class="stat-label">数据错误率降低</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
+        <div class="stat-label">全流程可追溯</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pain Points ===== -->
+<section class="section pain-points" id="painpoints">
+  <div class="container">
+    <h2 class="section-title fade-in">当前业务痛点</h2>
+    <p class="section-subtitle fade-in">传统开票流程中的核心问题，制约业务效率与数据质量</p>
+    <div class="pain-grid">
+      <div class="pain-card fade-in">
+        <div class="pain-icon red">⊞</div>
+        <h3>数据孤岛</h3>
+        <p>各环节使用独立Excel，数据无法实时共享，信息重复录入且易出错</p>
+      </div>
+      <div class="pain-card fade-in">
+        <div class="pain-icon orange">⇶</div>
+        <h3>流程割裂</h3>
+        <p>审批与数据管理分离，需二次录入，流程衔接依赖人工传递</p>
+      </div>
+      <div class="pain-card fade-in">
+        <div class="pain-icon blue">◎</div>
+        <h3>进度不透明</h3>
+        <p>无法实时追踪开票进度，依赖人工催办，响应速度慢</p>
+      </div>
+      <div class="pain-card fade-in">
+        <div class="pain-icon red">◷</div>
+        <h3>统计滞后</h3>
+        <p>报表依赖人工汇总，决策数据延迟，无法支撑实时经营分析</p>
+      </div>
+      <div class="pain-card fade-in">
+        <div class="pain-icon orange">⚠</div>
+        <h3>风险不可控</h3>
+        <p>缺乏异常预警机制，超期/超额风险难发现，合规隐患大</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Architecture ===== -->
+<section class="section architecture" id="architecture">
+  <div class="container">
+    <h2 class="section-title fade-in">解决方案总体架构</h2>
+    <p class="section-subtitle fade-in">四层架构设计，从展示到数据全面覆盖开票业务场景</p>
+    <div class="arch-layers fade-in">
+      <!-- Display Layer -->
+      <div class="arch-layer arch-layer-display">
+        <div class="arch-layer-label">展示层 Presentation</div>
+        <div class="arch-layer-items">
+          <div class="arch-item">钉钉工作台</div>
+          <div class="arch-item">消息通知</div>
+          <div class="arch-item">待办中心</div>
+          <div class="arch-item">仪表盘</div>
+        </div>
+        <div class="arch-detail">用户通过钉钉工作台统一入口访问，消息通知实时推送审批与进度，待办中心集中处理任务，仪表盘可视化经营数据</div>
+      </div>
+      <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 4l0 14M5 12l7 7 7-7"/></svg></div>
+      <!-- Application Layer -->
+      <div class="arch-layer arch-layer-app">
+        <div class="arch-layer-label">应用层 Application</div>
+        <div class="arch-layer-items">
+          <div class="arch-item">需求管理</div>
+          <div class="arch-item">合同管理</div>
+          <div class="arch-item">用印管理</div>
+          <div class="arch-item">付款管理</div>
+          <div class="arch-item">开票管理</div>
+          <div class="arch-item">手续费管理</div>
+        </div>
+        <div class="arch-detail">六大核心业务模块覆盖开票全流程，从需求发起到开票确认，每个模块独立运行又数据互通</div>
+      </div>
+      <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 4l0 14M5 12l7 7 7-7"/></svg></div>
+      <!-- Capability Layer -->
+      <div class="arch-layer arch-layer-cap">
+        <div class="arch-layer-label">能力层 Capability</div>
+        <div class="arch-layer-items">
+          <div class="arch-item">AI表格能力</div>
+          <div class="arch-item">OA审批能力</div>
+          <div class="arch-item">AI智能能力</div>
+        </div>
+        <div class="arch-detail">AI表格提供数据管理与智能分析，OA审批驱动流程自动化，AI能力实现智能识别、预警与辅助决策</div>
+      </div>
+      <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 4l0 14M5 12l7 7 7-7"/></svg></div>
+      <!-- Data Layer -->
+      <div class="arch-layer arch-layer-data">
+        <div class="arch-layer-label">数据层 Data</div>
+        <div class="arch-layer-items">
+          <div class="arch-item">供应商主数据</div>
+          <div class="arch-item">需求数据</div>
+          <div class="arch-item">合同数据</div>
+          <div class="arch-item">付款数据</div>
+          <div class="arch-item">开票数据</div>
+          <div class="arch-item">审批数据</div>
+        </div>
+        <div class="arch-detail">统一数据底座，所有业务数据结构化存储，支持跨模块关联查询与实时分析</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AS-IS vs TO-BE ===== -->
+<section class="section comparison" id="comparison">
+  <div class="container">
+    <h2 class="section-title fade-in">业务流程优化对比</h2>
+    <p class="section-subtitle fade-in">从人工驱动到数据驱动的全面升级</p>
+    <div class="compare-wrapper fade-in">
+      <div class="compare-col as-is">
+        <h3>✕ AS-IS 现状流程</h3>
+        <div class="compare-step"><span class="step-num">1</span>邮件/微信提交开票需求<span class="step-tag">信息散落</span></div>
+        <div class="compare-step"><span class="step-num">2</span>手工录入Excel台账<span class="step-tag">重复录入</span></div>
+        <div class="compare-step"><span class="step-num">3</span>线下找领导签字审批<span class="step-tag">效率低</span></div>
+        <div class="compare-step"><span class="step-num">4</span>人工核对合同与金额<span class="step-tag">易出错</span></div>
+        <div class="compare-step"><span class="step-num">5</span>手工填写发票信息<span class="step-tag">耗时长</span></div>
+        <div class="compare-step"><span class="step-num">6</span>人工汇总统计报表<span class="step-tag">数据滞后</span></div>
+      </div>
+      <div class="compare-arrows">
+        <div class="arrow-row"><svg width="32" height="32" viewBox="0 0 24 24" fill="#1a2a6c"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="arrow-row"><svg width="32" height="32" viewBox="0 0 24 24" fill="#1a2a6c"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="arrow-row"><svg width="32" height="32" viewBox="0 0 24 24" fill="#1a2a6c"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="arrow-row"><svg width="32" height="32" viewBox="0 0 24 24" fill="#1a2a6c"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="arrow-row"><svg width="32" height="32" viewBox="0 0 24 24" fill="#1a2a6c"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="arrow-row"><svg width="32" height="32" viewBox="0 0 24 24" fill="#1a2a6c"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="compare-col to-be">
+        <h3>✓ TO-BE 目标流程</h3>
+        <div class="compare-step"><span class="step-num">1</span>钉钉AI表格在线提交<span class="step-tag">统一入口</span></div>
+        <div class="compare-step"><span class="step-num">2</span>数据自动同步至台账<span class="step-tag">零录入</span></div>
+        <div class="compare-step"><span class="step-num">3</span>OA审批自动流转<span class="step-tag">秒级响应</span></div>
+        <div class="compare-step"><span class="step-num">4</span>AI自动校验合同金额<span class="step-tag">零差错</span></div>
+        <div class="compare-step"><span class="step-num">5</span>AI识别自动填充发票<span class="step-tag">秒级完成</span></div>
+        <div class="compare-step"><span class="step-num">6</span>实时看板自动生成<span class="step-tag">实时洞察</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Modules ===== -->
+<section class="section modules" id="modules">
+  <div class="container">
+    <h2 class="section-title fade-in">功能模块清单</h2>
+    <p class="section-subtitle fade-in">8大核心模块，覆盖开票全业务场景</p>
+    <div class="module-grid">
+      <!-- M01 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M01</div>
+          <div><div class="module-name">需求管理</div><div class="module-id">Requirement</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">需求提交 <span class="priority p0">P0</span></div>
+          <div class="module-func">需求汇总 <span class="priority p0">P0</span></div>
+          <div class="module-func">需求匹配 <span class="priority p1">P1</span></div>
+          <div class="module-func">需求变更 <span class="priority p1">P1</span></div>
+          <div class="module-func">需求审批 <span class="priority p0">P0</span></div>
+        </div>
+        <span class="module-tag">AI表格 + OA审批</span>
+      </div>
+      <!-- M02 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M02</div>
+          <div><div class="module-name">合同管理</div><div class="module-id">Contract</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">合同创建 <span class="priority p0">P0</span></div>
+          <div class="module-func">合同审批 <span class="priority p0">P0</span></div>
+          <div class="module-func">合同归档 <span class="priority p1">P1</span></div>
+          <div class="module-func">合同查询 <span class="priority p1">P1</span></div>
+        </div>
+        <span class="module-tag">AI表格 + OA审批</span>
+      </div>
+      <!-- M03 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M03</div>
+          <div><div class="module-name">用印管理</div><div class="module-id">Seal</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">用印申请 <span class="priority p0">P0</span></div>
+          <div class="module-func">用印审批 <span class="priority p0">P0</span></div>
+          <div class="module-func">用印状态跟踪 <span class="priority p1">P1</span></div>
+          <div class="module-func">用印完成通知 <span class="priority p1">P1</span></div>
+        </div>
+        <span class="module-tag">OA审批</span>
+      </div>
+      <!-- M04 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M04</div>
+          <div><div class="module-name">付款管理</div><div class="module-id">Payment</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">付款申请 <span class="priority p0">P0</span></div>
+          <div class="module-func">付款审批 <span class="priority p0">P0</span></div>
+          <div class="module-func">付款执行 <span class="priority p1">P1</span></div>
+          <div class="module-func">付款确认 <span class="priority p1">P1</span></div>
+        </div>
+        <span class="module-tag">AI表格 + OA审批</span>
+      </div>
+      <!-- M05 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M05</div>
+          <div><div class="module-name">开票管理</div><div class="module-id">Invoice</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">开票任务生成 <span class="priority p0">P0</span></div>
+          <div class="module-func">开票进度跟踪 <span class="priority p0">P0</span></div>
+          <div class="module-func">开票催办提醒 <span class="priority p1">P1</span></div>
+          <div class="module-func">开票确认 <span class="priority p0">P0</span></div>
+          <div class="module-func">开票核验 <span class="priority p2">P2</span></div>
+        </div>
+        <span class="module-tag">AI表格 + OA审批 + AI能力</span>
+      </div>
+      <!-- M06 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M06</div>
+          <div><div class="module-name">手续费管理</div><div class="module-id">Fee</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">手续费申请 <span class="priority p0">P0</span></div>
+          <div class="module-func">手续费审批 <span class="priority p0">P0</span></div>
+          <div class="module-func">手续费统计 <span class="priority p1">P1</span></div>
+        </div>
+        <span class="module-tag">AI表格 + OA审批</span>
+      </div>
+      <!-- M07 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M07</div>
+          <div><div class="module-name">数据分析</div><div class="module-id">Analytics</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">经营看板 <span class="priority p0">P0</span></div>
+          <div class="module-func">需求分析 <span class="priority p1">P1</span></div>
+          <div class="module-func">开票进度报表 <span class="priority p1">P1</span></div>
+          <div class="module-func">差额分析 <span class="priority p1">P1</span></div>
+          <div class="module-func">费用汇总 <span class="priority p1">P1</span></div>
+          <div class="module-func">AI智能分析 <span class="priority p2">P2</span></div>
+        </div>
+        <span class="module-tag">AI仪表盘 + AI分析</span>
+      </div>
+      <!-- M08 -->
+      <div class="module-card fade-in">
+        <div class="module-header">
+          <div class="module-icon">M08</div>
+          <div><div class="module-name">系统管理</div><div class="module-id">System</div></div>
+        </div>
+        <div class="module-funcs">
+          <div class="module-func">供应商管理 <span class="priority p0">P0</span></div>
+          <div class="module-func">权限管理 <span class="priority p0">P0</span></div>
+          <div class="module-func">流程配置 <span class="priority p0">P0</span></div>
+          <div class="module-func">数据备份 <span class="priority p2">P2</span></div>
+        </div>
+        <span class="module-tag">AI表格</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Data Model ===== -->
+<section class="section data-model" id="datamodel">
+  <div class="container">
+    <h2 class="section-title fade-in">数据模型设计</h2>
+    <p class="section-subtitle fade-in">7张核心数据表，以供应商主数据为中心的关联体系</p>
+    <div class="er-container fade-in" id="erContainer">
+      <!-- SVG Lines -->
+      <svg class="er-line" id="erLines" width="1000" height="600" style="position:absolute;top:0;left:0;width:100%;height:100%;"></svg>
+      <!-- Center: 供应商主数据 -->
+      <div class="er-table center" id="erSupplier" style="left:380px;top:220px;">
+        <div class="er-table-header">供应商主数据表</div>
+        <div class="er-table-field"><span class="key">PK</span> 供应商ID</div>
+        <div class="er-table-field">供应商名称</div>
+        <div class="er-table-field">统一社会信用代码</div>
+        <div class="er-table-field">开户行及账号</div>
+      </div>
+      <!-- 需求申请表 -->
+      <div class="er-table" id="erReq" style="left:40px;top:20px;">
+        <div class="er-table-header">需求申请表</div>
+        <div class="er-table-field"><span class="key">PK</span> 需求ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 供应商ID</div>
+        <div class="er-table-field">需求金额</div>
+        <div class="er-table-field">需求日期</div>
+      </div>
+      <!-- 合同管理表 -->
+      <div class="er-table" id="erContract" style="left:40px;top:260px;">
+        <div class="er-table-header">合同管理表</div>
+        <div class="er-table-field"><span class="key">PK</span> 合同ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 供应商ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 需求ID</div>
+        <div class="er-table-field">合同金额</div>
+      </div>
+      <!-- 付款申请表 -->
+      <div class="er-table" id="erPayment" style="left:40px;top:480px;">
+        <div class="er-table-header">付款申请表</div>
+        <div class="er-table-field"><span class="key">PK</span> 付款ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 供应商ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 合同ID</div>
+        <div class="er-table-field">付款金额</div>
+      </div>
+      <!-- 开票进度表 -->
+      <div class="er-table" id="erInvoice" style="left:680px;top:20px;">
+        <div class="er-table-header">开票进度表</div>
+        <div class="er-table-field"><span class="key">PK</span> 开票ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 需求ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 合同ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 供应商ID</div>
+      </div>
+      <!-- 手续费申请表 -->
+      <div class="er-table" id="erFee" style="left:680px;top:280px;">
+        <div class="er-table-header">手续费申请表</div>
+        <div class="er-table-field"><span class="key">PK</span> 手续费ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 供应商ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 合同ID</div>
+        <div class="er-table-field">手续费金额</div>
+      </div>
+      <!-- 需求汇总表 -->
+      <div class="er-table" id="erSummary" style="left:680px;top:480px;">
+        <div class="er-table-header">需求汇总表</div>
+        <div class="er-table-field"><span class="key">PK</span> 汇总ID</div>
+        <div class="er-table-field"><span class="key">FK</span> 供应商ID</div>
+        <div class="er-table-field">汇总金额</div>
+        <div class="er-table-field">汇总周期</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Approval Flow ===== -->
+<section class="section approval" id="approval">
+  <div class="container">
+    <h2 class="section-title fade-in">审批流程设计</h2>
+    <p class="section-subtitle fade-in">5大审批流程，覆盖开票全业务场景的审批需求</p>
+    <div class="flow-list">
+      <!-- Flow 1 -->
+      <div class="flow-item fade-in">
+        <div class="flow-title">
+          <span class="flow-badge">流程1</span> 需求审批流程
+        </div>
+        <div class="flow-nodes">
+          <div class="flow-node start">发起申请</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">部门主管</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">财务确认</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node condition">金额&gt;50万？</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">总经理审批</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node end">审批结束</div>
+        </div>
+      </div>
+      <!-- Flow 2 -->
+      <div class="flow-item fade-in">
+        <div class="flow-title">
+          <span class="flow-badge">流程2</span> 合同审批流程
+        </div>
+        <div class="flow-nodes">
+          <div class="flow-node start">财务发起</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">法务审核</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">部门负责人</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">财务总监</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node end">审批结束</div>
+        </div>
+      </div>
+      <!-- Flow 3 -->
+      <div class="flow-item fade-in">
+        <div class="flow-title">
+          <span class="flow-badge">流程3</span> 用印审批流程
+        </div>
+        <div class="flow-nodes">
+          <div class="flow-node start">申请人</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">部门负责人</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">公章管理员</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node end">审批结束</div>
+        </div>
+      </div>
+      <!-- Flow 4 -->
+      <div class="flow-item fade-in">
+        <div class="flow-title">
+          <span class="flow-badge">流程4</span> 付款审批流程
+        </div>
+        <div class="flow-nodes">
+          <div class="flow-node start">申请人</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">财务审核</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node condition">条件分支</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-branch">
+            <div class="flow-branch-row">
+              <div class="flow-branch-label">≤5万</div>
+              <div class="flow-node">财务经理</div>
+            </div>
+            <div class="flow-branch-row">
+              <div class="flow-branch-label">&gt;5万</div>
+              <div class="flow-node">财务总监</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-node">总经理</div>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node end">审批结束</div>
+        </div>
+      </div>
+      <!-- Flow 5 -->
+      <div class="flow-item fade-in">
+        <div class="flow-title">
+          <span class="flow-badge">流程5</span> 手续费审批流程
+        </div>
+        <div class="flow-nodes">
+          <div class="flow-node start">申请人</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">财务审核</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">部门负责人</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node end">审批结束</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI Capabilities ===== -->
+<section class="section ai-section" id="ai">
+  <div class="container">
+    <h2 class="section-title fade-in">AI能力赋能</h2>
+    <p class="section-subtitle fade-in">8大AI应用场景，让开票流程从自动化走向智能化</p>
+    <div class="ai-grid">
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">发票信息自动识别</div>
+        <div class="ai-card-tag">AI图片识别</div>
+        <div class="ai-card-desc">上传发票图片自动提取关键信息，无需手工逐字录入</div>
+        <div class="ai-card-effect">-80%</div>
+        <div class="ai-card-effect-label">手工录入工作量</div>
+      </div>
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">智能数据填报</div>
+        <div class="ai-card-tag">AI生成文本</div>
+        <div class="ai-card-desc">输入供应商名称自动补全相关信息，智能推荐匹配数据</div>
+        <div class="ai-card-effect">+60%</div>
+        <div class="ai-card-effect-label">填报效率提升</div>
+      </div>
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">开票进度智能分析</div>
+        <div class="ai-card-tag">AI智能分析</div>
+        <div class="ai-card-desc">对话式查询开票进度，自然语言交互零门槛</div>
+        <div class="ai-card-effect">0门槛</div>
+        <div class="ai-card-effect-label">数据分析门槛</div>
+      </div>
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">经营数据可视化</div>
+        <div class="ai-card-tag">AI仪表盘</div>
+        <div class="ai-card-desc">一句话生成经营看板，数据洞察触手可及</div>
+        <div class="ai-card-effect">10秒</div>
+        <div class="ai-card-effect-label">生成报表耗时</div>
+      </div>
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">异常数据预警</div>
+        <div class="ai-card-tag">AI智能公式</div>
+        <div class="ai-card-desc">自动计算超期标红，风险提前发现并预警</div>
+        <div class="ai-card-effect">3天</div>
+        <div class="ai-card-effect-label">提前发现风险</div>
+      </div>
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">合同条款审查</div>
+        <div class="ai-card-tag">AI文本分析</div>
+        <div class="ai-card-desc">辅助审查关键条款，识别潜在风险点</div>
+        <div class="ai-card-effect">-50%</div>
+        <div class="ai-card-effect-label">审查时间</div>
+      </div>
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">多语言供应商沟通</div>
+        <div class="ai-card-tag">AI翻译</div>
+        <div class="ai-card-desc">自动翻译13种语言，支持跨国业务无缝沟通</div>
+        <div class="ai-card-effect">13种</div>
+        <div class="ai-card-effect-label">支持语言数</div>
+      </div>
+      <div class="ai-card fade-in">
+        <div class="ai-card-name">审批数据智能同步</div>
+        <div class="ai-card-tag">数据连接中心</div>
+        <div class="ai-card-desc">审批数据自动同步至AI表格，零人工搬运</div>
+        <div class="ai-card-effect">0次</div>
+        <div class="ai-card-effect-label">人工搬运次数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Timeline ===== -->
+<section class="section timeline" id="timeline">
+  <div class="container">
+    <h2 class="section-title fade-in">实施路径与里程碑</h2>
+    <p class="section-subtitle fade-in">6个阶段渐进式交付，确保项目稳步推进</p>
+    <div class="timeline-track fade-in">
+      <div class="timeline-phase">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-phase-label">P1 基础搭建</div>
+          <div class="timeline-phase-sub">第1-2周</div>
+          <ul class="timeline-deliverables">
+            <li>钉钉应用创建</li>
+            <li>AI表格基础配置</li>
+            <li>供应商主数据导入</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-phase-label">P2 流程配置</div>
+          <div class="timeline-phase-sub">第3-4周</div>
+          <ul class="timeline-deliverables">
+            <li>5大审批流程配置</li>
+            <li>审批表单设计</li>
+            <li>流程权限设置</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-phase-label">P3 自动化集成</div>
+          <div class="timeline-phase-sub">第5-6周</div>
+          <ul class="timeline-deliverables">
+            <li>审批数据自动同步</li>
+            <li>跨表数据关联</li>
+            <li>消息通知配置</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-phase-label">P4 AI能力部署</div>
+          <div class="timeline-phase-sub">第7-8周</div>
+          <ul class="timeline-deliverables">
+            <li>AI识别能力接入</li>
+            <li>智能填报配置</li>
+            <li>预警规则设置</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-phase-label">P5 报表看板</div>
+          <div class="timeline-phase-sub">第9-10周</div>
+          <ul class="timeline-deliverables">
+            <li>经营看板搭建</li>
+            <li>AI仪表盘配置</li>
+            <li>自动化报表</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-phase">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-phase-label">P6 测试上线</div>
+          <div class="timeline-phase-sub">第11-12周</div>
+          <ul class="timeline-deliverables">
+            <li>全流程UAT测试</li>
+            <li>用户培训</li>
+            <li>正式上线运维</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pricing ===== -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-title fade-in">投资估算</h2>
+    <p class="section-subtitle fade-in">灵活的版本选择，满足不同规模企业需求</p>
+    <div class="pricing-grid fade-in">
+      <div class="pricing-card">
+        <div class="pricing-name">免费版</div>
+        <div class="pricing-price">¥0<span>/月</span></div>
+        <div class="pricing-period">适合小团队试用</div>
+        <ul class="pricing-features">
+          <li>基础AI表格功能</li>
+          <li>2个审批流程</li>
+          <li>5人团队规模</li>
+          <li>基础数据报表</li>
+          <li>社区支持</li>
+        </ul>
+        <a class="pricing-btn" href="#">免费试用</a>
+      </div>
+      <div class="pricing-card recommended">
+        <div class="pricing-badge">推荐</div>
+        <div class="pricing-name">企业版</div>
+        <div class="pricing-price">¥9,800<span>/月</span></div>
+        <div class="pricing-period">适合50人以上团队</div>
+        <ul class="pricing-features">
+          <li>全部6大业务模块</li>
+          <li>5个审批流程</li>
+          <li>8大AI能力</li>
+          <li>不限团队人数</li>
+          <li>经营看板 + AI仪表盘</li>
+          <li>专属客户成功经理</li>
+        </ul>
+        <a class="pricing-btn" href="#">立即咨询</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">旗舰版</div>
+        <div class="pricing-price">¥28,800<span>/月</span></div>
+        <div class="pricing-period">适合大型企业</div>
+        <ul class="pricing-features">
+          <li>企业版全部功能</li>
+          <li>定制化审批流程</li>
+          <li>私有化部署选项</li>
+          <li>高级数据分析</li>
+          <li>SLA保障99.9%</li>
+          <li>7×24小时技术支持</li>
+        </ul>
+        <a class="pricing-btn" href="#">联系销售</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 钉钉AI表格+OA审批 开票流程数字化解决方案</p>
+    <p style="margin-top:8px;">联系我们：<a href="mailto:solution@dingtalk.com">solution@dingtalk.com</a> | 服务热线：400-000-0000</p>
+  </div>
+</footer>
+
+<script>
+// ===== Navigation Toggle =====
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+// Close nav on link click (mobile)
+document.querySelectorAll('.nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// ===== Scroll Fade-In =====
+var fadeEls = document.querySelectorAll('.fade-in');
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(function(el) { observer.observe(el); });
+
+// ===== Counter Animation =====
+var counters = document.querySelectorAll('.counter');
+var counterObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var el = entry.target;
+      var target = parseInt(el.getAttribute('data-target'));
+      var duration = 1500;
+      var start = 0;
+      var startTime = null;
+      function animate(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(animate);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(animate);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(function(c) { counterObserver.observe(c); });
+
+// ===== ER Diagram Lines =====
+function drawERLines() {
+  var container = document.getElementById('erContainer');
+  var svg = document.getElementById('erLines');
+  if (!container || !svg) return;
+  // Only draw on desktop
+  if (window.innerWidth < 769) { svg.innerHTML = ''; return; }
+
+  var rect = container.getBoundingClientRect();
+  var tables = {
+    supplier: document.getElementById('erSupplier'),
+    req: document.getElementById('erReq'),
+    contract: document.getElementById('erContract'),
+    payment: document.getElementById('erPayment'),
+    invoice: document.getElementById('erInvoice'),
+    fee: document.getElementById('erFee'),
+    summary: document.getElementById('erSummary')
+  };
+
+  function getCenter(id) {
+    var el = tables[id];
+    if (!el) return { x: 0, y: 0 };
+    return {
+      x: el.offsetLeft + el.offsetWidth / 2,
+      y: el.offsetTop + el.offsetHeight / 2
+    };
+  }
+  function getRight(id) {
+    var el = tables[id];
+    if (!el) return { x: 0, y: 0 };
+    return { x: el.offsetLeft + el.offsetWidth, y: el.offsetTop + el.offsetHeight / 2 };
+  }
+  function getLeft(id) {
+    var el = tables[id];
+    if (!el) return { x: 0, y: 0 };
+    return { x: el.offsetLeft, y: el.offsetTop + el.offsetHeight / 2 };
+  }
+
+  var lines = '';
+  function addLine(from, to) {
+    lines += '<line x1="' + from.x + '" y1="' + from.y + '" x2="' + to.x + '" y2="' + to.y + '" stroke="#aab" stroke-width="1.5" stroke-dasharray="6,3"/>';
+  }
+  // Connect left tables to supplier
+  addLine(getRight('req'), getLeft('supplier'));
+  addLine(getRight('contract'), getLeft('supplier'));
+  addLine(getRight('payment'), getLeft('supplier'));
+  // Connect right tables to supplier
+  addLine(getLeft('invoice'), getRight('supplier'));
+  addLine(getLeft('fee'), getRight('supplier'));
+  addLine(getLeft('summary'), getRight('supplier'));
+
+  svg.innerHTML = lines;
+}
+window.addEventListener('load', drawERLines);
+window.addEventListener('resize', drawERLines);
+
+// ===== Navbar scroll effect =====
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('navbar');
+  if (window.scrollY > 100) {
+    nav.style.background = 'rgba(26, 42, 108, 0.98)';
+  } else {
+    nav.style.background = 'rgba(26, 42, 108, 0.92)';
+  }
+});
+</script>
+</body>
+</html>

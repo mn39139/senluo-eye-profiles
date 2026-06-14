@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专精特新企业AI赋能实战会</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .poster {
+            width: 750px;
+            height: 1334px;
+            background: linear-gradient(180deg, #0a0e27 0%, #070b1f 40%, #040716 70%, #02040e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 顶部光柱 */
+        .top-light {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 500px;
+            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.25) 0%, rgba(0, 100, 255, 0.15) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .top-light::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(138, 43, 226, 0.6) 0%, rgba(0, 150, 255, 0.3) 50%, transparent 100%);
+            filter: blur(1px);
+        }
+
+        /* 顶部光线 */
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 400px;
+            background:
+                linear-gradient(180deg, rgba(138, 43, 226, 0.15) 0%, transparent 60%),
+                linear-gradient(90deg, transparent 40%, rgba(0, 150, 255, 0.08) 50%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 底部流线 */
+        .bottom-flow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 400px;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .flow-line {
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            border-radius: 2px;
+            filter: blur(1px);
+        }
+
+        .flow-1 {
+            left: 10%;
+            width: 200px;
+            background: linear-gradient(90deg, transparent, #ff3366, #ff6633, transparent);
+            transform: rotate(-8deg);
+            transform-origin: left center;
+            opacity: 0.8;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.5), 0 0 40px rgba(255, 102, 51, 0.3);
+        }
+
+        .flow-2 {
+            left: 25%;
+            width: 300px;
+            background: linear-gradient(90deg, transparent, #3366ff, #00ccff, transparent);
+            transform: rotate(-5deg);
+            transform-origin: left center;
+            opacity: 0.9;
+            box-shadow: 0 0 25px rgba(51, 102, 255, 0.5), 0 0 50px rgba(0, 204, 255, 0.3);
+        }
+
+        .flow-3 {
+            left: 45%;
+            width: 250px;
+            background: linear-gradient(90deg, transparent, #00ccff, #33ffcc, transparent);
+            transform: rotate(-3deg);
+            transform-origin: left center;
+            opacity: 0.85;
+            box-shadow: 0 0 20px rgba(0, 204, 255, 0.5), 0 0 40px rgba(51, 255, 204, 0.3);
+        }
+
+        .flow-4 {
+            left: 60%;
+            width: 280px;
+            background: linear-gradient(90deg, transparent, #6633ff, #3366ff, transparent);
+            transform: rotate(2deg);
+            transform-origin: left center;
+            opacity: 0.8;
+            box-shadow: 0 0 25px rgba(102, 51, 255, 0.5), 0 0 50px rgba(51, 102, 255, 0.3);
+        }
+
+        .flow-5 {
+            left: 75%;
+            width: 180px;
+            background: linear-gradient(90deg, transparent, #ff33cc, #ff3366, transparent);
+            transform: rotate(5deg);
+            transform-origin: left center;
+            opacity: 0.7;
+            box-shadow: 0 0 20px rgba(255, 51, 204, 0.5), 0 0 40px rgba(255, 51, 102, 0.3);
+        }
+
+        /* 粒子点 */
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+        }
+
+        /* 内容区域 */
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 50px 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 品牌区域 */
+        .brand-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .brand-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        /* 年份 */
+        .year-display {
+            font-size: 80px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffffff 0%, #a0a8c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        /* 主标题 */
+        .main-title {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #ffffff;
+            letter-spacing: 3px;
+        }
+
+        .ai-highlight {
+            background: linear-gradient(135deg, #00d4ff 0%, #00f5a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sub-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #00d4ff;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* 邀请函 */
+        .invitation-box {
+            margin-bottom: 60px;
+        }
+
+        .invitation-cn {
+            font-size: 64px;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 12px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .invitation-en {
+            font-size: 32px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        /* 信息区域 */
+        .info-area {
+            margin-top: auto;
+            margin-bottom: 80px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .info-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff 0%, #00f5a0 100%);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        /* 底部信息 */
+        .footer-info {
+            position: relative;
+            z-index: 2;
+            padding: 0 50px 40px;
+        }
+
+        .organizers {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        .organizers strong {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <!-- 背景效果 -->
+        <div class="top-light"></div>
+        <div class="light-rays"></div>
+        <div class="bottom-flow">
+            <div class="flow-line flow-1"></div>
+            <div class="flow-line flow-2"></div>
+            <div class="flow-line flow-3"></div>
+            <div class="flow-line flow-4"></div>
+            <div class="flow-line flow-5"></div>
+        </div>
+        <div class="particles">
+            <div class="particle" style="top:15%;left:20%"></div>
+            <div class="particle" style="top:25%;left:80%"></div>
+            <div class="particle" style="top:35%;left:15%"></div>
+            <div class="particle" style="top:45%;left:75%"></div>
+            <div class="particle" style="top:55%;left:25%"></div>
+            <div class="particle" style="top:65%;left:85%"></div>
+            <div class="particle" style="top:20%;left:60%"></div>
+            <div class="particle" style="top:40%;left:40%"></div>
+            <div class="particle" style="top:60%;left:10%"></div>
+            <div class="particle" style="top:70%;left:70%"></div>
+            <div class="particle" style="top:30%;left:90%"></div>
+            <div class="particle" style="top:50%;left:5%"></div>
+        </div>
+
+        <!-- 内容 -->
+        <div class="content">
+            <div class="brand-area">
+                <div class="brand-logo">AI</div>
+                <div class="brand-text">耐堅科技</div>
+            </div>
+
+            <div class="year-display">2026</div>
+
+            <h1 class="main-title">
+                专精特新企业<br>
+                <span class="ai-highlight">AI赋能实战会</span>
+            </h1>
+
+            <div class="sub-title">暨企业数字化转型峰会</div>
+
+            <div class="invitation-box">
+                <div class="invitation-cn">邀请函</div>
+                <div class="invitation-en">Invitation</div>
+            </div>
+
+            <div class="info-area">
+                <div class="info-item">
+                    <div class="info-dot"></div>
+                    <div class="info-text">2026年5月29日（周五）14:30</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-dot"></div>
+                    <div class="info-text">泉州市鲤城区新华北路363号</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <div class="organizers">
+                <strong>主办单位</strong> 泉州市中小企业服务中心 &nbsp;&nbsp;|&nbsp;&nbsp;
+                <strong>协办单位</strong> 福建成堂数字科技有限公司<br>
+                <span style="font-size:11px;color:rgba(255,255,255,0.25)">*本次活动为专精特新企业定向邀请制</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

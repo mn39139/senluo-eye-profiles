@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州顽猫服饰 — 童装制造领军企业</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{fontFamily:{sans:['Noto Sans SC','sans-serif']}}}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f0f14;color:#fff;font-family:'Noto Sans SC',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#12121a}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#f97316,#fb923c);border-radius:3px}
+
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;max-width:1400px;margin:0 auto;padding:0 20px}
+.bento-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.05);border-radius:18px;padding:26px;position:relative;overflow:hidden;backdrop-filter:blur(10px);transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease}
+.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(249,115,22,.08);border-color:rgba(249,115,22,.12)}
+.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,115,22,.25),transparent)}
+
+.glow-orange{box-shadow:0 0 36px rgba(249,115,22,.08),inset 0 0 36px rgba(249,115,22,.02)}
+.glow-cyan{box-shadow:0 0 36px rgba(34,211,238,.08),inset 0 0 36px rgba(34,211,238,.02)}
+.glow-pink{box-shadow:0 0 36px rgba(236,72,153,.08),inset 0 0 36px rgba(236,72,153,.02)}
+
+.gradient-text-orange{background:linear-gradient(135deg,#f97316,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-cyan{background:linear-gradient(135deg,#22d3ee,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-pink{background:linear-gradient(135deg,#ec4899,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-mixed{background:linear-gradient(135deg,#f97316,#22d3ee,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:16px;font-size:10px;font-weight:500;letter-spacing:.3px}
+.tag-orange{background:rgba(249,115,22,.1);color:#fb923c;border:1px solid rgba(249,115,22,.18)}
+.tag-cyan{background:rgba(34,211,238,.1);color:#67e8f9;border:1px solid rgba(34,211,238,.18)}
+.tag-pink{background:rgba(236,72,153,.1);color:#f472b6;border:1px solid rgba(236,72,153,.18)}
+.tag-white{background:rgba(255,255,255,.05);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08)}
+
+.big-number{font-size:clamp(44px,5.5vw,76px);font-weight:900;line-height:1;letter-spacing:-2px}
+
+.icon-box{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.icon-box-orange{background:linear-gradient(135deg,rgba(249,115,22,.15),rgba(251,146,60,.15));color:#fb923c}
+.icon-box-cyan{background:linear-gradient(135deg,rgba(34,211,238,.15),rgba(103,232,249,.15));color:#67e8f9}
+.icon-box-pink{background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(244,114,182,.15));color:#f472b6}
+
+.timeline-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;position:relative;z-index:2}
+.timeline-dot::after{content:'';position:absolute;top:-3px;left:-3px;width:16px;height:16px;border-radius:50%;border:2px solid currentColor;opacity:.25}
+.timeline-line{width:2px;flex:1;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent);margin:3px 0}
+
+.scroll-reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12;pointer-events:none}
+
+.stat-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.05);overflow:hidden}
+.stat-bar-fill{height:100%;border-radius:3px;transition:width 1.4s cubic-bezier(.25,.46,.45,.94);width:0}
+.stat-bar-fill.animated{width:var(--fill-width)}
+
+.case-card{background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:16px;transition:all .3s ease}
+.case-card:hover{background:rgba(255,255,255,.03);border-color:rgba(249,115,22,.12)}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse-glow{0%,100%{opacity:.12}50%{opacity:.2}}
+.float-anim{animation:float 5s ease-in-out infinite}
+.pulse-glow{animation:pulse-glow 4s ease-in-out infinite}
+
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr);gap:10px;padding:0 14px}[style*="grid-column: span 8"]{grid-column:span 6!important}[style*="grid-column: span 7"]{grid-column:span 6!important}[style*="grid-column: span 5"]{grid-column:span 6!important}[style*="grid-column: span 4"]{grid-column:span 6!important}[style*="grid-column: span 3"]{grid-column:span 3!important}[style*="grid-column: span 6"]{grid-column:span 6!important}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr;gap:8px;padding:0 10px}[style*="grid-column"]{grid-column:span 1!important}.big-number{font-size:36px;letter-spacing:-1px}}
+</style>
+</head>
+<body>
+
+<div class="hero-glow pulse-glow" style="top:-180px;left:-80px;width:500px;height:500px;background:radial-gradient(circle,#f97316,transparent)"></div>
+<div class="hero-glow pulse-glow" style="top:60px;right:-160px;width:500px;height:500px;background:radial-gradient(circle,#22d3ee,transparent);animation-delay:2s"></div>
+<div class="hero-glow pulse-glow" style="bottom:-100px;left:200px;width:400px;height:400px;background:radial-gradient(circle,#ec4899,transparent);animation-delay:3s"></div>
+
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#0f0f14]/80 border-b border-white/5">
+  <div class="max-w-[1400px] mx-auto px-5 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#f97316] to-[#fb923c] flex items-center justify-center">
+        <i class="fas fa-child text-white text-xs"></i>
+      </div>
+      <span class="font-bold text-base">顽猫服饰</span>
+    </div>
+    <div class="hidden md:flex items-center gap-7 text-xs text-white/40">
+      <a href="#about" class="hover:text-white transition-colors">企业概况</a>
+      <a href="#brands" class="hover:text-white transition-colors">品牌体系</a>
+      <a href="#products" class="hover:text-white transition-colors">产品系列</a>
+      <a href="#scale" class="hover:text-white transition-colors">生产规模</a>
+      <a href="#honor" class="hover:text-white transition-colors">荣誉资质</a>
+    </div>
+    <a href="http://m.61kids.cn/corp/635.html" target="_blank" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#f97316] to-[#fb923c] text-xs font-medium hover:shadow-lg hover:shadow-orange-500/20 transition-all">
+      品牌官网
+    </a>
+  </div>
+</nav>
+
+<div class="pt-20 pb-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-orange" style="grid-column:span 8;padding:36px;min-height:300px;display:flex;flex-direction:column;justify-content:center">
+    <div class="hero-glow pulse-glow" style="top:-80px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,#f97316,transparent)"></div>
+    <span class="tag tag-orange mb-3 inline-block w-fit"><i class="fas fa-tshirt"></i> 童装研发设计生产销售一体化企业</span>
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+      泉州顽猫服饰<br><span class="gradient-text-orange">童装制造领军企业</span>
+    </h1>
+    <p class="text-white/35 text-sm md:text-base max-w-xl leading-relaxed mb-5">
+      成立于2005年，位于福建晋江市良种场工业园区。集童装研发、设计、生产、销售于一体，主推米尼赛熊、卡库熊两大品牌，产品远销西欧、东欧、南美、北美、大洋洲等全球市场。
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <span class="tag tag-orange"><i class="fas fa-award"></i> 全国十大服装品牌</span>
+      <span class="tag tag-cyan"><i class="fas fa-globe-asia"></i> 出口5大洲</span>
+      <span class="tag tag-pink"><i class="fas fa-certificate"></i> ISO五大认证</span>
+      <span class="tag tag-white"><i class="fas fa-star"></i> 五星售后服务</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 4;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transition-delay:.12s">
+    <div class="hero-glow pulse-glow" style="bottom:-60px;left:-40px;width:260px;height:260px;background:radial-gradient(circle,#22d3ee,transparent)"></div>
+    <p class="text-white/25 text-[10px] uppercase tracking-widest mb-1">年产量</p>
+    <div class="big-number gradient-text-cyan">150<span class="text-2xl">万件</span></div>
+    <p class="text-white/35 text-xs mt-2">童装年生产能力</p>
+    <div class="mt-4 flex gap-2">
+      <span class="tag tag-cyan"><i class="fas fa-check-circle"></i> 满产运行</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<section id="about" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px">
+    <div class="big-number gradient-text-orange" style="font-size:clamp(32px,3.5vw,50px)">3000<span class="text-lg">万</span></div>
+    <p class="text-white/45 text-xs mt-1">注册资本</p>
+    <p class="text-white/20 text-[9px] mt-0.5">实缴850万</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.08s">
+    <div class="big-number gradient-text-cyan" style="font-size:clamp(32px,3.5vw,50px)">30000<span class="text-lg">㎡</span></div>
+    <p class="text-white/45 text-xs mt-1">现代化厂房</p>
+    <p class="text-white/20 text-[9px] mt-0.5">含公寓配套</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.16s">
+    <div class="big-number gradient-text-pink" style="font-size:clamp(32px,3.5vw,50px)">600<span class="text-lg">台</span></div>
+    <p class="text-white/45 text-xs mt-1">先进设备</p>
+    <p class="text-white/20 text-[9px] mt-0.5">欧洲日本进口</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.24s">
+    <div class="big-number gradient-text-orange" style="font-size:clamp(32px,3.5vw,50px)">100<span class="text-lg">+</span></div>
+    <p class="text-white/45 text-xs mt-1">设计团队</p>
+    <p class="text-white/20 text-[9px] mt-0.5">国际设计团队</p>
+  </div>
+
+</div>
+</section>
+
+<section id="brands" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+    <span class="tag tag-orange mb-3 inline-block"><i class="fas fa-crown"></i> 品牌体系</span>
+    <h2 class="text-2xl font-bold mb-1">两大童装品牌 · 打造百年经典</h2>
+    <p class="text-white/30 text-xs">2005年收购香港米尼赛熊品牌，成立米尼赛熊（中国）有限公司</p>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-orange" style="grid-column:span 6;transition-delay:0s">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="icon-box icon-box-orange"><i class="fas fa-bear"></i></div>
+      <div>
+        <h3 class="text-xl font-bold mb-1">米尼赛熊 MNSX</h3>
+        <p class="text-white/35 text-xs">主推品牌 · 收购香港品牌</p>
+      </div>
+    </div>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">品牌标志以符号包裹着活泼可爱，涵义是"开心、快乐"，在祖国及父母的关爱下健康快乐成长。五彩颜色搭配，时尚个性设计，精细做工，传递快乐与真诚。</p>
+    <div class="space-y-2.5 mb-4">
+      <div class="flex items-center gap-2"><i class="fas fa-user text-[#fb923c] text-[10px]"></i><span class="text-white/50 text-xs">定位：3-15岁追求休闲有品位的小朋友</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-heart text-[#fb923c] text-[10px]"></i><span class="text-white/50 text-xs">理念：开心快乐，健康快乐成长</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-star text-[#fb923c] text-[10px]"></i><span class="text-white/50 text-xs">目标：打造成百年经典童装品牌</span></div>
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-orange">时尚羽绒</span>
+      <span class="tag tag-orange">棉服</span>
+      <span class="tag tag-orange">休闲夹克</span>
+      <span class="tag tag-orange">校服</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 6;transition-delay:.1s">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="icon-box icon-box-cyan"><i class="fas fa-paw"></i></div>
+      <div>
+        <h3 class="text-xl font-bold mb-1">卡库熊</h3>
+        <p class="text-white/35 text-xs">主推童装品牌</p>
+      </div>
+    </div>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">与米尼赛熊并列为公司两大主推童装品牌，产品类别涵盖时尚羽绒/棉服、靓丽休闲夹克和校服，致力于全面满足儿童时尚生活需求。</p>
+    <div class="space-y-2.5 mb-4">
+      <div class="flex items-center gap-2"><i class="fas fa-child text-[#67e8f9] text-[10px]"></i><span class="text-white/50 text-xs">定位：大中小男女童全年龄段</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-tshirt text-[#67e8f9] text-[10px]"></i><span class="text-white/50 text-xs">产品：羽绒/棉服、夹克、校服</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-globe text-[#67e8f9] text-[10px]"></i><span class="text-white/50 text-xs">市场：国内+外贸出口</span></div>
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-cyan">时尚设计</span>
+      <span class="tag tag-cyan">全年龄段</span>
+      <span class="tag tag-cyan">内外销</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="products" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+    <span class="tag tag-pink mb-3 inline-block"><i class="fas fa-boxes"></i> 产品系列</span>
+    <h2 class="text-xl font-bold mb-1">三大核心产品线 · 满足儿童时尚生活</h2>
+    <p class="text-white/30 text-xs">面料以梭织纯棉为主，结合天然棉、麻、奥代尔，规格覆盖9-36个月、8-16岁</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:0s">
+    <div class="icon-box icon-box-orange mb-4"><i class="fas fa-cloud"></i></div>
+    <h3 class="text-lg font-bold mb-1">时尚羽绒/棉服</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">核心产品类别，采用优质羽绒和棉料，时尚设计，保暖舒适，适合秋冬季节穿着。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-orange">羽绒服</span>
+      <span class="tag tag-orange">棉服</span>
+      <span class="tag tag-orange">保暖</span>
+    </div>
+    <div class="mt-3">
+      <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">产品占比</span><span class="text-[#fb923c]">40%</span></div>
+      <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#f97316] to-[#fb923c]" style="--fill-width:40%"></div></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:.08s">
+    <div class="icon-box icon-box-cyan mb-4"><i class="fas fa-jacket"></i></div>
+    <h3 class="text-lg font-bold mb-1">靓丽休闲夹克</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">时尚休闲夹克，靓丽设计，采用梭织纯棉面料，舒适透气，适合日常休闲穿着。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-cyan">休闲夹克</span>
+      <span class="tag tag-cyan">时尚设计</span>
+      <span class="tag tag-cyan">纯棉面料</span>
+    </div>
+    <div class="mt-3">
+      <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">产品占比</span><span class="text-[#67e8f9]">35%</span></div>
+      <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#22d3ee] to-[#67e8f9]" style="--fill-width:35%"></div></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:.16s">
+    <div class="icon-box icon-box-pink mb-4"><i class="fas fa-school"></i></div>
+    <h3 class="text-lg font-bold mb-1">校服系列</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">专业校服设计与生产，符合学校需求，质量可靠，2024年晋江市产品质量监督抽查合格。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-pink">校服</span>
+      <span class="tag tag-pink">学生服</span>
+      <span class="tag tag-pink">质量合格</span>
+    </div>
+    <div class="mt-3">
+      <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">产品占比</span><span class="text-[#f472b6]">25%</span></div>
+      <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#ec4899] to-[#f472b6]" style="--fill-width:25%"></div></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="scale" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-orange" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-orange mb-3 inline-block"><i class="fas fa-industry"></i> 生产规模</span>
+    <h3 class="text-lg font-bold mb-3">现代化生产基地</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-4">位于福建晋江市良种场工业园区，靠近厦门港，距泉州晋江机场20分钟车程，距厦门国际机场60分钟车程。</p>
+    <div class="space-y-3">
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-orange" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-building"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">现代化厂房 25000-30000㎡</p>
+            <p class="text-white/30 text-[10px]">含公寓配套，国际设计团队</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-cyan" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-cogs"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">先进设备 600+台</p>
+            <p class="text-white/30 text-[10px]">欧洲、日本一流电脑设备</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-pink" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-users"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">设计团队 100+人</p>
+            <p class="text-white/30 text-[10px]">经营管理和开发设计团队</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-cyan mb-3 inline-block"><i class="fas fa-globe-asia"></i> 市场布局</span>
+    <h3 class="text-lg font-bold mb-3">国内市场 + 外贸出口</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-4">公司分为国内市场部和外贸部，产品深受海内外客户青睐，拥有忠实客户群。</p>
+    <div class="grid grid-cols-2 gap-2 mb-4">
+      <div class="case-card text-center">
+        <i class="fas fa-flag text-[#fb923c] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">国内市场</p>
+        <p class="text-white/30 text-[10px]">全国拓展加盟</p>
+      </div>
+      <div class="case-card text-center">
+        <i class="fas fa-plane text-[#67e8f9] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">外贸出口</p>
+        <p class="text-white/30 text-[10px]">5大洲市场</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-orange">西欧</span>
+      <span class="tag tag-cyan">东欧</span>
+      <span class="tag tag-pink">南美</span>
+      <span class="tag tag-orange">北美</span>
+      <span class="tag tag-cyan">大洋洲</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="honor" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-orange mb-3 inline-block"><i class="fas fa-certificate"></i> 国际认证</span>
+    <h3 class="text-base font-bold mb-3">五大管理体系认证</h3>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-check-circle text-[#fb923c] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">ISO9001国际质量管理体系认证</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-check-circle text-[#fb923c] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">ISO14001环境管理体系认证</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-check-circle text-[#fb923c] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">ISO45001职业健康安全管理体系认证</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-check-circle text-[#fb923c] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">SA8000-2014企业社会责任管理体系认证</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-check-circle text-[#fb923c] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">GB/T 27922-2011商品售后服务五星认证</p></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-pink mb-3 inline-block"><i class="fas fa-trophy"></i> 企业荣誉</span>
+    <h3 class="text-base font-bold mb-3">多项行业荣誉</h3>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#f472b6] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">全国十大服装品牌</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#f472b6] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">泉州市知名商标</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#f472b6] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">泉州市守合同重信用企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#f472b6] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">企业信用等级AAA级企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#f472b6] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">全国服装行业质量领先品牌</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#f472b6] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">2024年晋江市产品质量监督抽查合格</p></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-orange mb-3 inline-block"><i class="fas fa-sitemap"></i> 股权结构</span>
+    <h3 class="text-base font-bold mb-3">企业基本信息</h3>
+    <div class="space-y-2.5 text-xs">
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">公司全称</span><span class="text-white/70">泉州顽猫服饰有限公司</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">成立时间</span><span class="text-white/70">2005年9月20日</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">法定代表人</span><span class="text-white/70">王天助</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">注册资本</span><span class="text-white/70">3000万元（实缴850万）</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">所属行业</span><span class="text-white/70">服装/纺织/皮革</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">企业类型</span><span class="text-white/70">有限责任公司</span></div>
+      <div class="flex justify-between py-1.5"><span class="text-white/40">经营状态</span><span class="text-[#fb923c]">存续（在营）</span></div>
+    </div>
+    <div class="mt-4">
+      <p class="text-[10px] text-white/30 mb-2">股东结构</p>
+      <div class="flex gap-1 h-5 rounded overflow-hidden">
+        <div class="bg-gradient-to-r from-[#f97316] to-[#fb923c] flex items-center justify-center text-[9px] font-bold" style="width:90%">王天助 90%</div>
+        <div class="bg-gradient-to-r from-[#22d3ee] to-[#67e8f9] flex items-center justify-center text-[9px] font-bold" style="width:10%">王育端 10%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-cyan mb-3 inline-block"><i class="fas fa-link"></i> 关联企业</span>
+    <h3 class="text-base font-bold mb-3">企业族群</h3>
+    <div class="space-y-2.5">
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-orange" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-building"></i></div>
+          <div><p class="text-xs font-semibold">石狮市顽猫服饰有限公司</p><p class="text-white/30 text-[10px]">2003年成立 · 前身企业 · 注册资本100万</p></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-cyan" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-crown"></i></div>
+          <div><p class="text-xs font-semibold">米尼赛熊（中国）有限公司</p><p class="text-white/30 text-[10px]">2005年成立 · 国内独家运营权</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-pink mb-3 inline-block"><i class="fas fa-handshake"></i> 加盟合作</span>
+    <h3 class="text-base font-bold mb-3">加盟条件与支持</h3>
+    <div class="space-y-3">
+      <div>
+        <p class="text-xs font-semibold mb-2 text-[#f472b6]">加盟条件</p>
+        <div class="space-y-1.5">
+          <div class="flex items-start gap-2"><i class="fas fa-coins text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">具备资金实力，满足品牌推广要求</p></div>
+          <div class="flex items-start gap-2"><i class="fas fa-lightbulb text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">具有品牌意识，长远商业眼光</p></div>
+          <div class="flex items-start gap-2"><i class="fas fa-store text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">经营场所30㎡以上，产品展位15㎡以上</p></div>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-semibold mb-2 text-[#67e8f9]">加盟支持</p>
+        <div class="space-y-1.5">
+          <div class="flex items-start gap-2"><i class="fas fa-gift text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">全国统一配赠品支持（画册、X支架、广告牌）</p></div>
+          <div class="flex items-start gap-2"><i class="fas fa-bullhorn text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">独到营销理念和策略，强健销售支持</p></div>
+          <div class="flex items-start gap-2"><i class="fas fa-pencil-ruler text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">超强设计阵容，高效生产能力</p></div>
+          <div class="flex items-start gap-2"><i class="fas fa-truck text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">专人配送服务，贴身快捷</p></div>
+          <div class="flex items-start gap-2"><i class="fas fa-chalkboard-teacher text-white/30 text-[10px] mt-1"></i><p class="text-white/40 text-[11px]">系统从业指导与培训</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-pink" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-pink mb-3 inline-block"><i class="fas fa-heart"></i> 企业文化</span>
+    <h3 class="text-base font-bold mb-3">品牌理念与宗旨</h3>
+    <div class="space-y-3">
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-orange" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-star"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">企业宗旨</p>
+            <p class="text-white/40 text-[11px] leading-relaxed">以质量求生存，以创新求发展</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-cyan" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-users"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">企业理念</p>
+            <p class="text-white/40 text-[11px] leading-relaxed">顾客至上、服务至上、以诚信合作互利互赢</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-pink" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-flag"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">品牌愿景</p>
+            <p class="text-white/40 text-[11px] leading-relaxed">追求完美与令人信赖的品牌形象，打造成百年经典童装品牌</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;text-align:center;padding:40px 28px;background:linear-gradient(135deg,rgba(249,115,22,.04),rgba(34,211,238,.04),rgba(236,72,153,.04));border-color:rgba(249,115,22,.08)">
+    <div class="hero-glow pulse-glow" style="top:-120px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,#f97316,transparent)"></div>
+    <span class="tag tag-orange mb-3 inline-block"><i class="fas fa-child"></i> 童装使命</span>
+    <h2 class="text-2xl md:text-3xl font-black mb-2">
+      致力于全面满足<br><span class="gradient-text-mixed">儿童时尚生活</span>
+    </h2>
+    <p class="text-white/35 text-sm max-w-lg mx-auto leading-relaxed mb-5">
+      以质量求生存，以创新求发展。顾客至上、服务至上、以诚信合作互利互赢，追求完美与令人信赖的品牌形象，打造成百年经典童装品牌。
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="http://m.61kids.cn/corp/635.html" target="_blank" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#f97316] to-[#fb923c] text-sm font-bold hover:shadow-lg hover:shadow-orange-500/20 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-globe"></i> 品牌官网
+      </a>
+      <a href="http://m.61kids.cn/brand-54150/" target="_blank" class="px-6 py-2.5 rounded-full border border-white/10 text-sm font-medium hover:bg-white/5 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-handshake"></i> 加盟合作
+      </a>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-4">
+<div class="bento-grid">
+  <div class="bento-card" style="grid-column:span 12;padding:16px 24px">
+    <h4 class="text-xs font-bold mb-2 text-white/50"><i class="fas fa-link mr-1.5 text-[#f97316]"></i>参考来源</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+      <a href="https://m.zhipin.com/companys/2acf95608ce6ecef1nJ83969Ew~~.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>BOSS直聘-泉州顽猫服饰</a>
+      <a href="https://shuidi.cn/company-7b7becb4470417305356f3dac5077ed4.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>水滴信用-泉州顽猫服饰</a>
+      <a href="http://m.61kids.cn/corp/635.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>61kids-米尼赛熊品牌</a>
+      <a href="http://m.61kids.cn/brand-54150/" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>61kids-米尼赛熊加盟</a>
+      <a href="https://www.jobui.com/company/14954222/" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>职友集-米尼赛熊中国</a>
+      <a href="https://www.jinjiang.gov.cn/xxgk/zfxxgkzl/bmzfxxgk/scjdglj/zfxxgkml/202410/t20241028_3098302.htm" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>晋江市监局-质量抽查</a>
+      <a href="https://www.aiqicha.com/person?personId=1a09549937693a9d0ae8cfaf82ce3c2f" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>爱企查-王天助</a>
+      <a href="https://shuidi.cn/company-0b67d22ae57c8234bdfc72ca4aabb94b.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#fb923c] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>水滴信用-石狮顽猫服饰</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer class="border-t border-white/5 py-5">
+  <div class="max-w-[1400px] mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-2">
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-5 rounded bg-gradient-to-br from-[#f97316] to-[#fb923c] flex items-center justify-center"><i class="fas fa-child text-white text-[8px]"></i></div>
+      <span class="text-xs text-white/25">泉州顽猫服饰 · 童装制造领军企业</span>
+    </div>
+    <p class="text-white/15 text-[10px]">39139@胜天半子</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        entry.target.querySelectorAll('.stat-bar-fill').forEach(bar=>{setTimeout(()=>bar.classList.add('animated'),300)});
+      }
+    });
+  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.scroll-reveal').forEach(el=>observer.observe(el));
+
+  if(typeof motion!=='undefined'&&motion.motion){
+    const{animate,inView}=motion.motion;
+    document.querySelectorAll('.bento-card').forEach(card=>{
+      inView(card,()=>{animate(card,{opacity:[0,1],y:[24,0]},{duration:.5,easing:[.25,.46,.45,.94]})},{margin:'-40px'});
+    });
+    document.querySelectorAll('.big-number').forEach(num=>{
+      inView(num,()=>{animate(num,{opacity:[0,1],scale:[.85,1]},{duration:.7,easing:[.25,.46,.45,.94]})});
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+  });
+});
+</script>
+
+</body>
+</html>

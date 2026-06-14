@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鹏翔实业 — 中国再生石领军企业</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.min.js"></script>
+<script>
+tailwind.config={theme:{extend:{fontFamily:{sans:['Noto Sans SC','sans-serif']}}}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#06080e;color:#fff;font-family:'Noto Sans SC',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0a0c14}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#22c55e,#059669);border-radius:3px}
+
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;max-width:1400px;margin:0 auto;padding:0 20px}
+.bento-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.05);border-radius:18px;padding:26px;position:relative;overflow:hidden;backdrop-filter:blur(10px);transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease}
+.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(34,197,94,.08);border-color:rgba(34,197,94,.12)}
+.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,197,94,.25),transparent)}
+
+.glow-green{box-shadow:0 0 36px rgba(34,197,94,.08),inset 0 0 36px rgba(34,197,94,.02)}
+.glow-amber{box-shadow:0 0 36px rgba(245,158,11,.08),inset 0 0 36px rgba(245,158,11,.02)}
+.glow-teal{box-shadow:0 0 36px rgba(20,184,166,.08),inset 0 0 36px rgba(20,184,166,.02)}
+
+.gradient-text-green{background:linear-gradient(135deg,#22c55e,#059669);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-amber{background:linear-gradient(135deg,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-teal{background:linear-gradient(135deg,#14b8a6,#0d9488);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-mixed{background:linear-gradient(135deg,#22c55e,#14b8a6,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:16px;font-size:10px;font-weight:500;letter-spacing:.3px}
+.tag-green{background:rgba(34,197,94,.1);color:#4ade80;border:1px solid rgba(34,197,94,.18)}
+.tag-amber{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.18)}
+.tag-teal{background:rgba(20,184,166,.1);color:#2dd4bf;border:1px solid rgba(20,184,166,.18)}
+.tag-white{background:rgba(255,255,255,.05);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08)}
+
+.big-number{font-size:clamp(44px,5.5vw,76px);font-weight:900;line-height:1;letter-spacing:-2px}
+
+.icon-box{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.icon-box-green{background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(5,150,105,.15));color:#4ade80}
+.icon-box-amber{background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(217,119,6,.15));color:#fbbf24}
+.icon-box-teal{background:linear-gradient(135deg,rgba(20,184,166,.15),rgba(13,148,136,.15));color:#2dd4bf}
+
+.timeline-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;position:relative;z-index:2}
+.timeline-dot::after{content:'';position:absolute;top:-3px;left:-3px;width:16px;height:16px;border-radius:50%;border:2px solid currentColor;opacity:.25}
+.timeline-line{width:2px;flex:1;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent);margin:3px 0}
+
+.scroll-reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12;pointer-events:none}
+
+.stat-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.05);overflow:hidden}
+.stat-bar-fill{height:100%;border-radius:3px;transition:width 1.4s cubic-bezier(.25,.46,.45,.94);width:0}
+.stat-bar-fill.animated{width:var(--fill-width)}
+
+.case-card{background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:16px;transition:all .3s ease}
+.case-card:hover{background:rgba(255,255,255,.03);border-color:rgba(34,197,94,.12)}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse-glow{0%,100%{opacity:.12}50%{opacity:.2}}
+.float-anim{animation:float 5s ease-in-out infinite}
+.pulse-glow{animation:pulse-glow 4s ease-in-out infinite}
+
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr);gap:10px;padding:0 14px}[style*="grid-column: span 8"]{grid-column:span 6!important}[style*="grid-column: span 7"]{grid-column:span 6!important}[style*="grid-column: span 5"]{grid-column:span 6!important}[style*="grid-column: span 4"]{grid-column:span 6!important}[style*="grid-column: span 3"]{grid-column:span 3!important}[style*="grid-column: span 6"]{grid-column:span 6!important}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr;gap:8px;padding:0 10px}[style*="grid-column"]{grid-column:span 1!important}.big-number{font-size:36px;letter-spacing:-1px}}
+</style>
+</head>
+<body>
+
+<div class="hero-glow pulse-glow" style="top:-180px;left:-80px;width:500px;height:500px;background:radial-gradient(circle,#059669,transparent)"></div>
+<div class="hero-glow pulse-glow" style="top:60px;right:-160px;width:500px;height:500px;background:radial-gradient(circle,#f59e0b,transparent);animation-delay:2s"></div>
+
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#06080e]/80 border-b border-white/5">
+  <div class="max-w-[1400px] mx-auto px-5 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#22c55e] to-[#059669] flex items-center justify-center">
+        <i class="fas fa-mountain text-white text-xs"></i>
+      </div>
+      <span class="font-bold text-base">鹏翔实业</span>
+    </div>
+    <div class="hidden md:flex items-center gap-7 text-xs text-white/40">
+      <a href="#about" class="hover:text-white transition-colors">企业概况</a>
+      <a href="#products" class="hover:text-white transition-colors">产品体系</a>
+      <a href="#tech" class="hover:text-white transition-colors">技术实力</a>
+      <a href="#milestones" class="hover:text-white transition-colors">发展历程</a>
+      <a href="#honor" class="hover:text-white transition-colors">荣誉资质</a>
+    </div>
+    <a href="http://www.pengxiang.fj.cn/" target="_blank" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#22c55e] to-[#059669] text-xs font-medium hover:shadow-lg hover:shadow-green-500/20 transition-all">
+      官方网站
+    </a>
+  </div>
+</nav>
+
+<div class="pt-20 pb-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-green" style="grid-column:span 8;padding:36px;min-height:300px;display:flex;flex-direction:column;justify-content:center">
+    <div class="hero-glow pulse-glow" style="top:-80px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,#22c55e,transparent)"></div>
+    <span class="tag tag-green mb-3 inline-block w-fit"><i class="fas fa-leaf"></i> 福建省首家人造石企业 · 循环经济标杆</span>
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+      鹏翔实业<br><span class="gradient-text-green">中国再生石领军企业</span>
+    </h1>
+    <p class="text-white/35 text-sm md:text-base max-w-xl leading-relaxed mb-5">
+      成立于2006年，位于石材之都南安市水头镇。集再生石生产与销售、工装家装服务、石材市场运营为一体，产品远销全球120+国家，致力环保再生石材，共建美好生活家园。
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <span class="tag tag-green"><i class="fas fa-recycle"></i> 循环经济建材</span>
+      <span class="tag tag-amber"><i class="fas fa-industry"></i> 工业4.0智造</span>
+      <span class="tag tag-teal"><i class="fas fa-globe-asia"></i> 120+国家出口</span>
+      <span class="tag tag-white"><i class="fas fa-award"></i> 制造业单项冠军</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-amber" style="grid-column:span 4;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transition-delay:.12s">
+    <div class="hero-glow pulse-glow" style="bottom:-60px;left:-40px;width:260px;height:260px;background:radial-gradient(circle,#f59e0b,transparent)"></div>
+    <p class="text-white/25 text-[10px] uppercase tracking-widest mb-1">年产能</p>
+    <div class="big-number gradient-text-amber">850<span class="text-2xl">万㎡</span></div>
+    <p class="text-white/35 text-xs mt-2">高质量再生石大板年产能</p>
+    <div class="mt-4 flex gap-2">
+      <span class="tag tag-green"><i class="fas fa-check-circle"></i> 满产运行</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<section id="about" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px">
+    <div class="big-number gradient-text-green" style="font-size:clamp(32px,3.5vw,50px)">150<span class="text-lg">亩</span></div>
+    <p class="text-white/45 text-xs mt-1">总占地面积</p>
+    <p class="text-white/20 text-[9px] mt-0.5">5大生产基地</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.08s">
+    <div class="big-number gradient-text-amber" style="font-size:clamp(32px,3.5vw,50px)">800<span class="text-lg">人</span></div>
+    <p class="text-white/45 text-xs mt-1">员工规模</p>
+    <p class="text-white/20 text-[9px] mt-0.5">参保365人(2024)</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.16s">
+    <div class="big-number gradient-text-teal" style="font-size:clamp(32px,3.5vw,50px)">200<span class="text-lg">万吨</span></div>
+    <p class="text-white/45 text-xs mt-1">年综合利用废碎石粉</p>
+    <p class="text-white/20 text-[9px] mt-0.5">循环经济核心指标</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.24s">
+    <div class="big-number gradient-text-green" style="font-size:clamp(32px,3.5vw,50px)">5<span class="text-lg">亿</span></div>
+    <p class="text-white/45 text-xs mt-1">总投资额</p>
+    <p class="text-white/20 text-[9px] mt-0.5">注册资本6800万</p>
+  </div>
+
+</div>
+</section>
+
+<section id="products" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+    <span class="tag tag-green mb-3 inline-block"><i class="fas fa-cubes"></i> 产品体系</span>
+    <h2 class="text-2xl font-bold mb-1">四大再生石产品线 + 工程运营 + 石材市场</h2>
+    <p class="text-white/30 text-xs">全球品类最齐全的再生石商品线，覆盖建筑装饰全场景</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:0s">
+    <div class="icon-box icon-box-green mb-4"><i class="fas fa-gem"></i></div>
+    <h3 class="text-lg font-bold mb-1">生态大理石（岗石）</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">大颗粒/中颗粒/细颗粒/细粉板/摩卡系列，广泛应用于商超、医院、学校、酒店、别墅、写字楼、家装等。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-green">大颗粒</span>
+      <span class="tag tag-green">细粉板</span>
+      <span class="tag tag-green">摩卡系</span>
+    </div>
+    <div class="mt-3">
+      <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">年产能</span><span class="text-[#4ade80]">400万㎡</span></div>
+      <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#22c55e] to-[#059669]" style="--fill-width:47%"></div></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:.08s">
+    <div class="icon-box icon-box-amber mb-4"><i class="fas fa-th-large"></i></div>
+    <h3 class="text-lg font-bold mb-1">生态石英石</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">纹路/花纹/颖粒/纯色/玻璃系列，广泛应用于厨卫台面、家具台面、实验室操作台、室内地面墙面等。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-amber">纹路系列</span>
+      <span class="tag tag-amber">纯色系列</span>
+      <span class="tag tag-amber">玻璃系列</span>
+    </div>
+    <div class="mt-3">
+      <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">耀升智能园产能</span><span class="text-[#fbbf24]">250万㎡</span></div>
+      <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#f59e0b] to-[#d97706]" style="--fill-width:29%"></div></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:.16s">
+    <div class="icon-box icon-box-teal mb-4"><i class="fas fa-border-all"></i></div>
+    <h3 class="text-lg font-bold mb-1">无机水磨石</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">2011年从意大利引进世界最先进工艺，室内/室外系列，应用于商场、医院、机场、地铁、别墅外墙、餐饮连锁等。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-teal">室内系列</span>
+      <span class="tag tag-teal">室外系列</span>
+      <span class="tag tag-teal">一体卫浴</span>
+    </div>
+    <div class="mt-3">
+      <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">年产能</span><span class="text-[#2dd4bf]">280万㎡</span></div>
+      <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#14b8a6] to-[#0d9488]" style="--fill-width:33%"></div></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <div class="icon-box icon-box-green mb-4"><i class="fas fa-ring"></i></div>
+    <h3 class="text-lg font-bold mb-1">人造玉石</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">采用意大利真空振动加压成形技术，秉承天然石材色彩花纹优点，又能人为构思依意设计，应用于室内装饰墙面、背景墙、透光装饰等。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-green">透光装饰</span>
+      <span class="tag tag-green">背景墙</span>
+      <span class="tag tag-green">真空加压成形</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.18s">
+    <div class="icon-box icon-box-amber mb-4"><i class="fas fa-hard-hat"></i></div>
+    <h3 class="text-lg font-bold mb-1">工程运营 + 石材市场</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">工程运营中心提供板材切割、异形加工、雕刻、水刀拼花、线条、弧形板等加工，年生产200万㎡工程产品。鹏翔石材城为全球客商提供一站式选材平台。</p>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-amber">异形加工</span>
+      <span class="tag tag-amber">水刀拼花</span>
+      <span class="tag tag-amber">鹏翔石材城</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="tech" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-green" style="grid-column:span 7;transition-delay:0s">
+    <span class="tag tag-green mb-3 inline-block"><i class="fas fa-flask"></i> 核心技术突破</span>
+    <h3 class="text-xl font-bold mb-1">纺织/石材固废耦合制备再生石</h3>
+    <p class="text-white/25 text-[10px] mb-4">福建省科学技术进步奖二等奖 · 国家"十三五"重点研发计划</p>
+    <div class="space-y-0 relative ml-1">
+      <div class="flex gap-3 pb-4 relative">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot bg-amber-400 text-amber-400"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="flex-1 -mt-0.5">
+          <div class="text-amber-300 text-xs font-semibold mb-1">固废来源</div>
+          <p class="text-white/45 text-xs leading-relaxed">石材加工产生的边角料、石粉 + 鞋服纺织行业废弃纤维。福建石材与纺织两大支柱产业年产值超<strong class="text-white/70">1.6万亿元</strong>，年产生千万吨固废。</p>
+        </div>
+      </div>
+      <div class="flex gap-3 pb-4 relative">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot bg-teal-400 text-teal-400"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="flex-1 -mt-0.5">
+          <div class="text-teal-300 text-xs font-semibold mb-1">耦合技术</div>
+          <p class="text-white/45 text-xs leading-relaxed">醇解工艺提取鞋服固废有效成分→制成纤维源不饱和树脂→与石材废料按比例混合→<strong class="text-white/70">真空压制+高温固化</strong>→高端再生石板材。</p>
+        </div>
+      </div>
+      <div class="flex gap-3 relative">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot bg-green-400 text-green-400"></div>
+        </div>
+        <div class="flex-1 -mt-0.5">
+          <div class="text-green-300 text-xs font-semibold mb-1">性能突破</div>
+          <p class="text-white/45 text-xs leading-relaxed">抗压强度<strong class="text-white/70">135.8MPa</strong>、弯曲强度<strong class="text-white/70">28.0MPa</strong>，远超人造岗石国家标准，生产成本下降<strong class="text-green-400/80">11%以上</strong>。产品已应用于厦门翔安新机场。</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <span class="tag tag-green">8项核心技术</span>
+      <span class="tag tag-amber">4项成套关键技术</span>
+      <span class="tag tag-teal">闭环产业链</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 5;transition-delay:.12s">
+    <span class="tag tag-amber mb-3 inline-block"><i class="fas fa-robot"></i> 智能制造</span>
+    <h3 class="text-lg font-bold mb-3">耀升再生石全产业链智能产业园</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-4">省级重点工业项目，用地15万㎡，总投资3.5亿元，按国际工业4.0标准打造。</p>
+    <div class="space-y-3">
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-green" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-cogs"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">10条自动化石英石大板生产线</p>
+            <p class="text-white/30 text-[10px]">+4条磨机线+1条全智能台面板线</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-amber" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-microchip"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">关键工序数控化率 100%</p>
+            <p class="text-white/30 text-[10px]">物联网+5G赋能，行业智能化新标杆</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-teal" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-link"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">原料→台面 一体化加工</p>
+            <p class="text-white/30 text-[10px]">自动翻转上料机+智能切割机互联</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="milestones" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+    <span class="tag tag-teal mb-3 inline-block"><i class="fas fa-history"></i> 发展历程</span>
+    <h2 class="text-xl font-bold">19年深耕再生石 · 从福建首创到全球领军</h2>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:0s">
+    <div class="space-y-4">
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#22c55e] to-[#059669] flex items-center justify-center text-[10px] font-bold flex-shrink-0">06</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2006 启航</p><p class="text-white/40 text-[10px]">泉州市鹏翔岗石有限公司成立，2条岗石生产线，<strong class="text-white/60">福建首家人造石企业</strong></p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#22c55e] to-[#059669] flex items-center justify-center text-[10px] font-bold flex-shrink-0">07</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2007 卓越</p><p class="text-white/40 text-[10px]">投入2条石英石生产线，"人造石十强品牌"</p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#22c55e] to-[#059669] flex items-center justify-center text-[10px] font-bold flex-shrink-0">10</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2010 更名</p><p class="text-white/40 text-[10px]">更名为"福建鹏翔实业有限公司"，"福建名牌产品"</p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center text-[10px] font-bold flex-shrink-0">11</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2011 布局</p><p class="text-white/40 text-[10px]"><strong class="text-white/60">从意大利引进世界最先进室外无机石工艺</strong>，建成首条生产线</p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center text-[10px] font-bold flex-shrink-0">12</div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2012 蝶变</p><p class="text-white/40 text-[10px]">福建省循环经济、节能减排示范企业</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <div class="space-y-4">
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#14b8a6] to-[#0d9488] flex items-center justify-center text-[10px] font-bold flex-shrink-0">19</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2019 荣耀</p><p class="text-white/40 text-[10px]">南安市长质量奖 + GREENGUARD认证 + <strong class="text-white/60">与同济大学成立再生石研究中心</strong></p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#14b8a6] to-[#0d9488] flex items-center justify-center text-[10px] font-bold flex-shrink-0">20</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2020 科研</p><p class="text-white/40 text-[10px]"><strong class="text-white/60">制造业单项冠军</strong> + 科技小巨人 + 国家"固废资源化"示范基地</p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#22c55e] to-[#059669] flex items-center justify-center text-[10px] font-bold flex-shrink-0">22</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2022 智造</p><p class="text-white/40 text-[10px]">耀升智能园投产（3.5亿/15万㎡），中国人造石专委会<strong class="text-white/60">主任单位</strong></p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#22c55e] to-[#059669] flex items-center justify-center text-[10px] font-bold flex-shrink-0">23</div><div class="timeline-line"></div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2023 超越</p><p class="text-white/40 text-[10px]">纳税超<strong class="text-white/60">3500万</strong>，泉州民企100强，全国首批"千企百城"</p></div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center text-[10px] font-bold flex-shrink-0">24</div></div>
+        <div class="flex-1 -mt-0.5"><p class="text-xs font-bold mb-0.5">2024 省科技奖</p><p class="text-white/40 text-[10px]"><strong class="text-white/60">福建省科学技术进步奖二等奖</strong>，市级工业龙头企业</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="honor" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:0s">
+    <span class="tag tag-green mb-3 inline-block"><i class="fas fa-trophy"></i> 国家级</span>
+    <h3 class="text-base font-bold mb-3">国家级荣誉</h3>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-medal text-[#4ade80] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">国家重点研发计划"固废资源化"再生石产业示范基地</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-medal text-[#4ade80] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">全国首批"千企百城"商标品牌价值提升行动</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-medal text-[#4ade80] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">中国绿色建材产品最高三星级认证</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-medal text-[#4ade80] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">美国GREENGUARD绿色卫士认证</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-medal text-[#4ade80] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">国家标准参编单位（T/CECS628-2019等）</p></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:.08s">
+    <span class="tag tag-amber mb-3 inline-block"><i class="fas fa-award"></i> 省级</span>
+    <h3 class="text-base font-bold mb-3">省级荣誉</h3>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">福建省科学技术进步奖二等奖（2024）</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">省级制造业单项冠军企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">省级专精特新中小企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">省级科技小巨人领军企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">福建省循环经济示范试点企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-star text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">福建名牌产品（2010/2013）</p></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:.16s">
+    <span class="tag tag-teal mb-3 inline-block"><i class="fas fa-certificate"></i> 市级/行业</span>
+    <h3 class="text-base font-bold mb-3">市级及行业荣誉</h3>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-crown text-[#2dd4bf] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">泉州市级工业龙头企业（2025）</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-crown text-[#2dd4bf] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">泉州民营企业100强（2023）</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-crown text-[#2dd4bf] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">泉州市民营经济纳税大户</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-crown text-[#2dd4bf] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">南安市长质量奖（2019）</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-crown text-[#2dd4bf] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">南安慈善贡献奖（认捐1000万）</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-crown text-[#2dd4bf] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">中国人造石专委会主任单位</p></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-green mb-3 inline-block"><i class="fas fa-sitemap"></i> 股权结构</span>
+    <h3 class="text-base font-bold mb-3">企业基本信息</h3>
+    <div class="space-y-2.5 text-xs">
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">公司全称</span><span class="text-white/70">福建鹏翔实业有限公司</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">成立时间</span><span class="text-white/70">2006年3月3日</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">法定代表人</span><span class="text-white/70">王少芳</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">注册资本</span><span class="text-white/70">6800万元（实缴）</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">所属行业</span><span class="text-white/70">非金属矿物制品业</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">企业类型</span><span class="text-white/70">有限责任公司（自然人投资）</span></div>
+      <div class="flex justify-between py-1.5"><span class="text-white/40">税务信用</span><span class="text-[#4ade80]">A级（2024）</span></div>
+    </div>
+    <div class="mt-4">
+      <p class="text-[10px] text-white/30 mb-2">股东结构</p>
+      <div class="flex gap-1 h-5 rounded overflow-hidden">
+        <div class="bg-gradient-to-r from-[#22c55e] to-[#059669] flex items-center justify-center text-[9px] font-bold" style="width:50%">王明显 50%</div>
+        <div class="bg-gradient-to-r from-[#14b8a6] to-[#0d9488] flex items-center justify-center text-[9px] font-bold" style="width:25%">王少芳 25%</div>
+        <div class="bg-gradient-to-r from-[#f59e0b] to-[#d97706] flex items-center justify-center text-[9px] font-bold" style="width:15%">王达欣 15%</div>
+        <div class="bg-gradient-to-r from-[#6366f1] to-[#4f46e5] flex items-center justify-center text-[9px] font-bold" style="width:10%">王达伟 10%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-amber mb-3 inline-block"><i class="fas fa-map-marked-alt"></i> 生产基地</span>
+    <h3 class="text-base font-bold mb-3">5大生产基地</h3>
+    <div class="space-y-2.5">
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-green" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-building"></i></div>
+          <div><p class="text-xs font-semibold">鹏翔再生石总部</p><p class="text-white/30 text-[10px]">150亩 · 再生石艺术广场 · 文化馆 · 选材中心</p></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-amber" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-industry"></i></div>
+          <div><p class="text-xs font-semibold">耀升智能产业园</p><p class="text-white/30 text-[10px]">15万㎡ · 工业4.0 · 省级重点 · 3.5亿投资</p></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-teal" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-gem"></i></div>
+          <div><p class="text-xs font-semibold">再生大理石基地</p><p class="text-white/30 text-[10px]">8万㎡ · 年产400万㎡ · 全自动生产线</p></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-green" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-border-all"></i></div>
+          <div><p class="text-xs font-semibold">无机水磨石基地</p><p class="text-white/30 text-[10px]">6万㎡ · 年产280万㎡ · 意大利工艺</p></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-amber" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-cubes"></i></div>
+          <div><p class="text-xs font-semibold">原材料中心</p><p class="text-white/30 text-[10px]">4万㎡ · 9条破碎线 · 年产20万吨骨料</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;text-align:center;padding:40px 28px;background:linear-gradient(135deg,rgba(34,197,94,.04),rgba(20,184,166,.04),rgba(245,158,11,.04));border-color:rgba(34,197,94,.08)">
+    <div class="hero-glow pulse-glow" style="top:-120px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,#059669,transparent)"></div>
+    <span class="tag tag-green mb-3 inline-block"><i class="fas fa-leaf"></i> 绿色使命</span>
+    <h2 class="text-2xl md:text-3xl font-black mb-2">
+      致力环保再生石材<br>共建<span class="gradient-text-mixed">美好生活家园</span>
+    </h2>
+    <p class="text-white/35 text-sm max-w-lg mx-auto leading-relaxed mb-5">
+      践行"绿水青山就是金山银山"理念，遵循"减量化、再利用、资源化"原则，以尽可能少的资源消耗和尽可能小的环境代价，取得最大的经济产出和最少的废物排放。
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="http://www.pengxiang.fj.cn/" target="_blank" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#22c55e] to-[#059669] text-sm font-bold hover:shadow-lg hover:shadow-green-500/20 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-globe"></i> 访问官网
+      </a>
+      <a href="http://www.pengxiang.fj.cn/page.php?pnid=10" target="_blank" class="px-6 py-2.5 rounded-full border border-white/10 text-sm font-medium hover:bg-white/5 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-industry"></i> 生产基地
+      </a>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-4">
+<div class="bento-grid">
+  <div class="bento-card" style="grid-column:span 12;padding:16px 24px">
+    <h4 class="text-xs font-bold mb-2 text-white/50"><i class="fas fa-link mr-1.5 text-[#22c55e]"></i>参考来源</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+      <a href="http://www.pengxiang.fj.cn/" target="_blank" class="text-[10px] text-white/25 hover:text-[#4ade80] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>鹏翔实业官方网站</a>
+      <a href="http://www.pengxiang.fj.cn/page.php?pnid=9" target="_blank" class="text-[10px] text-white/25 hover:text-[#4ade80] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>鹏翔品牌历程</a>
+      <a href="https://m.qcc.com/firm/724d9bcfbb6383836ed7d7778b9b1d8e.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#4ade80] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>企查查-福建鹏翔实业</a>
+      <a href="https://www.fujian.gov.cn/zwgk/ztzl/sxzygwzxsgzx/flsxkmh/202605/t20260530_7154280.htm" target="_blank" class="text-[10px] text-white/25 hover:text-[#4ade80] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>福建省政府-跨产业循环经济</a>
+      <a href="https://www.qixin.com/operation/27a6fd54-d137-4c0c-9b37-cfda22a5a4a6" target="_blank" class="text-[10px] text-white/25 hover:text-[#4ade80] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>启信宝-福建鹏翔实业</a>
+      <a href="https://m.maigoo.com/brand/39009.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#4ade80] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>买购网-鹏翔实业品牌</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer class="border-t border-white/5 py-5">
+  <div class="max-w-[1400px] mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-2">
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-5 rounded bg-gradient-to-br from-[#22c55e] to-[#059669] flex items-center justify-center"><i class="fas fa-mountain text-white text-[8px]"></i></div>
+      <span class="text-xs text-white/25">鹏翔实业 · 中国再生石领军企业</span>
+    </div>
+    <p class="text-white/15 text-[10px]">39139@胜天半子</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        entry.target.querySelectorAll('.stat-bar-fill').forEach(bar=>{setTimeout(()=>bar.classList.add('animated'),300)});
+      }
+    });
+  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.scroll-reveal').forEach(el=>observer.observe(el));
+
+  if(typeof motion!=='undefined'&&motion.motion){
+    const{animate,inView}=motion.motion;
+    document.querySelectorAll('.bento-card').forEach(card=>{
+      inView(card,()=>{animate(card,{opacity:[0,1],y:[24,0]},{duration:.5,easing:[.25,.46,.45,.94]})},{margin:'-40px'});
+    });
+    document.querySelectorAll('.big-number').forEach(num=>{
+      inView(num,()=>{animate(num,{opacity:[0,1],scale:[.85,1]},{duration:.7,easing:[.25,.46,.45,.94]})});
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+  });
+});
+</script>
+
+</body>
+</html>

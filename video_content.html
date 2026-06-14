@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真正厉害的销售，都是会讲故事的</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/11.15.0/framer-motion.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background: #050816;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .bg-mesh { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .bg-mesh::before {
+            content: ''; position: absolute; top: -30%; left: -20%; width: 70%; height: 70%;
+            background: radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%);
+        }
+        .bg-mesh::after {
+            content: ''; position: absolute; bottom: -20%; right: -20%; width: 60%; height: 60%;
+            background: radial-gradient(ellipse, rgba(236,72,153,0.1) 0%, transparent 70%);
+        }
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 16px; padding: 16px; max-width: 1280px; margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+        .bento-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px; padding: 28px; backdrop-filter: blur(16px);
+            position: relative; overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .bento-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        }
+        .bento-card:hover {
+            transform: translateY(-3px); border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+        }
+        .gradient-purple { background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-cyan { background: linear-gradient(135deg, #06b6d4, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-pink { background: linear-gradient(135deg, #ec4899, #f43f5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-gold { background: linear-gradient(135deg, #f59e0b, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .big-num { font-size: 80px; font-weight: 900; line-height: 1; letter-spacing: -3px; font-family: 'Inter', sans-serif; }
+        .tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px; border-radius: 100px; font-size: 11px;
+            font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .tag-purple { background: rgba(99,102,241,0.12); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.25); }
+        .tag-cyan { background: rgba(6,182,212,0.12); color: #67e8f9; border: 1px solid rgba(6,182,212,0.25); }
+        .tag-pink { background: rgba(236,72,153,0.12); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.25); }
+        .tag-gold { background: rgba(245,158,11,0.12); color: #fcd34d; border: 1px solid rgba(245,158,11,0.25); }
+        .step-num {
+            width: 36px; height: 36px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 15px; flex-shrink: 0; font-family: 'Inter', sans-serif;
+        }
+        .quote-line { border-left: 3px solid; padding-left: 16px; font-style: italic; }
+        .progress-track { height: 6px; background: rgba(255,255,255,0.04); border-radius: 100px; overflow: hidden; }
+        .progress-bar { height: 100%; border-radius: 100px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+        .comparison-col {
+            background: rgba(255,255,255,0.03); border-radius: 16px; padding: 20px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .comparison-col.active { border-color: rgba(6,182,212,0.3); background: rgba(6,182,212,0.05); }
+        .comparison-col.best { border-color: rgba(236,72,153,0.4); background: rgba(236,72,153,0.06); }
+        .source-link {
+            color: rgba(255,255,255,0.4); text-decoration: none;
+            border-bottom: 1px dashed rgba(255,255,255,0.2); transition: all 0.3s;
+        }
+        .source-link:hover { color: rgba(255,255,255,0.7); border-bottom-color: rgba(255,255,255,0.5); }
+        .story-block {
+            position: relative; padding: 16px 20px; border-radius: 14px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+        }
+        .story-block::before {
+            content: '"'; position: absolute; top: -4px; left: 12px;
+            font-size: 48px; font-weight: 900; line-height: 1;
+            background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(236,72,153,0.3));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .timeline-dot {
+            width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+            position: relative; z-index: 1;
+        }
+        .timeline-line {
+            position: absolute; left: 5px; top: 12px; bottom: 0; width: 2px;
+            background: rgba(255,255,255,0.06);
+        }
+        footer {
+            text-align: center; padding: 60px 20px 40px;
+            color: rgba(255,255,255,0.25); font-size: 13px;
+            position: relative; z-index: 1;
+        }
+        .scroll-reveal {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-grid > * { grid-column: span 1 !important; grid-row: span 1 !important; }
+            .big-num { font-size: 52px; }
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050816; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 100px; }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+
+    <header class="relative z-10 text-center pt-24 pb-16 px-4">
+        <div class="scroll-reveal">
+            <span class="tag tag-purple mb-5 inline-block">
+                <i class="fas fa-play-circle"></i> 视频内容结构化解析
+            </span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black mb-5 scroll-reveal leading-tight" style="transition-delay:0.1s">
+            真正厉害的<span class="gradient-purple">销售</span><br>
+            都是会<span class="gradient-cyan">讲故事</span>的
+        </h1>
+        <p class="text-lg text-white/40 max-w-xl mx-auto scroll-reveal" style="transition-delay:0.2s">
+            张老师的沟通哲学 · #销售 #谈判
+        </p>
+        <div class="flex items-center justify-center gap-5 mt-6 text-white/25 text-sm scroll-reveal" style="transition-delay:0.3s">
+            <span><i class="far fa-calendar-alt mr-1"></i>2026年5月22日</span>
+            <span><i class="far fa-heart mr-1"></i>79</span>
+            <span><i class="far fa-comment-dots mr-1"></i>86</span>
+            <span><i class="far fa-share-square mr-1"></i>48</span>
+        </div>
+        <div class="mt-5 scroll-reveal" style="transition-delay:0.35s">
+            <a href="https://weixin.qq.com/sph/A3WSeH2uBa" target="_blank" class="source-link text-xs">
+                <i class="fas fa-external-link-alt mr-1"></i>原始视频链接
+            </a>
+        </div>
+    </header>
+
+    <main class="bento-grid">
+
+        <!-- 1. 核心洞察：数据 vs 故事 -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 5; grid-row: span 2;">
+            <span class="tag tag-cyan mb-4 inline-block"><i class="fas fa-brain"></i> 核心洞察</span>
+            <h2 class="text-2xl font-bold mb-4">说服他人最有效的方式是什么？</h2>
+            <p class="text-white/60 leading-relaxed mb-5">
+                很多人第一反应是<strong class="text-white/80">事实和数据</strong>。然而研究表明，数据仅能激发听者大脑的<strong class="text-red-400">2个</strong>基本功能区域（理解与语言），听者只是快速理解含义并做出基本回应，仅此而已。
+            </p>
+            <p class="text-white/60 leading-relaxed mb-6">
+                但<strong class="text-white/80">讲故事</strong>却能激发听者大脑的<strong style="background:linear-gradient(135deg,#06b6d4,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">7个</strong>功能区域，涵盖嗅觉、触觉、理解、语言、情感等。通过讲故事打动客户，成功率显著提升。
+            </p>
+            <div class="flex gap-4 mb-5">
+                <div class="flex-1 bg-white/[0.03] rounded-2xl p-5 text-center border border-white/[0.04]">
+                    <div class="big-num text-white/20">2</div>
+                    <div class="text-white/35 text-sm mt-2">数据激活区域</div>
+                    <div class="text-white/20 text-xs mt-1">理解 + 语言</div>
+                </div>
+                <div class="flex-1 rounded-2xl p-5 text-center border border-cyan-500/20" style="background:rgba(6,182,212,0.04);">
+                    <div class="big-num gradient-cyan">7</div>
+                    <div class="text-white/50 text-sm mt-2">故事激活区域</div>
+                    <div class="text-white/30 text-xs mt-1">嗅觉+触觉+理解+语言+情感…</div>
+                </div>
+            </div>
+            <div class="quote-line border-purple-400 text-white/50 text-sm">
+                "一个精彩的故事，能有效建立与客户之间的信任感，增强购买意愿。糟糕的故事则让客户瞬间产生抗拒。"
+            </div>
+        </div>
+
+        <!-- 2. 好故事的4个要素 -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 4; grid-row: span 2; transition-delay:0.1s;">
+            <span class="tag tag-pink mb-4 inline-block"><i class="fas fa-star"></i> 好故事4要素</span>
+            <h3 class="text-xl font-bold mb-5">一个好故事需具备</h3>
+            <div class="space-y-4">
+                <div class="flex gap-3">
+                    <div class="step-num bg-purple-500/15 text-purple-400">1</div>
+                    <div>
+                        <div class="font-semibold text-sm mb-1">完整的故事结构</div>
+                        <div class="text-white/45 text-xs leading-relaxed">主角是谁 → 面临什么挑战 → 如何克服困难。主角需与听众有相似之处，挑战需与客户相关联，过程比结果更精彩。</div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <div class="step-num bg-cyan-500/15 text-cyan-400">2</div>
+                    <div>
+                        <div class="font-semibold text-sm mb-1">好的开场</div>
+                        <div class="text-white/45 text-xs leading-relaxed">好的开始是成功的一半。提问开场颠覆认知激发好奇，场景开场生动形象让人迅速代入。</div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <div class="step-num bg-pink-500/15 text-pink-400">3</div>
+                    <div>
+                        <div class="font-semibold text-sm mb-1">令人印象深刻</div>
+                        <div class="text-white/45 text-xs leading-relaxed">大量细节 + 情绪传递。如"左边裤脚还卷着""挠了挠头，叹了口气"，让客户身临其境。</div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <div class="step-num bg-indigo-500/15 text-indigo-400">4</div>
+                    <div>
+                        <div class="font-semibold text-sm mb-1">真实的故事</div>
+                        <div class="text-white/45 text-xs leading-relaxed">唯有真实才能经得起推敲。虚假故事缺乏细节、每次版本不同，讲述时缺乏底气，很容易被听众察觉。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 故事结构三问（陈先生案例） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 3; grid-row: span 2; transition-delay:0.2s;">
+            <span class="tag tag-gold mb-4 inline-block"><i class="fas fa-sitemap"></i> 故事结构</span>
+            <h3 class="text-lg font-bold mb-4">完整故事三问</h3>
+            <div class="space-y-5">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                        <span class="text-red-300 text-xs font-semibold">Q1 主角是谁？</span>
+                    </div>
+                    <p class="text-white/50 text-xs leading-relaxed pl-4">"我之前有一位关系甚好的客户陈先生，他在徐家汇工作，从事金融行业，孩子刚满2岁。"</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                        <span class="text-yellow-300 text-xs font-semibold">Q2 面临什么挑战？</span>
+                    </div>
+                    <p class="text-white/50 text-xs leading-relaxed pl-4">"陈先生很早就关注早教，觉得孩子一定要打好基础。然而，家里老人一直反对，这让他十分苦恼。"</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                        <span class="text-green-300 text-xs font-semibold">Q3 如何克服困难？</span>
+                    </div>
+                    <p class="text-white/50 text-xs leading-relaxed pl-4">"于是陈先生想出一个办法，以自己工作忙为由，让老人带孩子到中心体验两节课。老人发现其他同龄孩子已经能够清晰表达自己……"</p>
+                </div>
+            </div>
+            <div class="mt-5 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                <div class="text-white/30 text-xs">
+                    <i class="fas fa-lightbulb text-yellow-500/50 mr-1"></i>
+                    结果往往枯燥无味，而过程通常精彩且具启发性
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 三种开场方式对比（陈先生案例） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 7; transition-delay:0.15s;">
+            <span class="tag tag-cyan mb-4 inline-block"><i class="fas fa-theater-masks"></i> 开场技巧</span>
+            <h3 class="text-xl font-bold mb-5">三种开场方式对比</h3>
+            <div class="grid grid-cols-3 gap-3">
+                <div class="comparison-col">
+                    <div class="text-white/35 text-xs mb-2">方式一</div>
+                    <div class="font-bold mb-2 text-sm">普通开场</div>
+                    <p class="text-white/50 text-xs leading-relaxed mb-3">"我之前有一位关系很要好的客户陈先生，在徐家汇工作……"</p>
+                    <div class="text-white/30 text-xs mb-1">吸引力</div>
+                    <div class="progress-track"><div class="progress-bar bg-white/15" style="width:25%"></div></div>
+                    <div class="text-white/25 text-xs mt-2">以常规方式讲述事件</div>
+                </div>
+                <div class="comparison-col active">
+                    <div class="text-cyan-400 text-xs mb-2">方式二 ⭐</div>
+                    <div class="font-bold mb-2 text-sm">提问开场</div>
+                    <p class="text-white/50 text-xs leading-relaxed mb-3">"如果我告诉你，昨天有个客户在我们中心签了协议，你会不会觉得奇怪？"</p>
+                    <div class="text-white/30 text-xs mb-1">吸引力</div>
+                    <div class="progress-track"><div class="progress-bar bg-cyan-500" style="width:70%"></div></div>
+                    <div class="text-cyan-400/50 text-xs mt-2">颠覆认知，激发好奇心</div>
+                </div>
+                <div class="comparison-col best">
+                    <div class="text-pink-400 text-xs mb-2">方式三 ⭐⭐</div>
+                    <div class="font-bold mb-2 text-sm">场景开场</div>
+                    <p class="text-white/50 text-xs leading-relaxed mb-3">"陈妈妈直接在中心把孩子爸爸训斥了一番：要么给孩子报名，要么你来亲自教！"</p>
+                    <div class="text-white/30 text-xs mb-1">吸引力</div>
+                    <div class="progress-track"><div class="progress-bar bg-pink-500" style="width:95%"></div></div>
+                    <div class="text-pink-400/50 text-xs mt-2">生动形象，迅速代入情景</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 令人印象深刻的技巧（视频原文引用） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 5; transition-delay:0.2s;">
+            <span class="tag tag-pink mb-4 inline-block"><i class="fas fa-magic"></i> 加深记忆</span>
+            <h3 class="text-xl font-bold mb-5">令人印象深刻的2个技巧</h3>
+            <div class="space-y-4">
+                <div class="story-block">
+                    <div class="flex items-center gap-2 mb-2 pt-2">
+                        <i class="fas fa-search-plus text-purple-400"></i>
+                        <span class="font-semibold text-sm">大量细节</span>
+                    </div>
+                    <p class="text-white/50 text-xs leading-relaxed italic">
+                        "张先生当时估计刚下班，着装十分职业，身着皮鞋、西裤和白衬衫，左边裤脚还卷着，给人的感觉是他并不常这样穿着。"
+                    </p>
+                </div>
+                <div class="story-block">
+                    <div class="flex items-center gap-2 mb-2 pt-2">
+                        <i class="fas fa-heart text-pink-400"></i>
+                        <span class="font-semibold text-sm">情绪传递</span>
+                    </div>
+                    <p class="text-white/50 text-xs leading-relaxed italic">
+                        "当时陈先生挠了挠头，叹了口气说：'我知道这挺重要的，可我也没办法啊。'说完还勉强笑了一下，但能明显看出他的无奈。"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. 陈先生完整故事（视频核心案例） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 7; transition-delay:0.1s;">
+            <span class="tag tag-gold mb-4 inline-block"><i class="fas fa-book-open"></i> 视频核心案例</span>
+            <h3 class="text-xl font-bold mb-2">陈先生的早教故事</h3>
+            <p class="text-white/30 text-[10px] mb-5">以下为视频中讲述的完整客户案例</p>
+            <div class="space-y-0 relative ml-1">
+                <div class="flex gap-4 pb-5 relative">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot bg-red-400"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="flex-1 -mt-1">
+                        <div class="text-red-300 text-xs font-semibold mb-1">痛点</div>
+                        <p class="text-white/55 text-xs leading-relaxed">
+                            陈先生在徐家汇从事金融行业，孩子刚满2岁。他很早就关注早教，认为孩子一定要把基础打好。然而，<strong class="text-white/80">家里老人一直反对</strong>，这令他十分苦恼。每次提起这个话题，老人总说"孩子还小，不用那么着急"。
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-4 pb-5 relative">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot bg-yellow-400"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="flex-1 -mt-1">
+                        <div class="text-yellow-300 text-xs font-semibold mb-1">转折</div>
+                        <p class="text-white/55 text-xs leading-relaxed">
+                            于是陈先生想出了一个主意——以自己工作忙为由，<strong class="text-white/80">让老人带孩子来中心体验两节课</strong>。他跟老人说："您帮我带两天，看看那边怎么样。"
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-4 relative">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot bg-green-400"></div>
+                    </div>
+                    <div class="flex-1 -mt-1">
+                        <div class="text-green-300 text-xs font-semibold mb-1">结局</div>
+                        <p class="text-white/55 text-xs leading-relaxed">
+                            老人到了中心后，发现<strong class="text-white/80">其他同龄孩子已经开始清晰表达自己了</strong>，而自家孩子还不太会说话。陈妈妈当场就训斥了孩子爸爸："要么给孩子报名，要么你来亲自教！"<strong class="text-green-400/80">最终当场报名了全年课程。</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 flex gap-2">
+                <span class="tag tag-gold">痛点场景</span>
+                <span class="tag tag-cyan">转折时刻</span>
+                <span class="tag tag-pink">美好结局</span>
+            </div>
+        </div>
+
+        <!-- 7. 人生故事公式（视频内容） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 5; transition-delay:0.15s;">
+            <span class="tag tag-purple mb-4 inline-block"><i class="fas fa-user-edit"></i> 人生故事公式</span>
+            <h3 class="text-xl font-bold mb-2">讲自己故事的三步法</h3>
+            <p class="text-white/35 text-xs mb-5">视频中分享的个人故事框架</p>
+            <div class="flex items-center gap-3">
+                <div class="flex-1 text-center">
+                    <div class="w-full rounded-2xl p-4 bg-red-500/[0.06] border border-red-500/15">
+                        <div class="w-12 h-12 rounded-xl bg-red-500/15 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-bolt text-red-400"></i>
+                        </div>
+                        <div class="font-bold text-sm">事故</div>
+                        <div class="text-white/35 text-[10px] mt-1">痛苦经历</div>
+                    </div>
+                </div>
+                <i class="fas fa-arrow-right text-white/10"></i>
+                <div class="flex-1 text-center">
+                    <div class="w-full rounded-2xl p-4 bg-yellow-500/[0.06] border border-yellow-500/15">
+                        <div class="w-12 h-12 rounded-xl bg-yellow-500/15 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-fist-raised text-yellow-400"></i>
+                        </div>
+                        <div class="font-bold text-sm">努力</div>
+                        <div class="text-white/35 text-[10px] mt-1">奋斗过程</div>
+                    </div>
+                </div>
+                <i class="fas fa-arrow-right text-white/10"></i>
+                <div class="flex-1 text-center">
+                    <div class="w-full rounded-2xl p-4 bg-green-500/[0.06] border border-green-500/15">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/15 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-sun text-green-400"></i>
+                        </div>
+                        <div class="font-bold text-sm">改变</div>
+                        <div class="text-white/35 text-[10px] mt-1">梦想实现</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 story-block">
+                <p class="text-white/40 text-xs leading-relaxed pt-2">
+                    <i class="fas fa-quote-left text-white/10 mr-1"></i>
+                    例如：我之前做了10年传统行业，一直不温不火。后来我决定转型，花了2年时间学习新技能，最终实现了收入翻倍。
+                </p>
+            </div>
+        </div>
+
+        <!-- 8. 产品故事公式（视频内容） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 5; transition-delay:0.2s;">
+            <span class="tag tag-cyan mb-4 inline-block"><i class="fas fa-box-open"></i> 产品故事公式</span>
+            <h3 class="text-xl font-bold mb-2">讲产品故事的三步法</h3>
+            <p class="text-white/35 text-xs mb-5">视频中分享的产品故事框架</p>
+            <div class="flex items-center gap-3">
+                <div class="flex-1 text-center">
+                    <div class="w-full rounded-2xl p-4 bg-orange-500/[0.06] border border-orange-500/15">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-exclamation-triangle text-orange-400"></i>
+                        </div>
+                        <div class="font-bold text-sm">事故</div>
+                        <div class="text-white/35 text-[10px] mt-1">行业痛点</div>
+                    </div>
+                </div>
+                <i class="fas fa-arrow-right text-white/10"></i>
+                <div class="flex-1 text-center">
+                    <div class="w-full rounded-2xl p-4 bg-blue-500/[0.06] border border-blue-500/15">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-bullseye text-blue-400"></i>
+                        </div>
+                        <div class="font-bold text-sm">目标</div>
+                        <div class="text-white/35 text-[10px] mt-1">努力方向</div>
+                    </div>
+                </div>
+                <i class="fas fa-arrow-right text-white/10"></i>
+                <div class="flex-1 text-center">
+                    <div class="w-full rounded-2xl p-4 bg-emerald-500/[0.06] border border-emerald-500/15">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-chart-line text-emerald-400"></i>
+                        </div>
+                        <div class="font-bold text-sm">改变</div>
+                        <div class="text-white/35 text-[10px] mt-1">产品畅销</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 story-block">
+                <p class="text-white/40 text-xs leading-relaxed pt-2">
+                    <i class="fas fa-quote-left text-white/10 mr-1"></i>
+                    例如：之前很多客户反映传统方案效率低下（事故），我们团队花了一年时间研发新方案（目标），最终帮助客户效率提升3倍（改变）。
+                </p>
+            </div>
+        </div>
+
+        <!-- 9. 沟通黄金比例（视频内容） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 2; transition-delay:0.25s;">
+            <span class="tag tag-pink mb-4 inline-block"><i class="fas fa-balance-scale"></i> 黄金比例</span>
+            <h3 class="text-lg font-bold mb-3">沟通30/70</h3>
+            <div class="text-center mb-3">
+                <div class="big-num gradient-pink" style="font-size:52px;">30<span style="font-size:18px;">%</span></div>
+                <div class="text-white/40 text-xs mt-1">销售发言</div>
+            </div>
+            <div class="text-center mb-3">
+                <div class="big-num gradient-cyan" style="font-size:52px;">70<span style="font-size:18px;">%</span></div>
+                <div class="text-white/40 text-xs mt-1">客户表达</div>
+            </div>
+            <div class="text-white/35 text-[10px] text-center leading-relaxed">
+                多问"您目前遇到的最大难题是什么？"<br>少讲"我们的产品有XX功能"
+            </div>
+        </div>
+
+        <!-- 10. 6种企业故事类型（视频内容） -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 6; transition-delay:0.15s;">
+            <span class="tag tag-cyan mb-4 inline-block"><i class="fas fa-layer-group"></i> 6种企业故事</span>
+            <h3 class="text-xl font-bold mb-2">企业可讲的6种故事</h3>
+            <p class="text-white/35 text-xs mb-5">视频中列举的企业故事类型</p>
+            <div class="grid grid-cols-2 gap-2">
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-9 h-9 rounded-lg bg-red-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-heart text-red-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">创业发心的故事</div>
+                        <div class="text-white/30 text-[10px]">为什么做这件事</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-9 h-9 rounded-lg bg-blue-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-users text-blue-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">团队执行的故事</div>
+                        <div class="text-white/30 text-[10px]">团队如何攻坚克难</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-9 h-9 rounded-lg bg-green-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user-tie text-green-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">员工工作的故事</div>
+                        <div class="text-white/30 text-[10px]">一线员工的真实付出</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-9 h-9 rounded-lg bg-yellow-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-cog text-yellow-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">研发产品的故事</div>
+                        <div class="text-white/30 text-[10px]">产品背后的匠心</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-9 h-9 rounded-lg bg-purple-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-mountain text-purple-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">专注坚持的故事</div>
+                        <div class="text-white/30 text-[10px]">长期主义的信念</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                    <div class="w-9 h-9 rounded-lg bg-pink-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-trophy text-pink-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">反败为胜的故事</div>
+                        <div class="text-white/30 text-[10px]">逆境翻盘的力量</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. 真实故事的重要性 -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 4; transition-delay:0.2s;">
+            <span class="tag tag-pink mb-4 inline-block"><i class="fas fa-shield-alt"></i> 真实性</span>
+            <h3 class="text-lg font-bold mb-4">为什么必须真实？</h3>
+            <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                    <i class="fas fa-times-circle text-red-400/60 mt-0.5 text-xs"></i>
+                    <div class="text-white/50 text-xs">虚假故事<strong class="text-white/70">缺乏细节</strong>，每次讲述版本不同</div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fas fa-times-circle text-red-400/60 mt-0.5 text-xs"></i>
+                    <div class="text-white/50 text-xs">讲述时<strong class="text-white/70">缺乏底气</strong>，很容易被听众察觉</div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fas fa-times-circle text-red-400/60 mt-0.5 text-xs"></i>
+                    <div class="text-white/50 text-xs">糟糕的故事让客户<strong class="text-white/70">瞬间产生抗拒</strong>，拒绝沟通</div>
+                </div>
+                <div class="h-px bg-white/[0.04] my-2"></div>
+                <div class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-green-400/60 mt-0.5 text-xs"></i>
+                    <div class="text-white/50 text-xs">从<strong class="text-white/70">真实客户案例</strong>中挖掘素材</div>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-green-400/60 mt-0.5 text-xs"></i>
+                    <div class="text-white/50 text-xs">只有<strong class="text-white/70">用心的销售</strong>才能发现并整理成打动人心的故事</div>
+                </div>
+            </div>
+            <div class="mt-4 story-block">
+                <p class="text-white/40 text-xs leading-relaxed pt-2">
+                    <i class="fas fa-quote-left text-white/10 mr-1"></i>
+                    就像陈先生的故事——每一个细节都是真实发生的，所以每次讲出来都底气十足，客户也听得入神。
+                </p>
+            </div>
+        </div>
+
+        <!-- 12. 故事销售效果数据 -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 2; transition-delay:0.25s;">
+            <span class="tag tag-gold mb-4 inline-block"><i class="fas fa-chart-bar"></i> 效果</span>
+            <div class="text-center mb-4">
+                <div class="big-num gradient-gold" style="font-size:48px;">90<span style="font-size:18px;">%</span></div>
+                <div class="text-white/40 text-[10px] mt-1">会讲故事的销<br>售说服客户比例</div>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <div class="flex justify-between text-[10px] mb-1">
+                        <span class="text-white/50">信任感</span>
+                        <span class="text-cyan-400">↑</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-bar bg-cyan-500" style="width:88%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-[10px] mb-1">
+                        <span class="text-white/50">购买意愿</span>
+                        <span class="text-pink-400">↑</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-bar bg-pink-500" style="width:85%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-[10px] mb-1">
+                        <span class="text-white/50">记忆留存</span>
+                        <span class="text-purple-400">↑</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-bar bg-purple-500" style="width:70%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. 行动指南 -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 4; transition-delay:0.2s;">
+            <span class="tag tag-pink mb-4 inline-block"><i class="fas fa-rocket"></i> 行动指南</span>
+            <h3 class="text-lg font-bold mb-4">打造你的故事库</h3>
+            <div class="space-y-3">
+                <div class="flex gap-3 items-center">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-search text-purple-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">收集素材</div>
+                        <div class="text-white/35 text-xs">从真实客户案例中挖掘故事原型</div>
+                    </div>
+                </div>
+                <div class="flex gap-3 items-center">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-pen text-cyan-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">撰写故事</div>
+                        <div class="text-white/35 text-xs">按三问结构：主角→挑战→克服</div>
+                    </div>
+                </div>
+                <div class="flex gap-3 items-center">
+                    <div class="w-10 h-10 rounded-xl bg-pink-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-microphone text-pink-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">反复练习</div>
+                        <div class="text-white/35 text-xs">加入细节和情绪，每次讲述都打磨</div>
+                    </div>
+                </div>
+                <div class="flex gap-3 items-center">
+                    <div class="w-10 h-10 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-chart-line text-green-400 text-sm"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">效果追踪</div>
+                        <div class="text-white/35 text-xs">记录哪些故事最能打动客户</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 14. 参考来源 -->
+        <div class="bento-card scroll-reveal" style="grid-column: span 12; transition-delay:0.3s;">
+            <span class="tag tag-purple mb-4 inline-block"><i class="fas fa-bookmark"></i> 参考来源</span>
+            <h3 class="text-lg font-bold mb-4">权威链接与延伸阅读</h3>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
+                    <div class="text-white/60 text-sm font-semibold mb-2">视频原始链接</div>
+                    <a href="https://weixin.qq.com/sph/A3WSeH2uBa" target="_blank" class="source-link text-xs break-all">weixin.qq.com/sph/A3WSeH2uBa</a>
+                    <div class="text-white/25 text-[10px] mt-2">微信视频号 · 张老师的沟通哲学</div>
+                </div>
+                <div class="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
+                    <div class="text-white/60 text-sm font-semibold mb-2">刘润商学×张坚</div>
+                    <a href="https://news.qq.com/rain/a/20241009A017G100" target="_blank" class="source-link text-xs break-all">news.qq.com/rain/a/20241009A017G100</a>
+                    <div class="text-white/25 text-[10px] mt-2">真正懂沟通的人，不靠能说会道，而靠洞察需求</div>
+                </div>
+                <div class="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
+                    <div class="text-white/60 text-sm font-semibold mb-2">StorySelling Method</div>
+                    <a href="https://sobrief.com/books/the-storyselling-method" target="_blank" class="source-link text-xs break-all">sobrief.com/books/the-storyselling-method</a>
+                    <div class="text-white/25 text-[10px] mt-2">Philipp Humm · 5种关键销售故事类型</div>
+                </div>
+                <div class="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
+                    <div class="text-white/60 text-sm font-semibold mb-2">张坚·大客户销售心法</div>
+                    <a href="https://www.cctvjingji.com/part-144/12129.html" target="_blank" class="source-link text-xs break-all">cctvjingji.com/part-144/12129.html</a>
+                    <div class="text-white/25 text-[10px] mt-2">顺着人性做销售，逆着人性修自己</div>
+                </div>
+                <div class="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
+                    <div class="text-white/60 text-sm font-semibold mb-2">销售讲故事完整指南</div>
+                    <a href="http://www.haidilaopeixun.com/1513.html" target="_blank" class="source-link text-xs break-all">haidilaopeixun.com/1513.html</a>
+                    <div class="text-white/25 text-[10px] mt-2">运用销售故事赢得客户的方法</div>
+                </div>
+                <div class="bg-white/[0.02] rounded-xl p-4 border border-white/[0.04]">
+                    <div class="text-white/60 text-sm font-semibold mb-2">销售7个核心技巧</div>
+                    <a href="https://wescrm.com/siyuzhishiku/siyuyunying/4004.html" target="_blank" class="source-link text-xs break-all">wescrm.com/…/4004.html</a>
+                    <div class="text-white/25 text-[10px] mt-2">用故事代替推销 · 痛点→转折→结局</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="mb-3"><i class="fas fa-code text-white/15 text-xl"></i></div>
+        <p>内容来源：微信视频号「张老师的沟通哲学」</p>
+        <p class="mt-1">结构化解析与可视化设计</p>
+        <p class="mt-3 text-white/15">创作者：39139@胜天半子</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        setTimeout(() => {
+            document.querySelectorAll('.progress-bar').forEach(bar => {
+                const w = bar.style.width;
+                bar.style.width = '0%';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => { bar.style.width = w; });
+                });
+            });
+        }, 600);
+    </script>
+</body>
+</html>

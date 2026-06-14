@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>未来体育 - AI解决方案+产品推荐方案</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0a0a0f;
+      color: #e5e7eb;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    
+    .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(16,185,129,0.05));
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(249,115,22,0.15);
+    }
+    
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.1); opacity: 0.6; }
+    }
+    
+    .gradient-text-orange {
+      background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .gradient-text-emerald {
+      background: linear-gradient(135deg, #10b981, #34d399, #6ee7b7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .tag-orange { background: rgba(249,115,22,0.15); color: #fb923c; border: 1px solid rgba(249,115,22,0.25); }
+    .tag-emerald { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+    .tag-cyan { background: rgba(6,182,212,0.15); color: #22d3ee; border: 1px solid rgba(6,182,212,0.25); }
+    .tag-amber { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+    .tag-red { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .tag-blue { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+    .tag-purple { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
+    
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    
+    .bento-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .bento-card:hover {
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    
+    /* Profile */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    .profile-item {
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
+    }
+    
+    .profile-value { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+    .profile-label { font-size: 12px; color: rgba(255,255,255,0.4); }
+    
+    /* Pain Points */
+    .pain-card {
+      background: rgba(239,68,68,0.04);
+      border: 1px solid rgba(239,68,68,0.1);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .pain-card:hover {
+      background: rgba(239,68,68,0.08);
+      border-color: rgba(239,68,68,0.2);
+    }
+    
+    .pain-level {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    .pain-high { background: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.5); }
+    .pain-medium { background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.5); }
+    
+    /* Product Tiers */
+    .product-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    
+    .tier1-bg { background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(5,150,105,0.1)); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+    .tier2-bg { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(37,99,235,0.1)); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .tier3-bg { background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(139,92,246,0.1)); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+    
+    .star-rating { display: flex; gap: 2px; }
+    .star-rating i { color: #fbbf24; font-size: 12px; }
+    
+    /* Feature List */
+    .feature-list { list-style: none; padding: 0; }
+    
+    .feature-list li {
+      padding: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list i { color: #10b981; margin-top: 3px; flex-shrink: 0; }
+    
+    /* ROI Bar */
+    .roi-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    
+    .roi-fill {
+      height: 100%;
+      border-radius: 4px;
+      width: var(--fill-width);
+      transition: width 1s ease;
+    }
+    
+    /* Timeline */
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      position: absolute;
+      left: -21px;
+      top: 4px;
+      z-index: 2;
+    }
+    
+    /* Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    
+    .data-table th {
+      background: rgba(255,255,255,0.04);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+    }
+    
+    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+    
+    /* Script Box */
+    .script-box {
+      background: linear-gradient(135deg, rgba(16,185,129,0.05), rgba(6,182,212,0.03));
+      border: 1px solid rgba(16,185,129,0.15);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    
+    .script-speaker { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+    .script-content {
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      line-height: 1.8;
+      padding-left: 16px;
+      border-left: 3px solid rgba(16,185,129,0.3);
+    }
+    
+    /* Solution Layer */
+    .solution-layer {
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-left: 4px solid;
+    }
+    
+    .layer-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .layer-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .layer-item {
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 32px;
+      color: rgba(255,255,255,0.3);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 48px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .bento-grid { grid-template-columns: repeat(6, 1fr); }
+      [style*="grid-column: span 8"] { grid-column: span 6 !important; }
+      [style*="grid-column: span 12"] { grid-column: span 6 !important; }
+    }
+    
+    @media (max-width: 768px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      [style*="grid-column: span"] { grid-column: span 1 !important; }
+      .hero-section { padding: 24px; }
+      .container { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ==================== Hero Section ==================== -->
+  <div class="hero-section">
+    <div class="hero-glow" style="top:-80px;right:-60px;width:340px;height:340px;background:radial-gradient(circle,#f97316,transparent)"></div>
+    <div class="hero-glow" style="bottom:-60px;left:-40px;width:280px;height:280px;background:radial-gradient(circle,#10b981,transparent);animation-delay:2s"></div>
+
+    <div class="flex items-center gap-3 mb-4" style="flex-wrap:wrap;">
+      <span class="tag tag-orange"><i class="fas fa-bolt"></i> 体育用品经销领军企业</span>
+      <span class="tag tag-emerald"><i class="fas fa-robot"></i> AI全栈解决方案</span>
+    </div>
+
+    <h1 style="font-size: clamp(28px, 4vw, 48px); font-weight: 900; line-height: 1.2; margin-bottom: 16px;">
+      泉州未来体育文化有限公司<br>
+      <span class="gradient-text-orange">AI解决方案 + 产品推荐方案</span>
+    </h1>
+
+    <p style="color: rgba(255,255,255,0.45); max-width: 800px; font-size: 15px; line-height: 1.8;">
+      基于未来体育的<strong style="color:#fff">业务全景</strong>——<strong style="color:#fb923c">4大业务渠道（政采/电商/批发/实体）、12+代理品牌、500+人团队、2017年进军电商市值过亿、自有品牌孵化中</strong>，
+      从<strong style="color:#fff">痛点诊断 → 需求挖掘 → 解决方案架构 → 产品匹配 → 落地路线图</strong>，
+      构建覆盖<strong style="color:#34d399">内容生产、客户服务、供应链管理、智能决策</strong>四大核心场景的AI赋能体系。
+    </p>
+
+    <div class="flex flex-wrap gap-2 mt-6">
+      <span class="tag tag-red"><i class="fas fa-heart-pulse"></i> 痛点诊断</span>
+      <span class="tag tag-blue"><i class="fas fa-magnifying-glass"></i> SPIN需求分析</span>
+      <span class="tag tag-purple"><i class="fas fa-diagram-project"></i> 解决方案架构</span>
+      <span class="tag tag-emerald"><i class="fas fa-cubes"></i> 产品矩阵</span>
+      <span class="tag tag-amber"><i class="fas fa-route"></i> 三级落地路线图</span>
+      <span class="tag tag-cyan"><i class="fas fa-comments"></i> 实战话术</span>
+    </div>
+  </div>
+
+  <!-- ==================== 客户画像 ==================== -->
+  <div class="bento-grid">
+    <div class="bento-card" style="grid-column: span 12; padding: 32px;">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); color: #f97316;">
+          <i class="fas fa-building"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">客户画像 · 未来体育</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">泉州未来体育文化用品有限公司 | 福建体育用品经销领军企业</p>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <div class="profile-item">
+          <div class="profile-value" style="color: #f97316;">18+</div>
+          <div class="profile-label"><i class="fas fa-calendar-alt mr-1"></i> 成立时间 (2006年)</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-value" style="color: #10b981;">500+</div>
+          <div class="profile-label"><i class="fas fa-users mr-1"></i> 团队规模</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-value" style="color: #3b82f6;">12+</div>
+          <div class="profile-label"><i class="fas fa-tags mr-1"></i> 代理品牌数量</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-value" style="color: #a855f7;">4大</div>
+          <div class="profile-label"><i class="fas fa-chart-network mr-1"></i> 业务渠道</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-value" style="color: #f59e0b;">过亿</div>
+          <div class="profile-label"><i class="fas fa-coins mr-1"></i> 电商年GMV</div>
+        </div>
+        <div class="profile-item">
+          <div class="profile-value" style="color: #ec4899;">孵化中</div>
+          <div class="profile-label"><i class="fas fa-seedling mr-1"></i> 自有品牌战略</div>
+        </div>
+      </div>
+
+      <!-- 业务结构 -->
+      <div style="margin-top: 28px;">
+        <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px; color: rgba(255,255,255,0.8);">
+          <i class="fas fa-sitemap mr-2" style="color: #f97316;"></i>四大业务渠道
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div class="solution-layer" style="border-left-color: #ef4444;">
+            <div class="layer-title" style="color: #f87171;"><i class="fas fa-landmark"></i> 政企采购</div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 10px;">政府、学校、企事业单位团购</div>
+            <div class="layer-items">
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>福建政采核心供应商</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>校服/运动装备集采</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>大型赛事装备供应</span>
+            </div>
+          </div>
+
+          <div class="solution-layer" style="border-left-color: #3b82f6;">
+            <div class="layer-title" style="color: #60a5fa;"><i class="fas fa-shopping-cart"></i> 电商运营</div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 10px;">天猫/京东/拼多多/抖音等多平台</div>
+            <div class="layer-items">
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>2017年进军电商</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>年GMV过亿</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>多店铺矩阵运营</span>
+            </div>
+          </div>
+
+          <div class="solution-layer" style="border-left-color: #10b981;">
+            <div class="layer-title" style="color: #34d399;"><i class="fas fa-truck-fast"></i> 批发分销</div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 10px;">线下经销商网络 / 区域代理</div>
+            <div class="layer-items">
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>覆盖福建省内</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>二级经销商体系</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>季节性库存管理</span>
+            </div>
+          </div>
+
+          <div class="solution-layer" style="border-left-color: #a855f7;">
+            <div class="layer-title" style="color: #c084fc;"><i class="fas fa-store"></i> 实体零售</div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 10px;">直营门店 / 品牌专柜</div>
+            <div class="layer-items">
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>泉州领SHOW天地总部</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>品牌体验店</span>
+              <span class="layer-item"><i class="fas fa-check-circle" style="color:#10b981;margin-right:4px;"></i>O2O融合探索</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 品牌矩阵 -->
+      <div style="margin-top: 24px;">
+        <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px; color: rgba(255,255,255,0.8);">
+          <i class="fas fa-shield-halved mr-2" style="color: #10b981;"></i>代理品牌矩阵
+        </h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <span class="tag tag-red" style="font-size: 14px; padding: 10px 20px;"><strong>李宁</strong></span>
+          <span class="tag tag-blue" style="font-size: 14px; padding: 10px 20px;"><strong>Nike</strong></span>
+          <span class="tag tag-cyan" style="font-size: 14px; padding: 10px 20px;"><strong>adidas</strong></span>
+          <span class="tag tag-purple" style="font-size: 14px; padding: 10px 20px;"><strong>SKECHERS</strong></span>
+          <span class="tag tag-orange" style="font-size: 14px; padding: 10px 20px;"><strong>+ 8个国内外品牌</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 痛点诊断 ==================== -->
+  <div class="bento-grid">
+    <div class="bento-card" style="grid-column: span 12; padding: 32px; border-color: rgba(239,68,68,0.1);">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.05)); color: #ef4444;">
+          <i class="fas fa-heart-pulse"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">痛点诊断 · 四维分析</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">从业务场景出发，识别AI可解决的核心痛点</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr); gap: 16px;">
+        <!-- 电商运营痛点 -->
+        <div class="pain-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <h4 style="font-weight: 700; color: #f87171;font-size:15px;"><i class="fas fa-cart-shopping mr-2"></i>电商运营</h4>
+            <span class="tag tag-red text-[10px]"><span class="pain-level pain-high"></span>高优先级</span>
+          </div>
+          <ul class="feature-list">
+            <li><i class="fas fa-arrow-right"></i><strong>商品内容生产瓶颈：</strong>12+品牌 x 数千SKU，每个SKU需主图/详情页/短视频/直播脚本，人工产出效率低、成本高</li>
+            <li><i class="fas fa-arrow-right"></i><strong>多平台运营割裂：</strong>天猫/京东/拼多多/抖音各平台规则不同，内容需差异化适配，重复劳动严重</li>
+            <li><i class="fas fa-arrow-right"></i><strong>直播人力成本高：</strong>日播/大促需大量主播，培训成本高，人员流动影响稳定性</li>
+            <li><i class="fas fa-arrow-right"></i><strong>数据决策滞后：</strong>竞品监控、价格策略、选品分析依赖人工，响应速度慢于市场变化</li>
+          </ul>
+        </div>
+
+        <!-- 客户服务痛点 -->
+        <div class="pain-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <h4 style="font-weight: 700; color: #fbbf24;font-size:15px;"><i class="fas fa-headset mr-2"></i>客户服务</h4>
+            <span class="tag tag-amber text-[10px]"><span class="pain-level pain-high"></span>高优先级</span>
+          </div>
+          <ul class="feature-list">
+            <li><i class="fas fa-arrow-right"></i><strong>客服响应压力：</strong>电商大促期间咨询量暴增10倍以上，人工客服无法及时响应，转化率流失</li>
+            <li><i class="fas fa-arrow-right"></i><strong>知识管理分散：</strong>12+品牌的尺码/材质/功能/售后政策各不相同，新员工培训周期长</li>
+            <li><i class="fas fa-arrow-right"></i><strong>政企采购沟通成本高：</strong>B端客户需求复杂，方案定制耗时长，销售团队效率受限</li>
+            <li><i class="fas fa-arrow-right"></i><strong>售后服务标准化难：</strong>退换货、维修、质保等流程依赖人工判断，服务质量参差不齐</li>
+          </ul>
+        </div>
+
+        <!-- 供应链管理痛点 -->
+        <div class="pain-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <h4 style="font-weight: 700; color: #60a5fa;font-size:15px;"><i class="fas fa-warehouse mr-2"></i>供应链管理</h4>
+            <span class="tag tag-blue text-[10px]"><span class="pain-level pain-medium"></span>中优先级</span>
+          </div>
+          <ul class="feature-list">
+            <li><i class="fas fa-arrow-right"></i><strong>库存预测不准：</strong>体育用品季节性强（开学季/运动赛季），传统经验预测误差大，积压或断货频发</li>
+            <li><i class="fas fa-arrow-right"></i><strong>多品牌补货协调难：</strong>12+品牌各有订货周期和起订量，人工协调效率低</li>
+            <li><i class="fas fa-arrow-right"></i><strong>采购决策缺乏数据支撑：</strong>选品、定价、促销策略依赖直觉，缺少系统化的数据分析</li>
+          </ul>
+        </div>
+
+        <!-- 品牌孵化痛点 -->
+        <div class="pain-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <h4 style="font-weight: 700; color: #c084fc;font-size:15px;"><i class="fas fa-rocket mr-2"></i>自有品牌孵化</h4>
+            <span class="tag tag-purple text-[10px]"><span class="pain-level pain-medium"></span>中优先级</span>
+          </div>
+          <ul class="feature-list">
+            <li><i class="fas fa-arrow-right"></i><strong>品牌定位与设计：</strong>从0到1打造自有品牌，需要大量市场调研、竞品分析和创意设计工作</li>
+            <li><i class="fas fa-arrow-right"></i><strong>营销内容从零构建：</strong>无历史素材积累，全套视觉/文案/视频内容需全新生产</li>
+            <li><i class="fas fa-arrow-right"></i><strong>渠道拓展资源有限：</strong>相比代理知名品牌，自有品牌获客成本更高，需要更精细化的运营</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SPIN需求分析 ==================== -->
+  <div class="bento-grid">
+    <div class="bento-card" style="grid-column: span 12; padding: 32px; border-color: rgba(59,130,246,0.1);">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(59,130,246,0.05)); color: #3b82f6;">
+          <i class="fas fa-magnifying-glass"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">SPIN需求分析 · 挖掘深层需求</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">通过情景性/探究性/暗示性/需求确认四类问题，引导客户认知AI价值</p>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 90px;">SPIN维度</th>
+              <th style="width: 120px;">问题类型</th>
+              <th>针对未来体育的问题设计</th>
+              <th style="width: 120px;">预期触发效果</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(59,130,246,0.03);">
+              <td style="padding: 14px 16px;"><span class="tag tag-blue" style="font-size:11px;">S 情景</span></td>
+              <td style="padding: 14px 16px;font-size:13px;">了解现状</td>
+              <td style="padding: 14px 16px;font-size:13px;color:rgba(255,255,255,0.7);">
+                "叶总，咱们现在电商团队大概多少人？每天要处理多少个SKU的内容更新？双11这种大促期间，内容产出量大概是平时的几倍？"
+              </td>
+              <td style="padding: 14px 16px;"><span style="font-size:11px;color:#60a5fa;">建立对话基础</span></td>
+            </tr>
+            <tr style="background: rgba(245,158,11,0.03);">
+              <td style="padding: 14px 16px;"><span class="tag tag-amber" style="font-size:11px;">P 问题</span></td>
+              <td style="padding: 14px 16px;font-size:13px;">发现困难</td>
+              <td style="padding: 14px 16px;font-size:13px;color:rgba(255,255,255,0.7);">
+                "那目前这套流程下，团队加班情况怎么样？有没有出现过内容来不及出、错过最佳上架时间的情况？不同平台的内容适配是不是得重复做？"
+              </td>
+              <td style="padding: 14px 16px;"><span style="font-size:11px;color:#fbbf24;">暴露隐性痛点</span></td>
+            </tr>
+            <tr style="background: rgba(239,68,68,0.03);">
+              <td style="padding: 14px 16px;"><span class="tag tag-red" style="font-size:11px;">I 暗示</span></td>
+              <td style="padding: 14px 16px;font-size:13px;">扩大影响</td>
+              <td style="padding: 14px 16px;font-size:13px;color:rgba(255,255,255,0.7);">
+                "内容跟不上直接影响的是搜索排名和转化率对吧？那如果按现在电商增速，明年SKU再增加30%，现有团队是不是更吃紧？客服那边大促漏单率大概多少？这些损失一年下来可能不止几十万吧？"
+              </td>
+              <td style="padding: 14px 16px;"><span style="font-size:11px;color:#f87171;">量化痛苦程度</span></td>
+            </tr>
+            <tr style="background: rgba(16,185,129,0.03);">
+              <td style="padding: 14px 16px;"><span class="tag tag-emerald" style="font-size:11px;">N 需求</span></td>
+              <td style="padding: 14px 16px;font-size:13px;">明确价值</td>
+              <td style="padding: 14px 16px;font-size:13px;color:rgba(255,255,255,0.7);">
+                "如果能用AI把单个SKU的内容生产时间从2小时压缩到15分钟，同时自动适配各平台规范，还能7x24小时智能客服不漏单，这对咱们的效率和成本意味着什么？"
+              </td>
+              <td style="padding: 14px 16px;"><span style="font-size:11px;color:#34d399;">引导主动需求</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 解决方案架构 ==================== -->
+  <div class="bento-grid">
+    <div class="bento-card" style="grid-column: span 12; padding: 32px; border-color: rgba(168,85,247,0.1);">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(168,85,247,0.05)); color: #a855f7;">
+          <i class="fas fa-diagram-project"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">解决方案架构 · 四层赋能体系</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">围绕未来体育的核心业务场景，构建分层递进的AI能力架构</p>
+        </div>
+      </div>
+
+      <!-- Layer 1: 内容生产力层 -->
+      <div class="solution-layer" style="border-left-color: #f97316; background: rgba(249,115,22,0.03);">
+        <div class="layer-title" style="color: #fb923c;">
+          <i class="fas fa-wand-magic-sparkles"></i> Layer 1：内容生产力层 — 核心战场
+        </div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 12px;">解决电商最痛的点：内容产出效率与质量的双重提升</div>
+        <div class="layer-items">
+          <span class="layer-item"><i class="fas fa-image" style="color:#f97316;margin-right:4px;"></i>AI商品主图生成</span>
+          <span class="layer-item"><i class="fas fa-file-lines" style="color:#f97316;margin-right:4px;"></i>AI详情页智能撰写</span>
+          <span class="layer-item"><i class="fas fa-video" style="color:#f97316;margin-right:4px;"></i>AI短视频批量生产</span>
+          <span class="layer-item"><i class="fas fa-pen-nib" style="color:#f97316;margin-right:4px;"></i>AI直播脚本自动生成</span>
+          <span class="layer-item"><i class="fas fa-language" style="color:#f97316;margin-right:4px;"></i>多平台内容一键适配</span>
+          <span class="layer-item"><i class="fas fa-palette" style="color:#f97316;margin-right:4px;"></i>AI品牌视觉一致性</span>
+        </div>
+        <div style="margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(249,115,22,0.06);">
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6);"><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:4px;"></i><strong>业务价值：</strong>将单SKU内容生产周期从<strong style="color:#fb923c">2-4小时压缩至15-30分钟</strong>，内容产能提升<strong style="color:#fb923c">8-10倍</strong>，直接降低内容外包成本<strong style="color:#fb923c">60%以上</strong></div>
+        </div>
+      </div>
+
+      <!-- Layer 2: 客户服务层 -->
+      <div class="solution-layer" style="border-left-color: #10b981; background: rgba(16,185,129,0.03);">
+        <div class="layer-title" style="color: #34d399;">
+          <i class="fas fa-headset"></i> Layer 2：客户服务层 — 效率引擎
+        </div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 12px;">覆盖B端政企客户与C端电商消费者的全场景智能服务</div>
+        <div class="layer-items">
+          <span class="layer-item"><i class="fas fa-robot" style="color:#10b981;margin-right:4px;"></i>AI智能客服（7x24）</span>
+          <span class="layer-item"><i class="fas fa-brain" style="color:#10b981;margin-right:4px;"></i>多品牌知识库中台</span>
+          <span class="layer-item"><i class="fas fa-file-contract" style="color:#10b981;margin-right:4px;"></i>政企方案智能生成</span>
+          <span class="layer-item"><i class="fas fa-rotate-left" style="color:#10b981;margin-right:4px;"></i>售后工单智能分流</span>
+          <span class="layer-item"><i class="fas fa-comments-dollar" style="color:#10b981;margin-right:4px;"></i>销售话术辅助系统</span>
+          <span class="layer-item"><i class="fas fa-user-tie" style="color:#10b981;margin-right:4px;"></i>B端客户专属AI助手</span>
+        </div>
+        <div style="margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(16,185,129,0.06);">
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6);"><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:4px;"></i><strong>业务价值：</strong>客服响应速度提升<strong style="color:#34d399">90%</strong>，大促期间零漏单，B端方案出具时间从<strong style="color:#34d399">3天缩短至2小时</strong>，客户满意度预计提升<strong style="color:#34d399">25%+</strong></div>
+        </div>
+      </div>
+
+      <!-- Layer 3: 供应链智能层 -->
+      <div class="solution-layer" style="border-left-color: #3b82f6; background: rgba(59,130,246,0.03);">
+        <div class="layer-title" style="color: #60a5fa;">
+          <i class="fas fa-chart-line"></i> Layer 3：供应链智能层 — 决策大脑
+        </div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 12px;">用数据驱动采购、库存、定价的科学决策</div>
+        <div class="layer-items">
+          <span class="layer-item"><i class="fas fa-database" style="color:#3b82f6;margin-right:4px;"></i>销量预测模型</span>
+          <span class="layer-item"><i class="fas fa-boxes-stacked" style="color:#3b82f6;margin-right:4px;"></i>智能库存预警</span>
+          <span class="layer-item"><i class="fas fa-tags" style="color:#3b82f6;margin-right:4px;"></i>动态定价建议</span>
+          <span class="layer-item"><i class="fas fa-chart-pie" style="color:#3b82f6;margin-right:4px;"></i>选品分析报告</span>
+          <span class="layer-item"><i class="fas fa-truck" style="color:#3b82f6;margin-right:4px;"></i>补货计划优化</span>
+          <span class="layer-item"><i class="fas fa-scale-balanced" style="color:#3b82f6;margin-right:4px;"></i>多品牌采购协同</span>
+        </div>
+        <div style="margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(59,130,246,0.06);">
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6);"><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:4px;"></i><strong>业务价值：</strong>库存周转率提升<strong style="color:#60a5fa">30%</strong>，缺货率降低<strong style="color:#60a5fa">40%</strong>，滞销库存减少<strong style="color:#60a5fa">25%</strong>，年化节省资金占用成本<strong style="color:#60a5fa">数百万级别</strong></div>
+        </div>
+      </div>
+
+      <!-- Layer 4: 品牌增长层 -->
+      <div class="solution-layer" style="border-left-color: #ec4899; background: rgba(236,72,153,0.03);">
+        <div class="layer-title" style="color: #f472b6;">
+          <i class="fas fa-rocket"></i> Layer 4：品牌增长层 — 战略加速器
+        </div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 12px;">为自有品牌孵化提供AI驱动的全链路支持</div>
+        <div class="layer-items">
+          <span class="layer-item"><i class="fas fa-search" style="color:#ec4899;margin-right:4px;"></i>AI市场调研分析</span>
+          <span class="layer-item"><i class="fas fa-paintbrush" style="color:#ec4899;margin-right:4px;"></i>AI品牌VI设计</span>
+          <span class="layer-item"><i class="fas fa-bullhorn" style="color:#ec4899;margin-right:4px;"></i>AI营销内容工厂</span>
+          <span class="layer-item"><i class="fas fa-users-viewfinder" style="color:#ec4899;margin-right:4px;"></i>AI用户画像洞察</span>
+          <span class="layer-item"><i class="fas fa-person-running" style="color:#ec4899;margin-right:4px;"></i>AI数字人品牌大使</span>
+          <span class="layer-item"><i class="fas fa-road" style="color:#ec4899;margin-right:4px;"></i>增长路径规划</span>
+        </div>
+        <div style="margin-top: 14px; padding: 12px; border-radius: 10px; background: rgba(236,72,153,0.06);">
+          <div style="font-size: 12px; color: rgba(255,255,255,0.6);"><i class="fas fa-lightbulb" style="color:#fbbf24;margin-right:4px;"></i><strong>业务价值：</strong>品牌从0到1的启动周期缩短<strong style="color:#f472b6">50%</strong>，营销内容生产成本降低<strong style="color:#f472b6">70%</strong>，获客成本相比行业平均降低<strong style="color:#f472b6">35%</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== AI产品矩阵 ==================== -->
+  <div class="bento-grid">
+    <!-- Tier 1: 立即产生ROI -->
+    <div class="bento-card" style="grid-column: span 12; padding: 32px; border-color: rgba(16,185,129,0.12);">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="product-tier-badge tier1-bg"><i class="fas fa-bolt"></i> Tier 1 · 立即产生ROI</div>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">1-3个月见效 | 最低门槛切入 | 建立信任基石</span>
+      </div>
+
+      <!-- Product 1: AI内容生成工作站 -->
+      <div style="margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="display:flex;align-items:start;gap:16px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.1));">
+            <i class="fas fa-wand-magic-sparkles text-emerald-400" style="font-size:20px;"></i>
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+              <h3 style="font-size:17px;font-weight:700;">AI内容生成工作站</h3>
+              <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="tag tag-emerald" style="font-size:10px;">最强刚需</span>
+              <span class="tag tag-orange" style="font-size:10px;">P0 首推</span>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);">适用场景：电商全平台商品内容生产 | 部署方式：SaaS订阅 / 本地化部署均可</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:16px;">
+          <div>
+            <h4 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#34d399;"><i class="fas fa-check-circle mr-1"></i>核心能力</h4>
+            <ul class="feature-list">
+              <li><i class="fas fa-chevron-right"></i>AI商品主图生成（模特换装/场景切换/风格迁移）</li>
+              <li><i class="fas fa-chevron-right"></i>AI详情页智能撰写（卖点提炼/SEO优化/排版美化）</li>
+              <li><i class="fas fa-chevron-right"></i>AI短视频批量生产（图文转视频/产品展示/种草向）</li>
+              <li><i class="fas fa-chevron-right"></i>多平台内容一键适配（天猫/京东/拼多多/抖音规格自动转换）</li>
+              <li><i class="fas fa-chevron-right"></i>AI直播脚本生成（产品介绍/互动话术/促单话术）</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#fbbf24;"><i class="fas fa-chart-bar mr-1"></i>ROI测算</h4>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">
+                  <span style="color:rgba(255,255,255,0.5);">内容生产效率提升</span>
+                  <span style="color:#34d399;font-weight:700;">8-10x</span>
+                </div>
+                <div class="roi-bar"><div class="roi-fill" style="--fill-width:90%;background:linear-gradient(90deg,#059669,#10b981,#34d399);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">
+                  <span style="color:rgba(255,255,255,0.5);">内容外包成本节约</span>
+                  <span style="color:#34d399;font-weight:700;">60%+</span>
+                </div>
+                <div class="roi-bar"><div class="roi-fill" style="--fill-width:85%;background:linear-gradient(90deg,#059669,#10b981,#34d399);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">
+                  <span style="color:rgba(255,255,255,0.5);">ROI置信度</span>
+                  <span style="color:#34d399;font-weight:700;">95%</span>
+                </div>
+                <div class="roi-bar"><div class="roi-fill" style="--fill-width:95%;background:linear-gradient(90deg,#059669,#10b981,#34d399);"></div></div>
+              </div>
+            </div>
+            <div style="margin-top:14px;padding:10px;border-radius:8px;font-size:12px;background:rgba(16,185,129,0.08);">
+              <i class="fas fa-calculator" style="color:#34d399;margin-right:4px;"></i><strong>预估年化收益：</strong>按当前电商GMV体量，内容相关成本年节省 <strong style="color:#34d399;">50-120万</strong>（含人力+外包）
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: AI智能客服系统 -->
+      <div>
+        <div style="display:flex;align-items:start;gap:16px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.1));">
+            <i class="fas fa-robot text-emerald-400" style="font-size:20px;"></i>
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+              <h3 style="font-size:17px;font-weight:700;">AI智能客服系统</h3>
+              <div class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+              <span class="tag tag-emerald" style="font-size:10px;">刚需次选</span>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);">适用场景：电商售前售后 + 政企客户咨询 | 部署方式：SaaS / 私有化部署</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:16px;">
+          <div>
+            <h4 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#34d399;"><i class="fas fa-check-circle mr-1"></i>核心能力</h4>
+            <ul class="feature-list">
+              <li><i class="fas fa-chevron-right"></i>7x24小时智能接待，秒级响应，零等待</li>
+              <li><i class="fas fa-chevron-right"></i>多品牌知识库中台（李宁/Nike/adidas/SKECHERS等12+品牌政策统一管理）</li>
+              <li><i class="fas fa-chevron-right"></i>意图识别准确率95%+，复杂问题无缝转人工</li>
+              <li><i class="fas fa-chevron-right"></i>大促弹性扩容，应对10倍咨询量峰值</li>
+              <li><i class="fas fa-chevron-right"></i>多渠道统一接入（网店/微信/电话/钉钉）</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size:14px;font-weight:700;margin-bottom:10px;color:#fbbf24;"><i class="fas fa-chart-bar mr-1"></i>ROI测算</h4>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">
+                  <span style="color:rgba(255,255,255,0.5);">客服响应速度提升</span>
+                  <span style="color:#34d399;font-weight:700;">90%+</span>
+                </div>
+                <div class="roi-bar"><div class="roi-fill" style="--fill-width:92%;background:linear-gradient(90deg,#059669,#10b981,#34d399);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">
+                  <span style="color:rgba(255,255,255,0.5);">客服人力成本节约</span>
+                  <span style="color:#34d399;font-weight:700;">40-50%</span>
+                </div>
+                <div class="roi-bar"><div class="roi-fill" style="--fill-width:78%;background:linear-gradient(90deg,#059669,#10b981,#34d399);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">
+                  <span style="color:rgba(255,255,255,0.5);">ROI置信度</span>
+                  <span style="color:#34d399;font-weight:700;">92%</span>
+                </div>
+                <div class="roi-bar"><div class="roi-fill" style="--fill-width:92%;background:linear-gradient(90deg,#059669,#10b981,#34d399);"></div></div>
+              </div>
+            </div>
+            <div style="margin-top:14px;padding:10px;border-radius:8px;font-size:12px;background:rgba(16,185,129,0.08);">
+              <i class="fas fa-calculator" style="color:#34d399;margin-right:4px;"></i><strong>预估年化收益：</strong>客服团队优化后年节省 <strong style="color:#34d399;">30-60万</strong>，同时提升转化率带来的间接收益 <strong style="color:#34d399;">20-40万/年</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2: 规模化提效 -->
+    <div class="bento-card" style="grid-column: span 12; padding: 32px; border-color: rgba(59,130,246,0.12);">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="product-tier-badge tier2-bg"><i class="fas fa-rocket"></i> Tier 2 · 规模化提效</div>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">3-6个月见效 | Tier 1验证后推进 | 中等投入</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+        <!-- Product 3: AI数字人直播系统 -->
+        <div style="padding:20px;border-radius:16px;background:rgba(59,130,246,0.03);border:1px solid rgba(59,130,246,0.1);">
+          <div style="width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(37,99,235,.1));">
+            <i class="fas fa-person-dress text-blue-400" style="font-size:18px;"></i>
+          </div>
+          <h4 style="font-weight:700;margin-bottom:6px;font-size:15px;">AI数字人直播系统</h4>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <div class="star-rating" style="transform:scale(0.85);transform-origin:left;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="tag tag-blue" style="font-size:10px;">P1 高优</span>
+          </div>
+          <ul class="feature-list" style="font-size:12px;">
+            <li><i class="fas fa-chevron-right"></i>24小时不间断日播</li>
+            <li><i class="fas fa-chevron-right"></i>数字人形象定制（品牌调性匹配）</li>
+            <li><i class="fas fa-chevron-right"></i>实时互动+智能问答</li>
+            <li><i class="fas fa-chevron-right"></i>多账号矩阵同时开播</li>
+            <li><i class="fas fa-chevron-right"></i>直播数据实时分析</li>
+          </ul>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.04);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);">预估ROI</div>
+            <div class="roi-bar" style="margin-top:6px;"><div class="roi-fill" style="--fill-width:80%;background:linear-gradient(90deg,#2563eb,#3b82f6,#60a5fa);"></div></div>
+            <div style="font-size:10px;color:rgba(96,165,250,0.7);margin-top:4px;">置信度 80% — 直播GMV增量显著</div>
+          </div>
+        </div>
+
+        <!-- Product 4: AI供应链大脑 -->
+        <div style="padding:20px;border-radius:16px;background:rgba(59,130,246,0.03);border:1px solid rgba(59,130,246,0.1);">
+          <div style="width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(37,99,235,.1));">
+            <i class="fas fa-brain text-blue-400" style="font-size:18px;"></i>
+          </div>
+          <h4 style="font-weight:700;margin-bottom:6px;font-size:15px;">AI供应链大脑</h4>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <div class="star-rating" style="transform:scale(0.85);transform-origin:left;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+            <span class="tag tag-blue" style="font-size:10px;">P1 高优</span>
+          </div>
+          <ul class="feature-list" style="font-size:12px;">
+            <li><i class="fas fa-chevron-right"></i>销量预测（季节性+趋势+活动）</li>
+            <li><i class="fas fa-chevron-right"></i>智能库存预警与补货建议</li>
+            <li><i class="fas fa-chevron-right"></i>动态定价策略推荐</li>
+            <li><i class="fas fa-chevron-right"></i>多品牌采购协同优化</li>
+            <li><i class="fas fa-chevron-right"></i>供应商绩效评估</li>
+          </ul>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.04);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);">预估ROI</div>
+            <div class="roi-bar" style="margin-top:6px;"><div class="roi-fill" style="--fill-width:75%;background:linear-gradient(90deg,#2563eb,#3b82f6,#60a5fa);"></div></div>
+            <div style="font-size:10px;color:rgba(96,165,250,0.7);margin-top:4px;">置信度 75% — 库存优化收益稳定</div>
+          </div>
+        </div>
+
+        <!-- Product 5: AI政企方案助手 -->
+        <div style="padding:20px;border-radius:16px;background:rgba(59,130,246,0.03);border:1px solid rgba(59,130,246,0.1);">
+          <div style="width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(37,99,235,.1));">
+            <i class="fas fa-file-contract text-blue-400" style="font-size:18px;"></i>
+          </div>
+          <h4 style="font-weight:700;margin-bottom:6px;font-size:15px;">AI政企方案助手</h4>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <div class="star-rating" style="transform:scale(0.85);transform-origin:left;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></div>
+            <span class="tag tag-cyan" style="font-size:10px;">P2 推荐</span>
+          </div>
+          <ul class="feature-list" style="font-size:12px;">
+            <li><i class="fas fa-chevron-right"></i>需求输入→方案自动生成</li>
+            <li><i class="fas fa-chevron-right"></i>历史方案模板复用</li>
+            <li><i class="fas fa-chevron-right"></i>报价单智能生成</li>
+            <li><i class="fas fa-chevron-right"></i>竞品对比分析</li>
+            <li><i class="fas fa-chevron-right"></i>合同条款风险提示</li>
+          </ul>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.04);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);">预估ROI</div>
+            <div class="roi-bar" style="margin-top:6px;"><div class="roi-fill" style="--fill-width:70%;background:linear-gradient(90deg,#2563eb,#3b82f6,#60a5fa);"></div></div>
+            <div style="font-size:10px;color:rgba(96,165,250,0.7);margin-top:4px;">置信度 70% — B端效率提升明显</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 3: 战略级布局 -->
+    <div class="bento-card" style="grid-column: span 12; padding: 32px; border-color: rgba(168,85,247,0.12);">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="product-tier-badge tier3-bg"><i class="fas fa-crown"></i> Tier 3 · 战略级布局</div>
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);">6-12个月见效 | 配合自有品牌战略 | 战略投资</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:24px;">
+        <!-- Product 6: AI品牌营销工厂 -->
+        <div style="padding:20px;border-radius:16px;background:rgba(168,85,247,0.03);border:1px solid rgba(168,85,247,0.1);">
+          <div style="display:flex;align-items:start;gap:16px;">
+            <div style="width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(139,92,246,.1));">
+              <i class="fas fa-factory text-purple-400" style="font-size:20px;"></i>
+            </div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                <h4 style="font-weight:700;font-size:15px;">AI品牌营销工厂</h4>
+                <div class="star-rating" style="transform:scale(0.8);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></div>
+              </div>
+              <ul class="feature-list" style="font-size:12px;">
+                <li><i class="fas fa-chevron-right"></i>AI品牌VI/logo/包装设计</li>
+                <li><i class="fas fa-chevron-right"></i>AI营销文案批量生成</li>
+                <li><i class="fas fa-chevron-right"></i>AI社交媒体内容矩阵</li>
+                <li><i class="fas fa-chevron-right"></i>AI KOL投放策略优化</li>
+                <li><i class="fas fa-chevron-right"></i>AI用户反馈情感分析</li>
+              </ul>
+              <div style="margin-top:14px;padding:10px;border-radius:8px;font-size:12px;background:rgba(168,85,247,0.06);">
+                <i class="fas fa-lightbulb" style="color:#c084fc;margin-right:4px;"></i><strong>战略价值：</strong>自有品牌从0到1阶段，<strong style="color:#c084fc;">内容生产成本降低70%，品牌建设周期缩短50%</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7: AI经营决策驾驶舱 -->
+        <div style="padding:20px;border-radius:16px;background:rgba(168,85,247,0.03);border:1px solid rgba(168,85,247,0.1);">
+          <div style="display:flex;align-items:start;gap:16px;">
+            <div style="width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(139,92,246,.1));">
+              <i class="fas fa-gauge-high text-purple-400" style="font-size:20px;"></i>
+            </div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                <h4 style="font-weight:700;font-size:15px;">AI经营决策驾驶舱</h4>
+                <div class="star-rating" style="transform:scale(0.8);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></div>
+              </div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:10px;">汇聚全业务数据，AI驱动的经营管理决策中枢</div>
+              <ul class="feature-list" style="font-size:12px;">
+                <li><i class="fas fa-chevron-right"></i>四渠道经营数据统一看板</li>
+                <li><i class="fas fa-chevron-right"></i>AI异常预警（销量骤降/库存异常/舆情风险）</li>
+                <li><i class="fas fa-chevron-right"></i>智能经营分析报告（周/月/季自动生成）</li>
+                <li><i class="fas fa-chevron-right"></i>竞品动态追踪与策略建议</li>
+                <li><i class="fas fa-chevron-right"></i>自然语言交互式数据查询</li>
+              </ul>
+              <div style="margin-top:14px;padding:10px;border-radius:8px;font-size:12px;background:rgba(168,85,247,0.06);">
+                <i class="fas fa-lightbulb" style="color:#c084fc;margin-right:4px;"></i><strong>战略价值：</strong>管理层决策效率提升<strong style="color:#c084fc;">60%</strong>，从"拍脑袋"到"数据驱动"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 推荐方案总览表 ==================== -->
+  <div class="bento-grid">
+    <div class="bento-card" style="grid-column: span 12; padding: 32px;">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.05)); color: #f59e0b;">
+          <i class="fas fa-table-list"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">推荐方案总览 · 一览表</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">7款AI产品分级部署，覆盖未来体育全业务场景</p>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 180px;">产品名称</th>
+              <th style="width: 80px;">优先级</th>
+              <th style="width: 90px;">所属层级</th>
+              <th>核心价值</th>
+              <th style="width: 100px;">预估ROI</th>
+              <th style="width: 90px;">置信度</th>
+              <th style="width: 110px;">建议落地时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(16,185,129,0.04);">
+              <td style="padding:14px 16px;font-weight:600;color:#34d399;"><i class="fas fa-wand-magic-sparkles mr-2"></i>AI内容生成工作站</td>
+              <td style="padding:14px 16px;"><span class="tag tag-orange text-[10px]">P0 首推</span></td>
+              <td style="padding:14px 16px;"><span class="tag tag-emerald text-[10px]">Tier 1</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.65);">解决电商最核心痛点：内容生产效率提升8-10倍，外包成本降60%+</td>
+              <td style="padding:14px 16px;font-weight:700;color:#34d399;">50-120万/年</td>
+              <td style="padding:14px 16px;"><span style="color:#34d399;font-weight:700;">95%</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.5);">第1个月启动</td>
+            </tr>
+            <tr style="background: rgba(16,185,129,0.02);">
+              <td style="padding:14px 16px;font-weight:600;color:#34d399;"><i class="fas fa-robot mr-2"></i>AI智能客服系统</td>
+              <td style="padding:14px 16px;"><span class="tag tag-emerald text-[10px]">P0 首推</span></td>
+              <td style="padding:14px 16px;"><span class="tag tag-emerald text-[10px]">Tier 1</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.65);">7x24小时响应，大促零漏单，B端/C端全覆盖</td>
+              <td style="padding:14px 16px;font-weight:700;color:#34d399;">50-100万/年</td>
+              <td style="padding:14px 16px;"><span style="color:#34d399;font-weight:700;">92%</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.5);">第1-2月并行启动</td>
+            </tr>
+            <tr style="background: rgba(59,130,246,0.03);">
+              <td style="padding:14px 16px;font-weight:700;color:#60a5fa;"><i class="fas fa-person-dress mr-2"></i>AI数字人直播系统</td>
+              <td style="padding:14px 16px;"><span class="tag tag-blue text-[10px]">P1 高优</span></td>
+              <td style="padding:14px 16px;"><span class="tag tag-blue text-[10px]">Tier 2</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.65);">24小时日播矩阵，替代人工主播，GMV增量显著</td>
+              <td style="padding:14px 16px;font-weight:700;color:#60a5fa;">30-80万/年</td>
+              <td style="padding:14px 16px;"><span style="color:#60a5fa;font-weight:700;">80%</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.5);">第3-4月启动</td>
+            </tr>
+            <tr style="background: rgba(59,130,246,0.02);">
+              <td style="padding:14px 16px;font-weight:700;color:#60a5fa;"><i class="fas fa-brain mr-2"></i>AI供应链大脑</td>
+              <td style="padding:14px 16px;"><span class="tag tag-blue text-[10px]">P1 高优</span></td>
+              <td style="padding:14px 16px;"><span class="tag tag-blue text-[10px]">Tier 2</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.65);">销量预测+库存优化+定价策略，年省数百万资金占用</td>
+              <td style="padding:14px 16px;font-weight:700;color:#60a5fa;">100-300万/年</td>
+              <td style="padding:14px 16px;"><span style="color:#60a5fa;font-weight:700;">75%</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.5);">第4-5月启动</td>
+            </tr>
+            <tr style="background: rgba(59,130,246,0.01);">
+              <td style="padding:14px 16px;font-weight:600;color:#22d3ee;"><i class="fas fa-file-contract mr-2"></i>AI政企方案助手</td>
+              <td style="padding:14px 16px;"><span class="tag tag-cyan text-[10px]">P2 推荐</span></td>
+              <td style="padding:14px 16px;"><span class="tag tag-blue text-[10px]">Tier 2</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.65);">B端方案出具3天→2小时，销售团队效率翻倍</td>
+              <td style="padding:14px 16px;font-weight:700;color:#22d3ee;">20-40万/年</td>
+              <td style="padding:14px 16px;"><span style="color:#22d3ee;font-weight:700;">70%</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.5);">第5-6月启动</td>
+            </tr>
+            <tr style="background: rgba(168,85,247,0.03);">
+              <td style="padding:14px 16px;font-weight:600;color:#c084fc;"><i class="fas fa-factory mr-2"></i>AI品牌营销工厂</td>
+              <td style="padding:14px 16px;"><span class="tag tag-purple text-[10px]">P3 战略</span></td>
+              <td style="padding:14px 16px;"><span class="tag tag-purple text-[10px]">Tier 3</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.65);">自有品牌从0到1的全链路AI营销支持</td>
+              <td style="padding:14px 16px;font-weight:700;color:#c084fc;">品牌加速器</td>
+              <td style="padding:14px 16px;"><span style="color:#c084fc;font-weight:700;">70%</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.5);">配合品牌战略</td>
+            </tr>
+            <tr style="background: rgba(168,85,247,0.02);">
+              <td style="padding:14px 16px;font-weight:600;color:#c084fc;"><i class="fas fa-gauge-high mr-2"></i>AI经营决策驾驶舱</td>
+              <td style="padding:14px 16px;"><span class="tag tag-purple text-[10px]">P3 战略</span></td>
+              <td style="padding:14px 16px;"><span class="tag tag-purple text-[10px]">Tier 3</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.65);">四渠道数据统一，管理层决策智能化</td>
+              <td style="padding:14px 16px;font-weight:700;color:#c084fc;">管理升级</td>
+              <td style="padding:14px 16px;"><span style="color:#c084fc;font-weight:700;">70%</span></td>
+              <td style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,0.5);">配合数字化战略</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 总收益汇总 -->
+      <div style="margin-top:24px;padding:20px;border-radius:16px;background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(6,182,212,0.04));border:1px solid rgba(16,185,129,0.15);">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+          <div>
+            <h4 style="font-size:16px;font-weight:700;color:#34d399;margin-bottom:6px;"><i class="fas fa-coins mr-2"></i>全面部署后预估年化总收益</h4>
+            <p style="font-size:13px;color:rgba(255,255,255,0.5);">Tier 1 + Tier 2 全部落地后的综合收益测算</p>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:36px;font-weight:900;color:#34d399;line-height:1;">250-740万</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);">元/年（直接成本节约 + 间接效率收益）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== AI落地路线图 ==================== -->
+  <div class="bento-grid">
+    <div class="bento-card" style="grid-column: span 12; padding: 32px; border-color: rgba(245,158,11,0.1);">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.05)); color: #f59e0b;">
+          <i class="fas fa-route"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">AI落地路线图 · 三级递进</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">从信任建立到规模化复制，分阶段稳步推进AI转型</p>
+        </div>
+      </div>
+
+      <div style="position:relative;padding-left:28px;">
+        <div style="position:absolute;left:9px;top:0;height:100%;width:2px;background:linear-gradient(180deg,#10b981,#f59e0b,#06b6d4,#f97316);border-radius:1px;"></div>
+
+        <!-- Phase 1 -->
+        <div style="position:relative;padding-bottom:24px;">
+          <div class="timeline-dot" style="background:#10b981;box-shadow:0 0 12px rgba(16,185,129,0.5);"></div>
+          <div style="padding:20px;border-radius:16px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.12);">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+              <span class="tag tag-emerald text-[11px]"><i class="fas fa-flag-checkered"></i> Phase 1 · 第1-3月</span>
+              <span style="font-size:11px;color:rgba(255,255,255,0.35);">信任基石期</span>
+            </div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">AI内容生成 + AI智能客服</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:14px;">先解决最痛的点——内容产出效率和客服响应速度。最小成本验证AI价值，建立内部信任。</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;font-size:12px;color:rgba(255,255,255,0.45);">
+              <div><i class="fas fa-check-circle text-emerald-400 mr-1"></i>选一个电商团队试点</div>
+              <div><i class="fas fa-check-circle text-emerald-400 mr-1"></i>对比AI前后数据变化</div>
+              <div><i class="fas fa-check-circle text-emerald-400 mr-1"></i>收集一线反馈迭代优化</div>
+              <div><i class="fas fa-check-circle text-emerald-400 mr-1"></i>输出ROI报告给管理层</div>
+            </div>
+            <div style="margin-top:14px;">
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;">
+                <span style="color:rgba(255,255,255,0.45);">ROI置信度</span>
+                <span style="color:#34d399;font-weight:700;">92% — 低风险高回报</span>
+              </div>
+              <div class="roi-bar"><div class="roi-fill" style="--fill-width:92%;background:linear-gradient(90deg,#059669,#10b981,#34d399);"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div style="position:relative;padding-bottom:24px;">
+          <div class="timeline-dot" style="background:#f59e0b;box-shadow:0 0 12px rgba(245,158,11,0.5);"></div>
+          <div style="padding:20px;border-radius:16px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.12);">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+              <span class="tag tag-amber text-[11px]"><i class="fas fa-rocket"></i> Phase 2 · 第4-6月</span>
+              <span style="font-size:11px;color:rgba(255,255,255,0.35);">规模扩展期</span>
+            </div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">AI数字人直播 + AI供应链大脑 + 政企方案助手</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:14px;">Phase 1验证成功后，将AI能力扩展至直播运营和供应链管理，实现多场景提效。</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;font-size:12px;color:rgba(255,255,255,0.45);">
+              <div><i class="fas fa-check-circle text-amber-400 mr-1"></i>内容生成推广至全电商团队</div>
+              <div><i class="fas fa-check-circle text-amber-400 mr-1"></i>数字人直播上线测试</div>
+              <div><i class="fas fa-check-circle text-amber-400 mr-1"></i>供应链数据接入与模型训练</div>
+              <div><i class="fas fa-check-circle text-amber-400 mr-1"></i>B端销售团队启用方案助手</div>
+            </div>
+            <div style="margin-top:14px;">
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;">
+                <span style="color:rgba(255,255,255,0.45);">ROI置信度</span>
+                <span style="color:#fbbf24;font-weight:700;">78% — 中等风险高回报</span>
+              </div>
+              <div class="roi-bar"><div class="roi-fill" style="--fill-width:78%;background:linear-gradient(90deg,#d97706,#f59e0b,#fbbf24);"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div style="position:relative;">
+          <div class="timeline-dot" style="background:#06b6d4;box-shadow:0 0 12px rgba(6,182,212,0.5);"></div>
+          <div style="padding:20px;border-radius:16px;background:rgba(6,182,212,0.04);border:1px solid rgba(6,182,212,0.12);">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+              <span class="tag tag-cyan text-[11px]"><i class="fas fa-crown"></i> Phase 3 · 第7-12月</span>
+              <span style="font-size:11px;color:rgba(255,255,255,0.35);">战略融合期</span>
+            </div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:8px;color:#fff;">AI品牌营销工厂 + AI经营决策驾驶舱</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:14px;">配合自有品牌孵化战略，构建AI驱动的品牌增长体系和管理决策中枢。</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;font-size:12px;color:rgba(255,255,255,0.45);">
+              <div><i class="fas fa-check-circle text-cyan-400 mr-1"></i>自有品牌项目组入驻AI营销工厂</div>
+              <div><i class="fas fa-check-circle text-cyan-400 mr-1"></i>四渠道数据打通统一看板</div>
+              <div><i class="fas fa-check-circle text-cyan-400 mr-1"></i>管理层培训与驾驶舱启用</div>
+              <div><i class="fas fa-check-circle text-cyan-400 mr-1"></i>建立内部AI能力中心</div>
+            </div>
+            <div style="margin-top:14px;">
+              <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;">
+                <span style="color:rgba(255,255,255,0.45);">ROI置信度</span>
+                <span style="color:#22d3ee;font-weight:700;">70% — 战略投资长期回报</span>
+              </div>
+              <div class="roi-bar"><div class="roi-fill" style="--fill-width:70%;background:linear-gradient(90deg,#0891b2,#06b6d4,#22d3ee);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 销售策略 & 实战话术 ==================== -->
+  <div class="bento-grid">
+    <!-- 销售切入策略 -->
+    <div class="bento-card" style="grid-column: span 7; padding: 32px; border-color: rgba(236,72,153,0.1);">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(236,72,153,0.2), rgba(236,72,153,0.05)); color: #ec4899;">
+          <i class="fas fa-chess-knight"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">销售切入策略</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">基于挑战式销售法的客户触达路径设计</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="padding:16px;border-radius:12px;background:rgba(236,72,153,0.03);border:1px solid rgba(236,72,153,0.1);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="width:24px;height:24px;border-radius:50%;background:#ec4899;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">1</span>
+            <h4 style="font-weight:700;font-size:14px;color:#f472b6;">切入点：电商内容痛点</h4>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">
+            未来体育<strong style="color:#f472b6;">2017年进军电商且GMV已过亿</strong>，说明电商是当前增长最快的业务线。
+            但12+品牌 × 数千SKU的内容生产压力巨大，这是<strong style="color:#fff;">最容易引发共鸣的切入点</strong>。
+            用"一个SKU从拍照到上架要多久？"这类问题快速打开对话。
+          </p>
+        </div>
+
+        <div style="padding:16px;border-radius:12px;background:rgba(236,72,153,0.03);border:1px solid rgba(236,72,153,0.1);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="width:24px;height:24px;border-radius:50%;background:#ec4899;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">2</span>
+            <h4 style="font-weight:700;font-size:14px;color:#f472b6;">关联痛点：大促客服崩溃</h4>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">
+            电商GMV过亿意味着<strong style="color:#f472b6;">双11/618期间咨询量暴增</strong>，人工客服必然吃紧。
+            自然延伸到客服话题："大促那天咱们客服团队得加多少人？漏掉的咨询大概占多少比例？"
+          </p>
+        </div>
+
+        <div style="padding:16px;border-radius:12px;background:rgba(236,72,153,0.03);border:1px solid rgba(236,72,153,0.1);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="width:24px;height:24px;border-radius:50%;background:#ec4899;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">3</span>
+            <h4 style="font-weight:700;font-size:14px;color:#f472b6;">升维话题：自有品牌机会</h4>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">
+            未来体育正在<strong style="color:#f472b6;">孵化自有品牌</strong>，这是一个战略级话题。
+            在建立了基础信任后，可以探讨："自有品牌从零开始做内容和营销，
+            如果有AI帮忙能节省多少时间和成本？"——这将对话从<strong style="color:#fff;">工具采购</strong>拉升到<strong style="color:#fff;">战略合作伙伴</strong>层面。
+          </p>
+        </div>
+
+        <div style="padding:16px;border-radius:12px;background:rgba(236,72,153,0.03);border:1px solid rgba(236,72,153,0.1);">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="width:24px;height:24px;border-radius:50%;background:#ec4899;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">4</span>
+            <h4 style="font-weight:700;font-size:14px;color:#f472b6;">关键决策人洞察</h4>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">
+            <strong style="color:#fff;">CEO/创始人：</strong>关注战略布局、自有品牌成功、行业竞争力 → 用Tier 3的战略价值打动<br>
+            <strong style="color:#fff;">电商负责人：</strong>关注GMV增长、内容效率、转化率 → 用Tier 1的数据说话<br>
+            <strong style="color:#fff;">运营总监：</strong>关注成本控制、团队效率、流程优化 → 用ROI报告证明价值
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 实战话术 -->
+    <div class="bento-card" style="grid-column: span 5; padding: 32px; border-color: rgba(16,185,129,0.1);">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.05)); color: #10b981;">
+          <i class="fas fa-comments"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">实战话术</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">可直接使用的客户沟通脚本</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <!-- 开场白 -->
+        <div class="script-box">
+          <div class="script-speaker" style="color:#34d399;"><i class="fas fa-hand-wave mr-1"></i>开场白（破冰）</div>
+          <div class="script-content">
+            "叶总您好，我是XX公司的[姓名]。之前了解到咱们未来体育在福建体育用品经销领域做得非常不错，
+            代理了李宁、Nike这些大牌，电商也做到了过亿的体量。今天特意来拜访，是想跟您聊聊
+            <strong style="color:#34d399;">现在很多像咱们这样规模的电商企业，都在用AI解决内容生产和客服效率的问题</strong>，
+            不知道您这边有没有关注过这块？"
+          </div>
+        </div>
+
+        <!-- 痛点挖掘 -->
+        <div class="script-box">
+          <div class="script-speaker" style="color:#fbbf24;"><i class="fas fa-search mr-1"></i>痛点挖掘（SPIN-I 暗示）</div>
+          <div class="script-content">
+            "我理解，咱们电商团队现在可能十来个人在做内容吧？
+            一个新品上架，从拍图、修图、写详情页、做短视频，再到各平台适配，
+            <strong style="color:#fbbf24;">一套下来至少得两三天</strong>？
+            那如果咱们明年SKU再增加30%，按现在的模式，团队是不是得再招不少人？
+            而且大促期间，<strong style="color:#fbbf24;">客服那边漏单率大概多少？</strong>
+            这些其实都是可以用AI来系统性解决的……"
+          </div>
+        </div>
+
+        <!-- 价值呈现 -->
+        <div class="script-box">
+          <div class="script-speaker" style="color:#60a5fa;"><i class="fas fa-gift mr-1"></i>价值呈现（N 需求确认）</div>
+          <div class="script-content">
+            "具体来说，我们帮类似体量的客户做过两个事情：
+            第一，<strong style="color:#60a5fa;">用AI把单个SKU的内容生产从2小时压缩到15分钟</strong>，
+            效率提升8-10倍；第二，<strong style="color:#60a5fa;">AI客服7x24小时在线</strong>，
+            大促期间咨询量翻10倍也不用加人。
+            我建议可以先选一个品类做个试点，<strong style="color:#60a5fa;">用实际数据说话</strong>，
+            您觉得怎么样？"
+          </div>
+        </div>
+
+        <!-- 异议处理 -->
+        <div class="script-box">
+          <div class="script-speaker" style="color:#f87171;"><i class="fas fa-shield-halved mr-1"></i>异议处理</div>
+          <div class="script-content">
+            "<strong style='color:#f87171;'>客户：'AI生成的内容质量能保证吗？'</strong><br><br>
+            "这个问题特别好。说实话，早期的AI确实有这个问题。
+            但现在的技术已经完全不同了——<strong style='color:#f87171;'>我们可以做到AI生成+人工精调的模式</strong>，
+            80%的基础工作AI完成，剩下20%的关键环节由人工把控质量和品牌调性。
+            而且我们会先用咱们的品牌风格训练模型，确保输出的内容符合未来的品牌形象。
+            不如这样，下次我来的时候带几个实际的案例给您看看？"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 成功关键因素 ==================== -->
+  <div class="bento-grid">
+    <div class="bento-card" style="grid-column: span 12; padding: 32px;">
+      <div class="section-header">
+        <div class="section-icon" style="background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(6,182,212,0.05)); color: #06b6d4;">
+          <i class="fas fa-key"></i>
+        </div>
+        <div>
+          <h2 style="font-size: 20px; font-weight: 800;">项目成功关键因素</h2>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.4);">确保AI解决方案在未来体育落地的核心要素</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr);gap:16px;">
+        <div style="padding:20px;border-radius:14px;background:rgba(6,182,212,0.03);border:1px solid rgba(6,182,212,0.1);">
+          <div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(8,145,178,.1));">
+            <i class="fas fa-user-tie text-cyan-400" style="font-size:18px;"></i>
+          </div>
+          <h4 style="font-weight:700;font-size:14px;margin-bottom:8px;color:#22d3ee;">高层 sponsor 支持</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">
+            AI项目涉及跨部门协作（电商/客服/供应链/品牌），必须有CEO或副总级别的sponsor推动资源协调。
+          </p>
+        </div>
+
+        <div style="padding:20px;border-radius:14px;background:rgba(6,182,212,0.03);border:1px solid rgba(6,182,212,0.1);">
+          <div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(8,145,178,.1));">
+            <i class="fas fa-vial text-cyan-400" style="font-size:18px;"></i>
+          </div>
+          <h4 style="font-weight:700;font-size:14px;margin-bottom:8px;color:#22d3ee;">小步快跑试点</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">
+            先选1个电商团队+1个品类做试点，用1-2个月跑通闭环，用数据证明价值后再规模化推广。
+          </p>
+        </div>
+
+        <div style="padding:20px;border-radius:14px;background:rgba(6,182,212,0.03);border:1px solid rgba(6,182,212,0.1);">
+          <div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(8,145,178,.1));">
+            <i class="fas fa-database text-cyan-400" style="font-size:18px;"></i>
+          </div>
+          <h4 style="font-weight:700;font-size:14px;margin-bottom:8px;color:#22d3ee;">数据准备充分</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">
+            历史商品数据、客服对话记录、销售方案模板等数据的整理质量直接影响AI效果，需提前规划。
+          </p>
+        </div>
+
+        <div style="padding:20px;border-radius:14px;background:rgba(6,182,212,0.03);border:1px solid rgba(6,182,212,0.1);">
+          <div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(8,145,178,.1));">
+            <i class="fas fa-graduation-cap text-cyan-400" style="font-size:18px;"></i>
+          </div>
+          <h4 style="font-weight:700;font-size:14px;margin-bottom:8px;color:#22d3ee;">组织能力共建</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">
+            AI不是替代人，而是赋能人。需配套培训体系，帮助团队掌握AI工具的使用方法和最佳实践。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><i class="fas fa-robot mr-1"></i> 泉州未来体育文化有限公司 · AI解决方案 + 产品推荐方案</p>
+    <p style="margin-top: 8px; font-size: 11px;">基于企业业务画像定制 | SPIN需求分析 | 三级产品矩阵 | 分阶段落地路线图</p>
+    <p style="margin-top: 4px; font-size: 11px; opacity: 0.5;">Generated by Top-Sales AI Solution Designer</p>
+  </div>
+
+</div>
+</body>
+</html>

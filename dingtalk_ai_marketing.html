@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>钉钉AI营销 — 智能营销新引擎</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Noto Sans SC', 'sans-serif'] },
+    }
+  }
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#06060f; color:#fff; font-family:'Noto Sans SC',sans-serif; overflow-x:hidden; }
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:#0a0a1a; }
+::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#00d4ff,#0066ff); border-radius:3px; }
+
+.bento-grid {
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:16px;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+.bento-card {
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:20px;
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease;
+}
+.bento-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,212,255,0.08);
+  border-color:rgba(0,212,255,0.15);
+}
+.bento-card::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.3),transparent);
+}
+
+.glow-cyan { box-shadow:0 0 40px rgba(0,212,255,0.1), inset 0 0 40px rgba(0,212,255,0.03); }
+.glow-orange { box-shadow:0 0 40px rgba(255,107,53,0.1), inset 0 0 40px rgba(255,107,53,0.03); }
+.glow-blue { box-shadow:0 0 40px rgba(0,102,255,0.1), inset 0 0 40px rgba(0,102,255,0.03); }
+
+.gradient-text-cyan {
+  background:linear-gradient(135deg,#00d4ff,#0066ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.gradient-text-orange {
+  background:linear-gradient(135deg,#ff6b35,#ff9a56);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.gradient-text-mixed {
+  background:linear-gradient(135deg,#00d4ff,#a855f7,#ff6b35);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.tag {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.5px;
+}
+.tag-cyan { background:rgba(0,212,255,0.12); color:#00d4ff; border:1px solid rgba(0,212,255,0.2); }
+.tag-orange { background:rgba(255,107,53,0.12); color:#ff9a56; border:1px solid rgba(255,107,53,0.2); }
+.tag-blue { background:rgba(0,102,255,0.12); color:#66aaff; border:1px solid rgba(0,102,255,0.2); }
+.tag-purple { background:rgba(168,85,247,0.12); color:#c084fc; border:1px solid rgba(168,85,247,0.2); }
+.tag-green { background:rgba(34,197,94,0.12); color:#4ade80; border:1px solid rgba(34,197,94,0.2); }
+
+.big-number {
+  font-size:clamp(48px,6vw,80px);
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-2px;
+}
+
+.icon-box {
+  width:48px;height:48px;
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
+}
+.icon-box-cyan { background:linear-gradient(135deg,rgba(0,212,255,0.2),rgba(0,102,255,0.2)); color:#00d4ff; }
+.icon-box-orange { background:linear-gradient(135deg,rgba(255,107,53,0.2),rgba(255,154,86,0.2)); color:#ff9a56; }
+.icon-box-blue { background:linear-gradient(135deg,rgba(0,102,255,0.2),rgba(99,102,241,0.2)); color:#66aaff; }
+.icon-box-purple { background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(139,92,246,0.2)); color:#c084fc; }
+
+.timeline-dot {
+  width:12px;height:12px;border-radius:50%;
+  flex-shrink:0;
+  position:relative;
+  z-index:2;
+}
+.timeline-dot::after {
+  content:'';position:absolute;
+  top:-3px;left:-3px;
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid currentColor;
+  opacity:0.3;
+}
+.timeline-line {
+  width:2px;flex:1;
+  background:linear-gradient(180deg,rgba(255,255,255,0.1),transparent);
+  margin:4px 0;
+}
+
+.scroll-reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.scroll-reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+.hero-glow {
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:0.15;
+  pointer-events:none;
+}
+
+.stat-bar {
+  height:6px;border-radius:3px;
+  background:rgba(255,255,255,0.06);
+  overflow:hidden;
+  position:relative;
+}
+.stat-bar-fill {
+  height:100%;border-radius:3px;
+  transition:width 1.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  width:0;
+}
+.stat-bar-fill.animated { width:var(--fill-width); }
+
+.case-card {
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:16px;
+  padding:20px;
+  transition:all 0.3s ease;
+}
+.case-card:hover {
+  background:rgba(255,255,255,0.04);
+  border-color:rgba(0,212,255,0.15);
+}
+
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%,100% { opacity:0.15; }
+  50% { opacity:0.25; }
+}
+@keyframes gradient-shift {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+.float-anim { animation:float 6s ease-in-out infinite; }
+.pulse-glow { animation:pulse-glow 4s ease-in-out infinite; }
+
+@media (max-width:1024px) {
+  .bento-grid { grid-template-columns:repeat(6,1fr); gap:12px; padding:0 16px; }
+  [style*="grid-column: span 8"] { grid-column:span 6 !important; }
+  [style*="grid-column: span 7"] { grid-column:span 6 !important; }
+  [style*="grid-column: span 5"] { grid-column:span 6 !important; }
+  [style*="grid-column: span 4"] { grid-column:span 6 !important; }
+  [style*="grid-column: span 3"] { grid-column:span 3 !important; }
+  [style*="grid-column: span 6"] { grid-column:span 6 !important; }
+}
+@media (max-width:640px) {
+  .bento-grid { grid-template-columns:1fr; gap:10px; padding:0 12px; }
+  [style*="grid-column"] { grid-column:span 1 !important; }
+  .big-number { font-size:40px; letter-spacing:-1px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero-glow pulse-glow" style="top:-200px;left:-100px;background:radial-gradient(circle,#0066ff,transparent);"></div>
+<div class="hero-glow pulse-glow" style="top:100px;right:-200px;background:radial-gradient(circle,#ff6b35,transparent);animation-delay:2s;"></div>
+
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#06060f]/80 border-b border-white/5">
+  <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00d4ff] to-[#0066ff] flex items-center justify-center">
+        <i class="fas fa-bolt text-white text-sm"></i>
+      </div>
+      <span class="font-bold text-lg">钉钉AI营销</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/50">
+      <a href="#capabilities" class="hover:text-white transition-colors">核心能力</a>
+      <a href="#cases" class="hover:text-white transition-colors">客户案例</a>
+      <a href="#tech" class="hover:text-white transition-colors">技术亮点</a>
+      <a href="#start" class="hover:text-white transition-colors">开始使用</a>
+    </div>
+    <a href="#start" class="px-5 py-2 rounded-full bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-sm font-medium hover:shadow-lg hover:shadow-cyan-500/20 transition-all">
+      免费体验
+    </a>
+  </div>
+</nav>
+
+<div class="pt-24 pb-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 8; padding:40px; min-height:320px; display:flex; flex-direction:column; justify-content:center;">
+    <div class="hero-glow pulse-glow" style="top:-100px;right:-100px;background:radial-gradient(circle,#00d4ff,transparent);width:400px;height:400px;"></div>
+    <span class="tag tag-cyan mb-4 inline-block w-fit"><i class="fas fa-rocket"></i> 钉钉生态 AI 营销解决方案</span>
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4">
+      AI驱动的<br><span class="gradient-text-cyan">智能营销平台</span>
+    </h1>
+    <p class="text-white/40 text-base md:text-lg max-w-xl leading-relaxed mb-6">
+      从情报采集、内容选题到任务分发，一站式 AI 营销工具链。实时洞察全网热点，智能生成营销选题，自动化多平台分发，让营销更高效、更精准。
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <span class="tag tag-cyan"><i class="fas fa-globe"></i> 全网热点数据覆盖</span>
+      <span class="tag tag-orange"><i class="fas fa-th-large"></i> 多平台账号矩阵管理</span>
+      <span class="tag tag-blue"><i class="fas fa-magic"></i> AI智能选题生成</span>
+      <span class="tag tag-purple"><i class="fas fa-cogs"></i> 自动化任务分发引擎</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-orange" style="grid-column:span 4; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; transition-delay:0.15s;">
+    <div class="hero-glow pulse-glow" style="bottom:-80px;left:-50px;background:radial-gradient(circle,#ff6b35,transparent);width:300px;height:300px;"></div>
+    <p class="text-white/30 text-xs uppercase tracking-widest mb-2">平均销量提升</p>
+    <div class="big-number gradient-text-orange">30%+</div>
+    <p class="text-white/40 text-sm mt-3">基于义乌优克拉等客户<br>真实业务数据验证</p>
+    <div class="mt-5 flex gap-2">
+      <span class="tag tag-green"><i class="fas fa-check-circle"></i> 已验证</span>
+      <span class="tag tag-orange"><i class="fas fa-chart-line"></i> 持续增长</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<section id="capabilities" class="py-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0s;">
+    <div class="icon-box icon-box-cyan mb-5">
+      <i class="fas fa-satellite-dish"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-2">情报中心</h3>
+    <p class="text-white/40 text-sm leading-relaxed mb-4">全网热点实时追踪，竞品动态一手掌握。AI 自动采集、分析、归纳，帮助您做出更明智的营销决策。</p>
+    <div class="space-y-3">
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#00d4ff]"></div>
+        <span class="text-white/60 text-xs">全网热点实时监控</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#00d4ff]"></div>
+        <span class="text-white/60 text-xs">竞品动态智能追踪</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#00d4ff]"></div>
+        <span class="text-white/60 text-xs">悟空案例库一键复用</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0.1s;">
+    <div class="icon-box icon-box-orange mb-5">
+      <i class="fas fa-pen-fancy"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-2">创作中心</h3>
+    <p class="text-white/40 text-sm leading-relaxed mb-4">基于数据洞察自动生成营销选题，智能匹配最佳发布时机和渠道，一键分发到多个平台。</p>
+    <div class="space-y-3">
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#ff6b35]"></div>
+        <span class="text-white/60 text-xs">AI 选题自动生成</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#ff6b35]"></div>
+        <span class="text-white/60 text-xs">智能任务分发</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#ff6b35]"></div>
+        <span class="text-white/60 text-xs">多平台一键覆盖</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0.2s;">
+    <div class="icon-box icon-box-blue mb-5">
+      <i class="fas fa-chart-bar"></i>
+    </div>
+    <h3 class="text-xl font-bold mb-2">数据中心</h3>
+    <p class="text-white/40 text-sm leading-relaxed mb-4">从内容发布到用户互动，全链路数据实时监控。多维度数据分析报表，持续优化营销选题。</p>
+    <div class="space-y-3">
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#0066ff]"></div>
+        <span class="text-white/60 text-xs">实时数据大盘</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#0066ff]"></div>
+        <span class="text-white/60 text-xs">多维度分析报表</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#0066ff]"></div>
+        <span class="text-white/60 text-xs">ROI 效果追踪</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 3; text-align:center; padding:32px 20px;">
+    <div class="big-number gradient-text-cyan" style="font-size:clamp(36px,4vw,56px);">10×</div>
+    <p class="text-white/50 text-sm mt-2">会议纪要效率提升</p>
+    <p class="text-white/25 text-[10px] mt-1">蜀海供应链 · 47个中心仓</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 3; text-align:center; padding:32px 20px; transition-delay:0.1s;">
+    <div class="big-number gradient-text-orange" style="font-size:clamp(36px,4vw,56px);">80%</div>
+    <p class="text-white/50 text-sm mt-2">内容生产效率提升</p>
+    <p class="text-white/25 text-[10px] mt-1">易有料 · 社媒运营助理</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 3; text-align:center; padding:32px 20px; transition-delay:0.2s;">
+    <div class="big-number gradient-text-cyan" style="font-size:clamp(36px,4vw,56px);">100%</div>
+    <p class="text-white/50 text-sm mt-2">信息完整度</p>
+    <p class="text-white/25 text-[10px] mt-1">义乌优克拉 · A1录音卡</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 3; text-align:center; padding:32px 20px; transition-delay:0.3s;">
+    <div class="big-number gradient-text-orange" style="font-size:clamp(36px,4vw,56px);">3×</div>
+    <p class="text-white/50 text-sm mt-2">营销效果提升</p>
+    <p class="text-white/25 text-[10px] mt-1">易有料 · AI驱动运营</p>
+  </div>
+
+</div>
+</section>
+
+<section id="cases" class="py-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-cyan" style="grid-column:span 7; transition-delay:0s;">
+    <span class="tag tag-cyan mb-4 inline-block"><i class="fas fa-star"></i> 标杆案例</span>
+    <h3 class="text-xl font-bold mb-1">义乌优克拉：一张A1卡，打通前店与后厂</h3>
+    <p class="text-white/30 text-[10px] mb-5">星空灯品类隐形冠军 · 迪士尼/奥特曼等IP授权 · 40余项专利</p>
+    <div class="space-y-0 relative ml-1">
+      <div class="flex gap-4 pb-5 relative">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot bg-red-400 text-red-400"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="flex-1 -mt-1">
+          <div class="text-red-300 text-xs font-semibold mb-1">痛点：信息损耗，两个月白干</div>
+          <p class="text-white/50 text-xs leading-relaxed">
+            中东客商说想要能"record"的星空灯，店员听成"remote control"遥控器。魏俊花了<strong class="text-white/80">两个月带队研发</strong>，模具都开了，客户却说"这不是我要的"——他要的是录音功能。前店后厂模式信息传递至少丢失30%细节。
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 pb-5 relative">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot bg-yellow-400 text-yellow-400"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="flex-1 -mt-1">
+          <div class="text-yellow-300 text-xs font-semibold mb-1">方案：A1录音卡 + 悟空AI助手</div>
+          <p class="text-white/50 text-xs leading-relaxed">
+            将A1卡片挂在展厅展柜旁，<strong class="text-white/80">全天候录音，自动将英语、阿拉伯语、西班牙语实时翻译转写成中文</strong>，同步到AI表格。问一句"悟空"即可拿到结构化客商需求清单，无需便签、微信语音、Excel手工录入。
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 pb-5 relative">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot bg-cyan-400 text-cyan-400"></div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="flex-1 -mt-1">
+          <div class="text-cyan-300 text-xs font-semibold mb-1">进阶：24小时爆款雷达</div>
+          <p class="text-white/50 text-xs leading-relaxed">
+            悟空24小时自动抓取全平台星空灯品类爆款数据，完成清洗、分析、标注。<strong class="text-white/80">早晨9点，"今日爆款雷达报告"准时推送到钉钉群</strong>。从2小时压缩到5分钟，热点捕获率100%。
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 relative">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot bg-green-400 text-green-400"></div>
+        </div>
+        <div class="flex-1 -mt-1">
+          <div class="text-green-300 text-xs font-semibold mb-1">效果：销量提升30%+</div>
+          <p class="text-white/50 text-xs leading-relaxed">
+            客户需求从店铺传回工厂<strong class="text-white/80">实时同步，信息完整度接近100%</strong>（过去至少丢失30%）。产品研发真正长在客户需求的土壤上，<strong class="text-green-400/80">整体销量提升30%以上</strong>。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <span class="tag tag-cyan">A1录音卡</span>
+      <span class="tag tag-orange">悟空AI助手</span>
+      <span class="tag tag-blue">AI表格</span>
+      <span class="tag tag-green">销量+30%</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 5; transition-delay:0.15s;">
+    <span class="tag tag-orange mb-4 inline-block"><i class="fas fa-lightbulb"></i> 方案详解</span>
+    <h3 class="text-lg font-bold mb-4">A1 + 悟空 如何重塑业务流</h3>
+
+    <div class="space-y-4">
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-cyan" style="width:36px;height:36px;border-radius:10px;font-size:14px;">
+            <i class="fas fa-microphone"></i>
+          </div>
+          <div>
+            <p class="text-sm font-semibold mb-1">采集层：A1录音卡</p>
+            <p class="text-white/40 text-[11px] leading-relaxed">多语言实时翻译转写，英语/阿拉伯语/西班牙语→中文，信息完整度≈100%</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-orange" style="width:36px;height:36px;border-radius:10px;font-size:14px;">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div>
+            <p class="text-sm font-semibold mb-1">分析层：悟空AI助手</p>
+            <p class="text-white/40 text-[11px] leading-relaxed">结构化需求清单自动生成，爆款数据24h监控，5分钟出报告</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-blue" style="width:36px;height:36px;border-radius:10px;font-size:14px;">
+            <i class="fas fa-table"></i>
+          </div>
+          <div>
+            <p class="text-sm font-semibold mb-1">执行层：AI表格</p>
+            <p class="text-white/40 text-[11px] leading-relaxed">需求→研发→生产全链路数字化，告别便签/微信/Excel手工搬运</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-purple" style="width:36px;height:36px;border-radius:10px;font-size:14px;">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div>
+            <p class="text-sm font-semibold mb-1">进化层：Skill技能</p>
+            <p class="text-white/40 text-[11px] leading-relaxed">行业经验封装为可复用技能，两周内搓出第一批Skill，新员工秒变专家</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 p-3 rounded-xl bg-gradient-to-r from-[#00d4ff]/5 to-[#0066ff]/5 border border-[#00d4ff]/10">
+      <p class="text-[11px] text-white/50"><i class="fas fa-quote-left text-[#00d4ff]/40 mr-1"></i>这不光是省时间，这是让我们的产品研发真正长在客户需求的土壤上。<span class="text-white/30">—— 魏俊，优克拉创始人</span></p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0s;">
+    <span class="tag tag-blue mb-3 inline-block"><i class="fas fa-utensils"></i> 餐饮供应链</span>
+    <h3 class="text-lg font-bold mb-2">蜀海供应链</h3>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">全国47个中心仓的晨会管理曾是盲区。通过A1自动录音、分钟级生成纪要，AI自动抓取高频问题并给出改善建议。</p>
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between text-[11px] mb-1">
+          <span class="text-white/50">会议纪要效率</span>
+          <span class="text-[#00d4ff]">10倍提升</span>
+        </div>
+        <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#00d4ff] to-[#0066ff]" style="--fill-width:95%"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-[11px] mb-1">
+          <span class="text-white/50">问题闭环率</span>
+          <span class="text-[#00d4ff]">90%+</span>
+        </div>
+        <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#00d4ff] to-[#0066ff]" style="--fill-width:90%"></div></div>
+      </div>
+    </div>
+    <p class="text-white/25 text-[10px] mt-3"><i class="fas fa-quote-left mr-1"></i>让"一客一方案"成为可能</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0.1s;">
+    <span class="tag tag-orange mb-3 inline-block"><i class="fas fa-store"></i> 零售行业</span>
+    <h3 class="text-lg font-bold mb-2">银泰 · 一人MCN</h3>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">李凯一个人，用一张钉钉AI表格，干出了一家MCN机构。从商品信息收集到主播管理到财务对账，全在AI表格上完成。</p>
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between text-[11px] mb-1">
+          <span class="text-white/50">协同效率</span>
+          <span class="text-[#ff9a56]">数周→数天</span>
+        </div>
+        <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#ff6b35] to-[#ff9a56]" style="--fill-width:88%"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-[11px] mb-1">
+          <span class="text-white/50">人力成本</span>
+          <span class="text-[#ff9a56]">团队→一人</span>
+        </div>
+        <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#ff6b35] to-[#ff9a56]" style="--fill-width:92%"></div></div>
+      </div>
+    </div>
+    <p class="text-white/25 text-[10px] mt-3"><i class="fas fa-quote-left mr-1"></i>一个人，一张AI表格，干出一家MCN</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0.2s;">
+    <span class="tag tag-purple mb-3 inline-block"><i class="fas fa-tshirt"></i> 服饰行业</span>
+    <h3 class="text-lg font-bold mb-2">森马 · 8000家门店</h3>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">与钉钉达成AI战略合作，AI表格打通商品生产、供应链、销售、库存链路。"AI森教练"模拟进店咨询场景，提升导购话术。</p>
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between text-[11px] mb-1">
+          <span class="text-white/50">门店覆盖</span>
+          <span class="text-[#c084fc]">8000家</span>
+        </div>
+        <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#a855f7] to-[#c084fc]" style="--fill-width:100%"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-[11px] mb-1">
+          <span class="text-white/50">决策精准度</span>
+          <span class="text-[#c084fc]">实时分析</span>
+        </div>
+        <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#a855f7] to-[#c084fc]" style="--fill-width:85%"></div></div>
+      </div>
+    </div>
+    <p class="text-white/25 text-[10px] mt-3"><i class="fas fa-quote-left mr-1"></i>AI是生存题，必须嵌入业务流程——邱坚强</p>
+  </div>
+
+</div>
+</section>
+
+<section class="py-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6; transition-delay:0s;">
+    <span class="tag tag-cyan mb-3 inline-block"><i class="fas fa-landmark"></i> 金融营销</span>
+    <h3 class="text-lg font-bold mb-2">妙塔AI · 金融顾问"赢赢"</h3>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">AI原生金融顾问，深度融合钉钉A1硬件，支持客户洞察、产品分析、营销复盘、商机透视全流程。11年金融行业知识封装为可复用Skill。</p>
+    <div class="grid grid-cols-2 gap-3">
+      <div class="case-card text-center py-3">
+        <p class="text-[#00d4ff] text-lg font-bold">11年</p>
+        <p class="text-white/30 text-[10px]">行业知识封装</p>
+      </div>
+      <div class="case-card text-center py-3">
+        <p class="text-[#00d4ff] text-lg font-bold">意图驱动</p>
+        <p class="text-white/30 text-[10px]">从流程到意图</p>
+      </div>
+    </div>
+    <p class="text-white/25 text-[10px] mt-3"><i class="fas fa-quote-left mr-1"></i>每一个人的知识都可以变成可复用的技能——陈新辉</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6; transition-delay:0.1s;">
+    <span class="tag tag-green mb-3 inline-block"><i class="fas fa-handshake"></i> 产业招商</span>
+    <h3 class="text-lg font-bold mb-2">立业云 · AI金牌招商人</h3>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">中国300万招商人，行业转化率长期低于千分之六。AI金牌招商人覆盖获客、录盘、跟进、匹配、谈判、复盘八大高频场景，"TA干活，你招商"。</p>
+    <div class="grid grid-cols-3 gap-2">
+      <div class="case-card text-center py-3">
+        <p class="text-[#4ade80] text-lg font-bold">8大</p>
+        <p class="text-white/30 text-[10px]">高频场景</p>
+      </div>
+      <div class="case-card text-center py-3">
+        <p class="text-[#4ade80] text-lg font-bold">20年</p>
+        <p class="text-white/30 text-[10px]">招商know-how</p>
+      </div>
+      <div class="case-card text-center py-3">
+        <p class="text-[#4ade80] text-lg font-bold">千倍</p>
+        <p class="text-white/30 text-[10px]">跨越式提效</p>
+      </div>
+    </div>
+    <p class="text-white/25 text-[10px] mt-3"><i class="fas fa-quote-left mr-1"></i>让每个招商人拥有24小时在线的顶尖团队——赵泓宇</p>
+  </div>
+
+</div>
+</section>
+
+<section id="tech" class="py-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6; transition-delay:0s;">
+    <span class="tag tag-cyan mb-4 inline-block"><i class="fas fa-microchip"></i> 技术亮点</span>
+    <h3 class="text-xl font-bold mb-5">强大的底层能力支撑</h3>
+    <p class="text-white/35 text-xs mb-5">基于钉钉生态深度集成，提供企业级的稳定性和安全性保障</p>
+
+    <div class="grid grid-cols-2 gap-3">
+      <div class="case-card">
+        <div class="icon-box icon-box-cyan mb-3" style="width:32px;height:32px;border-radius:8px;font-size:12px;">
+          <i class="fas fa-brain"></i>
+        </div>
+        <p class="text-sm font-semibold mb-1">AI 智能分析</p>
+        <p class="text-white/35 text-[10px] leading-relaxed">深度学习驱动的内容分析引擎，自动识别热点趋势与营销机会</p>
+      </div>
+      <div class="case-card">
+        <div class="icon-box icon-box-orange mb-3" style="width:32px;height:32px;border-radius:8px;font-size:12px;">
+          <i class="fas fa-database"></i>
+        </div>
+        <p class="text-sm font-semibold mb-1">全网数据采集</p>
+        <p class="text-white/35 text-[10px] leading-relaxed">覆盖主流社交媒体和内容平台，关键词智能采集与监控</p>
+      </div>
+      <div class="case-card">
+        <div class="icon-box icon-box-blue mb-3" style="width:32px;height:32px;border-radius:8px;font-size:12px;">
+          <i class="fas fa-layer-group"></i>
+        </div>
+        <p class="text-sm font-semibold mb-1">多账号矩阵管理</p>
+        <p class="text-white/35 text-[10px] leading-relaxed">统一管理多平台营销账号，集中调度、高效协同</p>
+      </div>
+      <div class="case-card">
+        <div class="icon-box icon-box-purple mb-3" style="width:32px;height:32px;border-radius:8px;font-size:12px;">
+          <i class="fas fa-file-alt"></i>
+        </div>
+        <p class="text-sm font-semibold mb-1">选题模板引擎</p>
+        <p class="text-white/35 text-[10px] leading-relaxed">内置丰富营销模板，支持自定义选题规则，快速复用案例</p>
+      </div>
+      <div class="case-card">
+        <div class="icon-box icon-box-cyan mb-3" style="width:32px;height:32px;border-radius:8px;font-size:12px;">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <p class="text-sm font-semibold mb-1">钉钉深度集成</p>
+        <p class="text-white/35 text-[10px] leading-relaxed">原生钉钉应用体验，消息通知、审批流程无缝打通</p>
+      </div>
+      <div class="case-card">
+        <div class="icon-box icon-box-orange mb-3" style="width:32px;height:32px;border-radius:8px;font-size:12px;">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <p class="text-sm font-semibold mb-1">自动化任务引擎</p>
+        <p class="text-white/35 text-[10px] leading-relaxed">定时采集、自动发布、智能分发，解放人力专注选题</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6; transition-delay:0.15s;">
+    <span class="tag tag-orange mb-4 inline-block"><i class="fas fa-route"></i> 快速上手</span>
+    <h3 class="text-xl font-bold mb-5">三步开启智能营销</h3>
+
+    <div class="space-y-5">
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#00d4ff] to-[#0066ff] flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="flex-1 -mt-1">
+          <p class="text-sm font-bold mb-1">连接数据源</p>
+          <p class="text-white/40 text-xs leading-relaxed">接入钉钉生态，绑定社交媒体账号矩阵，导入历史营销数据。支持抖音、小红书、视频号等主流平台一键授权。</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff6b35] to-[#ff9a56] flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="flex-1 -mt-1">
+          <p class="text-sm font-bold mb-1">AI 自动选题</p>
+          <p class="text-white/40 text-xs leading-relaxed">情报中心实时追踪全网热点，AI基于行业特征和受众画像自动生成选题建议，智能匹配最佳发布时机与渠道。</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#a855f7] to-[#c084fc] flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+        </div>
+        <div class="flex-1 -mt-1">
+          <p class="text-sm font-bold mb-1">一键分发 & 追踪</p>
+          <p class="text-white/40 text-xs leading-relaxed">创作中心一键生成内容并分发至多平台，数据中心实时监控全链路数据，ROI效果一目了然，持续优化策略。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-[#00d4ff]/5 via-[#a855f7]/5 to-[#ff6b35]/5 border border-white/5">
+      <p class="text-xs text-white/50 leading-relaxed">
+        <i class="fas fa-info-circle text-[#00d4ff] mr-1"></i>
+        零代码门槛，无需额外搭建系统或招聘专职工程师。从注册到首次AI选题生成，最快<strong class="text-white/70">30分钟</strong>内完成。
+      </p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-8">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0s;">
+    <span class="tag tag-cyan mb-3 inline-block"><i class="fas fa-shield-alt"></i> 安全合规</span>
+    <h3 class="text-lg font-bold mb-3">企业级安全保障</h3>
+    <div class="space-y-3">
+      <div class="flex items-start gap-3">
+        <i class="fas fa-lock text-[#00d4ff] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">数据私有化</p>
+          <p class="text-white/35 text-[10px]">支持本地化部署，AI一体机+私有化平台，核心数据不出域</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <i class="fas fa-user-shield text-[#00d4ff] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">权限管控</p>
+          <p class="text-white/35 text-[10px]">物理隔离+权限管控+紧急"拔电"机制，杜绝数据泄露</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <i class="fas fa-certificate text-[#00d4ff] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">合规存储</p>
+          <p class="text-white/35 text-[10px]">国内数据存储合规，AES128加密覆盖数据全生命周期</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0.1s;">
+    <span class="tag tag-orange mb-3 inline-block"><i class="fas fa-bolt"></i> 核心优势</span>
+    <h3 class="text-lg font-bold mb-3">为什么选择钉钉AI营销</h3>
+    <div class="space-y-3">
+      <div class="flex items-start gap-3">
+        <i class="fas fa-plug text-[#ff9a56] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">原生集成</p>
+          <p class="text-white/35 text-[10px]">深度嵌入钉钉生态，消息/审批/协同无缝打通</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <i class="fas fa-code text-[#ff9a56] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">零代码门槛</p>
+          <p class="text-white/35 text-[10px]">自然语言交互，非技术人员也能自主完成AI营销</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <i class="fas fa-coins text-[#ff9a56] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">按效果付费</p>
+          <p class="text-white/35 text-[10px]">轻资产投入，免费版够用初期，ROI可量化追踪</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4; transition-delay:0.2s;">
+    <span class="tag tag-purple mb-3 inline-block"><i class="fas fa-users"></i> 生态伙伴</span>
+    <h3 class="text-lg font-bold mb-3">行业共创生态</h3>
+    <div class="space-y-3">
+      <div class="flex items-start gap-3">
+        <i class="fas fa-utensils text-[#c084fc] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">蜀海供应链</p>
+          <p class="text-white/35 text-[10px]">餐饮供应链AI标杆，47个中心仓智能化</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <i class="fas fa-chart-line text-[#c084fc] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">妙塔AI</p>
+          <p class="text-white/35 text-[10px]">金融营销AI原生，11年行业知识Skill化</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <i class="fas fa-pen-nib text-[#c084fc] text-xs mt-1"></i>
+        <div>
+          <p class="text-sm font-semibold">易有料</p>
+          <p class="text-white/35 text-[10px]">一人公司模式，内容效率提升80%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="start" class="py-8 pb-12">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12; text-align:center; padding:48px 32px; background:linear-gradient(135deg,rgba(0,212,255,0.05),rgba(168,85,247,0.05),rgba(255,107,53,0.05)); border-color:rgba(0,212,255,0.1);">
+    <div class="hero-glow pulse-glow" style="top:-150px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,#0066ff,transparent);width:500px;height:500px;"></div>
+    <span class="tag tag-cyan mb-4 inline-block"><i class="fas fa-rocket"></i> 开启智能营销新时代</span>
+    <h2 class="text-3xl md:text-4xl font-black mb-3">
+      告别低效手动操作<br>让 <span class="gradient-text-mixed">AI</span> 成为您的营销伙伴
+    </h2>
+    <p class="text-white/40 text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+      从义乌老板到世界500强，从一人公司到8000家门店，钉钉AI营销正在重塑每一个行业的营销方式。
+    </p>
+    <div class="flex flex-wrap justify-center gap-3 mb-6">
+      <a href="https://n.dingtalk.com/dingding/dingding-marketing/ai-marketing/index.html" target="_blank" class="px-8 py-3 rounded-full bg-gradient-to-r from-[#00d4ff] to-[#0066ff] text-sm font-bold hover:shadow-lg hover:shadow-cyan-500/25 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-play"></i> 立即体验
+      </a>
+      <a href="https://open.dingtalk.com/document/ai-dev/introduction-to-ai-assistant" target="_blank" class="px-8 py-3 rounded-full border border-white/10 text-sm font-medium hover:bg-white/5 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-book"></i> 查看文档
+      </a>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4 text-[10px] text-white/25">
+      <span><i class="fas fa-check text-[#4ade80] mr-1"></i>免费版可用</span>
+      <span><i class="fas fa-check text-[#4ade80] mr-1"></i>零代码门槛</span>
+      <span><i class="fas fa-check text-[#4ade80] mr-1"></i>30分钟上手</span>
+      <span><i class="fas fa-check text-[#4ade80] mr-1"></i>企业级安全</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+  <div class="bento-card" style="grid-column:span 12; padding:20px 28px;">
+    <h4 class="text-sm font-bold mb-3 text-white/60"><i class="fas fa-link mr-2 text-[#00d4ff]"></i>参考来源</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+      <a href="https://n.dingtalk.com/dingding/dingding-marketing/ai-marketing/index.html" target="_blank" class="text-[11px] text-white/30 hover:text-[#00d4ff] transition-colors truncate">
+        <i class="fas fa-external-link-alt mr-1"></i>钉钉AI营销平台官方入口
+      </a>
+      <a href="https://news.sina.cn/sx/2026-03-19/detail-inhrnvit6934024.d.html" target="_blank" class="text-[11px] text-white/30 hover:text-[#00d4ff] transition-colors truncate">
+        <i class="fas fa-external-link-alt mr-1"></i>钉钉副总裁易统：开放场景、能力、方法论
+      </a>
+      <a href="https://caifuhao.eastmoney.com/news/20260522103621447283290" target="_blank" class="text-[11px] text-white/30 hover:text-[#00d4ff] transition-colors truncate">
+        <i class="fas fa-external-link-alt mr-1"></i>钉钉悟空上线2个月，给义乌老板提升30%销量
+      </a>
+      <a href="https://m.sohu.com/a/935072763_505310/" target="_blank" class="text-[11px] text-white/30 hover:text-[#00d4ff] transition-colors truncate">
+        <i class="fas fa-external-link-alt mr-1"></i>银泰李凯：一人+AI表格=MCN
+      </a>
+      <a href="https://m.ebrun.com/619794.html" target="_blank" class="text-[11px] text-white/30 hover:text-[#00d4ff] transition-colors truncate">
+        <i class="fas fa-external-link-alt mr-1"></i>森马与钉钉达成AI战略合作
+      </a>
+      <a href="https://open.dingtalk.com/document/ai-dev/introduction-to-ai-assistant" target="_blank" class="text-[11px] text-white/30 hover:text-[#00d4ff] transition-colors truncate">
+        <i class="fas fa-external-link-alt mr-1"></i>钉钉AI助理官方文档
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer class="border-t border-white/5 py-6">
+  <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md bg-gradient-to-br from-[#00d4ff] to-[#0066ff] flex items-center justify-center">
+        <i class="fas fa-bolt text-white text-[10px]"></i>
+      </div>
+      <span class="text-sm text-white/30">钉钉AI营销 · 智能营销新引擎</span>
+    </div>
+    <p class="text-white/20 text-xs">39139@胜天半子</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        const bars = entry.target.querySelectorAll('.stat-bar-fill');
+        bars.forEach(bar => {
+          setTimeout(() => bar.classList.add('animated'), 300);
+        });
+      }
+    });
+  }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+  if (typeof motion !== 'undefined' && motion.motion) {
+    const { animate, inView } = motion.motion;
+
+    document.querySelectorAll('.bento-card').forEach(card => {
+      inView(card, () => {
+        animate(card, 
+          { opacity:[0,1], y:[30,0] }, 
+          { duration:0.6, easing:[0.25,0.46,0.45,0.94] }
+        );
+      }, { margin:'-50px' });
+    });
+
+    document.querySelectorAll('.big-number').forEach(num => {
+      inView(num, () => {
+        animate(num,
+          { opacity:[0,1], scale:[0.8,1] },
+          { duration:0.8, easing:[0.25,0.46,0.45,0.94] }
+        );
+      });
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

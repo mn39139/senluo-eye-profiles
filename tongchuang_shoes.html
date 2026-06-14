@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州同创鞋业 — 儿童机能鞋专业制造商</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.min.js"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Noto Sans SC','sans-serif']}}}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a10;color:#fff;font-family:'Noto Sans SC',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0a0a10}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#6366f1,#818cf8);border-radius:3px}
+
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;max-width:1400px;margin:0 auto;padding:0 20px}
+.bento-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.05);border-radius:18px;padding:26px;position:relative;overflow:hidden;backdrop-filter:blur(10px);transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s ease}
+.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(99,102,241,.08);border-color:rgba(99,102,241,.12)}
+.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.25),transparent)}
+
+.glow-indigo{box-shadow:0 0 36px rgba(99,102,241,.08),inset 0 0 36px rgba(99,102,241,.02)}
+.glow-emerald{box-shadow:0 0 36px rgba(16,185,129,.08),inset 0 0 36px rgba(16,185,129,.02)}
+.glow-amber{box-shadow:0 0 36px rgba(245,158,11,.08),inset 0 0 36px rgba(245,158,11,.02)}
+
+.gradient-text-indigo{background:linear-gradient(135deg,#6366f1,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-emerald{background:linear-gradient(135deg,#10b981,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-amber{background:linear-gradient(135deg,#f59e0b,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-mixed{background:linear-gradient(135deg,#6366f1,#10b981,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:16px;font-size:10px;font-weight:500;letter-spacing:.3px}
+.tag-indigo{background:rgba(99,102,241,.1);color:#818cf8;border:1px solid rgba(99,102,241,.18)}
+.tag-emerald{background:rgba(16,185,129,.1);color:#34d399;border:1px solid rgba(16,185,129,.18)}
+.tag-amber{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.18)}
+.tag-white{background:rgba(255,255,255,.05);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08)}
+
+.big-number{font-size:clamp(44px,5.5vw,76px);font-weight:900;line-height:1;letter-spacing:-2px}
+
+.icon-box{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.icon-box-indigo{background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(129,140,248,.15));color:#818cf8}
+.icon-box-emerald{background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(52,211,153,.15));color:#34d399}
+.icon-box-amber{background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(251,191,36,.15));color:#fbbf24}
+
+.scroll-reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12;pointer-events:none}
+
+.stat-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.05);overflow:hidden}
+.stat-bar-fill{height:100%;border-radius:3px;transition:width 1.4s cubic-bezier(.25,.46,.45,.94);width:0}
+.stat-bar-fill.animated{width:var(--fill-width)}
+
+.case-card{background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:16px;transition:all .3s ease}
+.case-card:hover{background:rgba(255,255,255,.03);border-color:rgba(99,102,241,.12)}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse-glow{0%,100%{opacity:.12}50%{opacity:.2}}
+.float-anim{animation:float 5s ease-in-out infinite}
+.pulse-glow{animation:pulse-glow 4s ease-in-out infinite}
+
+.patent-card{background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);border-radius:12px;padding:14px;transition:all .3s ease}
+.patent-card:hover{background:rgba(99,102,241,.04);border-color:rgba(99,102,241,.12)}
+
+.stage-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.stage-line{height:2px;flex:1;background:linear-gradient(90deg,rgba(99,102,241,.3),rgba(16,185,129,.3));min-width:20px}
+
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr);gap:10px;padding:0 14px}[style*="grid-column: span 8"]{grid-column:span 6!important}[style*="grid-column: span 7"]{grid-column:span 6!important}[style*="grid-column: span 5"]{grid-column:span 6!important}[style*="grid-column: span 4"]{grid-column:span 6!important}[style*="grid-column: span 3"]{grid-column:span 3!important}[style*="grid-column: span 6"]{grid-column:span 6!important}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr;gap:8px;padding:0 10px}[style*="grid-column"]{grid-column:span 1!important}.big-number{font-size:36px;letter-spacing:-1px}}
+</style>
+</head>
+<body>
+
+<div class="hero-glow pulse-glow" style="top:-180px;left:-80px;width:500px;height:500px;background:radial-gradient(circle,#6366f1,transparent)"></div>
+<div class="hero-glow pulse-glow" style="top:60px;right:-160px;width:500px;height:500px;background:radial-gradient(circle,#10b981,transparent);animation-delay:2s"></div>
+<div class="hero-glow pulse-glow" style="bottom:-100px;left:200px;width:400px;height:400px;background:radial-gradient(circle,#f59e0b,transparent);animation-delay:3s"></div>
+
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#0a0a10]/80 border-b border-white/5">
+  <div class="max-w-[1400px] mx-auto px-5 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-[#6366f1] to-[#818cf8] flex items-center justify-center">
+        <i class="fas fa-shoe-prints text-white text-xs"></i>
+      </div>
+      <span class="font-bold text-base">同创鞋业</span>
+    </div>
+    <div class="hidden md:flex items-center gap-7 text-xs text-white/40">
+      <a href="#about" class="hover:text-white transition-colors">企业概况</a>
+      <a href="#brands" class="hover:text-white transition-colors">品牌体系</a>
+      <a href="#patent" class="hover:text-white transition-colors">技术专利</a>
+      <a href="#scale" class="hover:text-white transition-colors">生产规模</a>
+      <a href="#honor" class="hover:text-white transition-colors">荣誉资质</a>
+    </div>
+    <a href="https://www.ginoble.com" target="_blank" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-xs font-medium hover:shadow-lg hover:shadow-indigo-500/20 transition-all">
+      基诺浦官网
+    </a>
+  </div>
+</nav>
+
+<div class="pt-20 pb-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-indigo" style="grid-column:span 8;padding:36px;min-height:300px;display:flex;flex-direction:column;justify-content:center">
+    <div class="hero-glow pulse-glow" style="top:-80px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,#6366f1,transparent)"></div>
+    <span class="tag tag-indigo mb-3 inline-block w-fit"><i class="fas fa-shoe-prints"></i> 儿童机能鞋专业制造商</span>
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-3">
+      泉州同创鞋业<br><span class="gradient-text-indigo">基诺浦专属工厂</span>
+    </h1>
+    <p class="text-white/35 text-sm md:text-base max-w-xl leading-relaxed mb-5">
+      成立于2017年，浙江同心妇幼产品发展有限公司专属工厂。专注儿童机能鞋研发与制造，主产基诺浦、惠步舒等知名品牌，产品覆盖0-11岁全年龄段，拥有20项自主专利，中国儿童机能鞋市场NO.1的制造基地。
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <span class="tag tag-indigo"><i class="fas fa-trophy"></i> 儿童机能鞋市场NO.1</span>
+      <span class="tag tag-emerald"><i class="fas fa-certificate"></i> 科技型中小企业</span>
+      <span class="tag tag-amber"><i class="fas fa-lightbulb"></i> 20项自主专利</span>
+      <span class="tag tag-white"><i class="fas fa-star"></i> 段镇基科技奖</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-emerald" style="grid-column:span 4;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transition-delay:.12s">
+    <div class="hero-glow pulse-glow" style="bottom:-60px;left:-40px;width:260px;height:260px;background:radial-gradient(circle,#10b981,transparent)"></div>
+    <p class="text-white/25 text-[10px] uppercase tracking-widest mb-1">线下销售网点</p>
+    <div class="big-number gradient-text-emerald">5000<span class="text-2xl">+</span></div>
+    <p class="text-white/35 text-xs mt-2">覆盖全国30个省</p>
+    <div class="mt-4 flex gap-2">
+      <span class="tag tag-emerald"><i class="fas fa-store"></i> 零售+加盟+经销</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<section id="about" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px">
+    <div class="big-number gradient-text-indigo" style="font-size:clamp(32px,3.5vw,50px)">500<span class="text-lg">万</span></div>
+    <p class="text-white/45 text-xs mt-1">注册资本</p>
+    <p class="text-white/20 text-[9px] mt-0.5">实缴363万</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.08s">
+    <div class="big-number gradient-text-emerald" style="font-size:clamp(32px,3.5vw,50px)">290<span class="text-lg">人</span></div>
+    <p class="text-white/45 text-xs mt-1">参保人数</p>
+    <p class="text-white/20 text-[9px] mt-0.5">企查查数据</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.16s">
+    <div class="big-number gradient-text-amber" style="font-size:clamp(32px,3.5vw,50px)">20<span class="text-lg">项</span></div>
+    <p class="text-white/45 text-xs mt-1">自主专利</p>
+    <p class="text-white/20 text-[9px] mt-0.5">实用新型专利</p>
+  </div>
+  <div class="bento-card scroll-reveal" style="grid-column:span 3;text-align:center;padding:28px 16px;transition-delay:.24s">
+    <div class="big-number gradient-text-indigo" style="font-size:clamp(32px,3.5vw,50px)">855<span class="text-lg">分</span></div>
+    <p class="text-white/45 text-xs mt-1">信用评分</p>
+    <p class="text-white/20 text-[9px] mt-0.5">水滴信用·优秀</p>
+  </div>
+
+</div>
+</section>
+
+<section id="brands" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+    <span class="tag tag-indigo mb-3 inline-block"><i class="fas fa-crown"></i> 品牌体系</span>
+    <h2 class="text-2xl font-bold mb-1">基诺浦 · 惠步舒 — 双品牌驱动</h2>
+    <p class="text-white/30 text-xs">母公司浙江同心妇幼产品发展有限公司，中国儿童机能鞋市场NO.1，中国《儿童机能鞋》团体标准制定者</p>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-indigo" style="grid-column:span 6;transition-delay:0s">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="icon-box icon-box-indigo"><i class="fas fa-baby"></i></div>
+      <div>
+        <h3 class="text-xl font-bold mb-1">基诺浦 GINOBLE</h3>
+        <p class="text-white/35 text-xs">儿童机能鞋先行者 · 市场份额NO.1</p>
+      </div>
+    </div>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">诞生于2008年，始终坚持"童鞋不是缩小版"理念。基于人体工程学、运动生物力学等原理，研制符合儿童足部生理发育特征和运动步态的机能鞋。中国《儿童机能鞋》团体标准制定者，童鞋领域唯一世界足踝联盟(GFAC)成员。</p>
+    <div class="space-y-2.5 mb-4">
+      <div class="flex items-center gap-2"><i class="fas fa-award text-[#818cf8] text-[10px]"></i><span class="text-white/50 text-xs">段镇基皮革和制鞋科学技术奖</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-globe text-[#818cf8] text-[10px]"></i><span class="text-white/50 text-xs">世界足踝联盟(GFAC)唯一童鞋成员</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-file-alt text-[#818cf8] text-[10px]"></i><span class="text-white/50 text-xs">中国《儿童机能鞋》团体标准制定者</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-heart text-[#818cf8] text-[10px]"></i><span class="text-white/50 text-xs">最受妈妈喜爱品牌 · 天猫学步鞋品类第一</span></div>
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-indigo">300万品牌粉丝</span>
+      <span class="tag tag-indigo">50+线上渠道</span>
+      <span class="tag tag-indigo">5000+线下网点</span>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-emerald" style="grid-column:span 6;transition-delay:.1s">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="icon-box icon-box-emerald"><i class="fas fa-child"></i></div>
+      <div>
+        <h3 class="text-xl font-bold mb-1">惠步舒 hübsche</h3>
+        <p class="text-white/35 text-xs">功能性医学机能鞋 · 3000+加盟店</p>
+      </div>
+    </div>
+    <p class="text-white/40 text-xs leading-relaxed mb-4">以0-3岁婴儿学步鞋为主，主打"功能性医学机能鞋"概念。在国内童鞋行业掀起机能鞋效仿模式，拥有同行业无可比拟的优势。特别注重儿童稚嫩肌肤，原材料选择严格按国家规定，确保安全。</p>
+    <div class="space-y-2.5 mb-4">
+      <div class="flex items-center gap-2"><i class="fas fa-store text-[#34d399] text-[10px]"></i><span class="text-white/50 text-xs">3000+线下加盟实体店</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-shopping-cart text-[#34d399] text-[10px]"></i><span class="text-white/50 text-xs">天猫/京东/淘宝等多平台线上店</span></div>
+      <div class="flex items-center gap-2"><i class="fas fa-pencil-ruler text-[#34d399] text-[10px]"></i><span class="text-white/50 text-xs">年研发1500+单品 · 12个波段推新</span></div>
+    </div>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="tag tag-emerald">春夏168-258元</span>
+      <span class="tag tag-emerald">秋冬168-388元</span>
+      <span class="tag tag-emerald">0-16岁全龄段</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+    <span class="tag tag-amber mb-3 inline-block"><i class="fas fa-layer-group"></i> 产品体系</span>
+    <h2 class="text-xl font-bold mb-1">五大阶段 · 科学分龄</h2>
+    <p class="text-white/30 text-xs">基诺浦产品系列覆盖0-11岁全年龄段儿童生长发育五个阶段的不同需求</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <div class="flex items-center gap-3">
+        <div class="stage-dot bg-gradient-to-br from-[#6366f1] to-[#818cf8] text-white">1</div>
+        <div><p class="text-sm font-bold">本体感鞋</p><p class="text-white/30 text-[10px]">6-10个月 · 学步前</p></div>
+      </div>
+      <div class="stage-line"></div>
+      <div class="flex items-center gap-3">
+        <div class="stage-dot bg-gradient-to-br from-[#818cf8] to-[#a78bfa] text-white">2</div>
+        <div><p class="text-sm font-bold">关键鞋</p><p class="text-white/30 text-[10px]">8-18个月 · 学步初期</p></div>
+      </div>
+      <div class="stage-line"></div>
+      <div class="flex items-center gap-3">
+        <div class="stage-dot bg-gradient-to-br from-[#10b981] to-[#34d399] text-white">3</div>
+        <div><p class="text-sm font-bold">稳健鞋</p><p class="text-white/30 text-[10px]">18-28个月 · 稳步期</p></div>
+      </div>
+      <div class="stage-line"></div>
+      <div class="flex items-center gap-3">
+        <div class="stage-dot bg-gradient-to-br from-[#34d399] to-[#6ee7b7] text-white">4</div>
+        <div><p class="text-sm font-bold">跃步鞋</p><p class="text-white/30 text-[10px]">28个月-5岁 · 跑跳期</p></div>
+      </div>
+      <div class="stage-line"></div>
+      <div class="flex items-center gap-3">
+        <div class="stage-dot bg-gradient-to-br from-[#f59e0b] to-[#fbbf24] text-white">5</div>
+        <div><p class="text-sm font-bold">中童鞋</p><p class="text-white/30 text-[10px]">5-11岁 · 成长期</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="patent" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;padding:20px 26px">
+    <span class="tag tag-indigo mb-3 inline-block"><i class="fas fa-lightbulb"></i> 技术专利</span>
+    <h2 class="text-xl font-bold mb-1">20项自主专利 · 机能鞋核心技术</h2>
+    <p class="text-white/30 text-xs">发明人：李连华（股东/监事），专注学步鞋与童鞋鞋底技术创新</p>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:0s">
+    <div class="patent-card mb-3">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="icon-box icon-box-indigo" style="width:28px;height:28px;border-radius:8px;font-size:11px"><i class="fas fa-file-alt"></i></div>
+        <span class="tag tag-indigo text-[9px]">实用新型</span>
+      </div>
+      <p class="text-xs font-semibold mb-1">一种用于学步鞋的易弯折鞋底</p>
+      <p class="text-white/25 text-[10px]">CN202021558315.5 · 2021-03-05授权</p>
+    </div>
+    <div class="patent-card">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="icon-box icon-box-emerald" style="width:28px;height:28px;border-radius:8px;font-size:11px"><i class="fas fa-file-alt"></i></div>
+        <span class="tag tag-emerald text-[9px]">实用新型</span>
+      </div>
+      <p class="text-xs font-semibold mb-1">一种柔性防滑童鞋鞋底</p>
+      <p class="text-white/25 text-[10px]">CN212787635U · 2021-03-26授权</p>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 4;transition-delay:.08s">
+    <div class="patent-card mb-3">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="icon-box icon-box-amber" style="width:28px;height:28px;border-radius:8px;font-size:11px"><i class="fas fa-file-alt"></i></div>
+        <span class="tag tag-amber text-[9px]">实用新型</span>
+      </div>
+      <p class="text-xs font-semibold mb-1">一种仿猫掌童鞋大底</p>
+      <p class="text-white/25 text-[10px]">CN202021559073.1 · 2021-03-05授权</p>
+    </div>
+    <div class="patent-card">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="icon-box icon-box-indigo" style="width:28px;height:28px;border-radius:8px;font-size:11px"><i class="fas fa-file-alt"></i></div>
+        <span class="tag tag-indigo text-[9px]">实用新型</span>
+      </div>
+      <p class="text-xs font-semibold mb-1">一种具有脚后跟半固定作用的鞋底结构</p>
+      <p class="text-white/25 text-[10px]">CN212650502U · 2021-03-05授权</p>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-indigo" style="grid-column:span 4;transition-delay:.16s;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+    <div class="big-number gradient-text-indigo" style="font-size:clamp(36px,4vw,60px)">20</div>
+    <p class="text-white/40 text-sm mt-1">项自主专利</p>
+    <p class="text-white/25 text-[10px] mt-1 mb-3">涵盖鞋底、鞋结构、功能设计</p>
+    <div class="flex flex-wrap justify-center gap-1.5">
+      <span class="tag tag-indigo">易弯折鞋底</span>
+      <span class="tag tag-emerald">防滑技术</span>
+      <span class="tag tag-amber">护踝结构</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="scale" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-indigo" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-indigo mb-3 inline-block"><i class="fas fa-industry"></i> 生产规模</span>
+    <h3 class="text-lg font-bold mb-3">泉州经济技术开发区生产基地</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-4">位于福建省泉州经济技术开发区玉狮路2号，厂房一、二层。2021年启动童鞋生产扩建项目，持续扩大产能。</p>
+    <div class="space-y-3">
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-indigo" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-building"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">厂房地址</p>
+            <p class="text-white/30 text-[10px]">泉州经济技术开发区玉狮路2号</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-emerald" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-users"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">人员规模 200-299人</p>
+            <p class="text-white/30 text-[10px]">参保人数290人（企查查）</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-start gap-3">
+          <div class="icon-box icon-box-amber" style="width:32px;height:32px;border-radius:8px;font-size:12px"><i class="fas fa-expand"></i></div>
+          <div>
+            <p class="text-xs font-semibold mb-0.5">2021年扩建项目</p>
+            <p class="text-white/30 text-[10px]">童鞋生产扩建 · 项目代码2106-350598</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal glow-emerald" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-emerald mb-3 inline-block"><i class="fas fa-globe-asia"></i> 市场布局</span>
+    <h3 class="text-lg font-bold mb-3">线上+线下全渠道覆盖</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-4">基诺浦品牌采取品类聚焦、多渠道发展战略，线上稳居天猫学步鞋品类第一。</p>
+    <div class="grid grid-cols-2 gap-2 mb-4">
+      <div class="case-card text-center">
+        <i class="fas fa-laptop text-[#818cf8] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">线上渠道</p>
+        <p class="text-white/30 text-[10px]">50+平台 · 天猫第一</p>
+      </div>
+      <div class="case-card text-center">
+        <i class="fas fa-store text-[#34d399] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">线下网点</p>
+        <p class="text-white/30 text-[10px]">5000+ · 30省覆盖</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <p class="text-[10px] text-white/30 mb-2">渠道占比</p>
+      <div class="space-y-2">
+        <div>
+          <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">零售</span><span class="text-[#818cf8]">40%</span></div>
+          <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#6366f1] to-[#818cf8]" style="--fill-width:40%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">加盟</span><span class="text-[#34d399]">35%</span></div>
+          <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#10b981] to-[#34d399]" style="--fill-width:35%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-[10px] mb-1"><span class="text-white/40">经销</span><span class="text-[#fbbf24]">25%</span></div>
+          <div class="stat-bar"><div class="stat-bar-fill bg-gradient-to-r from-[#f59e0b] to-[#fbbf24]" style="--fill-width:25%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="honor" class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-indigo mb-3 inline-block"><i class="fas fa-trophy"></i> 品牌荣誉</span>
+    <h3 class="text-base font-bold mb-3">行业领先荣誉</h3>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-medal text-[#818cf8] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">段镇基皮革和制鞋科学技术奖（中国皮革制鞋行业最高奖）</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-globe text-[#818cf8] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">世界足踝联盟(GFAC)唯一童鞋成员</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-file-alt text-[#818cf8] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">中国《儿童机能鞋》团体标准制定者</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-heart text-[#818cf8] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">最受妈妈喜爱品牌</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-award text-[#818cf8] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">婴童行业20强</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-check-circle text-[#34d399] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">2024年福建省童鞋质量监督抽查合格</p></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-emerald mb-3 inline-block"><i class="fas fa-certificate"></i> 企业资质</span>
+    <h3 class="text-base font-bold mb-3">认证与资质</h3>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-flask text-[#34d399] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">科技型中小企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-flask text-[#34d399] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">省科技型中小企业</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-receipt text-[#34d399] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">一般纳税人资质</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-shield-alt text-[#34d399] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">信用评分855分（水滴信用·优秀）</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-file-contract text-[#34d399] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">4项资质证书 · 9项行政许可</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-chart-line text-[#34d399] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">连续6年税务评级记录</p></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-indigo mb-3 inline-block"><i class="fas fa-sitemap"></i> 企业信息</span>
+    <h3 class="text-base font-bold mb-3">工商基本信息</h3>
+    <div class="space-y-2.5 text-xs">
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">公司全称</span><span class="text-white/70">泉州同创鞋业有限公司</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">成立时间</span><span class="text-white/70">2017年8月9日</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">法定代表人</span><span class="text-white/70">陈尔楷</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">注册资本</span><span class="text-white/70">500万元（实缴363万）</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">所属行业</span><span class="text-white/70">皮鞋制造</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">企业类型</span><span class="text-white/70">有限责任公司</span></div>
+      <div class="flex justify-between py-1.5 border-b border-white/5"><span class="text-white/40">统一信用代码</span><span class="text-white/70">91350502MA2YG5F08X</span></div>
+      <div class="flex justify-between py-1.5"><span class="text-white/40">经营状态</span><span class="text-[#818cf8]">存续（在营）</span></div>
+    </div>
+    <div class="mt-4">
+      <p class="text-[10px] text-white/30 mb-2">股东结构</p>
+      <div class="flex gap-1 h-5 rounded overflow-hidden">
+        <div class="bg-gradient-to-r from-[#6366f1] to-[#818cf8] flex items-center justify-center text-[9px] font-bold" style="width:93.2%">陈尔楷 93.2%</div>
+        <div class="bg-gradient-to-r from-[#10b981] to-[#34d399] flex items-center justify-center text-[9px] font-bold" style="width:6.8%">李连华</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-emerald mb-3 inline-block"><i class="fas fa-link"></i> 母公司背景</span>
+    <h3 class="text-base font-bold mb-3">浙江同心妇幼产品发展有限公司</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-3">成立于2007年3月1日，中国杭州婴童行业协会下的专业第三方营销公司。"婴童产品直通工程"唯一运营商，以整合婴童产品价值链为目标，将"共享商务"理念在婴童产业广泛传播。</p>
+    <div class="space-y-2.5">
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-indigo" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-handshake"></i></div>
+          <div><p class="text-xs font-semibold">2000+婴童渠道客户</p><p class="text-white/30 text-[10px]">全国约2000家专业客户合作</p></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-emerald" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-users"></i></div>
+          <div><p class="text-xs font-semibold">60+全国销售团队</p><p class="text-white/30 text-[10px]">华东20名区域经理+全国60名销售</p></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="flex items-center gap-3">
+          <div class="icon-box icon-box-amber" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-code-branch"></i></div>
+          <div><p class="text-xs font-semibold">泉州台商投资区分公司</p><p class="text-white/30 text-[10px]">同创鞋业分支机构</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal glow-amber" style="grid-column:span 6;transition-delay:0s">
+    <span class="tag tag-amber mb-3 inline-block"><i class="fas fa-baby"></i> 核心理念</span>
+    <h3 class="text-base font-bold mb-3">"童鞋不是缩小版"</h3>
+    <p class="text-white/35 text-xs leading-relaxed mb-4">基诺浦科研团队进行了为期两年的科学调研，对儿童足部生理解剖特征和运动特点进行深入研究。儿童足部的发育是一个贯穿0-11岁的长时间过程，其足部发育和生理结构是动态变化的。</p>
+    <div class="space-y-2.5">
+      <div class="flex items-start gap-2"><i class="fas fa-microscope text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">基于人体工程学、运动生物力学原理设计</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-child text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">针对婴幼儿"脚步形状"和"行走方式"开发</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-shield-alt text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">360度全感舒适、透气和裸足感</p></div>
+      <div class="flex items-start gap-2"><i class="fas fa-heart text-[#fbbf24] text-[10px] mt-1"></i><p class="text-white/50 text-[11px]">帮助妈妈，成就宝宝</p></div>
+    </div>
+  </div>
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 6;transition-delay:.1s">
+    <span class="tag tag-indigo mb-3 inline-block"><i class="fas fa-map-marker-alt"></i> 经营范围</span>
+    <h3 class="text-base font-bold mb-3">生产与销售</h3>
+    <div class="grid grid-cols-2 gap-2 mb-4">
+      <div class="case-card text-center">
+        <i class="fas fa-shoe-prints text-[#818cf8] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">鞋</p>
+        <p class="text-white/30 text-[10px]">童鞋/学步鞋/机能鞋</p>
+      </div>
+      <div class="case-card text-center">
+        <i class="fas fa-puzzle-piece text-[#34d399] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">鞋材</p>
+        <p class="text-white/30 text-[10px]">鞋底/鞋面/辅料</p>
+      </div>
+      <div class="case-card text-center">
+        <i class="fas fa-socks text-[#fbbf24] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">袜子</p>
+        <p class="text-white/30 text-[10px]">机能袜/童袜</p>
+      </div>
+      <div class="case-card text-center">
+        <i class="fas fa-tshirt text-[#818cf8] text-lg mb-1"></i>
+        <p class="text-xs font-semibold">衣服/帽子</p>
+        <p class="text-white/30 text-[10px]">婴童服饰配件</p>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="flex items-center gap-3">
+        <div class="icon-box icon-box-emerald" style="width:32px;height:32px;border-radius:8px;font-size:11px"><i class="fas fa-phone"></i></div>
+        <div><p class="text-xs font-semibold">联系电话</p><p class="text-white/30 text-[10px]">0595-36011966</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-6">
+<div class="bento-grid">
+
+  <div class="bento-card scroll-reveal" style="grid-column:span 12;text-align:center;padding:40px 28px;background:linear-gradient(135deg,rgba(99,102,241,.04),rgba(16,185,129,.04),rgba(245,158,11,.04));border-color:rgba(99,102,241,.08)">
+    <div class="hero-glow pulse-glow" style="top:-120px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,#6366f1,transparent)"></div>
+    <span class="tag tag-indigo mb-3 inline-block"><i class="fas fa-shoe-prints"></i> 企业使命</span>
+    <h2 class="text-2xl md:text-3xl font-black mb-2">
+      帮助妈妈，成就宝宝<br><span class="gradient-text-mixed">以科技和爱心呵护嫩足</span>
+    </h2>
+    <p class="text-white/35 text-sm max-w-lg mx-auto leading-relaxed mb-5">
+      专注儿童机能鞋领域，以品类聚焦、多渠道发展战略，成为中国儿童机能鞋市场份额NO.1。用科技和爱心呵护嫩足，帮助妈妈，成就宝宝！
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="https://www.ginoble.com" target="_blank" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-sm font-bold hover:shadow-lg hover:shadow-indigo-500/20 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-globe"></i> 基诺浦官网
+      </a>
+      <a href="https://m.jobui.com/company/14403284/" target="_blank" class="px-6 py-2.5 rounded-full border border-white/10 text-sm font-medium hover:bg-white/5 transition-all inline-flex items-center gap-2">
+        <i class="fas fa-briefcase"></i> 招聘信息
+      </a>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="py-4">
+<div class="bento-grid">
+  <div class="bento-card" style="grid-column:span 12;padding:16px 24px">
+    <h4 class="text-xs font-bold mb-2 text-white/50"><i class="fas fa-link mr-1.5 text-[#6366f1]"></i>参考来源</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+      <a href="https://m.qcc.com/firm/928af00eac54530ae102ddadf06f4171.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>企查查-泉州同创鞋业</a>
+      <a href="https://shuidi.cn/company-bd2885d3589c88a7afb0b0956a647ff4.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>水滴信用-泉州同创鞋业</a>
+      <a href="https://m.jobui.com/company/14403284/" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>职友集-泉州同创鞋业</a>
+      <a href="https://www.ginoble.com" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>基诺浦品牌官网</a>
+      <a href="http://12365.ce.cn/zly2024/87776.html" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>中国质量月-浙江同心妇幼</a>
+      <a href="https://www.aiqicha.com/person?personId=0c95a28e395e9b76c23d6e316fed36fc" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>爱企查-陈尔楷</a>
+      <a href="http://www.qzkfq.gov.cn/zwgk/zdxxgk/hjbh/jsxmhjyxpj/202108/P020210922417435188877.pdf" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>泉州开发区-环评报告</a>
+      <a href="https://m.61kids.com/brand-3649/" target="_blank" class="text-[10px] text-white/25 hover:text-[#818cf8] transition-colors truncate"><i class="fas fa-external-link-alt mr-1"></i>61kids-惠步舒品牌</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer class="border-t border-white/5 py-5">
+  <div class="max-w-[1400px] mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-2">
+    <div class="flex items-center gap-2">
+      <div class="w-5 h-5 rounded bg-gradient-to-br from-[#6366f1] to-[#818cf8] flex items-center justify-center"><i class="fas fa-shoe-prints text-white text-[8px]"></i></div>
+      <span class="text-xs text-white/25">泉州同创鞋业 · 儿童机能鞋专业制造商</span>
+    </div>
+    <p class="text-white/15 text-[10px]">39139@胜天半子</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        entry.target.querySelectorAll('.stat-bar-fill').forEach(bar=>{setTimeout(()=>bar.classList.add('animated'),300)});
+      }
+    });
+  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.scroll-reveal').forEach(el=>observer.observe(el));
+
+  if(typeof motion!=='undefined'&&motion.motion){
+    const{animate,inView}=motion.motion;
+    document.querySelectorAll('.bento-card').forEach(card=>{
+      inView(card,()=>{animate(card,{opacity:[0,1],y:[24,0]},{duration:.5,easing:[.25,.46,.45,.94]})},{margin:'-40px'});
+    });
+    document.querySelectorAll('.big-number').forEach(num=>{
+      inView(num,()=>{animate(num,{opacity:[0,1],scale:[.85,1]},{duration:.7,easing:[.25,.46,.45,.94]})});
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+  });
+});
+</script>
+
+</body>
+</html>
