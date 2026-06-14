@@ -3,529 +3,627 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>喜得狼控股有限公司 | 企业全景画像</title>
+<title>喜得狼控股有限公司 | XiDeLang Holdings Ltd — 企业全景画像</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>tailwind.config={theme:{extend:{colors:{amber:{350:'#fcd34d',400:'#fbbf24',500:'#f59e0b',550:'#d97706',600:'#b45309'},orange:{400:'#fb923c',500:'#f97316',600:'#ea580c'},slate:{750:'#1e2330',800:'#1a1f2e',850:'#161b2a',900:'#111827',950:'#0a0e17'}},fontFamily:{sans:['Noto Sans SC','system-ui','sans-serif'],display:['DIN Alternate','Helvetica Neue','monospace']}}}}</script>
-<style>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Noto Sans SC',sans-serif;background:#0a0e17;color:#e2e8f0;overflow-x:hidden;line-height:1.6}.mesh-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:#0a0e17;overflow:hidden}.mesh-bg .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 20s ease-in-out infinite}.mesh-bg .orb:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,0.35),transparent 70%);top:-10%;left:-10%;animation-delay:0s}.mesh-bg .orb:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,rgba(249,115,22,0.25),transparent 70%);bottom:-5%;right:-5%;animation-delay:-7s}.mesh-bg .orb:nth-child(3){width:400px;height:400px;background:radial-gradient(circle,rgba(234,88,12,0.2),transparent 70%);top:40%;left:50%;animation-delay:-14s}@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(0.95)}}.card{background:rgba(255,255,255,0.03);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.06);border-radius:24px;overflow:hidden;transition:all 0.5s cubic-bezier(0.23,1,0.32,1);position:relative}.card:hover{background:rgba(255,255,255,0.06);border-color:rgba(245,158,11,0.25);transform:translateY(-6px) scale(1.005);box-shadow:0 24px 48px -12px rgba(245,158,11,0.12)}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,158,11,0.4),transparent)}.card::after{content:'';position:absolute;inset:0;border-radius:24px;padding:1px;background:linear-gradient(135deg,rgba(245,158,11,0.15),transparent 40%,transparent 60%,rgba(249,115,22,0.1));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity 0.5s}.card:hover::after{opacity:1}.bento{display:grid;gap:20px;padding:0 24px;max-width:1280px;margin:0 auto}.gradient-text{background:linear-gradient(135deg,#fbbf24 0%,#fb923c 50%,#f97316 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.glow-text{text-shadow:0 0 40px rgba(245,158,11,0.3)}.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.18);color:#fbbf24;font-size:13px;font-weight:500;letter-spacing:0.5px;backdrop-filter:blur(10px)}.section-label{display:inline-flex;align-items:center;gap:10px;padding:10px 24px;border-radius:100px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12);color:#fbbf24;font-size:14px;font-weight:600;letter-spacing:1px;margin-bottom:24px}.stat-value{background:linear-gradient(135deg,#fbbf24,#fb923c,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:900;line-height:1}.img-cover{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.23,1,0.32,1)}.card:hover .img-cover{transform:scale(1.08)}.overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,rgba(10,14,23,0.6) 60%,rgba(10,14,23,0.95) 100%)}.timeline-dot{position:absolute;left:-5px;top:8px;width:10px;height:10px;border-radius:50%;background:#f59e0b;border:2px solid #0a0e17;box-shadow:0 0 12px rgba(245,158,11,0.5)}.risk-dot{position:absolute;left:-5px;top:8px;width:10px;height:10px;border-radius:50%;background:#ef4444;border:2px solid #0a0e17;box-shadow:0 0 12px rgba(239,68,68,0.4)}.footer-glow{background:linear-gradient(180deg,transparent,rgba(245,158,11,0.05));border-top:1px solid rgba(245,158,11,0.12)}.creator-mark{color:#fbbf24;font-weight:700;letter-spacing:2px;font-size:15px}@media(max-width:768px){.bento{grid-template-columns:1fr !important;padding:0 16px}}.hidden-init{opacity:0;transform:translateY(40px)}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--amber:#f59e0b;--orange:#f97316;--deep:#0a0e17;--card-bg:rgba(15,20,35,.75);--border:rgba(245,158,11,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:#e2e8f0;font-family:'Inter',system-ui,-apple-system,sans-serif;overflow-x:hidden;line-height:1.7}
+/* ========== COSMIC BACKGROUND ========== */
+.cosmic-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 20% 20%,#1a1040 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,#1a0a2e 0%,transparent 50%),#080b12}
+.cosmic-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.4;animation:orbFloat 20s ease-in-out infinite}
+.cosmic-bg .orb:nth-child(1){width:800px;height:800px;background:radial-gradient(circle,rgba(245,158,11,.35),transparent 70%);top:-20%;left:-15%;animation-delay:0s}
+.cosmic-bg .orb:nth-child(2){width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.3),transparent 70%);bottom:-15%;right:-10%;animation-delay:-7s}
+.cosmic-bg .orb:nth-child(3){width:500px;height:500px;background:radial-gradient(circle,rgba(234,88,12,.2),transparent 70%);top:55%;left:45%;animation-delay:-14s}
+.cosmic-bg .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(245,158,11,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.03) 1px,transparent 1px);background-size:60px 60px}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-50px) scale(1.15)}66%{transform:translate(-40px,40px) scale(.88)}}
+/* ========== PARTICLES ========== */
+.particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.particle{position:absolute;width:2px;height:2px;background:var(--amber);border-radius:50%;opacity:0;animation:particleRise 8s linear infinite}
+@keyframes particleRise{0%{opacity:0;transform:translateY(0) scale(0)}10%{opacity:.8}90%{opacity:.2}100%{opacity:0;transform:translateY(-100vh) scale(1)}}
+/* ========== TYPOGRAPHY ========== */
+.mega-num{font-size:clamp(3rem,7vw,7rem);font-weight:900;line-height:1;background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-feature-settings:"tnum"}
+.gradient-text{background:linear-gradient(135deg,#fbbf24,#f59e0b,#ea580c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ========== GLASS CARDS ========== */
+.glass-card{background:var(--card-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:24px;transition:all .4s cubic-bezier(.25,.8,.25,1)}
+.glass-card:hover{border-color:rgba(245,158,11,.3);box-shadow:0 12px 48px rgba(245,158,11,.08),0 0 0 1px rgba(245,158,11,.1) inset;transform:translateY(-4px)}
+.glass-card-sm{background:rgba(15,20,35,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:18px;transition:all .35s ease}
+.glass-card-sm:hover{border-color:rgba(245,158,11,.25);box-shadow:0 8px 32px rgba(245,158,11,.06)}
+/* ========== SECTION LABELS ========== */
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;padding:6px 16px;border-radius:100px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2)}
+.sec-label i{font-size:.7rem}
+/* ========== BENTO GRID ========== */
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.bento-grid > *{min-height:0}
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr}}
+.col-span-2{grid-column:span 2}
+.col-span-3{grid-column:span 3}
+.col-span-4{grid-column:span 4}
+@media(max-width:1024px){.col-span-2,.col-span-3,.col-span-4{grid-column:span 2}}
+@media(max-width:640px){.col-span-2,.col-span-3,.col-span-4{grid-column:span 1}}
+/* ========== HERO ========== */
+.hero-section{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:6rem 2rem}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(245,158,11,.08);animation:ringPulse 6s ease-in-out infinite}
+.hero-ring:nth-child(1){width:500px;height:500px;animation-delay:0s}
+.hero-ring:nth-child(2){width:700px;height:700px;animation-delay:-2s}
+.hero-ring:nth-child(3){width:900px;height:900px;animation-delay:-4s}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.05);opacity:.6}}
+/* ========== TIMELINE ========== */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amber),rgba(245,158,11,.1))}
+.timeline-item{position:relative;padding-bottom:2rem}
+.timeline-item::before{content:'';position:absolute;left:-2.35rem;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 20px rgba(245,158,11,.5);border:2px solid #0a0e17}
+/* ========== HONOR BADGES ========== */
+.honor-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:.78rem;font-weight:500;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);color:#fcd34d;transition:all .3s}
+.honor-badge:hover{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.35);transform:translateY(-2px)}
+/* ========== STAT COUNTER ========== */
+.stat-bar{height:6px;border-radius:3px;background:rgba(245,158,11,.15);overflow:hidden;margin-top:.5rem}
+.stat-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--orange));transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
+/* ========== FOOTER ========== */
+.footer-section{position:relative;padding:5rem 2rem 3rem;text-align:center;border-top:1px solid rgba(245,158,11,.1)}
+.footer-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.creator-mark{font-size:1.6rem;font-weight:800;letter-spacing:.08em;background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ========== ANIMATION INITIAL STATE ========== */
+.reveal{opacity:0;transform:translateY(40px)}
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(245,158,11,.2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(245,158,11,.4)}
+/* ========== BRAND GLOW ========== */
+.brand-glow{position:relative}
+.brand-glow::after{content:'';position:absolute;inset:-2px;border-radius:inherit;background:linear-gradient(135deg,var(--amber),var(--orange),var(--amber));z-index:-1;opacity:.3;filter:blur(20px)}
+</style>
 </head>
 <body>
-<div class="mesh-bg"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 
-<!-- HERO -->
-<section class="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
-<div class="absolute top-1/4 right-[5%] w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none"></div>
-<div class="relative z-10 text-center max-w-4xl mx-auto">
-<div class="hidden-init flex justify-center gap-3 mb-8 flex-wrap" id="hero-badges">
-<span class="badge"><i class="fas fa-crown"></i> 马来西亚主板上市 KL.XDL 5156</span>
-<span class="badge" style="background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.18);color:#86efac"><i class="fas fa-shield-halved"></i> 中国驰名商标</span>
-<span class="badge" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.18);color:#93c5fd"><i class="fas fa-globe"></i> 五大洲20+国家</span>
+<!-- ==================== COSMIC BACKGROUND ==================== -->
+<div class="cosmic-bg">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="grid-overlay"></div>
 </div>
-<h1 class="hidden-init text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-[1.1] tracking-tight" id="hero-title">
-<span class="text-white">喜得狼</span><br>
-<span class="gradient-text glow-text">XiDeLang Holdings</span>
-</h1>
-<p class="hidden-init text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed" id="hero-desc">
-            始创于<span class="text-amber-400 font-bold">1991年</span>（前身鸿鹏制鞋），正式成立于<span class="text-amber-400 font-bold">1993年</span><br class="hidden md:block">
-            30+年潮流休闲品牌企业 · 马来西亚交易所主板上市<br class="hidden md:block">
-<span class="text-orange-400 font-bold">年产鞋1000万双</span> · 服装及配件<span class="text-orange-400 font-bold">800万件/套</span>
-</p>
-<div class="hidden-init flex flex-wrap justify-center gap-3" id="hero-tags">
-<span class="badge text-xs"><i class="fas fa-building"></i> 占地123亩花园式工业园</span>
-<span class="badge text-xs"><i class="fas fa-users"></i> 员工3000+名</span>
-<span class="badge text-xs"><i class="fas fa-industry"></i> 三大生产基地</span>
-<span class="badge text-xs"><i class="fas fa-flask"></i> 两大研发中心</span>
-<span class="badge text-xs"><i class="fas fa-trademark"></i> 74件注册商标</span>
-</div>
-</div>
-<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-<i class="fas fa-chevron-down text-amber-400/50 text-xl"></i>
-</div>
+<div class="particles" id="particles"></div>
+
+<!-- ==================== HERO SECTION ==================== -->
+<section class="hero-section">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="text-center relative z-10 max-w-4xl mx-auto">
+    <div class="reveal mb-6">
+      <span class="sec-label text-sm"><i class="fas fa-globe-asia"></i> BURSA MALAYSIA · KL.XDL 5156</span>
+    </div>
+    <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6">
+      <span class="gradient-text">喜得狼控股</span>
+    </h1>
+    <p class="reveal text-xl md:text-2xl text-slate-400 mb-3 font-light">XiDeLang Holdings Ltd</p>
+    <p class="reveal text-lg text-amber-400/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+      中国领先的综合性大型潮流休闲品牌企业 · 马来西亚主板上市<br>
+      从晋江走向世界五大洲的鞋服一体化ODM制造商
+    </p>
+    <div class="reveal flex flex-wrap justify-center gap-4">
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-calendar-alt text-amber-400"></i>
+        <span class="text-slate-300">创牌 <strong class="text-white">1993</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-building text-amber-400"></i>
+        <span class="text-slate-300">上市 <strong class="text-white">2009</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-users text-amber-400"></i>
+        <span class="text-slate-300">员工 <strong class="text-white">3000+</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-globe text-amber-400"></i>
+        <span class="text-slate-300">出口 <strong class="text-white">20+国</strong></span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- 核心数据大屏 -->
-<section class="py-24 px-6">
-<div class="max-w-6xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init"><i class="fas fa-chart-simple"></i> 核心经营数据</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">规模化生产 · 国际化运营</h2>
-</div>
-<div class="bento hidden-init" style="grid-template-columns:repeat(4,1fr)">
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">1993</div>
-<div class="text-slate-400 text-sm font-medium">创立年份</div>
-<div class="text-slate-600 text-xs mt-2">前身鸿鹏制鞋1991年</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">8888万</div>
-<div class="text-slate-400 text-sm font-medium">注册资本</div>
-<div class="text-slate-600 text-xs mt-2">人民币全额实缴</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">1000万+</div>
-<div class="text-slate-400 text-sm font-medium">年产运动鞋（双）</div>
-<div class="text-slate-600 text-xs mt-2">6条进口自动化流水线</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">813</div>
-<div class="text-slate-400 text-sm font-medium">水滴信用评分</div>
-<div class="text-slate-600 text-xs mt-2">优秀等级</div>
-</div>
-</div>
-<div class="bento hidden-init mt-5" style="grid-template-columns:repeat(4,1fr)">
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">800万</div>
-<div class="text-slate-400 text-sm font-medium">年产服装配件</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">3000+</div>
-<div class="text-slate-400 text-sm font-medium">员工规模</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">123亩</div>
-<div class="text-slate-400 text-sm font-medium">工业园占地</div>
-<div class="text-slate-600 text-xs mt-2">建筑面积15万㎡</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="stat-value text-4xl md:text-5xl mb-3">74</div>
-<div class="text-slate-400 text-sm font-medium">注册商标</div>
-<div class="text-slate-600 text-xs mt-2">含XIDELANG/喜得狼</div>
-</div>
-</div>
-</div>
-</section>
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="max-w-7xl mx-auto px-4 md:px-6 pb-24">
 
-<!-- 企业概况 Bento -->
-<section class="py-24 px-6">
-<div class="max-w-6xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init"><i class="fas fa-building-columns"></i> 企业概况</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">从晋江制造到国际资本运营</h2>
-</div>
-<div class="bento hidden-init" style="grid-template-columns:1.2fr 0.8fr">
-<!-- 左大卡片 -->
-<div class="card p-8 md:p-10">
-<div class="flex items-center gap-3 mb-8">
-<div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i class="fas fa-circle-info text-amber-400"></i></div>
-<h3 class="text-xl font-bold text-white">工商与法人信息</h3>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm">
-<div>
-<div class="text-slate-500 text-xs uppercase tracking-wider mb-1">企业全称</div>
-<div class="text-white font-semibold">喜得狼控股有限公司</div>
-<div class="text-slate-600 text-xs mt-1">运营实体：福建省晋江市喜得狼体育用品有限公司</div>
-</div>
-<div>
-<div class="text-slate-500 text-xs uppercase tracking-wider mb-1">统一社会信用代码</div>
-<div class="text-white font-mono text-sm">91350582611899617F</div>
-</div>
-<div>
-<div class="text-slate-500 text-xs uppercase tracking-wider mb-1">法定代表人</div>
-<div class="text-white font-semibold">丁鹏鹏</div>
-<div class="text-slate-600 text-xs mt-1">CEO / 执行董事 / 陈埭镇青年商会理事会会长</div>
-</div>
-<div>
-<div class="text-slate-500 text-xs uppercase tracking-wider mb-1">注册资本</div>
-<div class="text-white font-semibold">8,888万人民币</div>
-<div class="text-slate-600 text-xs mt-1">全额实缴</div>
-</div>
-<div>
-<div class="text-slate-500 text-xs uppercase tracking-wider mb-1">股票代码</div>
-<div class="stat-value text-lg">KL.XDL 5156</div>
-</div>
-<div>
-<div class="text-slate-500 text-xs uppercase tracking-wider mb-1">国标行业</div>
-<div class="text-white font-semibold">其他机织服装制造 / 鞋制造</div>
-</div>
-<div class="md:col-span-2">
-<div class="text-slate-500 text-xs uppercase tracking-wider mb-1">注册地址</div>
-<div class="text-white font-semibold">福建省晋江市内坑镇工业区喜得狼工业园</div>
-<div class="text-slate-600 text-xs mt-1">另设：晋江市陈埭花厅口村 / 晋江市阳光东路鸿鹏大厦</div>
-</div>
-</div>
-</div>
-<!-- 右列双卡片 -->
-<div class="flex flex-col gap-5">
-<div class="card p-8 flex-1 flex flex-col justify-center">
-<div class="text-center py-4">
-<div class="stat-value text-3xl md:text-4xl mb-2">"耀精彩 · 更出色"</div>
-<div class="text-slate-500 text-sm">品牌口号</div>
-</div>
-<div class="border-t border-white/5 my-4"></div>
-<div class="text-center py-4">
-<div class="text-xl font-bold text-white mb-2">"打造中国领先的潮流休闲品牌"</div>
-<div class="text-slate-500 text-sm">品牌愿景</div>
-</div>
-</div>
-<div class="card p-8 flex-1 relative overflow-hidden group" style="min-height:180px">
-<img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80" alt="运动鞋" class="img-cover absolute inset-0 w-full h-full">
-<div class="overlay absolute inset-0"></div>
-<div class="relative z-10 h-full flex flex-col justify-end">
-<div class="text-white font-bold text-lg mb-1">立鸿鹏之志 · 创卓越品牌</div>
-<div class="text-slate-400 text-xs">全面导入6S企业管理系统</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+  <!-- ===== KEY METRICS BENTO ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">总资产规模</div>
+      <div class="mega-num text-5xl md:text-6xl">12.19<span class="text-2xl">亿</span></div>
+      <div class="text-slate-500 text-sm mt-2">人民币 · 截至2025.12.31</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:89%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">资产负债率仅 5.5%</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">FY2025 营收</div>
+      <div class="mega-num text-5xl md:text-6xl">3.34<span class="text-2xl">亿</span></div>
+      <div class="text-slate-500 text-sm mt-2">人民币 · FY2025全年</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:41%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">FPE 2024(18个月)营收8.195亿</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">年产能</div>
+      <div class="mega-num text-5xl md:text-6xl">1000<span class="text-2xl">万</span></div>
+      <div class="text-slate-500 text-sm mt-2">双运动鞋/年</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:100%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">服装配件800万件/套</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">工业园区</div>
+      <div class="mega-num text-5xl md:text-6xl">123<span class="text-2xl">亩</span></div>
+      <div class="text-slate-500 text-sm mt-2">建筑面积15万㎡</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:100%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">花园式现代化工业园</div>
+    </div>
+  </div>
 
-<!-- 发展历程 时间线 -->
-<section class="py-24 px-6">
-<div class="max-w-4xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init"><i class="fas fa-timeline"></i> 发展历程</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">33年品牌 Evolution 之路</h2>
-</div>
-<div class="card p-8 md:p-12 hidden-init">
-<div class="relative pl-6">
-<div class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/50 via-amber-500/20 to-transparent"></div>
+  <!-- ===== OVERVIEW + LEADERSHIP ===== -->
+  <div class="bento-grid mb-8">
+    <!-- Company Overview -->
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-building"></i> 企业概览</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">从晋江走向世界的鞋服帝国</h2>
+      <div class="space-y-4 text-slate-300 leading-relaxed">
+        <p><span class="text-amber-400 font-semibold">喜得狼控股有限公司</span>（XiDeLang Holdings Ltd，Bermuda Company No. 43136）是中国领先的综合性大型潮流休闲品牌企业，致力于跑鞋、滑板鞋、休闲鞋、篮球鞋、网球鞋、户外鞋等运动鞋与服装、箱包及配件一体化的研发、生产与销售。</p>
+        <p>公司前身可追溯至<span class="text-amber-400 font-semibold">1993年</span>创立的鸿鹏制鞋（HongPeng Footwear），位于中国鞋都——福建省晋江市陈埭镇。1996年成立鸿鹏（福建）鞋服有限公司，专注"喜得狼"品牌运营。</p>
+        <p><span class="text-amber-400 font-semibold">2009年11月11日</span>，喜得狼控股于马来西亚交易所主板隆重上市（KL.XDL 5156），成为第三家登陆大马资本市场的中国企业，由此迈入国际资本运营时代。</p>
+        <p>2022年，因应市场挑战及疫情影响，公司终止自有品牌业务，全面聚焦<span class="text-amber-400 font-semibold">ODM（原始设计制造）</span>板块，为国际知名品牌提供从研发设计到生产制造的一站式服务。</p>
+      </div>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <span class="honor-badge"><i class="fas fa-star"></i> 中国驰名商标</span>
+        <span class="honor-badge"><i class="fas fa-trophy"></i> 福布斯亚洲200佳</span>
+        <span class="honor-badge"><i class="fas fa-certificate"></i> 马来西亚主板上市</span>
+        <span class="honor-badge"><i class="fas fa-medal"></i> 福建省名牌产品</span>
+      </div>
+    </div>
 
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">1991</div><div class="text-white font-semibold mt-1">前身鸿鹏制鞋有限公司成立</div><div class="text-slate-500 text-xs mt-1">晋江鞋业起步，奠定制造基础</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">1993</div><div class="text-white font-semibold mt-1">喜得狼品牌创立</div><div class="text-slate-500 text-xs mt-1">正式进军潮流休闲鞋服市场</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">1995</div><div class="text-white font-semibold mt-1">工商注册成立</div><div class="text-slate-500 text-xs mt-1">统一信用代码：91350582611899617F</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2004</div><div class="text-white font-semibold mt-1">签约歌手满江为品牌代言人</div><div class="text-slate-500 text-xs mt-1">开创"娱乐营销"模式先河</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2005</div><div class="text-white font-semibold mt-1">中国体育品牌风云榜"大众最喜爱品牌奖"</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2007</div><div class="text-white font-semibold mt-1">签约歌手张杰为品牌形象代言人</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2008</div><div class="text-white font-semibold mt-1">"晋江十大最具成长性运动休闲品牌"</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2009.11</div><div class="text-white font-semibold mt-1">马来西亚交易所主板上市</div><div class="text-slate-500 text-xs mt-1">KL.XDL 5156 · 迈入国际资本运营时代</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2010</div><div class="text-white font-semibold mt-1">签约"快乐男声"前三强</div><div class="text-slate-500 text-xs mt-1">李炜、刘心、武艺及"超女"艾梦萌、阳蕾</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2011</div><div class="text-white font-semibold mt-1">《福布斯》亚洲最佳200中小企业</div><div class="text-slate-500 text-xs mt-1">Forbes Asia's 200 Best Under A Billion</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2012</div><div class="text-white font-semibold mt-1">新工业园落成启用 · 占地123亩</div><div class="text-slate-500 text-xs mt-1">建筑面积15万㎡，斥资数亿元打造</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2013-2014</div><div class="text-white font-semibold mt-1">连续三年慧聪鞋网"十佳运动鞋品牌"</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2015</div><div class="text-white font-semibold mt-1">福建省名牌 · 省著名商标 · 市知名商标</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2016.05</div><div class="text-white font-semibold mt-1">参与起草《网球鞋》国家标准</div><div class="text-slate-500 text-xs mt-1">CEO丁鹏鹏为主要起草人，2016.7.1正式实施</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2018</div><div class="text-white font-semibold mt-1">获取两化融合管理体系证书 · ERP全面上线</div><div class="text-slate-500 text-xs mt-1">数字化、标准化管理升级</div></div>
-<div class="relative pb-10 pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2022</div><div class="text-white font-semibold mt-1">战略调整：停止自有品牌业务</div><div class="text-slate-500 text-xs mt-1">全面聚焦ODM业务</div></div>
-<div class="relative pl-8"><div class="timeline-dot"></div><div class="text-amber-400 font-bold text-sm">2025</div><div class="text-white font-semibold mt-1">江门制造中心运营 · 持续财务披露</div><div class="text-slate-500 text-xs mt-1">广东省江门市蓬江区杜阮镇，包食宿+五险一金</div></div>
-</div>
-</div>
-</div>
-</section>
+    <!-- Leadership -->
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-user-tie"></i> 核心领导层</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">掌舵者</h2>
+      <div class="space-y-5">
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10">
+          <div class="w-14 h-14 rounded-full bg-amber-500/15 flex items-center justify-center shrink-0 ring-2 ring-amber-500/20">
+            <i class="fas fa-crown text-amber-400 text-xl"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold text-lg">丁鹏鹏 <span class="text-amber-400 text-sm font-normal">Ding PengPeng</span></div>
+            <div class="text-amber-400/80 text-sm mb-1">执行董事 / CEO · 创始人</div>
+            <p class="text-slate-400 text-sm leading-relaxed">1993年18岁以4万元创业，北大光华管理学院深造。2006年受课堂启发走上资本运作之路，3年后带领公司赴马上市。现任陈埭镇青年商会理事会会长，参与起草《网球鞋》国家标准。从商人到社会企业家的转型典范。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.04]">
+          <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+            <i class="fas fa-chair text-slate-400 text-lg"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold">丁丽红 <span class="text-slate-500 text-sm font-normal">Ding LiHong</span></div>
+            <div class="text-slate-500 text-sm">执行主席 · Executive Chairman</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.04]">
+          <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+            <i class="fas fa-cogs text-slate-400 text-lg"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold">丁鹏万 <span class="text-slate-500 text-sm font-normal">Ding PengWan</span></div>
+            <div class="text-slate-500 text-sm">执行董事 / 副CEO兼首席运营官</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t border-white/5">
+        <p class="text-slate-500 text-xs">独立非执行董事：朱国和（Zhu GuoHe）· 温耀通（Woon Yeow Thong）· 何佩豪（Ho Pui Hold）</p>
+      </div>
+    </div>
+  </div>
 
-<!-- 全球业务布局 -->
-<section class="py-24 px-6">
-<div class="max-w-6xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init"><i class="fas fa-globe-americas"></i> 全球业务布局</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">从OEM到ODM · 服务国际一线品牌</h2>
-</div>
-<div class="bento hidden-init" style="grid-template-columns:1fr 1fr">
-<div class="card relative overflow-hidden group" style="min-height:320px">
-<img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80" alt="全球网络" class="img-cover absolute inset-0 w-full h-full">
-<div class="overlay absolute inset-0"></div>
-<div class="relative z-10 h-full flex flex-col justify-end p-8">
-<div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center backdrop-blur"><i class="fas fa-map text-amber-400"></i></div><h3 class="text-xl font-bold text-white">国内销售网络</h3></div>
-<div class="stat-value text-5xl md:text-6xl mb-3">30+</div>
-<div class="text-white font-medium mb-2">省市地区全覆盖</div>
-<div class="text-slate-300 text-sm leading-relaxed">北京、上海、广州、深圳、重庆、沈阳、武汉、天津、杭州、西安、兰州、新疆、郑州、哈尔滨等全国30多个省市地区。</div>
-</div>
-</div>
-<div class="card relative overflow-hidden group" style="min-height:320px">
-<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80" alt="国际贸易" class="img-cover absolute inset-0 w-full h-full">
-<div class="overlay absolute inset-0"></div>
-<div class="relative z-10 h-full flex flex-col justify-end p-8">
-<div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center backdrop-blur"><i class="fas fa-plane text-orange-400"></i></div><h3 class="text-xl font-bold text-white">国际贸易网络</h3></div>
-<div class="stat-value text-5xl md:text-6xl mb-3">20+</div>
-<div class="text-white font-medium mb-2">国家和地区</div>
-<div class="text-slate-300 text-sm leading-relaxed">美国、法国、智利、土耳其、巴西、印度、俄罗斯、西班牙、欧洲等世界五大洲20多个国家和地区。</div>
-</div>
-</div>
-</div>
-<div class="card p-8 md:p-10 mt-5 hidden-init">
-<div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i class="fas fa-handshake text-amber-400"></i></div><h3 class="text-xl font-bold text-white">ODM合作国际品牌矩阵</h3></div>
-<p class="text-slate-400 text-sm mb-8 max-w-3xl">从早期OEM逐步发展升级为ODM（原始设计制造商），合作伙伴均为世界知名品牌，具备自主设计和研发能力。</p>
-<div class="flex flex-wrap gap-3">
-<span class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white font-medium text-sm hover:bg-amber-500/10 hover:border-amber-500/20 transition-all"><i class="fas fa-star text-amber-400 text-xs"></i> Armani 阿玛尼</span>
-<span class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white font-medium text-sm hover:bg-amber-500/10 hover:border-amber-500/20 transition-all"><i class="fas fa-star text-amber-400 text-xs"></i> Brooks 布鲁克斯</span>
-<span class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white font-medium text-sm hover:bg-amber-500/10 hover:border-amber-500/20 transition-all"><i class="fas fa-star text-amber-400 text-xs"></i> Skechers 斯凯奇</span>
-<span class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white font-medium text-sm hover:bg-amber-500/10 hover:border-amber-500/20 transition-all"><i class="fas fa-star text-amber-400 text-xs"></i> Diadora 迪亚多纳</span>
-<span class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white font-medium text-sm hover:bg-amber-500/10 hover:border-amber-500/20 transition-all"><i class="fas fa-star text-amber-400 text-xs"></i> Guess 盖尔斯</span>
-<span class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white font-medium text-sm hover:bg-amber-500/10 hover:border-amber-500/20 transition-all"><i class="fas fa-star text-amber-400 text-xs"></i> 查拉 CHARA</span>
-</div>
-</div>
-</div>
-</section>
+  <!-- ===== FINANCIAL DEEP DIVE ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-chart-line"></i> 财务深潜</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">关键财务数据一览</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">FY2025 营收</div>
+          <div class="text-3xl font-black text-white">3.335<span class="text-lg text-slate-400">亿</span></div>
+          <div class="text-red-400 text-xs mt-1">▼ 同比FPE 2024月均下降</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">FPE 2024 营收</div>
+          <div class="text-3xl font-black text-white">8.195<span class="text-lg text-slate-400">亿</span></div>
+          <div class="text-slate-500 text-xs mt-1">18个月审计数据</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">FY2025 净亏损</div>
+          <div class="text-3xl font-black text-red-400">-8464<span class="text-lg">万</span></div>
+          <div class="text-slate-500 text-xs mt-1">主要因管理费用高企</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">FPE 2024 毛利</div>
+          <div class="text-3xl font-black text-amber-400">1.151<span class="text-lg">亿</span></div>
+          <div class="text-slate-500 text-xs mt-1">毛利率约14%</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">总资产</div>
+          <div class="text-3xl font-black text-white">12.19<span class="text-lg text-slate-400">亿</span></div>
+          <div class="text-green-400 text-xs mt-1">零借款 · 零有息负债</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">净资产</div>
+          <div class="text-3xl font-black text-white">11.52<span class="text-lg text-slate-400">亿</span></div>
+          <div class="text-slate-500 text-xs mt-1">每股净资产 RMB 0.54</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">现金储备</div>
+          <div class="text-3xl font-black text-green-400">2.80<span class="text-lg">亿</span></div>
+          <div class="text-slate-500 text-xs mt-1">截至2025.12.31</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="text-slate-500 text-xs uppercase tracking-widest mb-2">资产负债率</div>
+          <div class="text-3xl font-black text-green-400">5.5<span class="text-lg">%</span></div>
+          <div class="text-slate-500 text-xs mt-1">极低杠杆 · 财务稳健</div>
+        </div>
+      </div>
+      <div class="mt-5 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-slate-400">
+        <i class="fas fa-info-circle text-amber-400 mr-2"></i>
+        注：公司于2024年将财政年度截止日由6月30日变更为12月31日。FPE 2024为18个月审计期（2023.07-2024.12），FY2025为首个完整日历年度。2025年度管理费用约1.23亿人民币，是净亏损的主要原因。公司零借款运营，财务状况稳健。
+      </div>
+    </div>
+  </div>
 
-<!-- 生产能力 -->
-<section class="py-24 px-6">
-<div class="max-w-6xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init"><i class="fas fa-industry"></i> 生产能力与园区</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">现代化 · 标准化 · 数字化</h2>
-</div>
-<div class="bento hidden-init" style="grid-template-columns:repeat(3,1fr)">
-<div class="card p-8 text-center group">
-<div class="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform"><i class="fas fa-warehouse text-amber-400 text-2xl"></i></div>
-<div class="stat-value text-4xl md:text-5xl mb-3">123亩</div>
-<div class="text-slate-400 font-medium">工业园占地</div>
-<div class="text-slate-600 text-xs mt-2">花园式现代化园区</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform"><i class="fas fa-ruler-combined text-orange-400 text-2xl"></i></div>
-<div class="stat-value text-4xl md:text-5xl mb-3">15万㎡</div>
-<div class="text-slate-400 font-medium">建筑面积</div>
-<div class="text-slate-600 text-xs mt-2">生产·办公·住宿一体</div>
-</div>
-<div class="card p-8 text-center group">
-<div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform"><i class="fas fa-users text-emerald-400 text-2xl"></i></div>
-<div class="stat-value text-4xl md:text-5xl mb-3">3000+</div>
-<div class="text-slate-400 font-medium">员工规模</div>
-<div class="text-slate-600 text-xs mt-2">三大基地·两大研发中心</div>
-</div>
-</div>
-<div class="bento hidden-init mt-5" style="grid-template-columns:1fr 1fr">
-<div class="card relative overflow-hidden group" style="min-height:260px">
-<img src="https://images.unsplash.com/photo-1562183241-b937e95585b6?w=800&q=80" alt="鞋生产线" class="img-cover absolute inset-0 w-full h-full">
-<div class="overlay absolute inset-0"></div>
-<div class="relative z-10 h-full flex flex-col justify-end p-8">
-<div class="stat-value text-5xl md:text-6xl mb-2">1000万双</div>
-<div class="text-white font-medium text-lg">年产运动鞋</div>
-<div class="text-slate-300 text-sm mt-2">跑鞋 · 滑板鞋 · 休闲鞋 · 篮球鞋 · 网球鞋 · 户外鞋</div>
-</div>
-</div>
-<div class="card relative overflow-hidden group" style="min-height:260px">
-<img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&q=80" alt="服装" class="img-cover absolute inset-0 w-full h-full">
-<div class="overlay absolute inset-0"></div>
-<div class="relative z-10 h-full flex flex-col justify-end p-8">
-<div class="stat-value text-5xl md:text-6xl mb-2">800万件</div>
-<div class="text-white font-medium text-lg">年产服装及配件</div>
-<div class="text-slate-300 text-sm mt-2">T恤 · 衬衫 · 卫衣 · 外套 · 棉衣 · 羽绒服 · 牛仔裤</div>
-</div>
-</div>
-</div>
-<div class="card p-8 md:p-10 mt-5 hidden-init">
-<div class="flex items-center gap-3 mb-8"><div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i class="fas fa-gears text-amber-400"></i></div><h3 class="text-xl font-bold text-white">生产设施与管理</h3></div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-sm">
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-amber-500/15 transition-all"><i class="fas fa-check-circle text-emerald-400 mt-0.5"></i><div><span class="text-white font-medium block mb-1">6条进口自动化流水线</span><span class="text-slate-500 text-xs">引进国际先进配套设备</span></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-amber-500/15 transition-all"><i class="fas fa-check-circle text-emerald-400 mt-0.5"></i><div><span class="text-white font-medium block mb-1">ISO9001:2000国际质量体系</span><span class="text-slate-500 text-xs">全面质量管控</span></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-amber-500/15 transition-all"><i class="fas fa-check-circle text-emerald-400 mt-0.5"></i><div><span class="text-white font-medium block mb-1">6S企业管理系统</span><span class="text-slate-500 text-xs">标准化现场管理</span></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-amber-500/15 transition-all"><i class="fas fa-check-circle text-emerald-400 mt-0.5"></i><div><span class="text-white font-medium block mb-1">ERP自动化办公系统</span><span class="text-slate-500 text-xs">2018年全面推行两化融合</span></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-amber-500/15 transition-all"><i class="fas fa-check-circle text-emerald-400 mt-0.5"></i><div><span class="text-white font-medium block mb-1">两大研发中心</span><span class="text-slate-500 text-xs">鞋研发中心 · 服装研发中心</span></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:border-amber-500/15 transition-all"><i class="fas fa-check-circle text-emerald-400 mt-0.5"></i><div><span class="text-white font-medium block mb-1">江门制造中心</span><span class="text-slate-500 text-xs">广东省江门市蓬江区杜阮镇</span></div></div>
-</div>
-</div>
-</div>
-</section>
+  <!-- ===== ODM BUSINESS + PRODUCTION ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-industry"></i> ODM核心业务</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">国际品牌信赖的制造伙伴</h2>
+      <p class="text-slate-300 mb-6 leading-relaxed">自2022年终止自有品牌后，公司全面聚焦ODM业务，定位为<strong class="text-amber-400">国际品牌可靠、可信赖的生产合作伙伴</strong>。产品通过中国外贸公司及中间商渠道，主要销往海外市场。</p>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">Armani</div>
+          <div class="text-slate-500 text-xs">阿玛尼</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">Skechers</div>
+          <div class="text-slate-500 text-xs">斯凯奇</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">Brooks</div>
+          <div class="text-slate-500 text-xs">布鲁克斯</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">Diadora</div>
+          <div class="text-slate-500 text-xs">迪亚多纳</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">Guess</div>
+          <div class="text-slate-500 text-xs">盖尔斯</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-2xl font-black text-amber-400">Zara</div>
+          <div class="text-slate-500 text-xs">查拉</div>
+        </div>
+      </div>
+      <div class="space-y-3 text-sm text-slate-400">
+        <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> 从概念设计到量产的全流程管控</div>
+        <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> 严格供应链管理，原材料100%国内采购，供应商多位于邻近区域</div>
+        <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> 多阶段质检确保成品品质，成品须经多道测试</div>
+        <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> 强大内部研发团队，实现设计-采购-成本-生产-交期一体化</div>
+      </div>
+    </div>
 
-<!-- 品牌矩阵与知识产权 -->
-<section class="py-24 px-6">
-<div class="max-w-6xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init"><i class="fas fa-layer-group"></i> 品牌与产品矩阵</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">多品牌 · 全品类 · 鞋服一体化</h2>
-</div>
-<div class="bento hidden-init" style="grid-template-columns:1.5fr 1fr">
-<div class="card p-8 md:p-10">
-<div class="flex items-center gap-3 mb-8"><div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i class="fas fa-shoe-prints text-amber-400"></i></div><h3 class="text-xl font-bold text-white">核心产品线</h3></div>
-<div class="space-y-6">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-running text-amber-400 text-lg"></i></div>
-<div>
-<div class="text-white font-semibold mb-1">运动鞋系列</div>
-<div class="text-slate-400 text-sm">跑鞋 · 滑板鞋 · 休闲鞋 · 篮球鞋 · 网球鞋 · 户外鞋 · 综训鞋 · 棉鞋</div>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-shirt text-orange-400 text-lg"></i></div>
-<div>
-<div class="text-white font-semibold mb-1">服装系列</div>
-<div class="text-slate-400 text-sm">T恤 · 衬衫 · 卫衣 · 外套 · 棉衣 · 羽绒服 · 牛仔裤 · 休闲裤</div>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-bag-shopping text-emerald-400 text-lg"></i></div>
-<div>
-<div class="text-white font-semibold mb-1">箱包及配件</div>
-<div class="text-slate-400 text-sm">运动包 · 背包 · 帽类 · 袜类 · 配件</div>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-industry text-rose-400 text-lg"></i></div>
-<div>
-<div class="text-white font-semibold mb-1">ODM代工业务</div>
-<div class="text-slate-400 text-sm">为Armani、Brooks、Skechers、Diadora、Guess、查拉等国际品牌提供原始设计制造服务</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card p-8 md:p-10 flex flex-col">
-<div class="flex items-center gap-3 mb-8"><div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i class="fas fa-trademark text-amber-400"></i></div><h3 class="text-xl font-bold text-white">知识产权</h3></div>
-<div class="text-center mb-8">
-<div class="stat-value text-6xl md:text-7xl mb-2">74</div>
-<div class="text-slate-400 font-medium">注册商标</div>
-</div>
-<div class="space-y-4 flex-1">
-<div class="flex justify-between items-center py-3 border-b border-white/[0.04]"><span class="text-slate-400 text-sm">XIDELANG</span><span class="text-white text-sm font-medium">国际注册</span></div>
-<div class="flex justify-between items-center py-3 border-b border-white/[0.04]"><span class="text-slate-400 text-sm">喜得狼</span><span class="text-white text-sm font-medium">中文商标</span></div>
-<div class="flex justify-between items-center py-3 border-b border-white/[0.04]"><span class="text-slate-400 text-sm">25类服装鞋帽</span><span class="text-amber-400 text-sm font-medium">核心类别</span></div>
-<div class="flex justify-between items-center py-3 border-b border-white/[0.04]"><span class="text-slate-400 text-sm">26类钮扣拉链</span><span class="text-white text-sm font-medium">扩展类别</span></div>
-<div class="flex justify-between items-center py-3 border-b border-white/[0.04]"><span class="text-slate-400 text-sm">28类健身器材</span><span class="text-white text-sm font-medium">扩展类别</span></div>
-<div class="flex justify-between items-center py-3"><span class="text-slate-400 text-sm">42类网站服务</span><span class="text-white text-sm font-medium">数字类别</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-warehouse"></i> 生产实力</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">花园式超级工厂</h2>
+      <div class="space-y-4 text-slate-300 leading-relaxed">
+        <p>2013年，公司斥资<span class="text-amber-400 font-bold">数亿元</span>迁入全新工业园，占地<span class="text-amber-400 font-bold">123亩</span>，建筑面积超<span class="text-amber-400 font-bold">15万平方米</span>，集生产、办公、住宿为一体，软硬件设施达国际先进水平。</p>
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <div class="glass-card-sm p-4 text-center">
+            <div class="text-3xl font-black text-amber-400">1000<span class="text-lg">万</span></div>
+            <div class="text-slate-500 text-xs mt-1">年产运动鞋</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="text-3xl font-black text-amber-400">800<span class="text-lg">万</span></div>
+            <div class="text-slate-500 text-xs mt-1">年产服装配件</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="text-3xl font-black text-amber-400">3000<span class="text-lg">+</span></div>
+            <div class="text-slate-500 text-xs mt-1">在职员工</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="text-3xl font-black text-amber-400">30<span class="text-lg">+</span></div>
+            <div class="text-slate-500 text-xs mt-1">覆盖省市</div>
+          </div>
+        </div>
+        <p class="mt-4 text-sm">另有三大生产基地、两大（鞋、服）研发中心。产品远销美国、法国、智利、土耳其、巴西、印度、俄罗斯、西班牙等<span class="text-amber-400">五大洲20多个国家和地区</span>。</p>
+      </div>
+    </div>
+  </div>
 
-<!-- 娱乐营销 -->
-<section class="py-24 px-6">
-<div class="max-w-4xl mx-auto text-center">
-<div class="section-label hidden-init"><i class="fas fa-music"></i> 娱乐营销模式</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white mb-8">开创独特"娱乐营销"品牌传播策略</h2>
-<div class="card p-8 md:p-12 hidden-init relative overflow-hidden">
-<div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-[80px] pointer-events-none"></div>
-<p class="text-slate-400 text-base leading-relaxed mb-10 max-w-2xl mx-auto relative z-10">立足体育行业，不断融入娱乐生活元素，以独树一帜的品牌定位和差异化的娱乐营销传播，逐步发展成为中国潮流休闲市场最具知名度与美誉度的品牌之一。主题歌曲《潮流运动》由武艺、刘心、李炜共同演唱。</p>
-<div class="flex flex-wrap justify-center gap-3 relative z-10">
-<span class="badge text-sm"><i class="fas fa-microphone"></i> 满江（2004）</span>
-<span class="badge text-sm"><i class="fas fa-microphone"></i> 张杰（2007）</span>
-<span class="badge text-sm"><i class="fas fa-microphone"></i> 李炜（2010快男冠军）</span>
-<span class="badge text-sm"><i class="fas fa-microphone"></i> 刘心（2010快男亚军）</span>
-<span class="badge text-sm"><i class="fas fa-microphone"></i> 武艺（2010快男季军）</span>
-<span class="badge text-sm"><i class="fas fa-microphone"></i> 艾梦萌（超女）</span>
-<span class="badge text-sm"><i class="fas fa-microphone"></i> 阳蕾（超女）</span>
-</div>
-</div>
-</div>
-</section>
+  <!-- ===== TIMELINE ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-history"></i> 发展里程碑</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">三十三年荣耀之路</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">1993</div>
+          <div class="text-white font-bold mb-1">创牌伊始</div>
+          <p class="text-slate-400 text-sm">丁鹏鹏以4万元在晋江陈埭创立鸿鹏制鞋，"喜得狼"品牌诞生。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">1996</div>
+          <div class="text-white font-bold mb-1">鸿鹏福建成立</div>
+          <p class="text-slate-400 text-sm">专注品牌运营，鞋服设计、制造与营销一体化。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">1997</div>
+          <div class="text-white font-bold mb-1">进军国际市场</div>
+          <p class="text-slate-400 text-sm">在美国建立4个分公司，海外市场消化一半产量。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2006</div>
+          <div class="text-white font-bold mb-1">娱乐营销启航</div>
+          <p class="text-slate-400 text-sm">签约满江，重启品牌国内运作。丁鹏鹏入读北大光华。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2007</div>
+          <div class="text-white font-bold mb-1">携手张杰</div>
+          <p class="text-slate-400 text-sm">签约"快乐男声"张杰，打造个性化潮流休闲品牌。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2009</div>
+          <div class="text-white font-bold mb-1">走马上市</div>
+          <p class="text-slate-400 text-sm">11月11日马来西亚主板上市，第三家中国赴马上市公司。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2010</div>
+          <div class="text-white font-bold mb-1">娱乐升级</div>
+          <p class="text-slate-400 text-sm">签约快男三强+超女，提出"耀"四大品牌主张。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2011</div>
+          <div class="text-white font-bold mb-1">福布斯亚洲200佳</div>
+          <p class="text-slate-400 text-sm">荣获《福布斯》亚洲最佳200中小企业。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2013</div>
+          <div class="text-white font-bold mb-1">新工业园落成</div>
+          <p class="text-slate-400 text-sm">123亩花园式工业园投入使用，产能全面升级。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2016</div>
+          <div class="text-white font-bold mb-1">制定行业标准</div>
+          <p class="text-slate-400 text-sm">作为主要起草单位参与《网球鞋》国家标准，7月1日实施。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2018</div>
+          <div class="text-white font-bold mb-1">两化融合</div>
+          <p class="text-slate-400 text-sm">获得两化融合管理体系证书，推行ERP自动化。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 text-2xl font-black mb-2">2022</div>
+          <div class="text-white font-bold mb-1">战略转型</div>
+          <p class="text-slate-400 text-sm">终止自有品牌，全面聚焦ODM制造，产能整合至鸿鹏福建。</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- 荣誉资质 -->
-<section class="py-24 px-6">
-<div class="max-w-4xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init"><i class="fas fa-trophy"></i> 荣誉资质</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">33年品牌积淀，国家级荣誉满载</h2>
-</div>
-<div class="card p-8 md:p-12 hidden-init">
-<div class="grid grid-cols-1 gap-4">
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-emerald-500/[0.03] border border-emerald-500/10 hover:border-emerald-500/20 transition-all"><i class="fas fa-medal text-emerald-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">中国驰名商标</div><div class="text-slate-500 text-xs mt-1">国家工商行政管理总局认定，品牌最高荣誉</div></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-amber-500/[0.03] border border-amber-500/10 hover:border-amber-500/20 transition-all"><i class="fas fa-medal text-amber-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">《福布斯》亚洲最佳200中小企业</div><div class="text-slate-500 text-xs mt-1">2011年 Forbes Asia's 200 Best Under A Billion</div></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-blue-500/[0.03] border border-blue-500/10 hover:border-blue-500/20 transition-all"><i class="fas fa-medal text-blue-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">马来西亚交易所主板上市 KL.XDL 5156</div><div class="text-slate-500 text-xs mt-1">2009年11月，晋江自主品牌国际化里程碑</div></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all"><i class="fas fa-medal text-slate-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">福建省名牌产品 · 省著名商标 · 泉州市知名商标</div></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-purple-500/[0.03] border border-purple-500/10 hover:border-purple-500/20 transition-all"><i class="fas fa-medal text-purple-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">参与起草《网球鞋》国家标准</div><div class="text-slate-500 text-xs mt-1">2016年7月1日正式实施，CEO丁鹏鹏为主要起草人，全国橡胶与橡胶制品标准化技术委员会批准发布</div></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all"><i class="fas fa-medal text-slate-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">两化融合管理体系证书 · ISO9001:2000 · 6S管理系统</div><div class="text-slate-500 text-xs mt-1">2018年全面推行ERP自动化办公，数字化转型升级</div></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all"><i class="fas fa-medal text-slate-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">十佳运动鞋品牌 · 十佳最具影响力品牌</div><div class="text-slate-500 text-xs mt-1">慧聪鞋网 2011-2014 连续三年</div></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/10 transition-all"><i class="fas fa-medal text-slate-400 mt-1 text-lg"></i><div><div class="text-white font-semibold">晋江十大最具成长性运动休闲品牌 · 晋江市绿色厂区 · 泉州市职工书屋</div></div></div>
-</div>
-</div>
-</div>
-</section>
+  <!-- ===== HONORS + BRAND ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-award"></i> 荣誉殿堂</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">权威认证与荣誉</h2>
+      <div class="flex flex-wrap gap-2">
+        <span class="honor-badge"><i class="fas fa-star"></i> 中国驰名商标</span>
+        <span class="honor-badge"><i class="fas fa-trophy"></i> 福布斯亚洲最佳200中小企业(2011)</span>
+        <span class="honor-badge"><i class="fas fa-chart-line"></i> 马来西亚交易所主板上市(KL.XDL 5156)</span>
+        <span class="honor-badge"><i class="fas fa-medal"></i> 福建省名牌产品</span>
+        <span class="honor-badge"><i class="fas fa-medal"></i> 福建省著名商标</span>
+        <span class="honor-badge"><i class="fas fa-medal"></i> 泉州市知名商标</span>
+        <span class="honor-badge"><i class="fas fa-file-contract"></i> 《网球鞋》国标主要起草单位(2016)</span>
+        <span class="honor-badge"><i class="fas fa-certificate"></i> 两化融合管理体系证书(2018)</span>
+        <span class="honor-badge"><i class="fas fa-check-circle"></i> ISO9001:2000国际质量体系认证</span>
+        <span class="honor-badge"><i class="fas fa-cogs"></i> 6S企业管理系统</span>
+        <span class="honor-badge"><i class="fas fa-shoe-prints"></i> 十佳运动鞋品牌(2011-2014)</span>
+        <span class="honor-badge"><i class="fas fa-thumbs-up"></i> 大众最喜爱品牌奖(2005)</span>
+        <span class="honor-badge"><i class="fas fa-leaf"></i> 晋江市绿色厂区</span>
+        <span class="honor-badge"><i class="fas fa-book"></i> 泉州市职工书屋</span>
+        <span class="honor-badge"><i class="fas fa-hard-hat"></i> 晋江工人先锋</span>
+        <span class="honor-badge"><i class="fas fa-building"></i> 闽商建设海西贡献奖</span>
+        <span class="honor-badge"><i class="fas fa-chart-bar"></i> 信用评分813分(优秀)</span>
+        <span class="honor-badge"><i class="fas fa-trademark"></i> 74件注册商标</span>
+      </div>
+    </div>
 
-<!-- 核心管理层 -->
-<section class="py-24 px-6">
-<div class="max-w-4xl mx-auto">
-<div class="text-center mb-12">
-<div class="section-label hidden-init"><i class="fas fa-user-tie"></i> 核心管理层</div>
-</div>
-<div class="card p-8 md:p-12 hidden-init">
-<div class="flex flex-col md:flex-row items-center gap-8">
-<div class="relative">
-<div class="w-28 h-28 rounded-full bg-amber-500/15 flex items-center justify-center ring-2 ring-amber-500/20 ring-offset-4 ring-offset-[#0a0e17]"><i class="fas fa-user text-amber-400 text-5xl"></i></div>
-<div class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center"><i class="fas fa-crown text-[#0a0e17] text-xs"></i></div>
-</div>
-<div class="text-center md:text-left flex-1">
-<h3 class="text-3xl font-bold text-white mb-2">丁鹏鹏</h3>
-<p class="text-amber-400 font-semibold mb-5">CEO / 执行董事 / 陈埭镇青年商会理事会会长</p>
-<p class="text-slate-400 text-sm leading-relaxed mb-6">喜得狼控股有限公司主要领导人，作为主要起草人参与起草中华人民共和国化工行业《网球鞋》标准（2016年7月1日实施）。荣获慧聪鞋网中国鞋业风云人物、福建省第四届世界闽商大会"闽商建设海西贡献奖"等称号。</p>
-<div class="flex flex-wrap gap-2 justify-center md:justify-start">
-<span class="badge text-xs"><i class="fas fa-pen"></i> 《网球鞋》国标主要起草人</span>
-<span class="badge text-xs"><i class="fas fa-users"></i> 陈埭镇青年商会会长</span>
-<span class="badge text-xs"><i class="fas fa-award"></i> 闽商建设海西贡献奖</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-bullhorn"></i> 品牌基因</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">品牌文化与营销</h2>
+      <div class="space-y-4">
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-400 font-bold mb-1">品牌愿景</div>
+          <p class="text-slate-300">打造领先的潮流休闲品牌</p>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-400 font-bold mb-1">经营理念</div>
+          <p class="text-slate-300">立鸿鹏之志 · 创卓越品牌</p>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-400 font-bold mb-1">品牌口号</div>
+          <p class="text-slate-300">耀精彩 · 更出色</p>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-400 font-bold mb-1">四大"耀"点</div>
+          <p class="text-slate-300">耀运动 · 耀时尚 · 耀自我 · 耀健康</p>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-400 font-bold mb-1">营销模式</div>
+          <p class="text-slate-300">独创"娱乐营销"模式，先后签约满江、张杰、快男三强李炜/刘心/武艺、超女艾梦萌/阳蕾</p>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-400 font-bold mb-1">产品矩阵</div>
+          <p class="text-slate-300 text-sm">跑鞋 · 滑板鞋 · 休闲鞋 · 篮球鞋 · 网球鞋 · 户外鞋 · 综训鞋 · 棉鞋 | T恤 · 衬衫 · 卫衣 · 外套 · 棉衣 · 羽绒服 · 牛仔裤 · 休闲裤 | 箱包及配件</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- 企业风险与合规 -->
-<section class="py-24 px-6">
-<div class="max-w-4xl mx-auto">
-<div class="text-center mb-16">
-<div class="section-label hidden-init" style="background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.15);color:#fca5a5"><i class="fas fa-scale-balanced"></i> 企业风险与合规</div>
-<h2 class="hidden-init text-3xl md:text-5xl font-bold text-white">透明披露 · 合规经营</h2>
-</div>
-<div class="card p-8 md:p-12 hidden-init">
-<div class="grid grid-cols-3 gap-4 mb-8">
-<div class="text-center p-6 rounded-2xl bg-white/[0.02]">
-<div class="stat-value text-4xl mb-2">3</div>
-<div class="text-slate-400 text-xs">司法案件</div>
-</div>
-<div class="text-center p-6 rounded-2xl bg-white/[0.02]">
-<div class="stat-value text-4xl mb-2">4</div>
-<div class="text-slate-400 text-xs">裁判文书</div>
-</div>
-<div class="text-center p-6 rounded-2xl bg-emerald-500/[0.03] border border-emerald-500/10">
-<div class="text-2xl font-black text-emerald-400 mb-2">合格</div>
-<div class="text-slate-400 text-xs">质检抽查（2017）</div>
-</div>
-</div>
-<div class="space-y-3">
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-red-500/[0.03] border border-red-500/10"><i class="fas fa-circle-info text-red-400 mt-1"></i><div><span class="text-white font-medium">行政处罚历史</span><p class="text-slate-500 text-xs mt-1">企业存在历史行政处罚记录（已处理）</p></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-red-500/[0.03] border border-red-500/10"><i class="fas fa-circle-info text-red-400 mt-1"></i><div><span class="text-white font-medium">质检抽查记录</span><p class="text-slate-500 text-xs mt-1">2015年9月抽查不合格（已整改）；2015年6月、2017年1月抽查合格</p></div></div>
-<div class="flex items-start gap-4 p-5 rounded-2xl bg-red-500/[0.03] border border-red-500/10"><i class="fas fa-circle-info text-red-400 mt-1"></i><div><span class="text-white font-medium">企业地址变更</span><p class="text-slate-500 text-xs mt-1">21次工商变更记录，含地址从陈埭花厅口村迁至内坑镇工业区</p></div></div>
-</div>
-<div class="mt-6 pt-6 border-t border-white/5 text-center">
-<p class="text-slate-500 text-sm"><i class="fas fa-shield-halved text-emerald-400 mr-2"></i>企业族群：鸿鹏（福建）鞋服有限公司（成员企业2家）</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- ===== REGISTRATION INFO ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-id-card"></i> 工商登记信息</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">企业法定信息</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">企业名称</div>
+          <div class="text-white font-semibold">福建省晋江市喜得狼体育用品有限公司</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">统一信用代码</div>
+          <div class="text-white font-mono text-sm">91350582611899617F</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">法定代表人</div>
+          <div class="text-white font-semibold">丁鹏鹏</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">注册资本</div>
+          <div class="text-white font-semibold">8,888万元人民币</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">成立时间</div>
+          <div class="text-white font-semibold">1995-07-24（品牌创于1993年）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">注册地址</div>
+          <div class="text-white text-sm">福建省晋江市内坑镇工业区喜得狼工业园</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">行业分类(GB/T)</div>
+          <div class="text-white text-sm">其他机织服装制造 / 鞋制造</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">上市信息</div>
+          <div class="text-white text-sm">Bursa Malaysia · KL.XDL 5156 · ISIN: BMG9828L1072</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- 联系方式 -->
-<section class="py-24 px-6">
-<div class="max-w-4xl mx-auto">
-<div class="text-center mb-12">
-<div class="section-label hidden-init"><i class="fas fa-address-card"></i> 联系方式</div>
-</div>
-<div class="card p-8 md:p-12 hidden-init">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-<div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-phone text-amber-400"></i></div><div><div class="text-slate-500 text-xs uppercase tracking-wider mb-1">服务热线</div><div class="text-white font-semibold text-base">400-6077-999</div></div></div>
-<div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-phone-office text-amber-400"></i></div><div><div class="text-slate-500 text-xs uppercase tracking-wider mb-1">总部电话</div><div class="text-white font-semibold text-base">0595-85129977</div></div></div>
-<div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-envelope text-amber-400"></i></div><div><div class="text-slate-500 text-xs uppercase tracking-wider mb-1">品牌邮箱</div><div class="text-white font-semibold">ad@xidelang.com</div></div></div>
-<div class="flex items-start gap-4"><div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-globe text-amber-400"></i></div><div><div class="text-slate-500 text-xs uppercase tracking-wider mb-1">官方网站</div><div class="text-white font-semibold">www.xidelang.com</div><div class="text-slate-600 text-xs">投资者关系：xidelang.com.my</div></div></div>
-<div class="flex items-start gap-4 md:col-span-2"><div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-location-dot text-amber-400"></i></div><div><div class="text-slate-500 text-xs uppercase tracking-wider mb-1">总部地址</div><div class="text-white font-semibold text-base">福建省晋江市内坑镇工业区喜得狼工业园</div><div class="text-slate-500 text-xs mt-1">注册地址：晋江市陈埭花厅口村 / 办公地址：晋江市阳光东路鸿鹏大厦</div></div></div>
-<div class="flex items-start gap-4 md:col-span-2"><div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0"><i class="fas fa-industry text-amber-400"></i></div><div><div class="text-slate-500 text-xs uppercase tracking-wider mb-1">江门制造中心</div><div class="text-white font-semibold text-base">广东省江门市蓬江区杜阮镇众盈路23号</div></div></div>
-</div>
-</div>
-</div>
-</section>
+  <!-- ===== CONTACT ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-address-card"></i> 联系方式</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">全球联络</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center"><i class="fas fa-map-marker-alt text-amber-400"></i></div>
+            <div class="text-white font-bold">中国总部 · 生产基地</div>
+          </div>
+          <div class="text-slate-400 text-sm space-y-1">
+            <p>福建省晋江市内坑镇工业区喜得狼工业园</p>
+            <p>电话：+86 (595) 8677 6888</p>
+            <p>传真：+86 (595) 8677 7222</p>
+            <p>邮箱：xdl@xidelang.com.cn</p>
+          </div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center"><i class="fas fa-globe-asia text-amber-400"></i></div>
+            <div class="text-white font-bold">马来西亚办公室</div>
+          </div>
+          <div class="text-slate-400 text-sm space-y-1">
+            <p>Level 18, The Garden North Tower, Mid Valley City, Lingkaran Syed Putra, 59200 Kuala Lumpur, Malaysia</p>
+            <p>电话：+603-9054 3108</p>
+          </div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center"><i class="fas fa-phone-alt text-amber-400"></i></div>
+            <div class="text-white font-bold">客服热线</div>
+          </div>
+          <div class="text-slate-400 text-sm space-y-1">
+            <p>全国服务热线：400-6077-999</p>
+            <p>总部电话：0595-85129977</p>
+          </div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center"><i class="fas fa-link text-amber-400"></i></div>
+            <div class="text-white font-bold">官方网站</div>
+          </div>
+          <div class="text-slate-400 text-sm space-y-1">
+            <p>品牌官网：www.xidelang.com</p>
+            <p>投资者关系：www.xidelang.com.my</p>
+            <p>投资者邮箱：dpw6668@163.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- Footer -->
-<footer class="footer-glow py-16 px-6 text-center">
-<div class="max-w-2xl mx-auto">
-<div class="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-6 ring-1 ring-amber-500/20">
-<i class="fas fa-eye text-amber-400 text-2xl"></i>
 </div>
-<p class="creator-mark mb-3">39139@胜天半子</p>
-<p class="text-slate-600 text-sm">森罗之眼智能体生成 · 数据更新至 2026.06</p>
-<p class="text-slate-700 text-xs mt-2">本画像基于公开信息自动生成，仅供参考</p>
-</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-section">
+  <div class="max-w-2xl mx-auto">
+    <div class="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-6 ring-1 ring-amber-500/20">
+      <i class="fas fa-eye text-amber-400 text-2xl"></i>
+    </div>
+    <p class="creator-mark mb-3">39139@胜天半子</p>
+    <p class="text-slate-600 text-sm">森罗之眼智能体生成 · 数据更新至 2026.06</p>
+    <p class="text-slate-700 text-xs mt-2">本画像基于公开信息自动生成，数据来源包括Bursa Malaysia官方财报、公司官网、权威媒体公开报道等，仅供参考</p>
+    <div class="flex justify-center gap-4 mt-6 text-slate-600 text-xs">
+      <a href="http://www.xidelang.com.my" target="_blank" class="hover:text-amber-400 transition-colors">投资者关系</a>
+      <span class="text-slate-700">|</span>
+      <a href="http://www.xidelang.com" target="_blank" class="hover:text-amber-400 transition-colors">品牌官网</a>
+      <span class="text-slate-700">|</span>
+      <span>KL.XDL 5156</span>
+    </div>
+  </div>
 </footer>
 
+<!-- ==================== SCRIPTS ==================== -->
 <script>
+// Particles
+(function(){
+  const container = document.getElementById('particles');
+  for(let i=0;i<50;i++){
+    const p = document.createElement('div');
+    p.className='particle';
+    p.style.left=Math.random()*100+'%';
+    p.style.top=Math.random()*100+'%';
+    p.style.animationDelay=Math.random()*8+'s';
+    p.style.animationDuration=(6+Math.random()*10)+'s';
+    container.appendChild(p);
+  }
+})();
+
+// GSAP Scroll Animations
 gsap.registerPlugin(ScrollTrigger);
-
-// Hero entrance
-gsap.to('#hero-badges',{opacity:1,y:0,duration:1,delay:0.2,ease:'power3.out'});
-gsap.to('#hero-title',{opacity:1,y:0,duration:1,delay:0.4,ease:'power3.out'});
-gsap.to('#hero-desc',{opacity:1,y:0,duration:1,delay:0.6,ease:'power3.out'});
-gsap.to('#hero-tags',{opacity:1,y:0,duration:1,delay:0.8,ease:'power3.out'});
-
-// Scroll-triggered sections
-gsap.utils.toArray('.hidden-init').forEach(el=>{
-    gsap.to(el,{opacity:1,y:0,duration:0.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'}});
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
 });
 
-// Stagger cards in grids
-gsap.utils.toArray('.bento').forEach(grid=>{
-    const cards=grid.querySelectorAll('.card');
-    if(cards.length){
-        gsap.from(cards,{opacity:0,y:50,duration:0.8,stagger:0.12,ease:'power3.out',scrollTrigger:{trigger:grid,start:'top 80%'}});
-    }
+// Stat bar animation
+gsap.utils.toArray('.stat-bar-fill').forEach(bar=>{
+  const w = bar.style.width;
+  bar.style.width='0%';
+  ScrollTrigger.create({trigger:bar,start:'top 90%',onEnter:()=>{bar.style.width=w}});
 });
+
+// Hero ring animation
+gsap.to('.hero-ring',{rotation:360,duration:60,ease:'none',repeat:-1,transformOrigin:'center center'});
+gsap.to('.hero-ring:nth-child(2)',{rotation:-360,duration:80,ease:'none',repeat:-1,transformOrigin:'center center'});
+gsap.to('.hero-ring:nth-child(3)',{rotation:180,duration:100,ease:'none',repeat:-1,transformOrigin:'center center'});
 </script>
 </body>
 </html>
