@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>锦辉贸易 | 长安汽车泉州核心经销商集团</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#3b82f6;--primary-light:#60a5fa;--primary-dark:#1d4ed8;--accent:#f59e0b;--accent-light:#fcd34d;--green:#10b981;--green-light:#6ee7b7;--red:#ef4444;--dark:#0a0e1a;--glass-bg:rgba(255,255,255,.04);--glass-border:rgba(255,255,255,.06)}
+body{font-family:'Inter','Noto Sans SC',sans-serif;background:#0a0e1a;color:#e8eaf0;overflow-x:hidden;line-height:1.7}
+.cosmic-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 20% 20%,#0f1a3a 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,#0a1628 0%,transparent 50%),#0a0e1a}
+.cosmic-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.2;animation:orbFloat 25s ease-in-out infinite}
+.cosmic-bg .orb:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.3),transparent 70%);top:-10%;left:-5%}
+.cosmic-bg .orb:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,rgba(245,158,11,.15),transparent 70%);bottom:-8%;right:-5%;animation-delay:-8s}
+.cosmic-bg .orb:nth-child(3){width:400px;height:400px;background:radial-gradient(circle,rgba(16,185,129,.1),transparent 70%);top:50%;left:50%;animation-delay:-15s}
+.cosmic-bg .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.015) 1px,transparent 1px);background-size:60px 60px}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-40px) scale(1.1)}66%{transform:translate(-30px,30px) scale(.9)}}
+.glass-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);border-radius:16px;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.glass-card:hover{background:rgba(255,255,255,.07);border-color:rgba(59,130,246,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(59,130,246,.08)}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;background:linear-gradient(135deg,#e8eaf0,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:.8rem;font-weight:600}
+.badge-blue{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
+.badge-amber{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.2)}
+.badge-green{background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+.stat-number{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.1}
+.stat-blue{background:linear-gradient(135deg,var(--primary),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-amber{background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-green{background:linear-gradient(135deg,var(--green),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em}
+.tag{padding:4px 12px;border-radius:8px;font-size:.75rem;font-weight:500;background:rgba(59,130,246,.08);color:rgba(232,234,240,.6);border:1px solid rgba(59,130,246,.1)}
+.progress-bar{height:6px;border-radius:3px;background:rgba(59,130,246,.1);overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));transition:width 1s ease}
+.brand-chip{padding:14px 18px;border-radius:14px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.1);text-align:center;transition:all .3s}
+.brand-chip:hover{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.25);transform:translateY(-2px)}
+.creator-mark{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal{opacity:0;transform:translateY(40px)}
+@media(max-width:768px){.hero-title{font-size:2.2rem}.stat-number{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="cosmic-bg">
+<div class="orb"></div><div class="orb"></div><div class="orb"></div>
+<div class="grid-overlay"></div>
+</div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#0a0e1a]/70 border-b border-[rgba(59,130,246,.08)]">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center"><i class="fas fa-car text-white text-sm"></i></div>
+<span class="font-bold text-lg tracking-tight">锦辉集团</span>
+</div>
+<div class="hidden md:flex items-center gap-6 text-sm text-[rgba(232,234,240,.4)]">
+<a href="#overview" class="hover:text-[#60a5fa] transition-colors">企业概览</a>
+<a href="#brands" class="hover:text-[#60a5fa] transition-colors">品牌矩阵</a>
+<a href="#network" class="hover:text-[#60a5fa] transition-colors">门店网络</a>
+<a href="#insights" class="hover:text-[#60a5fa] transition-colors">商业洞察</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="min-h-screen flex items-center pt-16">
+<div class="max-w-7xl mx-auto px-6 py-20">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="flex flex-wrap gap-3 mb-6">
+<span class="badge badge-blue"><i class="fas fa-award"></i> 30年经营</span>
+<span class="badge badge-amber"><i class="fas fa-bolt"></i> 新能源转型</span>
+<span class="badge badge-green"><i class="fas fa-shield-alt"></i> 信用846</span>
+</div>
+<h1 class="hero-title mb-6">
+<span style="background:linear-gradient(135deg,#e8eaf0,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">锦辉集团</span><br>
+<span style="color:rgba(232,234,240,.7)">长安汽车</span><br>
+<span style="background:linear-gradient(135deg,#f59e0b,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">泉州核心经销商</span>
+</h1>
+<p class="text-[rgba(232,234,240,.5)] text-lg mb-8 max-w-xl">
+福建锦辉集团汽车事业部，长安汽车泉州最大经销商集团。主营长安轿车、UNI系列、长安商用、深蓝汽车、长安启源、阿维塔等品牌。2009年建成长安4S店，年销超2000台，销售额超5亿元，正全力拥抱新能源转型浪潮。
+</p>
+<div class="flex flex-wrap gap-4">
+<a href="http://dealer.autohome.com.cn/2074050/" target="_blank" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[rgba(59,130,246,.3)] transition-all">
+<i class="fas fa-external-link-alt mr-2"></i>汽车之家
+</a>
+<a href="#insights" class="px-6 py-3 rounded-xl border border-[rgba(245,158,11,.3)] text-[#fcd34d] font-semibold text-sm hover:bg-[rgba(245,158,11,.1)] transition-all">
+<i class="fas fa-chart-line mr-2"></i>商业洞察
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-blue">30年</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">深耕汽车</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-amber">5亿+</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">年销售额</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-green">6品牌</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">授权经营</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-blue">4S店</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">标准授权</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Overview -->
+<section id="overview" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-building mr-3"></i>企业全景画像</h2></div>
+<div class="grid lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-card p-8 reveal">
+<h3 class="text-xl font-bold mb-6 text-[#60a5fa]"><i class="fas fa-id-card mr-2"></i>工商基本信息</h3>
+<div class="grid md:grid-cols-2 gap-4 text-sm">
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">企业全称</span>
+<span class="font-medium">泉州锦辉贸易有限公司</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">统一信用代码</span>
+<span class="font-medium">913505006850597170</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">法定代表人</span>
+<span class="font-medium">林育民</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">企业类型</span>
+<span class="font-medium">有限责任公司(自然人投资或控股)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">注册资本</span>
+<span class="font-medium">2000万元(实缴2000万)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">成立日期</span>
+<span class="font-medium">1996年8月22日</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">所属行业</span>
+<span class="font-medium">汽车及零配件批发</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">企业规模</span>
+<span class="font-medium text-[#10b981]">中型</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">信用评分</span>
+<span class="font-medium text-[#10b981]">846分(优秀)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">科创分</span>
+<span class="font-medium">23分</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">参保人数</span>
+<span class="font-medium">75人(2025年)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">股东结构</span>
+<span class="font-medium">林育民90% · 吕荷兰10%</span>
+</div>
+<div class="md:col-span-2 flex justify-between py-3 border-b border-[rgba(59,130,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">注册地址</span>
+<span class="font-medium text-right max-w-[60%]">泉州鲤城区常泰街道上村社区省道308线南侧1689号</span>
+</div>
+<div class="md:col-span-2 flex justify-between py-3">
+<span class="text-[rgba(232,234,240,.4)]">主要人员</span>
+<span class="font-medium">林育民(执行董事兼总经理) · 吕荷兰(监事)</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 reveal">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(59,130,246,.15)] flex items-center justify-center"><i class="fas fa-car-side text-[#60a5fa]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">年销量峰值</span>
+</div>
+<div class="text-2xl font-bold text-[#60a5fa]">2377台</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">2015年 · 长安品牌</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,.15)] flex items-center justify-center"><i class="fas fa-coins text-[#fcd34d]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">年销售额</span>
+</div>
+<div class="text-2xl font-bold text-[#fcd34d]">5亿+</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">含新能源品牌 · 2025年</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(16,185,129,.15)] flex items-center justify-center"><i class="fas fa-store text-[#6ee7b7]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">门店网络</span>
+</div>
+<div class="text-2xl font-bold text-[#6ee7b7]">2大汽车城</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">鲤城+南安 · 3品牌店升级</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(239,68,68,.15)] flex items-center justify-center"><i class="fas fa-users text-[#fca5a5]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">员工规模</span>
+</div>
+<div class="text-2xl font-bold text-[#fca5a5]">100-499人</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">BOSS直聘 · 含销售+售后</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Business Scope -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-briefcase mr-3"></i>经营范围与核心能力</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-4 text-[#60a5fa]"><i class="fas fa-file-alt mr-2"></i>法定经营范围</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tag">长安轿车品牌汽车销售</span>
+<span class="tag">长安品牌汽车销售</span>
+<span class="tag">乘用车维修</span>
+<span class="tag">摩托车及汽车配件销售</span>
+<span class="tag">润滑油销售</span>
+<span class="tag">五金机电销售</span>
+<span class="tag">经济信息咨询</span>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-4 text-[#fcd34d]"><i class="fas fa-cogs mr-2"></i>核心能力矩阵</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-sm mb-2"><span>4S店运营管理</span><span class="text-[#60a5fa]">95%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>多品牌经营能力</span><span class="text-[#fcd34d]">92%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:92%;background:linear-gradient(90deg,#f59e0b,#fcd34d)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>售后维修服务</span><span class="text-[#6ee7b7]">90%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:90%;background:linear-gradient(90deg,#10b981,#6ee7b7)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>新能源转型速度</span><span class="text-[#60a5fa]">85%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>数字化营销</span><span class="text-[#fcd34d]">60%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:60%;background:linear-gradient(90deg,#f59e0b,#fcd34d)"></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Brand Matrix -->
+<section id="brands" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-4"><i class="fas fa-tags mr-3"></i>品牌矩阵（6大授权品牌）</h2>
+<p class="text-[rgba(232,234,240,.4)] mb-12 max-w-2xl">从传统燃油到新能源全覆盖 · 长安系全品牌授权 · 泉州区域核心经销商</p></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+<div class="glass-card p-6 border-l-4 border-l-[#3b82f6]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center"><i class="fas fa-car text-white"></i></div>
+<div>
+<h4 class="font-bold">长安轿车</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">Changan Sedan</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">逸动/锐程PLUS/悦翔等燃油轿车，泉州最早授权4S店(2009年)</p>
+<div class="text-[#60a5fa] text-sm font-semibold">燃油基盘 · 稳定贡献</div>
+</div>
+<div class="glass-card p-6 border-l-4 border-l-[#8b5cf6]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center"><i class="fas fa-fire text-white"></i></div>
+<div>
+<h4 class="font-bold">长安UNI</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">UNI Series</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">UNI-Z/UNI-V等高端系列，年轻化+智能化定位，1.5T蓝鲸动力</p>
+<div class="text-[#a78bfa] text-sm font-semibold">高端系列 · 利润引擎</div>
+</div>
+<div class="glass-card p-6 border-l-4 border-l-[#f59e0b]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center"><i class="fas fa-truck text-[#0a0e1a]"></i></div>
+<div>
+<h4 class="font-bold">长安凯程</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">Kaicheng Commercial</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">猎手/览拓者/CS55PLUS PHEV等商用车+皮卡，商用+家用双场景</p>
+<div class="text-[#fcd34d] text-sm font-semibold">商用车 · 增量市场</div>
+</div>
+<div class="glass-card p-6 border-l-4 border-l-[#06b6d4]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#06b6d4] to-[#0891b2] flex items-center justify-center"><i class="fas fa-bolt text-white"></i></div>
+<div>
+<h4 class="font-bold">深蓝汽车</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">Deepal</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">SL03/L06/L07/S05/S07/G318/S09，长安新能源科技潮牌，华为乾崑智驾+3nm座舱</p>
+<div class="text-[#67e8f9] text-sm font-semibold">新能源主力 · 增长极</div>
+</div>
+<div class="glass-card p-6 border-l-4 border-l-[#10b981]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center"><i class="fas fa-leaf text-white"></i></div>
+<div>
+<h4 class="font-bold">长安启源</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">Qiyuan</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">长安旗下新能源品牌，插混+纯电双路线，家庭用户定位</p>
+<div class="text-[#6ee7b7] text-sm font-semibold">家用新能源 · 量产品牌</div>
+</div>
+<div class="glass-card p-6 border-l-4 border-l-[#ef4444]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ef4444] to-[#dc2626] flex items-center justify-center"><i class="fas fa-star text-white"></i></div>
+<div>
+<h4 class="font-bold">阿维塔</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">AVATR</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">长安+华为+宁德时代三方打造高端SEV品牌，CHN平台，泉州区域总经销</p>
+<div class="text-[#fca5a5] text-sm font-semibold">高端智能 · 品牌旗舰</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Store Network -->
+<section id="network" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-map-marked-alt mr-3"></i>门店网络与集团版图</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#60a5fa]"><i class="fas fa-store mr-2"></i>门店布局</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(59,130,246,.06)] border border-[rgba(59,130,246,.1)]">
+<div class="font-semibold text-sm mb-1">🏢 鲤城总店（4S标准）</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">泉州市鲤城区南环路1689号 · 长安汽车+深蓝+启源 · 2009年建成</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]">
+<div class="font-semibold text-sm mb-1">🏢 南安汽车城店</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">南安市霞美镇泉州(南安)汽车贸易城B1地块 · 2022年成立分公司</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.1)]">
+<div class="font-semibold text-sm mb-1">🏢 德化分公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">福建省泉州市德化县 · 2022年成立 · 区域下沉</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.1)]">
+<div class="font-semibold text-sm mb-1">🏢 阿维塔晋江体验中心</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">晋江豪信汽车产业园 · 阿维塔品牌独立展厅 · 新能源旗舰</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]">
+<div class="font-semibold text-sm mb-1">🏢 阿维塔泉州南环路店</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">鲤城区南环路55号 · 阿维塔体验中心</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#fcd34d]"><i class="fas fa-sitemap mr-2"></i>锦辉集团版图</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(59,130,246,.06)] border border-[rgba(59,130,246,.1)]">
+<div class="font-semibold text-sm mb-1">🚗 泉州锦辉贸易有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">集团母公司 · 注册资本2000万 · 林育民90%控股 · 长安4S核心</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]">
+<div class="font-semibold text-sm mb-1">🏍️ 泉州市锦辉经贸发展有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">锦辉摩托车公司 · 注册资本1188万 · 吕荷兰法人 · 摩托车销售维修</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.1)]">
+<div class="font-semibold text-sm mb-1">🚙 泉州市民发汽车发展有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本998万 · 林育民持股30% · 汽车销售维修</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.1)]">
+<div class="font-semibold text-sm mb-1">⚡ 泉州锦辉新能源汽车销售公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本2000万 · 林锦堒法人 · 阿维塔+新能源专营</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]">
+<div class="font-semibold text-sm mb-1">🏪 泉州西锦辉汽车商城有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本1200万 · 林锦堒法人 · 林育民持股30%</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Honors -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-award mr-3"></i>荣誉与资质</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(59,130,246,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-shield-alt text-[#60a5fa]"></i></div>
+<div><div class="font-semibold text-sm">信用846分</div><div class="text-xs text-[rgba(232,234,240,.4)]">水滴信用 · 优秀等级</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(245,158,11,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-handshake text-[#fcd34d]"></i></div>
+<div><div class="font-semibold text-sm">重合同守信用</div><div class="text-xs text-[rgba(232,234,240,.4)]">2013-2014 泉州市+鲤城区</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(16,185,129,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-coins text-[#6ee7b7]"></i></div>
+<div><div class="font-semibold text-sm">纳税超百万</div><div class="text-xs text-[rgba(232,234,240,.4)]">2014年+2015年</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(239,68,68,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-check-circle text-[#fca5a5]"></i></div>
+<div><div class="font-semibold text-sm">抽查全部合格</div><div class="text-xs text-[rgba(232,234,240,.4)]">市监局+公安 · 多年0违规</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(139,92,246,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-certificate text-[#a78bfa]"></i></div>
+<div><div class="font-semibold text-sm">食品经营许可</div><div class="text-xs text-[rgba(232,234,240,.4)]">热食类食品制售 · 客户服务配套</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(59,130,246,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-trophy text-[#60a5fa]"></i></div>
+<div><div class="font-semibold text-sm">长安授权4S</div><div class="text-xs text-[rgba(232,234,240,.4)]">2009年建店 · 标准授权</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Business Insights -->
+<section id="insights" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-lightbulb mr-3"></i>商业洞察与AI机遇</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#60a5fa]"><i class="fas fa-exclamation-triangle mr-2"></i>关键痛点</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.12)]">
+<div class="font-semibold text-sm mb-1">🔴 新能源转型阵痛</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">燃油车销量下滑，新能源销售能力薄弱(转化率8% vs 燃油15%)，销售顾问智能配置讲解不足</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.12)]">
+<div class="font-semibold text-sm mb-1">🟠 数字化营销短板</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">线上获客成本高(800元/线索)，直播/短视频内容生产能力不足，缺乏AI驱动的精准营销</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(59,130,246,.06)] border border-[rgba(59,130,246,.12)]">
+<div class="font-semibold text-sm mb-1">🔵 多品牌内容生产瓶颈</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">6大品牌×多车型×促销活动×多平台 = 产品图/视频/海报需求爆炸，人工制作周期长成本高</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.12)]">
+<div class="font-semibold text-sm mb-1">🟢 客户运营粗放</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">老客户转介绍率仅18%，售后首保提醒缺失率15%，缺乏系统化CRM和私域运营</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#fcd34d]"><i class="fas fa-robot mr-2"></i>AI赋能机遇</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(59,130,246,.06)] border border-[rgba(59,130,246,.12)]">
+<div class="font-semibold text-sm mb-1">🎨 AI内容生产平台</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">AI生成6品牌车型图/促销海报/短视频，一键适配汽车之家/抖音/小红书，效率↑5倍</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.12)]">
+<div class="font-semibold text-sm mb-1">📱 AI智能营销</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">AI直播数字人+智能话术+精准投放，线索成本↓50%，转化率↑30%</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.12)]">
+<div class="font-semibold text-sm mb-1">💬 AI客户运营</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">智能CRM+私域运营+AI外呼，老客复购↑20%，转介绍率↑至30%</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.12)]">
+<div class="font-semibold text-sm mb-1">📊 AI数据分析</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">竞品监控+库存优化+定价策略，从经验驱动到数据驱动决策</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-phone-alt mr-3"></i>联系方式</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-map-marker-alt text-[#60a5fa]"></i><span class="font-semibold text-sm">总部/4S店</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">泉州市鲤城区南环路1689号</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-phone text-[#fcd34d]"></i><span class="font-semibold text-sm">销售热线</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">0595-22352668 / 22352228</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-car text-[#6ee7b7]"></i><span class="font-semibold text-sm">汽车之家</span></div>
+<a href="http://dealer.autohome.com.cn/2074050/" target="_blank" class="text-xs text-[#60a5fa] hover:underline">长安汽车泉州锦辉店</a>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-map-marker-alt text-[#fca5a5]"></i><span class="font-semibold text-sm">南安分公司</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">南安市霞美镇泉州汽车贸易城B1地块</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-map-marker-alt text-[#a78bfa]"></i><span class="font-semibold text-sm">德化分公司</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">福建省泉州市德化县</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-bolt text-[#67e8f9]"></i><span class="font-semibold text-sm">阿维塔体验中心</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">晋江豪信汽车产业园 / 鲤城南环路55号</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="py-16 border-t border-[rgba(59,130,246,.08)]">
+<div class="max-w-2xl mx-auto text-center">
+<div class="w-16 h-16 rounded-full bg-[rgba(59,130,246,.1)] flex items-center justify-center mx-auto mb-6 ring-1 ring-[rgba(59,130,246,.2)]">
+<i class="fas fa-eye text-[#60a5fa] text-2xl"></i>
+</div>
+<p class="creator-mark mb-3">39139@胜天半子</p>
+<p class="text-[rgba(232,234,240,.4)] text-sm">森罗之眼智能体生成 · 2026.06</p>
+<p class="text-[rgba(232,234,240,.3)] text-xs mt-2">本画像基于公开信息自动生成，数据来源包括水滴信用、爱企查、BOSS直聘、汽车之家、易车等，仅供参考</p>
+</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+});
+</script>
+</body>
+</html>
