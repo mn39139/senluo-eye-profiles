@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>地球城贸易 | 石狮男装电商供应链领军者</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#8b5cf6;--primary-light:#a78bfa;--primary-dark:#6d28d9;--accent:#f59e0b;--accent-light:#fcd34d;--green:#10b981;--green-light:#6ee7b7;--cyan:#06b6d4;--dark:#0a0e1a;--glass-bg:rgba(255,255,255,.04);--glass-border:rgba(255,255,255,.06)}
+body{font-family:'Inter','Noto Sans SC',sans-serif;background:#0a0e1a;color:#e8eaf0;overflow-x:hidden;line-height:1.7}
+.cosmic-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 20% 20%,#1a0f2e 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,#0a1628 0%,transparent 50%),#0a0e1a}
+.cosmic-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.2;animation:orbFloat 25s ease-in-out infinite}
+.cosmic-bg .orb:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,rgba(139,92,246,.3),transparent 70%);top:-10%;left:-5%}
+.cosmic-bg .orb:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,rgba(245,158,11,.15),transparent 70%);bottom:-8%;right:-5%;animation-delay:-8s}
+.cosmic-bg .orb:nth-child(3){width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,.1),transparent 70%);top:50%;left:50%;animation-delay:-15s}
+.cosmic-bg .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(139,92,246,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.015) 1px,transparent 1px);background-size:60px 60px}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-40px) scale(1.1)}66%{transform:translate(-30px,30px) scale(.9)}}
+.glass-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);border-radius:16px;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.glass-card:hover{background:rgba(255,255,255,.07);border-color:rgba(139,92,246,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(139,92,246,.08)}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;background:linear-gradient(135deg,#e8eaf0,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:.8rem;font-weight:600}
+.badge-purple{background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.2)}
+.badge-amber{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.2)}
+.badge-green{background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+.badge-cyan{background:rgba(6,182,212,.12);color:#67e8f9;border:1px solid rgba(6,182,212,.2)}
+.stat-number{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.1}
+.stat-purple{background:linear-gradient(135deg,var(--primary),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-amber{background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-green{background:linear-gradient(135deg,var(--green),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-cyan{background:linear-gradient(135deg,var(--cyan),#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em}
+.tag{padding:4px 12px;border-radius:8px;font-size:.75rem;font-weight:500;background:rgba(139,92,246,.08);color:rgba(232,234,240,.6);border:1px solid rgba(139,92,246,.1)}
+.progress-bar{height:6px;border-radius:3px;background:rgba(139,92,246,.1);overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));transition:width 1s ease}
+.creator-mark{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal{opacity:0;transform:translateY(40px)}
+@media(max-width:768px){.hero-title{font-size:2.2rem}.stat-number{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="cosmic-bg">
+<div class="orb"></div><div class="orb"></div><div class="orb"></div>
+<div class="grid-overlay"></div>
+</div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#0a0e1a]/70 border-b border-[rgba(139,92,246,.08)]">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center"><i class="fas fa-tshirt text-white text-sm"></i></div>
+<span class="font-bold text-lg tracking-tight">地球城</span>
+</div>
+<div class="hidden md:flex items-center gap-6 text-sm text-[rgba(232,234,240,.4)]">
+<a href="#overview" class="hover:text-[#a78bfa] transition-colors">企业概览</a>
+<a href="#brands" class="hover:text-[#a78bfa] transition-colors">品牌产品</a>
+<a href="#supply" class="hover:text-[#a78bfa] transition-colors">供应链</a>
+<a href="#insights" class="hover:text-[#a78bfa] transition-colors">商业洞察</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="min-h-screen flex items-center pt-16">
+<div class="max-w-7xl mx-auto px-6 py-20">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="flex flex-wrap gap-3 mb-6">
+<span class="badge badge-purple"><i class="fas fa-store"></i> 14年电商深耕</span>
+<span class="badge badge-amber"><i class="fas fa-globe"></i> 外贸+内销</span>
+<span class="badge badge-green"><i class="fas fa-shield-alt"></i> 信用818</span>
+</div>
+<h1 class="hero-title mb-6">
+<span style="background:linear-gradient(135deg,#e8eaf0,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">地球城</span><br>
+<span style="color:rgba(232,234,240,.7)">石狮男装电商</span><br>
+<span style="background:linear-gradient(135deg,#f59e0b,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">供应链领军者</span>
+</h1>
+<p class="text-[rgba(232,234,240,.5)] text-lg mb-8 max-w-xl">
+石狮市地球城贸易有限公司，2012年创立于中国服装之都石狮，专注男装全品类开发、生产及销售。旗下"地球城"品牌覆盖上千家线上分销商，3万m²现代化仓储，聚水潭ERP数字化管控，正从传统电商分销向AI驱动的数智化供应链升级。
+</p>
+<div class="flex flex-wrap gap-4">
+<a href="#insights" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#6d28d9] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[rgba(139,92,246,.3)] transition-all">
+<i class="fas fa-chart-line mr-2"></i>商业洞察
+</a>
+<a href="#supply" class="px-6 py-3 rounded-xl border border-[rgba(245,158,11,.3)] text-[#fcd34d] font-semibold text-sm hover:bg-[rgba(245,158,11,.1)] transition-all">
+<i class="fas fa-boxes-stacked mr-2"></i>供应链能力
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-purple">14年</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">电商深耕</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-amber">3万m²</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">仓储面积</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-green">1000+</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">线上分销商</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-cyan">100+</div>
+<div class="text-sm text-[rgba(232,234,240,.4)] mt-1">专业团队</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Overview -->
+<section id="overview" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-building mr-3"></i>企业全景画像</h2></div>
+<div class="grid lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-card p-8 reveal">
+<h3 class="text-xl font-bold mb-6 text-[#a78bfa]"><i class="fas fa-id-card mr-2"></i>工商基本信息</h3>
+<div class="grid md:grid-cols-2 gap-4 text-sm">
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">企业全称</span>
+<span class="font-medium">石狮市地球城贸易有限公司</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">统一信用代码</span>
+<span class="font-medium">91350581MA33R83P8T</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">法定代表人</span>
+<span class="font-medium">陈玉兰</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">企业类型</span>
+<span class="font-medium">其他有限责任公司</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">注册资本</span>
+<span class="font-medium">50万元</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">成立日期</span>
+<span class="font-medium">2020-04-20（实际运营2012年）</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">所属行业</span>
+<span class="font-medium">服装批发/电子商务</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">企业规模</span>
+<span class="font-medium text-[#10b981]">微型(工商) / 100+人(实际)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">信用评分</span>
+<span class="font-medium text-[#10b981]">818分(优秀)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">所属集团</span>
+<span class="font-medium text-[#a78bfa]">亿品天成科技(6家成员)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">实际控制人</span>
+<span class="font-medium">黄书平(间接持股63.35%)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(139,92,246,.08)]">
+<span class="text-[rgba(232,234,240,.4)]">主要人员</span>
+<span class="font-medium">陈玉兰(执行董事) · 黄书平(监事)</span>
+</div>
+<div class="md:col-span-2 flex justify-between py-3">
+<span class="text-[rgba(232,234,240,.4)]">注册地址</span>
+<span class="font-medium text-right max-w-[60%]">福建省石狮市同兴路825-1号2幢1梯601室</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 reveal">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(139,92,246,.15)] flex items-center justify-center"><i class="fas fa-tshirt text-[#a78bfa]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">核心品类</span>
+</div>
+<div class="text-2xl font-bold text-[#a78bfa]">男装全品类</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">棉服/夹克/冲锋衣/T恤/防晒衣</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,.15)] flex items-center justify-center"><i class="fas fa-users text-[#fcd34d]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">分销网络</span>
+</div>
+<div class="text-2xl font-bold text-[#fcd34d]">1000+家</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">淘宝/天猫/京东线上分销商</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(6,182,212,.15)] flex items-center justify-center"><i class="fas fa-warehouse text-[#67e8f9]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">仓储规模</span>
+</div>
+<div class="text-2xl font-bold text-[#67e8f9]">3大仓库</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">近3万m² · 青创城档口</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(16,185,129,.15)] flex items-center justify-center"><i class="fas fa-laptop-code text-[#6ee7b7]"></i></div>
+<span class="text-sm text-[rgba(232,234,240,.4)]">数字化系统</span>
+</div>
+<div class="text-2xl font-bold text-[#6ee7b7]">聚水潭ERP</div>
+<div class="text-xs text-[rgba(232,234,240,.3)] mt-1">科学管控 · 数字化管理</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Brand & Products -->
+<section id="brands" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-4"><i class="fas fa-tags mr-3"></i>品牌与产品体系</h2>
+<p class="text-[rgba(232,234,240,.4)] mb-12 max-w-2xl">从"地球城"网络分销品牌到FACECITY高端男装 · 全品类覆盖 · 深库存高性价比</p></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+<div class="glass-card p-6 border-l-4 border-l-[#8b5cf6]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center"><i class="fas fa-globe text-white"></i></div>
+<div>
+<h4 class="font-bold">地球城</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">Earth City · 核心品牌</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">自有男装网络分销品牌，主打深库存+高性价比，覆盖棉服/夹克/冲锋衣/T恤/防晒衣等全品类</p>
+<div class="text-[#a78bfa] text-sm font-semibold">1000+线上分销商 · 数十家线下代理</div>
+</div>
+<div class="glass-card p-6 border-l-4 border-l-[#f59e0b]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center"><i class="fas fa-crown text-[#0a0e1a]"></i></div>
+<div>
+<h4 class="font-bold">FACECITY/非城</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">高端男装线 · 京东旗舰店</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">高端男装品牌线，羊毛夹克/羊绒衫/高定衬衫，客单价500-2000元，京东+淘宝双平台旗舰店</p>
+<div class="text-[#fcd34d] text-sm font-semibold">意大利设计基因 · 亚洲版型改良</div>
+</div>
+<div class="glass-card p-6 border-l-4 border-l-[#06b6d4]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#06b6d4] to-[#0891b2] flex items-center justify-center"><i class="fas fa-registered text-white"></i></div>
+<div>
+<h4 class="font-bold">ADTDSIS</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">注册商标 · 25类服装鞋帽</span>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] mb-3">2021年9月申请注册的服装商标，国际分类25类，拓展品牌矩阵布局</p>
+<div class="text-[#67e8f9] text-sm font-semibold">品牌矩阵拓展 · 知识产权布局</div>
+</div>
+</div>
+<div class="mt-8 glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#a78bfa]"><i class="fas fa-layer-group mr-2"></i>产品品类矩阵</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+<div class="text-center p-3 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]"><div class="text-lg mb-1">🧥</div><div class="text-xs font-medium">棉服</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]"><div class="text-lg mb-1">🧥</div><div class="text-xs font-medium">夹克</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]"><div class="text-lg mb-1">🏔️</div><div class="text-xs font-medium">冲锋衣</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]"><div class="text-lg mb-1">👕</div><div class="text-xs font-medium">T恤</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]"><div class="text-lg mb-1">☀️</div><div class="text-xs font-medium">防晒衣</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]"><div class="text-lg mb-1">👔</div><div class="text-xs font-medium">衬衫</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]"><div class="text-lg mb-1">🧶</div><div class="text-xs font-medium">羊毛衫</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]"><div class="text-lg mb-1">🧣</div><div class="text-xs font-medium">针织衫</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]"><div class="text-lg mb-1">👖</div><div class="text-xs font-medium">休闲裤</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.1)]"><div class="text-lg mb-1">🩳</div><div class="text-xs font-medium">五分裤</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.1)]"><div class="text-lg mb-1">🧥</div><div class="text-xs font-medium">大衣</div></div>
+<div class="text-center p-3 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.1)]"><div class="text-lg mb-1">羽绒</div><div class="text-xs font-medium">羽绒服</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Supply Chain -->
+<section id="supply" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-link mr-3"></i>供应链与集团版图</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#a78bfa]"><i class="fas fa-sitemap mr-2"></i>亿品天成集团（6家成员企业）</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]">
+<div class="font-semibold text-sm mb-1">🏢 石狮市亿品天成科技有限公司（集团母公司）</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本50万 · 黄书平90%控股 · 软件开发+品牌管理+服装批发 · 2022年成立</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]">
+<div class="font-semibold text-sm mb-1">👕 石狮市地球城贸易有限公司（核心运营主体）</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本50万 · 陈玉兰法人/黄书平监事 · 男装全品类电商供应链 · 2020年注册(2012年运营)</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.1)]">
+<div class="font-semibold text-sm mb-1">📊 石狮市锦绣添程贸易有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本100万 · 2021年成立 · 2026年列入经营异常</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.1)]">
+<div class="font-semibold text-sm mb-1">🏢 石狮市合旺企业管理有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本10万 · 黄书平90.5%+王南斗5% · 企业管理服务 · 2022年成立</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.1)]">
+<div class="font-semibold text-sm mb-1">🛍️ 石狮市迈依优品贸易有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本50万 · 2023年成立 · 贸易新主体</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]">
+<div class="font-semibold text-sm mb-1">💡 石狮市创益非凡贸易有限公司</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">注册资本50万 · 2022年成立</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#fcd34d]"><i class="fas fa-cogs mr-2"></i>核心能力矩阵</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-sm mb-2"><span>男装供应链整合</span><span class="text-[#a78bfa]">95%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>电商分销网络</span><span class="text-[#fcd34d]">92%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:92%;background:linear-gradient(90deg,#f59e0b,#fcd34d)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>仓储物流管理</span><span class="text-[#6ee7b7]">88%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:88%;background:linear-gradient(90deg,#10b981,#6ee7b7)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>数字化运营(ERP)</span><span class="text-[#67e8f9]">85%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:85%;background:linear-gradient(90deg,#06b6d4,#67e8f9)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>外贸业务能力</span><span class="text-[#a78bfa]">55%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>AI/数智化水平</span><span class="text-[#fcd34d]">30%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:30%;background:linear-gradient(90deg,#f59e0b,#fcd34d)"></div></div>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.1)]">
+<div class="text-sm font-semibold text-[#a78bfa] mb-2"><i class="fas fa-lightbulb mr-1"></i> 关键洞察</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">供应链整合和电商分销是核心优势，但外贸和AI数智化是明显短板，这正是AI赋能的最大空间。</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Channel -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-store mr-3"></i>销售渠道与营销模式</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-[rgba(255,106,0,.15)] flex items-center justify-center"><i class="fab fa-alipay text-[#ff6a00]"></i></div>
+<div>
+<h4 class="font-bold text-sm">淘宝/天猫</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">分销主渠道</span>
+</div>
+</div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">上千家线上分销商，"地球城"品牌淘宝分销网络，覆盖男装全品类</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-[rgba(225,37,27,.15)] flex items-center justify-center"><i class="fas fa-shopping-bag text-[#e12527]"></i></div>
+<div>
+<h4 class="font-bold text-sm">京东</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">FACECITY旗舰店</span>
+</div>
+</div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">FACECITY京东旗舰店，高端男装线，羊毛/羊绒/高定系列，客单价500-2000元</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-[rgba(255,106,0,.15)] flex items-center justify-center"><i class="fas fa-store text-[#ff6a00]"></i></div>
+<div>
+<h4 class="font-bold text-sm">1688</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">批发分销</span>
+</div>
+</div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">1688平台地球城男装批发，44+相关产品，深度验厂认证，复购率23%</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-[rgba(239,68,68,.15)] flex items-center justify-center"><i class="fas fa-tags text-[#fca5a5]"></i></div>
+<div>
+<h4 class="font-bold text-sm">拼多多</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">新渠道拓展</span>
+</div>
+</div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">招聘拼多多运营，拓展下沉市场，选品+活动策划+营销推广</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-[rgba(16,185,129,.15)] flex items-center justify-center"><i class="fas fa-globe text-[#6ee7b7]"></i></div>
+<div>
+<h4 class="font-bold text-sm">外贸/跨境</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">新增长极</span>
+</div>
+</div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">招聘外贸业务员，开发国外市场+跨境电商客户，2年+外贸经验要求</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-[rgba(139,92,246,.15)] flex items-center justify-center"><i class="fas fa-store-alt text-[#a78bfa]"></i></div>
+<div>
+<h4 class="font-bold text-sm">青创城档口</h4>
+<span class="text-xs text-[rgba(232,234,240,.4)]">线下展示</span>
+</div>
+</div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">石狮青创城国际网批中心实体档口，线下选品+线上分销联动</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Business Insights -->
+<section id="insights" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-lightbulb mr-3"></i>商业洞察与AI机遇</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#fca5a5]"><i class="fas fa-exclamation-triangle mr-2"></i>关键痛点</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.12)]">
+<div class="font-semibold text-sm mb-1">🔴 内容生产瓶颈</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">男装全品类×多SKU×多平台=产品图/详情页/短视频需求爆炸，人工制作周期长成本高，上新速度跟不上</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.12)]">
+<div class="font-semibold text-sm mb-1">🟠 外贸起步艰难</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">外贸业务刚起步，缺乏海外客户资源、多语言营销内容、跨境电商运营经验，获客成本高</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.12)]">
+<div class="font-semibold text-sm mb-1">🟣 分销商管理粗放</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">1000+分销商缺乏精细化管理，价格管控难、素材分发效率低、分销商赋能不足</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.12)]">
+<div class="font-semibold text-sm mb-1">🔵 数据驱动薄弱</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">虽有聚水潭ERP但数据分析深度不足，缺乏AI驱动的选品决策、库存优化、趋势预测</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#a78bfa]"><i class="fas fa-robot mr-2"></i>AI赋能机遇</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.12)]">
+<div class="font-semibold text-sm mb-1">🎨 AI内容生产平台</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">AI生成男装产品图/详情页/短视频，一键适配淘宝/京东/1688/拼多多，上新效率↑5倍</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.12)]">
+<div class="font-semibold text-sm mb-1">🌍 AI外贸营销引擎</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">AI多语言产品描述+海外社媒内容+跨境电商智能投放，外贸获客成本↓60%</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.12)]">
+<div class="font-semibold text-sm mb-1">📊 AI分销商赋能</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">AI一键生成分销商专属素材包+智能定价+自动分发，分销商活跃度↑40%</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.12)]">
+<div class="font-semibold text-sm mb-1">📈 AI数据决策</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">AI趋势预测+智能选品+库存优化+定价策略，从经验驱动到数据驱动</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-phone-alt mr-3"></i>联系方式</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-map-marker-alt text-[#a78bfa]"></i><span class="font-semibold text-sm">注册地址</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">福建省石狮市同兴路825-1号2幢1梯601室</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-store text-[#fcd34d]"></i><span class="font-semibold text-sm">运营地址</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">泉州石狮市地球城男装（世茂摩天城/青创城）</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-phone text-[#6ee7b7]"></i><span class="font-semibold text-sm">联系电话</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">18959988890 / 150****58</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-shopping-bag text-[#fca5a5]"></i><span class="font-semibold text-sm">京东旗舰店</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">FACECITY旗舰店 · 高端男装线</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-store text-[#67e8f9]"></i><span class="font-semibold text-sm">1688店铺</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">地球城男装 · 44+产品 · 深度验厂</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-user-tie text-[#a78bfa]"></i><span class="font-semibold text-sm">实控人</span></div>
+<p class="text-xs text-[rgba(232,234,240,.5)]">黄书平 · 间接持股63.35% · 关联9家企业</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="py-16 border-t border-[rgba(139,92,246,.08)]">
+<div class="max-w-2xl mx-auto text-center">
+<div class="w-16 h-16 rounded-full bg-[rgba(139,92,246,.1)] flex items-center justify-center mx-auto mb-6 ring-1 ring-[rgba(139,92,246,.2)]">
+<i class="fas fa-eye text-[#a78bfa] text-2xl"></i>
+</div>
+<p class="creator-mark mb-3">39139@胜天半子</p>
+<p class="text-[rgba(232,234,240,.4)] text-sm">森罗之眼智能体生成 · 2026.06</p>
+<p class="text-[rgba(232,234,240,.3)] text-xs mt-2">本画像基于公开信息自动生成，数据来源包括水滴信用、爱企查、BOSS直聘、1688、京东等，仅供参考</p>
+</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+});
+</script>
+</body>
+</html>
