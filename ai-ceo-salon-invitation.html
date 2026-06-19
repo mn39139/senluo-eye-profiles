@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI CEO 主题沙龙 · 邀约函</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#8b5cf6;--primary-light:#a78bfa;--primary-dark:#6d28d9;--accent:#f59e0b;--accent-light:#fcd34d;--green:#10b981;--cyan:#06b6d4;--red:#ef4444;--dark:#06080f;--glass-bg:rgba(255,255,255,.03);--glass-border:rgba(255,255,255,.05)}
+body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8eaf0;overflow-x:hidden;line-height:1.8}
+.serif{font-family:'Noto Serif SC','Inter',serif}
+.cosmic-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 30% 10%,#1a0f2e 0%,transparent 50%),radial-gradient(ellipse at 70% 90%,#0f1a2e 0%,transparent 50%),#06080f}
+.cosmic-bg .orb{position:absolute;border-radius:50%;filter:blur(140px);animation:orbFloat 30s ease-in-out infinite}
+.cosmic-bg .orb:nth-child(1){width:700px;height:700px;background:radial-gradient(circle,rgba(139,92,246,.2),transparent 70%);top:-15%;left:-10%}
+.cosmic-bg .orb:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,rgba(245,158,11,.1),transparent 70%);bottom:-10%;right:-8%;animation-delay:-10s}
+.cosmic-bg .orb:nth-child(3){width:350px;height:350px;background:radial-gradient(circle,rgba(6,182,212,.08),transparent 70%);top:60%;left:40%;animation-delay:-20s}
+.cosmic-bg .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(139,92,246,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.012) 1px,transparent 1px);background-size:80px 80px}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-50px) scale(1.1)}66%{transform:translate(-40px,40px) scale(.9)}}
+.glass-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);border-radius:20px;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.glass-card:hover{background:rgba(255,255,255,.06);border-color:rgba(139,92,246,.15);transform:translateY(-3px);box-shadow:0 24px 60px rgba(139,92,246,.06)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.3),rgba(245,158,11,.2),transparent)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;font-size:.75rem;font-weight:600;letter-spacing:.02em}
+.badge-purple{background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.2)}
+.badge-amber{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.2)}
+.badge-green{background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+.badge-cyan{background:rgba(6,182,212,.12);color:#67e8f9;border:1px solid rgba(6,182,212,.2)}
+.badge-red{background:rgba(239,68,68,.12);color:#fca5a5;border:1px solid rgba(239,68,68,.2)}
+.reveal{opacity:0;transform:translateY(30px)}
+.pain-item{position:relative;padding-left:28px}
+.pain-item::before{content:'';position:absolute;left:0;top:12px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#f97316);box-shadow:0 0 12px rgba(239,68,68,.4)}
+.hero-number{font-size:clamp(4rem,12vw,8rem);font-weight:900;line-height:.9;background:linear-gradient(135deg,#ef4444,#f97316,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:16px;font-size:1rem;font-weight:700;letter-spacing:.02em;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border:none;cursor:pointer;transition:all .3s ease;box-shadow:0 8px 32px rgba(139,92,246,.3)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(139,92,246,.4)}
+.countdown-item{text-align:center}
+.countdown-num{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;background:linear-gradient(135deg,#8b5cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.countdown-label{font-size:.7rem;color:rgba(232,234,240,.4);margin-top:4px;letter-spacing:.1em}
+.seal{width:80px;height:80px;border:3px solid rgba(239,68,68,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-15deg);position:relative}
+.seal::after{content:'';position:absolute;inset:4px;border:1px solid rgba(239,68,68,.3);border-radius:50%}
+.seal-text{font-size:.65rem;font-weight:900;color:rgba(239,68,68,.8);text-align:center;line-height:1.3;letter-spacing:.05em}
+@media(max-width:768px){.hero-number{font-size:4rem}.countdown-num{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="cosmic-bg">
+<div class="orb"></div><div class="orb"></div><div class="orb"></div>
+<div class="grid-overlay"></div>
+</div>
+
+<!-- 顶部标识 -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#06080f]/60 border-b border-[rgba(139,92,246,.06)]">
+<div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center"><i class="fas fa-brain text-white text-xs"></i></div>
+<span class="font-bold text-sm tracking-wide">AI CEO</span>
+<span class="text-[rgba(232,234,240,.3)] text-xs ml-1">主题沙龙</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="badge badge-amber"><i class="fas fa-fire"></i> 限20人</span>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="min-h-screen flex items-center pt-14">
+<div class="max-w-5xl mx-auto px-6 py-20 w-full">
+<div class="text-center mb-16 reveal">
+<div class="inline-flex items-center gap-2 mb-8">
+<span class="badge badge-purple"><i class="fas fa-calendar-alt"></i> 2025.06.24</span>
+<span class="badge badge-cyan"><i class="fas fa-map-marker-alt"></i> 源禾1916</span>
+</div>
+<h1 class="serif text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
+<span style="background:linear-gradient(135deg,#e8eaf0,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">会议，不该是</span><br>
+<span style="background:linear-gradient(135deg,#ef4444,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">经营的黑洞</span>
+</h1>
+<p class="text-[rgba(232,234,240,.45)] text-lg md:text-xl max-w-2xl mx-auto serif">
+一场关于"让每一次会议都沉淀为资产"的深度碰撞
+</p>
+</div>
+
+<!-- 核心数字冲击 -->
+<div class="reveal">
+<div class="glass-card p-8 md:p-12 text-center mb-8" style="border-color:rgba(239,68,68,.15);background:rgba(239,68,68,.02)">
+<div class="hero-number mb-2">30,000+</div>
+<div class="text-[rgba(232,234,240,.5)] text-base md:text-lg max-w-xl mx-auto">
+一家100人的公司，每天平均开会1小时<br>
+<span class="text-[#fca5a5] font-semibold">一年将消耗超过3万个工时</span>
+</div>
+<div class="mt-6 divider"></div>
+<div class="mt-6 text-[rgba(232,234,240,.35)] text-sm">
+企业浪费最多的资源，不是人力，而是<span class="text-[#fca5a5] font-bold">会议</span>
+</div>
+</div>
+</div>
+
+<!-- 六问 -->
+<div class="reveal">
+<div class="glass-card p-8 md:p-10 mb-8">
+<h2 class="serif text-xl md:text-2xl font-bold mb-8 text-center" style="background:linear-gradient(135deg,#fca5a5,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+你有没有发现——
+</h2>
+<div class="grid md:grid-cols-2 gap-4 md:gap-6">
+<div class="pain-item text-[rgba(232,234,240,.7)] text-sm md:text-base">
+同一个问题，<span class="text-[#fca5a5] font-semibold">每周</span>都在会议里重复出现？
+</div>
+<div class="pain-item text-[rgba(232,234,240,.7)] text-sm md:text-base">
+会议越来越多，组织却<span class="text-[#fca5a5] font-semibold">没越来越强</span>？
+</div>
+<div class="pain-item text-[rgba(232,234,240,.7)] text-sm md:text-base">
+老板<span class="text-[#fca5a5] font-semibold">越来越累</span>？
+</div>
+<div class="pain-item text-[rgba(232,234,240,.7)] text-sm md:text-base">
+战略越往下<span class="text-[#fca5a5] font-semibold">越失真</span>？
+</div>
+<div class="pain-item text-[rgba(232,234,240,.7)] text-sm md:text-base">
+很多管理者只会"汇报"，不会<span class="text-[#fca5a5] font-semibold">"经营"</span>？
+</div>
+<div class="pain-item text-[rgba(232,234,240,.7)] text-sm md:text-base">
+会议结束后，一切仿佛<span class="text-[#fca5a5] font-semibold">没发生过</span>？
+</div>
+</div>
+<div class="mt-8 text-center">
+<div class="inline-block px-6 py-3 rounded-xl bg-[rgba(239,68,68,.08)] border border-[rgba(239,68,68,.15)]">
+<span class="serif text-[#fca5a5] font-bold text-sm md:text-base">
+企业一直在"开会"，但从未"经营会议"
+</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 核心洞察 -->
+<div class="reveal">
+<div class="glass-card p-8 md:p-10 mb-8" style="border-color:rgba(139,92,246,.15)">
+<div class="grid md:grid-cols-4 gap-4 mb-8">
+<div class="text-center p-4 rounded-xl bg-[rgba(239,68,68,.05)] border border-[rgba(239,68,68,.1)]">
+<div class="text-2xl mb-2"><i class="fas fa-times-circle text-[#fca5a5]"></i></div>
+<div class="text-xs text-[rgba(232,234,240,.4)]">没有形成</div>
+<div class="text-sm font-bold text-[#fca5a5]">真正决策</div>
+</div>
+<div class="text-center p-4 rounded-xl bg-[rgba(245,158,11,.05)] border border-[rgba(245,158,11,.1)]">
+<div class="text-2xl mb-2"><i class="fas fa-times-circle text-[#fcd34d]"></i></div>
+<div class="text-xs text-[rgba(232,234,240,.4)]">没有沉淀</div>
+<div class="text-sm font-bold text-[#fcd34d]">经营经验</div>
+</div>
+<div class="text-center p-4 rounded-xl bg-[rgba(139,92,246,.05)] border border-[rgba(139,92,246,.1)]">
+<div class="text-2xl mb-2"><i class="fas fa-times-circle text-[#a78bfa]"></i></div>
+<div class="text-xs text-[rgba(232,234,240,.4)]">没有留下</div>
+<div class="text-sm font-bold text-[#a78bfa]">战略资产</div>
+</div>
+<div class="text-center p-4 rounded-xl bg-[rgba(6,182,212,.05)] border border-[rgba(6,182,212,.1)]">
+<div class="text-xs text-[rgba(232,234,240,.4)] mt-6"><i class="fas fa-times-circle text-[#67e8f9]"></i></div>
+<div class="text-xs text-[rgba(232,234,240,.4)]">没有推动</div>
+<div class="text-sm font-bold text-[#67e8f9]">组织进步</div>
+</div>
+</div>
+<div class="divider mb-8"></div>
+<div class="text-center serif text-lg md:text-xl font-bold" style="background:linear-gradient(135deg,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+传统会议，正在成为企业最大的经营黑洞
+</div>
+</div>
+</div>
+
+<!-- 破局者 -->
+<div class="reveal">
+<div class="glass-card p-8 md:p-10 mb-8" style="border-color:rgba(16,185,129,.12)">
+<div class="text-center mb-8">
+<span class="badge badge-green"><i class="fas fa-bolt"></i> 破局时刻</span>
+</div>
+<h2 class="serif text-2xl md:text-3xl font-bold text-center mb-8" style="background:linear-gradient(135deg,#6ee7b7,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+两位破局者，在"会议"上碰撞出火花
+</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="p-6 rounded-2xl bg-[rgba(139,92,246,.04)] border border-[rgba(139,92,246,.1)]">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center flex-shrink-0">
+<i class="fas fa-code text-white text-xl"></i>
+</div>
+<div>
+<div class="font-bold text-base">软件公司总经理</div>
+<div class="text-xs text-[rgba(232,234,240,.4)]">AI重构会议价值</div>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] leading-relaxed">
+用AI技术重新定义会议的价值链——从信息输入到决策输出，从经验碎片到知识资产，让每一场会议都成为组织的<span class="text-[#a78bfa] font-semibold">数字资产沉淀池</span>。
+</p>
+</div>
+<div class="p-6 rounded-2xl bg-[rgba(245,158,11,.04)] border border-[rgba(245,158,11,.1)]">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center flex-shrink-0">
+<i class="fas fa-chess-king text-[#06080f] text-xl"></i>
+</div>
+<div>
+<div class="font-bold text-base">20年企业经营顾问</div>
+<div class="text-xs text-[rgba(232,234,240,.4)]">会议经营新解法</div>
+</div>
+</div>
+<p class="text-sm text-[rgba(232,234,240,.5)] leading-relaxed">
+20年辅导企业的实战沉淀——从"开会"到"经营会议"的范式跃迁，让会议不再是消耗，而是<span class="text-[#fcd34d] font-semibold">组织进化的引擎</span>。
+</p>
+</div>
+</div>
+<div class="mt-8 text-center">
+<div class="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-[rgba(139,92,246,.08)] to-[rgba(245,158,11,.08)] border border-[rgba(139,92,246,.12)]">
+<span class="serif text-base md:text-lg font-bold" style="background:linear-gradient(135deg,#a78bfa,#fcd34d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+让每一次会议的投入，都产生资产沉淀
+</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 活动详情 -->
+<div class="reveal">
+<div class="glass-card p-8 md:p-10 mb-8">
+<div class="text-center mb-8">
+<span class="badge badge-purple"><i class="fas fa-info-circle"></i> 沙龙详情</span>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-5">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-[rgba(139,92,246,.1)] flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-calendar text-[#a78bfa]"></i></div>
+<div>
+<div class="text-xs text-[rgba(232,234,240,.4)] mb-1">时间</div>
+<div class="font-bold">2025年6月24日（周二）</div>
+<div class="text-sm text-[rgba(232,234,240,.5)]">下午 · 具体时段报名后通知</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-[rgba(245,158,11,.1)] flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-map-marker-alt text-[#fcd34d]"></i></div>
+<div>
+<div class="text-xs text-[rgba(232,234,240,.4)] mb-1">地点</div>
+<div class="font-bold">源禾1916 · 茶馆</div>
+<div class="text-sm text-[rgba(232,234,240,.5)]">泉州 · 品质私享空间</div>
+</div>
+</div>
+</div>
+<div class="space-y-5">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-[rgba(16,185,129,.1)] flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-users text-[#6ee7b7]"></i></div>
+<div>
+<div class="text-xs text-[rgba(232,234,240,.4)] mb-1">规模</div>
+<div class="font-bold">精品沙龙 · 限20人内</div>
+<div class="text-sm text-[rgba(232,234,240,.5)]">10-15家企业 · 每家限2人</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-[rgba(6,182,212,.1)] flex items-center justify-center flex-shrink-0 mt-1"><i class="fas fa-user-tie text-[#67e8f9]"></i></div>
+<div>
+<div class="text-xs text-[rgba(232,234,240,.4)] mb-1">邀请对象</div>
+<div class="font-bold">中大型企业</div>
+<div class="text-sm text-[rgba(232,234,240,.5)]">老板 · 二代 · 副总</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 倒计时 -->
+<div class="reveal">
+<div class="glass-card p-8 md:p-10 mb-8 text-center" style="border-color:rgba(245,158,11,.12)">
+<div class="text-xs text-[rgba(232,234,240,.4)] mb-6 tracking-widest uppercase">距离沙龙开启</div>
+<div class="flex justify-center gap-6 md:gap-10" id="countdown">
+<div class="countdown-item">
+<div class="countdown-num" id="days">7</div>
+<div class="countdown-label">天</div>
+</div>
+<div class="countdown-item">
+<div class="countdown-num" id="hours">00</div>
+<div class="countdown-label">时</div>
+</div>
+<div class="countdown-item">
+<div class="countdown-num" id="minutes">00</div>
+<div class="countdown-label">分</div>
+</div>
+<div class="countdown-item">
+<div class="countdown-num" id="seconds">00</div>
+<div class="countdown-label">秒</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="reveal text-center mb-8">
+<button class="cta-btn" onclick="handleSignup()">
+<i class="fas fa-paper-plane"></i>
+立即锁定席位
+</button>
+<div class="mt-4 text-xs text-[rgba(232,234,240,.3)]">
+席位有限，报名后由专人审核确认
+</div>
+</div>
+
+<!-- 底部 -->
+<footer class="py-12 border-t border-[rgba(139,92,246,.06)]">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="seal">
+<div class="seal-text">AI CEO<br>沙龙</div>
+</div>
+<div>
+<div class="font-bold text-sm">AI CEO 主题沙龙</div>
+<div class="text-xs text-[rgba(232,234,240,.3)]">让会议从黑洞变引擎</div>
+</div>
+</div>
+<div class="text-center md:text-right">
+<div class="text-xs text-[rgba(232,234,240,.3)]">森罗之眼 · 商业智能 出品</div>
+<div class="text-xs text-[rgba(232,234,240,.2)] mt-1">39139@胜天半子 · 2025.06</div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</section>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+gsap.fromTo(el,{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%',toggleActions:'play none none none'}});
+});
+
+// Countdown to June 24, 2025
+function updateCountdown(){
+const target=new Date('2025-06-24T14:00:00+08:00');
+const now=new Date();
+const diff=target-now;
+if(diff<=0){document.getElementById('days').textContent='0';document.getElementById('hours').textContent='00';document.getElementById('minutes').textContent='00';document.getElementById('seconds').textContent='00';return;}
+const d=Math.floor(diff/86400000);
+const h=Math.floor((diff%86400000)/3600000);
+const m=Math.floor((diff%3600000)/60000);
+const s=Math.floor((diff%60000)/1000);
+document.getElementById('days').textContent=d;
+document.getElementById('hours').textContent=String(h).padStart(2,'0');
+document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+function handleSignup(){
+const msg='感谢关注！请添加微信或联系工作人员确认席位。';
+alert(msg);
+}
+</script>
+</body>
+</html>
