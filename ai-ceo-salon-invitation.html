@@ -45,12 +45,129 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 .seal-text{font-size:.65rem;font-weight:900;color:rgba(139,92,246,.8);text-align:center;line-height:1.3;letter-spacing:.05em}
 .glow-text{text-shadow:0 0 40px rgba(139,92,246,.3)}
 @media(max-width:768px){.hero-number{font-size:3.5rem}.countdown-num{font-size:2rem}.hero-subtitle{font-size:2rem}}
+
+/* 报名表单弹窗样式 */
+.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s ease}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-content{background:#0f1220;border:1px solid rgba(139,92,246,.15);border-radius:24px;padding:40px;width:90%;max-width:480px;transform:translateY(20px) scale(.95);transition:all .3s ease;position:relative;max-height:90vh;overflow-y:auto}
+.modal-overlay.active .modal-content{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(232,234,240,.5);transition:all .2s ease}
+.modal-close:hover{background:rgba(239,68,68,.1);color:#fca5a5;border-color:rgba(239,68,68,.2)}
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:.8rem;font-weight:600;color:rgba(232,234,240,.6);margin-bottom:8px}
+.form-input{width:100%;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:#e8eaf0;font-size:.9rem;transition:all .2s ease;outline:none;font-family:inherit}
+.form-input:focus{border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.05);box-shadow:0 0 0 3px rgba(139,92,246,.1)}
+.form-input::placeholder{color:rgba(232,234,240,.2)}
+.form-input.error{border-color:rgba(239,68,68,.4);box-shadow:0 0 0 3px rgba(239,68,68,.1)}
+.form-error{font-size:.75rem;color:#fca5a5;margin-top:6px;display:none}
+.form-input.error+.form-error{display:block}
+.form-submit{width:100%;padding:14px;border-radius:14px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-size:1rem;font-weight:700;border:none;cursor:pointer;transition:all .3s ease;box-shadow:0 8px 24px rgba(139,92,246,.3);margin-top:8px}
+.form-submit:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(139,92,246,.4)}
+.form-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.form-submit.loading{pointer-events:none}
+.form-success{text-align:center;padding:20px 0}
+.form-success .check-icon{width:64px;height:64px;border-radius:50%;background:rgba(16,185,129,.1);border:2px solid rgba(16,185,129,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.form-success .check-icon i{font-size:24px;color:#6ee7b7}
+.form-success h3{font-size:1.2rem;font-weight:700;margin-bottom:8px;color:#6ee7b7}
+.form-success p{font-size:.85rem;color:rgba(232,234,240,.5)}
+
+/* 管理后台样式 */
+.admin-panel{position:fixed;inset:0;z-index:1000;background:#06080f;overflow-y:auto;display:none}
+.admin-panel.active{display:block}
+.admin-header{position:sticky;top:0;z-index:10;background:rgba(6,8,15,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,92,246,.1);padding:16px 24px}
+.admin-title{font-size:1.1rem;font-weight:700;color:#a78bfa}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;padding:24px}
+.stat-card{background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);border-radius:16px;padding:16px;text-align:center}
+.stat-num{font-size:1.8rem;font-weight:900;color:#a78bfa}
+.stat-label{font-size:.7rem;color:rgba(232,234,240,.4);margin-top:4px}
+.registrations-list{padding:0 24px 24px}
+.reg-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:20px;margin-bottom:12px}
+.reg-name{font-weight:700;font-size:.95rem;color:#a78bfa}
+.reg-company{font-size:.8rem;color:rgba(232,234,240,.5);margin-top:4px}
+.reg-details{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.reg-detail{font-size:.75rem;color:rgba(232,234,240,.4)}
+.reg-detail span{color:rgba(232,234,240,.7);font-weight:600}
+.reg-time{font-size:.7rem;color:rgba(232,234,240,.3);margin-top:8px;text-align:right}
+.admin-empty{text-align:center;padding:60px 24px;color:rgba(232,234,240,.3)}
+.admin-export{margin:16px 24px;padding:10px 20px;border-radius:10px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);color:#a78bfa;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s ease}
+.admin-export:hover{background:rgba(139,92,246,.15)}
+.admin-back{position:absolute;top:16px;right:24px;padding:8px 16px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(232,234,240,.5);font-size:.75rem;cursor:pointer;transition:all .2s ease}
+.admin-back:hover{background:rgba(239,68,68,.1);color:#fca5a5}
+.admin-password{display:flex;align-items:center;gap:12px;justify-content:center;padding:80px 24px}
+.admin-password input{padding:10px 16px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:#e8eaf0;font-size:.9rem;outline:none;width:200px;text-align:center}
+.admin-password input:focus{border-color:rgba(139,92,246,.4)}
+.admin-password button{padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;font-weight:600;border:none;cursor:pointer}
 </style>
 </head>
 <body>
 <div class="cosmic-bg">
 <div class="orb"></div><div class="orb"></div><div class="orb"></div>
 <div class="grid-overlay"></div>
+</div>
+
+<!-- 报名表单弹窗 -->
+<div class="modal-overlay" id="signupModal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+<div id="formContainer">
+<h2 class="text-xl font-bold text-center mb-2" style="background:linear-gradient(135deg,#e8eaf0,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">锁定您的席位</h2>
+<p class="text-center text-xs text-[rgba(232,234,240,.4)] mb-8">请填写以下信息，我们将专人审核确认</p>
+<form id="signupForm" onsubmit="return handleSubmit(event)">
+<div class="form-group">
+<label class="form-label"><i class="fas fa-building mr-1 text-[#a78bfa]"></i> 您的公司名称 <span class="text-[#fca5a5]">*</span></label>
+<input type="text" class="form-input" id="company" placeholder="请输入您的公司全称" required>
+<div class="form-error">请输入公司名称</div>
+</div>
+<div class="form-group">
+<label class="form-label"><i class="fas fa-phone mr-1 text-[#fcd34d]"></i> 联系电话 <span class="text-[#fca5a5]">*</span></label>
+<input type="tel" class="form-input" id="phone" placeholder="请输入您的手机号码" required>
+<div class="form-error">请输入有效的手机号码</div>
+</div>
+<div class="form-group">
+<label class="form-label"><i class="fas fa-user mr-1 text-[#6ee7b7]"></i> 您的姓名 <span class="text-[#fca5a5]">*</span></label>
+<input type="text" class="form-input" id="name" placeholder="请输入您的真实姓名" required>
+<div class="form-error">请输入姓名</div>
+</div>
+<div class="form-group">
+<label class="form-label"><i class="fas fa-briefcase mr-1 text-[#67e8f9]"></i> 您的职位 <span class="text-[#fca5a5]">*</span></label>
+<input type="text" class="form-input" id="position" placeholder="如：总经理 / 董事长 / 副总" required>
+<div class="form-error">请输入职位</div>
+</div>
+<button type="submit" class="form-submit" id="submitBtn">
+<i class="fas fa-paper-plane mr-2"></i>提交报名
+</button>
+</form>
+</div>
+<div id="successMessage" style="display:none">
+<div class="form-success">
+<div class="check-icon"><i class="fas fa-check"></i></div>
+<h3>报名成功！</h3>
+<p>您的信息已提交，我们将尽快审核<br>并通过电话与您确认席位</p>
+<button class="form-submit" onclick="closeModal()" style="margin-top:24px">
+<i class="fas fa-check mr-2"></i>好的，我知道了
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 管理后台 -->
+<div class="admin-panel" id="adminPanel">
+<div class="admin-header">
+<div class="admin-title"><i class="fas fa-shield-alt mr-2"></i>AI CEO 沙龙 · 报名管理后台</div>
+<button class="admin-back" onclick="closeAdmin()"><i class="fas fa-arrow-left mr-1"></i>返回</button>
+</div>
+<div id="passwordCheck">
+<div class="admin-password">
+<input type="password" id="adminPass" placeholder="请输入管理密码">
+<button onclick="checkPassword()">进入</button>
+</div>
+</div>
+<div id="adminContent" style="display:none">
+<div class="admin-stats" id="statsContainer"></div>
+<button class="admin-export" onclick="exportData()"><i class="fas fa-download mr-2"></i>导出Excel</button>
+<div class="registrations-list" id="registrationsList"></div>
+</div>
 </div>
 
 <!-- 顶部标识 -->
@@ -78,7 +195,6 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <span class="badge badge-red"><i class="fas fa-lock"></i> 仅邀20人</span>
 </div>
 
-<!-- 大标题：AI CEO 重新定义决策引擎 -->
 <div class="mb-4">
 <span class="text-[#8b5cf6] font-black text-lg md:text-xl tracking-widest uppercase">AI CEO</span>
 </div>
@@ -89,7 +205,6 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 告别会议"噪音"，让每一次决策都成为企业资产
 </p>
 
-<!-- 时间和地点 - 核心信息突出 -->
 <div class="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-6">
 <div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.15)] flex items-center gap-4">
 <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center flex-shrink-0">
@@ -276,7 +391,7 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 
 <!-- CTA -->
 <div class="reveal text-center mb-8">
-<button class="cta-btn" onclick="handleSignup()">
+<button class="cta-btn" onclick="openModal()">
 <i class="fas fa-paper-plane"></i>
 立即锁定席位
 </button>
@@ -314,7 +429,7 @@ gsap.utils.toArray('.reveal').forEach(el=>{
 gsap.fromTo(el,{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%',toggleActions:'play none none none'}});
 });
 
-// 动态倒计时：从当前时间到2026年6月24日14:30
+// 动态倒计时
 function updateCountdown(){
 const target=new Date('2026-06-24T14:30:00+08:00');
 const now=new Date();
@@ -338,9 +453,143 @@ document.getElementById('seconds').textContent=String(s).padStart(2,'0');
 updateCountdown();
 setInterval(updateCountdown,1000);
 
-function handleSignup(){
-const msg='感谢关注！请添加微信或联系工作人员确认席位。';
-alert(msg);
+// 报名表单逻辑
+function openModal(){
+document.getElementById('signupModal').classList.add('active');
+document.getElementById('formContainer').style.display='block';
+document.getElementById('successMessage').style.display='none';
+document.getElementById('signupForm').reset();
+document.querySelectorAll('.form-input').forEach(i=>i.classList.remove('error'));
+document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+document.getElementById('signupModal').classList.remove('active');
+document.body.style.overflow='';
+}
+
+// 点击遮罩关闭
+document.getElementById('signupModal').addEventListener('click',function(e){
+if(e.target===this)closeModal();
+});
+
+function handleSubmit(e){
+e.preventDefault();
+const company=document.getElementById('company').value.trim();
+const phone=document.getElementById('phone').value.trim();
+const name=document.getElementById('name').value.trim();
+const position=document.getElementById('position').value.trim();
+let valid=true;
+// 验证
+[['company',company],['phone',phone],['name',name],['position',position]].forEach(([id,val])=>{
+const el=document.getElementById(id);
+if(!val){el.classList.add('error');valid=false;}
+else{el.classList.remove('error');}
+});
+// 手机号验证
+const phoneEl=document.getElementById('phone');
+const phoneRegex=/^1[3-9]\d{9}$/;
+if(!phoneRegex.test(phone)){
+phoneEl.classList.add('error');
+valid=false;
+}
+if(!valid)return false;
+// 保存到localStorage
+const data=JSON.parse(localStorage.getItem('ai_ceo_registrations')||'[]');
+const newReg={
+id:Date.now(),
+company:company,
+phone:phone,
+name:name,
+position:position,
+time:new Date().toLocaleString('zh-CN'),
+timestamp:Date.now()
+};
+data.push(newReg);
+localStorage.setItem('ai_ceo_registrations',JSON.stringify(data));
+// 显示成功
+document.getElementById('formContainer').style.display='none';
+document.getElementById('successMessage').style.display='block';
+return false;
+}
+
+// 管理后台
+function openAdmin(){
+document.getElementById('adminPanel').classList.add('active');
+document.body.style.overflow='hidden';
+// 检查URL参数是否有admin标记
+const urlParams=new URLSearchParams(window.location.search);
+if(urlParams.get('admin')==='yes'){
+document.getElementById('passwordCheck').style.display='none';
+document.getElementById('adminContent').style.display='block';
+renderAdmin();
+}
+}
+
+function closeAdmin(){
+document.getElementById('adminPanel').classList.remove('active');
+document.body.style.overflow='';
+}
+
+function checkPassword(){
+// 管理密码：salon2026
+const pass=document.getElementById('adminPass').value;
+if(pass==='salon2026'){
+document.getElementById('passwordCheck').style.display='none';
+document.getElementById('adminContent').style.display='block';
+renderAdmin();
+}else{
+alert('密码错误');
+}
+}
+
+function renderAdmin(){
+const data=JSON.parse(localStorage.getItem('ai_ceo_registrations')||'[]');
+// 统计
+const stats=document.getElementById('statsContainer');
+stats.innerHTML=`
+<div class="stat-card"><div class="stat-num">${data.length}</div><div class="stat-label">总报名数</div></div>
+<div class="stat-card"><div class="stat-num">${20-data.length}</div><div class="stat-label">剩余席位</div></div>
+<div class="stat-card"><div class="stat-num">${new Set(data.map(d=>d.company)).size}</div><div class="stat-label">企业数</div></div>
+`;
+// 列表
+const list=document.getElementById('registrationsList');
+if(data.length===0){
+list.innerHTML='<div class="admin-empty"><i class="fas fa-inbox" style="font-size:3rem;margin-bottom:16px;display:block"></i>暂无报名记录</div>';
+return;
+}
+list.innerHTML=data.sort((a,b)=>b.timestamp-a.timestamp).map(d=>`
+<div class="reg-card">
+<div class="reg-name">${d.name}</div>
+<div class="reg-company">${d.company}</div>
+<div class="reg-details">
+<div class="reg-detail">职位：<span>${d.position}</span></div>
+<div class="reg-detail">电话：<span>${d.phone}</span></div>
+</div>
+<div class="reg-time">报名于 ${d.time}</div>
+</div>
+`).join('');
+}
+
+function exportData(){
+const data=JSON.parse(localStorage.getItem('ai_ceo_registrations')||'[]');
+if(data.length===0){alert('暂无数据可导出');return;}
+let csv='序号,公司名称,姓名,职位,联系电话,报名时间\n';
+data.forEach((d,i)=>{
+csv+=`${i+1},"${d.company}","${d.name}","${d.position}","${d.phone}","${d.time}"\n`;
+});
+const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;
+a.download='AI_CEO_沙龙报名数据_'+new Date().toLocaleDateString('zh-CN')+'.csv';
+a.click();
+URL.revokeObjectURL(url);
+}
+
+// 检查URL参数
+if(window.location.search.includes('admin=yes')){
+openAdmin();
 }
 </script>
 </body>
