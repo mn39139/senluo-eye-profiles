@@ -145,6 +145,16 @@ body{background:var(--deep);color:#e2e8f0;font-family:'Inter',system-ui,-apple-s
 ::-webkit-scrollbar-thumb{background:rgba(59,130,246,.15);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:rgba(59,130,246,.3)}
 
+/* ===== COMPANY MARQUEE ===== */
+.company-marquee{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.company-track{display:flex;gap:12px;animation:marqueeScroll 60s linear infinite;width:max-content}
+.company-track:hover{animation-play-state:paused}
+.company-tag{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:100px;font-size:.8rem;font-weight:500;background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.08);color:#94a3b8;white-space:nowrap;transition:all .3s;flex-shrink:0}
+.company-tag:hover{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.25);color:#cbd5e1;transform:translateY(-2px)}
+.company-tag i{font-size:.6rem;color:rgba(59,130,246,.4)}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.company-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
   .speaker-avatar{width:140px;height:140px}
@@ -542,6 +552,277 @@ body{background:var(--deep);color:#e2e8f0;font-family:'Inter',system-ui,-apple-s
               <p class="text-slate-400 text-sm mt-1">闭门沙龙内容仅限参会人员，请勿外传商业机密内容</p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PARTICIPATING COMPANIES ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-city"></i> 参会企业</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2 text-white">百家名企 · 共襄盛举</h2>
+      <p class="text-slate-500 text-sm mb-8">以下企业已报名或受邀参加HR数字化实战闭门沙龙</p>
+
+      <!-- Row 1: scroll right -->
+      <div class="company-marquee mb-4">
+        <div class="company-track" id="track1">
+          <span class="company-tag"><i class="fas fa-circle"></i>福建(泉州)先进制造技术研究院</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省蓝深环保技术股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市一米信息科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建智管工软件开发有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州寰球鞋服有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建阳竹新材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>懋达(泉州)鞋业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市纳通智能科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建朝旭新能源科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市皇允卫生用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州成信实业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建鼎发体育用品发展有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市创云信息科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>冠和卫生用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建泉州匹克体育用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州世珍工程车辆配件有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>帝凯(福建)电力成套设备有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州科维质检技术服务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市闽运兴物流股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建泰和医药有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江泉得利体育用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>国能(泉州)热电有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省扬远环保科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省万衡信息科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市坤采儿数码科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建兴翼智能装备股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省南安市远达石材有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>中溯计量检测(泉州)有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州众齐网络科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>安记食品股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>鑫亿智慧科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市世晟供应链有限公司</span>
+          <!-- duplicate for seamless loop -->
+          <span class="company-tag"><i class="fas fa-circle"></i>福建(泉州)先进制造技术研究院</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省蓝深环保技术股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市一米信息科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建智管工软件开发有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州寰球鞋服有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建阳竹新材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>懋达(泉州)鞋业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市纳通智能科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建朝旭新能源科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市皇允卫生用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州成信实业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建鼎发体育用品发展有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市创云信息科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>冠和卫生用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建泉州匹克体育用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州世珍工程车辆配件有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>帝凯(福建)电力成套设备有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州科维质检技术服务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市闽运兴物流股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建泰和医药有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江泉得利体育用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>国能(泉州)热电有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省扬远环保科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省万衡信息科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市坤采儿数码科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建兴翼智能装备股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省南安市远达石材有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>中溯计量检测(泉州)有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州众齐网络科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>安记食品股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>鑫亿智慧科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市世晟供应链有限公司</span>
+        </div>
+      </div>
+
+      <!-- Row 2: scroll left -->
+      <div class="company-marquee mb-4">
+        <div class="company-track" id="track2" style="animation-direction:reverse;animation-duration:70s">
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市鑫铭鞋材科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市建筑产业化有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省德化冠发陶瓷有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建万象春工贸有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市洛江区汇丰妇幼用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市美味强食品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>日春股份公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市新主张装饰工程有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市锐生电子科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建阳嘉科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州海丝扬帆数据服务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建集成伞业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州耀星手袋有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州众志新材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建科盛智能物流装备有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省璀璨骄子服饰有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市如果家居工艺有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市东盛塑料制品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建中策光电股份公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>中探探针(福建)有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建百宏石化有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建百宏化学有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省世量环保科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建惠兴涂料科技发展有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市产投同鑫产业园区运营管理有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市闽达机械制造有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州中通正和医药有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省南安市宝华软包装彩印有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省泉州市优策科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建美可纸业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建吉煜电气有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>惠安宏鑫磊石业发展有限公司</span>
+          <!-- duplicate for seamless loop -->
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市鑫铭鞋材科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市建筑产业化有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省德化冠发陶瓷有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建万象春工贸有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市洛江区汇丰妇幼用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市美味强食品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>日春股份公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市新主张装饰工程有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市锐生电子科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建阳嘉科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州海丝扬帆数据服务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建集成伞业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州耀星手袋有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州众志新材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建科盛智能物流装备有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省璀璨骄子服饰有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市如果家居工艺有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市东盛塑料制品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建中策光电股份公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>中探探针(福建)有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建百宏石化有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建百宏化学有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省世量环保科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建惠兴涂料科技发展有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市产投同鑫产业园区运营管理有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市闽达机械制造有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州中通正和医药有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省南安市宝华软包装彩印有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省泉州市优策科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建美可纸业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建吉煜电气有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>惠安宏鑫磊石业发展有限公司</span>
+        </div>
+      </div>
+
+      <!-- Row 3: scroll right, slower -->
+      <div class="company-marquee">
+        <div class="company-track" id="track3" style="animation-duration:80s">
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州琼味食品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市利友卫生用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建臣佰实业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建成塾数字科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建大美家居有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省晋江巧妈妈食品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州海岛叔叔电子商务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建华清电子材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市星灿照明科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建能科新能源有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建盼盼饮料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建金石能源股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建九龙星石业发展有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州鸣本石材有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建美宏科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建慧芯激光科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>友臣集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州金茂服装有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>南安市大富琅休闲山庄</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州海丝兰台数字服务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建恒安集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>中天(中国)工业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建达宇景观建设集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>名志体育用品(中国)有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州红杉根众创贸易有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江裕福集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市华育文旅科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建火炬电子科技股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建路通管业科技股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建旭丰新材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建华赢科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>信泰(福建)科技有限公司</span>
+          <!-- duplicate for seamless loop -->
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州琼味食品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市利友卫生用品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建臣佰实业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建成塾数字科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建大美家居有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省晋江巧妈妈食品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州海岛叔叔电子商务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建华清电子材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市星灿照明科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建能科新能源有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建盼盼饮料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建金石能源股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建九龙星石业发展有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州鸣本石材有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建美宏科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建慧芯激光科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>友臣集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州金茂服装有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>南安市大富琅休闲山庄</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州海丝兰台数字服务有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建恒安集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>中天(中国)工业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建达宇景观建设集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>名志体育用品(中国)有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州红杉根众创贸易有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江裕福集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市华育文旅科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建火炬电子科技股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建路通管业科技股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建旭丰新材料科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建华赢科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>信泰(福建)科技有限公司</span>
+        </div>
+      </div>
+
+      <!-- Row 4: scroll left, slowest -->
+      <div class="company-marquee mt-4">
+        <div class="company-track" id="track4" style="animation-direction:reverse;animation-duration:90s">
+          <span class="company-tag"><i class="fas fa-circle"></i>固美金属股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建钜闽机械有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州永悦新材料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建群峰机械有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建新力元反光材料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州合辉企业咨询管理有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建国华建设有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建冠中科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省天智创新材料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建盛达机器股份公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市旺达五金制品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州精镁科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州逸嘉机械有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建于本建设科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>南安市樱雪卫浴实业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市安海柳峰汽车配件工贸有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>鸿日光学科技(福建)有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省嗨玩购服饰集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州福佑石业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>安富(福建)塑胶科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州米蓝信息技术有限公司</span>
+          <!-- duplicate for seamless loop -->
+          <span class="company-tag"><i class="fas fa-circle"></i>固美金属股份有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建钜闽机械有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州永悦新材料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建群峰机械有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建新力元反光材料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州合辉企业咨询管理有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建国华建设有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建冠中科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省天智创新材料有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建盛达机器股份公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州市旺达五金制品有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州精镁科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州逸嘉机械有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建于本建设科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>南安市樱雪卫浴实业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>晋江市安海柳峰汽车配件工贸有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>鸿日光学科技(福建)有限责任公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>福建省嗨玩购服饰集团有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州福佑石业有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>安富(福建)塑胶科技有限公司</span>
+          <span class="company-tag"><i class="fas fa-circle"></i>泉州米蓝信息技术有限公司</span>
         </div>
       </div>
     </div>
