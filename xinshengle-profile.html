@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州市鑫胜乐商贸有限公司 | Xinshengle Commerce — 企业全景画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--emerald:#10b981;--teal:#14b8a6;--cyan:#06b6d4;--deep:#050810;--card-bg:rgba(8,20,28,.75);--border:rgba(16,185,129,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:#e2e8f0;font-family:'Inter',system-ui,-apple-system,sans-serif;overflow-x:hidden;line-height:1.7}
+.cosmic-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 20% 20%,#04231b 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,#021a24 0%,transparent 50%),#050810}
+.cosmic-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.4;animation:orbFloat 20s ease-in-out infinite}
+.cosmic-bg .orb:nth-child(1){width:800px;height:800px;background:radial-gradient(circle,rgba(16,185,129,.35),transparent 70%);top:-20%;left:-15%;animation-delay:0s}
+.cosmic-bg .orb:nth-child(2){width:600px;height:600px;background:radial-gradient(circle,rgba(20,184,166,.3),transparent 70%);bottom:-15%;right:-10%;animation-delay:-7s}
+.cosmic-bg .orb:nth-child(3){width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,.2),transparent 70%);top:55%;left:45%;animation-delay:-14s}
+.cosmic-bg .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(16,185,129,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,.03) 1px,transparent 1px);background-size:60px 60px}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-50px) scale(1.15)}66%{transform:translate(-40px,40px) scale(.88)}}
+.particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.particle{position:absolute;width:2px;height:2px;background:var(--emerald);border-radius:50%;opacity:0;animation:particleRise 8s linear infinite}
+@keyframes particleRise{0%{opacity:0;transform:translateY(0) scale(0)}10%{opacity:.8}90%{opacity:.2}100%{opacity:0;transform:translateY(-100vh) scale(1)}}
+.mega-num{font-size:clamp(3rem,7vw,7rem);font-weight:900;line-height:1;background:linear-gradient(135deg,#34d399,#10b981,#047857);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-feature-settings:"tnum"}
+.gradient-text{background:linear-gradient(135deg,#34d399,#10b981,#0d9488);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.glass-card{background:var(--card-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:24px;transition:all .4s cubic-bezier(.25,.8,.25,1)}
+.glass-card:hover{border-color:rgba(16,185,129,.3);box-shadow:0 12px 48px rgba(16,185,129,.08),0 0 0 1px rgba(16,185,129,.1) inset;transform:translateY(-4px)}
+.glass-card-sm{background:rgba(8,20,28,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:18px;transition:all .35s ease}
+.glass-card-sm:hover{border-color:rgba(16,185,129,.25);box-shadow:0 8px 32px rgba(16,185,129,.06)}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--emerald);margin-bottom:1.5rem;padding:6px 16px;border-radius:100px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
+.sec-label i{font-size:.7rem}
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.bento-grid > *{min-height:0}
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr}}
+.col-span-2{grid-column:span 2}
+.col-span-3{grid-column:span 3}
+.col-span-4{grid-column:span 4}
+@media(max-width:1024px){.col-span-2,.col-span-3,.col-span-4{grid-column:span 2}}
+@media(max-width:640px){.col-span-2,.col-span-3,.col-span-4{grid-column:span 1}}
+.hero-section{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:6rem 2rem}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(16,185,129,.08);animation:ringPulse 6s ease-in-out infinite}
+.hero-ring:nth-child(1){width:500px;height:500px;animation-delay:0s}
+.hero-ring:nth-child(2){width:700px;height:700px;animation-delay:-2s}
+.hero-ring:nth-child(3){width:900px;height:900px;animation-delay:-4s}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.05);opacity:.6}}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--emerald),rgba(16,185,129,.1))}
+.timeline-item{position:relative;padding-bottom:2rem}
+.timeline-item::before{content:'';position:absolute;left:-2.35rem;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--emerald);box-shadow:0 0 20px rgba(16,185,129,.5);border:2px solid #050810}
+.honor-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:.78rem;font-weight:500;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);color:#34d399;transition:all .3s}
+.honor-badge:hover{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.35);transform:translateY(-2px)}
+.stat-bar{height:6px;border-radius:3px;background:rgba(16,185,129,.15);overflow:hidden;margin-top:.5rem}
+.stat-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--emerald),var(--teal));transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
+.footer-section{position:relative;padding:5rem 2rem 3rem;text-align:center;border-top:1px solid rgba(16,185,129,.1)}
+.footer-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--emerald),transparent)}
+.creator-mark{font-size:1.6rem;font-weight:800;letter-spacing:.08em;background:linear-gradient(135deg,#34d399,#10b981,#0d9488);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal{opacity:0;transform:translateY(40px)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(16,185,129,.2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(16,185,129,.4)}
+.product-card{background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.1);border-radius:14px;padding:18px 20px;transition:all .3s;position:relative;overflow:hidden}
+.product-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--emerald),var(--teal),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.product-card:hover{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3);transform:translateY(-3px)}
+.product-card:hover::before{transform:scaleX(1)}
+.product-card .product-letter{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#34d399,#14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.material-card{background:rgba(20,184,166,.04);border:1px solid rgba(20,184,166,.1);border-radius:14px;padding:18px 20px;transition:all .3s;position:relative;overflow:hidden}
+.material-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--teal),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.material-card:hover{background:rgba(20,184,166,.08);border-color:rgba(20,184,166,.3);transform:translateY(-3px)}
+.material-card:hover::before{transform:scaleX(1)}
+.material-card .material-letter{font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,#2dd4bf,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.qual-card{background:rgba(6,182,212,.04);border:1px solid rgba(6,182,212,.1);border-radius:14px;padding:16px 18px;transition:all .3s}
+.qual-card:hover{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.3);transform:translateY(-2px)}
+.risk-low{color:#10b981}
+.risk-mid{color:#f59e0b}
+.risk-high{color:#ef4444}
+.welfare-card{background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.1);border-radius:14px;padding:18px 20px;transition:all .3s}
+.welfare-card:hover{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3);transform:translateY(-2px)}
+</style>
+</head>
+<body>
+
+<div class="cosmic-bg">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="grid-overlay"></div>
+</div>
+<div class="particles" id="particles"></div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero-section">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="text-center relative z-10 max-w-4xl mx-auto">
+    <div class="reveal mb-6">
+      <span class="sec-label text-sm"><i class="fas fa-flask"></i> 化工添加剂 · 聚合物添加剂专业供应商</span>
+    </div>
+    <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6">
+      <span class="gradient-text">鑫胜乐</span>
+    </h1>
+    <p class="reveal text-xl md:text-2xl text-slate-400 mb-3 font-light">泉州市鑫胜乐商贸有限公司</p>
+    <p class="reveal text-lg text-emerald-400/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+      增韧剂 · 相容剂 · 阻燃剂 · 功能助剂<br>
+      港澳台自然人独资 · 化工添加剂贸易 · 进出口经营权
+    </p>
+    <div class="reveal flex flex-wrap justify-center gap-4">
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-calendar-alt text-emerald-400"></i>
+        <span class="text-slate-300">成立 <strong class="text-white">2017</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-coins text-emerald-400"></i>
+        <span class="text-slate-300">注册资本 <strong class="text-white">50万元</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-shield-alt text-emerald-400"></i>
+        <span class="text-slate-300">税务信用 <strong class="text-white">A级</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-tint text-emerald-400"></i>
+        <span class="text-slate-300">水滴信用 <strong class="text-white">825分</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="max-w-7xl mx-auto px-4 md:px-6 pb-24">
+
+  <!-- ===== KEY METRICS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-emerald-400/60 text-xs uppercase tracking-widest mb-3">成立年限</div>
+      <div class="mega-num text-5xl md:text-6xl">9<span class="text-2xl">年</span></div>
+      <div class="text-slate-500 text-sm mt-2">2017-05-04 至今</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:70%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">营业期限至 2047-05-03</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-emerald-400/60 text-xs uppercase tracking-widest mb-3">注册资本</div>
+      <div class="mega-num text-5xl md:text-6xl">50<span class="text-2xl">万元</span></div>
+      <div class="text-slate-500 text-sm mt-2">实缴 25万元</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:50%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">微型企业 · 港澳台自然人独资</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-emerald-400/60 text-xs uppercase tracking-widest mb-3">员工规模</div>
+      <div class="mega-num text-5xl md:text-6xl">3<span class="text-2xl">人</span></div>
+      <div class="text-slate-500 text-sm mt-2">2025年参保人数</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:20%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">招聘平台显示 20-99人</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-emerald-400/60 text-xs uppercase tracking-widest mb-3">水滴信用</div>
+      <div class="mega-num text-5xl md:text-6xl">825<span class="text-2xl">分</span></div>
+      <div class="text-slate-500 text-sm mt-2">优秀等级</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:82%"></div></div>
+      <div class="text-slate-500 text-xs mt-1">启信分 508分</div>
+    </div>
+  </div>
+
+  <!-- ===== OVERVIEW + LEADERSHIP ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-building"></i> 企业概览</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">聚合物添加剂行业的领先供应商</h2>
+      <div class="space-y-4 text-slate-300 leading-relaxed">
+        <p><span class="text-emerald-400 font-semibold">泉州市鑫胜乐商贸有限公司</span>成立于2017年5月4日，注册地位于福建省泉州市晋江市，是一家专注于<span class="text-emerald-400 font-semibold">聚合物添加剂行业</span>的商贸企业。公司以化工添加剂贸易为核心，是增韧剂、相容剂、阻燃剂和功能助剂的领先供应商。</p>
+        <p>公司实际主营业务聚焦于<span class="text-emerald-400 font-semibold">聚合物添加剂领域</span>，产品涵盖增韧剂、相容剂、阻燃剂和功能助剂，可改善许多热塑性聚合物的物理特性，包括刚度、强度和耐久性。产品应用于增强大部分主要热塑性材料的性能，覆盖建筑、电子电器、消费品和运输业等多个应用行业。</p>
+        <p>工商登记经营范围为<span class="text-emerald-400 font-semibold">五金产品、建材、家具、电子产品、化工产品（不含危险化学品）的批发零售及进出口</span>，并开展普通货物道路运输。公司为<span class="text-emerald-400 font-semibold">港澳台自然人独资</span>有限责任公司，拥有进出口经营权，属于增值税一般纳税人，2025年税务信用评级为A级。</p>
+        <p>公司目标定位为<span class="text-emerald-400 font-semibold">具有革新精神的聚合物行业解决方案供应商</span>，致力于成为客户信赖的诚信供应商，通过着实创新提供性价比最优的解决方案，并通过整合工厂和供应链提供最佳的地方服务。</p>
+      </div>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <span class="honor-badge"><i class="fas fa-shield-alt"></i> 2025年税务信用A级</span>
+        <span class="honor-badge"><i class="fas fa-file-invoice-dollar"></i> 增值税一般纳税人</span>
+        <span class="honor-badge"><i class="fas fa-globe-asia"></i> 进出口经营权</span>
+        <span class="honor-badge"><i class="fas fa-users"></i> 港澳台自然人独资</span>
+        <span class="honor-badge"><i class="fas fa-seedling"></i> 小微企业</span>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-user-tie"></i> 实际控制人</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">掌舵者</h2>
+      <div class="space-y-5">
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
+          <div class="w-14 h-14 rounded-full bg-emerald-500/15 flex items-center justify-center shrink-0 ring-2 ring-emerald-500/20">
+            <i class="fas fa-crown text-emerald-400 text-xl"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold text-lg">谢昌达 <span class="text-emerald-400 text-sm font-normal">Xie ChangDa</span></div>
+            <div class="text-emerald-400/80 text-sm mb-1">法定代表人 · 执行董事 · 100%控股 · 疑似实控人 · 港澳台自然人</div>
+            <p class="text-slate-400 text-sm leading-relaxed">100%控股泉州市鑫胜乐商贸有限公司，为疑似实际控制人，系港澳台自然人。公司性质为有限责任公司（港澳台自然人独资），关联企业1家。作为公司唯一股东，全面主导公司战略与经营决策。</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">100<span class="text-base">%</span></div>
+            <div class="text-slate-500 text-xs mt-1">持股比例</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">1</div>
+            <div class="text-slate-500 text-xs mt-1">关联企业</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">3</div>
+            <div class="text-slate-500 text-xs mt-1">企业主要人员</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t border-white/5">
+        <p class="text-slate-500 text-xs">企业类型：有限责任公司（港澳台自然人独资） · 营业期限至 2047-05-03</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CORE BUSINESS + PRODUCTS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-3">
+      <div class="sec-label"><i class="fas fa-flask"></i> 主营业务与产品</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">聚合物添加剂 · 全品类功能助剂供应商</h2>
+      <p class="text-slate-400 text-sm mb-6">专注于聚合物添加剂行业，是增韧剂、相容剂、阻燃剂和功能助剂的领先供应商</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+        <div class="product-card">
+          <div class="product-letter mb-2">增</div>
+          <div class="text-white font-bold text-sm">增韧剂</div>
+          <div class="text-emerald-400 text-xs font-semibold mt-1">Toughening Agent</div>
+          <div class="text-slate-500 text-xs mt-2">改善聚合物抗冲击性能</div>
+        </div>
+        <div class="product-card">
+          <div class="product-letter mb-2">相</div>
+          <div class="text-white font-bold text-sm">相容剂</div>
+          <div class="text-emerald-400 text-xs font-semibold mt-1">Compatibilizer</div>
+          <div class="text-slate-500 text-xs mt-2">提升多组分共混相容性</div>
+        </div>
+        <div class="product-card">
+          <div class="product-letter mb-2">阻</div>
+          <div class="text-white font-bold text-sm">阻燃剂</div>
+          <div class="text-emerald-400 text-xs font-semibold mt-1">Flame Retardant</div>
+          <div class="text-slate-500 text-xs mt-2">赋予材料阻燃性能</div>
+        </div>
+        <div class="product-card">
+          <div class="product-letter mb-2">助</div>
+          <div class="text-white font-bold text-sm">功能助剂</div>
+          <div class="text-emerald-400 text-xs font-semibold mt-1">Functional Additive</div>
+          <div class="text-slate-500 text-xs mt-2">改善多种物理特性</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="glass-card-sm p-5">
+          <div class="text-emerald-400 font-bold mb-3"><i class="fas fa-bullseye mr-2"></i>产品功能</div>
+          <p class="text-slate-300 text-sm leading-relaxed">增韧剂、相容剂、阻燃剂和功能助剂，可改善许多热塑性聚合物的物理特性，包括<span class="text-emerald-400 font-semibold">刚度、强度和耐久性</span>，全面增强热塑性材料的综合性能。</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-emerald-400 font-bold mb-3"><i class="fas fa-industry mr-2"></i>应用行业</div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/15 text-emerald-300">建筑</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/15 text-emerald-300">电子电器</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/15 text-emerald-300">消费品</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/15 text-emerald-300">运输业</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card-sm p-5 mb-6">
+        <div class="text-emerald-400 font-bold mb-3"><i class="fas fa-tags mr-2"></i>产品标签</div>
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">涂料</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">助剂</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">改性</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">TPE弹性体</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">POE</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">塑胶原料</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">有机硅</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">偶联剂</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">增韧</span>
+          <span class="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/15 text-teal-300">水性树脂</span>
+        </div>
+      </div>
+
+      <div class="glass-card-sm p-5">
+        <div class="text-emerald-400 font-bold mb-3"><i class="fas fa-flag-checkered mr-2"></i>公司目标</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check text-emerald-400 text-xs mt-1"></i>
+            <span class="text-slate-300">成为具有革新精神的聚合物行业解决方案供应商</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check text-emerald-400 text-xs mt-1"></i>
+            <span class="text-slate-300">成为客户信赖的诚信供应商</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check text-emerald-400 text-xs mt-1"></i>
+            <span class="text-slate-300">通过着实创新提供性价比最优的解决方案</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check text-emerald-400 text-xs mt-1"></i>
+            <span class="text-slate-300">通过整合工厂和供应链提供最佳的地方服务</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 md:p-10 reveal">
+      <div class="sec-label"><i class="fas fa-trademark"></i> 经营范围</div>
+      <h2 class="text-xl font-bold mb-4 text-white">工商登记经营范围</h2>
+      <div class="space-y-4">
+        <div class="glass-card-sm p-4">
+          <div class="text-emerald-400 font-bold mb-2 text-sm"><i class="fas fa-truck mr-2"></i>批发零售</div>
+          <p class="text-slate-300 text-xs leading-relaxed">五金产品、建材（不含危险化学品）、家具、电子产品、化工产品（不含危险化学品）</p>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-emerald-400 font-bold mb-2 text-sm"><i class="fas fa-ship mr-2"></i>进出口业务</div>
+          <p class="text-slate-300 text-xs leading-relaxed">以上商品进出口不涉及国营贸易、进出口配额许可证、出口配额招标、出口许可证等专项管理的商品</p>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-emerald-400 font-bold mb-2 text-sm"><i class="fas fa-road mr-2"></i>道路运输</div>
+          <p class="text-slate-300 text-xs leading-relaxed">普通货物道路运输</p>
+        </div>
+        <div class="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
+          <div class="text-slate-400 text-xs leading-relaxed">
+            <i class="fas fa-info-circle text-emerald-400 mr-1"></i>
+            所属行业：批发业（F5100）/ 化工添加剂贸易
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCT APPLICATION MATERIALS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-cubes"></i> 产品应用领域</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">7大热塑性材料 · 全方位性能增强</h2>
+      <p class="text-slate-400 text-sm mb-6">产品应用于增强大部分主要热塑性材料的性能，覆盖建筑、电子电器、消费品和运输业</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter">PC</div>
+            <i class="fas fa-shield-alt text-teal-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">聚碳酸酯</div>
+          <div class="text-teal-400 text-xs font-semibold mt-1">Polycarbonate</div>
+          <div class="text-slate-500 text-xs mt-2">高强度工程塑料 · 增韧改性</div>
+        </div>
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter">PBT</div>
+            <i class="fas fa-cog text-teal-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">聚酯</div>
+          <div class="text-teal-400 text-xs font-semibold mt-1">PBT / PET</div>
+          <div class="text-slate-500 text-xs mt-2">工程塑料 · 相容增韧</div>
+        </div>
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter">ABS</div>
+            <i class="fas fa-microchip text-teal-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">丙烯腈丁二烯苯乙烯</div>
+          <div class="text-teal-400 text-xs font-semibold mt-1">Acrylonitrile Butadiene Styrene</div>
+          <div class="text-slate-500 text-xs mt-2">通用工程塑料 · 阻燃改性</div>
+        </div>
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter">PA</div>
+            <i class="fas fa-bolt text-teal-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">聚酰胺</div>
+          <div class="text-teal-400 text-xs font-semibold mt-1">Polyamide / Nylon</div>
+          <div class="text-slate-500 text-xs mt-2">高强度尼龙 · 功能助剂</div>
+        </div>
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter">PMMA</div>
+            <i class="fas fa-eye text-teal-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">聚甲基丙烯酸甲酯</div>
+          <div class="text-teal-400 text-xs font-semibold mt-1">Polymethyl Methacrylate</div>
+          <div class="text-slate-500 text-xs mt-2">亚克力 · 透明材料改性</div>
+        </div>
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter">PP</div>
+            <i class="fas fa-box text-teal-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">聚丙烯</div>
+          <div class="text-teal-400 text-xs font-semibold mt-1">Polypropylene</div>
+          <div class="text-slate-500 text-xs mt-2">通用塑料 · 增韧增强</div>
+        </div>
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter">PE</div>
+            <i class="fas fa-shopping-bag text-teal-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">聚乙烯</div>
+          <div class="text-teal-400 text-xs font-semibold mt-1">Polyethylene</div>
+          <div class="text-slate-500 text-xs mt-2">通用塑料 · 功能改性</div>
+        </div>
+        <div class="material-card">
+          <div class="flex items-center justify-between mb-2">
+            <div class="material-letter"><i class="fas fa-plus text-teal-400"></i></div>
+            <i class="fas fa-layer-group text-cyan-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">更多材料</div>
+          <div class="text-cyan-400 text-xs font-semibold mt-1">More Thermoplastics</div>
+          <div class="text-slate-500 text-xs mt-2">覆盖大部分主要热塑性材料</div>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-sm text-slate-400">
+        <i class="fas fa-info-circle text-emerald-400 mr-2"></i>
+        <span class="text-emerald-400 font-semibold">应用价值：</span>产品可改善许多热塑性聚合物的物理特性，包括刚度、强度和耐久性，全面增强热塑性材料的综合性能，覆盖建筑、电子电器、消费品和运输业等多个终端应用行业。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== QUALIFICATIONS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-certificate"></i> 企业资质</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">资质认证与经营资格</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="qual-card">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-cyan-400 text-xs font-semibold">税务信用</span>
+            <i class="fas fa-shield-alt text-cyan-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">2025年A级</div>
+          <div class="text-slate-500 text-xs mt-1">纳税人信用评级最高等级</div>
+        </div>
+        <div class="qual-card">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-cyan-400 text-xs font-semibold">纳税人资质</span>
+            <i class="fas fa-file-invoice-dollar text-cyan-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">增值税一般纳税人</div>
+          <div class="text-slate-500 text-xs mt-1">可开具增值税专用发票</div>
+        </div>
+        <div class="qual-card">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-cyan-400 text-xs font-semibold">贸易资格</span>
+            <i class="fas fa-globe-asia text-cyan-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">进出口经营权</div>
+          <div class="text-slate-500 text-xs mt-1">具备国际贸易资质</div>
+        </div>
+        <div class="qual-card">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-cyan-400 text-xs font-semibold">企业性质</span>
+            <i class="fas fa-users text-cyan-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">港澳台自然人独资</div>
+          <div class="text-slate-500 text-xs mt-1">外资企业类型</div>
+        </div>
+        <div class="qual-card">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-cyan-400 text-xs font-semibold">企业规模</span>
+            <i class="fas fa-seedling text-cyan-400 text-lg"></i>
+          </div>
+          <div class="text-white font-bold text-sm">小微企业</div>
+          <div class="text-slate-500 text-xs mt-1">微型企业 · 灵活经营</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RISK ASSESSMENT ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-shield-alt"></i> 风险评估</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">风险信息全景</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-check-circle risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-slate-500 text-sm">自身风险</div>
+          <div class="text-green-400 text-xs mt-2">无自身经营风险</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-link risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-slate-500 text-sm">关联风险</div>
+          <div class="text-green-400 text-xs mt-2">无关联企业风险</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-gavel risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 件</div>
+          <div class="text-slate-500 text-sm">司法案件</div>
+          <div class="text-green-400 text-xs mt-2">无诉讼纠纷</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-info-circle risk-mid text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">2-3 条</div>
+          <div class="text-slate-500 text-sm">提示信息</div>
+          <div class="text-amber-400 text-xs mt-2">经营动态提示</div>
+        </div>
+      </div>
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-green-400 font-bold text-2xl">0</div>
+          <div class="text-slate-500 text-xs mt-1">经营异常</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-green-400 font-bold text-2xl">0</div>
+          <div class="text-slate-500 text-xs mt-1">行政处罚</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-green-400 font-bold text-2xl">0</div>
+          <div class="text-slate-500 text-xs mt-1">失信记录</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="text-green-400 font-bold text-2xl">0</div>
+          <div class="text-slate-500 text-xs mt-1">空壳扫描</div>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-sm text-slate-400">
+        <i class="fas fa-info-circle text-emerald-400 mr-2"></i>
+        <span class="text-white font-semibold">风险总评：</span>企业自身风险、关联风险、司法案件、经营异常、行政处罚、失信记录、空壳扫描均为0，整体风险极低，经营状况健康，属于低风险企业。仅有2-3条提示信息，为常规经营动态提示。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CREDIT RATINGS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-star"></i> 信用评级</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">第三方信用评分</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-slate-500 text-xs">水滴信用</div>
+              <div class="text-white font-bold text-3xl">825 <span class="text-base text-slate-400">分</span></div>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center">
+              <i class="fas fa-tint text-emerald-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width:82%"></div></div>
+          <div class="text-green-400 text-xs mt-2">优秀等级</div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-slate-500 text-xs">启信分</div>
+              <div class="text-white font-bold text-3xl">508 <span class="text-base text-slate-400">分</span></div>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center">
+              <i class="fas fa-chart-bar text-teal-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width:51%"></div></div>
+          <div class="text-amber-400 text-xs mt-2">中等评级</div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-slate-500 text-xs">税务信用评级</div>
+              <div class="text-white font-bold text-3xl">A <span class="text-base text-slate-400">级</span></div>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center">
+              <i class="fas fa-shield-alt text-cyan-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width:95%"></div></div>
+          <div class="text-green-400 text-xs mt-2">2025年A级纳税人</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REGISTRATION INFO ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-id-card"></i> 工商登记信息</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">企业法定信息</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">企业名称</div>
+          <div class="text-white font-semibold">泉州市鑫胜乐商贸有限公司</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">统一社会信用代码</div>
+          <div class="text-white font-mono text-sm">91350582MA2Y7DGP1M</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">法定代表人</div>
+          <div class="text-white font-semibold">谢昌达</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">注册资本</div>
+          <div class="text-white font-semibold">50万元（实缴25万）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">成立日期</div>
+          <div class="text-white font-semibold">2017年5月4日</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">营业期限</div>
+          <div class="text-white font-semibold">2017-05-04 至 2047-05-03</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">企业类型</div>
+          <div class="text-white text-sm">有限责任公司（港澳台自然人独资）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">经营状态</div>
+          <div class="text-emerald-400 font-semibold">存续（在营、开业、在册）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">注册地址</div>
+          <div class="text-white text-sm">福建省泉州市晋江市梅岭街道塘岸街桂华苑18幢2605</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">所属行业</div>
+          <div class="text-white text-sm">批发业（F5100）/ 化工添加剂贸易</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">企业规模</div>
+          <div class="text-white font-semibold">微型</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">员工人数</div>
+          <div class="text-white font-semibold">3人（2025年参保）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">联系电话</div>
+          <div class="text-white font-mono text-sm">13276009813</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">邮箱</div>
+          <div class="text-white font-mono text-sm">dav***om</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">纳税人资质</div>
+          <div class="text-white text-sm">增值税一般纳税人</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">税务信用</div>
+          <div class="text-emerald-400 font-semibold">2025年A级</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">工商注册号</div>
+          <div class="text-white font-mono text-sm">350582400000822</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">登记机关</div>
+          <div class="text-white text-sm">晋江市市场监督管理局</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">控股结构</div>
+          <div class="text-white text-sm">谢昌达 100% 港澳台自然人独资</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-slate-500 text-xs mb-1">实控人关联企业</div>
+          <div class="text-white font-semibold">1 家</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== KEY PERSONNEL + OPERATION STATUS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-users"></i> 主要人员</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">核心团队</h2>
+      <div class="space-y-4">
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
+          <div class="w-12 h-12 rounded-full bg-emerald-500/15 flex items-center justify-center shrink-0 ring-2 ring-emerald-500/20">
+            <i class="fas fa-crown text-emerald-400 text-lg"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold">谢昌达</div>
+            <div class="text-emerald-400/80 text-sm">法定代表人 · 执行董事 · 100%股东</div>
+            <p class="text-slate-400 text-sm mt-1">港澳台自然人，公司唯一股东及疑似实际控制人，全面负责公司战略与经营决策。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.04]">
+          <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+            <i class="fas fa-calculator text-slate-400 text-lg"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold">陈如如</div>
+            <div class="text-slate-500 text-sm">财务负责人（2025-06-21 新增任职）</div>
+            <p class="text-slate-400 text-sm mt-1">负责公司财务管理与税务申报工作。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.04]">
+          <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+            <i class="fas fa-user-times text-slate-500 text-lg"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold">林宝珍</div>
+            <div class="text-slate-500 text-sm">曾为主要人员（2018-03-23 变更记录）</div>
+            <p class="text-slate-400 text-sm mt-1">历史任职记录，已于2018年3月变更。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-chart-line"></i> 经营状况</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">经营数据概览</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-3xl">0</div>
+          <div class="text-slate-500 text-xs mt-1">对外投资（家）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-3xl">0</div>
+          <div class="text-slate-500 text-xs mt-1">分支机构（家）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-3xl">6</div>
+          <div class="text-slate-500 text-xs mt-1">变更记录（条）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-3xl">9</div>
+          <div class="text-slate-500 text-xs mt-1">企业年报（份）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-3xl">7</div>
+          <div class="text-slate-500 text-xs mt-1">招聘信息（条）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-3xl">A</div>
+          <div class="text-slate-500 text-xs mt-1">税务评级（2025）</div>
+        </div>
+      </div>
+      <div class="mt-4 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 text-sm text-slate-400">
+        <i class="fas fa-info-circle text-emerald-400 mr-2"></i>
+        <span class="text-white font-semibold">经营总评：</span>公司无对外投资与分支机构，组织结构简洁；6条变更记录、9份企业年报显示经营持续规范；抽查检查结果为正常，整体经营状况健康稳定。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WELFARE ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-gift"></i> 福利待遇</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">员工福利体系</h2>
+      <p class="text-slate-400 text-sm mb-6">福利信息来源于企业招聘信息公示</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="welfare-card">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-clock text-emerald-400"></i></div>
+            <div class="text-white font-bold">工作时间</div>
+          </div>
+          <div class="text-slate-400 text-sm">7.5小时工作制 · 周末双休</div>
+        </div>
+        <div class="welfare-card">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-money-bill-wave text-emerald-400"></i></div>
+            <div class="text-white font-bold">薪酬结构</div>
+          </div>
+          <div class="text-slate-400 text-sm">基本工资 + 提成 + 绩效奖 + 年终奖</div>
+        </div>
+        <div class="welfare-card">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-shield-heart text-emerald-400"></i></div>
+            <div class="text-white font-bold">社会保障</div>
+          </div>
+          <div class="text-slate-400 text-sm">五险一金</div>
+        </div>
+        <div class="welfare-card">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-home text-emerald-400"></i></div>
+            <div class="text-white font-bold">员工住宿</div>
+          </div>
+          <div class="text-slate-400 text-sm">提供住宿 · 配备空调 / WIFI / 热水器 / 洗衣机</div>
+        </div>
+        <div class="welfare-card">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-plane text-emerald-400"></i></div>
+            <div class="text-white font-bold">员工活动</div>
+          </div>
+          <div class="text-slate-400 text-sm">员工旅游 · 节日福利 · 开工红包</div>
+        </div>
+        <div class="welfare-card">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-hand-holding-heart text-emerald-400"></i></div>
+            <div class="text-white font-bold">综合福利</div>
+          </div>
+          <div class="text-slate-400 text-sm">多元福利体系 · 人文关怀</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-address-card"></i> 联系方式</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">企业联络</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-map-marker-alt text-emerald-400"></i></div>
+            <div class="text-white font-bold">注册地址</div>
+          </div>
+          <div class="text-slate-400 text-sm space-y-1">
+            <p>福建省泉州市晋江市</p>
+            <p>梅岭街道塘岸街桂华苑18幢2605</p>
+            <p class="text-slate-500 text-xs mt-2">登记机关：晋江市市场监督管理局</p>
+          </div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-phone-alt text-emerald-400"></i></div>
+            <div class="text-white font-bold">联系电话</div>
+          </div>
+          <div class="text-slate-400 text-sm space-y-1">
+            <p>企业电话：13276009813</p>
+            <p>邮箱：dav***om</p>
+            <p class="text-slate-500 text-xs mt-2">福建泉州区号0595</p>
+          </div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-globe text-emerald-400"></i></div>
+            <div class="text-white font-bold">企业资质</div>
+          </div>
+          <div class="text-slate-400 text-sm space-y-1">
+            <p>增值税一般纳税人</p>
+            <p>进出口经营权</p>
+            <p class="text-slate-500 text-xs mt-2">港澳台自然人独资企业</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-section">
+  <div class="max-w-2xl mx-auto">
+    <div class="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6 ring-1 ring-emerald-500/20">
+      <i class="fas fa-eye text-emerald-400 text-2xl"></i>
+    </div>
+    <p class="creator-mark mb-3">39139@胜天半子</p>
+    <p class="text-slate-600 text-sm">森罗之眼智能体生成 · 数据更新至 2026.06</p>
+    <p class="text-slate-700 text-xs mt-2">本画像基于公开信息自动生成，数据来源包括企查查、天眼查、水滴信用、启信网、BOSS直聘等公开平台，仅供参考</p>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+(function(){
+  const container = document.getElementById('particles');
+  for(let i=0;i<50;i++){
+    const p = document.createElement('div');
+    p.className='particle';
+    p.style.left=Math.random()*100+'%';
+    p.style.top=Math.random()*100+'%';
+    p.style.animationDelay=Math.random()*8+'s';
+    p.style.animationDuration=(6+Math.random()*10)+'s';
+    // 翠绿色系粒子：随机选择翠绿、青、蓝绿三色
+    const colors = ['#10b981','#14b8a6','#06b6d4'];
+    p.style.background = colors[Math.floor(Math.random()*colors.length)];
+    container.appendChild(p);
+  }
+})();
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+});
+
+gsap.utils.toArray('.stat-bar-fill').forEach(bar=>{
+  const w = bar.style.width;
+  bar.style.width='0%';
+  ScrollTrigger.create({trigger:bar,start:'top 90%',onEnter:()=>{bar.style.width=w}});
+});
+
+gsap.to('.hero-ring',{rotation:360,duration:60,ease:'none',repeat:-1,transformOrigin:'center center'});
+gsap.to('.hero-ring:nth-child(2)',{rotation:-360,duration:80,ease:'none',repeat:-1,transformOrigin:'center center'});
+gsap.to('.hero-ring:nth-child(3)',{rotation:180,duration:100,ease:'none',repeat:-1,transformOrigin:'center center'});
+</script>
+</body>
+</html>
