@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AI CEO 主题沙龙 · 邀约函</title>
+<title>AI CEO 主题沙龙 · 预约上门分享</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -110,8 +110,8 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <div class="modal-content">
 <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
 <div id="formContainer">
-<h2 class="text-xl font-bold text-center mb-2" style="background:linear-gradient(135deg,#e8eaf0,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">锁定您的席位</h2>
-<p class="text-center text-xs text-[rgba(232,234,240,.4)] mb-8">请填写以下信息，我们将专人审核确认</p>
+<h2 class="text-xl font-bold text-center mb-2" style="background:linear-gradient(135deg,#e8eaf0,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">预约上门分享</h2>
+<p class="text-center text-xs text-[rgba(232,234,240,.4)] mb-8">请填写以下信息，前10名享免费上门分享</p>
 <form id="signupForm" onsubmit="return handleSubmit(event)">
 <div class="form-group">
 <label class="form-label"><i class="fas fa-building mr-1 text-[#a78bfa]"></i> 您的公司名称 <span class="text-[#fca5a5]">*</span></label>
@@ -134,15 +134,15 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <div class="form-error">请输入职位</div>
 </div>
 <button type="submit" class="form-submit" id="submitBtn">
-<i class="fas fa-paper-plane mr-2"></i>提交报名
+<i class="fas fa-paper-plane mr-2"></i>提交预约
 </button>
 </form>
 </div>
 <div id="successMessage" style="display:none">
 <div class="form-success">
 <div class="check-icon"><i class="fas fa-check"></i></div>
-<h3>报名成功！</h3>
-<p>您的信息已提交，我们将尽快审核<br>并通过电话与您确认席位</p>
+<h3>预约成功！</h3>
+<p>您的信息已提交，我们将尽快审核<br>前10名将享免费上门分享，专人电话确认</p>
 <button class="form-submit" onclick="closeModal()" style="margin-top:24px">
 <i class="fas fa-check mr-2"></i>好的，我知道了
 </button>
@@ -154,7 +154,7 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <!-- 管理后台 -->
 <div class="admin-panel" id="adminPanel">
 <div class="admin-header">
-<div class="admin-title"><i class="fas fa-shield-alt mr-2"></i>AI CEO 沙龙 · 报名管理后台</div>
+<div class="admin-title"><i class="fas fa-shield-alt mr-2"></i>AI CEO 沙龙 · 预约管理后台</div>
 <button class="admin-back" onclick="closeAdmin()"><i class="fas fa-arrow-left mr-1"></i>返回</button>
 </div>
 <div id="passwordCheck">
@@ -179,7 +179,7 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <span class="text-[rgba(232,234,240,.3)] text-xs ml-1">主题沙龙</span>
 </div>
 <div class="flex items-center gap-2">
-<span class="badge badge-amber"><i class="fas fa-fire"></i> 限20人</span>
+<span class="badge badge-amber"><i class="fas fa-fire"></i> 限10名上门</span>
 </div>
 </div>
 </nav>
@@ -192,7 +192,7 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <div class="text-center mb-16 reveal">
 <div class="inline-flex items-center gap-2 mb-6">
 <span class="badge badge-purple"><i class="fas fa-brain"></i> AI CEO 主题沙龙</span>
-<span class="badge badge-red"><i class="fas fa-lock"></i> 仅邀20人</span>
+<span class="badge badge-red"><i class="fas fa-fire"></i> 前10名上门</span>
 </div>
 
 <div class="mb-4">
@@ -208,26 +208,26 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <div class="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-6">
 <div class="p-4 rounded-xl bg-[rgba(139,92,246,.06)] border border-[rgba(139,92,246,.15)] flex items-center gap-4">
 <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center flex-shrink-0">
-<i class="fas fa-calendar-alt text-white"></i>
+<i class="fas fa-handshake text-white"></i>
 </div>
 <div class="text-left">
-<div class="font-bold text-sm md:text-base text-white">2026年6月24日（周三）</div>
-<div class="text-xs text-[rgba(232,234,240,.5)]">14:30 - 17:30</div>
+<div class="font-bold text-sm md:text-base text-white">预约制 · 一对一上门分享</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">提交预约后专人联系确认时间</div>
 </div>
 </div>
-<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.15)] flex items-center gap-4">
-<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center flex-shrink-0">
-<i class="fas fa-map-marker-alt text-[#06080f]"></i>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.15)] flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center flex-shrink-0">
+<i class="fas fa-gift text-white"></i>
 </div>
 <div class="text-left">
-<div class="font-bold text-sm md:text-base text-white">林泉茶馆 · 复合文化空间</div>
-<div class="text-xs text-[rgba(232,234,240,.5)]">泉州新门街源和1916二期 闽南文化交流中心</div>
+<div class="font-bold text-sm md:text-base text-white">前10名预约 · 免费上门分享</div>
+<div class="text-xs text-[rgba(232,234,240,.5)]">专家亲临贵司，定制化AI决策方案</div>
 </div>
 </div>
 </div>
 
 <div class="text-[rgba(232,234,240,.3)] text-xs">
-邀请限定：中大型企业 · 老板/二代/副总 · 每家企业限2人
+预约对象：中大型企业 · 老板/二代/副总 · 限前10名享上门分享
 </div>
 </div>
 
@@ -367,7 +367,10 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <!-- 倒计时 -->
 <div class="reveal">
 <div class="glass-card p-8 md:p-10 mb-8 text-center" style="border-color:rgba(139,92,246,.15)">
-<div class="text-xs text-[rgba(232,234,240,.4)] mb-6 tracking-widest uppercase">距离沙龙开启</div>
+<div class="text-xs text-[rgba(232,234,240,.4)] mb-6 tracking-widest uppercase">预约通道关闭倒计时</div>
+<div class="mb-6">
+<span class="badge badge-green"><i class="fas fa-gift"></i> 前10名预约享免费上门分享</span>
+</div>
 <div class="flex justify-center gap-6 md:gap-10" id="countdown">
 <div class="countdown-item">
 <div class="countdown-num" id="days">--</div>
@@ -393,10 +396,10 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <div class="reveal text-center mb-8">
 <button class="cta-btn" onclick="openModal()">
 <i class="fas fa-paper-plane"></i>
-立即锁定席位
+立即预约 · 锁定上门名额
 </button>
 <div class="mt-4 text-xs text-[rgba(232,234,240,.3)]">
-席位有限，报名后由专人审核确认
+前10名预约享免费上门分享，名额有限
 </div>
 </div>
 
@@ -429,18 +432,18 @@ gsap.utils.toArray('.reveal').forEach(el=>{
 gsap.fromTo(el,{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%',toggleActions:'play none none none'}});
 });
 
-// 动态倒计时
+// 动态倒计时 - 30天倒计时
 function updateCountdown(){
-const target=new Date('2026-06-24T14:30:00+08:00');
 const now=new Date();
-const diff=target-now;
-if(diff<=0){
-document.getElementById('days').textContent='0';
-document.getElementById('hours').textContent='00';
-document.getElementById('minutes').textContent='00';
-document.getElementById('seconds').textContent='00';
-return;
+// 从页面首次加载时刻起算30天，存入localStorage
+let targetStr=localStorage.getItem('ai_ceo_countdown_target');
+if(!targetStr){
+const target=new Date(now.getTime()+30*86400000);
+localStorage.setItem('ai_ceo_countdown_target',target.toISOString());
+targetStr=target.toISOString();
 }
+const target=new Date(targetStr);
+const diff=target-now;
 const d=Math.floor(diff/86400000);
 const h=Math.floor((diff%86400000)/3600000);
 const m=Math.floor((diff%3600000)/60000);
@@ -548,14 +551,14 @@ const data=JSON.parse(localStorage.getItem('ai_ceo_registrations')||'[]');
 // 统计
 const stats=document.getElementById('statsContainer');
 stats.innerHTML=`
-<div class="stat-card"><div class="stat-num">${data.length}</div><div class="stat-label">总报名数</div></div>
-<div class="stat-card"><div class="stat-num">${20-data.length}</div><div class="stat-label">剩余席位</div></div>
+<div class="stat-card"><div class="stat-num">${data.length}</div><div class="stat-label">总预约数</div></div>
+<div class="stat-card"><div class="stat-num">${Math.max(0,10-data.length)}</div><div class="stat-label">剩余上门名额</div></div>
 <div class="stat-card"><div class="stat-num">${new Set(data.map(d=>d.company)).size}</div><div class="stat-label">企业数</div></div>
 `;
 // 列表
 const list=document.getElementById('registrationsList');
 if(data.length===0){
-list.innerHTML='<div class="admin-empty"><i class="fas fa-inbox" style="font-size:3rem;margin-bottom:16px;display:block"></i>暂无报名记录</div>';
+list.innerHTML='<div class="admin-empty"><i class="fas fa-inbox" style="font-size:3rem;margin-bottom:16px;display:block"></i>暂无预约记录</div>';
 return;
 }
 list.innerHTML=data.sort((a,b)=>b.timestamp-a.timestamp).map(d=>`
@@ -576,7 +579,7 @@ list.innerHTML=data.sort((a,b)=>b.timestamp-a.timestamp).map(d=>`
 <div class="reg-field-label">职位</div>
 <div class="reg-field-value">${d.position}</div>
 </div>
-<div class="reg-card-time"><i class="far fa-clock mr-1"></i>报名于 ${d.time}</div>
+<div class="reg-card-time"><i class="far fa-clock mr-1"></i>预约于 ${d.time}</div>
 </div>
 `).join('');
 }
@@ -584,7 +587,7 @@ list.innerHTML=data.sort((a,b)=>b.timestamp-a.timestamp).map(d=>`
 function exportData(){
 const data=JSON.parse(localStorage.getItem('ai_ceo_registrations')||'[]');
 if(data.length===0){alert('暂无数据可导出');return;}
-let csv='序号,公司名称,姓名,职位,联系电话,报名时间\n';
+let csv='序号,公司名称,姓名,职位,联系电话,预约时间\n';
 data.forEach((d,i)=>{
 csv+=`${i+1},"${d.company}","${d.name}","${d.position}","${d.phone}","${d.time}"\n`;
 });
@@ -592,7 +595,7 @@ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
 const url=URL.createObjectURL(blob);
 const a=document.createElement('a');
 a.href=url;
-a.download='AI_CEO_沙龙报名数据_'+new Date().toLocaleDateString('zh-CN')+'.csv';
+a.download='AI_CEO_沙龙预约数据_'+new Date().toLocaleDateString('zh-CN')+'.csv';
 a.click();
 URL.revokeObjectURL(url);
 }
