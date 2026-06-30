@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AI CEO 主题沙龙 · 预约上门分享</title>
+<title>AI CEO 主题分享 · 预约上门分享</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -154,7 +154,7 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <!-- 管理后台 -->
 <div class="admin-panel" id="adminPanel">
 <div class="admin-header">
-<div class="admin-title"><i class="fas fa-shield-alt mr-2"></i>AI CEO 沙龙 · 预约管理后台</div>
+<div class="admin-title"><i class="fas fa-shield-alt mr-2"></i>AI CEO 主题分享 · 预约管理后台</div>
 <button class="admin-back" onclick="closeAdmin()"><i class="fas fa-arrow-left mr-1"></i>返回</button>
 </div>
 <div id="passwordCheck">
@@ -176,7 +176,7 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <div class="flex items-center gap-2">
 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#8b5cf6] to-[#6d28d9] flex items-center justify-center"><i class="fas fa-brain text-white text-xs"></i></div>
 <span class="font-bold text-sm tracking-wide">AI CEO</span>
-<span class="text-[rgba(232,234,240,.3)] text-xs ml-1">主题沙龙</span>
+<span class="text-[rgba(232,234,240,.3)] text-xs ml-1">主题分享</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="badge badge-amber"><i class="fas fa-fire"></i> 限10名上门</span>
@@ -191,7 +191,7 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <!-- 核心主题 -->
 <div class="text-center mb-16 reveal">
 <div class="inline-flex items-center gap-2 mb-6">
-<span class="badge badge-purple"><i class="fas fa-brain"></i> AI CEO 主题沙龙</span>
+<span class="badge badge-purple"><i class="fas fa-brain"></i> AI CEO 主题分享</span>
 <span class="badge badge-red"><i class="fas fa-fire"></i> 前10名上门</span>
 </div>
 
@@ -409,10 +409,10 @@ body{font-family:'Inter','Noto Sans SC',sans-serif;background:#06080f;color:#e8e
 <div class="flex flex-col md:flex-row items-center justify-between gap-6">
 <div class="flex items-center gap-4">
 <div class="seal">
-<div class="seal-text">AI CEO<br>沙龙</div>
+<div class="seal-text">AI CEO<br>分享</div>
 </div>
 <div>
-<div class="font-bold text-sm">AI CEO 主题沙龙</div>
+<div class="font-bold text-sm">AI CEO 主题分享</div>
 <div class="text-xs text-[rgba(232,234,240,.3)]">重新定义决策引擎</div>
 </div>
 </div>
@@ -595,7 +595,7 @@ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
 const url=URL.createObjectURL(blob);
 const a=document.createElement('a');
 a.href=url;
-a.download='AI_CEO_沙龙预约数据_'+new Date().toLocaleDateString('zh-CN')+'.csv';
+a.download='AI_CEO_主题分享预约数据_'+new Date().toLocaleDateString('zh-CN')+'.csv';
 a.click();
 URL.revokeObjectURL(url);
 }
