@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泉州市正寅服饰制造有限公司 - AI解决方案+产品推荐方案</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0a0a0f;
+      color: #e5e7eb;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+    .hero-section {
+      background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(96,165,250,0.05));
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(249,115,22,0.15);
+    }
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.1); opacity: 0.6; }
+    }
+    .gradient-text-orange {
+      background: linear-gradient(135deg, #f97316, #fb923c, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag-orange { background: rgba(249,115,22,0.15); color: #fb923c; border: 1px solid rgba(249,115,22,0.25); }
+    .tag-emerald { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+    .tag-cyan { background: rgba(6,182,212,0.15); color: #22d3ee; border: 1px solid rgba(6,182,212,0.25); }
+    .tag-amber { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+    .tag-red { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .tag-blue { background: rgba(249,115,22,0.15); color: #fb923c; border: 1px solid rgba(59,130,246,0.25); }
+    .tag-purple { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .bento-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .bento-card:hover {
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .profile-item {
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
+    }
+    .profile-value { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+    .profile-label { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .pain-card {
+      background: rgba(239,68,68,0.04);
+      border: 1px solid rgba(239,68,68,0.1);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+    .pain-card:hover {
+      background: rgba(239,68,68,0.08);
+      border-color: rgba(239,68,68,0.2);
+    }
+    .pain-level {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .pain-high { background: #ef4444; box-shadow: 0 0 8px rgba(239,68,68,0.5); }
+    .pain-medium { background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.5); }
+    .product-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .tier1-bg { background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(5,150,105,0.1)); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+    .tier2-bg { background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(37,99,235,0.1)); color: #fb923c; border: 1px solid rgba(59,130,246,0.3); }
+    .tier3-bg { background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(139,92,246,0.1)); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+    .star-rating { display: flex; gap: 2px; }
+    .star-rating i { color: #fbbf24; font-size: 12px; }
+    .feature-list { list-style: none; padding: 0; }
+    .feature-list li {
+      padding: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list i { color: #10b981; margin-top: 3px; flex-shrink: 0; }
+    .roi-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .roi-fill {
+      height: 100%;
+      border-radius: 4px;
+      width: var(--fill-width);
+      transition: width 1s ease;
+    }
+    .solution-layer {
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-left: 4px solid;
+    }
+    .layer-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .layer-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .layer-item {
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .timeline-container {
+      position: relative;
+      padding-left: 30px;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 11px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #f97316, #fb923c, #
