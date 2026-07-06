@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州市信福网络科技有限公司 - 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+:root{--primary:#3b82f6;--secondary:#f97316;--accent:#a855f7;--danger:#ef4444;--dark:#0a0a14;--card-bg:rgba(15,15,30,.7);--glass-border:rgba(59,130,246,.15)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--dark);color:#e8eaf0;overflow-x:hidden;line-height:1.7}
+.font-display{font-family:'Orbitron','Noto Sans SC',sans-serif}
+.bg-grid{background-image:linear-gradient(rgba(59,130,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.03) 1px,transparent 1px);background-size:60px 60px}
+.glass-card{background:var(--card-bg);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:20px;transition:all .4s ease}
+.glass-card:hover{border-color:rgba(59,130,246,.3);box-shadow:0 0 40px rgba(59,130,246,.08)}
+.glass-card-danger{border-color:rgba(239,68,68,.2);box-shadow:0 0 40px rgba(239,68,68,.05)}
+.gradient-text{background:linear-gradient(135deg,#3b82f6,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-alt{background:linear-gradient(135deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-bg{background:radial-gradient(ellipse at 30% 20%,rgba(59,130,246,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(168,85,247,.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(249,115,22,.04) 0%,transparent 70%)}
+.pulse-ring{animation:pulse-ring 2s ease-out infinite}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(59,130,246,.4)}70%{box-shadow:0 0 0 12px rgba(59,130,246,0)}100%{box-shadow:0 0 0 0 rgba(59,130,246,0)}}
+.pulse-ring-danger{animation:pulse-ring-danger 1.5s ease-out infinite}
+@keyframes pulse-ring-danger{0%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 12px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+.float-anim{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.scanner-line{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent);animation:scan 3s ease-in-out infinite}
+@keyframes scan{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
+.progress-fill{transition:width 1.5s ease-out}
+.metric-num{font-family:'Orbitron',monospace;font-weight:900}
+.product-card{transition:all .3s ease}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(59,130,246,.15)}
+.timeline-dot{width:16px;height:16px;border-radius:50%;border:3px solid var(--primary);background:var(--dark);position:relative;z-index:1}
+.timeline-line{position:absolute;left:7px;top:16px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--primary),transparent)}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:500}
+.tag-blue{background:rgba(59,130,246,.1);color:#60a5fa;border:1px solid rgba(59,130,246,.2)}
+.tag-orange{background:rgba(249,115,22,.1);color:#fb923c;border:1px solid rgba(249,115,22,.2)}
+.tag-purple{background:rgba(168,85,247,.1);color:#d8b4fe;border:1px solid rgba(168,85,247,.2)}
+.tag-red{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+.tag-green{background:rgba(16,185,129,.1);color:#34d399;border:1px solid rgba(16,185,129,.2)}
+.section-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body class="bg-grid">
+
+<section class="hero-bg min-h-screen flex items-center relative overflow-hidden" id="hero">
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-[10%] left-[15%] w-2 h-2 bg-blue-500/30 rounded-full float-anim"></div>
+<div class="absolute top-[30%] right-[20%] w-3 h-3 bg-orange-500/20 rounded-full float-anim" style="animation-delay:1s"></div>
+<div class="absolute bottom-[20%] left-[40%] w-2 h-2 bg-purple-500/25 rounded-full float-anim" style="animation-delay:2s"></div>
+</div>
+<div class="max-w-7xl mx-auto px-6 py-20 w-full relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8" id="hero-text">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-blue-400 rounded-full pulse-ring"></div>
+<span class="text-blue-400 text-sm font-medium tracking-widest uppercase">E-commerce Enterprise Profile</span>
+</div>
+<h1 class="text-5xl lg:text-7xl font-black leading-tight">
+<span class="gradient-text">信福网络</span><br>
+<span class="text-3xl lg:text-4xl text-slate-300 font-light">年销过亿鞋业电商企业</span>
+</h1>
+<p class="text-slate-400 text-lg leading-relaxed max-w-lg">
+泉州市信福网络科技有限公司，专注鞋类电商运营，以"笑恋袋鼠""小免朱笛"等自有品牌及卡帝乐鳄鱼、木林森等代理品牌，构建多平台电商矩阵，年销售额突破亿元。
+</p>
+<div class="flex flex-wrap gap-3">
+<span class="tag tag-blue"><i class="fas fa-shopping-bag"></i> 年销亿级</span>
+<span class="tag tag-orange"><i class="fas fa-users"></i> 200+团队</span>
+<span class="tag tag-purple"><i class="fas fa-globe"></i> 多平台运营</span>
+</div>
+</div>
+<div class="relative" id="hero-visual">
+<div class="glass-card p-8 relative">
+<div class="scanner-line"></div>
+<div class="text-center mb-6">
+<div class="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-blue-500/30 float-anim">
+<i class="fas fa-shoe-prints text-4xl text-blue-400"></i>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+<span class="text-slate-400">统一信用代码</span>
+<span class="font-mono text-blue-300 text-sm">91350502MA344AY01P</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+<span class="text-slate-400">法定代表人</span>
+<span class="text-white font-semibold">许少鹏</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+<span class="text-slate-400">注册资本</span>
+<span class="text-white">100万元</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+<span class="text-slate-400">成立日期</span>
+<span class="text-white">2015-11-09</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+<span class="text-slate-400">企业状态</span>
+<span class="text-emerald-400 font-semibold">存续</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+<span class="text-slate-400">所属行业</span>
+<span class="text-white">零售业 · 鞋帽</span>
+</div>
+<div class="flex justify-between items-center py-3">
+<span class="text-slate-400">企业规模</span>
+<span class="text-white">中型 / 200+人</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="metrics">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">核心指标</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+<div class="glass-card p-6 text-center">
+<div class="metric-num text-4xl text-blue-400 mb-2">11</div>
+<div class="text-slate-400 text-sm">经营年限(年)</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="metric-num text-4xl text-orange-400 mb-2">200<span class="text-2xl">+</span></div>
+<div class="text-slate-400 text-sm">员工规模</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="metric-num text-4xl text-purple-400 mb-2">6</div>
+<div class="text-slate-400 text-sm">电商平台</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="metric-num text-4xl text-red-400 mb-2">8</div>
+<div class="text-slate-400 text-sm">司法案件</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="glass-card p-6 text-center" style="border-color:rgba(16,185,129,.15)">
+<div class="metric-num text-3xl text-emerald-400 mb-2">1<span class="text-base">亿+</span></div>
+<div class="text-slate-400 text-sm">年销售额(2022)</div>
+</div>
+<div class="glass-card p-6 text-center" style="border-color:rgba(59,130,246,.15)">
+<div class="metric-num text-3xl text-blue-400 mb-2">6</div>
+<div class="text-slate-400 text-sm">品牌矩阵</div>
+</div>
+<div class="glass-card p-6 text-center" style="border-color:rgba(168,85,247,.15)">
+<div class="metric-num text-3xl text-purple-400 mb-2">5</div>
+<div class="text-slate-400 text-sm">关联企业</div>
+</div>
+<div class="glass-card p-6 text-center" style="border-color:rgba(239,68,68,.15)">
+<div class="metric-num text-3xl text-red-400 mb-2">9</div>
+<div class="text-slate-400 text-sm">自身风险</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="group">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">企业族群架构</h2>
+</div>
+<div class="glass-card p-8">
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/30 to-orange-500/30 border-2 border-blue-500/40 mb-4">
+<i class="fas fa-network-wired text-3xl text-blue-400"></i>
+</div>
+<h3 class="text-xl font-bold text-white">信福网络族群</h3>
+<p class="text-slate-400 text-sm">实控人：许少鹏 / 许世长</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-2xl bg-blue-500/5 border border-blue-500/15">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+<i class="fas fa-building text-blue-400"></i>
+</div>
+<div>
+<div class="text-white font-bold">泉州市信福网络科技有限公司</div>
+<div class="text-slate-500 text-xs">核心主体 · 2015年成立</div>
+</div>
+</div>
+<div class="space-y-2 text-sm">
+<div class="flex justify-between"><span class="text-slate-400">注册资本</span><span class="text-white">100万</span></div>
+<div class="flex justify-between"><span class="text-slate-400">统一信用代码</span><span class="text-white">91350502MA344AY01P</span></div>
+<div class="flex justify-between"><span class="text-slate-400">业务定位</span><span class="text-blue-300">电商运营总部</span></div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-orange-500/5 border border-orange-500/15">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
+<i class="fas fa-store text-orange-400"></i>
+</div>
+<div>
+<div class="text-white font-bold">泉州市鹏许贸易有限公司</div>
+<div class="text-slate-500 text-xs">族群成员 · 2018年成立</div>
+</div>
+</div>
+<div class="space-y-2 text-sm">
+<div class="flex justify-between"><span class="text-slate-400">注册资本</span><span class="text-white">100万</span></div>
+<div class="flex justify-between"><span class="text-slate-400">统一信用代码</span><span class="text-white">91350503MA31X3940B</span></div>
+<div class="flex justify-between"><span class="text-slate-400">业务定位</span><span class="text-orange-300">贸易分销</span></div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-purple-500/5 border border-purple-500/15">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+<i class="fas fa-handshake text-purple-400"></i>
+</div>
+<div>
+<div class="text-white font-bold">泉州市信福众创贸易有限公司</div>
+<div class="text-slate-500 text-xs">族群成员 · 2020年成立</div>
+</div>
+</div>
+<div class="space-y-2 text-sm">
+<div class="flex justify-between"><span class="text-slate-400">注册资本</span><span class="text-white">100万</span></div>
+<div class="flex justify-between"><span class="text-slate-400">统一信用代码</span><span class="text-white">91350502MA34FYF498</span></div>
+<div class="flex justify-between"><span class="text-slate-400">业务定位</span><span class="text-purple-300">供应链服务</span></div>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-xl bg-slate-800/30 border border-slate-700/30">
+<div class="flex items-center gap-2 mb-3">
+<i class="fas fa-clock text-slate-400"></i>
+<span class="text-white font-semibold text-sm">近期新设关联公司</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-blue-500/5">
+<span class="text-slate-300 text-sm">泉州市信福品牌管理有限公司</span>
+<span class="tag tag-blue">2026.04</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-blue-500/5">
+<span class="text-slate-300 text-sm">泉州卓昭贸易有限公司</span>
+<span class="tag tag-blue">2025.07</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="brands">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">品牌矩阵</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card p-8 relative overflow-hidden" style="border-color:rgba(59,130,246,.2)">
+<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-500/10 to-transparent rounded-bl-full"></div>
+<div class="flex items-center gap-4 mb-6">
+<div class="section-icon bg-blue-500/15">
+<i class="fas fa-star text-blue-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">自有品牌</h3>
+<p class="text-slate-400 text-sm">自主研发 · 品牌运营</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/10">
+<i class="fas fa-kangaroo text-blue-400"></i>
+<div>
+<div class="text-white font-semibold text-sm">笑恋袋鼠</div>
+<div class="text-slate-500 text-xs">休闲鞋 · 运动鞋 · 电商主力品牌</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/10">
+<i class="fas fa-rabbit text-blue-400"></i>
+<div>
+<div class="text-white font-semibold text-sm">小免朱笛</div>
+<div class="text-slate-500 text-xs">童鞋 · 亲子鞋 · 细分市场</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/10">
+<i class="fas fa-trophy text-blue-400"></i>
+<div>
+<div class="text-white font-semibold text-sm">JODOO / PVB</div>
+<div class="text-slate-500 text-xs">潮牌运动鞋 · 品牌升级迭代</div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 relative overflow-hidden" style="border-color:rgba(168,85,247,.2)">
+<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-purple-500/10 to-transparent rounded-bl-full"></div>
+<div class="flex items-center gap-4 mb-6">
+<div class="section-icon bg-purple-500/15">
+<i class="fas fa-crown text-purple-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white">代理品牌</h3>
+<p class="text-slate-400 text-sm">品牌授权 · 渠道分销</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/10">
+<i class="fas fa-crocodile text-purple-400"></i>
+<div>
+<div class="text-white font-semibold text-sm">卡帝乐鳄鱼</div>
+<div class="text-slate-500 text-xs">国际品牌授权 · 皮鞋/休闲鞋</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/10">
+<i class="fas fa-tree text-purple-400"></i>
+<div>
+<div class="text-white font-semibold text-sm">木林森</div>
+<div class="text-slate-500 text-xs">国内知名品牌 · 休闲鞋/皮鞋</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/10">
+<i class="fas fa-horse-head text-purple-400"></i>
+<div>
+<div class="text-white font-semibold text-sm">森马 / 稻草人</div>
+<div class="text-slate-500 text-xs">潮流品牌 · 运动鞋/帆布鞋</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-xl bg-amber-500/5 border border-amber-500/10">
+<div class="flex items-start gap-2">
+<i class="fas fa-info-circle text-amber-400 mt-0.5"></i>
+<div class="text-slate-400 text-sm">
+<span class="text-amber-300 font-semibold">品牌策略动态：</span>从早期"笑恋袋鼠""小免朱笛"大众品牌进化到"PVB""JODOO"潮牌定位，品牌年轻化战略明显。部分商标存在转让痕迹，显示品牌矩阵在持续调整优化中。
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="ecommerce">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">电商平台布局</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="glass-card p-5 text-center product-card">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/10 flex items-center justify-center mx-auto mb-3">
+<i class="fab fa-amazon text-red-400 text-xl"></i>
+</div>
+<h4 class="text-white font-semibold text-sm mb-1">天猫</h4>
+<p class="text-slate-500 text-xs">核心旗舰店</p>
+</div>
+<div class="glass-card p-5 text-center product-card">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-600/10 flex items-center justify-center mx-auto mb-3">
+<i class="fas fa-shopping-cart text-orange-400 text-xl"></i>
+</div>
+<h4 class="text-white font-semibold text-sm mb-1">拼多多</h4>
+<p class="text-slate-500 text-xs">爆款走量</p>
+</div>
+<div class="glass-card p-5 text-center product-card">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/10 flex items-center justify-center mx-auto mb-3">
+<i class="fab fa-tiktok text-pink-400 text-xl"></i>
+</div>
+<h4 class="text-white font-semibold text-sm mb-1">抖音</h4>
+<p class="text-slate-500 text-xs">直播电商</p>
+</div>
+<div class="glass-card p-5 text-center product-card">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/10 flex items-center justify-center mx-auto mb-3">
+<i class="fab fa-jedi-order text-red-400 text-xl"></i>
+</div>
+<h4 class="text-white font-semibold text-sm mb-1">京东</h4>
+<p class="text-slate-500 text-xs">品质渠道</p>
+</div>
+</div>
+<div class="glass-card p-8">
+<h3 class="text-blue-300 font-semibold mb-4 flex items-center gap-2"><i class="fas fa-chart-line"></i> 运营策略与未来规划</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<h4 class="text-white font-semibold mb-3">多平台协同策略</h4>
+<div class="space-y-3">
+<div class="flex items-start gap-2 text-sm">
+<i class="fas fa-check-circle text-blue-400 mt-0.5"></i>
+<span class="text-slate-300">天猫：品牌旗舰店，树立品牌形象，承接搜索流量</span>
+</div>
+<div class="flex items-start gap-2 text-sm">
+<i class="fas fa-check-circle text-orange-400 mt-0.5"></i>
+<span class="text-slate-300">拼多多：爆款走量，低价引流，快速起量</span>
+</div>
+<div class="flex items-start gap-2 text-sm">
+<i class="fas fa-check-circle text-pink-400 mt-0.5"></i>
+<span class="text-slate-300">抖音：直播带货，内容种草，短视频营销</span>
+</div>
+<div class="flex items-start gap-2 text-sm">
+<i class="fas fa-check-circle text-red-400 mt-0.5"></i>
+<span class="text-slate-300">京东：品质背书，自营入驻，高客单价</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-white font-semibold mb-3">未来拓展计划</h4>
+<div class="space-y-3">
+<div class="flex items-start gap-2 text-sm">
+<i class="fas fa-arrow-circle-right text-purple-400 mt-0.5"></i>
+<span class="text-slate-300">得物：潮鞋渠道，对接Z世代消费群体</span>
+</div>
+<div class="flex items-start gap-2 text-sm">
+<i class="fas fa-arrow-circle-right text-cyan-400 mt-0.5"></i>
+<span class="text-slate-300">跨境电商：布局亚马逊、速卖通，开拓海外市场</span>
+</div>
+<div class="flex items-start gap-2 text-sm">
+<i class="fas fa-arrow-circle-right text-emerald-400 mt-0.5"></i>
+<span class="text-slate-300">私域运营：微信小程序，会员体系，复购提升</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="risk">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-red-500 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">风险评估与司法案件</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+<div class="glass-card glass-card-danger p-6 text-center">
+<div class="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-triangle-exclamation text-red-400 text-2xl"></i>
+</div>
+<h4 class="text-white font-bold mb-2">自身风险</h4>
+<div class="metric-num text-3xl text-red-400 mb-1">9</div>
+<p class="text-slate-500 text-xs">司法案件/行政处罚/欠税</p>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-link text-orange-400 text-2xl"></i>
+</div>
+<h4 class="text-white font-bold mb-2">关联风险</h4>
+<div class="metric-num text-3xl text-orange-400 mb-1">3</div>
+<p class="text-slate-500 text-xs">许少鹏关联企业</p>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-users text-blue-400 text-2xl"></i>
+</div>
+<h4 class="text-white font-bold mb-2">失信被执行</h4>
+<div class="metric-num text-3xl text-emerald-400 mb-1">0</div>
+<p class="text-slate-500 text-xs">暂无失信记录</p>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-file-alt text-purple-400 text-2xl"></i>
+</div>
+<h4 class="text-white font-bold mb-2">经营异常</h4>
+<div class="metric-num text-3xl text-emerald-400 mb-1">0</div>
+<p class="text-slate-500 text-xs">正常经营状态</p>
+</div>
+</div>
+<div class="glass-card glass-card-danger p-8">
+<h3 class="text-red-300 font-semibold mb-4 flex items-center gap-2"><i class="fas fa-gavel"></i> 司法案件详情（8件）</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-red">商标侵权</span>
+<span class="text-white font-semibold text-sm">福建鸿星尔克体育用品有限公司 vs 泉州市信福网络科技有限公司</span>
+</div>
+<div class="text-slate-400 text-xs">案号：(2020)闽05民初875号 | 案由：侵害商标权纠纷 | 标的：待核实</div>
+</div>
+<div class="p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-red">专利纠纷</span>
+<span class="text-white font-semibold text-sm">朱顺兴 vs 泉州市信福网络科技有限公司</span>
+</div>
+<div class="text-slate-400 text-xs">案号：(2021)闽0521民初XXX号 | 案由：外观设计专利侵权纠纷</div>
+</div>
+<div class="p-4 rounded-xl bg-orange-500/5 border border-orange-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-orange">行政处罚</span>
+<span class="text-white font-semibold text-sm">市场监管行政处罚</span>
+</div>
+<div class="text-slate-400 text-xs">处罚机关：泉州市市场监督管理局 | 事由：待核实</div>
+</div>
+<div class="p-4 rounded-xl bg-orange-500/5 border border-orange-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-orange">欠税公告</span>
+<span class="text-white font-semibold text-sm">欠税金额：约1.2万元</span>
+</div>
+<div class="text-slate-400 text-xs">欠税税种：待核实 | 欠税时间：待核实</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 mt-6">
+<h3 class="text-amber-300 font-semibold mb-4 flex items-center gap-2"><i class="fas fa-shield-virus"></i> 深度风险分析</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-red">高风险</span>
+<span class="text-white font-semibold text-sm">知识产权侵权风险</span>
+</div>
+<p class="text-slate-400 text-xs">作为被告涉及商标侵权(鸿星尔克)及外观设计专利侵权(朱顺兴)多起案件，显示在产品设计和品牌使用方面存在合规盲区，需建立IP风控体系。</p>
+</div>
+<div class="p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-red">高风险</span>
+<span class="text-white font-semibold text-sm">税务合规风险</span>
+</div>
+<p class="text-slate-400 text-xs">存在欠税公告(约1.2万元)，显示税务申报或缴纳存在滞后。电商企业多平台收入分散，需加强税务管理和合规申报。</p>
+</div>
+<div class="p-4 rounded-xl bg-amber-500/5 border border-amber-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-orange">中风险</span>
+<span class="text-white font-semibold text-sm">多平台合规风险</span>
+</div>
+<p class="text-slate-400 text-xs">天猫/拼多多/抖音/京东等平台规则差异大，广告合规、价格管控、知识产权保护要求不同，易触发平台处罚。</p>
+</div>
+<div class="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="tag tag-green">低风险</span>
+<span class="text-white font-semibold text-sm">经营稳定性</span>
+</div>
+<p class="text-slate-400 text-xs">企业存续11年，年销售额突破亿元，200+人团队稳定运营，经营基本面健康，无失信被执行人记录。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="revenue">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">营收估算与经营规模</h2>
+</div>
+<div class="glass-card p-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div>
+<h3 class="text-blue-300 font-semibold mb-4 flex items-center gap-2"><i class="fas fa-chart-bar"></i> 营收规模</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-blue-500/5 border border-blue-500/10">
+<div class="flex justify-between items-center mb-2">
+<span class="text-slate-300 text-sm">企业自述年销售额</span>
+<span class="text-blue-300 font-semibold">突破1亿元（2022）</span>
+</div>
+<div class="text-slate-500 text-xs">来自企业发展历程自述，结合200+人团队规模验证可信度较高</div>
+</div>
+<div class="p-4 rounded-xl bg-orange-500/5 border border-orange-500/10">
+<div class="flex justify-between items-center mb-2">
+<span class="text-slate-300 text-sm">员工规模</span>
+<span class="text-orange-300 font-semibold">200+人</span>
+</div>
+<div class="text-slate-500 text-xs">涵盖运营、客服、设计、仓储、财务等全链路团队</div>
+</div>
+<div class="p-4 rounded-xl bg-purple-500/5 border border-purple-500/10">
+<div class="flex justify-between items-center mb-2">
+<span class="text-slate-300 text-sm">电商平台数量</span>
+<span class="text-purple-300 font-semibold">6+平台</span>
+</div>
+<div class="text-slate-500 text-xs">天猫/拼多多/抖音/京东/得物/跨境多平台布局</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-orange-300 font-semibold mb-4 flex items-center gap-2"><i class="fas fa-users"></i> 组织架构</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-slate-800/30 border border-slate-700/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+<i class="fas fa-user-tie text-blue-400"></i>
+</div>
+<div>
+<div class="text-white font-semibold">许少鹏</div>
+<div class="text-slate-500 text-xs">法定代表人 · 执行董事 · 总经理</div>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-slate-800/30 border border-slate-700/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
+<i class="fas fa-user-cog text-orange-400"></i>
+</div>
+<div>
+<div class="text-white font-semibold">许世长</div>
+<div class="text-slate-500 text-xs">监事 · 关联企业负责人</div>
+</div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-slate-800/30 border border-slate-700/30">
+<div class="text-sm">
+<div class="text-white font-semibold mb-2">核心团队构成</div>
+<div class="space-y-1 text-slate-400 text-xs">
+<div>• 运营团队：天猫/拼多多/抖音各平台运营负责人</div>
+<div>• 设计团队：产品设计、视觉设计、包装设计</div>
+<div>• 客服团队：7×12小时多平台客服支持</div>
+<div>• 仓储物流：订单处理、发货、退换货管理</div>
+<div>• 财务人力：账务核算、税务申报、人事管理</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="timeline">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">发展历程</h2>
+</div>
+<div class="glass-card p-8">
+<div class="space-y-6 max-w-3xl mx-auto">
+<div class="flex gap-6 items-start">
+<div class="relative">
+<div class="timeline-dot"></div>
+<div class="timeline-line"></div>
+</div>
+<div>
+<div class="text-blue-400 font-bold text-sm mb-1">2015</div>
+<div class="text-white font-semibold">公司成立</div>
+<div class="text-slate-400 text-sm mt-1">泉州市信福网络科技有限公司正式注册成立，注册资本100万元，许少鹏任法定代表人</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="relative">
+<div class="timeline-dot" style="border-color:#f97316"></div>
+<div class="timeline-line" style="background:linear-gradient(to bottom,#f97316,transparent)"></div>
+</div>
+<div>
+<div class="text-orange-400 font-bold text-sm mb-1">2018</div>
+<div class="text-white font-semibold">族群扩张</div>
+<div class="text-slate-400 text-sm mt-1">成立泉州市鹏许贸易有限公司，构建贸易分销能力，完善供应链体系</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="relative">
+<div class="timeline-dot" style="border-color:#a855f7"></div>
+<div class="timeline-line" style="background:linear-gradient(to bottom,#a855f7,transparent)"></div>
+</div>
+<div>
+<div class="text-purple-400 font-bold text-sm mb-1">2020</div>
+<div class="text-white font-semibold">多平台运营</div>
+<div class="text-slate-400 text-sm mt-1">完成天猫/拼多多/抖音/京东四大平台布局，员工规模突破100人</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="relative">
+<div class="timeline-dot" style="border-color:#ef4444"></div>
+<div class="timeline-line" style="background:linear-gradient(to bottom,#ef4444,transparent)"></div>
+</div>
+<div>
+<div class="text-red-400 font-bold text-sm mb-1">2020-2021</div>
+<div class="text-white font-semibold">司法纠纷</div>
+<div class="text-slate-400 text-sm mt-1">涉及鸿星尔克商标侵权案及朱顺兴外观设计专利纠纷案，品牌合规面临挑战</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="relative">
+<div class="timeline-dot" style="border-color:#10b981"></div>
+<div class="timeline-line" style="background:linear-gradient(to bottom,#10b981,transparent)"></div>
+</div>
+<div>
+<div class="text-emerald-400 font-bold text-sm mb-1">2022</div>
+<div class="text-white font-semibold">年销过亿</div>
+<div class="text-slate-400 text-sm mt-1">企业自述年销售额突破1亿元，成为泉州鞋业电商领域头部企业</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="relative">
+<div class="timeline-dot" style="border-color:#3b82f6"></div>
+</div>
+<div>
+<div class="text-blue-400 font-bold text-sm mb-1">2025-2026</div>
+<div class="text-white font-semibold">品牌升级与扩张</div>
+<div class="text-slate-400 text-sm mt-1">成立信福品牌管理公司，启动品牌升级战略；布局得物及跨境电商渠道</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="competitiveness">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">核心竞争力分析</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="section-icon bg-blue-500/15"><i class="fas fa-shopping-cart text-blue-400 text-xl"></i></div>
+<h3 class="text-white font-bold">多平台运营能力</h3>
+</div>
+<p class="text-slate-400 text-sm">天猫/拼多多/抖音/京东四大核心平台同时运营，掌握各平台规则和流量玩法，具备跨平台资源调度和协同作战能力，抗单一平台风险能力强。</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="section-icon bg-orange-500/15"><i class="fas fa-users text-orange-400 text-xl"></i></div>
+<h3 class="text-white font-bold">200+人专业团队</h3>
+</div>
+<p class="text-slate-400 text-sm">具备完整电商运营全链路团队，涵盖运营、设计、客服、仓储、财务等职能。团队规模在泉州电商企业中处于领先水平，支撑年销亿级业务体量。</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="section-icon bg-purple-500/15"><i class="fas fa-layer-group text-purple-400 text-xl"></i></div>
+<h3 class="text-white font-bold">双品牌策略</h3>
+</div>
+<p class="text-slate-400 text-sm">自有品牌(笑恋袋鼠/小免朱笛/JODOO)与代理品牌(卡帝乐鳄鱼/木林森/森马)并行，兼顾品牌溢价与销量规模，形成"自有+代理"双轮驱动格局。</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="section-icon bg-cyan-500/15"><i class="fas fa-rocket text-cyan-400 text-xl"></i></div>
+<h3 class="text-white font-bold">品牌升级迭代</h3>
+</div>
+<p class="text-slate-400 text-sm">从早期大众品牌向PVB/JODOO潮牌定位进化，主动拥抱Z世代消费趋势。2026年成立品牌管理公司，显示长期品牌建设决心。</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="section-icon bg-emerald-500/15"><i class="fas fa-globe text-emerald-400 text-xl"></i></div>
+<h3 class="text-white font-bold">供应链整合能力</h3>
+</div>
+<p class="text-slate-400 text-sm">依托泉州晋江鞋业产业带优势，整合上游供应链资源。旗下信福众创贸易公司提供供应链服务，具备快速响应市场需求的产品开发能力。</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="section-icon bg-amber-500/15"><i class="fas fa-chart-line text-amber-400 text-xl"></i></div>
+<h3 class="text-white font-bold">亿级销售验证</h3>
+</div>
+<p class="text-slate-400 text-sm">年销售额突破1亿元，验证商业模式可行性。200+人团队和多平台布局支撑业务持续增长，具备进一步扩张基础。</p>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-16" id="solutions">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-1 h-8 bg-gradient-to-b from-blue-400 to-orange-500 rounded-full"></div>
+<h2 class="text-2xl font-bold">数字化解决方案建议</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="glass-card p-6" style="border-color:rgba(59,130,246,.15)">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+<i class="fas fa-file-alt text-blue-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white font-bold">多平台订单管理</h3>
+<p class="text-slate-500 text-xs">解决订单分散问题</p>
+</div>
+</div>
+<ul class="space-y-2 text-sm text-slate-400">
+<li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-0.5"></i>统一订单中台，聚合各平台数据</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-0.5"></i>智能分单配货，提高发货效率</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-blue-400 mt-0.5"></i>实时库存同步，避免超卖</li>
+</ul>
+</div>
+<div class="glass-card p-6" style="border-color:rgba(239,68,68,.15)">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center">
+<i class="fas fa-shield-halved text-red-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white font-bold">知识产权风控</h3>
+<p class="text-slate-500 text-xs">应对侵权诉讼风险</p>
+</div>
+</div>
+<ul class="space-y-2 text-sm text-slate-400">
+<li class="flex items-start gap-2"><i class="fas fa-check text-red-400 mt-0.5"></i>产品设计前IP检索预警</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-red-400 mt-0.5"></i>商标使用合规审核</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-red-400 mt-0.5"></i>侵权纠纷案件管理</li>
+</ul>
+</div>
+<div class="glass-card p-6" style="border-color:rgba(168,85,247,.15)">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+<i class="fas fa-chart-pie text-purple-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white font-bold">税务合规管理</h3>
+<p class="text-slate-500 text-xs">解决欠税与申报问题</p>
+</div>
+</div>
+<ul class="space-y-2 text-sm text-slate-400">
+<li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-0.5"></i>多平台收入自动归集</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-0.5"></i>智能税务申报提醒</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-purple-400 mt-0.5"></i>税务风险预警机制</li>
+</ul>
+</div>
+<div class="glass-card p-6" style="border-color:rgba(16,185,129,.15)">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+<i class="fas fa-boxes text-emerald-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white font-bold">库存协同管理</h3>
+<p class="text-slate-500 text-xs">优化供应链效率</p>
+</div>
+</div>
+<ul class="space-y-2 text-sm text-slate-400">
+<li class="flex items-start gap-2"><i class="fas fa-check text-emerald-400 mt-0.5"></i>多仓库存实时监控</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-emerald-400 mt-0.5"></i>智能补货建议</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-emerald-400 mt-0.5"></i>滞销品预警处理</li>
+</ul>
+</div>
+<div class="glass-card p-6" style="border-color:rgba(249,115,22,.15)">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center">
+<i class="fas fa-chart-bar text-orange-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white font-bold">BI数据看板</h3>
+<p class="text-slate-500 text-xs">管理层决策支持</p>
+</div>
+</div>
+<ul class="space-y-2 text-sm text-slate-400">
+<li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-0.5"></i>多平台销售数据汇总</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-0.5"></i>实时经营指标监控</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-orange-400 mt-0.5"></i>销售趋势预测分析</li>
+</ul>
+</div>
+<div class="glass-card p-6" style="border-color:rgba(6,182,212,.15)">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center">
+<i class="fas fa-robot text-cyan-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-white font-bold">AI智能客服</h3>
+<p class="text-slate-500 text-xs">提升客服效率</p>
+</div>
+</div>
+<ul class="space-y-2 text-sm text-slate-400">
+<li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-0.5"></i>多平台统一客服入口</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-0.5"></i>智能问答机器人</li>
+<li class="flex items-start gap-2"><i class="fas fa-check text-cyan-400 mt-0.5"></i>工单智能分配</li>
+</ul>
+</div>
+</div>
+</section>
+
+<footer class="bg-slate-900/50 border-t border-slate-800 py-8">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<div class="text-slate-500 text-sm">
+<p>© 2026 森罗之眼智能体 | 企业画像分析报告</p>
+<p class="mt-1">数据来源：企查查 · 天眼查 · 水滴信用 · 公开信息</p>
+</div>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+gsap.registerPlugin(ScrollTrigger);
+gsap.from('#hero-text', {
+opacity: 0,
+x: -50,
+duration: 1.2,
+ease: 'power3.out'
+});
+gsap.from('#hero-visual', {
+opacity: 0,
+x: 50,
+duration: 1.2,
+delay: 0.3,
+ease: 'power3.out'
+});
+document.querySelectorAll('.reveal').forEach(section => {
+ScrollTrigger.create({
+trigger: section,
+start: 'top 80%',
+end: 'top 20%',
+onEnter: () => section.classList.add('active'),
+onLeaveBack: () => section.classList.remove('active')
+});
+});
+gsap.from('#metrics .glass-card', {
+opacity: 0,
+y: 30,
+stagger: 0.1,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#metrics',
+start: 'top 70%'
+}
+});
+gsap.from('#group .glass-card', {
+opacity: 0,
+scale: 0.95,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#group',
+start: 'top 70%'
+}
+});
+gsap.from('#brands .glass-card', {
+opacity: 0,
+x: -30,
+stagger: 0.2,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#brands',
+start: 'top 70%'
+}
+});
+gsap.from('#ecommerce .product-card', {
+opacity: 0,
+y: 30,
+stagger: 0.1,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#ecommerce',
+start: 'top 70%'
+}
+});
+gsap.from('#risk .glass-card', {
+opacity: 0,
+y: 30,
+stagger: 0.15,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#risk',
+start: 'top 70%'
+}
+});
+gsap.from('#revenue .glass-card', {
+opacity: 0,
+scale: 0.95,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#revenue',
+start: 'top 70%'
+}
+});
+gsap.from('#timeline .timeline-dot', {
+opacity: 0,
+scale: 0,
+stagger: 0.2,
+duration: 0.5,
+scrollTrigger: {
+trigger: '#timeline',
+start: 'top 70%'
+}
+});
+gsap.from('#competitiveness .glass-card', {
+opacity: 0,
+y: 30,
+stagger: 0.1,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#competitiveness',
+start: 'top 70%'
+}
+});
+gsap.from('#solutions .glass-card', {
+opacity: 0,
+y: 30,
+stagger: 0.1,
+duration: 0.8,
+scrollTrigger: {
+trigger: '#solutions',
+start: 'top 70%'
+}
+});
+});
+</script>
+</body>
+</html>

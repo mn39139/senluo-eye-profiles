@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福建慧芯激光科技有限公司 - 企业画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+:root {
+  --primary: #00d4ff;
+  --secondary: #7c3aed;
+  --accent: #06b6d4;
+  --dark: #0a0e1a;
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(0, 212, 255, 0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--dark);
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+.font-orbitron { font-family: 'Orbitron', monospace; }
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.5;
+}
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.2);
+}
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-bg {
+  background: radial-gradient(ellipse at 30% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+              var(--dark);
+}
+.pulse-ring {
+  animation: pulseRing 3s ease-in-out infinite;
+}
+@keyframes pulseRing {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.3); }
+  50% { box-shadow: 0 0 0 20px rgba(0, 212, 255, 0); }
+}
+.float-anim {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.chip-glow {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(124, 58, 237, 0.15));
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  display: inline-block;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.chip-glow:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+.stat-number {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.progress-bar {
+  height: 6px;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #00d4ff, #7c3aed);
+  transition: width 1.5s ease;
+}
+.timeline-dot {
+  width: 12px; height: 12px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: 12px; left: 5px;
+  width: 2px; height: calc(100% + 24px);
+  background: linear-gradient(to bottom, var(--primary), transparent);
+}
+.funding-pill {
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: all 0.3s;
+}
+.funding-pill:hover {
+  border-color: var(--primary);
+  background: rgba(0, 212, 255, 0.12);
+}
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.risk-none { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+.risk-low { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+.risk-mid { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
+.risk-high { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.scanner-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: scanLine 4s ease-in-out infinite;
+}
+@keyframes scanLine {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.5); }
+</style>
+</head>
+<body class="bg-grid">
+
+<!-- Hero Section -->
+<section class="hero-bg min-h-screen flex items-center relative overflow-hidden" id="hero">
+  <div class="absolute inset-0">
+    <div class="particle" style="top:10%;left:20%;animation:float 5s ease-in-out infinite"></div>
+    <div class="particle" style="top:30%;left:80%;animation:float 7s ease-in-out infinite 1s"></div>
+    <div class="particle" style="top:60%;left:40%;animation:float 6s ease-in-out infinite 2s"></div>
+    <div class="particle" style="top:80%;left:70%;animation:float 8s ease-in-out infinite 0.5s"></div>
+    <div class="particle" style="top:20%;left:55%;animation:float 9s ease-in-out infinite 3s"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 py-20 w-full relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8" id="hero-text">
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 bg-cyan-400 rounded-full pulse-ring"></div>
+          <span class="text-cyan-400 text-sm font-medium tracking-widest uppercase">AI Photonix Enterprise Profile</span>
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-black leading-tight">
+          <span class="gradient-text">慧芯激光</span><br>
+          <span class="text-3xl lg:text-4xl text-slate-300 font-light">AI算力光芯底座</span>
+        </h1>
+        <p class="text-slate-400 text-lg leading-relaxed max-w-xl">
+          国内首家同时拥有6英寸GaAs与4英寸InP双材料体系IDM全流程产线的高端光芯片企业，112G VCSEL芯片技术达<span class="text-cyan-400 font-semibold">国际先进水平</span>，打破海外垄断，引领国产替代。
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="chip-glow"><i class="fas fa-microchip mr-2"></i>A2+轮融资</span>
+          <span class="chip-glow"><i class="fas fa-award mr-2"></i>专精特新</span>
+          <span class="chip-glow"><i class="fas fa-landmark mr-2"></i>上市后备</span>
+          <span class="chip-glow"><i class="fas fa-shield-halved mr-2"></i>国家高新</span>
+        </div>
+        <div class="grid grid-cols-3 gap-6 pt-4">
+          <div>
+            <div class="stat-number text-3xl">15</div>
+            <div class="text-slate-500 text-sm">估值(亿元)</div>
+          </div>
+          <div>
+            <div class="stat-number text-3xl">3.6</div>
+            <div class="text-slate-500 text-sm">年产能(亿颗)</div>
+          </div>
+          <div>
+            <div class="stat-number text-3xl">69</div>
+            <div class="text-slate-500 text-sm">专利总数</div>
+          </div>
+        </div>
+      </div>
+      <div class="relative" id="hero-visual">
+        <div class="glass-card p-8 relative">
+          <div class="scanner-line"></div>
+          <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-violet-600/20 border border-cyan-500/30 float-anim">
+              <i class="fas fa-atom text-4xl text-cyan-400"></i>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+              <span class="text-slate-400">统一信用代码</span>
+              <span class="font-mono text-cyan-300 text-sm">91350521MA32H9J88A</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+              <span class="text-slate-400">法定代表人</span>
+              <span class="text-white font-medium">吴建国 (Jianguo Wu)</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+              <span class="text-slate-400">注册资本</span>
+              <span class="text-white font-medium">1,782.06万元</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+              <span class="text-slate-400">成立日期</span>
+              <span class="text-white font-medium">2019年2月27日</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+              <span class="text-slate-400">企业类型</span>
+              <span class="text-white font-medium text-sm">有限责任公司(外商投资·非独资)</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-slate-700/50">
+              <span class="text-slate-400">经营状态</span>
+              <span class="text-green-400 font-medium"><i class="fas fa-circle text-xs mr-1"></i>存续</span>
+            </div>
+            <div class="flex justify-between items-center py-3">
+              <span class="text-slate-400">所属行业</span>
+              <span class="text-white font-medium">集成电路设计/制造</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Metrics Bento Grid -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="metrics">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">核心经营指标</h2>
+  </div>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="glass-card p-6 col-span-2 lg:col-span-1 lg:row-span-2 flex flex-col justify-between">
+      <div>
+        <div class="text-slate-400 text-sm mb-2"><i class="fas fa-building mr-2"></i>产业园面积</div>
+        <div class="stat-number text-5xl">93.5</div>
+        <div class="text-slate-500 text-lg">亩</div>
+      </div>
+      <div class="mt-6 space-y-2">
+        <div class="flex justify-between text-sm"><span class="text-slate-400">建筑面积</span><span class="text-cyan-300">5.18万㎡</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">无尘车间</span><span class="text-cyan-300">2万㎡+</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">产线体系</span><span class="text-cyan-300">双平台IDM</span></div>
+      </div>
+    </div>
+    <div class="glass-card p-6">
+      <div class="text-slate-400 text-sm mb-1"><i class="fas fa-users mr-2"></i>员工规模</div>
+      <div class="stat-number text-4xl">151</div>
+      <div class="text-slate-500 text-sm">人(2025年参保)</div>
+      <div class="mt-3 space-y-1 text-xs">
+        <div class="flex justify-between"><span class="text-slate-500">本科及以上</span><span class="text-cyan-300">66%+</span></div>
+        <div class="flex justify-between"><span class="text-slate-500">博士</span><span class="text-cyan-300">6人</span></div>
+        <div class="flex justify-between"><span class="text-slate-500">硕士</span><span class="text-cyan-300">6人</span></div>
+      </div>
+    </div>
+    <div class="glass-card p-6">
+      <div class="text-slate-400 text-sm mb-1"><i class="fas fa-coins mr-2"></i>注册资本</div>
+      <div class="stat-number text-4xl">1,782</div>
+      <div class="text-slate-500 text-sm">万元</div>
+      <div class="mt-3">
+        <div class="flex justify-between text-xs"><span class="text-slate-500">实缴资本</span><span class="text-cyan-300">1,448.28万</span></div>
+        <div class="flex justify-between text-xs"><span class="text-slate-500">实缴率</span><span class="text-cyan-300">81.3%</span></div>
+      </div>
+    </div>
+    <div class="glass-card p-6">
+      <div class="text-slate-400 text-sm mb-1"><i class="fas fa-gem mr-2"></i>财产线索估值</div>
+      <div class="stat-number text-4xl">1.31</div>
+      <div class="text-slate-500 text-sm">亿元</div>
+      <div class="mt-3 text-xs"><span class="text-slate-500">线索数量</span><span class="text-cyan-300 ml-2">234条</span></div>
+    </div>
+    <div class="glass-card p-6">
+      <div class="text-slate-400 text-sm mb-1"><i class="fas fa-industry mr-2"></i>年产能</div>
+      <div class="stat-number text-4xl">3.6</div>
+      <div class="text-slate-500 text-sm">亿颗光电芯片</div>
+      <div class="mt-3 text-xs"><span class="text-slate-500">外延片产能</span><span class="text-cyan-300 ml-2">4,300片/年</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Matrix -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="products">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">核心产品矩阵</h2>
+    <span class="text-slate-500 text-sm ml-2">—— 双百 + CW DFB 战略</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <!-- VCSEL -->
+    <div class="glass-card p-6 hover:border-cyan-500/40 transition-all duration-300 group">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-cyan-500/15 flex items-center justify-center">
+          <i class="fas fa-bolt text-cyan-400"></i>
+        </div>
+        <div>
+          <div class="font-bold text-lg group-hover:text-cyan-300 transition-colors">高速VCSEL</div>
+          <div class="text-slate-500 text-xs">垂直腔面发射激光器</div>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="flex justify-between text-sm"><span class="text-slate-400">56G/112G VCSEL</span><span class="text-green-400 font-medium">已量产</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">200G VCSEL</span><span class="text-yellow-400 font-medium">开发中</span></div>
+        <div class="text-xs text-slate-500 mt-2">3dB带宽突破40GHz，112G版本经院士专家组评审达国际先进水平</div>
+        <div class="progress-bar mt-2"><div class="progress-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+    <!-- EML -->
+    <div class="glass-card p-6 hover:border-cyan-500/40 transition-all duration-300 group">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-violet-500/15 flex items-center justify-center">
+          <i class="fas fa-wave-square text-violet-400"></i>
+        </div>
+        <div>
+          <div class="font-bold text-lg group-hover:text-violet-300 transition-colors">高速EML</div>
+          <div class="text-slate-500 text-xs">电吸收调制激光器</div>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="flex justify-between text-sm"><span class="text-slate-400">112G EML</span><span class="text-green-400 font-medium">已量产</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">100G/200G EML</span><span class="text-yellow-400 font-medium">协同推进</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">224G EML</span><span class="text-yellow-400 font-medium">新一代研发</span></div>
+        <div class="text-xs text-slate-500 mt-2">与海外合作伙伴深度协同推进长距系列</div>
+        <div class="progress-bar mt-2"><div class="progress-fill" style="width:70%"></div></div>
+      </div>
+    </div>
+    <!-- CW DFB -->
+    <div class="glass-card p-6 hover:border-cyan-500/40 transition-all duration-300 group">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-emerald-500/15 flex items-center justify-center">
+          <i class="fas fa-satellite-dish text-emerald-400"></i>
+        </div>
+        <div>
+          <div class="font-bold text-lg group-hover:text-emerald-300 transition-colors">CW DFB</div>
+          <div class="text-slate-500 text-xs">硅光光源·分布反馈激光器</div>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="flex justify-between text-sm"><span class="text-slate-400">70mW/100mW</span><span class="text-green-400 font-medium">已量产</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">更高功率</span><span class="text-yellow-400 font-medium">年内推出</span></div>
+        <div class="text-xs text-slate-500 mt-2">斩获多项海内外订单，硅光模块核心光源</div>
+        <div class="progress-bar mt-2"><div class="progress-fill" style="width:80%"></div></div>
+      </div>
+    </div>
+    <!-- PD/APD -->
+    <div class="glass-card p-6 hover:border-cyan-500/40 transition-all duration-300 group">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/15 flex items-center justify-center">
+          <i class="fas fa-sun text-amber-400"></i>
+        </div>
+        <div>
+          <div class="font-bold text-lg group-hover:text-amber-300 transition-colors">PD / APD</div>
+          <div class="text-slate-500 text-xs">高速光电探测器</div>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="flex justify-between text-sm"><span class="text-slate-400">100G PD(GaAs)</span><span class="text-green-400 font-medium">已量产</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">100G PD(InP)</span><span class="text-green-400 font-medium">已量产</span></div>
+        <div class="text-xs text-slate-500 mt-2">收发全链路覆盖，国内极少数实现方案</div>
+        <div class="progress-bar mt-2"><div class="progress-fill" style="width:90%"></div></div>
+      </div>
+    </div>
+    <!-- Automotive -->
+    <div class="glass-card p-6 hover:border-cyan-500/40 transition-all duration-300 group">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-rose-500/15 flex items-center justify-center">
+          <i class="fas fa-car text-rose-400"></i>
+        </div>
+        <div>
+          <div class="font-bold text-lg group-hover:text-rose-300 transition-colors">车载光通信</div>
+          <div class="text-slate-500 text-xs">宽温VCSEL + PD</div>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="flex justify-between text-sm"><span class="text-slate-400">850nm/910nm/980nm</span><span class="text-green-400 font-medium">通过验证</span></div>
+        <div class="text-xs text-slate-500 mt-2">-55°C~125°C宽温工作，面向车载光通信及激光雷达</div>
+        <div class="progress-bar mt-2"><div class="progress-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+    <!-- Foundry -->
+    <div class="glass-card p-6 hover:border-cyan-500/40 transition-all duration-300 group">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-sky-500/15 flex items-center justify-center">
+          <i class="fas fa-microscope text-sky-400"></i>
+        </div>
+        <div>
+          <div class="font-bold text-lg group-hover:text-sky-300 transition-colors">代工服务</div>
+          <div class="text-slate-500 text-xs">外延片生长 + 芯片制程</div>
+        </div>
+      </div>
+      <div class="space-y-3">
+        <div class="flex justify-between text-sm"><span class="text-slate-400">6寸GaAs产线</span><span class="text-green-400 font-medium">运行中</span></div>
+        <div class="flex justify-between text-sm"><span class="text-slate-400">4寸InP产线</span><span class="text-green-400 font-medium">运行中</span></div>
+        <div class="text-xs text-slate-500 mt-2">支持客户多样化需求，提供标准设计代工</div>
+        <div class="progress-bar mt-2"><div class="progress-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technology & IDM Platform -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="technology">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">IDM全流程技术平台</h2>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+    <div class="glass-card p-8 lg:col-span-2">
+      <div class="text-lg font-bold mb-6 gradient-text">GaAs + InP 双材料体系IDM产线</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="text-center p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
+          <i class="fas fa-drafting-compass text-2xl text-cyan-400 mb-2"></i>
+          <div class="text-sm font-medium">芯片设计</div>
+          <div class="text-xs text-slate-500 mt-1">仿真/建模</div>
+        </div>
+        <div class="text-center p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
+          <i class="fas fa-layer-group text-2xl text-cyan-400 mb-2"></i>
+          <div class="text-sm font-medium">外延生长</div>
+          <div class="text-xs text-slate-500 mt-1">MOCVD/MBE</div>
+        </div>
+        <div class="text-center p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
+          <i class="fas fa-microchip text-2xl text-cyan-400 mb-2"></i>
+          <div class="text-sm font-medium">芯片制程</div>
+          <div class="text-xs text-slate-500 mt-1">光刻/刻蚀/薄膜</div>
+        </div>
+        <div class="text-center p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
+          <i class="fas fa-vial text-2xl text-cyan-400 mb-2"></i>
+          <div class="text-sm font-medium">测试验证</div>
+          <div class="text-xs text-slate-500 mt-1">封装/可靠性</div>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-cyan-500/5 to-violet-500/5 border border-cyan-500/10">
+        <div class="text-sm text-slate-300 leading-relaxed">
+          <i class="fas fa-star text-yellow-400 mr-2"></i>
+          <strong>核心突破：</strong>112G VCSEL芯片经工信部国家工业信息安全发展研究中心组织、院士领衔专家组评审，技术水平达<strong class="text-cyan-300">"国际先进"</strong>，在技术架构革新、性能协同优化、工艺精准调控三大维度实现关键突破。
+        </div>
+      </div>
+    </div>
+    <div class="glass-card p-6 flex flex-col justify-between">
+      <div>
+        <div class="text-slate-400 text-sm mb-4"><i class="fas fa-shield-halved mr-2"></i>国产替代关键地位</div>
+        <div class="mb-4">
+          <div class="text-slate-500 text-xs mb-1">50G+高端光芯片国产化率</div>
+          <div class="stat-number text-4xl">&lt;10%</div>
+          <div class="text-red-400 text-xs">严重依赖进口</div>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-cyan-400 mt-0.5"></i>
+            <span class="text-slate-300">收发全链路覆盖光芯片供应商</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-cyan-400 mt-0.5"></i>
+            <span class="text-slate-300">6寸GaAs + 4寸InP双IDM平台</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-cyan-400 mt-0.5"></i>
+            <span class="text-slate-300">核心团队20年+光芯片经验</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-cyan-400 mt-0.5"></i>
+            <span class="text-slate-300">400G/800G/1.6T光模块核心芯片</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Application Scenarios -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="applications">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">应用场景全景</h2>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-brain text-3xl text-cyan-400 mb-3"></i>
+      <div class="text-sm font-medium">AI超算中心</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-server text-3xl text-violet-400 mb-3"></i>
+      <div class="text-sm font-medium">数据中心</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-tower-cell text-3xl text-emerald-400 mb-3"></i>
+      <div class="text-sm font-medium">5G光通信</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-car text-3xl text-amber-400 mb-3"></i>
+      <div class="text-sm font-medium">自动驾驶</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-robot text-3xl text-rose-400 mb-3"></i>
+      <div class="text-sm font-medium">AI仿生机器人</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-wifi text-3xl text-sky-400 mb-3"></i>
+      <div class="text-sm font-medium">物联网</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-plane text-3xl text-indigo-400 mb-3"></i>
+      <div class="text-sm font-medium">低空经济</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-eye text-3xl text-teal-400 mb-3"></i>
+      <div class="text-sm font-medium">3D感测/成像</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-crosshairs text-3xl text-orange-400 mb-3"></i>
+      <div class="text-sm font-medium">激光雷达</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-mobile-screen text-3xl text-pink-400 mb-3"></i>
+      <div class="text-sm font-medium">智能终端</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-coins text-3xl text-yellow-400 mb-3"></i>
+      <div class="text-sm font-medium">数字金融</div>
+    </div>
+    <div class="glass-card p-5 text-center hover:border-cyan-500/40 transition-all">
+      <i class="fas fa-industry text-3xl text-lime-400 mb-3"></i>
+      <div class="text-sm font-medium">高端智造</div>
+    </div>
+  </div>
+</section>
+
+<!-- Financing History -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="financing">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">融资历程</h2>
+    <span class="chip-glow text-xs ml-2">当前A2+轮 · 估值15亿元</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="funding-pill">
+      <div class="text-xs text-slate-500 mb-2">A轮</div>
+      <div class="font-bold text-lg mb-1">天使/种子轮</div>
+      <div class="text-xs text-slate-400">创立初期融资</div>
+      <div class="text-xs text-slate-500 mt-2">由海外归国团队创建</div>
+    </div>
+    <div class="funding-pill">
+      <div class="text-xs text-slate-500 mb-2">A+轮 · 2024年10月</div>
+      <div class="font-bold text-lg mb-1 text-cyan-300">近亿元</div>
+      <div class="text-xs text-slate-400">浦科投资 · 泉州金控集团</div>
+      <div class="text-xs text-slate-500 mt-2">新产品研发 + 产线扩容</div>
+    </div>
+    <div class="funding-pill" style="border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.12)">
+      <div class="text-xs text-cyan-400 mb-2 font-semibold">A2+轮 · 2026年6月</div>
+      <div class="font-bold text-xl mb-1 gradient-text">数亿元</div>
+      <div class="text-xs text-slate-300">国中资本领投 · 贵州高新基金 · 隐山资本 · 敦成投资 · 财鑫资本 · 文投创工场 · 明礼泽华</div>
+      <div class="text-xs text-cyan-400 mt-2">扩产 + 下一代研发</div>
+    </div>
+    <div class="funding-pill">
+      <div class="text-xs text-slate-500 mb-2">B轮 · 2026年4月</div>
+      <div class="font-bold text-lg mb-1 text-violet-300">未披露</div>
+      <div class="text-xs text-slate-400">温润投资领投</div>
+      <div class="text-xs text-slate-500 mt-2">高端光电芯片研发与量产</div>
+    </div>
+  </div>
+</section>
+
+<!-- Equity Structure -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="equity">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">股权结构</h2>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+    <div class="glass-card p-6 lg:col-span-2">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-sitemap mr-2"></i>主要股东（14位）</div>
+      <div class="space-y-3">
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="text-slate-300">泉州市中谷芯投资(有限合伙)</span><span class="text-cyan-300 font-mono">41.15%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:41.15%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="text-slate-300">泉州惠宇投资(有限合伙)</span><span class="text-cyan-300 font-mono">15.43%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:15.43%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="text-slate-300">泉州市思特投资(有限合伙)</span><span class="text-cyan-300 font-mono">13.81%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:13.81%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="text-slate-300">山西鑫昌源投资</span><span class="text-cyan-300 font-mono">5.14%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:5.14%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="text-slate-300">国中绿色发展基金(贵州)</span><span class="text-cyan-300 font-mono">4.33%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:4.33%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1"><span class="text-slate-300">陕西温润材料智造创投</span><span class="text-cyan-300 font-mono">3.22%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:3.22%"></div></div>
+        </div>
+        <div class="text-xs text-slate-500 pt-2">其他股东：贵州高新基金、慧聚芯光一号/二号、赤子之心、明礼智信、隐山致能、玉谷投资、铨赢科技、金同慧芯等</div>
+      </div>
+    </div>
+    <div class="glass-card p-6">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-user-tie mr-2"></i>实控人信息</div>
+      <div class="text-center mb-6">
+        <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-cyan-500/20 to-violet-600/20 flex items-center justify-center mb-3 border border-cyan-500/30">
+          <i class="fas fa-user text-2xl text-cyan-400"></i>
+        </div>
+        <div class="font-bold text-lg">吴建国</div>
+        <div class="text-slate-500 text-xs">Jianguo Wu</div>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between"><span class="text-slate-400">间接持股</span><span class="text-cyan-300">18.21%</span></div>
+        <div class="flex justify-between"><span class="text-slate-400">法定代表人</span><span class="text-slate-300">4家企业</span></div>
+        <div class="flex justify-between"><span class="text-slate-400">最终受益人</span><span class="text-slate-300">3家企业</span></div>
+        <div class="flex justify-between"><span class="text-slate-400">商业伙伴</span><span class="text-slate-300">11人</span></div>
+        <div class="flex justify-between"><span class="text-slate-400">关联企业</span><span class="text-slate-300">4家</span></div>
+      </div>
+      <div class="mt-4 p-3 rounded-lg bg-violet-500/5 border border-violet-500/10 text-xs text-slate-400">
+        <i class="fas fa-info-circle text-violet-400 mr-1"></i>
+        通过中谷芯(30.4%)、慧聚芯光一号(99.93%)、慧聚芯光二号(99.88%)等平台间接控制
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IP & Honors -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="ip">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">知识产权与荣誉资质</h2>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+    <!-- IP -->
+    <div class="glass-card p-6 lg:col-span-2">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-lightbulb mr-2"></i>知识产权布局</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="text-center p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
+          <div class="stat-number text-3xl">24</div>
+          <div class="text-slate-400 text-sm mt-1">发明专利</div>
+        </div>
+        <div class="text-center p-4 rounded-xl bg-violet-500/5 border border-violet-500/10">
+          <div class="stat-number text-3xl">26</div>
+          <div class="text-slate-400 text-sm mt-1">实用新型</div>
+        </div>
+        <div class="text-center p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
+          <div class="stat-number text-3xl">69</div>
+          <div class="text-slate-400 text-sm mt-1">专利总数</div>
+        </div>
+        <div class="text-center p-4 rounded-xl bg-amber-500/5 border border-amber-500/10">
+          <div class="stat-number text-3xl">3</div>
+          <div class="text-slate-400 text-sm mt-1">域名/备案</div>
+        </div>
+      </div>
+      <div class="text-sm text-slate-400 mb-3">近期核心专利</div>
+      <div class="space-y-2 text-xs">
+        <div class="flex items-start gap-2 p-2 rounded-lg bg-slate-800/50">
+          <i class="fas fa-certificate text-green-400 mt-0.5"></i>
+          <div><span class="text-slate-300">一种新型长波长垂直面发射激光器</span><span class="text-green-400 ml-2">已授权</span><span class="text-slate-500 ml-2">CN202610122887.4</span></div>
+        </div>
+        <div class="flex items-start gap-2 p-2 rounded-lg bg-slate-800/50">
+          <i class="fas fa-certificate text-green-400 mt-0.5"></i>
+          <div><span class="text-slate-300">一种新型磷化铟基垂直面发射激光器</span><span class="text-green-400 ml-2">已授权</span><span class="text-slate-500 ml-2">CN202610122888.9</span></div>
+        </div>
+        <div class="flex items-start gap-2 p-2 rounded-lg bg-slate-800/50">
+          <i class="fas fa-certificate text-green-400 mt-0.5"></i>
+          <div><span class="text-slate-300">一种GaAs基低电容高带宽PIN光电二极管</span><span class="text-green-400 ml-2">已授权</span></div>
+        </div>
+        <div class="flex items-start gap-2 p-2 rounded-lg bg-slate-800/50">
+          <i class="fas fa-certificate text-green-400 mt-0.5"></i>
+          <div><span class="text-slate-300">一种GaAs基长波长雪崩光电二极管</span><span class="text-green-400 ml-2">已授权</span></div>
+        </div>
+        <div class="flex items-start gap-2 p-2 rounded-lg bg-slate-800/50">
+          <i class="fas fa-certificate text-green-400 mt-0.5"></i>
+          <div><span class="text-slate-300">一种多结太阳能电池及其制备方法</span><span class="text-green-400 ml-2">已授权</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Honors -->
+    <div class="glass-card p-6">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-trophy mr-2"></i>荣誉资质</div>
+      <div class="space-y-3">
+        <div class="p-3 rounded-lg bg-cyan-500/5 border border-cyan-500/10">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fas fa-star text-yellow-400 text-xs"></i>
+            <span class="text-sm font-medium text-cyan-300">国家高新技术企业</span>
+          </div>
+          <div class="text-xs text-slate-500">GR202235000470</div>
+        </div>
+        <div class="p-3 rounded-lg bg-violet-500/5 border border-violet-500/10">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fas fa-star text-yellow-400 text-xs"></i>
+            <span class="text-sm font-medium text-violet-300">省级专精特新中小企业</span>
+          </div>
+          <div class="text-xs text-slate-500">2023年认定</div>
+        </div>
+        <div class="p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/10">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fas fa-star text-yellow-400 text-xs"></i>
+            <span class="text-sm font-medium text-emerald-300">省级企业技术中心</span>
+          </div>
+          <div class="text-xs text-slate-500">2026年认定</div>
+        </div>
+        <div class="p-3 rounded-lg bg-amber-500/5 border border-amber-500/10">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fas fa-star text-yellow-400 text-xs"></i>
+            <span class="text-sm font-medium text-amber-300">省级重点上市后备企业</span>
+          </div>
+          <div class="text-xs text-slate-500">2024年认定</div>
+        </div>
+        <div class="p-3 rounded-lg bg-slate-500/5 border border-slate-500/10">
+          <div class="text-sm font-medium text-slate-300">省级科技小巨人企业</div>
+        </div>
+        <div class="p-3 rounded-lg bg-slate-500/5 border border-slate-500/10">
+          <div class="text-sm font-medium text-slate-300">创新型中小企业</div>
+        </div>
+        <div class="p-3 rounded-lg bg-slate-500/5 border border-slate-500/10">
+          <div class="text-sm font-medium text-slate-300">市级新型研发机构</div>
+        </div>
+        <div class="p-3 rounded-lg bg-slate-500/5 border border-slate-500/10">
+          <div class="text-sm font-medium text-slate-300">税务信用A级(2025)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Talent -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="talent">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">人才团队</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="glass-card p-6 text-center">
+      <div class="stat-number text-5xl">28</div>
+      <div class="text-slate-400 mt-2">泉州市高层次人才</div>
+      <div class="text-xs text-slate-500 mt-2">第一层次4人 · 第二层次1人<br>第三层次2人 · 第四层次4人<br>第五层次11人 · 第六层次6人</div>
+    </div>
+    <div class="glass-card p-6 text-center">
+      <div class="stat-number text-5xl">3</div>
+      <div class="text-slate-400 mt-2">省级高层次人才</div>
+      <div class="text-xs text-slate-500 mt-2">A类1人 · C类2人</div>
+    </div>
+    <div class="glass-card p-6 text-center">
+      <div class="stat-number text-5xl">12</div>
+      <div class="text-slate-400 mt-2">硕博核心团队</div>
+      <div class="text-xs text-slate-500 mt-2">博士6人 · 硕士6人</div>
+    </div>
+    <div class="glass-card p-6 text-center">
+      <div class="stat-number text-5xl">66%</div>
+      <div class="text-slate-400 mt-2">本科及以上占比</div>
+      <div class="text-xs text-slate-500 mt-2">核心团队20年+光芯片经验<br>清华/厦大产学研合作</div>
+    </div>
+  </div>
+</section>
+
+<!-- Development Timeline -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="timeline">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">发展历程</h2>
+  </div>
+  <div class="glass-card p-8">
+    <div class="space-y-8">
+      <div class="flex items-start gap-4">
+        <div class="timeline-dot mt-1.5"></div>
+        <div>
+          <div class="font-bold text-cyan-300">2019年2月</div>
+          <div class="text-sm text-slate-300">公司成立，由Stefen博士为首的海外归国团队创建，落地惠安经济开发区</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="timeline-dot mt-1.5"></div>
+        <div>
+          <div class="font-bold text-cyan-300">2022年</div>
+          <div class="text-sm text-slate-300">获国家高新技术企业认定（GR202235000470），产线正式投产运营</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="timeline-dot mt-1.5"></div>
+        <div>
+          <div class="font-bold text-cyan-300">2023年</div>
+          <div class="text-sm text-slate-300">获省级专精特新中小企业、科技小巨人企业认定</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="timeline-dot mt-1.5"></div>
+        <div>
+          <div class="font-bold text-cyan-300">2024年10月</div>
+          <div class="text-sm text-slate-300">完成A+轮融资近亿元（浦科投资、泉州金控集团），获省级重点上市后备企业认定</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="timeline-dot mt-1.5" style="background:var(--secondary)"></div>
+        <div>
+          <div class="font-bold text-violet-300">2026年1月</div>
+          <div class="text-sm text-slate-300"><strong class="text-yellow-300">里程碑：</strong>112G VCSEL芯片经院士领衔专家组评审，技术水平达"国际先进"；与清华大学合作研发新型长波长VCSEL获国家发明专利</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="timeline-dot mt-1.5" style="background:var(--secondary)"></div>
+        <div>
+          <div class="font-bold text-violet-300">2026年4月</div>
+          <div class="text-sm text-slate-300">完成B轮融资（温润投资领投），获省级企业技术中心认定</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="timeline-dot mt-1.5" style="background:#f59e0b"></div>
+        <div>
+          <div class="font-bold text-yellow-300">2026年6月</div>
+          <div class="text-sm text-slate-300">完成A2+轮数亿元融资（国中资本领投），注册资本增至1782.06万元，产能即将指数级跃升</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Risk & Credit -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="risk">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">风险评估与信用评级</h2>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <!-- Risk -->
+    <div class="glass-card p-6">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-shield-halved mr-2"></i>风险扫描</div>
+      <div class="space-y-4">
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">自身风险</span>
+          <span class="risk-badge risk-none"><i class="fas fa-check-circle"></i>0条</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">关联风险</span>
+          <span class="risk-badge risk-low"><i class="fas fa-exclamation-circle"></i>4条</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">经营异常</span>
+          <span class="risk-badge risk-none"><i class="fas fa-check-circle"></i>0条</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">行政处罚</span>
+          <span class="risk-badge risk-none"><i class="fas fa-check-circle"></i>0条</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">失信记录</span>
+          <span class="risk-badge risk-none"><i class="fas fa-check-circle"></i>0条</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">司法案件</span>
+          <span class="risk-badge risk-none"><i class="fas fa-check-circle"></i>0条</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">提示信息</span>
+          <span class="risk-badge risk-low"><i class="fas fa-info-circle"></i>46条</span>
+        </div>
+      </div>
+      <div class="mt-4 p-3 rounded-lg bg-green-500/5 border border-green-500/10 text-xs text-green-300">
+        <i class="fas fa-shield-halved mr-1"></i>
+        综合评估：企业自身经营风险极低，无重大法律纠纷，经营状况稳健
+      </div>
+    </div>
+    <!-- Credit -->
+    <div class="glass-card p-6">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-chart-line mr-2"></i>信用评级</div>
+      <div class="space-y-5">
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-slate-300">水滴信用分</span>
+            <span class="text-green-400 font-bold text-lg">875分 <span class="text-xs font-normal">优秀</span></span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:87.5%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-slate-300">科创分</span>
+            <span class="text-cyan-400 font-bold text-lg">85分 <span class="text-xs font-normal">AA</span></span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-slate-300">天眼查评分</span>
+            <span class="text-violet-400 font-bold text-lg">75分</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-slate-300">启信分</span>
+            <span class="text-amber-400 font-bold text-lg">612分</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:61.2%"></div></div>
+        </div>
+        <div class="pt-3 border-t border-slate-700/50">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-300">税务评级</span>
+            <span class="risk-badge risk-none"><i class="fas fa-star"></i>A级(2025)</span>
+          </div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-300">纳税人资质</span>
+          <span class="text-cyan-300 text-sm">一般纳税人</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact & Business Scope -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="contact">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-400 to-violet-600 rounded-full"></div>
+    <h2 class="text-2xl font-bold">联系信息与经营范围</h2>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div class="glass-card p-6">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>联系信息</div>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <i class="fas fa-location-dot text-cyan-400 mt-1"></i>
+          <div>
+            <div class="text-slate-500 text-xs">注册地址</div>
+            <div class="text-sm">福建省惠安县阳川路788号（城南工业园区慧芯激光产业园）</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fas fa-phone text-cyan-400 mt-1"></i>
+          <div>
+            <div class="text-slate-500 text-xs">联系电话</div>
+            <div class="text-sm">0595-68526888</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fas fa-envelope text-cyan-400 mt-1"></i>
+          <div>
+            <div class="text-slate-500 text-xs">邮箱</div>
+            <div class="text-sm">coco.chen@intelasers.com</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fas fa-globe text-cyan-400 mt-1"></i>
+          <div>
+            <div class="text-slate-500 text-xs">官网</div>
+            <div class="text-sm text-cyan-300">www.aiphotonix.com</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="fas fa-calendar text-cyan-400 mt-1"></i>
+          <div>
+            <div class="text-slate-500 text-xs">营业期限</div>
+            <div class="text-sm">2019-02-27 至 2069-02-26</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="glass-card p-6">
+      <div class="text-sm text-slate-400 mb-4"><i class="fas fa-file-lines mr-2"></i>经营范围</div>
+      <div class="text-sm text-slate-300 leading-relaxed">
+        光电子和微电子材料、半导体外延片、光电子芯片、器件、模块以及相关产品与系统的研发、设计、生产、销售及技术咨询、技术转让和技术服务；货物或技术进出口业务（国家禁止或涉及行政审批的货物和技术进出口除外）；企业管理服务；自有房屋租赁。
+      </div>
+      <div class="mt-6">
+        <div class="text-sm text-slate-400 mb-3"><i class="fas fa-globe mr-2"></i>备案域名</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip-glow text-xs">intelasers.com</span>
+          <span class="chip-glow text-xs">xintelasers.com</span>
+          <span class="chip-glow text-xs">aiphotonix.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-slate-800 mt-16">
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-slate-500 text-sm">
+        <span class="gradient-text font-bold">森罗之眼</span> · 智能企业画像系统
+      </div>
+      <div class="text-slate-500 text-sm">
+        数据来源：企查查 · 水滴信用 · 启信宝 · 天眼查 · 企业官网
+      </div>
+      <div class="text-slate-500 text-sm font-medium">
+        39139@胜天半子
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero animations
+gsap.from('#hero-text > *', {
+  y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: 'power3.out'
+});
+gsap.from('#hero-visual', {
+  x: 60, opacity: 0, duration: 1.2, ease: 'power3.out', delay: 0.3
+});
+
+// Section animations{}

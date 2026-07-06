@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福建省尚美轩餐饮管理有限公司 | Shangmeixuan — 企业全景画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{--amber:#f59e0b;--orange:#f97316;--yellow:#eab308;--deep:#0a0805;--card-bg:rgba(28,20,12,.75);--border:rgba(245,158,11,.14)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:#f5e9d6;font-family:'Inter',system-ui,-apple-system,sans-serif;overflow-x:hidden;line-height:1.7}
+.cosmic-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 20% 20%,#1a1208 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,#221608 0%,transparent 50%),#0a0805}
+.cosmic-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.4;animation:orbFloat 20s ease-in-out infinite}
+.cosmic-bg .orb:nth-child(1){width:800px;height:800px;background:radial-gradient(circle,rgba(245,158,11,.35),transparent 70%);top:-20%;left:-15%;animation-delay:0s}
+.cosmic-bg .orb:nth-child(2){width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.3),transparent 70%);bottom:-15%;right:-10%;animation-delay:-7s}
+.cosmic-bg .orb:nth-child(3){width:500px;height:500px;background:radial-gradient(circle,rgba(234,179,8,.22),transparent 70%);top:55%;left:45%;animation-delay:-14s}
+.cosmic-bg .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(245,158,11,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.03) 1px,transparent 1px);background-size:60px 60px}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(50px,-50px) scale(1.15)}66%{transform:translate(-40px,40px) scale(.88)}}
+.particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.particle{position:absolute;width:2px;height:2px;background:var(--amber);border-radius:50%;opacity:0;animation:particleRise 8s linear infinite}
+@keyframes particleRise{0%{opacity:0;transform:translateY(0) scale(0)}10%{opacity:.8}90%{opacity:.2}100%{opacity:0;transform:translateY(-100vh) scale(1)}}
+.mega-num{font-size:clamp(3rem,7vw,7rem);font-weight:900;line-height:1;background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-feature-settings:"tnum"}
+.gradient-text{background:linear-gradient(135deg,#fbbf24,#f59e0b,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.glass-card{background:var(--card-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:24px;transition:all .4s cubic-bezier(.25,.8,.25,1)}
+.glass-card:hover{border-color:rgba(245,158,11,.3);box-shadow:0 12px 48px rgba(245,158,11,.1),0 0 0 1px rgba(245,158,11,.12) inset;transform:translateY(-4px)}
+.glass-card-sm{background:rgba(28,20,12,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:18px;transition:all .35s ease}
+.glass-card-sm:hover{border-color:rgba(245,158,11,.25);box-shadow:0 8px 32px rgba(245,158,11,.08)}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;padding:6px 16px;border-radius:100px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2)}
+.sec-label i{font-size:.7rem}
+.bento-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.bento-grid > *{min-height:0}
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.bento-grid{grid-template-columns:1fr}}
+.col-span-2{grid-column:span 2}
+.col-span-3{grid-column:span 3}
+.col-span-4{grid-column:span 4}
+@media(max-width:1024px){.col-span-2,.col-span-3,.col-span-4{grid-column:span 2}}
+@media(max-width:640px){.col-span-2,.col-span-3,.col-span-4{grid-column:span 1}}
+.hero-section{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:6rem 2rem}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(245,158,11,.1);animation:ringPulse 6s ease-in-out infinite}
+.hero-ring:nth-child(1){width:500px;height:500px;animation-delay:0s}
+.hero-ring:nth-child(2){width:700px;height:700px;animation-delay:-2s}
+.hero-ring:nth-child(3){width:900px;height:900px;animation-delay:-4s}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.05);opacity:.6}}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amber),rgba(245,158,11,.1))}
+.timeline-item{position:relative;padding-bottom:2rem}
+.timeline-item::before{content:'';position:absolute;left:-2.35rem;top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 20px rgba(245,158,11,.5);border:2px solid #0a0805}
+.honor-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:.78rem;font-weight:500;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.18);color:#fbbf24;transition:all .3s}
+.honor-badge:hover{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.4);transform:translateY(-2px)}
+.stat-bar{height:6px;border-radius:3px;background:rgba(245,158,11,.15);overflow:hidden;margin-top:.5rem}
+.stat-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--orange));transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
+.footer-section{position:relative;padding:5rem 2rem 3rem;text-align:center;border-top:1px solid rgba(245,158,11,.1)}
+.footer-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.creator-mark{font-size:1.6rem;font-weight:800;letter-spacing:.08em;background:linear-gradient(135deg,#fbbf24,#f59e0b,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal{opacity:0;transform:translateY(40px)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(245,158,11,.25);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(245,158,11,.45)}
+.patent-card{background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.12);border-radius:14px;padding:14px 18px;transition:all .3s}
+.patent-card:hover{background:rgba(245,158,11,.09);border-color:rgba(245,158,11,.3);transform:translateY(-2px)}
+.brand-card{background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.12);border-radius:14px;padding:18px 20px;transition:all .3s;position:relative;overflow:hidden}
+.brand-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--amber),var(--orange),var(--yellow));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.brand-card:hover{background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.35);transform:translateY(-3px)}
+.brand-card:hover::before{transform:scaleX(1)}
+.brand-card .brand-letter{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#fbbf24,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.product-card{background:rgba(234,179,8,.04);border:1px solid rgba(234,179,8,.12);border-radius:14px;padding:18px 16px;transition:all .3s;text-align:center}
+.product-card:hover{background:rgba(234,179,8,.1);border-color:rgba(234,179,8,.35);transform:translateY(-3px)}
+.product-card .product-icon{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(249,115,22,.15));display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#fbbf24;font-size:1.3rem}
+.subsidiary-card{background:rgba(234,179,8,.04);border:1px solid rgba(234,179,8,.1);border-radius:14px;padding:16px 18px;transition:all .3s}
+.subsidiary-card:hover{background:rgba(234,179,8,.08);border-color:rgba(234,179,8,.3);transform:translateY(-2px)}
+.risk-low{color:#10b981}
+.risk-mid{color:#f59e0b}
+.risk-high{color:#ef4444}
+.advantage-card{background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.12);border-radius:14px;padding:18px;transition:all .3s}
+.advantage-card:hover{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35);transform:translateY(-2px)}
+.advantage-card .adv-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(245,158,11,.2),rgba(249,115,22,.15));display:flex;align-items:center;justify-content:center;color:#fbbf24;font-size:1.1rem;margin-bottom:10px}
+.franchise-card{background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:14px;padding:18px;transition:all .3s;display:flex;gap:14px;align-items:flex-start}
+.franchise-card:hover{background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.4);transform:translateY(-2px)}
+.franchise-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--orange));display:flex;align-items:center;justify-content:center;font-weight:900;color:#0a0805;font-size:1rem;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<div class="cosmic-bg">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="grid-overlay"></div>
+</div>
+<div class="particles" id="particles"></div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero-section">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="text-center relative z-10 max-w-4xl mx-auto">
+    <div class="reveal mb-6">
+      <span class="sec-label text-sm"><i class="fas fa-mug-hot"></i> 餐饮连锁 · 多品牌运营 · 咖啡茶饮</span>
+    </div>
+    <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6">
+      <span class="gradient-text">尚美轩</span>
+    </h1>
+    <p class="reveal text-xl md:text-2xl text-amber-200/70 mb-3 font-light">福建省尚美轩餐饮管理有限公司</p>
+    <p class="reveal text-lg text-amber-400/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+      快节奏生活慢半拍享受 · 8大品牌矩阵 · 黑桃漫生活百余家连锁<br>
+      十三大产品系列 · 130件注册商标 · 水滴信用820分
+    </p>
+    <div class="reveal flex flex-wrap justify-center gap-4">
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-calendar-alt text-amber-400"></i>
+        <span class="text-amber-100/80">成立 <strong class="text-white">2015</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-mug-hot text-amber-400"></i>
+        <span class="text-amber-100/80">品牌始创 <strong class="text-white">2014</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-store text-amber-400"></i>
+        <span class="text-amber-100/80">门店 <strong class="text-white">百余家</strong></span>
+      </div>
+      <div class="glass-card-sm px-6 py-3 flex items-center gap-3">
+        <i class="fas fa-coins text-amber-400"></i>
+        <span class="text-amber-100/80">注册资本 <strong class="text-white">1000万元</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="max-w-7xl mx-auto px-4 md:px-6 pb-24">
+
+  <!-- ===== KEY METRICS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">注册资本</div>
+      <div class="mega-num text-5xl md:text-6xl">1000<span class="text-2xl">万元</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">认缴制 · 认缴时间2030-04-29</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:75%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">微型企业 · 有限责任公司</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">品牌矩阵</div>
+      <div class="mega-num text-5xl md:text-6xl">8<span class="text-2xl">大</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">多品牌矩阵运营</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:85%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">黑桃漫生活为主打品牌</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">门店规模</div>
+      <div class="mega-num text-5xl md:text-6xl">100+<span class="text-2xl">家</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">直营+加盟连锁店</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:90%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">官网声称黑桃漫生活品牌</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">产品系列</div>
+      <div class="mega-num text-5xl md:text-6xl">13<span class="text-2xl">大</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">咖啡茶饮·轻食·甜品·小吃</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:80%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">意式咖啡/现萃茶/玛奇朵等</div>
+    </div>
+  </div>
+
+  <!-- ===== OPERATING DATA ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">注册商标</div>
+      <div class="mega-num text-5xl md:text-6xl">130<span class="text-2xl">件</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">多类别商标布局</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:95%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">覆盖43/30/32/35/29类</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">水滴信用</div>
+      <div class="mega-num text-5xl md:text-6xl">820<span class="text-2xl">分</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">优秀等级</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:82%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">第三方信用评级</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">自身风险</div>
+      <div class="mega-num text-5xl md:text-6xl">0<span class="text-2xl">条</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">无经营风险</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:100%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">零司法案件·零处罚·零失信</div>
+    </div>
+    <div class="glass-card p-6 md:p-8 reveal flex flex-col justify-center items-center text-center">
+      <div class="text-amber-400/60 text-xs uppercase tracking-widest mb-3">企业年报</div>
+      <div class="mega-num text-5xl md:text-6xl">11<span class="text-2xl">份</span></div>
+      <div class="text-amber-200/50 text-sm mt-2">历年经营信息</div>
+      <div class="stat-bar w-full mt-4"><div class="stat-bar-fill" style="width:70%"></div></div>
+      <div class="text-amber-200/50 text-xs mt-1">2015年成立至今</div>
+    </div>
+  </div>
+
+  <!-- ===== OVERVIEW + FOUNDER ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-building"></i> 企业概览</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">咖啡茶饮连锁加盟与轻食文化餐饮企业</h2>
+      <div class="space-y-4 text-amber-100/80 leading-relaxed">
+        <p><span class="text-amber-400 font-semibold">福建省尚美轩餐饮管理有限公司</span>始创于2014年（官方说法），总部位于中国品牌之都福建泉州，是一家经营<span class="text-amber-400 font-semibold">连锁加盟咖啡&茶饮、轻食文化</span>的公司。公司拥有专业的餐饮管理运营团队和技术骨干，集品牌推广、运营和新品设计研发为一体。</p>
+        <p>公司旗下运营<span class="text-amber-400 font-semibold">黑桃漫生活Café、空降茶咖、佬港园、遇福记、茶逅、FIND TEA、爱上漫生活、清心漫生活</span>8大品牌，主打品牌"黑桃漫生活"连锁加盟咖啡&茶饮店百余家直营+加盟店遍布全国。</p>
+        <p>品牌倡导<span class="text-amber-400 font-semibold">"快节奏生活慢半拍享受"</span>的生活理念，以亲民化路线、简约田园风复合型文化空间为特色，打造朴实、自然、简约的门店风格，呈现咖啡与文化的碰撞、高雅休闲的艺文格调。门店提供免费WIFI，作为休闲社交空间使用。</p>
+        <p>公司注册地址位于<span class="text-amber-400 font-semibold">福建省泉州市晋江市永和镇钱仓村诚信路3-1号</span>，所属行业为其他综合管理服务/住宿和餐饮业，统一社会信用代码91350581335741943G。</p>
+      </div>
+      <div class="flex flex-wrap gap-3 mt-6">
+        <span class="honor-badge"><i class="fas fa-utensils"></i> 住宿和餐饮业</span>
+        <span class="honor-badge"><i class="fas fa-mug-hot"></i> 咖啡茶饮</span>
+        <span class="honor-badge"><i class="fas fa-store"></i> 连锁加盟</span>
+        <span class="honor-badge"><i class="fas fa-leaf"></i> 轻食文化</span>
+        <span class="honor-badge"><i class="fas fa-handshake"></i> 加盟体系</span>
+        <span class="honor-badge"><i class="fas fa-check-circle"></i> 存续经营</span>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-user-tie"></i> 法定代表人与股权</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">掌舵者与股权结构</h2>
+      <div class="space-y-5">
+        <div class="flex items-start gap-5 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10">
+          <div class="w-14 h-14 rounded-full bg-amber-500/15 flex items-center justify-center shrink-0 ring-2 ring-amber-500/20">
+            <i class="fas fa-crown text-amber-400 text-xl"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold text-lg">陈呈宏 <span class="text-amber-400 text-sm font-normal">Chen ChengHong</span></div>
+            <div class="text-amber-400/80 text-sm mb-1">法定代表人 · 执行董事 · 经理 · 49%持股</div>
+            <p class="text-amber-100/60 text-sm leading-relaxed">2019年5月24日接替王天沙出任公司法定代表人、执行董事兼经理，认缴出资490万元，持股比例49%。认缴出资时间为2030年4月29日。</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">51%</div>
+            <div class="text-amber-200/50 text-xs mt-1">王志俭持股（监事）</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">49%</div>
+            <div class="text-amber-200/50 text-xs mt-1">陈呈宏持股（执行董事）</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">510<span class="text-base">万</span></div>
+            <div class="text-amber-200/50 text-xs mt-1">王志俭认缴出资</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">490<span class="text-base">万</span></div>
+            <div class="text-amber-200/50 text-xs mt-1">陈呈宏认缴出资</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t border-amber-500/10">
+        <p class="text-amber-200/50 text-xs">企业类型：有限责任公司（自然人投资或控股） · 认缴出资时间2030-04-29 · 2019年完成法人变更</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BRAND MATRIX ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-tags"></i> 品牌矩阵</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">8大品牌 · 多品牌连锁加盟战略</h2>
+      <p class="text-amber-200/60 text-sm mb-6">品牌理念：<span class="text-amber-400 font-semibold">快节奏生活慢半拍享受</span> · 经营模式：<span class="text-amber-400 font-semibold">集品牌推广、运营和新品设计研发为一体</span></p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="brand-card">
+          <div class="brand-letter mb-2">黑</div>
+          <div class="text-white font-bold text-sm">黑桃漫生活Café</div>
+          <div class="text-amber-400 text-xs font-semibold mt-1">主打品牌</div>
+          <div class="text-amber-200/50 text-xs mt-2">连锁加盟咖啡&茶饮 · 百余家直营+加盟店</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-letter mb-2">空</div>
+          <div class="text-white font-bold text-sm">空降茶咖</div>
+          <div class="text-orange-400 text-xs font-semibold mt-1">茶饮品牌</div>
+          <div class="text-amber-200/50 text-xs mt-2">茶咖融合创新</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-letter mb-2">佬</div>
+          <div class="text-white font-bold text-sm">佬港园</div>
+          <div class="text-orange-400 text-xs font-semibold mt-1">餐饮品牌</div>
+          <div class="text-amber-200/50 text-xs mt-2">餐饮连锁经营</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-letter mb-2">遇</div>
+          <div class="text-white font-bold text-sm">遇福记</div>
+          <div class="text-orange-400 text-xs font-semibold mt-1">餐饮品牌</div>
+          <div class="text-amber-200/50 text-xs mt-2">中式餐饮文化</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-letter mb-2">茶</div>
+          <div class="text-white font-bold text-sm">茶逅</div>
+          <div class="text-orange-400 text-xs font-semibold mt-1">茶饮品牌</div>
+          <div class="text-amber-200/50 text-xs mt-2">注册号23040859 · 43类 · 2018-05-14注册</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-letter mb-2">F</div>
+          <div class="text-white font-bold text-sm">FIND TEA</div>
+          <div class="text-orange-400 text-xs font-semibold mt-1">茶饮品牌</div>
+          <div class="text-amber-200/50 text-xs mt-2">2021-11-25申请 · 多类别注册</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-letter mb-2">爱</div>
+          <div class="text-white font-bold text-sm">爱上漫生活</div>
+          <div class="text-orange-400 text-xs font-semibold mt-1">漫生活系列</div>
+          <div class="text-amber-200/50 text-xs mt-2">注册号17090100 · 43类餐饮住宿</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-letter mb-2">清</div>
+          <div class="text-white font-bold text-sm">清心漫生活</div>
+          <div class="text-orange-400 text-xs font-semibold mt-1">漫生活系列</div>
+          <div class="text-amber-200/50 text-xs mt-2">注册号16874690 · 43类餐饮住宿</div>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-amber-100/60">
+        <i class="fas fa-info-circle text-amber-400 mr-2"></i>
+        <span class="text-amber-400 font-semibold">品牌特色：</span>主打品牌"黑桃漫生活Café"以亲民化路线、简约田园风复合型文化空间为定位，倡导"快节奏生活慢半拍享受"的生活理念。门店风格朴实、自然、简约，呈现咖啡与文化的碰撞、高雅休闲的艺文格调，提供免费WIFI作为休闲社交空间。招牌产品为焦糖玛奇朵、一颗柠檬茶。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCT SYSTEM ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-coffee"></i> 产品体系</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">十三大产品系列 · 咖啡茶饮轻食全品类</h2>
+      <p class="text-amber-200/60 text-sm mb-6">招牌产品：<span class="text-amber-400 font-semibold">焦糖玛奇朵 · 一颗柠檬茶 · 招牌玛奇朵 · 招牌咸奶缇</span></p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-mug-hot"></i></div>
+          <div class="text-white font-bold text-sm">意式咖啡</div>
+          <div class="text-amber-200/50 text-xs mt-1">经典咖啡系列</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-leaf"></i></div>
+          <div class="text-white font-bold text-sm">现萃茶</div>
+          <div class="text-amber-200/50 text-xs mt-1">鲜萃茶饮</div>
+        </div>
+        <div class="product-card" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35)">
+          <div class="product-icon" style="background:linear-gradient(135deg,rgba(245,158,11,.35),rgba(249,115,22,.25))"><i class="fas fa-star"></i></div>
+          <div class="text-amber-300 font-bold text-sm">招牌玛奇朵</div>
+          <div class="text-amber-400 text-xs mt-1">招牌产品</div>
+        </div>
+        <div class="product-card" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.35)">
+          <div class="product-icon" style="background:linear-gradient(135deg,rgba(245,158,11,.35),rgba(249,115,22,.25))"><i class="fas fa-star"></i></div>
+          <div class="text-amber-300 font-bold text-sm">招牌咸奶缇</div>
+          <div class="text-amber-400 text-xs mt-1">招牌产品</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-lemon"></i></div>
+          <div class="text-white font-bold text-sm">柠檬·鲜果茶</div>
+          <div class="text-amber-200/50 text-xs mt-1">鲜果茶饮</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-snowflake"></i></div>
+          <div class="text-white font-bold text-sm">酷乐沙冰</div>
+          <div class="text-amber-200/50 text-xs mt-1">冰品系列</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-glass-cheers"></i></div>
+          <div class="text-white font-bold text-sm">夏季畅饮</div>
+          <div class="text-amber-200/50 text-xs mt-1">季节限定</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-mug-saucer"></i></div>
+          <div class="text-white font-bold text-sm">醇香奶茶</div>
+          <div class="text-amber-200/50 text-xs mt-1">奶茶系列</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-seedling"></i></div>
+          <div class="text-white font-bold text-sm">鲜茶</div>
+          <div class="text-amber-200/50 text-xs mt-1">鲜茶系列</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-apple-alt"></i></div>
+          <div class="text-white font-bold text-sm">鲜榨果汁</div>
+          <div class="text-amber-200/50 text-xs mt-1">果汁系列</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-fire"></i></div>
+          <div class="text-white font-bold text-sm">冬季热饮</div>
+          <div class="text-amber-200/50 text-xs mt-1">季节限定</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-cookie-bite"></i></div>
+          <div class="text-white font-bold text-sm">手工甜品</div>
+          <div class="text-amber-200/50 text-xs mt-1">甜品系列</div>
+        </div>
+        <div class="product-card">
+          <div class="product-icon"><i class="fas fa-drumstick-bite"></i></div>
+          <div class="text-white font-bold text-sm">现炸小吃</div>
+          <div class="text-amber-200/50 text-xs mt-1">小吃系列</div>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-amber-100/60">
+        <i class="fas fa-crown text-amber-400 mr-2"></i>
+        <span class="text-amber-400 font-semibold">招牌明星产品：</span>焦糖玛奇朵（咖啡类）与一颗柠檬茶（茶饮类）为门店招牌，融合咖啡文化与传统茶饮工艺，体现"咖啡与文化的碰撞"品牌理念。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FRANCHISE SYSTEM ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-handshake"></i> 加盟体系</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">六大加盟优势 · 百余家连锁门店</h2>
+      <p class="text-amber-200/60 text-sm mb-6">主打品牌<span class="text-amber-400 font-semibold">黑桃漫生活</span>直营+加盟连锁店百余家，集品牌推广、运营和新品设计研发为一体</p>
+      <div class="space-y-3">
+        <div class="franchise-card">
+          <div class="franchise-num">1</div>
+          <div>
+            <div class="text-white font-bold text-sm">品牌矩阵优势</div>
+            <p class="text-amber-100/60 text-xs mt-1">8大品牌矩阵，黑桃漫生活百余家连锁门店运营经验，品牌影响力覆盖全国</p>
+          </div>
+        </div>
+        <div class="franchise-card">
+          <div class="franchise-num">2</div>
+          <div>
+            <div class="text-white font-bold text-sm">专业运营团队</div>
+            <p class="text-amber-100/60 text-xs mt-1">拥有专业的餐饮管理运营团队和技术骨干，集品牌推广、运营和新品设计研发为一体</p>
+          </div>
+        </div>
+        <div class="franchise-card">
+          <div class="franchise-num">3</div>
+          <div>
+            <div class="text-white font-bold text-sm">产品研发优势</div>
+            <p class="text-amber-100/60 text-xs mt-1">十三大产品系列持续研发创新，咖啡茶饮轻食全品类覆盖，季节性新品不断</p>
+          </div>
+        </div>
+        <div class="franchise-card">
+          <div class="franchise-num">4</div>
+          <div>
+            <div class="text-white font-bold text-sm">原料供应链优势</div>
+            <p class="text-amber-100/60 text-xs mt-1">高海拔红茶、茉香绿茶、乌龙茶等优质原料直供，从源头把控品质</p>
+          </div>
+        </div>
+        <div class="franchise-card">
+          <div class="franchise-num">5</div>
+          <div>
+            <div class="text-white font-bold text-sm">品牌定位优势</div>
+            <p class="text-amber-100/60 text-xs mt-1">"快节奏生活慢半拍享受"理念，简约田园风复合型文化空间，亲民化路线</p>
+          </div>
+        </div>
+        <div class="franchise-card">
+          <div class="franchise-num">6</div>
+          <div>
+            <div class="text-white font-bold text-sm">知识产权优势</div>
+            <p class="text-amber-100/60 text-xs mt-1">130件注册商标构建完整品牌保护矩阵，多类别覆盖保护加盟商权益</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business Scope + Positioning -->
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-briefcase"></i> 经营范围与定位</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">餐饮管理与连锁经营</h2>
+      <div class="space-y-4">
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 font-bold mb-3"><i class="fas fa-utensils mr-2"></i>核心业务</div>
+          <div class="grid grid-cols-1 gap-3 text-sm">
+            <div>
+              <div class="text-amber-200/50 text-xs">餐饮管理</div>
+              <div class="text-white font-semibold">餐饮企业管理与咨询服务</div>
+            </div>
+            <div>
+              <div class="text-amber-200/50 text-xs">餐饮服务</div>
+              <div class="text-white font-semibold">咖啡&茶饮·轻食连锁经营</div>
+            </div>
+            <div>
+              <div class="text-amber-200/50 text-xs">销售业务</div>
+              <div class="text-white font-semibold">餐具、包袋销售</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 font-bold mb-3"><i class="fas fa-store mr-2"></i>经营业务范围</div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/15 text-amber-300">餐饮管理</span>
+            <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/15 text-amber-300">餐饮服务</span>
+            <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/15 text-amber-300">餐具销售</span>
+            <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/15 text-amber-300">包袋销售</span>
+          </div>
+          <p class="text-amber-200/50 text-xs mt-3">依法须经批准的项目，经相关部门批准后方可开展经营活动</p>
+        </div>
+        <div class="glass-card-sm p-5">
+          <div class="text-amber-400 font-bold mb-3"><i class="fas fa-bullseye mr-2"></i>品牌定位与特色</div>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-start gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+              <span class="text-amber-100/80">"快节奏生活慢半拍享受"生活理念</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+              <span class="text-amber-100/80">亲民化路线，简约田园风复合型文化空间</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+              <span class="text-amber-100/80">朴实、自然、简约的门店风格</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+              <span class="text-amber-100/80">咖啡与文化的碰撞，高雅休闲的艺文格调</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400 mt-2 shrink-0"></span>
+              <span class="text-amber-100/80">免费WIFI，休闲社交空间</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RAW MATERIAL ADVANTAGES ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-seedling"></i> 原料优势</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 text-white">优质茶饮原料 · 从源头把控品质</h2>
+      <p class="text-amber-200/60 text-sm mb-6">精选高海拔茶叶原料，传统工艺与现代技术融合，确保产品口感与品质稳定</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="advantage-card">
+          <div class="adv-icon"><i class="fas fa-mountain"></i></div>
+          <div class="text-white font-bold text-base mb-2">红茶</div>
+          <div class="text-amber-400 text-xs font-semibold mb-3">高海拔山地红茶</div>
+          <p class="text-amber-100/70 text-sm leading-relaxed">产自1000-1800米高海拔山地，日照充足温差大，汤色橙黄、麦芽香气，口感醇厚。</p>
+          <div class="mt-3 pt-3 border-t border-amber-500/10">
+            <div class="text-amber-200/50 text-xs">海拔：1000-1800米</div>
+            <div class="text-amber-200/50 text-xs">特色：汤色橙黄 · 麦芽香气</div>
+          </div>
+        </div>
+        <div class="advantage-card">
+          <div class="adv-icon"><i class="fas fa-spa"></i></div>
+          <div class="text-white font-bold text-base mb-2">茉香绿茶</div>
+          <div class="text-amber-400 text-xs font-semibold mb-3">茉莉花窖制绿茶</div>
+          <p class="text-amber-100/70 text-sm leading-relaxed">优质绿茶经多重新鲜茉莉花窖制，香气鲜灵持久，茶汤清亮，花香怡人。</p>
+          <div class="mt-3 pt-3 border-t border-amber-500/10">
+            <div class="text-amber-200/50 text-xs">工艺：多重新鲜茉莉花窖制</div>
+            <div class="text-amber-200/50 text-xs">特色：香气鲜灵持久</div>
+          </div>
+        </div>
+        <div class="advantage-card">
+          <div class="adv-icon"><i class="fas fa-fire-flame-curved"></i></div>
+          <div class="text-white font-bold text-base mb-2">乌龙茶</div>
+          <div class="text-amber-400 text-xs font-semibold mb-3">部分发酵工艺乌龙</div>
+          <p class="text-amber-100/70 text-sm leading-relaxed">部分发酵茶，独到工艺，香气浓度分析调整发酵及烘焙程度，口感层次丰富。</p>
+          <div class="mt-3 pt-3 border-t border-amber-500/10">
+            <div class="text-amber-200/50 text-xs">工艺：部分发酵 · 独到工艺</div>
+            <div class="text-amber-200/50 text-xs">特色：发酵及烘焙程度精准调整</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== INTELLECTUAL PROPERTY ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-trademark"></i> 知识产权</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">130件注册商标 · 完整品牌保护矩阵</h2>
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">130</div>
+            <div class="text-amber-200/50 text-xs mt-1">注册商标（件）</div>
+          </div>
+          <div class="glass-card-sm p-4 text-center">
+            <div class="mega-num text-3xl">1</div>
+            <div class="text-amber-200/50 text-xs mt-1">备案网站</div>
+          </div>
+        </div>
+        <div class="patent-card">
+          <div class="flex items-center gap-2 mb-1">
+            <i class="fas fa-globe text-amber-400 text-xs"></i>
+            <span class="text-amber-400 text-xs font-semibold">备案网站</span>
+          </div>
+          <div class="text-white text-sm font-semibold">闽ICP备19016135号</div>
+          <div class="text-amber-200/50 text-xs mt-1">官网：www.fjsmxcy.com</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-amber-100/60">
+          <i class="fas fa-info-circle text-amber-400 mr-2"></i>
+          130件注册商标构建完整品牌保护矩阵，主要品牌商标涵盖43类餐饮住宿、30类方便食品、32类啤酒饮料、35类广告销售、29类食品等多类别，体现"以品牌驱动连锁"的加盟战略。
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-layer-group"></i> 商标类别覆盖</div>
+      <h2 class="text-xl font-bold mb-4 text-white">多类别商标布局</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="patent-card">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white font-semibold text-sm">第43类 · 餐饮住宿</div>
+              <div class="text-amber-200/50 text-xs mt-1">核心类别 · 餐饮服务</div>
+            </div>
+            <i class="fas fa-utensils text-amber-400 text-xl"></i>
+          </div>
+        </div>
+        <div class="patent-card">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white font-semibold text-sm">第30类 · 方便食品</div>
+              <div class="text-amber-200/50 text-xs mt-1">咖啡茶饮原料</div>
+            </div>
+            <i class="fas fa-mug-hot text-amber-400 text-xl"></i>
+          </div>
+        </div>
+        <div class="patent-card">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white font-semibold text-sm">第32类 · 啤酒饮料</div>
+              <div class="text-amber-200/50 text-xs mt-1">茶饮果汁饮料</div>
+            </div>
+            <i class="fas fa-beer text-amber-400 text-xl"></i>
+          </div>
+        </div>
+        <div class="patent-card">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white font-semibold text-sm">第35类 · 广告销售</div>
+              <div class="text-amber-200/50 text-xs mt-1">连锁加盟经营</div>
+            </div>
+            <i class="fas fa-bullhorn text-amber-400 text-xl"></i>
+          </div>
+        </div>
+        <div class="patent-card">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white font-semibold text-sm">第29类 · 食品</div>
+              <div class="text-amber-200/50 text-xs mt-1">食品原料制品</div>
+            </div>
+            <i class="fas fa-drumstick-bite text-amber-400 text-xl"></i>
+          </div>
+        </div>
+        <div class="patent-card">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white font-semibold text-sm">FIND TEA 多类注册</div>
+              <div class="text-amber-200/50 text-xs mt-1">2021-11-25申请 · 29/32/35/43类</div>
+            </div>
+            <i class="fas fa-star text-amber-400 text-xl"></i>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-amber-100/60">
+        <i class="fas fa-info-circle text-amber-400 mr-2"></i>
+        <span class="text-amber-400 font-semibold">重点商标：</span>茶逅（注册号23040859，2018-05-14注册）、爱上漫生活（注册号17090100）、清心漫生活（注册号16874690）、FIND TEA（2021-11-25多类别申请）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RISK ASSESSMENT ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-shield-alt"></i> 风险评估</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">风险信息全景 · 零风险企业</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-check-circle risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-amber-200/50 text-sm">自身风险</div>
+          <div class="text-green-400 text-xs mt-2">无自身经营风险</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-check-circle risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-amber-200/50 text-sm">关联风险</div>
+          <div class="text-green-400 text-xs mt-2">无关联企业风险</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-gavel risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 件</div>
+          <div class="text-amber-200/50 text-sm">司法案件</div>
+          <div class="text-green-400 text-xs mt-2">无诉讼纠纷</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-ban risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-amber-200/50 text-sm">经营异常</div>
+          <div class="text-green-400 text-xs mt-2">无经营异常记录</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-shield-alt risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-amber-200/50 text-sm">行政处罚</div>
+          <div class="text-green-400 text-xs mt-2">无处罚记录</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-user-slash risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-amber-200/50 text-sm">失信记录</div>
+          <div class="text-green-400 text-xs mt-2">无失信记录</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-ghost risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-amber-200/50 text-sm">空壳扫描</div>
+          <div class="text-green-400 text-xs mt-2">非空壳企业</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-balance-scale risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">0 条</div>
+          <div class="text-amber-200/50 text-sm">或有债务/债权</div>
+          <div class="text-green-400 text-xs mt-2">无债务风险</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-info-circle text-amber-400 text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">4 条</div>
+          <div class="text-amber-200/50 text-sm">提示信息</div>
+          <div class="text-amber-400 text-xs mt-2">经营动态提示</div>
+        </div>
+        <div class="glass-card-sm p-5 text-center">
+          <div class="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-clipboard-check risk-low text-xl"></i>
+          </div>
+          <div class="text-white font-bold text-lg">1 次</div>
+          <div class="text-amber-200/50 text-sm">抽查检查</div>
+          <div class="text-green-400 text-xs mt-2">2016年合格</div>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-2xl bg-green-500/5 border border-green-500/10 text-sm text-amber-100/60">
+        <i class="fas fa-check-double text-green-400 mr-2"></i>
+        <span class="text-white font-semibold">风险总评：</span>企业自身风险、关联风险、司法案件、经营异常、行政处罚、失信记录、空壳扫描、或有债务债权全部为0，是难得的零风险餐饮企业。2016年6月2日接受灵秀镇市场监督管理所抽查检查，结果为"未发现异常/合格"。仅4条提示信息属常规经营动态提示，整体风险极低，信用状况优秀。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CREDIT RATINGS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-star"></i> 信用评级</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">第三方信用评分 · 优秀等级</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-amber-200/50 text-xs">水滴信用</div>
+              <div class="text-white font-bold text-3xl">820 <span class="text-base text-amber-200/40">分</span></div>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center">
+              <i class="fas fa-tint text-amber-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width:82%"></div></div>
+          <div class="text-green-400 text-xs mt-2">优秀等级</div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-amber-200/50 text-xs">科创分</div>
+              <div class="text-white font-bold text-3xl">25 <span class="text-base text-amber-200/40">分</span></div>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center">
+              <i class="fas fa-flask text-orange-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width:25%"></div></div>
+          <div class="text-amber-400 text-xs mt-2">传统餐饮企业 · 科创属性较低</div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="text-amber-200/50 text-xs">纳税资质</div>
+              <div class="text-white font-bold text-xl">小规模纳税人</div>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center">
+              <i class="fas fa-file-invoice-dollar text-yellow-400 text-xl"></i>
+            </div>
+          </div>
+          <div class="stat-bar"><div class="stat-bar-fill" style="width:40%"></div></div>
+          <div class="text-amber-400 text-xs mt-2">微型企业 · 简易计税</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== KEY PERSONNEL + CHANGE RECORDS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-users"></i> 主要人员</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">企业核心管理团队</h2>
+      <div class="space-y-4">
+        <div class="flex items-start gap-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10">
+          <div class="w-12 h-12 rounded-full bg-amber-500/15 flex items-center justify-center shrink-0 ring-2 ring-amber-500/20">
+            <i class="fas fa-crown text-amber-400"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold">陈呈宏</div>
+            <div class="text-amber-400 text-sm font-semibold">执行董事 · 经理</div>
+            <p class="text-amber-100/60 text-sm mt-1">2019-05-24新增，接替王天沙出任法定代表人、执行董事兼经理，持股49%。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10">
+          <div class="w-12 h-12 rounded-full bg-orange-500/15 flex items-center justify-center shrink-0 ring-2 ring-orange-500/20">
+            <i class="fas fa-user-shield text-orange-400"></i>
+          </div>
+          <div>
+            <div class="text-white font-bold">王志俭</div>
+            <div class="text-orange-400 text-sm font-semibold">监事</div>
+            <p class="text-amber-100/60 text-sm mt-1">公司监事，持股51%，为公司最大股东，认缴出资510万元。</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 opacity-70">
+          <div class="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 ring-2 ring-amber-500/10">
+            <i class="fas fa-user-times text-amber-400/60"></i>
+          </div>
+          <div>
+            <div class="text-amber-200/80 font-bold">王天沙</div>
+            <div class="text-amber-400/60 text-sm font-semibold">原法定代表人/执行董事兼总经理（已退出）</div>
+            <p class="text-amber-100/50 text-sm mt-1">2019-05-24退出，将法定代表人、执行董事兼总经理职务变更给陈呈宏。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card p-6 md:p-10 reveal col-span-2">
+      <div class="sec-label"><i class="fas fa-exchange-alt"></i> 变更记录</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">10条变更记录 · 2019年关键变更</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="text-amber-400 font-bold">2019-05-24</div>
+          <div class="text-white font-semibold">法定代表人变更</div>
+          <p class="text-amber-100/60 text-sm">法定代表人由王天沙变更为陈呈宏。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="text-amber-400 font-bold">2019-05-24</div>
+          <div class="text-white font-semibold">投资人变更</div>
+          <p class="text-amber-100/60 text-sm">王天沙退出，陈呈宏新增为投资人。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="text-amber-400 font-bold">2019-05-24</div>
+          <div class="text-white font-semibold">董事变更</div>
+          <p class="text-amber-100/60 text-sm">王天沙退出董事职务，陈呈宏新增为董事。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="text-amber-400 font-bold">2019-05-24</div>
+          <div class="text-white font-semibold">联络员备案变更</div>
+          <p class="text-amber-100/60 text-sm">企业联络员备案信息变更。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="text-amber-400 font-bold">累计</div>
+          <div class="text-white font-semibold">共10条变更记录</div>
+          <p class="text-amber-100/60 text-sm">2019年5月24日完成关键变更，法人结构由王天沙全面过渡至陈呈宏，其余变更记录涉及工商信息常规更新。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REGISTRATION INFO ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-id-card"></i> 工商登记信息</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">企业法定信息</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">企业名称</div>
+          <div class="text-white font-semibold">福建省尚美轩餐饮管理有限公司</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">统一社会信用代码</div>
+          <div class="text-white font-mono text-sm">91350581335741943G</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">法定代表人</div>
+          <div class="text-white font-semibold">陈呈宏</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">注册资本</div>
+          <div class="text-white font-semibold">1000万元（认缴）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">成立日期</div>
+          <div class="text-white font-semibold">2015年4月30日</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">企业类型</div>
+          <div class="text-white text-sm">有限责任公司（自然人投资或控股）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">经营状态</div>
+          <div class="text-amber-400 font-semibold">存续（开业）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">企业规模</div>
+          <div class="text-white font-semibold">微型（参保2人）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">注册地址</div>
+          <div class="text-white text-sm">福建省泉州市晋江市永和镇钱仓村诚信路3-1号</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">所属行业</div>
+          <div class="text-white text-sm">其他综合管理服务 / 住宿和餐饮业</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">营业期限</div>
+          <div class="text-white font-semibold">10年</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">纳税资质</div>
+          <div class="text-white font-semibold">小规模纳税人</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">登记机关</div>
+          <div class="text-white text-sm">晋江市市场监督管理局</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">认缴时间</div>
+          <div class="text-white font-semibold">2030-04-29</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">官网</div>
+          <div class="text-white font-mono text-sm">www.fjsmxcy.com</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">备案网站</div>
+          <div class="text-white font-mono text-sm">闽ICP备19016135号</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">联系电话</div>
+          <div class="text-white font-mono text-sm">15959552227 / 13959962008</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">水滴信用</div>
+          <div class="text-white font-semibold">820分（优秀）</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">科创分</div>
+          <div class="text-white font-semibold">25分</div>
+        </div>
+        <div class="glass-card-sm p-4">
+          <div class="text-amber-200/50 text-xs mb-1">控股结构</div>
+          <div class="text-white text-sm">王志俭51% · 陈呈宏49%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== OPERATION STATUS ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-chart-line"></i> 经营状况</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white">企业经营全景数据</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-2xl">11</div>
+          <div class="text-amber-200/50 text-xs mt-1">企业年报（份）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-2xl">10</div>
+          <div class="text-amber-200/50 text-xs mt-1">变更记录（条）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-2xl">1</div>
+          <div class="text-amber-200/50 text-xs mt-1">抽查检查（次）</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-2xl">0</div>
+          <div class="text-amber-200/50 text-xs mt-1">对外投资</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-2xl">0</div>
+          <div class="text-amber-200/50 text-xs mt-1">分支机构</div>
+        </div>
+        <div class="glass-card-sm p-4 text-center">
+          <div class="mega-num text-2xl">2</div>
+          <div class="text-amber-200/50 text-xs mt-1">参保人数（2025）</div>
+        </div>
+      </div>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-amber-100/60">
+          <i class="fas fa-users text-amber-400 mr-2"></i>
+          <span class="text-white font-semibold">员工规模：</span>2025年参保2人（微型企业），顺企网历史数据显示100人，企查查显示少于50人。实际运营以核心管理团队+加盟门店员工为主。
+        </div>
+        <div class="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-sm text-amber-100/60">
+          <i class="fas fa-store text-amber-400 mr-2"></i>
+          <span class="text-white font-semibold">门店规模：</span>官网声称黑桃漫生活品牌直营+加盟连锁店百余家。年营业额未公开（年报选择不公示）。对外投资与分支机构暂无。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <div class="bento-grid mb-8">
+    <div class="glass-card p-6 md:p-10 reveal col-span-4">
+      <div class="sec-label"><i class="fas fa-address-card"></i> 联系方式</div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-white">企业联络</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center"><i class="fas fa-map-marker-alt text-amber-400"></i></div>
+            <div class="text-white font-bold">总部地址</div>
+          </div>
+          <div class="text-amber-100/60 text-sm space-y-1">
+            <p>福建省泉州市晋江市</p>
+            <p>永和镇钱仓村诚信路3-1号</p>
+            <p class="text-amber-200/50 text-xs mt-2">登记机关：晋江市市场监督管理局</p>
+          </div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center"><i class="fas fa-phone-alt text-amber-400"></i></div>
+            <div class="text-white font-bold">联系电话</div>
+          </div>
+          <div class="text-amber-100/60 text-sm space-y-1">
+            <p>企业电话1：15959552227</p>
+            <p>企业电话2：13959962008</p>
+            <p class="text-amber-200/50 text-xs mt-2">福建泉州区号0595</p>
+          </div>
+        </div>
+        <div class="glass-card-sm p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center"><i class="fas fa-globe text-amber-400"></i></div>
+            <div class="text-white font-bold">官方网站</div>
+          </div>
+          <div class="text-amber-100/60 text-sm space-y-1">
+            <p>官网：www.fjsmxcy.com</p>
+            <p>备案：闽ICP备19016135号</p>
+            <p class="text-amber-200/50 text-xs mt-2">企业品牌展示与加盟咨询</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-section">
+  <div class="max-w-2xl mx-auto">
+    <div class="w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-6 ring-1 ring-amber-500/20">
+      <i class="fas fa-mug-hot text-amber-400 text-2xl"></i>
+    </div>
+    <p class="creator-mark mb-3">39139@胜天半子</p>
+    <p class="text-amber-200/40 text-sm">森罗之眼智能体生成 · 数据更新至 2026.06</p>
+    <p class="text-amber-200/30 text-xs mt-2">本画像基于公开信息自动生成，数据来源包括天眼查、水滴信用、企查查、顺企网、官网公开信息等公开平台，仅供参考</p>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+(function(){
+  const container = document.getElementById('particles');
+  for(let i=0;i<50;i++){
+    const p = document.createElement('div');
+    p.className='particle';
+    p.style.left=Math.random()*100+'%';
+    p.style.top=Math.random()*100+'%';
+    p.style.animationDelay=Math.random()*8+'s';
+    p.style.animationDuration=(6+Math.random()*10)+'s';
+    // 暖棕金色系粒子：随机选择琥珀、橙色、黄色三色
+    const colors = ['#f59e0b','#f97316','#eab308'];
+    p.style.background = colors[Math.floor(Math.random()*colors.length)];
+    container.appendChild(p);
+  }
+})();
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:0.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+});
+
+gsap.utils.toArray('.stat-bar-fill').forEach(bar=>{
+  const w = bar.style.width;
+  bar.style.width='0%';
+  ScrollTrigger.create({trigger:bar,start:'top 90%',onEnter:()=>{bar.style.width=w}});
+});
+
+gsap.to('.hero-ring',{rotation:360,duration:60,ease:'none',repeat:-1,transformOrigin:'center center'});
+gsap.to('.hero-ring:nth-child(2)',{rotation:-360,duration:80,ease:'none',repeat:-1,transformOrigin:'center center'});
+gsap.to('.hero-ring:nth-child(3)',{rotation:180,duration:100,ease:'none',repeat:-1,transformOrigin:'center center'});
+</script>
+</body>
+</html>

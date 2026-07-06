@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>正大生活 | 卫生用品跨境出海领军企业</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#e91e8c;--primary-light:#f472b6;--primary-dark:#9d174d;--accent:#06b6d4;--accent-light:#67e8f9;--warm:#f59e0b;--warm-light:#fcd34d;--green:#10b981;--dark:#0c0a14;--card-bg:rgba(233,30,140,.06);--glass-bg:rgba(255,255,255,.05);--glass-border:rgba(255,255,255,.08)}
+body{font-family:'Inter','Noto Sans SC',sans-serif;background:#0c0a14;color:#f0eef5;overflow-x:hidden;line-height:1.7}
+.cosmic-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 15% 15%,#1a0a2e 0%,transparent 50%),radial-gradient(ellipse at 85% 85%,#0a1628 0%,transparent 50%),#0c0a14}
+.cosmic-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.25;animation:orbFloat 25s ease-in-out infinite}
+.cosmic-bg .orb:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,rgba(233,30,140,.3),transparent 70%);top:-10%;left:-5%}
+.cosmic-bg .orb:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,.2),transparent 70%);bottom:-8%;right:-5%;animation-delay:-8s}
+.cosmic-bg .orb:nth-child(3){width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,.12),transparent 70%);top:50%;left:50%;animation-delay:-15s}
+.cosmic-bg .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(233,30,140,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(233,30,140,.02) 1px,transparent 1px);background-size:60px 60px}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-40px) scale(1.1)}66%{transform:translate(-30px,30px) scale(.9)}}
+.glass-card{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(20px);border-radius:16px;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.glass-card:hover{background:rgba(255,255,255,.08);border-color:rgba(233,30,140,.25);transform:translateY(-4px);box-shadow:0 20px 60px rgba(233,30,140,.1)}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;background:linear-gradient(135deg,#f0eef5,#e91e8c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.02em}
+.badge-primary{background:rgba(233,30,140,.15);color:#f472b6;border:1px solid rgba(233,30,140,.25)}
+.badge-accent{background:rgba(6,182,212,.12);color:#67e8f9;border:1px solid rgba(6,182,212,.2)}
+.badge-warm{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.2)}
+.stat-number{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.1}
+.stat-pink{background:linear-gradient(135deg,var(--primary),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-cyan{background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-amber{background:linear-gradient(135deg,var(--warm),var(--warm-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:4px 12px;border-radius:8px;font-size:.75rem;font-weight:500;background:rgba(233,30,140,.08);color:rgba(240,238,245,.6);border:1px solid rgba(233,30,140,.12)}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.product-card{background:linear-gradient(135deg,rgba(233,30,140,.06),rgba(6,182,212,.04));border:1px solid rgba(233,30,140,.15);border-radius:16px;padding:24px;transition:all .3s ease}
+.product-card:hover{border-color:var(--primary);transform:translateY(-3px);box-shadow:0 12px 40px rgba(233,30,140,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.brand-chip{padding:12px 16px;border-radius:12px;background:rgba(233,30,140,.08);border:1px solid rgba(233,30,140,.12);text-align:center;transition:all .3s}
+.brand-chip:hover{background:rgba(233,30,140,.15);border-color:rgba(233,30,140,.3)}
+.creator-mark{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-section{padding:60px 24px;text-align:center;border-top:1px solid rgba(233,30,140,.1)}
+.reveal{opacity:0;transform:translateY(40px)}
+.progress-bar{height:6px;border-radius:3px;background:rgba(233,30,140,.1);overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));transition:width 1s ease}
+@media(max-width:768px){.hero-title{font-size:2.2rem}.stat-number{font-size:2rem}.product-grid{grid-template-columns:1fr}.brand-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="cosmic-bg">
+<div class="orb"></div><div class="orb"></div><div class="orb"></div>
+<div class="grid-overlay"></div>
+</div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-[#0c0a14]/70 border-b border-[rgba(233,30,140,.1)]">
+<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-gradient-to-br from-[#e91e8c] to-[#06b6d4] flex items-center justify-center">
+<i class="fas fa-heart text-white text-sm"></i>
+</div>
+<span class="font-bold text-lg tracking-tight">正大生活</span>
+</div>
+<div class="hidden md:flex items-center gap-6 text-sm text-[rgba(240,238,245,.4)]">
+<a href="#overview" class="hover:text-[#e91e8c] transition-colors">企业概览</a>
+<a href="#products" class="hover:text-[#e91e8c] transition-colors">产品体系</a>
+<a href="#brands" class="hover:text-[#e91e8c] transition-colors">品牌矩阵</a>
+<a href="#global" class="hover:text-[#e91e8c] transition-colors">全球布局</a>
+<a href="#insights" class="hover:text-[#e91e8c] transition-colors">商业洞察</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center pt-16">
+<div class="max-w-7xl mx-auto px-6 py-20">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="flex flex-wrap gap-3 mb-6">
+<span class="badge badge-primary"><i class="fas fa-industry"></i> 20年制造</span>
+<span class="badge badge-accent"><i class="fas fa-globe"></i> 出口30+国</span>
+<span class="badge badge-warm"><i class="fas fa-certificate"></i> ISO 9001</span>
+</div>
+<h1 class="hero-title mb-6">
+<span style="background:linear-gradient(135deg,#f0eef5,#e91e8c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">正大生活</span><br>
+<span style="color:rgba(240,238,245,.8)">卫生用品</span><br>
+<span style="background:linear-gradient(135deg,#06b6d4,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">跨境出海领军</span>
+</h1>
+<p class="text-[rgba(240,238,245,.6)] text-lg mb-8 max-w-xl">
+集研发、生产、销售、服务于一体的现代化卫生用品企业。卫生巾·纸尿裤·护垫·成人护理全品类覆盖，139个注册商标，产品远销非洲、中东、南美、东南亚30+国家。
+</p>
+<div class="flex flex-wrap gap-4">
+<a href="https://www.made-in-china.com/co_zdbabydiaper/" target="_blank" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#e91e8c] to-[#9d174d] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[rgba(233,30,140,.3)] transition-all">
+<i class="fas fa-external-link-alt mr-2"></i>Made-in-China
+</a>
+<a href="#insights" class="px-6 py-3 rounded-xl border border-[rgba(6,182,212,.3)] text-[#67e8f9] font-semibold text-sm hover:bg-[rgba(6,182,212,.1)] transition-all">
+<i class="fas fa-chart-line mr-2"></i>商业洞察
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-pink">20年</div>
+<div class="text-sm text-[rgba(240,238,245,.4)] mt-1">深耕行业</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-cyan">30+</div>
+<div class="text-sm text-[rgba(240,238,245,.4)] mt-1">出口国家</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-amber">139</div>
+<div class="text-sm text-[rgba(240,238,245,.4)] mt-1">注册商标</div>
+</div>
+<div class="glass-card p-6 text-center">
+<div class="stat-number stat-pink">6条</div>
+<div class="text-sm text-[rgba(240,238,245,.4)] mt-1">全自动产线</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Overview Section -->
+<section id="overview" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-building mr-3"></i>企业全景画像</h2></div>
+<div class="grid lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-card p-8 reveal">
+<h3 class="text-xl font-bold mb-6 text-[#f472b6]"><i class="fas fa-id-card mr-2"></i>工商基本信息</h3>
+<div class="grid md:grid-cols-2 gap-4 text-sm">
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">企业全称</span>
+<span class="font-medium">泉州市正大生活用品有限公司</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">统一信用代码</span>
+<span class="font-medium">913505047796143122</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">法定代表人</span>
+<span class="font-medium">涂雪花</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">企业类型</span>
+<span class="font-medium">有限责任公司(自然人投资或控股)</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">注册资本</span>
+<span class="font-medium">888万元</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">实缴资本</span>
+<span class="font-medium">88.8万元</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">成立日期</span>
+<span class="font-medium">2005年9月14日</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">经营期限</span>
+<span class="font-medium">2005-09-14 至 2055-09-13</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">所属行业</span>
+<span class="font-medium">医药制造业 / 卫生用品</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">纳税人资质</span>
+<span class="font-medium text-[#10b981]">增值税一般纳税人 · A级</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">科创分</span>
+<span class="font-medium">36分</span>
+</div>
+<div class="flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">参保人数</span>
+<span class="font-medium">18人(2024年报)</span>
+</div>
+<div class="md:col-span-2 flex justify-between py-3 border-b border-[rgba(233,30,140,.08)]">
+<span class="text-[rgba(240,238,245,.4)]">注册地址</span>
+<span class="font-medium text-right max-w-[60%]">福建省泉州市洛江区双滨街7号14幢综合楼</span>
+</div>
+<div class="md:col-span-2 flex justify-between py-3">
+<span class="text-[rgba(240,238,245,.4)]">主要人员</span>
+<span class="font-medium">涂雪花(执行董事兼总经理) · 苏永昌(监事)</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 reveal">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(233,30,140,.15)] flex items-center justify-center"><i class="fas fa-coins text-[#f472b6]"></i></div>
+<span class="text-sm text-[rgba(240,238,245,.4)]">年交易额</span>
+</div>
+<div class="text-2xl font-bold text-[#f472b6]">2000万+</div>
+<div class="text-xs text-[rgba(240,238,245,.3)] mt-1">1688平台数据 · 深度验厂</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(6,182,212,.15)] flex items-center justify-center"><i class="fas fa-ship text-[#67e8f9]"></i></div>
+<span class="text-sm text-[rgba(240,238,245,.4)]">出口比例</span>
+</div>
+<div class="text-2xl font-bold text-[#67e8f9]">>90%</div>
+<div class="text-xs text-[rgba(240,238,245,.3)] mt-1">自有出口权 · 2008年起出口</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(245,158,11,.15)] flex items-center justify-center"><i class="fas fa-users text-[#fcd34d]"></i></div>
+<span class="text-sm text-[rgba(240,238,245,.4)]">员工规模</span>
+</div>
+<div class="text-2xl font-bold text-[#fcd34d]">100-499人</div>
+<div class="text-xs text-[rgba(240,238,245,.3)] mt-1">BOSS直聘 · 含生产+外贸</div>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-lg bg-[rgba(16,185,129,.15)] flex items-center justify-center"><i class="fas fa-flask text-[#6ee7b7]"></i></div>
+<span class="text-sm text-[rgba(240,238,245,.4)]">迁扩建投资</span>
+</div>
+<div class="text-2xl font-bold text-[#6ee7b7]">1387万</div>
+<div class="text-xs text-[rgba(240,238,245,.3)] mt-1">2023年 · 卫生巾+纸尿裤产线</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Business Scope -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-briefcase mr-3"></i>经营范围与核心能力</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-4 text-[#f472b6]"><i class="fas fa-file-alt mr-2"></i>法定经营范围</h3>
+<div class="tag-cloud">
+<span class="tag">卫生用品和一次性使用医疗用品生产</span>
+<span class="tag">个人卫生用品销售</span>
+<span class="tag">日用口罩(非医用)生产</span>
+<span class="tag">卫生用品和一次性使用医疗用品销售</span>
+<span class="tag">日用口罩(非医用)销售</span>
+<span class="tag">货物进出口</span>
+<span class="tag">进出口代理</span>
+<span class="tag">发电/输电/供(配)电业务</span>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-4 text-[#67e8f9]"><i class="fas fa-cogs mr-2"></i>核心能力矩阵</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-sm mb-2"><span>OEM/ODM代工能力</span><span class="text-[#f472b6]">95%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>跨境出口能力</span><span class="text-[#67e8f9]">92%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:92%;background:linear-gradient(90deg,#06b6d4,#67e8f9)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>品牌矩阵运营</span><span class="text-[#fcd34d]">88%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:88%;background:linear-gradient(90deg,#f59e0b,#fcd34d)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>品质管控体系</span><span class="text-[#6ee7b7]">90%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:90%;background:linear-gradient(90deg,#10b981,#6ee7b7)"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2"><span>多市场适配</span><span class="text-[#f472b6]">85%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Products Section -->
+<section id="products" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-4"><i class="fas fa-cubes mr-3"></i>产品体系</h2>
+<p class="text-[rgba(240,238,245,.4)] mb-12 max-w-2xl">6条全自动产线 · 6大品类 · OEM/ODM/自主品牌全模式 · 出口30+国</p></div>
+<div class="product-grid reveal">
+<div class="product-card">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#e91e8c] to-[#f472b6] flex items-center justify-center mb-4">
+<i class="fas fa-female text-white text-lg"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">卫生巾 Sanitary Napkin</h4>
+<p class="text-sm text-[rgba(240,238,245,.5)] mb-3">日用240mm/夜用285-350mm/加长夜用，棉柔/网面/纯棉/竹炭/有机棉多种材质，带翼/无翼，印蓝芯片</p>
+<div class="text-[#f472b6] text-sm font-semibold">¥1.8 - 2.8/包 · 外贸主力</div>
+</div>
+<div class="product-card">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#06b6d4] to-[#67e8f9] flex items-center justify-center mb-4">
+<i class="fas fa-baby text-[#0c0a14] text-lg"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">婴儿纸尿裤 Baby Diaper</h4>
+<p class="text-sm text-[rgba(240,238,245,.5)] mb-3">NB/S/M/L/XL全尺码，棉柔表层/透气干爽/超薄款/拉拉裤，OEM贴牌+自主品牌双模式</p>
+<div class="text-[#67e8f9] text-sm font-semibold">¥0.33 - 0.5/片 · 非洲南美热销</div>
+</div>
+<div class="product-card">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#f59e0b] to-[#fcd34d] flex items-center justify-center mb-4">
+<i class="fas fa-shield-alt text-[#0c0a14] text-lg"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">卫生护垫 Panty Liner</h4>
+<p class="text-sm text-[rgba(240,238,245,.5)] mb-3">155mm迷你巾/日用护垫，薄款透气/棉柔亲肤，独立包装，多语言包装适配各国市场</p>
+<div class="text-[#fcd34d] text-sm font-semibold">¥2.0 - 2.4/包 · 东南亚主力</div>
+</div>
+<div class="product-card">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#10b981] to-[#6ee7b7] flex items-center justify-center mb-4">
+<i class="fas fa-user text-white text-lg"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">成人纸尿裤 Adult Diaper</h4>
+<p class="text-sm text-[rgba(240,238,245,.5)] mb-3">成人失禁护理/术后护理/安心裤，高吸收/防侧漏/透气，满足老龄化市场需求</p>
+<div class="text-[#6ee7b7] text-sm font-semibold">新兴品类 · 增长潜力大</div>
+</div>
+<div class="product-card">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#8b5cf6] to-[#c4b5fd] flex items-center justify-center mb-4">
+<i class="fas fa-tshirt text-white text-lg"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">吸汗贴/衣领贴</h4>
+<p class="text-sm text-[rgba(240,238,245,.5)] mb-3">腋下吸汗贴/帽檐吸汗垫/衣领防脏内贴，薄荷清凉/隐形超薄/独立包装，夏季爆款</p>
+<div class="text-[#c4b5fd] text-sm font-semibold">创新品类 · 差异化竞争</div>
+</div>
+<div class="product-card">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#ef4444] to-[#fca5a5] flex items-center justify-center mb-4">
+<i class="fas fa-head-side-mask text-white text-lg"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">日用口罩(非医用)</h4>
+<p class="text-sm text-[rgba(240,238,245,.5)] mb-3">非医用日用防护口罩，疫情期间新增产线，灵活产能切换，满足多场景防护需求</p>
+<div class="text-[#fca5a5] text-sm font-semibold">弹性产能 · 快速响应</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Brand Matrix -->
+<section id="brands" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-tags mr-3"></i>品牌矩阵（139个注册商标）</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#f472b6]"><i class="fas fa-venus mr-2"></i>女性卫生巾品牌</h3>
+<div class="brand-grid">
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Shiny Girl</div><div class="text-xs text-[rgba(240,238,245,.4)]">南非/博茨瓦纳</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Max-Plus</div><div class="text-xs text-[rgba(240,238,245,.4)]">西非/加纳</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Sufy Pad</div><div class="text-xs text-[rgba(240,238,245,.4)]">多国通用</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Naval Girl</div><div class="text-xs text-[rgba(240,238,245,.4)]">中东市场</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Lady Free</div><div class="text-xs text-[rgba(240,238,245,.4)]">南美市场</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Modenna</div><div class="text-xs text-[rgba(240,238,245,.4)]">非洲OEM</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Extra Wings</div><div class="text-xs text-[rgba(240,238,245,.4)]">刚果市场</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#f472b6]">Myluna</div><div class="text-xs text-[rgba(240,238,245,.4)]">2025新注册</div></div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#67e8f9]"><i class="fas fa-baby-carriage mr-2"></i>婴儿纸尿裤品牌</h3>
+<div class="brand-grid">
+<div class="brand-chip"><div class="font-bold text-sm text-[#67e8f9]">BUBA</div><div class="text-xs text-[rgba(240,238,245,.4)]">非洲主力</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#67e8f9]">Youlebi</div><div class="text-xs text-[rgba(240,238,245,.4)]">东南亚</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#67e8f9]">BOB</div><div class="text-xs text-[rgba(240,238,245,.4)]">南美市场</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#67e8f9]">Ticcis</div><div class="text-xs text-[rgba(240,238,245,.4)]">中东市场</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#67e8f9]">Heeppo</div><div class="text-xs text-[rgba(240,238,245,.4)]">尼日尔/西非</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#67e8f9]">优咪爱</div><div class="text-xs text-[rgba(240,238,245,.4)]">2026新注册</div></div>
+<div class="brand-chip"><div class="font-bold text-sm text-[#67e8f9]">Guardian Angel</div><div class="text-xs text-[rgba(240,238,245,.4)]">2026新注册</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Global Layout -->
+<section id="global" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-globe-africa mr-3"></i>全球布局与市场体系</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#f472b6]"><i class="fas fa-map-marked-alt mr-2"></i>主要出口市场</h3>
+<div class="space-y-3">
+<div class="p-4 rounded-xl bg-[rgba(233,30,140,.06)] border border-[rgba(233,30,140,.1)]">
+<div class="font-semibold text-sm mb-2">🌍 非洲（核心市场）</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="tag">🇬🇭 加纳</span><span class="tag">🇨🇩 刚果</span><span class="tag">🇦🇴 安哥拉</span>
+<span class="tag">🇳🇪 尼日尔</span><span class="tag">🇧🇯 贝宁</span><span class="tag">🇹🇬 多哥</span>
+<span class="tag">🇿🇦 南非</span><span class="tag">🇧🇼 博茨瓦纳</span><span class="tag">🇿🇼 津巴布韦</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.1)]">
+<div class="font-semibold text-sm mb-2">🕌 中东市场</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="tag">🇾🇪 也门</span><span class="tag">🇸🇩 苏丹</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]">
+<div class="font-semibold text-sm mb-2">🌎 南美洲</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="tag">🇻🇪 委内瑞拉</span><span class="tag">其他南美国家</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.1)]">
+<div class="font-semibold text-sm mb-2">🌏 东南亚/其他</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="tag">东南亚各国</span><span class="tag">🇰🇷 韩国</span><span class="tag">欧洲</span>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#67e8f9]"><i class="fas fa-truck mr-2"></i>生产与供应链</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(233,30,140,.06)] border border-[rgba(233,30,140,.1)]">
+<div class="font-semibold text-sm mb-1">🏭 生产基地</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">洛江区双阳街道双滨街7号 · 12389m²租赁厂房 · 6条全自动生产线 · 2023年迁扩建投资1387万</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.1)]">
+<div class="font-semibold text-sm mb-1">🔬 品质实验室</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">专业实验室 · 卫生渗透性测试/UV荧光检测/材料柔韧性/微生物检测 · 千分位电子天平/拉伸强度仪/白度仪</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.1)]">
+<div class="font-semibold text-sm mb-1">📦 加工模式</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">OEM代工/ODM设计/来料加工/来样加工/来图加工 · 支持贴牌/定制包装/多语言适配</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.1)]">
+<div class="font-semibold text-sm mb-1">💰 贸易条款</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">FOB/CIF/CFR · LC/T/T/D/P/PayPal/Western Union · 自有出口权 · 可开增值税发票</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Honors -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-award mr-3"></i>荣誉与资质</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(233,30,140,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-certificate text-[#f472b6]"></i></div>
+<div><div class="font-semibold text-sm">ISO 9001:2015</div><div class="text-xs text-[rgba(240,238,245,.4)]">质量管理体系认证</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(6,182,212,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-shield-alt text-[#67e8f9]"></i></div>
+<div><div class="font-semibold text-sm">A级纳税人</div><div class="text-xs text-[rgba(240,238,245,.4)]">2025年度 · 税务信用</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(245,158,11,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-check-double text-[#fcd34d]"></i></div>
+<div><div class="font-semibold text-sm">BV & SGS验厂</div><div class="text-xs text-[rgba(240,238,245,.4)]">生产能力和质量验证</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(16,185,129,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-star text-[#6ee7b7]"></i></div>
+<div><div class="font-semibold text-sm">AA诚信等级</div><div class="text-xs text-[rgba(240,238,245,.4)]">1688平台 · 深度验厂</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(139,92,246,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-paint-brush text-[#c4b5fd]"></i></div>
+<div><div class="font-semibold text-sm">1项外观专利</div><div class="text-xs text-[rgba(240,238,245,.4)]">包装袋设计 · 2014年授权</div></div>
+</div>
+<div class="glass-card p-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[rgba(233,30,140,.15)] flex items-center justify-center flex-shrink-0"><i class="fas fa-building text-[#f472b6]"></i></div>
+<div><div class="font-semibold text-sm">规上企业</div><div class="text-xs text-[rgba(240,238,245,.4)]">规模以上工业企业</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Business Insights -->
+<section id="insights" class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-lightbulb mr-3"></i>商业洞察与AI机遇</h2></div>
+<div class="grid lg:grid-cols-2 gap-6">
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#f472b6]"><i class="fas fa-exclamation-triangle mr-2"></i>关键痛点</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.12)]">
+<div class="font-semibold text-sm mb-1">🔴 多品牌内容生产瓶颈</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">139个商标 × 30+国市场 × 多语言包装 = 产品图/详情页/包装设计需求爆炸，人工设计成本高周期长</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.12)]">
+<div class="font-semibold text-sm mb-1">🟠 OEM利润薄</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">代工模式利润率低，自主品牌溢价能力不足，需从OEM向品牌升级</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.12)]">
+<div class="font-semibold text-sm mb-1">🔵 市场集中度风险</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">高度依赖非洲市场，地缘政治/汇率/贸易政策变化风险大，需多元化布局</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.12)]">
+<div class="font-semibold text-sm mb-1">🟢 数字化程度低</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">传统制造+外贸模式，电商/社媒/私域运营薄弱，缺乏数据驱动决策</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h3 class="text-lg font-bold mb-6 text-[#67e8f9]"><i class="fas fa-robot mr-2"></i>AI赋能机遇</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-xl bg-[rgba(233,30,140,.06)] border border-[rgba(233,30,140,.12)]">
+<div class="font-semibold text-sm mb-1">🎨 AI内容生产平台</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">AI生成多品牌产品图/详情页/包装设计，多语言一键适配，效率↑5倍，成本↓75%</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(6,182,212,.06)] border border-[rgba(6,182,212,.12)]">
+<div class="font-semibold text-sm mb-1">🏷️ AI品牌孵化器</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">竞品分析+视觉系统生成+内容营销矩阵，从OEM代工向自主品牌升级</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(245,158,11,.06)] border border-[rgba(245,158,11,.12)]">
+<div class="font-semibold text-sm mb-1">📊 AI智能运营</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">跨平台数据聚合+选品推荐+智能定价，从经验驱动到数据驱动</div>
+</div>
+<div class="p-4 rounded-xl bg-[rgba(16,185,129,.06)] border border-[rgba(16,185,129,.12)]">
+<div class="font-semibold text-sm mb-1">🔗 AI跨境合规</div>
+<div class="text-xs text-[rgba(240,238,245,.5)]">自动追踪各国卫生用品标准/关税/检疫要求，降低合规风险</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="reveal"><h2 class="section-title mb-12"><i class="fas fa-phone-alt mr-3"></i>联系方式</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-map-marker-alt text-[#f472b6]"></i><span class="font-semibold text-sm">注册地址</span></div>
+<p class="text-xs text-[rgba(240,238,245,.5)]">福建省泉州市洛江区双滨街7号14幢综合楼</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-industry text-[#67e8f9]"></i><span class="font-semibold text-sm">生产地址</span></div>
+<p class="text-xs text-[rgba(240,238,245,.5)]">福建省泉州市洛江区双阳街道双滨街7号16栋综合楼</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-phone text-[#fcd34d]"></i><span class="font-semibold text-sm">联系电话</span></div>
+<p class="text-xs text-[rgba(240,238,245,.5)]">0595-28200258 / 15559127028</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-envelope text-[#6ee7b7]"></i><span class="font-semibold text-sm">邮箱</span></div>
+<p class="text-xs text-[rgba(240,238,245,.5)]">lj2604906@126.com / 3097664314@qq.com</p>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-store text-[#c4b5fd]"></i><span class="font-semibold text-sm">1688店铺</span></div>
+<a href="https://www.1688.com/factory/qzzd2012.html" target="_blank" class="text-xs text-[#f472b6] hover:underline">qzzd2012 · 14年金牌供应商</a>
+</div>
+<div class="glass-card p-6">
+<div class="flex items-center gap-3 mb-3"><i class="fas fa-globe text-[#f472b6]"></i><span class="font-semibold text-sm">Made-in-China</span></div>
+<a href="https://www.made-in-china.com/co_zdbabydiaper/" target="_blank" class="text-xs text-[#67e8f9] hover:underline">zdbabydiaper · 审核供应商</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-section">
+<div class="max-w-2xl mx-auto">
+<div class="w-16 h-16 rounded-full bg-[rgba(233,30,140,.1)] flex items-center justify-center mx-auto mb-6 ring-1 ring-[rgba(233,30,140,.2)]">
+<i class="fas fa-eye text-[#f472b6] text-2xl"></i>
+</div>
+<p class="creator-mark mb-3">39139@胜天半子</p>
+<p class="text-[rgba(240,238,245,.4)] text-sm">森罗之眼智能体生成 · 2026.06</p>
+<p class="text-[rgba(240,238,245,.3)] text-xs mt-2">本画像基于公开信息自动生成，数据来源包括爱企查、水滴信用、BOSS直聘、1688、Made-in-China、洛江区环保局等，仅供参考</p>
+<div class="flex justify-center gap-4 mt-6 text-[rgba(240,238,245,.3)] text-xs">
+<a href="https://www.made-in-china.com/co_zdbabydiaper/" target="_blank" class="hover:text-[#f472b6] transition-colors">Made-in-China</a>
+<span class="text-[rgba(240,238,245,.2)]">|</span>
+<span>森罗之眼 · 商业智能</span>
+</div>
+</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.reveal').forEach(el=>{
+gsap.fromTo(el,{opacity:0,y:50},{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+});
+</script>
+</body>
+</html>
