@@ -215,9 +215,47 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
 .footer-links a{color:var(--text-secondary);font-size:.9rem;text-decoration:none;transition:color .3s}
 .footer-links a:hover{color:var(--accent)}
 .footer-bottom{text-align:center;padding-top:32px;border-top:1px solid var(--glass-border);color:var(--text-muted);font-size:.85rem}
+/* Video Solution */
+.solution-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px;margin-bottom:48px}
+.solution-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:24px;padding:32px;transition:all .4s}
+.solution-card:hover{transform:translateY(-6px);border-color:rgba(96,165,250,.4)}
+.solution-icon-wrapper{width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;margin-bottom:20px}
+.solution-card h3{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:10px}
+.solution-desc{color:var(--text-secondary);font-size:.9rem;margin-bottom:24px}
+.solution-details{display:flex;flex-direction:column;gap:16px}
+.detail-item{display:flex;gap:14px;padding:16px;border-radius:12px;background:rgba(0,0,0,.2)}
+.detail-icon{width:44px;height:44px;border-radius:12px;background:rgba(6,182,212,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--accent)}
+.detail-content h4{font-size:1rem;font-weight:600;color:#fff;margin-bottom:4px}
+.detail-content p{color:var(--text-secondary);font-size:.85rem;line-height:1.6}
+.phase-card{background:rgba(0,0,0,.2);border-radius:16px;padding:20px;border-left:4px solid var(--accent)}
+.phase-badge{display:inline-block;padding:4px 12px;border-radius:8px;font-size:.75rem;font-weight:700;background:rgba(6,182,212,.15);color:var(--accent);margin-bottom:10px}
+.phase-card h4{font-size:1rem;font-weight:600;color:#fff;margin-bottom:12px}
+.phase-card ul{list-style:none;padding:0;margin:0}
+.phase-card li{padding:6px 0;color:var(--text-secondary);font-size:.85rem;padding-left:18px;position:relative}
+.phase-card li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-size:.8rem}
+.effect-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.effect-item{text-align:center;padding:20px;border-radius:16px;background:rgba(0,0,0,.2)}
+.effect-icon{font-size:1.8rem;color:var(--success);margin-bottom:10px}
+.effect-value{font-size:2rem;font-weight:800;color:#fff;margin-bottom:4px}
+.effect-label{color:var(--text-secondary);font-size:.85rem;margin-bottom:4px}
+.effect-desc{color:var(--text-muted);font-size:.78rem}
+.video-tips{background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(249,115,22,.06));border-radius:24px;padding:32px}
+.video-tips h3{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:24px}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.tip-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;padding:20px}
+.tip-card h4{font-size:.95rem;font-weight:600;color:#fff;margin-bottom:8px}
+.tip-card p{color:var(--text-secondary);font-size:.85rem;line-height:1.6}
+/* Tool Category Tag Colors */
+.tool-category-tag{padding:4px 10px;border-radius:8px;font-size:.7rem;font-weight:600}
+.tool-category-tag[style*="组织治理"]{background:rgba(6,182,212,.15);color:var(--accent)}
+.tool-category-tag[style*="财务管理"]{background:rgba(249,115,22,.15);color:var(--warning)}
+.tool-category-tag[style*="数字化"]{background:rgba(139,92,246,.15);color:var(--purple)}
+.tool-category-tag[style*="品牌营销"]{background:rgba(52,211,153,.15);color:var(--success)}
+.tool-category-tag[style*="跨境电商"]{background:rgba(236,72,153,.15);color:#ec4899}
+.tool-category-tag[style*="供应链"]{background:rgba(250,204,21,.15);color:#facc15}
 /* Responsive */
-@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr)}.card-full{grid-column:span 6}.card-half{grid-column:span 6}.card-third{grid-column:span 6}.card-big{grid-column:span 6}.card-medium{grid-column:span 6}.roadmap-timeline::before{left:24px}.roadmap-stage{flex-direction:column !important}.roadmap-marker{left:24px;top:32px;transform:none}.roadmap-content{margin-left:56px !important;margin-right:0 !important;text-align:left !important}.stage-tasks{justify-content:flex-start !important}}
-@media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.hero h1{font-size:2.2rem}.hero-stats{grid-template-columns:repeat(2,1fr)}.stat-card{padding:20px}.stat-card .stat-value{font-size:2rem}.case-grid{grid-template-columns:1fr}.case-card{max-width:100%}.report-scores{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr)}.card-full{grid-column:span 6}.card-half{grid-column:span 6}.card-third{grid-column:span 6}.card-big{grid-column:span 6}.card-medium{grid-column:span 6}.roadmap-timeline::before{left:24px}.roadmap-stage{flex-direction:column !important}.roadmap-marker{left:24px;top:32px;transform:none}.roadmap-content{margin-left:56px !important;margin-right:0 !important;text-align:left !important}.stage-tasks{justify-content:flex-start !important}.solution-grid{grid-template-columns:1fr}.effect-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.hero h1{font-size:2.2rem}.hero-stats{grid-template-columns:repeat(2,1fr)}.stat-card{padding:20px}.stat-card .stat-value{font-size:2rem}.case-grid{grid-template-columns:1fr}.case-card{max-width:100%}.report-scores{grid-template-columns:repeat(2,1fr)}.tips-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.hero-stats{grid-template-columns:1fr}.section{padding:60px 0}.hero{min-height:auto;padding-bottom:60px}.card{padding:20px}}
 </style>
 </head>
@@ -234,6 +272,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
       <a href="#tools">工具矩阵</a>
       <a href="#roadmap">执行路径</a>
       <a href="#cases">成功案例</a>
+      <a href="#video-solution">视频号运维</a>
     </div>
     <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
   </div>
@@ -362,6 +401,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
     <button class="tool-category" onclick="filterTools('cashflow')">财务管理</button>
     <button class="tool-category" onclick="filterTools('digital')">数字化</button>
     <button class="tool-category" onclick="filterTools('marketing')">品牌营销</button>
+    <button class="tool-category" onclick="filterTools('crossborder')">跨境电商</button>
+    <button class="tool-category" onclick="filterTools('supplychain')">供应链</button>
   </div>
   <div class="tool-grid" id="toolGrid">
     <div class="tool-card governance">
@@ -401,16 +442,64 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
       <div class="tool-metrics"><span class="tool-price">¥<span>8,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 招聘效率+50%</span></div>
     </div>
     <div class="tool-card marketing">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-video"></i></div><div><h4>抖音企业号</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-video"></i></div><div><h4>视频号运营</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <p class="tool-desc">厂三代真人出镜打造个人IP，工厂实景直播建立信任，私域导流提升复购</p>
+      <div class="tool-features"><span class="tool-feature">短视频运营</span><span class="tool-feature">直播带货</span><span class="tool-feature">私域承接</span><span class="tool-feature">数据分析</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>免费</span></span><span class="tool-roi"><i class="fas fa-trending-up"></i> 线上营收+40%</span></div>
+    </div>
+    <div class="tool-card marketing">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-store"></i></div><div><h4>抖音企业号</h4><span class="tool-category-tag">品牌营销</span></div></div>
       <p class="tool-desc">短视频+直播带货，厂三代个人IP打造，拉近与Z世代消费者距离</p>
       <div class="tool-features"><span class="tool-feature">短视频运营</span><span class="tool-feature">直播带货</span><span class="tool-feature">私域运营</span><span class="tool-feature">数据分析</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>免费</span></span><span class="tool-roi"><i class="fas fa-trending-up"></i> 线上营收+30%</span></div>
+    </div>
+    <div class="tool-card marketing">
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-weixin"></i></div><div><h4>企业微信</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <p class="tool-desc">私域流量沉淀与运营，客户分层管理，会员体系搭建，提升复购率与LTV</p>
+      <div class="tool-features"><span class="tool-feature">客户管理</span><span class="tool-feature">社群运营</span><span class="tool-feature">会员体系</span><span class="tool-feature">SCRM集成</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>免费</span>-<span>20,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 复购率+35%</span></div>
     </div>
     <div class="tool-card marketing">
       <div class="tool-header"><div class="tool-icon"><i class="fas fa-store"></i></div><div><h4>拼多多/抖音小店</h4><span class="tool-category-tag">品牌营销</span></div></div>
       <p class="tool-desc">电商渠道布局，先"营销"后"生产"，精准捕捉细分市场爆品机遇</p>
       <div class="tool-features"><span class="tool-feature">店铺运营</span><span class="tool-feature">数据分析</span><span class="tool-feature">直播带货</span><span class="tool-feature">供应链对接</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>5,000</span>/起</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 营收+45%</span></div>
+    </div>
+    <div class="tool-card crossborder">
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-shopify"></i></div><div><h4>Shopify独立站</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <p class="tool-desc">DTC品牌出海，自建独立站直接触达欧美消费者，掌握定价权与客户数据</p>
+      <div class="tool-features"><span class="tool-feature">建站工具</span><span class="tool-feature">支付集成</span><span class="tool-feature">多语言</span><span class="tool-feature">数据分析</span></div>
+      <div class="tool-metrics"><span class="tool-price">$<span>29</span>-<span>299</span>/月</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 利润率+20%</span></div>
+    </div>
+    <div class="tool-card crossborder">
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-tiktok"></i></div><div><h4>TikTok Shop</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <p class="tool-desc">短视频+直播跨境带货，快速打入东南亚、欧美市场，国潮品牌出海首选</p>
+      <div class="tool-features"><span class="tool-feature">短视频引流</span><span class="tool-feature">直播带货</span><span class="tool-feature">跨境物流</span><span class="tool-feature">达人合作</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>免费</span></span><span class="tool-roi"><i class="fas fa-trending-up"></i> 海外营收+120%</span></div>
+    </div>
+    <div class="tool-card crossborder">
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-amazon"></i></div><div><h4>亚马逊全球开店</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <p class="tool-desc">入驻全球最大电商平台，覆盖北美、欧洲、日本等核心市场，品牌出海成熟通道</p>
+      <div class="tool-features"><span class="tool-feature">全球站点</span><span class="tool-feature">FBA物流</span><span class="tool-feature">品牌备案</span><span class="tool-feature">广告投放</span></div>
+      <div class="tool-metrics"><span class="tool-price">$<span>39.99</span>/月/站点</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 年营收千万+</span></div>
+    </div>
+    <div class="tool-card crossborder">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-ship"></i></div><div><h4>海外仓系统</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <p class="tool-desc">海外仓管理与配送，缩短配送时间，提升买家体验，降低物流成本</p>
+      <div class="tool-features"><span class="tool-feature">仓储管理</span><span class="tool-feature">订单履约</span><span class="tool-feature">库存同步</span><span class="tool-feature">物流追踪</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>30,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 物流成本-40%</span></div>
+    </div>
+    <div class="tool-card supplychain">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-industry"></i></div><div><h4>MES系统</h4><span class="tool-category-tag">供应链</span></div></div>
+      <p class="tool-desc">生产执行系统，实现生产流程数字化管理，实时监控生产进度与质量</p>
+      <div class="tool-features"><span class="tool-feature">生产调度</span><span class="tool-feature">质量追溯</span><span class="tool-feature">设备管理</span><span class="tool-feature">数据采集</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>50,000</span>/起</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 生产效率+60%</span></div>
+    </div>
+    <div class="tool-card supplychain">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-robot"></i></div><div><h4>具身智能产线</h4><span class="tool-category-tag">供应链</span></div></div>
+      <p class="tool-desc">引入具身智能技术，实现不同尺码、款式鞋子的无缝切换，全柔性智造</p>
+      <div class="tool-features"><span class="tool-feature">智能感知</span><span class="tool-feature">柔性生产</span><span class="tool-feature">3D建模</span><span class="tool-feature">小单快反</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>200万</span>/线</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 人工成本-40%</span></div>
     </div>
   </div>
 </section>
@@ -532,6 +621,209 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
         <p class="case-desc">00后厂三代引入AI质检、自动化生产线，解决用工难和效率低的问题，实现生产效率提升70%，次品率下降85%。</p>
         <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>AI视觉质检</li><li>自动化生产线</li><li>MES系统管理</li></ul></div>
         <div class="case-metrics"><div class="case-metric"><div class="metric-value">+70%</div><div class="metric-label">生产效率</div></div><div class="case-metric"><div class="metric-value">-85%</div><div class="metric-label">次品率</div></div><div class="case-metric"><div class="metric-value">30%</div><div class="metric-label">人力成本下降</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-video"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">晋江</span><span class="case-tag industry">鞋业制造</span></div>
+        <h4>晋江某运动鞋企：视频号直播逆袭之路</h4>
+        <p class="case-desc">95后厂三代接手传统运动鞋厂，从零开始运营视频号，通过"厂二代人设+工厂实景直播"模式，3个月粉丝破10万，单场直播GMV突破50万，线上营收占比从5%提升到40%。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>厂二代真人出镜，讲述创业故事</li><li>工厂实景直播，展示生产过程建立信任</li><li>私域导流+会员体系，提升复购率</li><li>数据驱动选品，爆款单品月销10万双</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">+40%</div><div class="metric-label">线上营收占比</div></div><div class="case-metric"><div class="metric-value">10万+</div><div class="metric-label">视频号粉丝</div></div><div class="case-metric"><div class="metric-value">50万</div><div class="metric-label">单场GMV</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-globe-asia"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">莆田</span><span class="case-tag industry">鞋业制造</span></div>
+        <h4>莆田某鞋企：跨境独立站品牌化出海</h4>
+        <p class="case-desc">海归厂三代放弃传统代加工模式，自建独立站+TikTok矩阵，主打"国潮运动鞋"定位，通过DTC模式直接触达欧美消费者，年营收突破5000万美金，利润率从12%提升到35%。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>独立站+TikTok双渠道布局</li><li>国潮设计+差异化定位避开同质化</li><li>KOL矩阵推广+网红种草</li><li>柔性供应链支持小单快反</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">5000万$</div><div class="metric-label">年营收</div></div><div class="case-metric"><div class="metric-value">35%</div><div class="metric-label">利润率</div></div><div class="case-metric"><div class="metric-value">200万+</div><div class="metric-label">独立站访客</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-hands-helping"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">晋江</span><span class="case-tag industry">鞋业制造</span></div>
+        <h4>晋江某中小鞋企：视频号私域运营体系搭建</h4>
+        <p class="case-desc">传统家族鞋企面临订单萎缩，厂三代通过视频号建立"内容引流-私域沉淀-会员运营-复购转化"闭环，将老客户复购率从20%提升到55%，单客生命周期价值提升3倍。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>视频号内容矩阵：产品测评+穿搭教程+工厂故事</li><li>企业微信承接，分层运营客户</li><li>会员积分+专属福利体系</li><li>社群营销+定期直播维护</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">55%</div><div class="metric-label">复购率</div></div><div class="case-metric"><div class="metric-value">3x</div><div class="metric-label">LTV提升</div></div><div class="case-metric"><div class="metric-value">2万+</div><div class="metric-label">私域用户</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-box"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">温州</span><span class="case-tag industry">鞋业制造</span></div>
+        <h4>温州某皮鞋厂：柔性供应链+视频号小单快反</h4>
+        <p class="case-desc">00后厂三代改造传统生产线，引入数字化生产系统，结合视频号直播数据快速响应市场需求，实现"7天打样-15天量产"的小单快反模式，库存周转率提升200%，滞销率下降60%。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>数字化生产系统改造</li><li>视频号直播试款，数据驱动生产</li><li>小单快反模式，降低库存风险</li><li>预售制+按需生产</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">+200%</div><div class="metric-label">库存周转</div></div><div class="case-metric"><div class="metric-value">-60%</div><div class="metric-label">滞销率</div></div><div class="case-metric"><div class="metric-value">15天</div><div class="metric-label">量产周期</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="video-solution">
+  <h2 class="section-title">视频号<span class="gradient-text">运维</span>解决方案</h2>
+  <p class="section-subtitle">从0到1构建鞋厂视频号运营体系，实现品牌曝光与销售转化</p>
+  
+  <div class="solution-grid">
+    <div class="solution-card">
+      <div class="solution-icon-wrapper">
+        <i class="fas fa-target"></i>
+      </div>
+      <h3>做什么？</h3>
+      <p class="solution-desc">明确视频号运维的核心内容，建立完整的运营体系</p>
+      <div class="solution-details">
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fas fa-user"></i></div>
+          <div class="detail-content">
+            <h4>人设打造</h4>
+            <p>厂三代真人出镜，建立"年轻、专业、可信"的个人IP形象，讲述家族企业故事</p>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fas fa-camera"></i></div>
+          <div class="detail-content">
+            <h4>内容矩阵</h4>
+            <p>产品测评、穿搭教程、工厂实景、创业故事、行业洞察五大内容板块</p>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fas fa-shopping-cart"></i></div>
+          <div class="detail-content">
+            <h4>直播带货</h4>
+            <p>定期直播，展示产品、讲解工艺、限时优惠，实现品效合一</p>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fas fa-users"></i></div>
+          <div class="detail-content">
+            <h4>私域运营</h4>
+            <p>企业微信承接流量，建立会员体系，提升客户粘性与复购率</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="solution-card">
+      <div class="solution-icon-wrapper" style="background:linear-gradient(135deg,#f97316,#fb923c)">
+        <i class="fas fa-tasks"></i>
+      </div>
+      <h3>怎么做？</h3>
+      <p class="solution-desc">分阶段执行路线，从基础搭建到持续优化</p>
+      <div class="solution-details">
+        <div class="phase-card">
+          <div class="phase-badge">第1阶段</div>
+          <h4>基础搭建（1-2周）</h4>
+          <ul>
+            <li>视频号开通认证，完善账号信息</li>
+            <li>制定内容定位与选题规划</li>
+            <li>拍摄设备与团队配置（手机+三脚架+补光灯）</li>
+            <li>企业微信准备，设置自动欢迎语</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-badge">第2阶段</div>
+          <h4>内容运营（3-8周）</h4>
+          <ul>
+            <li>每周发布3-5条短视频，保持更新频率</li>
+            <li>爆款视频分析与复制，优化内容方向</li>
+            <li>直播试运营，积累经验与粉丝</li>
+            <li>建立客户标签体系，分层运营</li>
+          </ul>
+        </div>
+        <div class="phase-card">
+          <div class="phase-badge">第3阶段</div>
+          <h4>规模放大（9-24周）</h4>
+          <ul>
+            <li>每周2-3场直播，固定时间养成习惯</li>
+            <li>会员体系上线，积分商城运营</li>
+            <li>社群裂变活动，扩大私域规模</li>
+            <li>数据分析驱动，持续优化运营策略</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="solution-card">
+      <div class="solution-icon-wrapper" style="background:linear-gradient(135deg,#34d399,#10b981)">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <h3>达到什么效果？</h3>
+      <p class="solution-desc">可量化的运营目标与成果指标</p>
+      <div class="solution-details">
+        <div class="effect-grid">
+          <div class="effect-item">
+            <div class="effect-icon"><i class="fas fa-eye"></i></div>
+            <div class="effect-value">10万+</div>
+            <div class="effect-label">视频号粉丝</div>
+            <div class="effect-desc">3-6个月实现粉丝突破</div>
+          </div>
+          <div class="effect-item">
+            <div class="effect-icon"><i class="fas fa-shopping-bag"></i></div>
+            <div class="effect-value">50万+</div>
+            <div class="effect-label">单场直播GMV</div>
+            <div class="effect-desc">成熟运营后可达</div>
+          </div>
+          <div class="effect-item">
+            <div class="effect-icon"><i class="fas fa-percentage"></i></div>
+            <div class="effect-value">40%</div>
+            <div class="effect-label">线上营收占比</div>
+            <div class="effect-desc">从5%提升至40%</div>
+          </div>
+          <div class="effect-item">
+            <div class="effect-icon"><i class="fas fa-repeat"></i></div>
+            <div class="effect-value">55%</div>
+            <div class="effect-label">客户复购率</div>
+            <div class="effect-desc">通过私域运营提升</div>
+          </div>
+          <div class="effect-item">
+            <div class="effect-icon"><i class="fas fa-users"></i></div>
+            <div class="effect-value">2万+</div>
+            <div class="effect-label">私域用户规模</div>
+            <div class="effect-desc">企业微信沉淀</div>
+          </div>
+          <div class="effect-item">
+            <div class="effect-icon"><i class="fas fa-coins"></i></div>
+            <div class="effect-value">3x</div>
+            <div class="effect-label">LTV提升</div>
+            <div class="effect-desc">单客生命周期价值</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-tips">
+    <h3><i class="fas fa-lightbulb"></i> 鞋厂视频号运营实战技巧</h3>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h4>1. 工厂实景是最大的信任背书</h4>
+        <p>展示从原材料到成品的完整生产流程，让消费者直观感受产品品质</p>
+      </div>
+      <div class="tip-card">
+        <h4>2. 厂三代人设更容易建立情感连接</h4>
+        <p>讲述接班故事、创业历程，展现年轻一代的创新与担当，拉近与Z世代距离</p>
+      </div>
+      <div class="tip-card">
+        <h4>3. 数据驱动选品，爆款思维</h4>
+        <p>通过视频号数据观察用户偏好，快速迭代产品设计，打造爆品</p>
+      </div>
+      <div class="tip-card">
+        <h4>4. 私域流量是视频号的核心价值</h4>
+        <p>视频号+企业微信+社群形成闭环，实现流量沉淀与持续转化</p>
+      </div>
+      <div class="tip-card">
+        <h4>5. 直播时间固定化，培养用户习惯</h4>
+        <p>每周固定时间直播，让粉丝形成期待，提升直播观看率与互动率</p>
+      </div>
+      <div class="tip-card">
+        <h4>6. 会员体系提升复购</h4>
+        <p>积分商城、专属折扣、生日福利等，增强客户粘性，提升复购率</p>
       </div>
     </div>
   </div>
