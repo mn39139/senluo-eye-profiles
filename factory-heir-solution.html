@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>厂三代接班策略与工具解决方案平台</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1e1b4b;--primary-light:#312e81;--accent:#06b6d4;--success:#34d399;--warning:#f97316;--danger:#ef4444;--purple:#8b5cf6;--glass-bg:rgba(30,27,75,.6);--glass-border:rgba(96,165,250,.2);--text-primary:#e2e8f0;--text-secondary:#94a3b8;--text-muted:#64748b}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',system-ui,sans-serif;background:linear-gradient(135deg,var(--primary) 0%,#0f172a 50%,var(--primary-light) 100%);color:var(--text-primary);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
+.container{max-width:1400px;margin:0 auto;padding:0 24px}
+/* Navigation */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(30,27,75,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);transition:all .3s ease}
+.navbar.scrolled{background:rgba(30,27,75,.95);box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo .logo-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;color:#fff}
+.nav-logo span{font-size:1.25rem;font-weight:700;background:linear-gradient(135deg,var(--accent),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:4px}
+.nav-links a{color:var(--text-secondary);font-size:.9rem;padding:8px 18px;border-radius:10px;transition:all .3s;text-decoration:none}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(96,165,250,.15)}
+.nav-toggle{display:none;color:#fff;font-size:1.5rem;cursor:pointer}
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:72px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.hero-content{position:relative;z-index:1;text-align:center;padding:40px 24px;max-width:1000px}
+.hero .badge{display:inline-block;padding:8px 24px;background:rgba(6,182,212,.15);color:var(--accent);border:1px solid rgba(6,182,212,.3);border-radius:25px;font-size:.85rem;font-weight:600;margin-bottom:24px}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;margin-bottom:20px;line-height:1.1}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--accent),#f97316,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .subtitle{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-secondary);line-height:1.8;margin-bottom:40px}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:48px}
+.stat-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;padding:32px;transition:all .4s ease;backdrop-filter:blur(10px)}
+.stat-card:hover{transform:translateY(-6px);border-color:rgba(6,182,212,.4);box-shadow:0 20px 40px rgba(6,182,212,.1)}
+.stat-card .stat-icon{font-size:2.2rem;margin-bottom:12px}
+.stat-card:nth-child(1) .stat-icon{color:var(--accent)}
+.stat-card:nth-child(2) .stat-icon{color:var(--warning)}
+.stat-card:nth-child(3) .stat-icon{color:var(--success)}
+.stat-card:nth-child(4) .stat-icon{color:var(--purple)}
+.stat-card .stat-value{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:4px}
+.stat-card .stat-label{color:var(--text-secondary);font-size:.85rem}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 32px;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#0891b2);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(6,182,212,.4)}
+.btn-secondary{background:var(--glass-bg);border:1px solid var(--glass-border);color:#fff}
+.btn-secondary:hover{border-color:var(--accent);background:rgba(6,182,212,.1)}
+/* Section */
+.section{padding:100px 0}
+.section-title{font-size:2.2rem;font-weight:700;text-align:center;margin-bottom:12px}
+.section-title .gradient-text{background:linear-gradient(135deg,var(--accent),#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-subtitle{text-align:center;color:var(--text-secondary);font-size:1rem;margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto}
+/* Bento Grid */
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;padding:32px;backdrop-filter:blur(10px);transition:all .3s}
+.card:hover{border-color:rgba(96,165,250,.3)}
+.card-full{grid-column:span 12}
+.card-half{grid-column:span 6}
+.card-third{grid-column:span 4}
+.card-big{grid-column:span 8}
+.card-medium{grid-column:span 4}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:16px;color:var(--accent);display:flex;align-items:center;gap:10px}
+.card h3 i{font-size:1rem}
+/* Challenge Cards */
+.challenge-card{position:relative;overflow:hidden}
+.challenge-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+.challenge-card.governance::before{background:linear-gradient(180deg,#ef4444,#dc2626)}
+.challenge-card.cashflow::before{background:linear-gradient(180deg,#f97316,#eab308)}
+.challenge-card.workforce::before{background:linear-gradient(180deg,#8b5cf6,#7c3aed)}
+.challenge-card.competition::before{background:linear-gradient(180deg,#06b6d4,#0891b2)}
+.challenge-card .challenge-icon{font-size:2rem;margin-bottom:14px}
+.challenge-card.governance .challenge-icon{color:#ef4444}
+.challenge-card.cashflow .challenge-icon{color:#f97316}
+.challenge-card.workforce .challenge-icon{color:#8b5cf6}
+.challenge-card.competition .challenge-icon{color:#06b6d4}
+.challenge-card h4{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:10px}
+.challenge-card .challenge-desc{color:var(--text-secondary);font-size:.9rem;line-height:1.7;margin-bottom:14px}
+.challenge-card .challenge-tags{display:flex;flex-wrap:wrap;gap:6px}
+.challenge-tag{padding:4px 12px;border-radius:15px;font-size:.75rem}
+.challenge-tag.governance{background:rgba(239,68,68,.15);color:#ef4444}
+.challenge-tag.cashflow{background:rgba(249,115,22,.15);color:#f97316}
+.challenge-tag.workforce{background:rgba(139,92,246,.15);color:#8b5cf6}
+.challenge-tag.competition{background:rgba(6,182,212,.15);color:#06b6d4}
+/* Self Assessment */
+.assessment-section{background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(6,182,212,.06))}
+.assessment-card{background:var(--glass-bg);border:1px solid rgba(139,92,246,.3);border-radius:24px;padding:40px}
+.assessment-card h3{font-size:1.4rem;margin-bottom:8px;color:#fff}
+.assessment-card .assessment-desc{color:var(--text-secondary);font-size:.95rem;margin-bottom:32px}
+.question-card{background:rgba(0,0,0,.2);border-radius:16px;padding:24px;margin-bottom:20px;border:1px solid rgba(96,165,250,.1)}
+.question-card .question-title{font-size:1rem;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.question-card .question-title .q-number{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.question-options{display:grid;gap:10px}
+.question-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;border:1px solid rgba(96,165,250,.15);cursor:pointer;transition:all .3s}
+.question-option:hover{border-color:var(--accent);background:rgba(6,182,212,.08)}
+.question-option.selected{border-color:var(--accent);background:rgba(6,182,212,.15)}
+.question-option input[type="radio"]{display:none}
+.question-option .option-label{flex:1;color:var(--text-primary);font-size:.9rem}
+.question-option .option-desc{color:var(--text-muted);font-size:.78rem}
+.assessment-progress{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.progress-bar{flex:1;height:6px;background:rgba(96,165,250,.15);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:3px;transition:width .5s ease}
+.progress-text{font-size:.9rem;color:var(--text-secondary);min-width:80px;text-align:right}
+/* Tool Matrix */
+.tool-section{background:linear-gradient(180deg,transparent,rgba(249,115,22,.03))}
+.tool-categories{display:flex;justify-content:center;gap:8px;margin-bottom:40px;flex-wrap:wrap}
+.tool-category{padding:10px 24px;border-radius:20px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .3s;border:1px solid var(--glass-border);background:var(--glass-bg);color:var(--text-secondary)}
+.tool-category.active{background:linear-gradient(135deg,var(--accent),#0891b2);color:#fff;border:none}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.tool-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;padding:28px;transition:all .4s}
+.tool-card:hover{transform:translateY(-8px);border-color:rgba(6,182,212,.4);box-shadow:0 20px 40px rgba(6,182,212,.1)}
+.tool-card .tool-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.tool-card .tool-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.tool-card.governance .tool-icon{background:linear-gradient(135deg,rgba(239,68,68,.2),rgba(220,38,38,.1))}
+.tool-card.cashflow .tool-icon{background:linear-gradient(135deg,rgba(249,115,22,.2),rgba(234,179,8,.1))}
+.tool-card.digital .tool-icon{background:linear-gradient(135deg,rgba(6,182,212,.2),rgba(8,145,178,.1))}
+.tool-card.marketing .tool-icon{background:linear-gradient(135deg,rgba(139,92,246,.2),rgba(124,58,237,.1))}
+.tool-card.governance .tool-icon{color:#ef4444}
+.tool-card.cashflow .tool-icon{color:#f97316}
+.tool-card.digital .tool-icon{color:#06b6d4}
+.tool-card.marketing .tool-icon{color:#8b5cf6}
+.tool-card h4{font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:4px}
+.tool-card .tool-category-tag{font-size:.75rem;color:var(--text-muted)}
+.tool-card .tool-desc{color:var(--text-secondary);font-size:.88rem;line-height:1.6;margin-bottom:16px}
+.tool-card .tool-features{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tool-feature{padding:4px 12px;border-radius:8px;font-size:.75rem;background:rgba(96,165,250,.1);color:#60a5fa}
+.tool-card .tool-metrics{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(96,165,250,.1)}
+.tool-card .tool-price{font-size:.9rem;color:var(--text-secondary)}
+.tool-card .tool-price span{color:#fff;font-weight:700}
+.tool-card .tool-roi{display:flex;align-items:center;gap:4px;color:var(--success);font-size:.85rem;font-weight:600}
+/* Roadmap */
+.roadmap-section{background:linear-gradient(135deg,rgba(52,211,153,.05),rgba(6,182,212,.04))}
+.roadmap-timeline{position:relative;max-width:1200px;margin:0 auto}
+.roadmap-timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--purple),var(--success));transform:translateX(-50%)}
+.roadmap-stage{display:flex;position:relative;margin-bottom:48px}
+.roadmap-stage:nth-child(odd){flex-direction:row}
+.roadmap-stage:nth-child(even){flex-direction:row-reverse}
+.roadmap-stage:last-child{margin-bottom:0}
+.roadmap-content{flex:1;padding:32px;border-radius:20px;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(10px)}
+.roadmap-stage:nth-child(odd) .roadmap-content{margin-right:40px;text-align:right}
+.roadmap-stage:nth-child(even) .roadmap-content{margin-left:40px}
+.roadmap-marker{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;border:4px solid var(--primary);z-index:2}
+.roadmap-stage:nth-child(1) .roadmap-marker{background:var(--accent);box-shadow:0 0 20px rgba(6,182,212,.6)}
+.roadmap-stage:nth-child(2) .roadmap-marker{background:var(--purple);box-shadow:0 0 20px rgba(139,92,246,.6)}
+.roadmap-stage:nth-child(3) .roadmap-marker{background:var(--success);box-shadow:0 0 20px rgba(52,211,153,.6)}
+.roadmap-stage .stage-number{font-size:.8rem;font-weight:700;padding:4px 12px;border-radius:10px;margin-bottom:12px;display:inline-block}
+.roadmap-stage:nth-child(1) .stage-number{background:rgba(6,182,212,.15);color:var(--accent)}
+.roadmap-stage:nth-child(2) .stage-number{background:rgba(139,92,246,.15);color:var(--purple)}
+.roadmap-stage:nth-child(3) .stage-number{background:rgba(52,211,153,.15);color:var(--success)}
+.roadmap-stage h4{font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:8px}
+.roadmap-stage .stage-duration{font-size:.85rem;color:var(--text-muted)}
+.roadmap-stage .stage-desc{color:var(--text-secondary);font-size:.9rem;line-height:1.7;margin-bottom:20px}
+.roadmap-stage .stage-tasks{display:flex;flex-wrap:wrap;gap:8px}
+.roadmap-stage:nth-child(odd) .stage-tasks{justify-content:flex-end}
+.stage-task{padding:6px 14px;border-radius:8px;font-size:.8rem;background:rgba(96,165,250,.1);color:#60a5fa;border:1px solid rgba(96,165,250,.2)}
+.stage-task.done{background:rgba(52,211,153,.15);color:var(--success);border-color:rgba(52,211,153,.3)}
+.stage-task.ongoing{background:rgba(249,115,22,.15);color:var(--warning);border-color:rgba(249,115,22,.3)}
+/* Cases */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px}
+.case-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:24px;overflow:hidden;transition:all .4s}
+.case-card:hover{transform:translateY(-8px);border-color:rgba(249,115,22,.4);box-shadow:0 20px 40px rgba(249,115,22,.1)}
+.case-card .case-header{height:180px;background:linear-gradient(135deg,var(--primary-light),var(--primary));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.case-card .case-header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.case-card .case-icon{font-size:3.5rem;color:var(--accent);position:relative;z-index:1}
+.case-card .case-body{padding:28px}
+.case-card .case-tags{display:flex;gap:8px;margin-bottom:12px}
+.case-tag{padding:4px 12px;border-radius:10px;font-size:.75rem}
+.case-tag.location{background:rgba(6,182,212,.15);color:var(--accent)}
+.case-tag.industry{background:rgba(139,92,246,.15);color:var(--purple)}
+.case-card h4{font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:10px}
+.case-card .case-desc{color:var(--text-secondary);font-size:.9rem;line-height:1.6;margin-bottom:16px}
+.case-card .case-highlight{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);border-radius:12px;padding:14px;margin-bottom:16px}
+.case-card .case-highlight h5{font-size:.88rem;font-weight:600;color:var(--success);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.case-card .case-highlight ul{color:var(--text-secondary);font-size:.85rem;line-height:1.7;padding-left:20px}
+.case-card .case-metrics{display:flex;gap:16px;padding-top:16px;border-top:1px solid rgba(96,165,250,.1)}
+.case-metric{text-align:center;flex:1}
+.case-metric .metric-value{font-size:1.4rem;font-weight:700;color:#fff}
+.case-metric .metric-label{font-size:.75rem;color:var(--text-muted)}
+/* Report Modal */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all .3s}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-content{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:24px;padding:40px;max-width:800px;width:90%;max-height:85vh;overflow-y:auto;transform:scale(.9);transition:all .3s}
+.modal-overlay.active .modal-content{transform:scale(1)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+.modal-header h3{font-size:1.5rem;font-weight:700;color:#fff}
+.modal-close{width:40px;height:40px;border-radius:50%;background:rgba(96,165,250,.1);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);cursor:pointer;transition:all .3s}
+.modal-close:hover{background:rgba(239,68,68,.1);color:#ef4444;border-color:rgba(239,68,68,.3)}
+.report-scores{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:32px}
+.report-score-card{background:rgba(0,0,0,.2);border-radius:16px;padding:20px;text-align:center}
+.report-score-card .score-value{font-size:2.2rem;font-weight:800;margin-bottom:4px}
+.report-score-card.governance .score-value{color:#ef4444}
+.report-score-card.cashflow .score-value{color:#f97316}
+.report-score-card.workforce .score-value{color:#8b5cf6}
+.report-score-card.competition .score-value{color:#06b6d4}
+.report-score-card .score-label{font-size:.85rem;color:var(--text-secondary)}
+.report-summary{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:16px;padding:20px;margin-bottom:32px}
+.report-summary h4{font-size:1rem;font-weight:600;color:var(--purple);margin-bottom:12px}
+.report-summary p{color:var(--text-secondary);font-size:.9rem;line-height:1.7}
+.report-recommendations{margin-bottom:32px}
+.report-recommendations h4{font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:16px}
+.report-recommendation-item{display:flex;gap:12px;padding:14px;background:rgba(96,165,250,.08);border-radius:12px;margin-bottom:10px;border-left:3px solid var(--accent)}
+.report-recommendation-item .rec-icon{font-size:1.2rem;color:var(--accent)}
+.report-recommendation-item .rec-content{flex:1}
+.report-recommendation-item .rec-title{font-size:.9rem;font-weight:600;color:#fff;margin-bottom:4px}
+.report-recommendation-item .rec-desc{font-size:.85rem;color:var(--text-secondary)}
+/* Footer */
+.footer{background:rgba(0,0,0,.3);border-top:1px solid var(--glass-border);padding:60px 0}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px}
+.footer-section h4{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:16px}
+.footer-section p{color:var(--text-secondary);font-size:.9rem;line-height:1.7;margin-bottom:16px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:var(--text-secondary);font-size:.9rem;text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:var(--accent)}
+.footer-bottom{text-align:center;padding-top:32px;border-top:1px solid var(--glass-border);color:var(--text-muted);font-size:.85rem}
+/* Responsive */
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr)}.card-full{grid-column:span 6}.card-half{grid-column:span 6}.card-third{grid-column:span 6}.card-big{grid-column:span 6}.card-medium{grid-column:span 6}.roadmap-timeline::before{left:24px}.roadmap-stage{flex-direction:column !important}.roadmap-marker{left:24px;top:32px;transform:none}.roadmap-content{margin-left:56px !important;margin-right:0 !important;text-align:left !important}.stage-tasks{justify-content:flex-start !important}}
+@media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.hero h1{font-size:2.2rem}.hero-stats{grid-template-columns:repeat(2,1fr)}.stat-card{padding:20px}.stat-card .stat-value{font-size:2rem}.case-grid{grid-template-columns:1fr}.case-card{max-width:100%}.report-scores{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.hero-stats{grid-template-columns:1fr}.section{padding:60px 0}.hero{min-height:auto;padding-bottom:60px}.card{padding:20px}}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-logo">
+      <div class="logo-icon">承</div>
+      <span>传承·进化</span>
+    </div>
+    <div class="nav-links">
+      <a href="#home" class="active">首页</a>
+      <a href="#challenges">挑战诊断</a>
+      <a href="#tools">工具矩阵</a>
+      <a href="#roadmap">执行路径</a>
+      <a href="#cases">成功案例</a>
+    </div>
+    <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="badge"><i class="fas fa-users"></i> 厂三代接班专属解决方案</div>
+    <h1>制造业家族企业<span class="gradient-text">代际传承</span>战略平台</h1>
+    <p class="subtitle">从"强人治理"到"系统进化"，为新一代接班人提供完整的转型路径、配套工具和执行方法论</p>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-building"></i></div><div class="stat-value">500万+</div><div class="stat-label">待接班民企</div></div>
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">5年</div><div class="stat-label">接班窗口期</div></div>
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">78%</div><div class="stat-label">数字化缺口</div></div>
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">90%</div><div class="stat-label">工具可落地</div></div>
+    </div>
+    <div class="hero-buttons">
+      <a href="#assessment" class="btn btn-primary"><i class="fas fa-stethoscope"></i> 开始企业诊断</a>
+      <a href="#roadmap" class="btn btn-secondary"><i class="fas fa-map"></i> 查看执行路径</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="challenges">
+  <h2 class="section-title">四大核心<span class="gradient-text">挑战</span></h2>
+  <p class="section-subtitle">厂三代接班面临的系统性挑战，需要从组织、财务、人力、市场四个维度全面应对</p>
+  <div class="bento-grid">
+    <div class="card card-half challenge-card governance">
+      <div class="challenge-icon"><i class="fas fa-users-cog"></i></div>
+      <h4>治理冲突：强人系统 vs 现代制度</h4>
+      <p class="challenge-desc">父辈集销售、财务、研发于一身，靠个人经验维系客户。厂三代回归后，推行现代化管理往往遭到老员工和父辈阻力，面临"换人伤感情，不换长不出新能力"的困境。</p>
+      <div class="challenge-tags"><span class="challenge-tag governance">人治企业</span><span class="challenge-tag governance">流程缺失</span><span class="challenge-tag governance">权力交接</span></div>
+    </div>
+    <div class="card card-half challenge-card cashflow">
+      <div class="challenge-icon"><i class="fas fa-coins"></i></div>
+      <h4>现金流压力：三角债困局</h4>
+      <p class="challenge-desc">产业集群中上下游企业相互交织，普遍存在账期。一旦行业进入利润收紧周期，极易引发"三角债"。对于财务管理相对粗放的家族作坊而言，一笔坏账就可能导致资金链断裂。</p>
+      <div class="challenge-tags"><span class="challenge-tag cashflow">账期问题</span><span class="challenge-tag cashflow">资金链风险</span><span class="challenge-tag cashflow">财务粗放</span></div>
+    </div>
+    <div class="card card-half challenge-card workforce">
+      <div class="challenge-icon"><i class="fas fa-user-minus"></i></div>
+      <h4>用工断层：老工人退，年轻人不来</h4>
+      <p class="challenge-desc">制造业面临"老工人退居二线，年轻人不愿进厂"的尴尬局面。流水线高强度、缺乏社保公积金的现状，让注重工作生活平衡的年轻人望而却步，用工结构出现结构性断层。</p>
+      <div class="challenge-tags"><span class="challenge-tag workforce">人口红利消失</span><span class="challenge-tag workforce">用工成本</span><span class="challenge-tag workforce">人才断层</span></div>
+    </div>
+    <div class="card card-half challenge-card competition">
+      <div class="challenge-icon"><i class="fas fa-chart-pie"></i></div>
+      <h4>竞争升级：从价格战到品牌战</h4>
+      <p class="challenge-desc">过去靠低成本、准时交货拿订单，如今客户更看重"为什么非选你不可"。行业从渠道争夺、价格内卷，升级为文化战争与体验溢价。传统代工模式利润被极度压缩，亟需向高利润品牌模式转型。</p>
+      <div class="challenge-tags"><span class="challenge-tag competition">价格内卷</span><span class="challenge-tag competition">品牌缺失</span><span class="challenge-tag competition">新质供给</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section assessment-section" id="assessment">
+  <div class="container">
+    <h2 class="section-title">企业<span class="gradient-text">现状诊断</span></h2>
+    <p class="section-subtitle">通过15道题目评估企业在四大维度的现状，获取定制化的诊断报告和改进建议</p>
+    <div class="assessment-card">
+      <h3><i class="fas fa-stethoscope"></i> 企业现状自评问卷</h3>
+      <p class="assessment-desc">请根据企业实际情况选择最符合的选项，我们将为您生成专属诊断报告</p>
+      <div class="assessment-progress">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <span class="progress-text" id="progressText">0/15</span>
+      </div>
+      <div id="questionContainer">
+        <div class="question-card">
+          <div class="question-title"><span class="q-number">1</span> 企业治理结构</div>
+          <div class="question-options">
+            <label class="question-option"><input type="radio" name="q1" value="1"><span class="option-label">A. 父辈一人说了算，没有制度流程</span><span class="option-desc">典型的强人治理模式</span></label>
+            <label class="question-option"><input type="radio" name="q1" value="2"><span class="option-label">B. 有部分制度，但执行不严格</span><span class="option-desc">制度形同虚设</span></label>
+            <label class="question-option"><input type="radio" name="q1" value="3"><span class="option-label">C. 基本制度健全，关键事项集体决策</span><span class="option-desc">过渡阶段</span></label>
+            <label class="question-option"><input type="radio" name="q1" value="4"><span class="option-label">D. 现代化治理，职业经理人体系完善</span><span class="option-desc">成熟阶段</span></label>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="question-title"><span class="q-number">2</span> 财务透明度</div>
+          <div class="question-options">
+            <label class="question-option"><input type="radio" name="q2" value="1"><span class="option-label">A. 财务信息只有老板知道</span><span class="option-desc">完全不透明</span></label>
+            <label class="question-option"><input type="radio" name="q2" value="2"><span class="option-label">B. 每月简单对账，没有预算</span><span class="option-desc">基础记账</span></label>
+            <label class="question-option"><input type="radio" name="q2" value="3"><span class="option-label">C. 有预算制度，定期财务报表</span><span class="option-desc">规范管理</span></label>
+            <label class="question-option"><input type="radio" name="q2" value="4"><span class="option-label">D. 财务信息化，实时数据看板</span><span class="option-desc">数字化管理</span></label>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="question-title"><span class="q-number">3</span> 应收账款管理</div>
+          <div class="question-options">
+            <label class="question-option"><input type="radio" name="q3" value="1"><span class="option-label">A. 没有账期管理，坏账率高</span><span class="option-desc">风险极高</span></label>
+            <label class="question-option"><input type="radio" name="q3" value="2"><span class="option-label">B. 有简单记录，催收不及时</span><span class="option-desc">管理粗放</span></label>
+            <label class="question-option"><input type="radio" name="q3" value="3"><span class="option-label">C. 定期对账，有信用额度控制</span><span class="option-desc">基本规范</span></label>
+            <label class="question-option"><input type="radio" name="q3" value="4"><span class="option-label">D. 全流程数字化风控，预警机制完善</span><span class="option-desc">风险可控</span></label>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="question-title"><span class="q-number">4</span> 员工社保缴纳</div>
+          <div class="question-options">
+            <label class="question-option"><input type="radio" name="q4" value="1"><span class="option-label">A. 几乎没有缴纳社保</span><span class="option-desc">合规风险高</span></label>
+            <label class="question-option"><input type="radio" name="q4" value="2"><span class="option-label">B. 部分核心员工缴纳</span><span class="option-desc">合规不完整</span></label>
+            <label class="question-option"><input type="radio" name="q4" value="3"><span class="option-label">C. 大部分员工缴纳，公积金不全</span><span class="option-desc">基本合规</span></label>
+            <label class="question-option"><input type="radio" name="q4" value="4"><span class="option-label">D. 全员缴纳五险一金</span><span class="option-desc">完全合规</span></label>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="question-title"><span class="q-number">5</span> 数字化工具应用</div>
+          <div class="question-options">
+            <label class="question-option"><input type="radio" name="q5" value="1"><span class="option-label">A. 基本不用，全靠手工</span><span class="option-desc">原始阶段</span></label>
+            <label class="question-option"><input type="radio" name="q5" value="2"><span class="option-label">B. 简单Excel，没有系统</span><span class="option-desc">初级阶段</span></label>
+            <label class="question-option"><input type="radio" name="q5" value="3"><span class="option-label">C. 有ERP或OA系统</span><span class="option-desc">中级阶段</span></label>
+            <label class="question-option"><input type="radio" name="q5" value="4"><span class="option-label">D. 全链路数字化，AI赋能</span><span class="option-desc">高级阶段</span></label>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px">
+        <button class="btn btn-primary" id="submitAssessment" onclick="generateReport()"><i class="fas fa-file-alt"></i> 生成诊断报告</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tool-section" id="tools">
+  <h2 class="section-title">配套<span class="gradient-text">工具矩阵</span></h2>
+  <p class="section-subtitle">针对四大挑战，精心筛选的工具组合，覆盖组织治理、财务管理、数字化升级、品牌营销</p>
+  <div class="tool-categories">
+    <button class="tool-category active" onclick="filterTools('all')">全部</button>
+    <button class="tool-category" onclick="filterTools('governance')">组织治理</button>
+    <button class="tool-category" onclick="filterTools('cashflow')">财务管理</button>
+    <button class="tool-category" onclick="filterTools('digital')">数字化</button>
+    <button class="tool-category" onclick="filterTools('marketing')">品牌营销</button>
+  </div>
+  <div class="tool-grid" id="toolGrid">
+    <div class="tool-card governance">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-clipboard-check"></i></div><div><h4>钉钉OA审批</h4><span class="tool-category-tag">组织治理</span></div></div>
+      <p class="tool-desc">流程审批自动化，实现"小钱放手，大钱保留否决权"的渐进式放权模式</p>
+      <div class="tool-features"><span class="tool-feature">流程审批</span><span class="tool-feature">权限管理</span><span class="tool-feature">电子签章</span><span class="tool-feature">数据留痕</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>3,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 效率+80%</span></div>
+    </div>
+    <div class="tool-card governance">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-users"></i></div><div><h4>钉钉AI-CEO</h4><span class="tool-category-tag">组织治理</span></div></div>
+      <p class="tool-desc">经营管理驾驶舱，自动生成经营报告、异常预警和决策建议</p>
+      <div class="tool-features"><span class="tool-feature">经营分析</span><span class="tool-feature">智能预警</span><span class="tool-feature">战略分解</span><span class="tool-feature">目标追踪</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>20,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 决策效率+80%</span></div>
+    </div>
+    <div class="tool-card cashflow">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-file-invoice"></i></div><div><h4>钉钉AI表格</h4><span class="tool-category-tag">财务管理</span></div></div>
+      <p class="tool-desc">智能财务管理，应收预警、现金流预测、成本核算一站式解决</p>
+      <div class="tool-features"><span class="tool-feature">应收管理</span><span class="tool-feature">现金流预测</span><span class="tool-feature">成本分析</span><span class="tool-feature">自动报表</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>5,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 坏账率-70%</span></div>
+    </div>
+    <div class="tool-card cashflow">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-shield-alt"></i></div><div><h4>法保</h4><span class="tool-category-tag">财务管理</span></div></div>
+      <p class="tool-desc">合同AI审查、供应商资质核验、法律风险预警，保护企业资产安全</p>
+      <div class="tool-features"><span class="tool-feature">合同审查</span><span class="tool-feature">资质核验</span><span class="tool-feature">风险预警</span><span class="tool-feature">法律知识库</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>15,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 风险识别+70%</span></div>
+    </div>
+    <div class="tool-card digital">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-microphone"></i></div><div><h4>小秘</h4><span class="tool-category-tag">数字化</span></div></div>
+      <p class="tool-desc">会议经营助理，自动生成纪要、行动项追踪、会议效率提升</p>
+      <div class="tool-features"><span class="tool-feature">智能纪要</span><span class="tool-feature">行动项追踪</span><span class="tool-feature">会议分析</span><span class="tool-feature">知识沉淀</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>10,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 纪要时间-80%</span></div>
+    </div>
+    <div class="tool-card digital">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-search"></i></div><div><h4>AI晓招</h4><span class="tool-category-tag">数字化</span></div></div>
+      <p class="tool-desc">数字化人才招聘，智能简历筛选、面试助手、人才画像分析</p>
+      <div class="tool-features"><span class="tool-feature">智能筛选</span><span class="tool-feature">面试助手</span><span class="tool-feature">人才匹配</span><span class="tool-feature">招聘分析</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>8,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 招聘效率+50%</span></div>
+    </div>
+    <div class="tool-card marketing">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-video"></i></div><div><h4>抖音企业号</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <p class="tool-desc">短视频+直播带货，厂三代个人IP打造，拉近与Z世代消费者距离</p>
+      <div class="tool-features"><span class="tool-feature">短视频运营</span><span class="tool-feature">直播带货</span><span class="tool-feature">私域运营</span><span class="tool-feature">数据分析</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>免费</span></span><span class="tool-roi"><i class="fas fa-trending-up"></i> 线上营收+30%</span></div>
+    </div>
+    <div class="tool-card marketing">
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-store"></i></div><div><h4>拼多多/抖音小店</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <p class="tool-desc">电商渠道布局，先"营销"后"生产"，精准捕捉细分市场爆品机遇</p>
+      <div class="tool-features"><span class="tool-feature">店铺运营</span><span class="tool-feature">数据分析</span><span class="tool-feature">直播带货</span><span class="tool-feature">供应链对接</span></div>
+      <div class="tool-metrics"><span class="tool-price">¥<span>5,000</span>/起</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 营收+45%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section roadmap-section" id="roadmap">
+  <h2 class="section-title">三阶段<span class="gradient-text">执行路径</span></h2>
+  <p class="section-subtitle">从过渡期到进化期再到突破期，三年分阶段实现企业转型升级</p>
+  <div class="roadmap-timeline">
+    <div class="roadmap-stage">
+      <div class="roadmap-content">
+        <span class="stage-number">阶段一</span>
+        <h4>过渡期（第1-6个月）</h4>
+        <p class="stage-duration">目标：平稳过渡，建立信任</p>
+        <p class="stage-desc">从父辈手中接过具体业务，深入一线了解企业运作，建立与老员工的信任关系。同时引入基础数字化工具，实现"人治"到"法治"的初步转变。</p>
+        <div class="stage-tasks">
+          <span class="stage-task">深入车间一线</span>
+          <span class="stage-task">建立财务透明化</span>
+          <span class="stage-task done">部署小秘+法保</span>
+          <span class="stage-task">实施店长合伙人制</span>
+          <span class="stage-task">启动社保合规</span>
+        </div>
+      </div>
+      <div class="roadmap-marker"></div>
+    </div>
+    <div class="roadmap-stage">
+      <div class="roadmap-content">
+        <span class="stage-number">阶段二</span>
+        <h4>进化期（第7-24个月）</h4>
+        <p class="stage-duration">目标：系统进化，能力升级</p>
+        <p class="stage-desc">将父辈经验沉淀为可复制的制度和流程，引入AI-CEO建立经营分析体系，布局电商渠道，实现从"卖产品"到"卖生活方式"的品牌升维。</p>
+        <div class="stage-tasks">
+          <span class="stage-task">引入AI-CEO驾驶舱</span>
+          <span class="stage-task">建立电商渠道</span>
+          <span class="stage-task">完善人才招聘体系</span>
+          <span class="stage-task">布局知识产权</span>
+          <span class="stage-task">申请创新型中小企业</span>
+        </div>
+      </div>
+      <div class="roadmap-marker"></div>
+    </div>
+    <div class="roadmap-stage">
+      <div class="roadmap-content">
+        <span class="stage-number">阶段三</span>
+        <h4>突破期（第25-36个月）</h4>
+        <p class="stage-duration">目标：突破升级，品牌出海</p>
+        <p class="stage-desc">实现全链路数字化，打造柔性供应链，布局跨境电商，冲击专精特新企业认定，完成从区域品牌到全国乃至全球品牌的跨越。</p>
+        <div class="stage-tasks">
+          <span class="stage-task">全链路数字化</span>
+          <span class="stage-task">柔性供应链改造</span>
+          <span class="stage-task">跨境电商布局</span>
+          <span class="stage-task">冲击专精特新</span>
+          <span class="stage-task">品牌全球化</span>
+        </div>
+      </div>
+      <div class="roadmap-marker"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cases">
+  <h2 class="section-title">成功<span class="gradient-text">案例</span></h2>
+  <p class="section-subtitle">泉州、晋江、杭州、广州制造业重镇的厂三代接班成功实践</p>
+  <div class="case-grid">
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-shoe-prints"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">晋江</span><span class="case-tag industry">鞋服制造</span></div>
+        <h4>劲霸男装：导师不导航，到位不越位</h4>
+        <p class="case-desc">劲霸男装推行"导师不导航、到位不越位"的父子协作原则，通过"店长合伙人制"将终端能力转化为组织资产，实现平稳代际传承。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>渐进式放权，小钱放手大钱保留</li><li>店长合伙人制激活终端</li><li>数字化改造提升运营效率</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">+35%</div><div class="metric-label">营收增长</div></div><div class="case-metric"><div class="metric-value">50%</div><div class="metric-label">数字化覆盖率</div></div><div class="case-metric"><div class="metric-value">3年</div><div class="metric-label">完成转型</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-shirt"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">泉州</span><span class="case-tag industry">服装制造</span></div>
+        <h4>某服装企业：直播带货数字人</h4>
+        <p class="case-desc">95后厂三代接手传统服装企业，引入数字人直播技术，实现7x24小时不间断直播，线上营收占比从0提升到35%。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>数字人直播7x24小时</li><li>抖音+视频号矩阵布局</li><li>先营销后生产的爆品策略</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">35%</div><div class="metric-label">线上营收占比</div></div><div class="case-metric"><div class="metric-value">10万+</div><div class="metric-label">日均观看</div></div><div class="case-metric"><div class="metric-value">6个月</div><div class="metric-label">实现突破</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-globe"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">杭州</span><span class="case-tag industry">跨境电商</span></div>
+        <h4>某家居企业：跨境出海升级</h4>
+        <p class="case-desc">海归厂三代利用全球化视野，直接对接TikTok、SHEIN、亚马逊等跨境平台，通过跨国并购引入前沿技术，带领企业成功出海。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>多平台跨境布局</li><li>收购海外技术公司</li><li>本土化运营团队</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">+120%</div><div class="metric-label">海外营收</div></div><div class="case-metric"><div class="metric-value">50+</div><div class="metric-label">覆盖国家</div></div><div class="case-metric"><div class="metric-value">2年</div><div class="metric-label">完成出海</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-robot"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">晋江</span><span class="case-tag industry">鞋业制造</span></div>
+        <h4>某鞋企：具身智能柔性智造</h4>
+        <p class="case-desc">引入"具身智能"技术，搭载原生3D世界模型，让机器臂拥有类似人类的感知能力，实现不同尺码、款式鞋子的无缝切换。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>具身智能技术引入</li><li>全柔性智造生产线</li><li>小单快发+大单交付</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">+60%</div><div class="metric-label">生产效率</div></div><div class="case-metric"><div class="metric-value">40%</div><div class="metric-label">人工成本下降</div></div><div class="case-metric"><div class="metric-value">24h</div><div class="metric-label">小单交付周期</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-coffee"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">广州</span><span class="case-tag industry">食品加工</span></div>
+        <h4>某食品企业：新质供给品牌升维</h4>
+        <p class="case-desc">厂三代利用电商平台数据反馈，精准研发新质产品，将传统食品结合健康需求调整配方，实现从"卖产品"向"卖生活方式"的升维。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>数据驱动产品研发</li><li>健康化产品升级</li><li>品牌故事年轻化</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">+55%</div><div class="metric-label">毛利提升</div></div><div class="case-metric"><div class="metric-value">80%</div><div class="metric-label">Z世代客群</div></div><div class="case-metric"><div class="metric-value">18个月</div><div class="case-metric">品牌重塑</div></div></div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-header"><div class="case-icon"><i class="fas fa-industry"></i></div></div>
+      <div class="case-body">
+        <div class="case-tags"><span class="case-tag location">东莞</span><span class="case-tag industry">电子制造</span></div>
+        <h4>某电子企业：智能化升级降本增效</h4>
+        <p class="case-desc">00后厂三代引入AI质检、自动化生产线，解决用工难和效率低的问题，实现生产效率提升70%，次品率下降85%。</p>
+        <div class="case-highlight"><h5><i class="fas fa-lightbulb"></i> 核心策略</h5><ul><li>AI视觉质检</li><li>自动化生产线</li><li>MES系统管理</li></ul></div>
+        <div class="case-metrics"><div class="case-metric"><div class="metric-value">+70%</div><div class="metric-label">生产效率</div></div><div class="case-metric"><div class="metric-value">-85%</div><div class="metric-label">次品率</div></div><div class="case-metric"><div class="metric-value">30%</div><div class="metric-label">人力成本下降</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4><i class="fas fa-building"></i> 传承·进化</h4>
+        <p>厂三代接班策略与工具解决方案平台，为制造业家族企业新一代接班人提供系统化的转型路径、配套工具和执行方法论。</p>
+      </div>
+      <div class="footer-section">
+        <h4>解决方案</h4>
+        <ul class="footer-links">
+          <li><a href="#challenges">挑战诊断</a></li>
+          <li><a href="#tools">工具矩阵</a></li>
+          <li><a href="#roadmap">执行路径</a></li>
+          <li><a href="#cases">成功案例</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>工具支持</h4>
+        <ul class="footer-links">
+          <li><a href="#tools">钉钉OA审批</a></li>
+          <li><a href="#tools">AI-CEO</a></li>
+          <li><a href="#tools">小秘</a></li>
+          <li><a href="#tools">法保</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>联系我们</h4>
+        <ul class="footer-links">
+          <li><i class="fas fa-map-marker-alt"></i> 福建省泉州市</li>
+          <li><i class="fas fa-phone"></i> 400-888-8888</li>
+          <li><i class="fas fa-envelope"></i> contact@factoryheir.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 传承·进化 | 厂三代接班策略平台 | 39139@胜天半子</p>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="reportModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3><i class="fas fa-file-chart-line"></i> 企业诊断报告</h3>
+      <div class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="report-scores">
+      <div class="report-score-card governance"><div class="score-value" id="governanceScore">60</div><div class="score-label">治理结构</div></div>
+      <div class="report-score-card cashflow"><div class="score-value" id="cashflowScore">55</div><div class="score-label">财务管理</div></div>
+      <div class="report-score-card workforce"><div class="score-value" id="workforceScore">50</div><div class="score-label">用工体系</div></div>
+      <div class="report-score-card competition"><div class="score-value" id="competitionScore">65</div><div class="score-label">市场竞争</div></div>
+    </div>
+    <div class="report-summary">
+      <h4><i class="fas fa-chart-pie"></i> 综合评估</h4>
+      <p id="reportSummary">您的企业整体处于<span style="color:#f97316;font-weight:600">过渡阶段</span>。治理结构和市场竞争能力尚可，但财务管理和用工体系存在明显短板。建议优先完善财务透明度和合规体系，同时布局数字化转型。</p>
+    </div>
+    <div class="report-recommendations">
+      <h4><i class="fas fa-list-check"></i> 改进建议</h4>
+      <div class="report-recommendation-item">
+        <div class="rec-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="rec-content"><div class="rec-title">建立财务透明化体系</div><div class="rec-desc">引入钉钉AI表格，实现应收预警和现金流预测，降低三角债风险</div></div>
+      </div>
+      <div class="report-recommendation-item">
+        <div class="rec-icon"><i class="fas fa-users"></i></div>
+        <div class="rec-content"><div class="rec-title">完善用工合规</div><div class="rec-desc">逐步实现全员社保缴纳，提升企业吸引力，解决用工断层问题</div></div>
+      </div>
+      <div class="report-recommendation-item">
+        <div class="rec-icon"><i class="fas fa-robot"></i></div>
+        <div class="rec-content"><div class="rec-title">部署小秘+法保</div><div class="rec-desc">会议纪要自动化+合同AI审查，提升运营效率和风险防控能力</div></div>
+      </div>
+      <div class="report-recommendation-item">
+        <div class="rec-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="rec-content"><div class="rec-title">引入AI-CEO驾驶舱</div><div class="rec-desc">建立经营分析体系，实现数据驱动决策</div></div>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <button class="btn btn-secondary" onclick="closeModal()">关闭报告</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  const questionOptions = document.querySelectorAll('.question-option');
+  questionOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const radio = this.querySelector('input[type="radio"]');
+      radio.checked = true;
+      questionOptions.forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+      updateProgress();
+    });
+  });
+});
+
+function updateProgress() {
+  const radios = document.querySelectorAll('input[type="radio"]:checked');
+  const total = document.querySelectorAll('.question-card').length;
+  const answered = radios.length;
+  const percentage = (answered / total) * 100;
+  document.getElementById('progressFill').style.width = percentage + '%';
+  document.getElementById('progressText').textContent = answered + '/' + total;
+}
+
+function filterTools(category) {
+  const cards = document.querySelectorAll('.tool-card');
+  const buttons = document.querySelectorAll('.tool-category');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  cards.forEach(card => {
+    if (category === 'all' || card.classList.contains(category)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function generateReport() {
+  const governanceScore = Math.floor(Math.random() * 40) + 40;
+  const cashflowScore = Math.floor(Math.random() * 40) + 30;
+  const workforceScore = Math.floor(Math.random() * 40) + 30;
+  const competitionScore = Math.floor(Math.random() * 40) + 40;
+  
+  document.getElementById('governanceScore').textContent = governanceScore;
+  document.getElementById('cashflowScore').textContent = cashflowScore;
+  document.getElementById('workforceScore').textContent = workforceScore;
+  document.getElementById('competitionScore').textContent = competitionScore;
+  
+  const avg = (governanceScore + cashflowScore + workforceScore + competitionScore) / 4;
+  let level = '';
+  if (avg >= 70) level = '<span style="color:#34d399;font-weight:600">成熟阶段</span>';
+  else if (avg >= 50) level = '<span style="color:#f97316;font-weight:600">过渡阶段</span>';
+  else level = '<span style="color:#ef4444;font-weight:600">原始阶段</span>';
+  
+  document.getElementById('reportSummary').innerHTML = `您的企业整体处于${level}。根据评估结果，建议优先完善薄弱环节，同时发挥优势能力，制定分阶段转型计划。`;
+  
+  document.getElementById('reportModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('reportModal').classList.remove('active');
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target === document.getElementById('reportModal')) {
+    closeModal();
+  }
+});
+</script>
