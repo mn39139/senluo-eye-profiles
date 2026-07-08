@@ -247,12 +247,12 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
 .tip-card p{color:var(--text-secondary);font-size:.85rem;line-height:1.6}
 /* Tool Category Tag Colors */
 .tool-category-tag{padding:4px 10px;border-radius:8px;font-size:.7rem;font-weight:600}
-.tool-category-tag[style*="组织治理"]{background:rgba(6,182,212,.15);color:var(--accent)}
-.tool-category-tag[style*="财务管理"]{background:rgba(249,115,22,.15);color:var(--warning)}
-.tool-category-tag[style*="数字化"]{background:rgba(139,92,246,.15);color:var(--purple)}
-.tool-category-tag[style*="品牌营销"]{background:rgba(52,211,153,.15);color:var(--success)}
-.tool-category-tag[style*="跨境电商"]{background:rgba(236,72,153,.15);color:#ec4899}
-.tool-category-tag[style*="供应链"]{background:rgba(250,204,21,.15);color:#facc15}
+.tag-governance{background:rgba(6,182,212,.15);color:var(--accent)}
+.tag-cashflow{background:rgba(249,115,22,.15);color:var(--warning)}
+.tag-digital{background:rgba(139,92,246,.15);color:var(--purple)}
+.tag-marketing{background:rgba(52,211,153,.15);color:var(--success)}
+.tag-crossborder{background:rgba(236,72,153,.15);color:#ec4899}
+.tag-supplychain{background:rgba(250,204,21,.15);color:#facc15}
 /* Responsive */
 @media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr)}.card-full{grid-column:span 6}.card-half{grid-column:span 6}.card-third{grid-column:span 6}.card-big{grid-column:span 6}.card-medium{grid-column:span 6}.roadmap-timeline::before{left:24px}.roadmap-stage{flex-direction:column !important}.roadmap-marker{left:24px;top:32px;transform:none}.roadmap-content{margin-left:56px !important;margin-right:0 !important;text-align:left !important}.stage-tasks{justify-content:flex-start !important}.solution-grid{grid-template-columns:1fr}.effect-grid{grid-template-columns:1fr}}
 @media(max-width:768px){.nav-links{display:none}.nav-toggle{display:block}.hero h1{font-size:2.2rem}.hero-stats{grid-template-columns:repeat(2,1fr)}.stat-card{padding:20px}.stat-card .stat-value{font-size:2rem}.case-grid{grid-template-columns:1fr}.case-card{max-width:100%}.report-scores{grid-template-columns:repeat(2,1fr)}.tips-grid{grid-template-columns:1fr}}
@@ -406,97 +406,97 @@ h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif}
   </div>
   <div class="tool-grid" id="toolGrid">
     <div class="tool-card governance">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-clipboard-check"></i></div><div><h4>钉钉OA审批</h4><span class="tool-category-tag">组织治理</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-clipboard-check"></i></div><div><h4>钉钉OA审批</h4><span class="tool-category-tag tag-governance">组织治理</span></div></div>
       <p class="tool-desc">流程审批自动化，实现"小钱放手，大钱保留否决权"的渐进式放权模式</p>
       <div class="tool-features"><span class="tool-feature">流程审批</span><span class="tool-feature">权限管理</span><span class="tool-feature">电子签章</span><span class="tool-feature">数据留痕</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>3,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 效率+80%</span></div>
     </div>
     <div class="tool-card governance">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-users"></i></div><div><h4>钉钉AI-CEO</h4><span class="tool-category-tag">组织治理</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-users"></i></div><div><h4>钉钉AI-CEO</h4><span class="tool-category-tag tag-governance">组织治理</span></div></div>
       <p class="tool-desc">经营管理驾驶舱，自动生成经营报告、异常预警和决策建议</p>
       <div class="tool-features"><span class="tool-feature">经营分析</span><span class="tool-feature">智能预警</span><span class="tool-feature">战略分解</span><span class="tool-feature">目标追踪</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>20,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 决策效率+80%</span></div>
     </div>
     <div class="tool-card cashflow">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-file-invoice"></i></div><div><h4>钉钉AI表格</h4><span class="tool-category-tag">财务管理</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-file-invoice"></i></div><div><h4>钉钉AI表格</h4><span class="tool-category-tag tag-cashflow">财务管理</span></div></div>
       <p class="tool-desc">智能财务管理，应收预警、现金流预测、成本核算一站式解决</p>
       <div class="tool-features"><span class="tool-feature">应收管理</span><span class="tool-feature">现金流预测</span><span class="tool-feature">成本分析</span><span class="tool-feature">自动报表</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>5,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 坏账率-70%</span></div>
     </div>
     <div class="tool-card cashflow">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-shield-alt"></i></div><div><h4>法保</h4><span class="tool-category-tag">财务管理</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-shield-alt"></i></div><div><h4>法保</h4><span class="tool-category-tag tag-cashflow">财务管理</span></div></div>
       <p class="tool-desc">合同AI审查、供应商资质核验、法律风险预警，保护企业资产安全</p>
       <div class="tool-features"><span class="tool-feature">合同审查</span><span class="tool-feature">资质核验</span><span class="tool-feature">风险预警</span><span class="tool-feature">法律知识库</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>15,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 风险识别+70%</span></div>
     </div>
     <div class="tool-card digital">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-microphone"></i></div><div><h4>小秘</h4><span class="tool-category-tag">数字化</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-microphone"></i></div><div><h4>小秘</h4><span class="tool-category-tag tag-digital">数字化</span></div></div>
       <p class="tool-desc">会议经营助理，自动生成纪要、行动项追踪、会议效率提升</p>
       <div class="tool-features"><span class="tool-feature">智能纪要</span><span class="tool-feature">行动项追踪</span><span class="tool-feature">会议分析</span><span class="tool-feature">知识沉淀</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>10,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 纪要时间-80%</span></div>
     </div>
     <div class="tool-card digital">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-search"></i></div><div><h4>AI晓招</h4><span class="tool-category-tag">数字化</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-search"></i></div><div><h4>AI晓招</h4><span class="tool-category-tag tag-digital">数字化</span></div></div>
       <p class="tool-desc">数字化人才招聘，智能简历筛选、面试助手、人才画像分析</p>
       <div class="tool-features"><span class="tool-feature">智能筛选</span><span class="tool-feature">面试助手</span><span class="tool-feature">人才匹配</span><span class="tool-feature">招聘分析</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>8,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 招聘效率+50%</span></div>
     </div>
     <div class="tool-card marketing">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-video"></i></div><div><h4>视频号运营</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-video"></i></div><div><h4>视频号运营</h4><span class="tool-category-tag tag-marketing">品牌营销</span></div></div>
       <p class="tool-desc">厂三代真人出镜打造个人IP，工厂实景直播建立信任，私域导流提升复购</p>
       <div class="tool-features"><span class="tool-feature">短视频运营</span><span class="tool-feature">直播带货</span><span class="tool-feature">私域承接</span><span class="tool-feature">数据分析</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>免费</span></span><span class="tool-roi"><i class="fas fa-trending-up"></i> 线上营收+40%</span></div>
     </div>
     <div class="tool-card marketing">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-store"></i></div><div><h4>抖音企业号</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-store"></i></div><div><h4>抖音企业号</h4><span class="tool-category-tag tag-marketing">品牌营销</span></div></div>
       <p class="tool-desc">短视频+直播带货，厂三代个人IP打造，拉近与Z世代消费者距离</p>
       <div class="tool-features"><span class="tool-feature">短视频运营</span><span class="tool-feature">直播带货</span><span class="tool-feature">私域运营</span><span class="tool-feature">数据分析</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>免费</span></span><span class="tool-roi"><i class="fas fa-trending-up"></i> 线上营收+30%</span></div>
     </div>
     <div class="tool-card marketing">
-      <div class="tool-header"><div class="tool-icon"><i class="fab fa-weixin"></i></div><div><h4>企业微信</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-weixin"></i></div><div><h4>企业微信</h4><span class="tool-category-tag tag-marketing">品牌营销</span></div></div>
       <p class="tool-desc">私域流量沉淀与运营，客户分层管理，会员体系搭建，提升复购率与LTV</p>
       <div class="tool-features"><span class="tool-feature">客户管理</span><span class="tool-feature">社群运营</span><span class="tool-feature">会员体系</span><span class="tool-feature">SCRM集成</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>免费</span>-<span>20,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 复购率+35%</span></div>
     </div>
     <div class="tool-card marketing">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-store"></i></div><div><h4>拼多多/抖音小店</h4><span class="tool-category-tag">品牌营销</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-store"></i></div><div><h4>拼多多/抖音小店</h4><span class="tool-category-tag tag-marketing">品牌营销</span></div></div>
       <p class="tool-desc">电商渠道布局，先"营销"后"生产"，精准捕捉细分市场爆品机遇</p>
       <div class="tool-features"><span class="tool-feature">店铺运营</span><span class="tool-feature">数据分析</span><span class="tool-feature">直播带货</span><span class="tool-feature">供应链对接</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>5,000</span>/起</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 营收+45%</span></div>
     </div>
     <div class="tool-card crossborder">
-      <div class="tool-header"><div class="tool-icon"><i class="fab fa-shopify"></i></div><div><h4>Shopify独立站</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-shopify"></i></div><div><h4>Shopify独立站</h4><span class="tool-category-tag tag-crossborder">跨境电商</span></div></div>
       <p class="tool-desc">DTC品牌出海，自建独立站直接触达欧美消费者，掌握定价权与客户数据</p>
       <div class="tool-features"><span class="tool-feature">建站工具</span><span class="tool-feature">支付集成</span><span class="tool-feature">多语言</span><span class="tool-feature">数据分析</span></div>
       <div class="tool-metrics"><span class="tool-price">$<span>29</span>-<span>299</span>/月</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 利润率+20%</span></div>
     </div>
     <div class="tool-card crossborder">
-      <div class="tool-header"><div class="tool-icon"><i class="fab fa-tiktok"></i></div><div><h4>TikTok Shop</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-tiktok"></i></div><div><h4>TikTok Shop</h4><span class="tool-category-tag tag-crossborder">跨境电商</span></div></div>
       <p class="tool-desc">短视频+直播跨境带货，快速打入东南亚、欧美市场，国潮品牌出海首选</p>
       <div class="tool-features"><span class="tool-feature">短视频引流</span><span class="tool-feature">直播带货</span><span class="tool-feature">跨境物流</span><span class="tool-feature">达人合作</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>免费</span></span><span class="tool-roi"><i class="fas fa-trending-up"></i> 海外营收+120%</span></div>
     </div>
     <div class="tool-card crossborder">
-      <div class="tool-header"><div class="tool-icon"><i class="fab fa-amazon"></i></div><div><h4>亚马逊全球开店</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fab fa-amazon"></i></div><div><h4>亚马逊全球开店</h4><span class="tool-category-tag tag-crossborder">跨境电商</span></div></div>
       <p class="tool-desc">入驻全球最大电商平台，覆盖北美、欧洲、日本等核心市场，品牌出海成熟通道</p>
       <div class="tool-features"><span class="tool-feature">全球站点</span><span class="tool-feature">FBA物流</span><span class="tool-feature">品牌备案</span><span class="tool-feature">广告投放</span></div>
       <div class="tool-metrics"><span class="tool-price">$<span>39.99</span>/月/站点</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 年营收千万+</span></div>
     </div>
     <div class="tool-card crossborder">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-ship"></i></div><div><h4>海外仓系统</h4><span class="tool-category-tag">跨境电商</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-ship"></i></div><div><h4>海外仓系统</h4><span class="tool-category-tag tag-crossborder">跨境电商</span></div></div>
       <p class="tool-desc">海外仓管理与配送，缩短配送时间，提升买家体验，降低物流成本</p>
       <div class="tool-features"><span class="tool-feature">仓储管理</span><span class="tool-feature">订单履约</span><span class="tool-feature">库存同步</span><span class="tool-feature">物流追踪</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>30,000</span>/年</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 物流成本-40%</span></div>
     </div>
     <div class="tool-card supplychain">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-industry"></i></div><div><h4>MES系统</h4><span class="tool-category-tag">供应链</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-industry"></i></div><div><h4>MES系统</h4><span class="tool-category-tag tag-supplychain">供应链</span></div></div>
       <p class="tool-desc">生产执行系统，实现生产流程数字化管理，实时监控生产进度与质量</p>
       <div class="tool-features"><span class="tool-feature">生产调度</span><span class="tool-feature">质量追溯</span><span class="tool-feature">设备管理</span><span class="tool-feature">数据采集</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>50,000</span>/起</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 生产效率+60%</span></div>
     </div>
     <div class="tool-card supplychain">
-      <div class="tool-header"><div class="tool-icon"><i class="fas fa-robot"></i></div><div><h4>具身智能产线</h4><span class="tool-category-tag">供应链</span></div></div>
+      <div class="tool-header"><div class="tool-icon"><i class="fas fa-robot"></i></div><div><h4>具身智能产线</h4><span class="tool-category-tag tag-supplychain">供应链</span></div></div>
       <p class="tool-desc">引入具身智能技术，实现不同尺码、款式鞋子的无缝切换，全柔性智造</p>
       <div class="tool-features"><span class="tool-feature">智能感知</span><span class="tool-feature">柔性生产</span><span class="tool-feature">3D建模</span><span class="tool-feature">小单快反</span></div>
       <div class="tool-metrics"><span class="tool-price">¥<span>200万</span>/线</span><span class="tool-roi"><i class="fas fa-trending-up"></i> 人工成本-40%</span></div>
@@ -966,10 +966,21 @@ function filterTools(category) {
 }
 
 function generateReport() {
-  const governanceScore = Math.floor(Math.random() * 40) + 40;
-  const cashflowScore = Math.floor(Math.random() * 40) + 30;
-  const workforceScore = Math.floor(Math.random() * 40) + 30;
-  const competitionScore = Math.floor(Math.random() * 40) + 40;
+  const getAnswer = (name) => {
+    const radio = document.querySelector(`input[name="${name}"]:checked`);
+    return radio ? parseInt(radio.value) : 0;
+  };
+  
+  const q1 = getAnswer('q1');
+  const q2 = getAnswer('q2');
+  const q3 = getAnswer('q3');
+  const q4 = getAnswer('q4');
+  const q5 = getAnswer('q5');
+  
+  const governanceScore = q1 * 25;
+  const cashflowScore = Math.round(((q2 + q3) / 2) * 25);
+  const workforceScore = Math.round(((q4 + q5) / 2) * 25);
+  const competitionScore = q5 * 25;
   
   document.getElementById('governanceScore').textContent = governanceScore;
   document.getElementById('cashflowScore').textContent = cashflowScore;
@@ -978,11 +989,25 @@ function generateReport() {
   
   const avg = (governanceScore + cashflowScore + workforceScore + competitionScore) / 4;
   let level = '';
-  if (avg >= 70) level = '<span style="color:#34d399;font-weight:600">成熟阶段</span>';
-  else if (avg >= 50) level = '<span style="color:#f97316;font-weight:600">过渡阶段</span>';
-  else level = '<span style="color:#ef4444;font-weight:600">原始阶段</span>';
+  let advice = '';
+  if (avg >= 70) {
+    level = '<span style="color:#34d399;font-weight:600">成熟阶段</span>';
+    advice = '恭喜！您的企业已具备现代化管理基础，建议聚焦创新升级和品牌出海。';
+  } else if (avg >= 50) {
+    level = '<span style="color:#f97316;font-weight:600">过渡阶段</span>';
+    advice = '您的企业处于转型升级关键期，建议优先完善财务管理和用工合规，同时布局数字化工具。';
+  } else {
+    level = '<span style="color:#ef4444;font-weight:600">原始阶段</span>';
+    advice = '您的企业面临较大挑战，建议从基础制度建设和财务透明化入手，逐步推进转型升级。';
+  }
   
-  document.getElementById('reportSummary').innerHTML = `您的企业整体处于${level}。根据评估结果，建议优先完善薄弱环节，同时发挥优势能力，制定分阶段转型计划。`;
+  let detailedAdvice = '';
+  if (governanceScore < 50) detailedAdvice += '【治理建议】建议引入钉钉OA审批，建立基本管理制度，实现渐进式放权。';
+  if (cashflowScore < 50) detailedAdvice += '【财务建议】部署钉钉AI表格，建立应收预警和现金流预测机制，降低三角债风险。';
+  if (workforceScore < 50) detailedAdvice += '【人力建议】逐步完善社保缴纳，使用AI晓招优化招聘，提升企业吸引力。';
+  if (competitionScore < 50) detailedAdvice += '【市场建议】布局视频号和电商渠道，打造品牌差异化，实现新质供给。';
+  
+  document.getElementById('reportSummary').innerHTML = `您的企业整体处于${level}。${advice}<br><br>${detailedAdvice}`;
   
   document.getElementById('reportModal').classList.add('active');
 }
