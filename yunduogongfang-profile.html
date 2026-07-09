@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州市云朵工坊服饰有限公司 · 深度企业画像</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#1e40af;--secondary:#059669;--accent:#f97316;--warning:#eab308;--danger:#ef4444;--purple:#a78bfa;--cyan:#22d3ee;
+  --dark:#0a0a14;--card-bg:rgba(15,15,30,.7);--glass-border:rgba(30,64,175,.15)
+}
+body{font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:linear-gradient(135deg,#0a0a14 0%,#0f172a 50%,#0a0a14 100%);color:#e2e8f0;min-height:100vh;padding:40px 20px;-webkit-font-smoothing:antialiased}
+.container{max-width:1400px;margin:0 auto}
+.hero{text-align:center;margin-bottom:50px;padding:40px 20px;background:linear-gradient(135deg,rgba(30,64,175,.15),rgba(5,150,105,.08),rgba(249,115,22,.08));border-radius:24px;border:1px solid rgba(96,165,250,.15)}
+.hero .badge{display:inline-block;padding:6px 18px;background:rgba(96,165,250,.15);color:#60a5fa;border-radius:20px;font-size:0.8rem;margin-bottom:16px;border:1px solid rgba(96,165,250,.2)}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);background:linear-gradient(135deg,#60a5fa,#34d399,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.hero .subtitle{color:#94a3b8;font-size:1rem;max-width:800px;margin:0 auto;line-height:1.6}
+.hero .meta{display:flex;justify-content:center;gap:30px;margin-top:20px;flex-wrap:wrap}
+.hero .meta-item{display:flex;align-items:center;gap:6px;color:#64748b;font-size:0.85rem}
+.hero .meta-item i{color:#60a5fa}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:40px}
+.stat-card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:20px;padding:28px 20px;text-align:center;backdrop-filter:blur(10px);transition:all .3s ease;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:.5}
+.stat-card:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.3)}
+.stat-card .icon{font-size:2rem;margin-bottom:10px}
+.stat-card:nth-child(1) .icon{color:#60a5fa}
+.stat-card:nth-child(2) .icon{color:#34d399}
+.stat-card:nth-child(3) .icon{color:#f97316}
+.stat-card:nth-child(4) .icon{color:#a78bfa}
+.stat-card:nth-child(5) .icon{color:#22d3ee}
+.stat-card:nth-child(6) .icon{color:#eab308}
+.stat-card .value{font-size:1.8rem;font-weight:700;margin-bottom:4px}
+.stat-card .label{color:#64748b;font-size:0.8rem}
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-bottom:30px}
+.card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:20px;padding:32px;backdrop-filter:blur(10px);transition:all .3s ease}
+.card:hover{border-color:rgba(96,165,250,.2)}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:20px;color:#60a5fa;display:flex;align-items:center;gap:10px}
+.card h3 i{font-size:1rem}
+.card-big{grid-column:span 8}
+.card-medium{grid-column:span 4}
+.card-half{grid-column:span 6}
+.card-third{grid-column:span 4}
+.card-full{grid-column:span 12}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0}
+.info-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:0.9rem}
+.info-item:last-child{border-bottom:none}
+.info-item .label{color:#64748b;flex-shrink:0}
+.info-item .value{font-weight:500;text-align:right;max-width:60%;word-break:break-all}
+.tag{display:inline-block;padding:5px 14px;border-radius:20px;font-size:0.78rem;margin-right:8px;margin-bottom:8px}
+.tag-primary{background:rgba(96,165,250,.15);color:#60a5fa;border:1px solid rgba(96,165,250,.25)}
+.tag-success{background:rgba(52,211,153,.15);color:#34d399;border:1px solid rgba(52,211,153,.25)}
+.tag-warning{background:rgba(249,115,22,.15);color:#f97316;border:1px solid rgba(249,115,22,.25)}
+.tag-danger{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
+.tag-purple{background:rgba(167,139,250,.15);color:#a78bfa;border:1px solid rgba(167,139,250,.25)}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--primary),var(--secondary),var(--accent))}
+.timeline-item{position:relative;padding-bottom:24px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-item::before{content:'';position:absolute;left:-25px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--card-bg);border:2px solid var(--primary)}
+.timeline-item .date{color:#60a5fa;font-size:0.8rem;font-weight:600;margin-bottom:4px}
+.timeline-item .content{color:#cbd5e1;font-size:0.88rem;line-height:1.5}
+.risk-item{display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:12px;margin-bottom:10px}
+.risk-item.low{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15)}
+.risk-item.medium{background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.15)}
+.risk-item.high{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15)}
+.risk-item .icon{font-size:1.1rem;margin-top:2px}
+.risk-item.low .icon{color:#34d399}
+.risk-item.medium .icon{color:#f97316}
+.risk-item.high .icon{color:#ef4444}
+.risk-item .info{flex:1}
+.risk-item .info h4{font-weight:600;margin-bottom:2px;font-size:0.95rem}
+.risk-item .info p{color:#94a3b8;font-size:0.82rem;line-height:1.4}
+.risk-item .level{font-size:0.72rem;padding:3px 10px;border-radius:10px;white-space:nowrap}
+.risk-item.low .level{background:rgba(52,211,153,.15);color:#34d399}
+.risk-item.medium .level{background:rgba(249,115,22,.15);color:#f97316}
+.risk-item.high .level{background:rgba(239,68,68,.15);color:#ef4444}
+.solution-card{background:linear-gradient(135deg,rgba(96,165,250,.08),rgba(52,211,153,.04));border:1px solid rgba(96,165,250,.2);border-radius:16px;padding:24px;margin-bottom:14px;transition:all .3s ease}
+.solution-card:hover{transform:translateX(6px);border-color:rgba(96,165,250,.4)}
+.solution-card .header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.solution-card .header .num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;flex-shrink:0}
+.solution-card .header h4{font-size:1.05rem;font-weight:600;color:#60a5fa}
+.solution-card .header .priority{margin-left:auto;font-size:0.7rem;padding:3px 10px;border-radius:10px}
+.solution-card .header .priority.p0{background:rgba(239,68,68,.15);color:#ef4444}
+.solution-card .header .priority.p1{background:rgba(249,115,22,.15);color:#f97316}
+.solution-card .header .priority.p2{background:rgba(96,165,250,.15);color:#60a5fa}
+.solution-card p{color:#94a3b8;font-size:0.86rem;line-height:1.6;margin-bottom:10px}
+.solution-card .features{display:flex;flex-wrap:wrap;gap:6px}
+.solution-card .feature{padding:3px 10px;background:rgba(52,211,153,.1);color:#34d399;border-radius:10px;font-size:0.72rem}
+.solution-card .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
+.solution-card .metric{text-align:center}
+.solution-card .metric .val{font-size:1.2rem;font-weight:700;color:#34d399}
+.solution-card .metric .lab{font-size:0.72rem;color:#64748b}
+.table-wrapper{overflow-x:auto;border-radius:16px;border:1px solid var(--glass-border);margin-bottom:20px}
+.data-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.data-table th{background:rgba(96,165,250,.1);padding:12px 14px;text-align:left;color:#60a5fa;font-weight:600}
+.data-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.data-table tr:hover{background:rgba(96,165,250,.04)}
+.data-table tr:last-child td{border-bottom:none}
+.score-display{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.score-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;border:3px solid}
+.score-circle.bbb{border-color:#f97316;color:#f97316;background:rgba(249,115,22,.1)}
+.score-circle.bb{border-color:#ef4444;color:#ef4444;background:rgba(239,68,68,.1)}
+.score-circle.a{border-color:#34d399;color:#34d399;background:rgba(52,211,153,.1)}
+.score-text h4{font-size:1rem;font-weight:600;color:#f97316;margin-bottom:2px}
+.score-text p{font-size:0.82rem;color:#94a3b8}
+.radar-chart{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;text-align:center}
+.radar-item{padding:16px;background:rgba(0,0,0,.2);border-radius:12px}
+.radar-item .bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin:8px 0;overflow:hidden}
+.radar-item .bar-fill{height:100%;border-radius:2px}
+.radar-item .label{font-size:0.75rem;color:#64748b;margin-top:6px}
+.radar-item .value{font-size:1.1rem;font-weight:700;color:#60a5fa}
+.progress-bar{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--primary),var(--secondary))}
+.progress-label{display:flex;justify-content:space-between;font-size:0.8rem;color:#64748b}
+.gap-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.gap-item:last-child{border-bottom:none}
+.gap-item .name{font-size:0.88rem;color:#cbd5e1}
+.gap-item .status{font-size:0.88rem;font-weight:600}
+.gap-item .status.pass{color:#34d399}
+.gap-item .status.fail{color:#ef4444}
+.gap-item .status.warning{color:#f97316}
+.esg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.esg-card{background:rgba(0,0,0,.2);border-radius:16px;padding:24px;text-align:center}
+.esg-card .icon{font-size:2.5rem;margin-bottom:12px}
+.esg-card.e .icon{color:#60a5fa}
+.esg-card.s .icon{color:#34d399}
+.esg-card.g .icon{color:#22d3ee}
+.esg-card .score{font-size:2rem;font-weight:700;margin-bottom:4px}
+.esg-card.e .score{color:#60a5fa}
+.esg-card.s .score{color:#34d399}
+.esg-card.g .score{color:#22d3ee}
+.esg-card .label{font-size:0.82rem;color:#64748b}
+.esg-card .desc{font-size:0.8rem;color:#94a3b8;margin-top:10px;line-height:1.4}
+.lifecycle-bar{display:flex;gap:4px;height:8px;background:rgba(255,255,255,.1);border-radius:4px;margin:16px 0}
+.lifecycle-segment{border-radius:4px;transition:all .3s}
+.lifecycle-segment.startup{background:#60a5fa;width:25%}
+.lifecycle-segment.growth{background:#34d399;width:25%}
+.lifecycle-segment.mature{background:#f97316;width:25%}
+.lifecycle-segment.decline{background:#ef4444;width:25%}
+.lifecycle-indicator{position:relative}
+.lifecycle-indicator::after{content:'';position:absolute;top:-12px;width:16px;height:16px;border-radius:50%;background:#34d399;border:3px solid var(--card-bg);box-shadow:0 0 10px rgba(52,211,153,.5)}
+.decision-chain{position:relative;padding-left:30px}
+.decision-chain::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#60a5fa,#f97316)}
+.decision-node{position:relative;padding-bottom:24px}
+.decision-node:last-child{padding-bottom:0}
+.decision-node::before{content:'';position:absolute;left:-25px;top:4px;width:12px;height:12px;border-radius:50%;background:#f97316;border:2px solid var(--card-bg)}
+.decision-node .role{color:#60a5fa;font-size:0.75rem;font-weight:600;margin-bottom:2px}
+.decision-node .name{font-weight:600;margin-bottom:4px}
+.decision-node .scope{color:#94a3b8;font-size:0.8rem}
+.cashflow-chart{display:flex;align-items:flex-end;gap:12px;height:120px;padding:20px;background:rgba(0,0,0,.2);border-radius:12px}
+.cashflow-bar{flex:1;background:linear-gradient(180deg,#34d399,#059669);border-radius:6px 6px 0 0;position:relative;transition:all .3s}
+.cashflow-bar:hover{filter:brightness(1.2)}
+.cashflow-bar.negative{background:linear-gradient(180deg,#ef4444,#dc2626)}
+.cashflow-bar .label{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);font-size:0.72rem;color:#64748b;white-space:nowrap}
+.cashflow-bar .value{position:absolute;top:-28px;left:50%;transform:translateX(-50%);font-size:0.78rem;font-weight:600;color:#34d399;white-space:nowrap}
+.cashflow-bar.negative .value{color:#ef4444}
+.upgrade-scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.upgrade-card{background:linear-gradient(135deg,rgba(96,165,250,.06),rgba(167,139,250,.04));border:1px solid rgba(96,165,250,.15);border-radius:16px;padding:20px}
+.upgrade-card h4{font-size:0.95rem;font-weight:600;color:#60a5fa;margin-bottom:10px}
+.upgrade-card .icon{font-size:1.5rem;color:#a78bfa;margin-bottom:10px}
+.upgrade-card p{color:#94a3b8;font-size:0.82rem;line-height:1.5;margin-bottom:12px}
+.upgrade-card .cost{display:flex;justify-content:space-between;font-size:0.85rem}
+.upgrade-card .cost .label{color:#64748b}
+.upgrade-card .cost .value{font-weight:600;color:#f97316}
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr)}.card-big{grid-column:span 6}.card-medium{grid-column:span 6}.card-half{grid-column:span 6}.card-third{grid-column:span 6}.card-full{grid-column:span 6}.esg-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.hero .meta{gap:15px}.stats-grid{grid-template-columns:repeat(2,1fr)}.score-display{flex-direction:column;text-align:center}.radar-chart{grid-template-columns:repeat(5,1fr)}.cashflow-chart{height:80px}}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr}.lifecycle-bar{flex-wrap:wrap}.radar-chart{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="badge"><i class="fas fa-building"></i> 制造业 · 服装服饰</div>
+    <h1>泉州市云朵工坊服饰有限公司</h1>
+    <p class="subtitle">隶属于福建省嗨玩购服饰集团有限公司，专注童装服饰制造与零售，系adidas Kids中国最大零售运营商</p>
+    <div class="meta">
+      <div class="meta-item"><i class="fas fa-map-marker-alt"></i> 福建省泉州市丰泽区</div>
+      <div class="meta-item"><i class="fas fa-calendar"></i> 成立于2025-05-20</div>
+      <div class="meta-item"><i class="fas fa-users"></i> 少于50人</div>
+      <div class="meta-item"><i class="fas fa-industry"></i> 零售业</div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="icon"><i class="fas fa-landmark"></i></div><div class="value">100万</div><div class="label">注册资本</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-users"></i></div><div class="value">18人</div><div class="label">参保人数</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-store"></i></div><div class="value">4000+</div><div class="label">集团门店数</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-trophy"></i></div><div class="value">7个</div><div class="label">运营品牌</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-shield-alt"></i></div><div class="value">一般纳税人</div><div class="label">税务资质</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-trending-up"></i></div><div class="value">存续</div><div class="label">经营状态</div></div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-big">
+      <h3><i class="fas fa-file-alt"></i> 基本工商信息</h3>
+      <div class="info-grid">
+        <div class="info-item"><div class="label">统一社会信用代码</div><div class="value">91350503MAEKY10X9M</div></div>
+        <div class="info-item"><div class="label">工商注册号</div><div class="value">350503110490073</div></div>
+        <div class="info-item"><div class="label">组织机构代码</div><div class="value">MAEKY10X-9</div></div>
+        <div class="info-item"><div class="label">法定代表人</div><div class="value">陈俊芳</div></div>
+        <div class="info-item"><div class="label">企业类型</div><div class="value">有限责任公司(自然人投资或控股)</div></div>
+        <div class="info-item"><div class="label">登记状态</div><div class="value">存续（在营、开业、在册）</div></div>
+        <div class="info-item"><div class="label">营业期限</div><div class="value">2025-05-20 至 2045-05-19</div></div>
+        <div class="info-item"><div class="label">实缴资本</div><div class="value">49万元</div></div>
+        <div class="info-item"><div class="label">参保人数</div><div class="value">18人(2025年报)</div></div>
+        <div class="info-item"><div class="label">人员规模</div><div class="value">少于50人</div></div>
+        <div class="info-item"><div class="label">纳税人资质</div><div class="value">增值税一般纳税人</div></div>
+        <div class="info-item"><div class="label">注册地址</div><div class="value">福建省泉州市丰泽区霞贤路300号泉州数字经济产业园A区4号楼4层</div></div>
+      </div>
+    </div>
+    <div class="card card-medium">
+      <h3><i class="fas fa-users"></i> 股东与股权结构</h3>
+      <div style="margin-bottom:20px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="color:#94a3b8">陈俊芳</span><span style="font-weight:600">51%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:51%;background:#60a5fa"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="color:#94a3b8">高慎义</span><span style="font-weight:600">49%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:49%;background:#f97316"></div></div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+        <h4 style="font-size:0.9rem;color:#60a5fa;margin-bottom:10px">主要人员</h4>
+        <div style="font-size:0.85rem;color:#94a3b8;margin-bottom:6px">陈俊芳 - 董事、大股东、实际控制人</div>
+        <div style="font-size:0.85rem;color:#94a3b8">柯金水 - 财务负责人</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-shield-alt"></i> SWOT战略分析</h3>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#34d399;margin-bottom:10px"><i class="fas fa-plus-circle"></i> 优势(S)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>依托嗨玩购集团，拥有强大品牌资源</li>
+          <li>adidas Kids中国最大零售运营商</li>
+          <li>多品牌运营经验丰富（7大品牌）</li>
+          <li>全国近4000家门店网络</li>
+          <li>入驻泉州数字经济产业园，政策支持</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#ef4444;margin-bottom:10px"><i class="fas fa-minus-circle"></i> 劣势(W)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>成立时间短（2025年5月）</li>
+          <li>团队规模较小（少于50人）</li>
+          <li>注册资本仅100万，资金实力有限</li>
+          <li>自有品牌影响力待提升</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#f97316;margin-bottom:10px"><i class="fas fa-arrow-up-right"></i> 机会(O)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>童装市场规模持续增长</li>
+          <li>线上直播带货趋势</li>
+          <li>跨境电商出海机会</li>
+          <li>国货国潮消费崛起</li>
+          <li>数字化转型政策红利</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.9rem;color:#a78bfa;margin-bottom:10px"><i class="fas fa-arrow-down-right"></i> 威胁(T)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>服装行业竞争激烈，价格内卷</li>
+          <li>国际品牌竞争压力</li>
+          <li>原材料成本上涨</li>
+          <li>用工成本上升，招工难</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-chart-pie"></i> 企业综合评分模型</h3>
+      <div class="score-display">
+        <div class="score-circle bb"><span>42</span></div>
+        <div class="score-text">
+          <h4>评级：BB</h4>
+          <p>综合评分42/100，处于原始阶段，需优先完善基础管理体系</p>
+        </div>
+      </div>
+      <div class="radar-chart">
+        <div class="radar-item"><div class="value">55</div><div class="bar"><div class="bar-fill" style="width:55%;background:#60a5fa"></div></div><div class="label">治理结构</div></div>
+        <div class="radar-item"><div class="value">35</div><div class="bar"><div class="bar-fill" style="width:35%;background:#f97316"></div></div><div class="label">财务管理</div></div>
+        <div class="radar-item"><div class="value">38</div><div class="bar"><div class="bar-fill" style="width:38%;background:#f97316"></div></div><div class="label">用工体系</div></div>
+        <div class="radar-item"><div class="value">45</div><div class="bar"><div class="bar-fill" style="width:45%;background:#f97316"></div></div><div class="label">市场竞争</div></div>
+        <div class="radar-item"><div class="value">37</div><div class="bar"><div class="bar-fill" style="width:37%;background:#ef4444"></div></div><div class="label">数字化能力</div></div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+        <h4 style="font-size:0.9rem;color:#60a5fa;margin-bottom:12px">评分维度说明</h4>
+        <div style="font-size:0.82rem;color:#94a3b8;line-height:1.6">
+          <div><span style="color:#60a5fa">治理结构(55)</span>：股权清晰，法人治理基本完善，但需建立现代管理制度</div>
+          <div><span style="color:#f97316">财务管理(35)</span>：实缴资本仅49万，财务体系待完善，现金流压力较大</div>
+          <div><span style="color:#f97316">用工体系(38)</span>：参保人数18人，用工规模小，用工合规需加强</div>
+          <div><span style="color:#f97316">市场竞争(45)</span>：依托集团品牌资源，但自有品牌影响力不足</div>
+          <div><span style="color:#ef4444">数字化能力(37)</span>：互联网销售资质齐全，但实际数字化运营能力待提升</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-big">
+      <h3><i class="fas fa-box"></i> 经营范围与业务布局</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+        <span class="tag tag-primary">服装服饰零售</span>
+        <span class="tag tag-primary">服装服饰批发</span>
+        <span class="tag tag-success">服装辅料销售</span>
+        <span class="tag tag-success">鞋帽批发</span>
+        <span class="tag tag-success">鞋帽零售</span>
+        <span class="tag tag-warning">针纺织品销售</span>
+        <span class="tag tag-warning">互联网销售</span>
+        <span class="tag tag-warning">服装制造</span>
+        <span class="tag tag-warning">服装辅料制造</span>
+        <span class="tag tag-purple">箱包销售</span>
+        <span class="tag tag-purple">教育咨询服务</span>
+        <span class="tag tag-purple">咨询策划服务</span>
+      </div>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.95rem;color:#60a5fa;margin-bottom:12px">集团品牌矩阵</h4>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead><tr><th>品牌名称</th><th>品牌定位</th><th>目标客群</th></tr></thead>
+            <tbody>
+              <tr><td>皇室童缘HOSTOYO</td><td>时尚休闲儿童品牌</td><td>儿童时尚休闲</td></tr>
+              <tr><td>玛米玛卡MOMOCO</td><td>北欧设计师儿童生活品牌</td><td>品质生活家庭</td></tr>
+              <tr><td>厵</td><td>国风艺术原创儿童品牌</td><td>文化消费家庭</td></tr>
+              <tr><td>IPW</td><td>原创设计师IP潮牌</td><td>潮流儿童</td></tr>
+              <tr><td>adidas Kids</td><td>国际运动品牌</td><td>运动儿童</td></tr>
+              <tr><td>skechers Kids</td><td>国际休闲鞋品牌</td><td>休闲儿童</td></tr>
+              <tr><td>GW&GW</td><td>全球童装好物潮品集合</td><td>泛儿童消费</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:0.95rem;color:#60a5fa;margin-bottom:12px">核心优势</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>adidas Kids中国最大零售运营商，品牌资源强大</li>
+          <li>全国近4000家品牌专卖店，渠道覆盖广</li>
+          <li>多品牌运营经验，满足不同消费需求</li>
+          <li>线上线下全渠道新零售模式</li>
+          <li>入驻泉州数字经济产业园，享受政策红利</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card card-medium">
+      <h3><i class="fas fa-calendar-alt"></i> 关键事件时间线</h3>
+      <div class="timeline">
+        <div class="timeline-item"><div class="date">2025-05-20</div><div class="content">公司成立，注册资本100万元</div></div>
+        <div class="timeline-item"><div class="date">2025-05-20</div><div class="content">股东陈俊芳、高慎义完成首次出资</div></div>
+        <div class="timeline-item"><div class="date">2025-05-20</div><div class="content">经营范围确定，涵盖零售、批发、制造</div></div>
+        <div class="timeline-item"><div class="date">2025-05-20</div><div class="content">柯金水担任财务负责人</div></div>
+        <div class="timeline-item"><div class="date">2025-09</div><div class="content">发布招聘信息，招聘带货主播、产品企划等</div></div>
+        <div class="timeline-item"><div class="date">2026-06</div><div class="content">地址变更至泉州数字经济产业园</div></div>
+        <div class="timeline-item"><div class="date">2026-06</div><div class="content">发布仓储主管、质检员等生产岗位招聘</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-trending-down"></i> 数字转型痛点诊断</h3>
+      <div class="risk-item high">
+        <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="info"><h4>数字化运营能力薄弱</h4><p>互联网销售资质齐全，但实际数字化运营能力待提升，缺乏直播带货、私域运营等能力</p></div>
+        <div class="level">高风险</div>
+      </div>
+      <div class="risk-item high">
+        <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="info"><h4>财务管理粗放</h4><p>实缴资本仅49万，财务体系待完善，现金流压力较大，缺乏应收预警和现金流预测机制</p></div>
+        <div class="level">高风险</div>
+      </div>
+      <div class="risk-item medium">
+        <div class="icon"><i class="fas fa-alert-circle"></i></div>
+        <div class="info"><h4>用工体系不完善</h4><p>参保人数18人，用工规模小，招聘岗位多为基础生产岗位，缺乏核心技术人才</p></div>
+        <div class="level">中风险</div>
+      </div>
+      <div class="risk-item medium">
+        <div class="icon"><i class="fas fa-alert-circle"></i></div>
+        <div class="info"><h4>自有品牌影响力不足</h4><p>主要依托集团品牌资源，自有品牌市场认知度较低，品牌溢价能力弱</p></div>
+        <div class="level">中风险</div>
+      </div>
+      <div class="risk-item low">
+        <div class="icon"><i class="fas fa-info-circle"></i></div>
+        <div class="info"><h4>供应链管理待优化</h4><p>服装行业SKU多、季节性强、尺码颜色繁杂，需建立科学的库存管理机制</p></div>
+        <div class="level">低风险</div>
+      </div>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-chart-line"></i> 市场竞争分析</h3>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#60a5fa;margin-bottom:10px">行业地位</h4>
+        <div class="lifecycle-bar">
+          <div class="lifecycle-segment startup"></div>
+          <div class="lifecycle-segment growth lifecycle-indicator" style="width:30%"></div>
+          <div class="lifecycle-segment mature"></div>
+          <div class="lifecycle-segment decline"></div>
+        </div>
+        <div style="text-align:center;font-size:0.82rem;color:#94a3b8">企业处于起步阶段，依托集团资源快速发展中</div>
+      </div>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#60a5fa;margin-bottom:10px">竞争维度评估</h4>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead><tr><th>维度</th><th>现状</th><th>评分</th></tr></thead>
+            <tbody>
+              <tr><td>品牌影响力</td><td>依托集团，自有品牌弱</td><td style="color:#f97316">45</td></tr>
+              <tr><td>渠道覆盖</td><td>集团4000+门店</td><td style="color:#34d399">75</td></tr>
+              <tr><td>产品研发</td><td>OEM为主，自研待加强</td><td style="color:#f97316">40</td></tr>
+              <tr><td>数字化能力</td><td>基础薄弱</td><td style="color:#ef4444">37</td></tr>
+              <tr><td>供应链</td><td>集团供应链支持</td><td style="color:#34d399">65</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:0.9rem;color:#60a5fa;margin-bottom:10px">政策红利</h4>
+        <div style="font-size:0.85rem;color:#94a3b8;line-height:1.6">
+          <div style="margin-bottom:8px"><span style="color:#34d399">✓</span> 入驻泉州数字经济产业园，享受园区优惠政策</div>
+          <div style="margin-bottom:8px"><span style="color:#34d399">✓</span> 福建省制造业数字化转型政策支持</div>
+          <div style="margin-bottom:8px"><span style="color:#34d399">✓</span> 跨境电商公共服务中心支持</div>
+          <div><span style="color:#34d399">✓</span> 技改专项贷等金融政策</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-eye"></i> ESG评估</h3>
+      <div class="esg-grid">
+        <div class="esg-card e">
+          <div class="icon"><i class="fas fa-leaf"></i></div>
+          <div class="score">50</div>
+          <div class="label">环境(E)</div>
+          <div class="desc">新成立企业，环保合规记录良好，但绿色生产体系待建立</div>
+        </div>
+        <div class="esg-card s">
+          <div class="icon"><i class="fas fa-users"></i></div>
+          <div class="score">45</div>
+          <div class="label">社会(S)</div>
+          <div class="desc">参保人数18人，用工规模小，社会责任履行能力有限</div>
+        </div>
+        <div class="esg-card g">
+          <div class="icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="score">55</div>
+          <div class="label">治理(G)</div>
+          <div class="desc">股权结构清晰，法人治理基本完善，需建立现代管理制度</div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-user-tie"></i> 决策链分析</h3>
+      <div class="decision-chain">
+        <div class="decision-node"><div class="role">实际控制人/大股东</div><div class="name">陈俊芳</div><div class="scope">战略决策、重大投资、核心人事</div></div>
+        <div class="decision-node"><div class="role">股东</div><div class="name">高慎义</div><div class="scope">参与决策、监督执行</div></div>
+        <div class="decision-node"><div class="role">财务负责人</div><div class="name">柯金水</div><div class="scope">财务管理、资金运营、税务合规</div></div>
+        <div class="decision-node"><div class="role">日常运营</div><div class="name">各部门负责人</div><div class="scope">日常业务、生产管理、销售运营</div></div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+        <h4 style="font-size:0.9rem;color:#f97316;margin-bottom:10px">决策特点</h4>
+        <ul style="font-size:0.82rem;color:#94a3b8;line-height:1.6;padding-left:20px">
+          <li>股权集中（陈俊芳51%），决策效率高</li>
+          <li>依托集团资源，部分决策需集团层面审批</li>
+          <li>财务负责人柯金水关联9家企业，经验丰富</li>
+          <li>缺乏职业经理人体系，决策依赖核心股东</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-coins"></i> 现金流预测</h3>
+      <div style="font-size:0.82rem;color:#94a3b8;margin-bottom:16px">基于行业平均水平和企业规模预测（单位：万元）</div>
+      <div class="cashflow-chart">
+        <div class="cashflow-bar" style="height:60%"><div class="value">+80</div><div class="label">Q1</div></div>
+        <div class="cashflow-bar" style="height:70%"><div class="value">+95</div><div class="label">Q2</div></div>
+        <div class="cashflow-bar" style="height:85%"><div class="value">+110</div><div class="label">Q3</div></div>
+        <div class="cashflow-bar" style="height:95%"><div class="value">+130</div><div class="label">Q4</div></div>
+        <div class="cashflow-bar" style="height:75%"><div class="value">+100</div><div class="label">Q5</div></div>
+        <div class="cashflow-bar" style="height:65%"><div class="value">+85</div><div class="label">Q6</div></div>
+        <div class="cashflow-bar" style="height:80%"><div class="value">+105</div><div class="label">Q7</div></div>
+        <div class="cashflow-bar" style="height:90%"><div class="value">+120</div><div class="label">Q8</div></div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+        <h4 style="font-size:0.9rem;color:#60a5fa;margin-bottom:10px">现金流风险提示</h4>
+        <ul style="font-size:0.82rem;color:#94a3b8;line-height:1.6;padding-left:20px">
+          <li>实缴资本仅49万，资金储备有限</li>
+          <li>服装行业季节性强，现金流波动较大</li>
+          <li>建议建立应收预警机制，降低三角债风险</li>
+          <li>申请"技改专项贷"等政策支持</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-robot"></i> 智能升级场景</h3>
+      <div class="upgrade-scenarios">
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-video"></i></div>
+          <h4>视频号直播带货</h4>
+          <p>厂三代真人出镜，展示工厂生产过程，建立信任背书，实现线上营收突破</p>
+          <div class="cost"><div class="label">预计投入</div><div class="value">¥5-10万/年</div></div>
+        </div>
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-chart-line"></i></div>
+          <h4>AI-CEO经营驾驶舱</h4>
+          <p>建立经营分析体系，实时监控销售数据、库存周转、现金流状况</p>
+          <div class="cost"><div class="label">预计投入</div><div class="value">¥20万/年</div></div>
+        </div>
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-box"></i></div>
+          <h4>WMS仓储管理系统</h4>
+          <p>针对服装行业SKU多、季节性强特点，建立科学的库位规划和库存管理机制</p>
+          <div class="cost"><div class="label">预计投入</div><div class="value">¥30-50万</div></div>
+        </div>
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-globe"></i></div>
+          <h4>跨境电商布局</h4>
+          <p>依托集团品牌资源，通过TikTok、Shopify等平台开拓海外市场</p>
+          <div class="cost"><div class="label">预计投入</div><div class="value">¥50-100万</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-full">
+      <h3><i class="fas fa-wrench"></i> 定制化解决方案</h3>
+      <div class="solution-card">
+        <div class="header"><div class="num" style="background:#ef4444;color:#fff">1</div><h4>财务透明化与风险防控</h4><span class="priority p0">优先</span></div>
+        <p>部署钉钉AI表格，建立应收预警和现金流预测机制，解决实缴资本不足带来的现金流压力，降低三角债风险</p>
+        <div class="features"><span class="feature">应收预警</span><span class="feature">现金流预测</span><span class="feature">成本分析</span><span class="feature">自动报表</span></div>
+        <div class="metrics"><div class="metric"><div class="val">-70%</div><div class="lab">坏账率下降</div></div><div class="metric"><div class="val">+80%</div><div class="lab">财务效率提升</div></div><div class="metric"><div class="val">¥5万</div><div class="lab">年投入</div></div></div>
+      </div>
+      <div class="solution-card">
+        <div class="header"><div class="num" style="background:#ef4444;color:#fff">2</div><h4>视频号直播带货体系</h4><span class="priority p0">优先</span></div>
+        <p>利用厂三代数字原生优势，搭建视频号直播带货体系，展示工厂生产过程建立信任，实现线上营收占比从0提升至30%+</p>
+        <div class="features"><span class="feature">厂二代人设</span><span class="feature">工厂实景直播</span><span class="feature">私域导流</span><span class="feature">数据选品</span></div>
+        <div class="metrics"><div class="metric"><div class="val">+30%</div><div class="lab">线上营收占比</div></div><div class="metric"><div class="val">10万+</div><div class="lab">粉丝增长</div></div><div class="metric"><div class="val">免费</div><div class="lab">平台投入</div></div></div>
+      </div>
+      <div class="solution-card">
+        <div class="header"><div class="num" style="background:#f97316;color:#fff">3</div><h4>仓储管理数字化升级</h4><span class="priority p1">重要</span></div>
+        <p>针对服装行业SKU多、季节性强特点，引入WMS仓储管理系统，优化库位规划和库存管理，提高拣货效率和准确率</p>
+        <div class="features"><span class="feature">库位规划</span><span class="feature">库存预警</span><span class="feature">批次管理</span><span class="feature">数据报表</span></div>
+        <div class="metrics"><div class="metric"><div class="val">+60%</div><div class="lab">仓储效率</div></div><div class="metric"><div class="val">-50%</div><div class="lab">库存损耗</div></div><div class="metric"><div class="val">¥30万</div><div class="lab">系统投入</div></div></div>
+      </div>
+      <div class="solution-card">
+        <div class="header"><div class="num" style="background:#f97316;color:#fff">4</div><h4>品牌化运营与私域建设</h4><span class="priority p1">重要</span></div>
+        <p>依托集团品牌资源，打造自有品牌差异化定位，通过企业微信建立私域流量池，提升客户复购率和单客生命周期价值</p>
+        <div class="features"><span class="feature">品牌定位</span><span class="feature">私域运营</span><span class="feature">会员体系</span><span class="feature">社群营销</span></div>
+        <div class="metrics"><div class="metric"><div class="val">+35%</div><div class="lab">复购率提升</div></div><div class="metric"><div class="val">3x</div><div class="lab">LTV提升</div></div><div class="metric"><div class="val">¥10万</div><div class="lab">年投入</div></div></div>
+      </div>
+      <div class="solution-card">
+        <div class="header"><div class="num" style="background:#60a5fa;color:#fff">5</div><h4>跨境电商出海布局</h4><span class="priority p2">规划</span></div>
+        <p>利用泉州跨境电商政策红利，通过TikTok、Shopify等平台开拓海外市场，实现品牌出海和利润提升</p>
+        <div class="features"><span class="feature">TikTok运营</span><span class="feature">独立站</span><span class="feature">海外仓</span><span class="feature">本土化运营</span></div>
+        <div class="metrics"><div class="metric"><div class="val">+120%</div><div class="lab">海外营收</div></div><div class="metric"><div class="val">+20%</div><div class="lab">利润率</div></div><div class="metric"><div class="val">¥50万</div><div class="lab">初期投入</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-full">
+      <h3><i class="fas fa-calendar-check"></i> 36个月专精特新培育路线图</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <div style="background:rgba(96,165,250,.08);border-radius:16px;padding:24px">
+          <div style="font-size:0.85rem;color:#60a5fa;font-weight:600;margin-bottom:16px">第1-12个月：基础建设期</div>
+          <ul style="font-size:0.82rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+            <li>完成财务透明化建设</li>
+            <li>部署钉钉OA审批系统</li>
+            <li>建立视频号运营团队</li>
+            <li>申请创新型中小企业认定</li>
+            <li>完善用工合规体系</li>
+          </ul>
+        </div>
+        <div style="background:rgba(52,211,153,.08);border-radius:16px;padding:24px">
+          <div style="font-size:0.85rem;color:#34d399;font-weight:600;margin-bottom:16px">第13-24个月：能力提升期</div>
+          <ul style="font-size:0.82rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+            <li>引入AI-CEO经营驾驶舱</li>
+            <li>线上营收占比突破30%</li>
+            <li>申请省级专精特新中小企业</li>
+            <li>建立跨境电商团队</li>
+            <li>完成WMS系统部署</li>
+          </ul>
+        </div>
+        <div style="background:rgba(249,115,22,.08);border-radius:16px;padding:24px">
+          <div style="font-size:0.85rem;color:#f97316;font-weight:600;margin-bottom:16px">第25-36个月：突破发展期</div>
+          <ul style="font-size:0.82rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+            <li>冲击国家级专精特新"小巨人"</li>
+            <li>海外营收突破千万</li>
+            <li>自有品牌市场认知度提升</li>
+            <li>全链路数字化运营</li>
+            <li>柔性供应链建设</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:30px;color:#64748b;font-size:0.85rem">
+    <p>数据来源：企查查、水滴信用、BOSS直聘、泉州人才网 | 最后更新：2026-07-09</p>
+    <p style="margin-top:8px">© 2026 森罗之眼 · 企业深度画像平台 | 39139@胜天半子</p>
+  </div>
+</div>
+</body>
+</html>
