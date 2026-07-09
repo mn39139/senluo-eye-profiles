@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州贰拾叁服装有限公司 · 深度企业画像</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#1e40af;--secondary:#059669;--accent:#f97316;--warning:#eab308;--danger:#ef4444;--purple:#a78bfa;--cyan:#22d3ee;
+  --dark:#0a0a14;--card-bg:rgba(15,15,30,.7);--glass-border:rgba(30,64,175,.15)
+}
+body{font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:linear-gradient(135deg,#0a0a14 0%,#0f172a 50%,#0a0a14 100%);color:#e2e8f0;min-height:100vh;padding:40px 20px;-webkit-font-smoothing:antialiased}
+.container{max-width:1400px;margin:0 auto}
+.hero{text-align:center;margin-bottom:50px;padding:40px 20px;background:linear-gradient(135deg,rgba(30,64,175,.15),rgba(5,150,105,.08),rgba(249,115,22,.08));border-radius:24px;border:1px solid rgba(96,165,250,.15)}
+.hero .badge{display:inline-block;padding:6px 18px;background:rgba(96,165,250,.15);color:#60a5fa;border-radius:20px;font-size:0.8rem;margin-bottom:16px;border:1px solid rgba(96,165,250,.2)}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);background:linear-gradient(135deg,#60a5fa,#34d399,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.hero .subtitle{color:#94a3b8;font-size:1rem;max-width:800px;margin:0 auto;line-height:1.6}
+.hero .meta{display:flex;justify-content:center;gap:30px;margin-top:20px;flex-wrap:wrap}
+.hero .meta-item{display:flex;align-items:center;gap:6px;color:#64748b;font-size:0.85rem}
+.hero .meta-item i{color:#60a5fa}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:40px}
+.stat-card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:20px;padding:28px 20px;text-align:center;backdrop-filter:blur(10px);transition:all .3s ease;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--primary),transparent);opacity:.5}
+.stat-card:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.3)}
+.stat-card .icon{font-size:2rem;margin-bottom:10px}
+.stat-card:nth-child(1) .icon{color:#60a5fa}
+.stat-card:nth-child(2) .icon{color:#34d399}
+.stat-card:nth-child(3) .icon{color:#f97316}
+.stat-card:nth-child(4) .icon{color:#a78bfa}
+.stat-card:nth-child(5) .icon{color:#22d3ee}
+.stat-card:nth-child(6) .icon{color:#eab308}
+.stat-card .value{font-size:1.8rem;font-weight:700;margin-bottom:4px}
+.stat-card .label{color:#64748b;font-size:0.8rem}
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-bottom:30px}
+.card{background:var(--card-bg);border:1px solid var(--glass-border);border-radius:20px;padding:32px;backdrop-filter:blur(10px);transition:all .3s ease}
+.card:hover{border-color:rgba(96,165,250,.2)}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:20px;color:#60a5fa;display:flex;align-items:center;gap:10px}
+.card h3 i{font-size:1rem}
+.card-big{grid-column:span 8}
+.card-medium{grid-column:span 4}
+.card-half{grid-column:span 6}
+.card-third{grid-column:span 4}
+.card-full{grid-column:span 12}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0}
+.info-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:0.9rem}
+.info-item:last-child{border-bottom:none}
+.info-item .label{color:#64748b;flex-shrink:0}
+.info-item .value{font-weight:500;text-align:right;max-width:60%;word-break:break-all}
+.tag{display:inline-block;padding:5px 14px;border-radius:20px;font-size:0.78rem;margin-right:8px;margin-bottom:8px}
+.tag-primary{background:rgba(96,165,250,.15);color:#60a5fa;border:1px solid rgba(96,165,250,.25)}
+.tag-success{background:rgba(52,211,153,.15);color:#34d399;border:1px solid rgba(52,211,153,.25)}
+.tag-warning{background:rgba(249,115,22,.15);color:#f97316;border:1px solid rgba(249,115,22,.25)}
+.tag-danger{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
+.tag-purple{background:rgba(167,139,250,.15);color:#a78bfa;border:1px solid rgba(167,139,250,.25)}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--primary),var(--secondary),var(--accent))}
+.timeline-item{position:relative;padding-bottom:24px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-item::before{content:'';position:absolute;left:-25px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--card-bg);border:2px solid var(--primary)}
+.timeline-item .date{color:#60a5fa;font-size:0.8rem;font-weight:600;margin-bottom:4px}
+.timeline-item .content{color:#cbd5e1;font-size:0.88rem;line-height:1.5}
+.risk-item{display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:12px;margin-bottom:10px}
+.risk-item.low{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15)}
+.risk-item.medium{background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.15)}
+.risk-item.high{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15)}
+.risk-item .icon{font-size:1.1rem;margin-top:2px}
+.risk-item.low .icon{color:#34d399}
+.risk-item.medium .icon{color:#f97316}
+.risk-item.high .icon{color:#ef4444}
+.risk-item .info{flex:1}
+.risk-item .info h4{font-weight:600;margin-bottom:2px;font-size:0.95rem}
+.risk-item .info p{color:#94a3b8;font-size:0.82rem;line-height:1.4}
+.risk-item .level{font-size:0.72rem;padding:3px 10px;border-radius:10px;white-space:nowrap}
+.risk-item.low .level{background:rgba(52,211,153,.15);color:#34d399}
+.risk-item.medium .level{background:rgba(249,115,22,.15);color:#f97316}
+.risk-item.high .level{background:rgba(239,68,68,.15);color:#ef4444}
+.solution-card{background:linear-gradient(135deg,rgba(96,165,250,.08),rgba(52,211,153,.04));border:1px solid rgba(96,165,250,.2);border-radius:16px;padding:24px;margin-bottom:14px;transition:all .3s ease}
+.solution-card:hover{transform:translateX(6px);border-color:rgba(96,165,250,.4)}
+.solution-card .header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.solution-card .header .num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;flex-shrink:0}
+.solution-card .header h4{font-size:1.05rem;font-weight:600;color:#60a5fa}
+.solution-card .header .priority{margin-left:auto;font-size:0.7rem;padding:3px 10px;border-radius:10px}
+.solution-card .header .priority.p0{background:rgba(239,68,68,.15);color:#ef4444}
+.solution-card .header .priority.p1{background:rgba(249,115,22,.15);color:#f97316}
+.solution-card .header .priority.p2{background:rgba(96,165,250,.15);color:#60a5fa}
+.solution-card p{color:#94a3b8;font-size:0.86rem;line-height:1.6;margin-bottom:10px}
+.solution-card .features{display:flex;flex-wrap:wrap;gap:6px}
+.solution-card .feature{padding:3px 10px;background:rgba(52,211,153,.1);color:#34d399;border-radius:10px;font-size:0.72rem}
+.solution-card .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
+.solution-card .metric{text-align:center}
+.solution-card .metric .val{font-size:1.2rem;font-weight:700;color:#34d399}
+.solution-card .metric .lab{font-size:0.72rem;color:#64748b}
+.table-wrapper{overflow-x:auto;border-radius:16px;border:1px solid var(--glass-border);margin-bottom:20px}
+.data-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.data-table th{background:rgba(96,165,250,.1);padding:12px 14px;text-align:left;color:#60a5fa;font-weight:600}
+.data-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.data-table tr:hover{background:rgba(96,165,250,.04)}
+.data-table tr:last-child td{border-bottom:none}
+.score-display{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.score-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;border:3px solid}
+.score-circle.bbb{border-color:#f97316;color:#f97316;background:rgba(249,115,22,.1)}
+.score-circle.bb{border-color:#ef4444;color:#ef4444;background:rgba(239,68,68,.1)}
+.score-circle.a{border-color:#34d399;color:#34d399;background:rgba(52,211,153,.1)}
+.score-text h4{font-size:1rem;font-weight:600;color:#f97316;margin-bottom:2px}
+.score-text p{font-size:0.82rem;color:#94a3b8}
+.radar-chart{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;text-align:center}
+.radar-item{padding:16px;background:rgba(0,0,0,.2);border-radius:12px}
+.radar-item .bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin:8px 0;overflow:hidden}
+.radar-item .bar-fill{height:100%;border-radius:2px}
+.radar-item .label{font-size:0.75rem;color:#64748b;margin-top:6px}
+.radar-item .value{font-size:1.1rem;font-weight:700;color:#60a5fa}
+.progress-bar{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--primary),var(--secondary))}
+.progress-label{display:flex;justify-content:space-between;font-size:0.8rem;color:#64748b}
+.gap-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.gap-item:last-child{border-bottom:none}
+.gap-item .name{font-size:0.88rem;color:#cbd5e1}
+.gap-item .status{font-size:0.88rem;font-weight:600}
+.gap-item .status.pass{color:#34d399}
+.gap-item .status.fail{color:#ef4444}
+.gap-item .status.warning{color:#f97316}
+.esg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.esg-card{background:rgba(0,0,0,.2);border-radius:16px;padding:24px;text-align:center}
+.esg-card .icon{font-size:2.5rem;margin-bottom:12px}
+.esg-card.e .icon{color:#60a5fa}
+.esg-card.s .icon{color:#34d399}
+.esg-card.g .icon{color:#22d3ee}
+.esg-card .score{font-size:2rem;font-weight:700;margin-bottom:4px}
+.esg-card.e .score{color:#60a5fa}
+.esg-card.s .score{color:#34d399}
+.esg-card.g .score{color:#22d3ee}
+.esg-card .label{font-size:0.82rem;color:#64748b}
+.esg-card .desc{font-size:0.8rem;color:#94a3b8;margin-top:10px;line-height:1.4}
+.lifecycle-bar{display:flex;gap:4px;height:8px;background:rgba(255,255,255,.1);border-radius:4px;margin:16px 0}
+.lifecycle-segment{border-radius:4px;transition:all .3s}
+.lifecycle-segment.startup{background:#60a5fa;width:25%}
+.lifecycle-segment.growth{background:#34d399;width:25%}
+.lifecycle-segment.mature{background:#f97316;width:25%}
+.lifecycle-segment.decline{background:#ef4444;width:25%}
+.lifecycle-indicator{position:relative}
+.lifecycle-indicator::after{content:'';position:absolute;top:-12px;width:16px;height:16px;border-radius:50%;background:#34d399;border:3px solid var(--card-bg);box-shadow:0 0 10px rgba(52,211,153,.5)}
+.decision-chain{position:relative;padding-left:30px}
+.decision-chain::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#60a5fa,#f97316)}
+.decision-node{position:relative;padding-bottom:24px}
+.decision-node:last-child{padding-bottom:0}
+.decision-node::before{content:'';position:absolute;left:-25px;top:4px;width:12px;height:12px;border-radius:50%;background:#f97316;border:2px solid var(--card-bg)}
+.decision-node .role{color:#60a5fa;font-size:0.75rem;font-weight:600;margin-bottom:2px}
+.decision-node .name{font-weight:600;margin-bottom:4px}
+.decision-node .scope{color:#94a3b8;font-size:0.8rem}
+.cashflow-chart{display:flex;align-items:flex-end;gap:12px;height:120px;padding:20px;background:rgba(0,0,0,.2);border-radius:12px}
+.cashflow-bar{flex:1;background:linear-gradient(180deg,#34d399,#059669);border-radius:6px 6px 0 0;position:relative;transition:all .3s}
+.cashflow-bar:hover{filter:brightness(1.2)}
+.cashflow-bar.negative{background:linear-gradient(180deg,#ef4444,#dc2626)}
+.cashflow-bar .label{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);font-size:0.72rem;color:#64748b;white-space:nowrap}
+.cashflow-bar .value{position:absolute;top:-28px;left:50%;transform:translateX(-50%);font-size:0.78rem;font-weight:600;color:#34d399;white-space:nowrap}
+.cashflow-bar.negative .value{color:#ef4444}
+.upgrade-scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.upgrade-card{background:linear-gradient(135deg,rgba(96,165,250,.06),rgba(167,139,250,.04));border:1px solid rgba(96,165,250,.15);border-radius:16px;padding:20px}
+.upgrade-card h4{font-size:0.95rem;font-weight:600;color:#60a5fa;margin-bottom:10px}
+.upgrade-card .icon{font-size:1.5rem;color:#a78bfa;margin-bottom:10px}
+.upgrade-card p{color:#94a3b8;font-size:0.82rem;line-height:1.5;margin-bottom:12px}
+.upgrade-card .cost{display:flex;justify-content:space-between;font-size:0.85rem}
+.upgrade-card .cost .label{color:#64748b}
+.upgrade-card .cost .value{font-weight:600;color:#f97316}
+.footer{text-align:center;padding:30px;color:#64748b;font-size:0.85rem;margin-top:50px;border-top:1px solid rgba(255,255,255,.05)}
+@media(max-width:1024px){.bento-grid{grid-template-columns:repeat(6,1fr)}.card-big{grid-column:span 6}.card-medium{grid-column:span 6}.card-half{grid-column:span 6}.card-third{grid-column:span 6}.card-full{grid-column:span 6}.esg-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.hero .meta{gap:15px}.stats-grid{grid-template-columns:repeat(2,1fr)}.score-display{flex-direction:column;text-align:center}.radar-chart{grid-template-columns:repeat(5,1fr)}.cashflow-chart{height:80px}}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr}.lifecycle-bar{flex-wrap:wrap}.radar-chart{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="badge"><i class="fas fa-building"></i> 制造业 · 服装服饰</div>
+    <h1>泉州贰拾叁服装有限公司</h1>
+    <p class="subtitle">旗下品牌IF23专注时尚女装，以"北欧时尚融合东方着衣哲学"为核心，打造多元化女性着装体验</p>
+    <div class="meta">
+      <div class="meta-item"><i class="fas fa-map-marker-alt"></i> 福建省泉州市鲤城区</div>
+      <div class="meta-item"><i class="fas fa-calendar"></i> 成立于2017-03-24</div>
+      <div class="meta-item"><i class="fas fa-users"></i> 20-99人</div>
+      <div class="meta-item"><i class="fas fa-industry"></i> 批发和零售业</div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="icon"><i class="fas fa-landmark"></i></div><div class="value">50万</div><div class="label">注册资本</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-users"></i></div><div class="value">12人</div><div class="label">参保人数</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-store"></i></div><div class="value">多家</div><div class="label">实体门店</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-trophy"></i></div><div class="value">51个</div><div class="label">商标注册</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-shield-alt"></i></div><div class="value">存续</div><div class="label">经营状态</div></div>
+    <div class="stat-card"><div class="icon"><i class="fas fa-trending-up"></i></div><div class="value">小微企业</div><div class="label">企业规模</div></div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-big">
+      <h3><i class="fas fa-file-alt"></i> 基本工商信息</h3>
+      <div class="info-grid">
+        <div class="info-item"><div class="label">统一社会信用代码</div><div class="value">91350502MA2Y3QXX93</div></div>
+        <div class="info-item"><div class="label">法定代表人</div><div class="value">黄福泉</div></div>
+        <div class="info-item"><div class="label">注册资本</div><div class="value">50万元</div></div>
+        <div class="info-item"><div class="label">实缴资本</div><div class="value">0.3万元</div></div>
+        <div class="info-item"><div class="label">成立日期</div><div class="value">2017-03-24</div></div>
+        <div class="info-item"><div class="label">营业期限</div><div class="value">2017-03-24 至 2027-03-23</div></div>
+        <div class="info-item"><div class="label">企业类型</div><div class="value">有限责任公司(自然人独资)</div></div>
+        <div class="info-item"><div class="label">注册地址</div><div class="value">福建省泉州市鲤城区金龙街道古店社区池峰路9号恒鑫大厦后楼办公楼7楼</div></div>
+        <div class="info-item"><div class="label">经营地址</div><div class="value">福建省泉州市鲤城区金龙街道古店社区池峰路9号恒鑫大厦后楼办公楼7楼</div></div>
+        <div class="info-item"><div class="label">所属行业</div><div class="value">批发和零售业·服装零售·时尚女装</div></div>
+        <div class="info-item"><div class="label">经营状态</div><div class="value">存续</div></div>
+        <div class="info-item"><div class="label">联系电话</div><div class="value">18959930813</div></div>
+      </div>
+    </div>
+    <div class="card card-medium">
+      <h3><i class="fas fa-users"></i> 股东与核心团队</h3>
+      <div style="font-size:0.88rem;color:#cbd5e1;line-height:1.8;margin-bottom:20px">
+        <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.05)">
+          <div style="font-weight:600;color:#60a5fa;margin-bottom:6px">黄福泉 <span style="color:#34d399;font-weight:500;font-size:0.8rem">持股100%</span></div>
+          <div style="font-size:0.82rem;color:#94a3b8">执行董事、经理、法定代表人</div>
+          <div style="font-size:0.82rem;color:#94a3b8">公司创始人，负责整体运营管理</div>
+        </div>
+        <div>
+          <div style="font-weight:600;color:#60a5fa;margin-bottom:6px">叶翔 <span style="color:#f97316;font-weight:500;font-size:0.8rem">监事</span></div>
+          <div style="font-size:0.82rem;color:#94a3b8">监督公司财务及董事履职</div>
+        </div>
+      </div>
+      <div style="background:rgba(96,165,250,.06);border-radius:12px;padding:14px">
+        <div style="font-size:0.82rem;color:#64748b;margin-bottom:8px">股权结构</div>
+        <div style="height:16px;background:rgba(255,255,255,.1);border-radius:8px;overflow:hidden">
+          <div style="width:100%;height:100%;background:linear-gradient(90deg,#60a5fa,#a78bfa);border-radius:8px"></div>
+        </div>
+        <div style="text-align:right;font-size:0.78rem;color:#60a5fa;margin-top:4px">黄福泉 100%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-shield-alt"></i> SWOT战略分析</h3>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#34d399;margin-bottom:10px"><i class="fas fa-plus-circle"></i> 优势(S)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>品牌定位清晰：IF23主打北欧时尚+东方哲学的差异化定位</li>
+          <li>商标布局完善：51件商标注册，品牌保护意识强</li>
+          <li>多渠道布局：线下实体门店+线上电商销售</li>
+          <li>创始人深耕行业：黄福泉具备丰富时尚零售经验</li>
+          <li>风险控制良好：无司法案件、无失信记录</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#ef4444;margin-bottom:10px"><i class="fas fa-minus-circle"></i> 劣势(W)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>实缴资本极低：0.3万元/50万元，资金实力薄弱</li>
+          <li>企业规模小：参保仅12人，抗风险能力弱</li>
+          <li>无专利/软件著作权：创新能力不足</li>
+          <li>信用评分一般：天眼查评分53分</li>
+          <li>品牌认知度有限：区域性品牌，未形成全国影响力</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:20px">
+        <h4 style="font-size:0.9rem;color:#f97316;margin-bottom:10px"><i class="fas fa-arrow-up"></i> 机遇(O)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>泉州纺织服装产业集群优势，供应链完善</li>
+          <li>国潮兴起，东方元素服饰市场需求增长</li>
+          <li>直播电商带动女装销售增长</li>
+          <li>消费升级，女性对品质服饰需求提升</li>
+          <li>泉州小微企业扶持政策</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:0.9rem;color:#a78bfa;margin-bottom:10px"><i class="fas fa-arrow-down"></i> 威胁(T)</h4>
+        <ul style="font-size:0.85rem;color:#94a3b8;line-height:1.7;padding-left:20px">
+          <li>女装市场竞争激烈，头部品牌挤压</li>
+          <li>快时尚品牌价格冲击</li>
+          <li>租金成本上涨压缩利润</li>
+          <li>消费者需求变化快，库存风险</li>
+          <li>线上流量成本攀升</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-chart-line"></i> 企业综合评分</h3>
+      <div class="score-display">
+        <div class="score-circle bb">45</div>
+        <div class="score-text">
+          <h4>BB级 · 信用风险中等</h4>
+          <p>综合评分45/100，处于行业中等水平</p>
+        </div>
+      </div>
+      <div class="radar-chart">
+        <div class="radar-item"><div class="value">60</div><div class="bar"><div class="bar-fill" style="width:60%;background:#60a5fa"></div></div><div class="label">经营稳定</div></div>
+        <div class="radar-item"><div class="value">30</div><div class="bar"><div class="bar-fill" style="width:30%;background:#ef4444"></div></div><div class="label">资金实力</div></div>
+        <div class="radar-item"><div class="value">55</div><div class="bar"><div class="bar-fill" style="width:55%;background:#f97316"></div></div><div class="label">品牌价值</div></div>
+        <div class="radar-item"><div class="value">25</div><div class="bar"><div class="bar-fill" style="width:25%;background:#ef4444"></div></div><div class="label">创新能力</div></div>
+        <div class="radar-item"><div class="value">50</div><div class="bar"><div class="bar-fill" style="width:50%;background:#f97316"></div></div><div class="label">发展潜力</div></div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+        <div style="font-size:0.85rem;color:#94a3b8;margin-bottom:10px">评分维度解析</div>
+        <div class="gap-item"><div class="name">经营稳定性</div><div class="status warning">中等</div></div>
+        <div class="gap-item"><div class="name">资金实力</div><div class="status fail">薄弱</div></div>
+        <div class="gap-item"><div class="name">品牌价值</div><div class="status warning">中等</div></div>
+        <div class="gap-item"><div class="name">创新能力</div><div class="status fail">不足</div></div>
+        <div class="gap-item"><div class="name">发展潜力</div><div class="status warning">中等</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-full">
+      <h3><i class="fas fa-globe"></i> 经营范围</h3>
+      <div style="font-size:0.9rem;color:#cbd5e1;line-height:1.7;background:rgba(96,165,250,.04);padding:20px;border-radius:12px;border:1px solid rgba(96,165,250,.1)">
+        <div style="margin-bottom:10px"><span style="color:#60a5fa">一般项目：</span>服装服饰零售；服装辅料销售；鞋帽零售；箱包销售；日用百货销售；针纺织品销售；针纺织品及原料销售；化妆品零售；办公用品销售；互联网销售（除销售需要许可的商品）。（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）</div>
+      </div>
+      <div style="margin-top:20px">
+        <div style="font-size:0.85rem;color:#64748b;margin-bottom:10px">业务板块标签</div>
+        <div>
+          <span class="tag tag-primary">服装服饰零售</span>
+          <span class="tag tag-success">鞋帽零售</span>
+          <span class="tag tag-purple">箱包销售</span>
+          <span class="tag tag-warning">日用百货</span>
+          <span class="tag tag-primary">针纺织品</span>
+          <span class="tag tag-success">化妆品零售</span>
+          <span class="tag tag-purple">互联网销售</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-big">
+      <h3><i class="fas fa-history"></i> 关键事件时间线</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">2015年</div>
+          <div class="content">IF TWENTY-THREE品牌创立，定位北欧时尚+东方着衣哲学的差异化路线</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2017-03-24</div>
+          <div class="content">泉州贰拾叁服装有限公司正式注册成立，注册资本50万元，黄福泉100%持股</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2021-03-25</div>
+          <div class="content">公司地址变更，从浮桥街道金色外滩迁至金龙街道恒鑫大厦</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2024年</div>
+          <div class="content">品牌升级为IF23，强化年轻化定位，"美好不设限 着装无年龄"品牌主张</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2025年</div>
+          <div class="content">线下实体门店扩张至福州、宁德等地，形成区域连锁布局</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2026年</div>
+          <div class="content">持续招聘陈列师等专业人才，完善品牌视觉体系</div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-medium">
+      <h3><i class="fas fa-exclamation-triangle"></i> 风险评估</h3>
+      <div class="risk-item low">
+        <div class="icon"><i class="fas fa-check-circle"></i></div>
+        <div class="info"><h4>经营风险</h4><p>经营状态存续，无经营异常记录，整体运营稳定</p></div>
+        <div class="level">低风险</div>
+      </div>
+      <div class="risk-item medium">
+        <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+        <div class="info"><h4>资金风险</h4><p>实缴资本仅0.3万元，注册资本实缴率0.6%，资金实力薄弱</p></div>
+        <div class="level">中风险</div>
+      </div>
+      <div class="risk-item low">
+        <div class="icon"><i class="fas fa-check-circle"></i></div>
+        <div class="info"><h4>司法风险</h4><p>无司法案件、无失信被执行人、无限制高消费记录</p></div>
+        <div class="level">低风险</div>
+      </div>
+      <div class="risk-item medium">
+        <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+        <div class="info"><h4>信用风险</h4><p>天眼查评分53分，信用状况一般，需关注信用提升</p></div>
+        <div class="level">中风险</div>
+      </div>
+      <div class="risk-item low">
+        <div class="icon"><i class="fas fa-check-circle"></i></div>
+        <div class="info"><h4>合规风险</h4><p>行政处罚记录为0，税务登记正常，行政许可齐全</p></div>
+        <div class="level">低风险</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-bullseye"></i> 专精特新达标差距分析</h3>
+      <p style="color:#94a3b8;font-size:0.82rem;line-height:1.6;margin-bottom:14px">对照《福建省优质中小企业梯度培育管理实施细则》(2026年认定标准)</p>
+      <table class="data-table">
+        <thead><tr><th>认定指标</th><th>标准要求</th><th>当前状况</th><th>差距</th></tr></thead>
+        <tbody>
+          <tr><td>创新型中小企业资质</td><td>需先获得</td><td style="color:#ef4444">未认定</td><td style="color:#ef4444">★★★★★</td></tr>
+          <tr><td>年度营收</td><td>≥1500万</td><td style="color:#ef4444">微型企业</td><td style="color:#ef4444">★★★★★</td></tr>
+          <tr><td>研发费用</td><td>≥100万/年</td><td style="color:#ef4444">0</td><td style="color:#ef4444">★★★★★</td></tr>
+          <tr><td>I类知识产权</td><td>≥1项</td><td style="color:#ef4444">0项(仅商标)</td><td style="color:#ef4444">★★★★★</td></tr>
+          <tr><td>企业规模</td><td>≥30人</td><td style="color:#ef4444">12人(参保)</td><td style="color:#ef4444">★★★★</td></tr>
+          <tr><td>实缴资本</td><td>建议≥50%</td><td style="color:#ef4444">0.6%</td><td style="color:#ef4444">★★★★★</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-leaf"></i> ESG评估</h3>
+      <div class="esg-grid">
+        <div class="esg-card e">
+          <div class="icon"><i class="fas fa-recycle"></i></div>
+          <div class="score">55</div>
+          <div class="label">环境(E)</div>
+          <div class="desc">无环保处罚记录，日常运营符合环保要求；但缺乏绿色生产认证和可持续发展规划</div>
+        </div>
+        <div class="esg-card s">
+          <div class="icon"><i class="fas fa-heart"></i></div>
+          <div class="score">60</div>
+          <div class="label">社会(S)</div>
+          <div class="desc">员工规模稳定，无劳动纠纷；品牌主张积极向上，传递美好价值观</div>
+        </div>
+        <div class="esg-card g">
+          <div class="icon"><i class="fas fa-balance-scale"></i></div>
+          <div class="score">70</div>
+          <div class="label">治理(G)</div>
+          <div class="desc">股权结构清晰，无关联交易风险；合规经营，无行政处罚记录</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+        <div style="font-size:0.85rem;color:#94a3b8;margin-bottom:8px">综合ESG评级</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
+        <div class="progress-label"><span>ESG综合得分</span><span>62分 · 中等</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-chart-bar"></i> 生命周期定位</h3>
+      <div style="font-size:0.88rem;color:#94a3b8;margin-bottom:16px">企业成立9年，处于成长期向成熟期过渡阶段</div>
+      <div class="lifecycle-bar">
+        <div class="lifecycle-segment startup"></div>
+        <div class="lifecycle-segment growth"></div>
+        <div class="lifecycle-segment mature"></div>
+        <div class="lifecycle-segment decline"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:#64748b;margin-top:8px">
+        <span>初创期</span><span>成长期</span><span>成熟期</span><span>衰退期</span>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)">
+        <div style="font-size:0.85rem;color:#cbd5e1;line-height:1.6">
+          <p style="margin-bottom:8px"><span style="color:#34d399">当前阶段特征：</span>品牌已建立初步认知，形成区域连锁布局，正在从区域品牌向更广泛市场拓展</p>
+          <p><span style="color:#f97316">下一阶段目标：</span>提升品牌全国影响力，完善数字化运营体系，实现可持续增长</p>
+        </div>
+      </div>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-users"></i> 决策链分析</h3>
+      <div class="decision-chain">
+        <div class="decision-node">
+          <div class="role">最高决策层</div>
+          <div class="name">黄福泉</div>
+          <div class="scope">战略方向、品牌定位、重大投资、人事任免</div>
+        </div>
+        <div class="decision-node">
+          <div class="role">运营管理层</div>
+          <div class="name">叶颖（副总兼买手）</div>
+          <div class="scope">产品采购、供应链管理、门店运营、营销推广</div>
+        </div>
+        <div class="decision-node">
+          <div class="role">监督层</div>
+          <div class="name">叶翔（监事）</div>
+          <div class="scope">财务监督、合规审查、董事履职监督</div>
+        </div>
+        <div class="decision-node">
+          <div class="role">执行层</div>
+          <div class="name">门店店长/陈列师</div>
+          <div class="scope">门店日常运营、销售执行、陈列维护、客户服务</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-half">
+      <h3><i class="fas fa-coins"></i> 现金流预测</h3>
+      <div style="font-size:0.82rem;color:#94a3b8;margin-bottom:16px">基于行业平均水平和企业规模预测（单位：万元）</div>
+      <div class="cashflow-chart">
+        <div class="cashflow-bar" style="height:55%"><div class="value">+60</div><div class="label">Q1</div></div>
+        <div class="cashflow-bar" style="height:65%"><div class="value">+70</div><div class="label">Q2</div></div>
+        <div class="cashflow-bar" style="height:80%"><div class="value">+90</div><div class="label">Q3</div></div>
+        <div class="cashflow-bar" style="height:90%"><div class="value">+100</div><div class="label">Q4</div></div>
+        <div class="cashflow-bar" style="height:70%"><div class="value">+75</div><div class="label">Q5</div></div>
+        <div class="cashflow-bar" style="height:60%"><div class="value">+65</div><div class="label">Q6</div></div>
+        <div class="cashflow-bar" style="height:75%"><div class="value">+85</div><div class="label">Q7</div></div>
+        <div class="cashflow-bar" style="height:85%"><div class="value">+95</div><div class="label">Q8</div></div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:0.82rem;color:#94a3b8">
+        <p><span style="color:#34d399">注意事项：</span>当前资金实力薄弱，需重点关注现金流健康，建议建立财务预警机制</p>
+      </div>
+    </div>
+    <div class="card card-half">
+      <h3><i class="fas fa-rocket"></i> 智能化升级场景</h3>
+      <div class="upgrade-scenarios">
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-store"></i></div>
+          <h4>智慧门店管理</h4>
+          <p>实现门店销售数据实时同步、库存智能预警、会员精准营销</p>
+          <div class="cost"><div class="label">预估投入</div><div class="value">3-5万元</div></div>
+        </div>
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-chart-line"></i></div>
+          <h4>经营数据分析</h4>
+          <p>建立经营驾驶舱，多维度数据分析，助力科学决策</p>
+          <div class="cost"><div class="label">预估投入</div><div class="value">2-3万元</div></div>
+        </div>
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-video"></i></div>
+          <h4>直播电商赋能</h4>
+          <p>搭建直播运营体系，实现线上线下融合销售</p>
+          <div class="cost"><div class="label">预估投入</div><div class="value">5-8万元</div></div>
+        </div>
+        <div class="upgrade-card">
+          <div class="icon"><i class="fas fa-file-alt"></i></div>
+          <h4>合同风险管控</h4>
+          <p>AI智能审查合同风险，保障品牌授权与合作合规</p>
+          <div class="cost"><div class="label">预估投入</div><div class="value">1-2万元</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-full">
+      <h3><i class="fas fa-lightbulb"></i> 定制化解决方案</h3>
+      <div class="solution-card">
+        <div class="header">
+          <div class="num" style="background:rgba(239,68,68,.15);color:#ef4444">1</div>
+          <h4>资金实力提升方案</h4>
+          <div class="priority p0">P0紧急</div>
+        </div>
+        <p>当前实缴资本仅0.3万元，严重影响企业信用评级和融资能力。建议：1) 补足注册资本至30万元以上；2) 申请小微企业信用贷款；3) 引入天使投资或合伙人</p>
+        <div class="features">
+          <span class="feature">注册资本补足</span>
+          <span class="feature">信用贷款申请</span>
+          <span class="feature">股权融资</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="val">+30万</div><div class="lab">目标实缴</div></div>
+          <div class="metric"><div class="val">80%</div><div class="lab">信用提升</div></div>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="header">
+          <div class="num" style="background:rgba(239,68,68,.15);color:#ef4444">2</div>
+          <h4>品牌数字化升级</h4>
+          <div class="priority p0">P0紧急</div>
+        </div>
+        <p>品牌已具备良好定位，但缺乏数字化运营能力。建议：1) 建立私域流量池；2) 搭建直播电商体系；3) 完善线上商城；4) 利用视频号打造品牌IP</p>
+        <div class="features">
+          <span class="feature">私域运营</span>
+          <span class="feature">直播电商</span>
+          <span class="feature">视频号运营</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="val">+50%</div><div class="lab">线上销售占比</div></div>
+          <div class="metric"><div class="val">10万+</div><div class="lab">私域用户</div></div>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="header">
+          <div class="num" style="background:rgba(249,115,22,.15);color:#f97316">3</div>
+          <h4>专精特新培育计划</h4>
+          <div class="priority p1">P1重要</div>
+        </div>
+        <p>对照专精特新标准，企业在营收规模、研发投入、知识产权方面差距较大。建议制定3年培育计划：1) 年度营收突破1500万；2) 建立研发团队；3) 申请专利和软件著作权</p>
+        <div class="features">
+          <span class="feature">营收突破</span>
+          <span class="feature">研发投入</span>
+          <span class="feature">知识产权布局</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="val">1500万</div><div class="lab">目标营收</div></div>
+          <div class="metric"><div class="val">5项</div><div class="lab">目标专利</div></div>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="header">
+          <div class="num" style="background:rgba(249,115,22,.15);color:#f97316">4</div>
+          <h4>供应链优化方案</h4>
+          <div class="priority p1">P1重要</div>
+        </div>
+        <p>依托泉州纺织服装产业集群优势，优化供应链管理。建议：1) 建立供应商评估体系；2) 实现库存数字化管理；3) 引入智能补货系统</p>
+        <div class="features">
+          <span class="feature">供应商管理</span>
+          <span class="feature">库存优化</span>
+          <span class="feature">智能补货</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="val">20%</div><div class="lab">库存周转提升</div></div>
+          <div class="metric"><div class="val">15%</div><div class="lab">成本降低</div></div>
+        </div>
+      </div>
+      <div class="solution-card">
+        <div class="header">
+          <div class="num" style="background:rgba(96,165,250,.15);color:#60a5fa">5</div>
+          <h4>人才梯队建设</h4>
+          <div class="priority p2">P2规划</div>
+        </div>
+        <p>当前员工规模小，需建立完善的人才招聘和培训体系。建议：1) 利用AI智能招聘工具；2) 建立标准化培训课程；3) 实施导师带教制度</p>
+        <div class="features">
+          <span class="feature">智能招聘</span>
+          <span class="feature">培训体系</span>
+          <span class="feature">导师制度</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="val">50人</div><div class="lab">目标规模</div></div>
+          <div class="metric"><div class="val">40%</div><div class="lab">成长周期缩短</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="card card-full">
+      <h3><i class="fas fa-map"></i> 36个月专精特新培育路线图</h3>
+      <table class="data-table">
+        <thead><tr><th>阶段</th><th>时间</th><th>核心目标</th><th>关键动作</th><th>预期成果</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="color:#60a5fa;font-weight:600">第一阶段</td>
+            <td>第1-6个月</td>
+            <td>基础夯实期</td>
+            <td>1.补足注册资本至30万元<br>2.建立财务管理制度<br>3.完善品牌VI体系<br>4.搭建线上销售渠道</td>
+            <td>信用评分提升至70分；线上销售占比达20%</td>
+          </tr>
+          <tr>
+            <td style="color:#60a5fa;font-weight:600">第二阶段</td>
+            <td>第7-12个月</td>
+            <td>创新培育期</td>
+            <td>1.申请创新型中小企业认定<br>2.建立研发部门，年度研发投入≥50万<br>3.申请至少2项实用新型专利<br>4.建立直播电商团队</td>
+            <td>获得创新型中小企业资质；研发投入占比≥3%</td>
+          </tr>
+          <tr>
+            <td style="color:#34d399;font-weight:600">第三阶段</td>
+            <td>第13-24个月</td>
+            <td>专精特新冲刺期</td>
+            <td>1.年度营收突破1500万元<br>2.研发投入≥100万元/年<br>3.获得至少1项发明专利<br>4.建立数字化管理体系</td>
+            <td>申报省级专精特新企业；营收增长100%</td>
+          </tr>
+          <tr>
+            <td style="color:#f97316;font-weight:600">第四阶段</td>
+            <td>第25-36个月</td>
+            <td>品牌升级期</td>
+            <td>1.获得省级专精特新认定<br>2.启动国家级小巨人培育<br>3.品牌影响力拓展至全国<br>4.建立供应链协同平台</td>
+            <td>成为省级专精特新企业；门店数量翻倍</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><i class="fas fa-code"></i> 森罗之眼 · 企业智能画像系统 | <span style="color:#60a5fa">39139@胜天半子</span></p>
+    <p style="margin-top:8px;font-size:0.75rem;color:#475569">本报告基于公开信息生成，仅供参考，不构成投资建议</p>
+  </div>
+</div>
+</body>
+</html>
