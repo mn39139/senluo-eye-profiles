@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泉州心途启程商业运营管理有限公司 - 企业全景档案</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);min-height:100vh;color:#333}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+.header{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:20px;padding:30px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+.header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.company-logo{font-size:2rem;color:#667eea}
+.company-info h1{font-size:1.8rem;color:#2d3748;margin-bottom:5px}
+.company-info p{color:#718096;font-size:0.9rem}
+.score-box{background:linear-gradient(135deg,#48bb78,#38a169);color:white;padding:15px 25px;border-radius:15px;text-align:center}
+.score-box .score{font-size:2rem;font-weight:bold}
+.score-box .label{font-size:0.8rem;opacity:0.9}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin-top:20px}
+.stat-item{background:rgba(255,255,255,0.8);padding:15px;border-radius:12px;text-align:center;transition:transform 0.3s}
+.stat-item:hover{transform:translateY(-3px)}
+.stat-item .value{font-size:1.2rem;font-weight:bold;color:#667eea}
+.stat-item .label{font-size:0.8rem;color:#718096;margin-top:5px}
+.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:15px;padding:25px;box-shadow:0 4px 16px rgba(0,0,0,0.08);margin-bottom:20px}
+.card h3{color:#2d3748;font-size:1.1rem;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.card h3 i{color:#667eea}
+.card-half{grid-column:span 1}
+.card-full{grid-column:span 2}
+.info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f7fafc}
+.info-row:last-child{border-bottom:none}
+.info-row .label{color:#718096;font-size:0.9rem}
+.info-row .value{color:#2d3748;font-weight:500;font-size:0.9rem}
+.data-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.data-table th{background:#667eea;color:white;padding:10px;text-align:left;border-radius:8px 8px 0 0}
+.data-table td{padding:10px;border-bottom:1px solid #f7fafc;color:#4a5568}
+.data-table tr:hover{background:#f7fafc}
+.tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.8rem;margin-right:8px;margin-bottom:8px}
+.tag-green{background:#c6f6d5;color:#276749}
+.tag-blue{background:#bee3f8;color:#2c5282}
+.tag-orange{background:#feebc8;color:#744210}
+.tag-red{background:#fed7d7;color:#742a2a}
+.strength-list{list-style:none;padding-left:0}
+.strength-list li{padding:8px 0;border-bottom:1px dashed #e2e8f0;font-size:0.9rem;color:#4a5568}
+.strength-list li:last-child{border-bottom:none}
+.strength-list li i{margin-right:8px}
+.radar-container{height:280px}
+.progress-bar{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.progress-info{display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:5px}
+.progress-info span:first-child{color:#718096}
+.progress-info span:last-child{color:#2d3748;font-weight:500}
+.esg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.esg-item{text-align:center;padding:15px;background:#f7fafc;border-radius:12px}
+.esg-item .icon{font-size:1.5rem;margin-bottom:8px}
+.esg-item .score{font-size:1.5rem;font-weight:bold;margin-bottom:5px}
+.esg-item .label{font-size:0.85rem;color:#718096}
+.esg-e{color:#4299e1}.esg-s{color:#48bb78}.esg-g{color:#ed8936}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e2e8f0}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:2px;width:12px;height:12px;border-radius:50%;background:#667eea;border:3px solid white}
+.timeline-item .date{font-size:0.85rem;color:#718096;margin-bottom:5px}
+.timeline-item .content{font-size:0.9rem;color:#2d3748}
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.risk-item{padding:10px;border-radius:8px;font-size:0.85rem}
+.risk-low{background:#c6f6d5;color:#276749}
+.risk-medium{background:#feebc8;color:#744210}
+.risk-high{background:#fed7d7;color:#742a2a}
+.solution-item{background:#f7fafc;padding:15px;border-radius:10px;margin-bottom:15px;border-left:4px solid #667eea}
+.solution-item h4{color:#2d3748;margin-bottom:8px;font-size:0.95rem}
+.solution-item p{color:#718096;font-size:0.85rem;line-height:1.6}
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.roadmap-item{background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:20px;border-radius:15px;text-align:center}
+.roadmap-item .quarter{font-size:1.2rem;font-weight:bold;margin-bottom:10px}
+.roadmap-item ul{list-style:none;padding:0;font-size:0.8rem;line-height:1.8}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}.card-full{grid-column:span 1}.roadmap-grid{grid-template-columns:1fr}.esg-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="header-top">
+<div class="company-info">
+<h1><i class="fas fa-building" style="color:#667eea;margin-right:10px"></i>泉州心途启程商业运营管理有限公司</h1>
+<p>心途智能民宿品牌 · C2B2C运营模式 · 重塑传统民宿行业格局</p>
+</div>
+<div class="score-box">
+<div class="score">72</div>
+<div class="label">企业综合评分</div>
+</div>
+</div>
+<div class="stats-grid">
+<div class="stat-item"><div class="value">100万</div><div class="label">注册资本</div></div>
+<div class="stat-item"><div class="value">2026-01</div><div class="label">成立日期</div></div>
+<div class="stat-item"><div class="value">20-99人</div><div class="label">人员规模</div></div>
+<div class="stat-item"><div class="value">天使轮</div><div class="label">融资阶段</div></div>
+<div class="stat-item"><div class="value">2家</div><div class="label">关联企业</div></div>
+<div class="stat-item"><div class="value">1件</div><div class="label">商标注册</div></div>
+</div>
+</div>
+
+<div class="main-grid">
+<div class="card card-half">
+<h3><i class="fas fa-file-alt"></i> 基本工商信息</h3>
+<div class="info-row"><div class="label">统一社会信用代码</div><div class="value">91350582MAK3LM7Q8B</div></div>
+<div class="info-row"><div class="label">法定代表人</div><div class="value">杨炬芝</div></div>
+<div class="info-row"><div class="label">注册资本</div><div class="value">100万元人民币</div></div>
+<div class="info-row"><div class="label">成立日期</div><div class="value">2026-01-05</div></div>
+<div class="info-row"><div class="label">登记状态</div><div class="value"><span class="tag tag-green">存续</span></div></div>
+<div class="info-row"><div class="label">企业类型</div><div class="value">有限责任公司（自然人独资）</div></div>
+<div class="info-row"><div class="label">所属行业</div><div class="value">商务服务业</div></div>
+<div class="info-row"><div class="label">注册地址</div><div class="value">福建省晋江市永嘉路107号天龙豪园6幢D112</div></div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-users"></i> 核心团队与组织架构</h3>
+<div style="background:#f7fafc;padding:15px;border-radius:10px;margin-bottom:15px">
+<div style="font-weight:bold;color:#2d3748;margin-bottom:5px">杨炬芝 - 创始人/总经理</div>
+<div style="font-size:0.85rem;color:#718096">持股100%，全面负责公司战略规划与运营管理</div>
+</div>
+<h4 style="font-size:0.9rem;color:#667eea;margin-bottom:10px">组织部门</h4>
+<div style="display:flex;flex-wrap:wrap">
+<span class="tag tag-blue">业务部</span><span class="tag tag-blue">企划部</span><span class="tag tag-blue">设计工程部</span>
+<span class="tag tag-blue">运营部</span><span class="tag tag-blue">财务部</span><span class="tag tag-blue">人事行政部</span>
+</div>
+<h4 style="font-size:0.9rem;color:#667eea;margin-top:15px;margin-bottom:10px">办公地点</h4>
+<div style="font-size:0.85rem;color:#718096;line-height:1.6">
+• 泉州晋江市永嘉路107号天龙豪园6幢D112<br>
+• 莆田城厢区杰士登酒店旁心途启程
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-shield-alt"></i> SWOT战略分析</h3>
+<div style="margin-bottom:15px">
+<h4 style="font-size:0.85rem;color:#48bb78;margin-bottom:8px"><i class="fas fa-plus-circle"></i> 优势(S)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-check-circle" style="color:#48bb78"></i> C2B2C创新模式，整合业主闲置房源资源</li>
+<li><i class="fas fa-check-circle" style="color:#48bb78"></i> 智能科技化民宿定位，差异化竞争优势</li>
+<li><i class="fas fa-check-circle" style="color:#48bb78"></i> 多平台运营（美团、携程、抖音）</li>
+<li><i class="fas fa-check-circle" style="color:#48bb78"></i> 已布局泉州+莆田双城市运营矩阵</li>
+<li><i class="fas fa-check-circle" style="color:#48bb78"></i> 零风险记录，企业信用良好</li>
+</ul>
+</div>
+<div style="margin-bottom:15px">
+<h4 style="font-size:0.85rem;color:#ed8936;margin-bottom:8px"><i class="fas fa-minus-circle"></i> 劣势(W)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-times-circle" style="color:#ed8936"></i> 成立时间短，品牌知名度有限</li>
+<li><i class="fas fa-times-circle" style="color:#ed8936"></i> 注册资本较少，资金实力有限</li>
+<li><i class="fas fa-times-circle" style="color:#ed8936"></i> 仅1件商标申请，知识产权保护薄弱</li>
+<li><i class="fas fa-times-circle" style="color:#ed8936"></i> 单体运营，缺乏规模效应</li>
+</ul>
+</div>
+<div style="margin-bottom:15px">
+<h4 style="font-size:0.85rem;color:#4299e1;margin-bottom:8px"><i class="fas fa-arrow-circle-up"></i> 机遇(O)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-lightbulb" style="color:#4299e1"></i> 旅游民宿市场持续增长</li>
+<li><i class="fas fa-lightbulb" style="color:#4299e1"></i> 数字化转型推动智能住宿需求</li>
+<li><i class="fas fa-lightbulb" style="color:#4299e1"></i> 全国连锁化扩张空间大</li>
+<li><i class="fas fa-lightbulb" style="color:#4299e1"></i> 共享经济政策支持</li>
+</ul>
+</div>
+<div>
+<h4 style="font-size:0.85rem;color:#f56565;margin-bottom:8px"><i class="fas fa-arrow-circle-down"></i> 威胁(T)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-exclamation-circle" style="color:#f56565"></i> 行业竞争激烈，头部品牌挤压</li>
+<li><i class="fas fa-exclamation-circle" style="color:#f56565"></i> 政策监管趋严（住宿资质要求）</li>
+<li><i class="fas fa-exclamation-circle" style="color:#f56565"></i> 房地产市场波动影响房源供应</li>
+<li><i class="fas fa-exclamation-circle" style="color:#f56565"></i> 客户获取成本持续上升</li>
+</ul>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-chart-radar"></i> 企业能力雷达图</h3>
+<div class="radar-container">
+<canvas id="radarChart"></canvas>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-bullseye"></i> 经营范围与核心业务</h3>
+<div style="display:flex;flex-wrap:wrap;margin-bottom:20px">
+<span class="tag tag-green">商业综合体管理服务</span><span class="tag tag-green">品牌管理</span><span class="tag tag-green">企业管理</span>
+<span class="tag tag-green">集贸市场管理服务</span><span class="tag tag-green">非居住房地产租赁</span><span class="tag tag-green">市场营销策划</span>
+<span class="tag tag-green">商务秘书服务</span><span class="tag tag-green">会议及展览服务</span><span class="tag tag-green">信息技术咨询服务</span>
+<span class="tag tag-green">酒店管理</span><span class="tag tag-green">信息系统集成服务</span><span class="tag tag-green">广告制作/发布/设计/代理</span>
+<span class="tag tag-green">专业设计服务</span><span class="tag tag-green">物业管理</span><span class="tag tag-green">票务代理服务</span>
+<span class="tag tag-green">软件开发</span><span class="tag tag-green">互联网销售</span><span class="tag tag-green">旅游开发项目策划咨询</span>
+<span class="tag tag-orange">住宿服务（许可）</span><span class="tag tag-orange">住宅室内装饰装修（许可）</span>
+</div>
+<h4 style="font-size:0.95rem;color:#2d3748;margin-bottom:10px">核心业务模式 - C2B2C</h4>
+<div style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:20px;border-radius:15px">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center">
+<div><div style="font-weight:bold;font-size:1.2rem">C</div><div style="font-size:0.8rem;margin-top:5px">业主</div><div style="font-size:0.7rem;opacity:0.8">闲置房源</div></div>
+<div><div style="font-size:2rem">&#8594;</div></div>
+<div><div style="font-weight:bold;font-size:1.2rem">B</div><div style="font-size:0.8rem;margin-top:5px">心途启程</div><div style="font-size:0.7rem;opacity:0.8">整合/改造/运营</div></div>
+<div><div style="font-size:2rem">&#8594;</div></div>
+<div><div style="font-weight:bold;font-size:1.2rem">C</div><div style="font-size:0.8rem;margin-top:5px">消费者</div><div style="font-size:0.7rem;opacity:0.8">智能民宿体验</div></div>
+</div>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-history"></i> 关键事件时间线</h3>
+<div class="timeline">
+<div class="timeline-item"><div class="date">2026-01-05</div><div class="content">泉州心途启程商业运营管理有限公司成立</div></div>
+<div class="timeline-item"><div class="date">2026-03-31</div><div class="content">申请"XT"商标（第35类广告销售）</div></div>
+<div class="timeline-item"><div class="date">2026-04-20</div><div class="content">投资设立莆田心途启程商业运营管理有限公司</div></div>
+<div class="timeline-item"><div class="date">2026-05-18</div><div class="content">商标申请受理通知书发文</div></div>
+<div class="timeline-item"><div class="date">2026-06</div><div class="content">招聘4个岗位，业务扩张阶段</div></div>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-exclamation-triangle"></i> 风险评估与预警</h3>
+<div class="risk-grid">
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 司法案件：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 失信被执行人：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 限制高消费：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 行政处罚：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 股权出质：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 经营异常：0</div>
+</div>
+<div style="margin-top:15px;padding:15px;background:#feebc8;border-radius:10px">
+<h4 style="font-size:0.9rem;color:#744210;margin-bottom:8px"><i class="fas fa-info-circle"></i> 潜在风险提示</h4>
+<ul style="font-size:0.85rem;color:#744210;line-height:1.6;padding-left:20px">
+<li>成立时间短，经营稳定性待验证</li>
+<li>许可项目需取得相关资质审批</li>
+<li>自然人独资企业，抗风险能力较弱</li>
+<li>实缴资本未公示，资金实力存疑</li>
+</ul>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-bar-chart"></i> 财务健康诊断</h3>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+<div>
+<h4 style="font-size:0.9rem;color:#667eea;margin-bottom:15px">现金流预测（未来12个月）</h4>
+<div style="height:200px"><canvas id="cashFlowChart"></canvas></div>
+</div>
+<div>
+<h4 style="font-size:0.9rem;color:#667eea;margin-bottom:15px">财务健康指标评估</h4>
+<div class="progress-info"><span>资金流动性</span><span>65%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:65%;background:#4299e1"></div></div>
+<div class="progress-info"><span>盈利能力</span><span>50%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:50%;background:#ed8936"></div></div>
+<div class="progress-info"><span>偿债能力</span><span>70%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:70%;background:#48bb78"></div></div>
+<div class="progress-info"><span>运营效率</span><span>55%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:55%;background:#ed8936"></div></div>
+<div class="progress-info"><span>成长潜力</span><span>80%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:80%;background:#48bb78"></div></div>
+</div>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-leaf"></i> ESG评估</h3>
+<div class="esg-grid">
+<div class="esg-item"><div class="icon esg-e"><i class="fas fa-globe"></i></div><div class="score esg-e">60</div><div class="label">环境(E)</div></div>
+<div class="esg-item"><div class="icon esg-s"><i class="fas fa-heart"></i></div><div class="score esg-s">65</div><div class="label">社会(S)</div></div>
+<div class="esg-item"><div class="icon esg-g"><i class="fas fa-gavel"></i></div><div class="score esg-g">75</div><div class="label">治理(G)</div></div>
+</div>
+<div style="margin-top:15px">
+<h4 style="font-size:0.9rem;color:#667eea;margin-bottom:10px">ESG改进建议</h4>
+<ul style="font-size:0.85rem;color:#718096;line-height:1.6;padding-left:20px">
+<li>建立绿色运营标准，减少能耗</li>
+<li>加强员工培训与福利体系建设</li>
+<li>完善公司治理结构，引入外部董事</li>
+<li>建立供应商ESG评估机制</li>
+</ul>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-baby"></i> 企业生命周期定位</h3>
+<div style="text-align:center;padding:20px">
+<div style="width:200px;height:200px;margin:0 auto;position:relative">
+<svg viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+<circle cx="50" cy="50" r="45" fill="none" stroke="#667eea" stroke-width="8" stroke-dasharray="120 280" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+</svg>
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#667eea">成长期</div>
+<div style="font-size:0.85rem;color:#718096">约30%</div>
+</div>
+</div>
+<div style="margin-top:20px">
+<div class="tag tag-green">天使轮融资</div>
+<div class="tag tag-blue">双城市布局</div>
+<div class="tag tag-orange">业务扩张中</div>
+</div>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-lightbulb"></i> 智能化升级场景与定制化解决方案</h3>
+<div class="solution-item">
+<h4>场景一：民宿运营管理数字化</h4>
+<p><strong>痛点：</strong>多平台房源管理、订单处理、房态维护效率低下，容易出错<br>
+<strong>方案：</strong>AI-CEO经营驾驶舱 + 小秘会议经营助理，实现房源智能管理、订单自动处理、数据实时监控</p>
+</div>
+<div class="solution-item">
+<h4>场景二：客户服务智能化</h4>
+<p><strong>痛点：</strong>客户咨询量大，人工客服响应慢，高峰期服务质量下降<br>
+<strong>方案：</strong>AI客服助手，7×24小时智能问答、订单查询、入住指引，提升客户体验</p>
+</div>
+<div class="solution-item">
+<h4>场景三：营销推广精准化</h4>
+<p><strong>痛点：</strong>营销成本高，获客效率低，缺乏精准投放能力<br>
+<strong>方案：</strong>AI营销分析平台，客户画像分析、智能推荐、营销效果追踪，提升转化率</p>
+</div>
+<div class="solution-item">
+<h4>场景四：供应链管理智能化</h4>
+<p><strong>痛点：</strong>装修物料采购、库存管理、供应商协作缺乏系统化管理<br>
+<strong>方案：</strong>AI供应链管理系统，智能采购、库存预警、供应商评估，降低成本</p>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-map-signs"></i> 36个月发展路线图</h3>
+<div class="roadmap-grid">
+<div class="roadmap-item">
+<div class="quarter">第1-6个月</div>
+<ul>
+<li>完成泉州核心区域布局</li>
+<li>完善房源管理系统</li>
+<li>建立标准化服务流程</li>
+<li>获取住宿服务许可证</li>
+</ul>
+</div>
+<div class="roadmap-item">
+<div class="quarter">第7-18个月</div>
+<ul>
+<li>莆田分公司正式运营</li>
+<li>拓展厦门、福州市场</li>
+<li>完成A轮融资</li>
+<li>搭建中央预订系统</li>
+</ul>
+</div>
+<div class="roadmap-item">
+<div class="quarter">第19-36个月</div>
+<ul>
+<li>覆盖福建主要城市</li>
+<li>启动全国扩张计划</li>
+<li>品牌连锁化运营</li>
+<li>筹备上市计划</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="card card-full" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white">
+<h3 style="color:white"><i class="fas fa-star"></i> 投资价值评估</h3>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;text-align:center">
+<div>
+<div style="font-size:2rem;font-weight:bold">⭐⭐⭐⭐</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">投资评级</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">85%</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">成长潜力</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">低</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">风险等级</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">蓝海</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">市场定位</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">C2B2C</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">商业模式</div>
+</div>
+</div>
+<div style="margin-top:20px;padding:15px;background:rgba(255,255,255,0.1);border-radius:10px">
+<strong>总结：</strong>泉州心途启程商业运营管理有限公司处于快速成长期，采用创新的C2B2C模式运营智能民宿，已完成泉州+莆田双城市布局。企业零风险记录，信用良好，但需关注许可资质获取和资金实力。建议重点关注其品牌化扩张和标准化运营能力。
+</div>
+</div>
+</div>
+
+<script>
+var ctx1=document.getElementById('radarChart').getContext('2d');
+new Chart(ctx1,{type:'radar',data:{labels:['运营能力','市场拓展','技术创新','财务管理','团队建设','品牌影响力'],datasets:[{label:'企业能力',data:[70,75,60,55,65,45],backgroundColor:'rgba(102,126,234,0.2)',borderColor:'rgba(102,126,234,1)',borderWidth:2,pointBackgroundColor:'rgba(102,126,234,1)'}]},options:{scales:{r:{angleLines:{display:true},suggestedMin:0,suggestedMax:100}},plugins:{legend:{display:false}}}});
+
+var ctx2=document.getElementById('cashFlowChart').getContext('2d');
+new Chart(ctx2,{type:'line',data:{labels:['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'],datasets:[{label:'现金流(万元)',data:[50,65,80,95,110,130,150,175,200,230,260,300],borderColor:'rgba(102,126,234,1)',backgroundColor:'rgba(102,126,234,0.1)',fill:true,tension:0.4}]},options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
+</script>
+</body>
+</html>
