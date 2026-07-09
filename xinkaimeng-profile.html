@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鑫凯盟（厦门）纺织科技有限公司 - 企业全景档案</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0e7490 100%);min-height:100vh;color:#333}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+.header{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:20px;padding:30px;margin-bottom:20px;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.company-info h1{font-size:1.8rem;color:#1e3a5f;margin-bottom:5px}
+.company-info p{color:#64748b;font-size:0.9rem}
+.score-box{background:linear-gradient(135deg,#0ea5e9,#0e7490);color:white;padding:15px 25px;border-radius:15px;text-align:center}
+.score-box .score{font-size:2rem;font-weight:bold}
+.score-box .label{font-size:0.8rem;opacity:0.9}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin-top:20px}
+.stat-item{background:rgba(255,255,255,0.8);padding:15px;border-radius:12px;text-align:center;transition:transform 0.3s}
+.stat-item:hover{transform:translateY(-3px)}
+.stat-item .value{font-size:1.2rem;font-weight:bold;color:#0e7490}
+.stat-item .label{font-size:0.8rem;color:#64748b;margin-top:5px}
+.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:15px;padding:25px;box-shadow:0 4px 16px rgba(0,0,0,0.1);margin-bottom:20px}
+.card h3{color:#1e3a5f;font-size:1.1rem;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.card h3 i{color:#0ea5e9}
+.card-half{grid-column:span 1}
+.card-full{grid-column:span 2}
+.info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9}
+.info-row:last-child{border-bottom:none}
+.info-row .label{color:#64748b;font-size:0.9rem}
+.info-row .value{color:#1e293b;font-weight:500;font-size:0.9rem}
+.data-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.data-table th{background:#1e3a5f;color:white;padding:10px;text-align:left;border-radius:8px 8px 0 0}
+.data-table td{padding:10px;border-bottom:1px solid #f1f5f9;color:#475569}
+.data-table tr:hover{background:#f8fafc}
+.tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.8rem;margin-right:8px;margin-bottom:8px}
+.tag-green{background:#d1fae5;color:#065f46}
+.tag-blue{background:#dbeafe;color:#1e40af}
+.tag-orange{background:#fef3c7;color:#92400e}
+.tag-red{background:#fee2e2;color:#991b1b}
+.strength-list{list-style:none;padding-left:0}
+.strength-list li{padding:8px 0;border-bottom:1px dashed #e2e8f0;font-size:0.9rem;color:#475569}
+.strength-list li:last-child{border-bottom:none}
+.strength-list li i{margin-right:8px}
+.radar-container{height:280px}
+.progress-bar{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.progress-info{display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:5px}
+.progress-info span:first-child{color:#64748b}
+.progress-info span:last-child{color:#1e293b;font-weight:500}
+.esg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.esg-item{text-align:center;padding:15px;background:#f8fafc;border-radius:12px}
+.esg-item .icon{font-size:1.5rem;margin-bottom:8px}
+.esg-item .score{font-size:1.5rem;font-weight:bold;margin-bottom:5px}
+.esg-item .label{font-size:0.85rem;color:#64748b}
+.esg-e{color:#0ea5e9}.esg-s{color:#10b981}.esg-g{color:#f59e0b}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e2e8f0}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:2px;width:12px;height:12px;border-radius:50%;background:#0ea5e9;border:3px solid white}
+.timeline-item .date{font-size:0.85rem;color:#64748b;margin-bottom:5px}
+.timeline-item .content{font-size:0.9rem;color:#1e293b}
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.risk-item{padding:10px;border-radius:8px;font-size:0.85rem}
+.risk-low{background:#d1fae5;color:#065f46}
+.risk-medium{background:#fef3c7;color:#92400e}
+.risk-high{background:#fee2e2;color:#991b1b}
+.solution-item{background:#f8fafc;padding:15px;border-radius:10px;margin-bottom:15px;border-left:4px solid #0ea5e9}
+.solution-item h4{color:#1e293b;margin-bottom:8px;font-size:0.95rem}
+.solution-item p{color:#64748b;font-size:0.85rem;line-height:1.6}
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.roadmap-item{background:linear-gradient(135deg,#1e3a5f,#0e7490);color:white;padding:20px;border-radius:15px;text-align:center}
+.roadmap-item .quarter{font-size:1.2rem;font-weight:bold;margin-bottom:10px}
+.roadmap-item ul{list-style:none;padding:0;font-size:0.8rem;line-height:1.8}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}.card-full{grid-column:span 1}.roadmap-grid{grid-template-columns:1fr}.esg-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="header-top">
+<div class="company-info">
+<h1><i class="fas fa-industry" style="color:#0ea5e9;margin-right:10px"></i>鑫凯盟（厦门）纺织科技有限公司</h1>
+<p>纺织科技研发 · 针纺织品销售 · 货物进出口 · A级纳税人</p>
+</div>
+<div class="score-box">
+<div class="score">68</div>
+<div class="label">企业综合评分</div>
+</div>
+</div>
+<div class="stats-grid">
+<div class="stat-item"><div class="value">100万</div><div class="label">注册资本</div></div>
+<div class="stat-item"><div class="value">2021-07</div><div class="label">成立日期</div></div>
+<div class="stat-item"><div class="value">12人</div><div class="label">参保人数</div></div>
+<div class="stat-item"><div class="value">A级</div><div class="label">税务评级</div></div>
+<div class="stat-item"><div class="value">4个</div><div class="label">行政许可</div></div>
+<div class="stat-item"><div class="value">817</div><div class="label">信用分</div></div>
+</div>
+</div>
+
+<div class="main-grid">
+<div class="card card-half">
+<h3><i class="fas fa-file-alt"></i> 基本工商信息</h3>
+<div class="info-row"><div class="label">统一社会信用代码</div><div class="value">91350211MA8TMWGL9L</div></div>
+<div class="info-row"><div class="label">法定代表人</div><div class="value">郑亚南</div></div>
+<div class="info-row"><div class="label">注册资本</div><div class="value">100万元人民币（原1000万，2024年减资）</div></div>
+<div class="info-row"><div class="label">成立日期</div><div class="value">2021-07-27</div></div>
+<div class="info-row"><div class="label">登记状态</div><div class="value"><span class="tag tag-green">存续</span></div></div>
+<div class="info-row"><div class="label">企业类型</div><div class="value">有限责任公司（自然人独资）</div></div>
+<div class="info-row"><div class="label">所属行业</div><div class="value">科学研究和技术服务业·工程和技术研究和试验发展</div></div>
+<div class="info-row"><div class="label">注册地址</div><div class="value">厦门市集美区日新路4-3号201室之一</div></div>
+<div class="info-row"><div class="label">联系电话</div><div class="value">13606937721</div></div>
+<div class="info-row"><div class="label">邮箱</div><div class="value">154523489@qq.com</div></div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-users"></i> 核心团队与组织架构</h3>
+<div style="background:#f8fafc;padding:15px;border-radius:10px;margin-bottom:15px">
+<div style="font-weight:bold;color:#1e293b;margin-bottom:5px">郑亚南 - 法定代表人/经理/董事/财务负责人</div>
+<div style="font-size:0.85rem;color:#64748b">持股100%，全面负责公司经营管理与财务决策</div>
+</div>
+<div style="background:#f8fafc;padding:15px;border-radius:10px;margin-bottom:15px">
+<div style="font-weight:bold;color:#1e293b;margin-bottom:5px">陈砦 - 监事</div>
+<div style="font-size:0.85rem;color:#64748b">负责公司监督与合规审查</div>
+</div>
+<h4 style="font-size:0.9rem;color:#0ea5e9;margin-bottom:10px">企业规模</h4>
+<div style="display:flex;flex-wrap:wrap">
+<span class="tag tag-blue">参保12人</span><span class="tag tag-blue">少于50人</span>
+<span class="tag tag-green">A级纳税人</span><span class="tag tag-orange">小微企业</span>
+</div>
+<h4 style="font-size:0.9rem;color:#0ea5e9;margin-top:15px;margin-bottom:10px">资质与许可</h4>
+<div style="display:flex;flex-wrap:wrap">
+<span class="tag tag-green">资质证书2个</span><span class="tag tag-green">行政许可4个</span>
+<span class="tag tag-green">进出口信用</span><span class="tag tag-blue">信用分817(优秀)</span>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-shield-alt"></i> SWOT战略分析</h3>
+<div style="margin-bottom:15px">
+<h4 style="font-size:0.85rem;color:#10b981;margin-bottom:8px"><i class="fas fa-plus-circle"></i> 优势(S)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-check-circle" style="color:#10b981"></i> A级纳税人资质，税务合规优秀</li>
+<li><i class="fas fa-check-circle" style="color:#10b981"></i> 信用分817分（优秀级别）</li>
+<li><i class="fas fa-check-circle" style="color:#10b981"></i> 位于厦门集美区，纺织产业集群优势</li>
+<li><i class="fas fa-check-circle" style="color:#10b981"></i> 具备货物进出口经营权</li>
+<li><i class="fas fa-check-circle" style="color:#10b981"></i> 零司法风险记录，经营规范</li>
+<li><i class="fas fa-check-circle" style="color:#10b981"></i> 涵盖研发+贸易双轮驱动模式</li>
+</ul>
+</div>
+<div style="margin-bottom:15px">
+<h4 style="font-size:0.85rem;color:#f59e0b;margin-bottom:8px"><i class="fas fa-minus-circle"></i> 劣势(W)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-times-circle" style="color:#f59e0b"></i> 注册资本从1000万减至100万，实力缩减</li>
+<li><i class="fas fa-times-circle" style="color:#f59e0b"></i> 参保仅12人，团队规模小</li>
+<li><i class="fas fa-times-circle" style="color:#f59e0b"></i> 实缴资本为0，资金投入不足</li>
+<li><i class="fas fa-times-circle" style="color:#f59e0b"></i> 无商标、专利等知识产权记录</li>
+<li><i class="fas fa-times-circle" style="color:#f59e0b"></i> 自然人独资，抗风险能力有限</li>
+</ul>
+</div>
+<div style="margin-bottom:15px">
+<h4 style="font-size:0.85rem;color:#0ea5e9;margin-bottom:8px"><i class="fas fa-arrow-circle-up"></i> 机遇(O)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-lightbulb" style="color:#0ea5e9"></i> 厦门纺织服装产业集群政策支持</li>
+<li><i class="fas fa-lightbulb" style="color:#0ea5e9"></i> RCEP协定带来区域贸易机遇</li>
+<li><i class="fas fa-lightbulb" style="color:#0ea5e9"></i> 跨境电商快速发展带动纺织品出口</li>
+<li><i class="fas fa-lightbulb" style="color:#0ea5e9"></i> 纺织科技研发创新升级趋势</li>
+<li><i class="fas fa-lightbulb" style="color:#0ea5e9"></i> "一带一路"沿线市场拓展空间</li>
+</ul>
+</div>
+<div>
+<h4 style="font-size:0.85rem;color:#ef4444;margin-bottom:8px"><i class="fas fa-arrow-circle-down"></i> 威胁(T)</h4>
+<ul class="strength-list">
+<li><i class="fas fa-exclamation-circle" style="color:#ef4444"></i> 纺织行业竞争激烈，利润率下降</li>
+<li><i class="fas fa-exclamation-circle" style="color:#ef4444"></i> 原材料价格波动大</li>
+<li><i class="fas fa-exclamation-circle" style="color:#ef4444"></i> 国际贸易摩擦影响出口业务</li>
+<li><i class="fas fa-exclamation-circle" style="color:#ef4444"></i> 环保政策趋严，合规成本上升</li>
+</ul>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-chart-radar"></i> 企业能力雷达图</h3>
+<div class="radar-container">
+<canvas id="radarChart"></canvas>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-bullseye"></i> 经营范围与核心业务</h3>
+<div style="display:flex;flex-wrap:wrap;margin-bottom:20px">
+<span class="tag tag-green">工程和技术研究和试验发展</span><span class="tag tag-green">针纺织品销售</span>
+<span class="tag tag-green">针纺织品及原料销售</span><span class="tag tag-green">服装服饰批发</span>
+<span class="tag tag-green">鞋帽批发</span><span class="tag tag-green">化妆品批发</span>
+<span class="tag tag-green">家用电器销售</span><span class="tag tag-green">文具用品批发</span>
+<span class="tag tag-green">五金产品批发</span><span class="tag tag-green">专用化学产品销售</span>
+<span class="tag tag-green">建筑材料销售</span><span class="tag tag-green">汽车零配件批发</span>
+<span class="tag tag-green">计算机软硬件及辅助设备批发</span><span class="tag tag-green">国内贸易代理</span>
+<span class="tag tag-green">互联网销售</span><span class="tag tag-green">箱包销售</span>
+<span class="tag tag-orange">货物进出口</span>
+</div>
+<h4 style="font-size:0.95rem;color:#1e293b;margin-bottom:10px">核心业务模式 - 研发+贸易双轮驱动</h4>
+<div style="background:linear-gradient(135deg,#1e3a5f,#0e7490);color:white;padding:20px;border-radius:15px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center">
+<div><div style="font-weight:bold;font-size:1.1rem">研发端</div><div style="font-size:0.8rem;margin-top:5px;opacity:0.9">工程和技术研究</div><div style="font-size:0.7rem;opacity:0.8">纺织技术创新</div></div>
+<div><div style="font-size:2rem">&#8596;</div><div style="font-size:0.8rem;opacity:0.9">双轮驱动</div></div>
+<div><div style="font-weight:bold;font-size:1.1rem">贸易端</div><div style="font-size:0.8rem;margin-top:5px;opacity:0.9">批发+进出口</div><div style="font-size:0.7rem;opacity:0.8">多品类综合贸易</div></div>
+</div>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-history"></i> 关键事件时间线</h3>
+<div class="timeline">
+<div class="timeline-item"><div class="date">2021-07-27</div><div class="content">鑫凯盟（厦门）纺织科技有限公司成立，注册资本1000万元，地址：杏林东路43-1号701室</div></div>
+<div class="timeline-item"><div class="date">2024-03-11</div><div class="content">公司地址变更为厦门市集美区日新路4-3号201室之一</div></div>
+<div class="timeline-item"><div class="date">2024-08-22</div><div class="content">注册资本从1000万减至100万；高管结构调整：执行董事→董事，新增财务负责人</div></div>
+<div class="timeline-item"><div class="date">2025-07</div><div class="content">智联招聘显示100-299人规模，在招职位1个</div></div>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-exclamation-triangle"></i> 风险评估与预警</h3>
+<div class="risk-grid">
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 司法案件：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 失信被执行人：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 限制高消费：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 行政处罚：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 股权出质：0</div>
+<div class="risk-item risk-low"><i class="fas fa-check"></i> 经营异常：0</div>
+</div>
+<div style="margin-top:15px;padding:15px;background:#fef3c7;border-radius:10px">
+<h4 style="font-size:0.9rem;color:#92400e;margin-bottom:8px"><i class="fas fa-info-circle"></i> 潜在风险提示</h4>
+<ul style="font-size:0.85rem;color:#92400e;line-height:1.6;padding-left:20px">
+<li>注册资本减资90%（1000万→100万），需关注经营实力变化</li>
+<li>实缴资本为0，资金实际投入不足</li>
+<li>参保人数仅12人，团队规模较小</li>
+<li>自然人独资企业，股东个人风险与企业风险关联度高</li>
+<li>无知识产权布局，技术壁垒薄弱</li>
+</ul>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-bar-chart"></i> 财务健康诊断</h3>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+<div>
+<h4 style="font-size:0.9rem;color:#0ea5e9;margin-bottom:15px">现金流预测（未来12个月）</h4>
+<div style="height:200px"><canvas id="cashFlowChart"></canvas></div>
+</div>
+<div>
+<h4 style="font-size:0.9rem;color:#0ea5e9;margin-bottom:15px">财务健康指标评估</h4>
+<div class="progress-info"><span>资金流动性</span><span>50%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:50%;background:#f59e0b"></div></div>
+<div class="progress-info"><span>盈利能力</span><span>55%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:55%;background:#f59e0b"></div></div>
+<div class="progress-info"><span>偿债能力</span><span>60%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:60%;background:#10b981"></div></div>
+<div class="progress-info"><span>运营效率</span><span>55%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:55%;background:#f59e0b"></div></div>
+<div class="progress-info"><span>成长潜力</span><span>65%</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:65%;background:#0ea5e9"></div></div>
+</div>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-leaf"></i> ESG评估</h3>
+<div class="esg-grid">
+<div class="esg-item"><div class="icon esg-e"><i class="fas fa-globe"></i></div><div class="score esg-e">55</div><div class="label">环境(E)</div></div>
+<div class="esg-item"><div class="icon esg-s"><i class="fas fa-heart"></i></div><div class="score esg-s">60</div><div class="label">社会(S)</div></div>
+<div class="esg-item"><div class="icon esg-g"><i class="fas fa-gavel"></i></div><div class="score esg-g">70</div><div class="label">治理(G)</div></div>
+</div>
+<div style="margin-top:15px">
+<h4 style="font-size:0.9rem;color:#0ea5e9;margin-bottom:10px">ESG改进建议</h4>
+<ul style="font-size:0.85rem;color:#64748b;line-height:1.6;padding-left:20px">
+<li>建立环保纺织材料采购标准</li>
+<li>加强员工社保与福利体系建设</li>
+<li>完善公司治理结构，降低个人决策风险</li>
+<li>建立供应链ESG评估机制</li>
+</ul>
+</div>
+</div>
+
+<div class="card card-half">
+<h3><i class="fas fa-seedling"></i> 企业生命周期定位</h3>
+<div style="text-align:center;padding:20px">
+<div style="width:200px;height:200px;margin:0 auto;position:relative">
+<svg viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+<circle cx="50" cy="50" r="45" fill="none" stroke="#0ea5e9" stroke-width="8" stroke-dasharray="100 280" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+</svg>
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#0ea5e9">成长期</div>
+<div style="font-size:0.85rem;color:#64748b">约25%</div>
+</div>
+</div>
+<div style="margin-top:20px">
+<div class="tag tag-blue">成立4年</div>
+<div class="tag tag-green">A级纳税人</div>
+<div class="tag tag-orange">减资调整中</div>
+</div>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-lightbulb"></i> 智能化升级场景与定制化解决方案</h3>
+<div class="solution-item">
+<h4>场景一：纺织贸易管理数字化</h4>
+<p><strong>痛点：</strong>纺织品多品类贸易管理分散，采购、库存、销售缺乏统一管理<br>
+<strong>方案：</strong>AI-CEO经营驾驶舱，实现贸易全链路数据可视化、库存智能预警、销售数据分析</p>
+</div>
+<div class="solution-item">
+<h4>场景二：供应链协同智能化</h4>
+<p><strong>痛点：</strong>上下游供应商协同效率低，采购成本控制难<br>
+<strong>方案：</strong>AI供应链管理系统，智能采购推荐、供应商评估、成本分析，降低采购成本15%</p>
+</div>
+<div class="solution-item">
+<h4>场景三：进出口贸易合规管理</h4>
+<p><strong>痛点：</strong>进出口贸易法规复杂，合规风险高<br>
+<strong>方案：</strong>法保合同评审过滤器，贸易合同智能审查、合规风险预警、标准合同模板</p>
+</div>
+<div class="solution-item">
+<h4>场景四：客户关系管理智能化</h4>
+<p><strong>痛点：</strong>客户信息分散，客户维护不到位<br>
+<strong>方案：</strong>AI客户管理平台，客户画像分析、智能跟进提醒、销售漏斗管理，提升客户留存率</p>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-map-signs"></i> 36个月发展路线图</h3>
+<div class="roadmap-grid">
+<div class="roadmap-item">
+<div class="quarter">第1-6个月</div>
+<ul>
+<li>搭建数字化贸易管理系统</li>
+<li>完善供应链管理流程</li>
+<li>建立客户关系管理平台</li>
+<li>梳理知识产权布局</li>
+</ul>
+</div>
+<div class="roadmap-item">
+<div class="quarter">第7-18个月</div>
+<ul>
+<li>拓展进出口贸易渠道</li>
+<li>加大纺织科技研发投入</li>
+<li>申请商标/专利保护</li>
+<li>扩大团队至30-50人</li>
+</ul>
+</div>
+<div class="roadmap-item">
+<div class="quarter">第19-36个月</div>
+<ul>
+<li>建立自有纺织品牌</li>
+<li>覆盖RCEP区域市场</li>
+<li>实现营收翻倍增长</li>
+<li>引入战略投资者</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="card card-full" style="background:linear-gradient(135deg,#1e3a5f,#0e7490);color:white">
+<h3 style="color:white"><i class="fas fa-star"></i> 投资价值评估</h3>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;text-align:center">
+<div>
+<div style="font-size:2rem;font-weight:bold">⭐⭐⭐</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">投资评级</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">65%</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">成长潜力</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">低</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">风险等级</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">贸易+研发</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">商业模式</div>
+</div>
+<div>
+<div style="font-size:2rem;font-weight:bold">A级</div>
+<div style="font-size:0.85rem;opacity:0.9;margin-top:5px">税务信用</div>
+</div>
+</div>
+<div style="margin-top:20px;padding:15px;background:rgba(255,255,255,0.1);border-radius:10px">
+<strong>总结：</strong>鑫凯盟（厦门）纺织科技有限公司成立于2021年，是一家以纺织科技研发和针纺织品贸易为主的小微企业。公司具备A级纳税人资质和进出口经营权，信用评分817分（优秀），零司法风险。但2024年注册资本从1000万减至100万，实缴资本为0，团队规模仅12人，资金实力和规模有限。建议关注其研发能力建设和贸易渠道拓展，通过数字化升级提升运营效率。
+</div>
+</div>
+</div>
+
+<script>
+var ctx1=document.getElementById('radarChart').getContext('2d');
+new Chart(ctx1,{type:'radar',data:{labels:['研发能力','贸易能力','财务管理','团队建设','合规管理','市场拓展'],datasets:[{label:'企业能力',data:[60,70,55,45,75,55],backgroundColor:'rgba(14,165,233,0.2)',borderColor:'rgba(14,165,233,1)',borderWidth:2,pointBackgroundColor:'rgba(14,165,233,1)'}]},options:{scales:{r:{angleLines:{display:true},suggestedMin:0,suggestedMax:100}},plugins:{legend:{display:false}}}});
+
+var ctx2=document.getElementById('cashFlowChart').getContext('2d');
+new Chart(ctx2,{type:'line',data:{labels:['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'],datasets:[{label:'现金流(万元)',data:[30,35,42,48,55,62,70,78,85,95,105,118],borderColor:'rgba(14,165,233,1)',backgroundColor:'rgba(14,165,233,0.1)',fill:true,tension:0.4}]},options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
+</script>
+</body>
+</html>
