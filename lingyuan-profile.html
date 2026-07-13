@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>灵源药业有限公司 - 百年老字号·非遗传承企业全景画像</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@font-face { font-family: 'PingFang SC'; src: local('PingFang SC'); }
+body { font-family: 'PingFang SC', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); color: #e2e8f0; overflow-x: hidden; }
+.card { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(148, 163, 184, 0.1); border-radius: 16px; padding: 20px; transition: transform 0.3s, box-shadow 0.3s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
+.card-full { grid-column: span 2; }
+.card-highlight { background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)); border-left: 4px solid #10b981; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.data-table td { padding: 8px 12px; border-bottom: 1px solid rgba(148, 163, 184, 0.1); }
+.data-table tr:last-child td { border-bottom: none; }
+.highlight-box { background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.1)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 12px 16px; margin-top: 10px; }
+.tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-right: 8px; margin-bottom: 8px; }
+.tag-green { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.tag-blue { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+.tag-orange { background: rgba(249, 115, 22, 0.2); color: #fb923c; }
+.tag-red { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+.tag-purple { background: rgba(168, 85, 247, 0.2); color: #a78bfa; }
+.section-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; color: #f1f5f9; }
+.grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1400px; margin: 0 auto; padding: 20px; }
+.hero-section { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1)); padding: 40px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
+.footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.9rem; }
+.stat-box { text-align: center; padding: 20px; background: rgba(15, 23, 42, 0.6); border-radius: 12px; }
+.stat-number { font-size: 2.5rem; font-weight: bold; background: linear-gradient(135deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-label { font-size: 0.9rem; color: #94a3b8; margin-top: 5px; }
+@media (max-width: 900px) { .grid-container { grid-template-columns: 1fr; } .card-full { grid-column: span 1; } }
+</style>
+</head>
+<body>
+<div class="grid-container">
+<div class="hero-section card-full">
+<h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 10px;">灵源药业有限公司</h1>
+<p style="font-size: 1.2rem; color: #94a3b8;">百年老字号 · 650年非遗传承 · 国家级高新技术企业</p>
+<div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
+<div class="stat-box"><div class="stat-number">650+</div><div class="stat-label">年历史传承</div></div>
+<div class="stat-box"><div class="stat-number">4.27亿</div><div class="stat-label">2025年市场规模</div></div>
+<div class="stat-box"><div class="stat-number">100%</div><div class="stat-label">万应茶市场占有率</div></div>
+<div class="stat-box"><div class="stat-number">532</div><div class="stat-label">知识产权数量</div></div>
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-building"></i> 企业基本信息</h3>
+<table class="data-table">
+<tr><td style="font-weight:bold;width:110px">企业名称</td><td>灵源药业有限公司</td></tr>
+<tr><td style="font-weight:bold">统一信用代码</td><td>91350582MA2YJ8736E</td></tr>
+<tr><td style="font-weight:bold">法定代表人</td><td>吴文槐</td></tr>
+<tr><td style="font-weight:bold">注册资本</td><td>5000万元（实缴5000万元）</td></tr>
+<tr><td style="font-weight:bold">成立日期</td><td>2017-09-01</td></tr>
+<tr><td style="font-weight:bold">注册地址</td><td>福建省泉州市晋江经济开发区（五里园）长安路17号</td></tr>
+<tr><td style="font-weight:bold">参保人数</td><td>78人（2025年）</td></tr>
+<tr><td style="font-weight:bold">企业类型</td><td>其他有限责任公司</td></tr>
+<tr><td style="font-weight:bold">纳税人资质</td><td>一般纳税人 · A级纳税人(2024)</td></tr>
+<tr><td style="font-weight:bold">电话/邮箱</td><td>13959709998 / 819915589@qq.com</td></tr>
+<tr><td style="font-weight:bold">官网</td><td><a href="http://www.lingyuan.cn" target="_blank" style="color:#34d399">www.lingyuan.cn</a></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-award"></i> 核心资质认证</h3>
+<div style="display:flex;flex-wrap:wrap">
+<span class="tag tag-green">国家级高新技术企业</span>
+<span class="tag tag-blue">国家级中华老字号</span>
+<span class="tag tag-purple">国家级非物质文化遗产保护单位</span>
+<span class="tag tag-orange">省级专精特新企业</span>
+<span class="tag tag-green">科技型中小企业</span>
+<span class="tag tag-blue">创新型中小企业</span>
+<span class="tag tag-orange">福建省著名商标</span>
+<span class="tag tag-green">泉州市知名商标</span>
+</div>
+<div style="margin-top:15px;font-size:0.9rem;color:#94a3b8">
+<strong>知识产权：</strong>428个注册商标 · 91个专利 · 532项知识产权
+</div>
+<div class="highlight-box" style="margin-top:10px">
+<i class="fas fa-lightbulb"></i> <strong>核心竞争壁垒：</strong>灵源万应茶为独家生产批文，全国仅灵源药业一家持有，市场占有率100%，2025年市场规模4.27亿元。
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-user-tie"></i> 老板画像：许连团（实际控制人）</h3>
+<div style="display:grid;grid-template-columns:1fr 2fr;gap:15px">
+<div style="text-align:center">
+<div style="width:80px;height:80px;background:linear-gradient(135deg,#10b981,#3b82f6);border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:white"><i class="fas fa-user"></i></div>
+<div style="font-weight:bold;color:#f1f5f9">许连团</div>
+<div style="color:#64748b;font-size:0.8rem">实际控制人 · 持股68%</div>
+</div>
+<div>
+<table class="data-table">
+<tr><td style="font-weight:bold;width:100px">职务</td><td>初创有限公司监事 · 12家企业控股股东</td></tr>
+<tr><td style="font-weight:bold">持股路径</td><td>许连团80%→初创有限公司100%→初创投资85%→灵源药业</td></tr>
+<tr><td style="font-weight:bold">关联企业</td><td>118家企业最终受益人</td></tr>
+<tr><td style="font-weight:bold">商业伙伴</td><td>蔡民利、黄子龙、黄缘治等</td></tr>
+<tr><td style="font-weight:bold">投资布局</td><td>初创集团（179家企业）· 金冠食品 · 十分便利店 · 河南马西哒健康</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-users"></i> 核心团队</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+<div style="background:rgba(15,23,42,0.5);border-radius:12px;padding:15px">
+<div style="font-weight:bold;color:#f1f5f9">吴文槐</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-bottom:8px">执行董事兼总经理</div>
+<div style="font-size:0.85rem;color:#64748b">关联10家企业 · 同时担任泉州市灵源药业法人</div>
+</div>
+<div style="background:rgba(15,23,42,0.5);border-radius:12px;padding:15px">
+<div style="font-weight:bold;color:#f1f5f9">许有材</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-bottom:8px">监事 · 总经理</div>
+<div style="font-size:0.85rem;color:#64748b">初创集团核心人物 · 金冠集团董事 · 13家企业关联</div>
+</div>
+</div>
+<div class="highlight-box" style="margin-top:10px">
+<i class="fas fa-lightbulb"></i> <strong>股权结构：</strong>初创投资有限公司(85%) + 泉州市灵源药业有限公司(15%)。许连团通过初创集团实现对灵源药业的实际控制，许有材为职业经理人，负责日常运营管理。
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-history"></i> 650年传承历史</h3>
+<div style="display:flex;flex-wrap:wrap;gap:15px">
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">1368年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">灵源寺沐讲禅师创制菩提丸</div>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">1951年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">改制菩提丸为"灵源万应茶"</div>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">1958年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">晋江灵源茶饼厂成立</div>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">1990年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">改制为泉州市灵源制药厂</div>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">2006年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">评定为"中华老字号"</div>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">2008年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">列入国家级非物质文化遗产</div>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">2018年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">企业重组，成立灵源药业有限公司</div>
+</div>
+<div style="flex:1;min-width:200px;background:rgba(15,23,42,0.5);border-radius:12px;padding:15px;text-align:center">
+<div style="font-size:1.5rem;font-weight:bold;color:#34d399">2025年</div>
+<div style="font-size:0.85rem;color:#94a3b8;margin-top:5px">万应茶市场规模达4.27亿元</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-boxes"></i> 产品体系</h3>
+<div style="font-size:0.9rem">
+<div style="margin-bottom:10px"><strong style="color:#34d399">药茶系列（核心）：</strong></div>
+<div style="padding-left:15px;color:#94a3b8;margin-bottom:8px">
+· 灵源万应茶（国药准字Z35020420）- 疏风解表，调胃健脾，祛痰利湿<br>
+· 维甜美降糖茶 - 糖尿病辅助治疗<br>
+· 降压袋泡茶 - 高血压辅助治疗
+</div>
+<div style="margin-bottom:10px"><strong style="color:#60a5fa">呼吸科：</strong></div>
+<div style="padding-left:15px;color:#94a3b8;margin-bottom:8px">· 蛇胆川贝散</div>
+<div style="margin-bottom:10px"><strong style="color:#fb923c">消化科：</strong></div>
+<div style="padding-left:15px;color:#94a3b8;margin-bottom:8px">· 铝碳酸镁颗粒 · 萘丁美酮分散片</div>
+<div style="margin-bottom:10px"><strong style="color:#a78bfa">其他领域：</strong></div>
+<div style="padding-left:15px;color:#94a3b8">儿科用药 · 骨骼用药 · 肛肠用药 · 肝病辅助用药</div>
+</div>
+<div class="highlight-box" style="margin-top:10px">
+<i class="fas fa-award"></i> <strong>荣誉：</strong>灵源冰硼散连续三年蝉联世界优秀产品金像奖
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-network-wired"></i> 关联企业图谱</h3>
+<table class="data-table">
+<tr><td style="font-weight:bold;width:130px">初创投资有限公司</td><td>许有材任法人 · 持股灵源药业85% · 实缴3100万 · 投资9家企业</td></tr>
+<tr><td style="font-weight:bold">泉州市灵源药业有限公司</td><td>1990年成立 · 持股灵源药业15% · 实缴100万 · 经营批发零售</td></tr>
+<tr><td style="font-weight:bold">初创有限公司</td><td>许有材任法人 · 许连团持股80% · 注册资本1亿</td></tr>
+<tr><td style="font-weight:bold">初创供应链有限公司</td><td>许清棋任法人 · 注册资本1亿 · 供应链管理</td></tr>
+<tr><td style="font-weight:bold">十分便利店有限公司</td><td>许清棋任法人 · 注册资本1亿 · 连锁零售</td></tr>
+<tr><td style="font-weight:bold">金冠（中国）食品有限公司</td><td>许有材任董事 · 港资1.5亿 · 糖果食品龙头</td></tr>
+<tr><td style="font-weight:bold">晋江市灵源万应投资有限公司</td><td>灵源药业100%持股 · 注册资本500万</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-chart-line"></i> 财务与市场</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+<div>
+<div style="font-weight:bold;color:#f1f5f9">市场规模</div>
+<div style="font-size:1.8rem;font-weight:bold;color:#34d399">4.27亿元</div>
+<div style="font-size:0.85rem;color:#64748b">2025年灵源万应茶市场</div>
+</div>
+<div>
+<div style="font-weight:bold;color:#f1f5f9">市场占有率</div>
+<div style="font-size:1.8rem;font-weight:bold;color:#60a5fa">100%</div>
+<div style="font-size:0.85rem;color:#64748b">独家生产批文</div>
+</div>
+<div>
+<div style="font-weight:bold;color:#f1f5f9">2026年预测</div>
+<div style="font-size:1.8rem;font-weight:bold;color:#fb923c">4.39亿元</div>
+<div style="font-size:0.85rem;color:#64748b">同比增长2.82%</div>
+</div>
+<div>
+<div style="font-weight:bold;color:#f1f5f9">产能规模</div>
+<div style="font-size:1.8rem;font-weight:bold;color:#a78bfa">1.3万㎡</div>
+<div style="font-size:0.85rem;color:#64748b">中西药综合生产车间</div>
+</div>
+</div>
+<div class="highlight-box" style="margin-top:10px">
+<i class="fas fa-exclamation-triangle"></i> <strong>增长放缓：</strong>灵源万应茶已步入成熟期低弹性增长通道，面临藿香正气口服液（太极）、保济丸（王老吉）等替代性产品竞争。
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-shield-alt"></i> 风险评估</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:12px">
+<div style="font-weight:bold;color:#f87171;font-size:0.9rem">自身风险</div>
+<div style="font-size:0.85rem;color:#94a3b8">5条 · 司法案件14件</div>
+</div>
+<div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:12px">
+<div style="font-weight:bold;color:#f87171;font-size:0.9rem">关联风险</div>
+<div style="font-size:0.85rem;color:#94a3b8">初创投资涉股东损害债权人利益纠纷</div>
+</div>
+<div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:8px;padding:12px">
+<div style="font-weight:bold;color:#fb923c;font-size:0.9rem">经营风险</div>
+<div style="font-size:0.85rem;color:#94a3b8">医保渠道未覆盖 · 销售依赖零售药店</div>
+</div>
+<div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:8px;padding:12px">
+<div style="font-weight:bold;color:#fb923c;font-size:0.9rem">市场风险</div>
+<div style="font-size:0.85rem;color:#94a3b8">功能性凉茶饮料分流消费认知</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-sitemap"></i> 产业链分析</h3>
+<table class="data-table">
+<tr><td style="font-weight:bold;width:100px">上游</td><td>中药材种植基地、原料药供应商、包装材料商</td></tr>
+<tr><td style="font-weight:bold">中游</td><td>六大剂型生产线（片剂/颗粒剂/茶剂/散剂/硬胶囊剂/中药饮片）</td></tr>
+<tr><td style="font-weight:bold">下游</td><td>零售药店（76.4%）、电商平台、商超渠道</td></tr>
+<tr><td style="font-weight:bold">缺失环节</td><td>公立医疗渠道（未进入医保目录）</td></tr>
+</table>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-balance-scale"></i> SWOT分析</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div>
+<div style="font-weight:bold;color:#34d399;margin-bottom:10px"><i class="fas fa-plus"></i> 优势(S)</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· 650年历史传承，品牌文化底蕴深厚</li>
+<li style="margin-bottom:5px">· 灵源万应茶独家生产批文，市场垄断</li>
+<li style="margin-bottom:5px">· 国家级非遗+中华老字号双重背书</li>
+<li style="margin-bottom:5px">· 532项知识产权，技术积累丰富</li>
+<li style="margin-bottom:5px">· 实缴5000万，资金实力雄厚</li>
+</ul>
+</div>
+<div>
+<div style="font-weight:bold;color:#f87171;margin-bottom:10px"><i class="fas fa-minus"></i> 劣势(W)</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· 产品过于依赖灵源万应茶单一品种</li>
+<li style="margin-bottom:5px">· 未进入医保目录，公立渠道缺失</li>
+<li style="margin-bottom:5px">· 销售渠道单一，依赖线下药店</li>
+<li style="margin-bottom:5px">· 公司规模较小（78人），产能受限</li>
+<li style="margin-bottom:5px">· 母公司初创投资涉多起法律纠纷</li>
+</ul>
+</div>
+<div>
+<div style="font-weight:bold;color:#60a5fa;margin-bottom:10px"><i class="fas fa-arrow-up-right"></i> 机会(O)</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· "健康中国"战略利好中医药发展</li>
+<li style="margin-bottom:5px">· 药食同源市场快速增长</li>
+<li style="margin-bottom:5px">· 电商渠道拓展空间巨大</li>
+<li style="margin-bottom:5px">· 非遗IP商业化潜力大</li>
+<li style="margin-bottom:5px">· 进入医保目录的可能性</li>
+</ul>
+</div>
+<div>
+<div style="font-weight:bold;color:#fb923c;margin-bottom:10px"><i class="fas fa-arrow-down-right"></i> 威胁(T)</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· 藿香正气、保济丸等同功效产品竞争</li>
+<li style="margin-bottom:5px">· 功能性凉茶饮料稀释消费认知</li>
+<li style="margin-bottom:5px">· OTC药品集采政策影响</li>
+<li style="margin-bottom:5px">· 原材料价格波动</li>
+<li style="margin-bottom:5px">· 品牌老化，年轻消费者认知不足</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-chart-pie"></i> 市场竞争格局</h3>
+<div style="height:280px">
+<canvas id="competitionChart"></canvas>
+</div>
+</div>
+
+<div class="card">
+<h3><i class="fas fa-target"></i> 产品销路与目标人群</h3>
+<table class="data-table">
+<tr><td style="font-weight:bold;width:100px">药茶系列</td><td>感冒发热、中暑、消化不良人群；药店/电商渠道</td></tr>
+<tr><td style="font-weight:bold">降糖/降压茶</td><td>慢性病患者辅助治疗；中老年人群</td></tr>
+<tr><td style="font-weight:bold">呼吸系统</td><td>咳嗽、痰多人群；药店渠道</td></tr>
+<tr><td style="font-weight:bold">消化系统</td><td>胃痛、胃胀人群；药店渠道</td></tr>
+<tr><td style="font-weight:bold">核心场景</td><td>家庭常备、旅行携带、送礼馈赠</td></tr>
+<tr><td style="font-weight:bold">区域分布</td><td>福建本地占比高，全国渠道拓展中</td></tr>
+</table>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-road"></i> 发展建议与路线图</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div>
+<div style="font-weight:bold;color:#34d399;margin-bottom:10px">短期（1年内）</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· 强化电商渠道，布局天猫/京东旗舰店</li>
+<li style="margin-bottom:5px">· 开发年轻化包装设计，吸引Z世代</li>
+<li style="margin-bottom:5px">· 申请医保目录，打通公立医疗渠道</li>
+</ul>
+</div>
+<div>
+<div style="font-weight:bold;color:#60a5fa;margin-bottom:10px">中期（1-3年）</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· 开发药食同源新品类（养生茶饮、代餐等）</li>
+<li style="margin-bottom:5px">· 建设中药材种植基地，控制原材料成本</li>
+<li style="margin-bottom:5px">· 启动非遗文化旅游项目，打造品牌IP</li>
+</ul>
+</div>
+<div>
+<div style="font-weight:bold;color:#fb923c;margin-bottom:10px">长期（3-5年）</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· 拓展海外市场，打造中华老字号国际品牌</li>
+<li style="margin-bottom:5px">· 并购整合上下游企业，完善产业链布局</li>
+<li style="margin-bottom:5px">· 申报专精特新"小巨人"企业</li>
+</ul>
+</div>
+<div>
+<div style="font-weight:bold;color:#a78bfa;margin-bottom:10px">数字化建议</div>
+<ul style="font-size:0.9rem;color:#94a3b8;list-style:none;padding:0">
+<li style="margin-bottom:5px">· 部署AI-CEO经营驾驶舱，实时监控销售数据</li>
+<li style="margin-bottom:5px">· 上线CRM系统，建立客户画像与精准营销</li>
+<li style="margin-bottom:5px">· 实施供应链数字化管理，优化库存周转</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="card card-full">
+<h3><i class="fas fa-search"></i> 信息来源</h3>
+<div style="font-size:0.85rem;color:#64748b">
+· <a href="https://m.qcc.com/firm/f4594b39149eb249c561d76121bcb946.html" target="_blank" style="color:#34d399">企查查</a> · <a href="https://www.aiqicha.com/company_detail_31564895382215" target="_blank" style="color:#34d399">爱企查</a> · <a href="https://www.qixin.com/company/07e60ca5-1a06-4d39-868d-0db4487f39c0" target="_blank" style="color:#34d399">启信宝</a> · <a href="https://shuidi.cn/company-16a7820de550b585d0cfc5134b73cd50.html" target="_blank" style="color:#34d399">水滴信用</a><br>
+· <a href="http://www.lingyuan.cn" target="_blank" style="color:#34d399">灵源药业官网</a> · <a href="https://www.tianyancha.com" target="_blank" style="color:#34d399">天眼查</a> · 博研咨询市场报告
+</div>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 森罗之眼 · 商业智能 | 39139@胜天半子</p>
+<p style="font-size:0.8rem;color:#475569;margin-top:5px">数据采集时间：2026年7月 | 信息仅供参考</p>
+</div>
+
+<script>
+new Chart(document.getElementById('competitionChart'), {
+type: 'doughnut',
+data: {
+labels: ['灵源万应茶(独家)', '藿香正气口服液(太极)', '保济丸(王老吉)', '午时茶颗粒(康恩贝)', '其他竞品'],
+datasets: [{
+data: [4.27, 8.5, 3.2, 2.8, 2.5],
+backgroundColor: ['#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#64748b'],
+borderWidth: 0
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 } } },
+title: { display: true, text: '肠胃类OTC中成药市场份额(亿元)', color: '#f1f5f9', font: { size: 13 } }
+}
+}
+});
+
+const cards = document.querySelectorAll('.card');
+cards.forEach((card, index) => {
+card.style.opacity = '0';
+card.style.transform = 'translateY(20px)';
+setTimeout(() => {
+card.style.transition = 'all 0.6s ease-out';
+card.style.opacity = '1';
+card.style.transform = 'translateY(0)';
+}, index * 100);
+});
+</script>
+</body>
+</html>
