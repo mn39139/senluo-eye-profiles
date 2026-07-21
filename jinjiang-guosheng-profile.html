@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晋江国盛鞋材有限公司 - 企业画像</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4ff, #7c3aed);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00d4ff;
+        }
+
+        .risk-item {
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid;
+        }
+
+        .relation-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#overview" class="text-gray-300 hover:text-white transition-colors">企业概览</a>
+                    <a href="#business" class="text-gray-300 hover:text-white transition-colors">经营数据</a>
+                    <a href="#intellectual" class="text-gray-300 hover:text-white transition-colors">知识产权</a>
+                    <a href="#group" class="text-gray-300 hover:text-white transition-colors">集团架构</a>
+                    <a href="#risk" class="text-gray-300 hover:text-white transition-colors">风险评估</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+        <section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12 mb-8">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="inline-flex items-center space-x-2 mb-4">
+                            <span class="tag-pill">港澳台独资</span>
+                            <span class="tag-pill">一般纳税人</span>
+                            <span class="tag-pill">超临界发泡龙头</span>
+                            <span class="tag-pill">高新技术企业</span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-bold mb-4">晋江国盛鞋材有限公司</h1>
+                        <p class="text-gray-300 text-lg mb-6 max-w-2xl">
+                            成立于2001年，坐落于中国名牌之都——晋江，是一家集鞋材、鞋子研发、生产、贸易于一体的大型外商独资企业。专注于各类鞋底、成品鞋系列产品的研究与开发，是国内超临界发泡鞋材领域的领军企业。
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="tel:0595-36669793" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-phone text-cyan-400"></i>
+                                <span>0595-36669793</span>
+                            </a>
+                            <a href="mailto:2627438609@qq.com" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-envelope text-purple-400"></i>
+                                <span>2627438609@qq.com</span>
+                            </a>
+                            <a href="http://jjgsxc.com" target="_blank" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-globe text-green-400"></i>
+                                <span>jjgsxc.com</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-48 h-48 md:w-64 md:h-64 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center floating">
+                        <div class="text-center">
+                            <i class="fas fa-shoe-prints text-6xl md:text-8xl text-cyan-400 mb-2"></i>
+                            <div class="text-sm text-gray-400">鞋材制造</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">2001</div>
+                    <div class="text-gray-400 text-sm mt-1">成立年份</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">3800万</div>
+                    <div class="text-gray-400 text-sm mt-1">注册资本(港币)</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">80亩</div>
+                    <div class="text-gray-400 text-sm mt-1">厂房面积</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">5000</div>
+                    <div class="text-gray-400 text-sm mt-1">员工规模</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">1000万</div>
+                    <div class="text-gray-400 text-sm mt-1">年产能(双)</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">597</div>
+                    <div class="text-gray-400 text-sm mt-1">启信分</div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="md:col-span-2 glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-building text-cyan-400 mr-2"></i>基本信息
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="text-gray-400 text-sm">统一信用代码</div>
+                            <div class="font-mono text-sm">91350582729694932Q</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">法定代表人</div>
+                            <div>张长建</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">企业类型</div>
+                            <div>港澳台自然人独资</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">所属行业</div>
+                            <div>纺织面料鞋制造 (C1951)</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">注册地址</div>
+                            <div class="text-sm">晋江市池店镇凤池工业区</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">经营状态</div>
+                            <div class="text-green-400">存续</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">营业期限</div>
+                            <div>2001-07-13 至 2051-07-13</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">实缴资本</div>
+                            <div>3800万港币</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">纳税人资质</div>
+                            <div>一般纳税人</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">参保人数</div>
+                            <div>6人(2024年)</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">组织机构代码</div>
+                            <div class="font-mono text-sm">72969493-2</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">工商注册号</div>
+                            <div class="font-mono text-sm">350500400021769</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-user-circle text-purple-400 mr-2"></i>核心人员
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center">
+                                <i class="fas fa-user text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">张长建</div>
+                                <div class="text-gray-400 text-xs">执行董事兼总经理、财务负责人</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500/30 to-cyan-500/30 flex items-center justify-center">
+                                <i class="fas fa-user text-green-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">李思治</div>
+                                <div class="text-gray-400 text-xs">监事、实控人(持股100%)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500/30 to-orange-500/30 flex items-center justify-center">
+                                <i class="fas fa-user text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">张国鸿</div>
+                                <div class="text-gray-400 text-xs">董事长</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-map-marker-alt text-green-400 mr-2"></i>地理位置
+                    </h2>
+                    <div class="relative w-full h-48 rounded-xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=600&q=80" alt="晋江地图" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="text-white font-semibold">福建省泉州市晋江市</div>
+                            <div class="text-gray-300 text-sm">池店镇凤池工业区</div>
+                        </div>
+                        <div class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="business" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-chart-line text-cyan-400 mr-3"></i>经营数据
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">核心产品</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+                                <i class="fas fa-circle text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">RB鞋底</div>
+                                <div class="text-gray-400 text-xs">橡胶鞋底</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                <i class="fas fa-circle text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">MD鞋底</div>
+                                <div class="text-gray-400 text-xs">EVA发泡</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                <i class="fas fa-circle text-green-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">TPU产品</div>
+                                <div class="text-gray-400 text-xs">热塑性弹性体</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
+                                <i class="fas fa-circle text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">E-TPU</div>
+                                <div class="text-gray-400 text-xs">超临界发泡</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                                <i class="fas fa-circle text-orange-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">贴合加工</div>
+                                <div class="text-gray-400 text-xs">材料复合</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center">
+                                <i class="fas fa-circle text-pink-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">PU材料</div>
+                                <div class="text-gray-400 text-xs">聚氨酯</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">主要客户</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="px-4 py-2 rounded-lg bg-gradient-to-r from-white/10 to-white/5 border border-white/10 flex items-center space-x-2">
+                            <i class="fab fa-viadeo text-cyan-400"></i>
+                            <span>安踏</span>
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-gradient-to-r from-white/10 to-white/5 border border-white/10 flex items-center space-x-2">
+                            <i class="fab fa-dribbble text-purple-400"></i>
+                            <span>DC Shoes</span>
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-gradient-to-r from-white/10 to-white/5 border border-white/10 flex items-center space-x-2">
+                            <i class="fab fa-fort-awesome text-red-400"></i>
+                            <span>FILA</span>
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-gradient-to-r from-white/10 to-white/5 border border-white/10 flex items-center space-x-2">
+                            <i class="fas fa-shoe-prints text-green-400"></i>
+                            <span>NIKE</span>
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-gradient-to-r from-white/10 to-white/5 border border-white/10 flex items-center space-x-2">
+                            <i class="fas fa-shoe-prints text-yellow-400"></i>
+                            <span>adidas</span>
+                        </div>
+                        <div class="px-4 py-2 rounded-lg bg-gradient-to-r from-white/10 to-white/5 border border-white/10 flex items-center space-x-2">
+                            <i class="fas fa-shoe-prints text-orange-400"></i>
+                            <span>PUMA</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
+                        <div class="text-sm text-gray-400 mb-1">经营模式</div>
+                        <div class="font-medium">鞋材全链条研发生产，OEM高端鞋品定制</div>
+                        <div class="text-gray-400 text-xs mt-1">覆盖全球40+一线运动品牌供应链</div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">生产规模</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-400">厂房面积</span>
+                                <span>80亩</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-4/5 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-400">年产能</span>
+                                <span>1000万双</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-5/6 bg-gradient-to-r from-purple-500 to-purple-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-400">员工规模</span>
+                                <span>5000人</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-3/4 bg-gradient-to-r from-green-500 to-green-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-400">生产基地</span>
+                                <span>8处(含海外)</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-5/6 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-globe text-green-400 mr-2"></i>市场布局
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="text-2xl font-bold text-cyan-400 mb-1">40+</div>
+                            <div class="text-gray-400 text-sm">全球品牌客户</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="text-2xl font-bold text-purple-400 mb-1">8</div>
+                            <div class="text-gray-400 text-sm">生产基地</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="text-2xl font-bold text-green-400 mb-1">3</div>
+                            <div class="text-gray-400 text-sm">海外工厂(越南/印尼)</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="text-2xl font-bold text-yellow-400 mb-1">2</div>
+                            <div class="text-gray-400 text-sm">国内外市场</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 rounded-lg bg-white/5">
+                        <div class="text-sm text-gray-400 mb-2">进出口资质</div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">进出口备案</span>
+                            <span class="tag-pill">报关有效期长期</span>
+                            <span class="tag-pill">海外业务拓展中</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-users text-purple-400 mr-2"></i>人员构成
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="employeeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="intellectual" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-lightbulb text-purple-400 mr-3"></i>知识产权
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">专利信息 (10项)</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-8 h-8 rounded bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-copyright text-yellow-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">一种多用途鞋底及包含该鞋底的运动鞋</div>
+                                <div class="text-gray-400 text-xs">实用新型专利 - 已授权(2014)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-8 h-8 rounded bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-copyright text-yellow-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">一种新型运动鞋鞋底及运动鞋</div>
+                                <div class="text-gray-400 text-xs">实用新型专利 - 已授权(2015)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-8 h-8 rounded bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-copyright text-yellow-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">一种新型鞋垫</div>
+                                <div class="text-gray-400 text-xs">实用新型专利 - 已授权(2015)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-8 h-8 rounded bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-image text-purple-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">鞋垫外观设计</div>
+                                <div class="text-gray-400 text-xs">外观设计专利 - 已授权(2015)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-8 h-8 rounded bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-copyright text-yellow-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium">一种拖鞋中底、拖鞋大底及拖鞋</div>
+                                <div class="text-gray-400 text-xs">实用新型专利 - 已授权(2015)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center text-gray-400 text-sm">+ 5项其他专利（含多用途复合鞋底等）</div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">商标信息 (12项)</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="w-12 h-12 mx-auto mb-2 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
+                                <span class="text-lg font-bold">国盛</span>
+                            </div>
+                            <div class="text-sm">第25类 - 服装鞋帽</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="w-12 h-12 mx-auto mb-2 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
+                                <span class="text-lg font-bold">POPRICE</span>
+                            </div>
+                            <div class="text-sm">第25类 - 服装鞋帽</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="w-12 h-12 mx-auto mb-2 rounded-lg bg-gradient-to-br from-green-500/20 to-cyan-500/20 flex items-center justify-center">
+                                <span class="text-lg font-bold">GS</span>
+                            </div>
+                            <div class="text-sm">第28类 - 健身器材</div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white/5 text-center">
+                            <div class="w-12 h-12 mx-auto mb-2 rounded-lg bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
+                                <span class="text-lg font-bold">其他</span>
+                            </div>
+                            <div class="text-sm">第18/12/35类</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-4 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                        <div class="text-sm text-gray-400 mb-1">核心技术</div>
+                        <div class="font-medium">E-TPU珠粒发泡技术（与中科院合作研发）</div>
+                        <div class="text-gray-400 text-xs mt-1">突破国外技术垄断，实现高端鞋材国产化</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-award text-yellow-400 mr-2"></i>资质认证
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+                    <div class="p-4 rounded-lg bg-white/5 text-center">
+                        <i class="fas fa-file-certificate text-cyan-400 text-3xl mb-2"></i>
+                        <div class="text-sm">一般纳税人</div>
+                        <div class="text-gray-400 text-xs mt-1">2006年起</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 text-center">
+                        <i class="fas fa-globe text-purple-400 text-3xl mb-2"></i>
+                        <div class="text-sm">进出口资质</div>
+                        <div class="text-gray-400 text-xs mt-1">长期有效</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 text-center">
+                        <i class="fas fa-shield-alt text-green-400 text-3xl mb-2"></i>
+                        <div class="text-sm">网站备案</div>
+                        <div class="text-gray-400 text-xs mt-1">闽ICP备11012676号</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 text-center">
+                        <i class="fas fa-check-circle text-yellow-400 text-3xl mb-2"></i>
+                        <div class="text-sm">企业认证</div>
+                        <div class="text-gray-400 text-xs mt-1">3项资质证书</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 text-center">
+                        <i class="fas fa-flask text-orange-400 text-3xl mb-2"></i>
+                        <div class="text-sm">高新技术企业</div>
+                        <div class="text-gray-400 text-xs mt-1">省级认定</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 text-center">
+                        <i class="fas fa-industry text-pink-400 text-3xl mb-2"></i>
+                        <div class="text-sm">专精特新</div>
+                        <div class="text-gray-400 text-xs mt-1">晋江经验标杆</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="group" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-sitemap text-green-400 mr-3"></i>集团架构
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">实控人信息</h3>
+                    <div class="relation-card">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center">
+                                <i class="fas fa-user text-2xl text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-xl font-semibold">李思治</div>
+                                <div class="text-gray-400">实控人 / 监事</div>
+                                <div class="text-gray-400 text-sm">持股比例：100%</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            <div class="p-2 rounded-lg bg-white/5">
+                                <div class="text-lg font-bold text-cyan-400">1</div>
+                                <div class="text-gray-400 text-xs">关联企业</div>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5">
+                                <div class="text-lg font-bold text-purple-400">1</div>
+                                <div class="text-gray-400 text-xs">控股企业</div>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5">
+                                <div class="text-lg font-bold text-green-400">1</div>
+                                <div class="text-gray-400 text-xs">任职企业</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+                            <div class="text-sm text-gray-400">商业合作伙伴</div>
+                            <div class="font-medium">张长建（合作1次）</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">法定代表人关联</h3>
+                    <div class="relation-card">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-green-500/30 flex items-center justify-center">
+                                <i class="fas fa-user text-2xl text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="text-xl font-semibold">张长建</div>
+                                <div class="text-gray-400">执行董事兼总经理</div>
+                                <div class="text-gray-400 text-sm">财务负责人</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-3 text-center">
+                            <div class="p-2 rounded-lg bg-white/5">
+                                <div class="text-lg font-bold text-cyan-400">7</div>
+                                <div class="text-gray-400 text-xs">关联企业</div>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5">
+                                <div class="text-lg font-bold text-purple-400">2</div>
+                                <div class="text-gray-400 text-xs">法定代表人</div>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5">
+                                <div class="text-lg font-bold text-green-400">5</div>
+                                <div class="text-gray-400 text-xs">持股企业</div>
+                            </div>
+                            <div class="p-2 rounded-lg bg-white/5">
+                                <div class="text-lg font-bold text-yellow-400">3</div>
+                                <div class="text-gray-400 text-xs">高管职务</div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="text-sm text-gray-400 mb-2">核心投资企业</div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between p-2 rounded-lg bg-white/5">
+                                    <span>福建兴迅新材料科技有限公司</span>
+                                    <span class="text-cyan-400">16.16%</span>
+                                </div>
+                                <div class="flex justify-between p-2 rounded-lg bg-white/5">
+                                    <span>泉州市顺邦工贸有限责任公司</span>
+                                    <span class="text-purple-400">36.67%</span>
+                                </div>
+                                <div class="flex justify-between p-2 rounded-lg bg-white/5">
+                                    <span>福建兴迅投资发展有限公司</span>
+                                    <span class="text-green-400">19%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                <h3 class="text-lg font-semibold mb-4">关联企业矩阵</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-lg bg-white/5 border border-white/10">
+                        <div class="font-medium mb-1">晋江国盛新材料科技有限公司</div>
+                        <div class="text-gray-400 text-xs">1500万人民币 | 张小海</div>
+                        <div class="text-gray-400 text-xs">超临界发泡技术研发</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 border border-white/10">
+                        <div class="font-medium mb-1">福建国盛鞋材有限公司</div>
+                        <div class="text-gray-400 text-xs">1000万人民币 | 张小海</div>
+                        <div class="text-gray-400 text-xs">制鞋原辅材料销售</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 border border-white/10">
+                        <div class="font-medium mb-1">福建兴迅新材料科技有限公司</div>
+                        <div class="text-gray-400 text-xs">3355万人民币 | 张小海</div>
+                        <div class="text-gray-400 text-xs">新材料研发生产</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5 border border-white/10">
+                        <div class="font-medium mb-1">福建创迅高能电子科技有限公司</div>
+                        <div class="text-gray-400 text-xs">3000万人民币 | 张小海</div>
+                        <div class="text-gray-400 text-xs">电子科技研发</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="risk" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center">
+                <i class="fas fa-shield-halved text-red-400 mr-3"></i>风险评估
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-heart-pulse text-red-400 mr-2"></i>风险指数
+                    </h3>
+                    <div class="relative w-32 h-32 mx-auto mb-4">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="64" cy="64" r="56" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none"/>
+                            <circle cx="64" cy="64" r="56" stroke="url(#gradient)" stroke-width="8" fill="none" stroke-dasharray="351" stroke-dashoffset="140"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#00d4ff"/>
+                                    <stop offset="100%" stop-color="#7c3aed"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-2xl font-bold gradient-text">597</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-green-400 font-medium">合作风险等级 L1 - 低风险</div>
+                        <div class="text-gray-400 text-sm mt-1">启信分：597 | 风险总量：40条</div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-exclamation-triangle text-orange-400 mr-2"></i>风险分布
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-400">自身风险</span>
+                                <span class="text-red-400">16条</span>
+                            </div>
+                            <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-2/3 bg-gradient-to-r from-red-500 to-red-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-400">关联风险</span>
+                                <span class="text-orange-400">13条</span>
+                            </div>
+                            <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-1/2 bg-gradient-to-r from-orange-500 to-orange-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-400">提示信息</span>
+                                <span class="text-yellow-400">11条</span>
+                            </div>
+                            <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-1/3 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-chart-bar text-cyan-400 mr-2"></i>运营状态
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
+                            <div class="text-green-400 text-xl font-bold">正常</div>
+                            <div class="text-gray-400 text-xs">日常经营</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
+                            <div class="text-green-400 text-xl font-bold">正常</div>
+                            <div class="text-gray-400 text-xs">司法涉诉</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-center">
+                            <div class="text-yellow-400 text-xl font-bold">潜在</div>
+                            <div class="text-gray-400 text-xs">经营活力</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
+                            <div class="text-green-400 text-xl font-bold">稳健</div>
+                            <div class="text-gray-400 text-xs">内部管理</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4">风险详情</h3>
+                    <div class="space-y-3">
+                        <div class="risk-item" style="border-left-color: #ef4444;">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-red-400 font-medium">欠税公告</span>
+                                <span class="text-gray-500 text-xs">2024-01-16</span>
+                            </div>
+                            <div class="text-sm text-gray-300">欠税税种：城市维护建设税、城镇土地使用税、增值税、房产税、环境保护税</div>
+                        </div>
+                        <div class="risk-item" style="border-left-color: #f97316;">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-orange-400 font-medium">开庭公告</span>
+                                <span class="text-gray-500 text-xs">2025-09-22</span>
+                            </div>
+                            <div class="text-sm text-gray-300">案由：其他案由</div>
+                        </div>
+                        <div class="risk-item" style="border-left-color: #eab308;">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-yellow-400 font-medium">司法案件</span>
+                                <span class="text-gray-500 text-xs">2021年</span>
+                            </div>
+                            <div class="text-sm text-gray-300">与福建荣欣体育用品有限公司买卖合同纠纷（部分支持诉求）</div>
+                        </div>
+                        <div class="risk-item" style="border-left-color: #eab308;">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-yellow-400 font-medium">司法案件</span>
+                                <span class="text-gray-500 text-xs">2017年</span>
+                            </div>
+                            <div class="text-sm text-gray-300">与野力体育（中国）有限公司与公司有关的纠纷</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-history text-purple-400 mr-2"></i>发展历程
+                    </h3>
+                    <div class="relative pl-10">
+                        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 to-purple-500"></div>
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <div class="absolute -left-8 w-4 h-4 rounded-full bg-cyan-500 border-2 border-white"></div>
+                                <div class="pl-4">
+                                    <div class="text-cyan-400 font-semibold">2001年</div>
+                                    <div class="text-gray-300 text-sm">公司成立，注册于晋江市池店镇凤池工业区</div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-8 w-4 h-4 rounded-full bg-purple-500 border-2 border-white"></div>
+                                <div class="pl-4">
+                                    <div class="text-purple-400 font-semibold">2006年</div>
+                                    <div class="text-gray-300 text-sm">获得增值税一般纳税人资格</div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-8 w-4 h-4 rounded-full bg-green-500 border-2 border-white"></div>
+                                <div class="pl-4">
+                                    <div class="text-green-400 font-semibold">2014年</div>
+                                    <div class="text-gray-300 text-sm">成立晋江国盛新材料科技有限公司，布局超临界发泡技术</div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-8 w-4 h-4 rounded-full bg-yellow-500 border-2 border-white"></div>
+                                <div class="pl-4">
+                                    <div class="text-yellow-400 font-semibold">2022年</div>
+                                    <div class="text-gray-300 text-sm">商标POPRICE转让完成</div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-8 w-4 h-4 rounded-full bg-red-500 border-2 border-white"></div>
+                                <div class="pl-4">
+                                    <div class="text-red-400 font-semibold">2023年</div>
+                                    <div class="text-gray-300 text-sm">法定代表人由张小海变更为张长建</div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-8 w-4 h-4 rounded-full bg-cyan-500 border-2 border-white"></div>
+                                <div class="pl-4">
+                                    <div class="text-cyan-400 font-semibold">2024年</div>
+                                    <div class="text-gray-300 text-sm">新增欠税公告（城市维护建设税、城镇土地使用税等）</div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute -left-8 w-4 h-4 rounded-full bg-green-500 border-2 border-white"></div>
+                                <div class="pl-4">
+                                    <div class="text-green-400 font-semibold">2026年</div>
+                                    <div class="text-gray-300 text-sm">福建国盛年产1000万双环保中底改造升级项目启动</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-file-alt text-cyan-400 mr-2"></i>经营范围
+                </h3>
+                <div class="p-4 rounded-lg bg-white/5">
+                    <p class="text-gray-300 leading-relaxed">
+                        生产鞋材。（依法须经批准的项目，经相关部门批准后方可开展经营活动）
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="tag-pill">RB鞋底</span>
+                        <span class="tag-pill">MD鞋底</span>
+                        <span class="tag-pill">贴合加工</span>
+                        <span class="tag-pill">PU材料</span>
+                        <span class="tag-pill">E-TPU</span>
+                        <span class="tag-pill">EVA超临界发泡</span>
+                        <span class="tag-pill">成品鞋OEM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-sm"></i>
+                    </div>
+                    <span class="font-semibold gradient-text">森罗之眼</span>
+                    <span class="text-gray-400 text-sm">企业信息智能采集系统</span>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    创作者：<span class="text-cyan-400">39139@胜天半子</span>
+                </div>
+                <div class="text-gray-500 text-xs">
+                    数据来源：启信宝、天眼查、企查查、爱企查、BOSS直聘、猎聘
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.stat-card', {
+            y: 50,
+            opacity: 0,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: '#overview',
+                start: 'top 80%',
+                end: 'top 30%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        gsap.from('.glass-card-hover', {
+            y: 30,
+            opacity: 0,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: '#business',
+                start: 'top 80%',
+                end: 'top 30%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        const ctx = document.getElementById('employeeChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['研发设计', '生产制造', '销售贸易', '管理行政', '品质管控'],
+                datasets: [{
+                    data: [15, 45, 20, 10, 10],
+                    backgroundColor: [
+                        'rgba(0, 212, 255, 0.8)',
+                        'rgba(124, 58, 237, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(251, 146, 60, 0.8)',
+                        'rgba(236, 72, 153, 0.8)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: 'rgba(255, 255, 255, 0.7)',
+                            padding: 12,
+                            usePointStyle: true,
+                            font: {
+                                size: 10
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
