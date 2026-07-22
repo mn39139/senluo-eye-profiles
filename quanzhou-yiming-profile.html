@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泉州市一鸣交通电器有限公司 - 企业画像</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4ff, #7c3aed);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00d4ff;
+        }
+
+        .tag-pill-gold {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+        }
+
+        .tag-pill-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #22c55e;
+        }
+
+        .risk-item {
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid;
+        }
+
+        .relation-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            transition: width 1s ease;
+        }
+
+        .gauge-circle {
+            width: 180px;
+            height: 180px;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#overview" class="text-gray-300 hover:text-white transition-colors">企业概览</a>
+                    <a href="#business" class="text-gray-300 hover:text-white transition-colors">经营数据</a>
+                    <a href="#intellectual" class="text-gray-300 hover:text-white transition-colors">知识产权</a>
+                    <a href="#group" class="text-gray-300 hover:text-white transition-colors">集团架构</a>
+                    <a href="#project" class="text-gray-300 hover:text-white transition-colors">新项目</a>
+                    <a href="#risk" class="text-gray-300 hover:text-white transition-colors">风险评估</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+        <!-- 企业概览 -->
+        <section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12 mb-8">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="inline-flex items-center space-x-2 mb-4 flex-wrap gap-2">
+                            <span class="tag-pill-gold">国家级专精特新"小巨人"</span>
+                            <span class="tag-pill-gold">国家高新技术企业</span>
+                            <span class="tag-pill">省级科技小巨人</span>
+                            <span class="tag-pill">税务A级</span>
+                            <span class="tag-pill-green">IATF16949认证</span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-bold mb-4">泉州市一鸣交通电器有限公司</h1>
+                        <p class="text-gray-300 text-lg mb-6 max-w-2xl">
+                            成立于1998年，是一家集蓄电池零配件设计开发、生产组装、销售服务于一体的国家级高新技术企业。公司是<b class="text-cyan-400">全球汽车电池电量显示器（电眼）龙头企业</b>及<b class="text-purple-400">行业标准制定者</b>，产品覆盖60多个国家和地区，国际市场占有率超60%，国内市场占有率80%以上，市场份额居全球首位。
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="tel:0595-22787042" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-phone text-cyan-400"></i>
+                                <span>0595-22787042</span>
+                            </a>
+                            <a href="mailto:yucry@yucry.com" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-envelope text-purple-400"></i>
+                                <span>yucry@yucry.com</span>
+                            </a>
+                            <a href="http://www.yucry.com" target="_blank" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-globe text-green-400"></i>
+                                <span>yucry.com</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-48 h-48 md:w-64 md:h-64 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-purple-500/30 flex items-center justify-center floating">
+                        <div class="text-center">
+                            <i class="fas fa-car-battery text-6xl md:text-8xl text-cyan-400 mb-2"></i>
+                            <div class="text-sm text-gray-400">蓄电池电眼龙头</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心指标 -->
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">1998</div>
+                    <div class="text-gray-400 text-sm mt-1">成立年份</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">3000万</div>
+                    <div class="text-gray-400 text-sm mt-1">注册资本(元)</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">26亩</div>
+                    <div class="text-gray-400 text-sm mt-1">占地面积</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">236</div>
+                    <div class="text-gray-400 text-sm mt-1">员工规模</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">1亿+</div>
+                    <div class="text-gray-400 text-sm mt-1">年销售收入</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">732</div>
+                    <div class="text-gray-400 text-sm mt-1">启信分</div>
+                </div>
+            </div>
+
+            <!-- 基本信息 -->
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="md:col-span-2 glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-building text-cyan-400 mr-2"></i>基本信息
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="text-gray-400 text-sm">统一信用代码</div>
+                            <div class="font-mono text-sm">91350500705194802D</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">法定代表人</div>
+                            <div>戴增实</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">注册资本</div>
+                            <div>3000万元</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">实缴资本</div>
+                            <div>1000万元</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">成立日期</div>
+                            <div>1998-05-04</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">营业期限</div>
+                            <div>1998-05-04 至 2028-05-03</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">企业类型</div>
+                            <div>有限责任公司</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">纳税人资质</div>
+                            <div>一般纳税人</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">所属行业</div>
+                            <div>橡胶和塑料制品业</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">企业规模</div>
+                            <div>小型企业</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">登记机关</div>
+                            <div>泉州市丰泽区市监局</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">英文名</div>
+                            <div class="text-xs">Yucry Traffic Appliances</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-map-marker-alt text-purple-400 mr-2"></i>联系方式与地址
+                    </h2>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="text-gray-400 text-sm">注册地址</div>
+                            <div class="text-sm">福建省泉州市丰泽区高厝路36号</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">联系电话</div>
+                            <div>0595-22787042</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">电子邮箱</div>
+                            <div>yucry@yucry.com</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">官方网站</div>
+                            <a href="http://www.yucry.com" target="_blank" class="text-cyan-400 hover:underline">www.yucry.com</a>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">进出口企业代码</div>
+                            <div class="font-mono text-sm">3500705194802</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm">组织机构代码</div>
+                            <div class="font-mono text-sm">70519480-2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 经营范围 -->
+            <div class="glass-card p-6 mt-6">
+                <h2 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-briefcase text-green-400 mr-2"></i>经营范围
+                </h2>
+                <p class="text-gray-300 leading-relaxed">
+                    制造：电池塑料壳、蓄电池模具、电池塑料眼、机械设备（不含特种设备等需经前置许可的项目）、正负端子、蓄电池状态指示器、蓄电池状态显示器、滤气片、冷藏箱；销售：汽车启动机、电池。自营和代理各类商品和技术的进出口，但国家限定公司经营或禁止进出口的商品和技术除外。
+                </p>
+            </div>
+        </section>
+
+        <!-- 经营数据 -->
+        <section id="business" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text">经营数据与市场地位</h2>
+            
+            <!-- 市场地位 -->
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="glass-card glass-card-hover p-6 text-center transition-all duration-300">
+                    <div class="text-5xl font-bold gradient-text mb-2">60%+</div>
+                    <div class="text-gray-300 font-semibold">国际市场占有率</div>
+                    <div class="text-gray-400 text-sm mt-1">电眼产品全球第一</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center transition-all duration-300">
+                    <div class="text-5xl font-bold gradient-text mb-2">80%+</div>
+                    <div class="text-gray-300 font-semibold">国内市场占有率</div>
+                    <div class="text-gray-400 text-sm mt-1">国内蓄电池电眼龙头</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center transition-all duration-300">
+                    <div class="text-5xl font-bold gradient-text mb-2">60+</div>
+                    <div class="text-gray-300 font-semibold">覆盖国家和地区</div>
+                    <div class="text-gray-400 text-sm mt-1">全球化布局</div>
+                </div>
+            </div>
+
+            <!-- 核心产品体系 -->
+            <div class="glass-card p-6 mb-8">
+                <h3 class="text-xl font-semibold mb-6 flex items-center">
+                    <i class="fas fa-cubes text-cyan-400 mr-2"></i>核心产品体系（6大系列300+型号）
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-eye text-cyan-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold">蓄电池状态显示器（电眼）</div>
+                                <div class="text-xs text-gray-400">核心产品 · 行业标准制定者</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300">直观显示蓄电池状态，具备温度补偿功能，确保任何环境下准确显示</p>
+                    </div>
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-bolt text-yellow-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold">蓄电池正负极端子</div>
+                                <div class="text-xs text-gray-400">接线端子 · 发明专利</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300">蓄电池接线端子成型设备研发制造，进入全球汽车产业链</p>
+                    </div>
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-tint text-blue-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold">加水帽/滤气片</div>
+                                <div class="text-xs text-gray-400">配套部件 · 规模化生产</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300">滤气片预计年产3000万片，配套蓄电池使用</p>
+                    </div>
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-ring text-purple-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold">密封圈</div>
+                                <div class="text-xs text-gray-400">密封解决方案</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300">为蓄电池提供可靠密封，防止电解液泄漏</p>
+                    </div>
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-cube text-green-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold">电池塑料壳/模具</div>
+                                <div class="text-xs text-gray-400">配套生产 · 模具制造</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300">电池外壳及蓄电池装配线设备（热封机等）</p>
+                    </div>
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-magic text-pink-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold">双槽杆（创新产品）</div>
+                                <div class="text-xs text-gray-400">2026年新专利</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300">显色杆双边增加凹槽，帮助排气，防止电眼缩水变形</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 人员构成图表 -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-users text-cyan-400 mr-2"></i>员工构成分析
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="employeeChart"></canvas>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-purple-400 mr-2"></i>研发投入与知识产权
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-300">研发费用投入（占销售收入）</span>
+                                <span class="text-sm text-cyan-400 font-semibold">≥6%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-300">行业专利占比（全国）</span>
+                                <span class="text-sm text-purple-400 font-semibold">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-300">研发团队规模</span>
+                                <span class="text-sm text-green-400 font-semibold">30+人</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-300">国际市场覆盖率</span>
+                                <span class="text-sm text-yellow-400 font-semibold">60+国家</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm text-gray-300">国内市场占有率</span>
+                                <span class="text-sm text-cyan-400 font-semibold">80%+</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 知识产权 -->
+        <section id="intellectual" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text">知识产权与创新实力</h2>
+            
+            <div class="grid md:grid-cols-4 gap-4 mb-8">
+                <div class="glass-card glass-card-hover p-6 text-center transition-all duration-300">
+                    <i class="fas fa-lightbulb text-4xl text-yellow-400 mb-2"></i>
+                    <div class="text-3xl font-bold gradient-text">88</div>
+                    <div class="text-gray-400 text-sm mt-1">专利总数</div>
+                    <div class="text-xs text-gray-500 mt-1">含13项发明专利</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center transition-all duration-300">
+                    <i class="fas fa-trademark text-4xl text-cyan-400 mb-2"></i>
+                    <div class="text-3xl font-bold gradient-text">50</div>
+                    <div class="text-gray-400 text-sm mt-1">商标信息</div>
+                    <div class="text-xs text-gray-500 mt-1">含一鸣/YUCRY等</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center transition-all duration-300">
+                    <i class="fas fa-code text-4xl text-green-400 mb-2"></i>
+                    <div class="text-3xl font-bold gradient-text">6</div>
+                    <div class="text-gray-400 text-sm mt-1">软件著作权</div>
+                    <div class="text-xs text-gray-500 mt-1">自动化控制系统</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center transition-all duration-300">
+                    <i class="fas fa-globe text-4xl text-purple-400 mb-2"></i>
+                    <div class="text-3xl font-bold gradient-text">51+</div>
+                    <div class="text-gray-400 text-sm mt-1">自主知识产权专利</div>
+                    <div class="text-xs text-gray-500 mt-1">含PCT国际专利</div>
+                </div>
+            </div>
+
+            <!-- 专利列表 -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-flask text-yellow-400 mr-2"></i>核心发明专利
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="relation-card">
+                            <div class="font-semibold text-sm">一种高功率卷绕式铅碳超级蓄电池</div>
+                            <div class="text-xs text-gray-400">专利号：CN201110292365.2 | 2014-12-24授权</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="font-semibold text-sm">一种铅酸蓄电池接线端子成型设备</div>
+                            <div class="text-xs text-gray-400">专利号：CN201911394513.4 | 2025-12-19授权</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="font-semibold text-sm">一种铅酸蓄电池板栅表面处理方法</div>
+                            <div class="text-xs text-gray-400">专利号：CN201610590038.8 | 2016-09-28公开</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-cog text-green-400 mr-2"></i>软件著作权（自动化系统）
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="relation-card">
+                            <div class="font-semibold text-sm">刷胶机角度伺服控制程序软件 V1.0</div>
+                            <div class="text-xs text-gray-400">登记号：2024SR1431363 | 2024-09-26</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="font-semibold text-sm">压铸切边机控制系统 V1.0</div>
+                            <div class="text-xs text-gray-400">登记号：2021SR0745063 | 2021-05-24</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="font-semibold text-sm">全自动切断机控制系统 V1.0</div>
+                            <div class="text-xs text-gray-400">登记号：2021SR0743010 | 2021-05-21</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="font-semibold text-sm">铅套自动辊压设备控制系统 V1.0</div>
+                            <div class="text-xs text-gray-400">登记号：2020SR0415714 | 2020-05-07</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 资质认证 -->
+            <div class="glass-card p-6 mt-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-certificate text-yellow-400 mr-2"></i>资质认证与荣誉
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="relation-card">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-trophy text-yellow-400 text-xl mr-2"></i>
+                            <span class="font-semibold">国家级荣誉</span>
+                        </div>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 国家级专精特新"小巨人"企业</li>
+                            <li>• 国家高新技术企业</li>
+                            <li>• 国家三级安全标准化生产认证</li>
+                        </ul>
+                    </div>
+                    <div class="relation-card">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-award text-cyan-400 text-xl mr-2"></i>
+                            <span class="font-semibold">省级荣誉</span>
+                        </div>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 福建省专精特新中小企业</li>
+                            <li>• 福建省科技小巨人企业</li>
+                            <li>• 福建省知识产权试点单位</li>
+                        </ul>
+                    </div>
+                    <div class="relation-card">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-shield-alt text-green-400 text-xl mr-2"></i>
+                            <span class="font-semibold">体系认证</span>
+                        </div>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• ISO9001:2008 质量管理</li>
+                            <li>• IATF16949:2015 汽车行业</li>
+                            <li>• ISO14001:2015 环境管理</li>
+                            <li>• ISO45001:2015 职业健康安全</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 集团架构 -->
+        <section id="group" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text">集团架构与关联企业</h2>
+            
+            <!-- 实控人信息 -->
+            <div class="glass-card p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-user-tie text-cyan-400 mr-2"></i>实际控制人信息
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="relation-card text-center">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 mx-auto mb-3 flex items-center justify-center">
+                            <i class="fas fa-user text-3xl text-white"></i>
+                        </div>
+                        <div class="font-semibold text-lg">戴增实</div>
+                        <div class="text-sm text-gray-400">实际控制人 / 最终受益人</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">持股比例</span>
+                                <span class="text-cyan-400 font-semibold">95%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">认缴出资额</span>
+                                <span>2850万元</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">实缴出资额</span>
+                                <span>950万元</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">任职</span>
+                                <span>董事 / 法定代表人</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">首次持股</span>
+                                <span>1998-05-04</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">担任法定代表人</span>
+                                <span>3家企业</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">担任股东</span>
+                                <span>3家企业</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">担任高管</span>
+                                <span>4家企业</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">最终受益人</span>
+                                <span>4家企业</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400 text-sm">商业合作伙伴</span>
+                                <span>19人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 股权结构 -->
+            <div class="glass-card p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-sitemap text-purple-400 mr-2"></i>股权结构
+                </h3>
+                <div class="chart-container" style="height: 250px;">
+                    <canvas id="equityChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 关联企业 -->
+            <div class="glass-card p-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-project-diagram text-green-400 mr-2"></i>关联企业矩阵（对外投资3家）
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-industry text-cyan-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-sm">湖北得一新能源科技有限公司</div>
+                                <div class="text-xs text-gray-400">100%控股 · 新能源</div>
+                            </div>
+                        </div>
+                        <div class="text-xs space-y-1 text-gray-300">
+                            <div>📍 湖北省襄阳市老河口市</div>
+                            <div>💰 注册资本：2000万元</div>
+                            <div>📅 成立：2021-08-10</div>
+                            <div>👤 法人：戴增实</div>
+                        </div>
+                    </div>
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-hammer text-yellow-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-sm">襄阳市一鸣铅合金精工科技</div>
+                                <div class="text-xs text-gray-400">100%控股 · 铅合金加工</div>
+                            </div>
+                        </div>
+                        <div class="text-xs space-y-1 text-gray-300">
+                            <div>📍 湖北省襄阳市</div>
+                            <div>💰 注册资本：500万元</div>
+                            <div>👤 法人：戴增俭</div>
+                        </div>
+                    </div>
+                    <div class="relation-card hover:bg-white/5 transition-colors">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-cube text-purple-400 text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold text-sm">泉州市旭升滚塑加工有限公司</div>
+                                <div class="text-xs text-gray-400">关联企业 · 滚塑加工</div>
+                            </div>
+                        </div>
+                        <div class="text-xs space-y-1 text-gray-300">
+                            <div>📍 福建省泉州市丰泽区</div>
+                            <div>💰 注册资本：600万元</div>
+                            <div>📅 成立：2014-12-09</div>
+                            <div>👤 法人：戴增实</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 新项目 -->
+        <section id="project" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text">一鸣新能源汽车关键部件产业基地</h2>
+            
+            <div class="glass-card p-8 mb-6 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-green-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-6">
+                        <span class="tag-pill-gold mr-2">重点产业项目</span>
+                        <span class="tag-pill-green">2026年在建</span>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        一鸣新能源汽车关键部件产业基地建设项目由国家级专精特新"小巨人"企业——泉州市一鸣交通电器有限公司投资建设。项目选址于泉州市丰泽区数字经济产业园三期，将集研发检测、智能制造、产品展示、智能仓储、行政办公、配套服务于一体，打造新能源关键部件全产业链的现代化产业平台。
+                    </p>
+                    
+                    <div class="grid md:grid-cols-4 gap-4 mb-6">
+                        <div class="relation-card text-center">
+                            <div class="text-2xl font-bold gradient-text">16377㎡</div>
+                            <div class="text-xs text-gray-400">总用地面积</div>
+                        </div>
+                        <div class="relation-card text-center">
+                            <div class="text-2xl font-bold gradient-text">62007㎡</div>
+                            <div class="text-xs text-gray-400">总建筑面积</div>
+                        </div>
+                        <div class="relation-card text-center">
+                            <div class="text-2xl font-bold gradient-text">6大</div>
+                            <div class="text-xs text-gray-400">功能区域</div>
+                        </div>
+                        <div class="relation-card text-center">
+                            <div class="text-2xl font-bold gradient-text">2027Q1</div>
+                            <div class="text-xs text-gray-400">预计竣工验收</div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="relation-card">
+                            <h4 class="font-semibold mb-2 text-cyan-400">📋 建设内容</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• 1栋高标准厂房</li>
+                                <li>• 1栋检测车间</li>
+                                <li>• 1栋配套宿舍楼</li>
+                                <li>• 一层地下室</li>
+                            </ul>
+                        </div>
+                        <div class="relation-card">
+                            <h4 class="font-semibold mb-2 text-purple-400">🏭 六大功能区</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• 研发检测区</li>
+                                <li>• 智能制造区</li>
+                                <li>• 产品展示区</li>
+                                <li>• 智能仓储区</li>
+                                <li>• 行政办公区</li>
+                                <li>• 配套服务区</li>
+                            </ul>
+                        </div>
+                        <div class="relation-card">
+                            <h4 class="font-semibold mb-2 text-green-400">📊 预期产能</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• 蓄电池状态显示器：15000万支/年</li>
+                                <li>• 滤气片：3000万片/年</li>
+                                <li>• 模具：200副/年</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-white/5 rounded-lg">
+                        <h4 class="font-semibold mb-2 text-yellow-400">🗓️ 建设进度</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-green-500 mr-3"></span>
+                                <span class="text-gray-300">2026年1月：项目启动，取得建筑工程施工许可证</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-green-500 mr-3"></span>
+                                <span class="text-gray-300">2026年2月：取得环境影响报告表批复</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-yellow-500 mr-3"></span>
+                                <span class="text-gray-300">2026年8月（预计）：主体结构封顶</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-gray-500 mr-3"></span>
+                                <span class="text-gray-300">2026年底（预计）：主要项目施工完成</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-gray-500 mr-3"></span>
+                                <span class="text-gray-300">2027年Q1（预计）：整体竣工验收</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 发展历程 -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text">发展历程</h2>
+            <div class="glass-card p-6">
+                <div class="relative pl-12">
+                    <div class="timeline-line"></div>
+                    <div class="space-y-8">
+                        <div class="relative">
+                            <div class="absolute -left-12 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-xs font-bold">1993</div>
+                            <div class="glass-card p-4 ml-4">
+                                <h4 class="font-semibold text-cyan-400">闽东起步</h4>
+                                <p class="text-sm text-gray-300 mt-1">成立于闽东地区，原名"闽东交通电器有限公司"，开启蓄电池配件制造之路</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-xs font-bold">1995</div>
+                            <div class="glass-card p-4 ml-4">
+                                <h4 class="font-semibold text-cyan-400">迁址泉州</h4>
+                                <p class="text-sm text-gray-300 mt-1">迁址至泉州，更名为"泉州一鸣交通电器有限公司"，开启新篇章</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-xs font-bold">1998</div>
+                            <div class="glass-card p-4 ml-4">
+                                <h4 class="font-semibold text-cyan-400">正式注册</h4>
+                                <p class="text-sm text-gray-300 mt-1">1998年5月4日正式注册成立泉州市一鸣交通电器有限公司</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-xs font-bold">2011</div>
+                            <div class="glass-card p-4 ml-4">
+                                <h4 class="font-semibold text-purple-400">技术突破</h4>
+                                <p class="text-sm text-gray-300 mt-1">申请"高功率卷绕式铅碳超级蓄电池"发明专利，攻克行业关键技术</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-xs font-bold">2021</div>
+                            <div class="glass-card p-4 ml-4">
+                                <h4 class="font-semibold text-purple-400">跨区域扩张</h4>
+                                <p class="text-sm text-gray-300 mt-1">成立湖北得一新能源科技有限公司，布局新能源产业，注册资本2000万元</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center text-xs font-bold">2024</div>
+                            <div class="glass-card p-4 ml-4">
+                                <h4 class="font-semibold text-yellow-400">国家级荣誉</h4>
+                                <p class="text-sm text-gray-300 mt-1">获评国家级专精特新"小巨人"企业，税务信用A级，注册资本增至3000万</p>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-12 w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-cyan-600 flex items-center justify-center text-xs font-bold">2026</div>
+                            <div class="glass-card p-4 ml-4">
+                                <h4 class="font-semibold text-green-400">产业升级</h4>
+                                <p class="text-sm text-gray-300 mt-1">启动一鸣新能源汽车关键部件产业基地建设项目，迈向新能源关键部件全产业链平台</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 风险评估 -->
+        <section id="risk" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text">风险评估与信用状况</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- 启信分 -->
+                <div class="glass-card p-6 text-center">
+                    <h3 class="text-lg font-semibold mb-4">启信分</h3>
+                    <div class="gauge-circle mx-auto">
+                        <svg viewBox="0 0 200 200" class="w-full h-full">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12"/>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="url(#grad1)" stroke-width="12"
+                                stroke-dasharray="534" stroke-dashoffset="143" stroke-linecap="round"
+                                transform="rotate(-90 100 100)"/>
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00d4ff"/>
+                                    <stop offset="100%" style="stop-color:#7c3aed"/>
+                                </linearGradient>
+                            </defs>
+                            <text x="100" y="105" text-anchor="middle" font-size="36" font-weight="bold" fill="white">732</text>
+                            <text x="100" y="135" text-anchor="middle" font-size="14" fill="#9ca3af">满分1000</text>
+                        </svg>
+                    </div>
+                    <div class="mt-2">
+                        <span class="tag-pill">信用良好</span>
+                    </div>
+                </div>
+
+                <!-- 水滴信用分 -->
+                <div class="glass-card p-6 text-center">
+                    <h3 class="text-lg font-semibold mb-4">水滴信用分</h3>
+                    <div class="gauge-circle mx-auto">
+                        <svg viewBox="0 0 200 200" class="w-full h-full">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12"/>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="url(#grad2)" stroke-width="12"
+                                stroke-dasharray="534" stroke-dashoffset="53" stroke-linecap="round"
+                                transform="rotate(-90 100 100)"/>
+                            <defs>
+                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#22c55e"/>
+                                    <stop offset="100%" style="stop-color:#16a34a"/>
+                                </linearGradient>
+                            </defs>
+                            <text x="100" y="105" text-anchor="middle" font-size="36" font-weight="bold" fill="white">896</text>
+                            <text x="100" y="135" text-anchor="middle" font-size="14" fill="#9ca3af">优秀</text>
+                        </svg>
+                    </div>
+                    <div class="mt-2">
+                        <span class="tag-pill-green">优秀</span>
+                    </div>
+                </div>
+
+                <!-- 科创分 -->
+                <div class="glass-card p-6 text-center">
+                    <h3 class="text-lg font-semibold mb-4">科创分</h3>
+                    <div class="gauge-circle mx-auto">
+                        <svg viewBox="0 0 200 200" class="w-full h-full">
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12"/>
+                            <circle cx="100" cy="100" r="85" fill="none" stroke="url(#grad3)" stroke-width="12"
+                                stroke-dasharray="534" stroke-dashoffset="486" stroke-linecap="round"
+                                transform="rotate(-90 100 100)"/>
+                            <defs>
+                                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#fbbf24"/>
+                                    <stop offset="100%" style="stop-color:#f59e0b"/>
+                                </linearGradient>
+                            </defs>
+                            <text x="100" y="105" text-anchor="middle" font-size="36" font-weight="bold" fill="white">89</text>
+                            <text x="100" y="135" text-anchor="middle" font-size="14" fill="#9ca3af">优秀</text>
+                        </svg>
+                    </div>
+                    <div class="mt-2">
+                        <span class="tag-pill-gold">科创能力强</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 风险详情 -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-shield-alt text-green-400 mr-2"></i>风险指标
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">自身风险</span>
+                                <span class="text-green-400">1条（低）</span>
+                            </div>
+                        </div>
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">关联风险</span>
+                                <span class="text-green-400">1条（低）</span>
+                            </div>
+                        </div>
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">失信被执行人</span>
+                                <span class="text-green-400">0条</span>
+                            </div>
+                        </div>
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">限制高消费</span>
+                                <span class="text-green-400">0条</span>
+                            </div>
+                        </div>
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">被执行人</span>
+                                <span class="text-green-400">0条</span>
+                            </div>
+                        </div>
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">股权冻结</span>
+                                <span class="text-green-400">0条</span>
+                            </div>
+                        </div>
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">行政处罚</span>
+                                <span class="text-green-400">0条</span>
+                            </div>
+                        </div>
+                        <div class="risk-item border-green-400">
+                            <div class="flex justify-between">
+                                <span class="text-gray-300">欠税公告</span>
+                                <span class="text-green-400">无</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-gavel text-yellow-400 mr-2"></i>司法案件
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="relation-card">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <div class="font-semibold text-sm">伊利诺斯工具制品有限公司 诉 一鸣交通电器</div>
+                                    <div class="text-xs text-gray-400">案由：不正当竞争纠纷</div>
+                                </div>
+                                <span class="tag-pill-green text-xs">已结案</span>
+                            </div>
+                            <div class="text-xs text-gray-300 space-y-1">
+                                <div>📅 裁判日期：2012-09-19</div>
+                                <div>⚖️ 案号：（2012）闽民终字第561号</div>
+                                <div>🏛️ 法院：福建省高级人民法院</div>
+                                <div>📋 身份：被上诉人</div>
+                                <div>✅ 结果：驳回上诉，维持原判（胜诉）</div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-green-500/10 rounded-lg border border-green-500/20">
+                            <div class="flex items-center text-green-400">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                <span class="text-sm font-semibold">无失信、无被执行、无限制高消费记录</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 经营理念 -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 gradient-text">企业文化与经营理念</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-bullseye text-cyan-400 mr-2"></i>企业愿景
+                    </h3>
+                    <p class="text-xl text-cyan-400 font-semibold mb-4">"哪里有车，哪里就有一鸣电眼！"</p>
+                    <div class="space-y-3">
+                        <div class="relation-card">
+                            <div class="font-semibold text-purple-400">核心经营理念</div>
+                            <p class="text-sm text-gray-300 mt-1">"科技为动力，市场为先导，质量为中心，管理为重点，人才为关键"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-handshake text-green-400 mr-2"></i>核心价值观
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="relation-card text-center">
+                            <i class="fas fa-redo text-cyan-400 text-2xl mb-2"></i>
+                            <div class="font-semibold text-sm">自责</div>
+                            <div class="text-xs text-gray-400">以自我反思驱动持续改进</div>
+                        </div>
+                        <div class="relation-card text-center">
+                            <i class="fas fa-users text-purple-400 text-2xl mb-2"></i>
+                            <div class="font-semibold text-sm">合作</div>
+                            <div class="text-xs text-gray-400">构建开放协作的共赢生态</div>
+                        </div>
+                        <div class="relation-card text-center">
+                            <i class="fas fa-lightbulb text-yellow-400 text-2xl mb-2"></i>
+                            <div class="font-semibold text-sm">革新</div>
+                            <div class="text-xs text-gray-400">坚持技术与管理双轮创新</div>
+                        </div>
+                        <div class="relation-card text-center">
+                            <i class="fas fa-seedling text-green-400 text-2xl mb-2"></i>
+                            <div class="font-semibold text-sm">成长</div>
+                            <div class="text-xs text-gray-400">推动员工与企业协同发展</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 总结 -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8">
+                <h2 class="text-2xl font-bold mb-6 gradient-text">企业画像总结</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-green-400 mb-3">
+                            <i class="fas fa-check-circle mr-2"></i>核心优势
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li>✅ <b>行业龙头</b>：全球蓄电池电眼市场份额第一，国际市占率60%+，国内80%+</li>
+                            <li>✅ <b>技术领先</b>：专利数量占全国行业七成，51项自主知识产权专利</li>
+                            <li>✅ <b>国家级荣誉</b>：专精特新"小巨人"、国家高新技术企业</li>
+                            <li>✅ <b>研发投入高</b>：研发费用占销售收入6%以上，30+人研发团队</li>
+                            <li>✅ <b>全球化布局</b>：产品远销60+国家，与国内外知名蓄电池品牌深度合作</li>
+                            <li>✅ <b>体系完善</b>：通过ISO9001/IATF16949/ISO14001/ISO45001四大体系认证</li>
+                            <li>✅ <b>信用良好</b>：水滴信用896分（优秀），税务A级，无重大风险</li>
+                            <li>✅ <b>成长性强</b>：2026年投资建设新能源汽车关键部件产业基地</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-yellow-400 mb-3">
+                            <i class="fas fa-info-circle mr-2"></i>关注事项
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li>⚠️ <b>实缴资本偏低</b>：注册资本3000万，实缴1000万，存在未足额缴纳</li>
+                            <li>⚠️ <b>企业规模偏小</b>：员工236人，规模为小型企业</li>
+                            <li>⚠️ <b>历史诉讼</b>：2012年有1起不正当竞争纠纷（已结案，胜诉）</li>
+                            <li>⚠️ <b>营业期限</b>：至2028年5月3日到期，需关注续期</li>
+                        </ul>
+                        <div class="mt-4 p-4 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+                            <h4 class="font-semibold text-cyan-400 mb-2">💡 合作建议</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• <b>优质合作对象</b>：细分领域龙头，技术实力强</li>
+                                <li>• <b>新能源赛道</b>：关注一鸣新能源产业基地投产后的合作机会</li>
+                                <li>• <b>供应链合作</b>：可作为蓄电池/新能源汽车关键部件的优质供应商</li>
+                                <li>• <b>技术合作</b>：自动化生产系统可探索技术输出合作</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 text-gray-400 text-sm">
+                <p>📊 数据来源：企查查、天眼查、启信宝、水滴信用、泉州市政府官网、丰泽区融媒体中心等</p>
+                <p class="mt-2">✍️ 创作者：39139@胜天半子 | 🤖 生成工具：森罗之眼智能体 | 📅 日期：2026年7月</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 员工构成图表
+        const employeeCtx = document.getElementById('employeeChart').getContext('2d');
+        new Chart(employeeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['生产人员', '研发人员', '行政/销售', '管理层'],
+                datasets: [{
+                    data: [170, 30, 25, 11],
+                    backgroundColor: ['#00d4ff', '#7c3aed', '#22c55e', '#fbbf24'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#e5e7eb', padding: 15, font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // 股权结构图表
+        const equityCtx = document.getElementById('equityChart').getContext('2d');
+        new Chart(equityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['戴增实（实控人）', '潘玲玲'],
+                datasets: [{
+                    data: [95, 5],
+                    backgroundColor: ['#00d4ff', '#7c3aed'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#e5e7eb', padding: 15, font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // GSAP动画
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.from('.stat-card', {
+            scrollTrigger: {
+                trigger: '.stat-card',
+                start: 'top 80%'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1
+        });
+
+        gsap.from('.glass-card', {
+            scrollTrigger: {
+                trigger: '.glass-card',
+                start: 'top 85%'
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.05
+        });
+    </script>
+</body>
+</html>
