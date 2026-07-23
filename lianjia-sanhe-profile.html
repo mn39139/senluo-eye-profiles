@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联邦三禾（福建）股份有限公司 - 企业画像 | 森罗之眼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-warm {
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-number {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .chart-container {
+            position: relative;
+            height: 240px;
+            width: 100%;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); }
+        }
+        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00d4ff;
+        }
+        .tag-pill-warm {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+        }
+        .risk-item {
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid;
+        }
+        .relation-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s;
+        }
+        .relation-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            padding-bottom: 28px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4ff, transparent);
+        }
+        .timeline-item:last-child::after { display: none; }
+        .fiber-orbit {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        .orbit-ring {
+            position: absolute;
+            inset: 0;
+            border: 1px dashed rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+        }
+        .orbit-ring-2 {
+            inset: 20px;
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        .orbit-ring-3 {
+            inset: 40px;
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .orbit-ring { animation: rotate 20s linear infinite; }
+        .orbit-ring-2 { animation: rotate 15s linear infinite reverse; }
+        .orbit-ring-3 { animation: rotate 25s linear infinite; }
+        .nav-link.active { color: #00d4ff; }
+        .scroll-smooth { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="text-white scroll-smooth">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors nav-link">企业概览</a>
+                    <a href="#business" class="text-gray-300 hover:text-cyan-400 transition-colors nav-link">经营数据</a>
+                    <a href="#taijishi" class="text-gray-300 hover:text-cyan-400 transition-colors nav-link">太极石技术</a>
+                    <a href="#products" class="text-gray-300 hover:text-cyan-400 transition-colors nav-link">产品矩阵</a>
+                    <a href="#group" class="text-gray-300 hover:text-cyan-400 transition-colors nav-link">集团架构</a>
+                    <a href="#intellectual" class="text-gray-300 hover:text-cyan-400 transition-colors nav-link">知识产权</a>
+                    <a href="#risk" class="text-gray-300 hover:text-cyan-400 transition-colors nav-link">风险评估</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+        <!-- Hero / Overview -->
+        <section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12 mb-8">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="inline-flex items-center flex-wrap gap-2 mb-4 justify-center md:justify-start">
+                            <span class="tag-pill">国家成衣染色产品开发基地</span>
+                            <span class="tag-pill">纺织行业专精特新</span>
+                            <span class="tag-pill-warm">太极石全球唯一供应商</span>
+                            <span class="tag-pill">税务信用A级</span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-bold mb-4">联邦三禾（福建）股份有限公司</h1>
+                        <p class="text-gray-300 text-lg mb-6 max-w-2xl">
+                            创建于1997年，是一家集<b class="text-cyan-400">纤维、织造、染整（成衣染色及后整理）、服装</b>为一体的全产业链纺织服装集团。主营太极石能量纤维、高档纯棉、多种纤维混纺及色织色纺功能性休闲面料，旗下太极石股份为<b class="text-amber-400">全球唯一太极石纤维供应商</b>。
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="tel:0595-88211903" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-phone text-cyan-400"></i>
+                                <span>0595-88211903</span>
+                            </a>
+                            <a href="mailto:lbsh@lbshtex.com" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-envelope text-purple-400"></i>
+                                <span>lbsh@lbshtex.com</span>
+                            </a>
+                            <a href="http://www.lbshtex.com" target="_blank" class="flex items-center space-x-2 glass-card px-4 py-2 hover:bg-white/10 transition-colors">
+                                <i class="fas fa-globe text-green-400"></i>
+                                <span>lbshtex.com</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-56 h-56 md:w-72 md:h-72 rounded-2xl bg-gradient-to-br from-cyan-500/30 via-amber-500/20 to-purple-500/30 flex items-center justify-center floating">
+                        <div class="text-center">
+                            <div class="fiber-orbit mb-2">
+                                <div class="orbit-ring"></div>
+                                <div class="orbit-ring orbit-ring-2"></div>
+                                <div class="orbit-ring orbit-ring-3"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fas fa-yin-yang text-6xl text-amber-400"></i>
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-400 mt-2">太极石 · 健康纤维</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">1997</div>
+                    <div class="text-gray-400 text-sm mt-1">集团创立</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">5000万</div>
+                    <div class="text-gray-400 text-sm mt-1">注册资本(实缴)</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">5.33亿</div>
+                    <div class="text-gray-400 text-sm mt-1">年销售额</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">3000万+</div>
+                    <div class="text-gray-400 text-sm mt-1">年产面料(米)</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">13</div>
+                    <div class="text-gray-400 text-sm mt-1">集团成员企业</div>
+                </div>
+                <div class="glass-card glass-card-hover p-4 text-center transition-all duration-300 stat-card">
+                    <div class="stat-number">617</div>
+                    <div class="text-gray-400 text-sm mt-1">启信分</div>
+                </div>
+            </div>
+
+            <!-- Basic Info + Core Personnel -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-building text-cyan-400 mr-2"></i>基本信息
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <div class="text-gray-400 text-xs">统一社会信用代码</div>
+                            <div class="font-mono">913505007549915763</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">法定代表人</div>
+                            <div>林荣银</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">企业类型</div>
+                            <div>股份有限公司</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">所属行业</div>
+                            <div>纺织服装及家庭用品批发 (F5139)</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">注册地址</div>
+                            <div>石狮市鸳鸯池西路128号</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">经营状态</div>
+                            <div class="text-green-400">存续</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">成立日期</div>
+                            <div>2003-11-25</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">注册资本/实缴</div>
+                            <div>5000万 / 5000万</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">纳税人资质</div>
+                            <div>一般纳税人 · A级(2025)</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">参保人数</div>
+                            <div>14人(2024)</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">曾用名</div>
+                            <div class="text-xs">福建联邦三禾纺织贸易有限公司</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-xs">官网</div>
+                            <div>www.lbshtex.com</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card glass-card-hover p-6 transition-all duration-300">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-users text-purple-400 mr-2"></i>林氏三兄弟
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/40 to-purple-500/40 flex items-center justify-center font-bold text-lg">银</div>
+                            <div class="flex-1">
+                                <div class="font-medium flex items-center justify-between">
+                                    <span>林荣银</span>
+                                    <span class="text-cyan-400 font-bold">35%</span>
+                                </div>
+                                <div class="text-gray-400 text-xs">董事长兼总经理 · 实控人</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500/30 to-orange-500/30 flex items-center justify-center font-bold text-lg">波</div>
+                            <div class="flex-1">
+                                <div class="font-medium flex items-center justify-between">
+                                    <span>林荣波</span>
+                                    <span class="text-amber-400 font-bold">32.5%</span>
+                                </div>
+                                <div class="text-gray-400 text-xs">副董事长</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500/30 to-cyan-500/30 flex items-center justify-center font-bold text-lg">铜</div>
+                            <div class="flex-1">
+                                <div class="font-medium flex items-center justify-between">
+                                    <span>林荣铜</span>
+                                    <span class="text-green-400 font-bold">32.5%</span>
+                                </div>
+                                <div class="text-gray-400 text-xs">董事</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300">
+                        <i class="fas fa-info-circle mr-1"></i>典型三兄弟家族控股企业，林荣银为实际控制人，同时担任集团及子公司太极石股份董事长。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Data -->
+        <section id="business" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-chart-line text-cyan-400 mr-3"></i>经营数据全景
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-coins text-amber-400 mr-2"></i>核心经营指标
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm">年销售额</span>
+                            <span class="text-xl font-bold gradient-text-warm">5.33亿元</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm">固定资产</span>
+                            <span class="text-xl font-bold text-cyan-400">3.12亿元</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm">年产面料</span>
+                            <span class="text-xl font-bold text-cyan-400">3000万+米</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm">太极石面料利润率</span>
+                            <span class="text-xl font-bold text-green-400">30%+</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm">传统面料利润率</span>
+                            <span class="text-xl font-bold text-gray-400">&lt;10%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm">年开发新产品</span>
+                            <span class="text-xl font-bold text-purple-400">100+个</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-industry text-purple-400 mr-2"></i>核心生产装备
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm"><i class="fas fa-flask text-cyan-400 mr-2"></i>意大利自动成衣染色生产线</span>
+                            <span class="text-cyan-400 font-bold">1条</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm"><i class="fas fa-cogs text-purple-400 mr-2"></i>日本丰田织机生产线</span>
+                            <span class="text-purple-400 font-bold">多条</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm"><i class="fas fa-tshirt text-amber-400 mr-2"></i>意大利自动化休闲服饰生产线</span>
+                            <span class="text-amber-400 font-bold">6条</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm"><i class="fas fa-yin-yang text-green-400 mr-2"></i>太极石面料生产线</span>
+                            <span class="text-green-400 font-bold">3条</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm"><i class="fas fa-th-large text-cyan-400 mr-2"></i>全资子公司</span>
+                            <span class="text-cyan-400 font-bold">6家</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                            <span class="text-gray-300 text-sm"><i class="fas fa-globe text-pink-400 mr-2"></i>国内外分公司/办事处</span>
+                            <span class="text-pink-400 font-bold">8+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-chart-bar text-cyan-400 mr-2"></i>利润率对比 · 传统vs太极石
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="profitChart"></canvas>
+                    </div>
+                </div>
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-chart-pie text-purple-400 mr-2"></i>股权结构 · 林氏三兄弟
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="equityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tai Chi Stone Technology (Highlight) -->
+        <section id="taijishi" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12 mb-8 border border-amber-500/20">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                        <span class="tag-pill-warm mr-3">核心差异化优势</span>
+                        <span class="tag-pill">全球唯一供应商</span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-bold mb-4">
+                        <i class="fas fa-yin-yang text-amber-400 mr-3"></i>太极石功能纤维技术
+                    </h2>
+                    <p class="text-gray-300 text-lg max-w-3xl mb-8">
+                        子公司<b class="text-amber-400">太极石股份有限公司</b>（成立于2015年）是全球唯一的太极石纤维供应商，将太极石天然矿石转化为健康纺织功能纤维，是集研发、销售、品牌运营一体的科技创新型纤维企业，荣获<b class="text-cyan-400">纺织行业"专精特新"中小企业</b>及<b class="text-cyan-400">2024持续创新单位</b>。
+                    </p>
+
+                    <!-- 3+N Strategy -->
+                    <h3 class="text-xl font-semibold mb-4 gradient-text-warm">"3+N" 产品战略定位体系</h3>
+                    <div class="grid md:grid-cols-4 gap-4 mb-8">
+                        <div class="relation-card text-center border-2 border-amber-500/30">
+                            <div class="text-4xl mb-2"><i class="fas fa-yin-yang text-amber-400"></i></div>
+                            <div class="font-bold text-amber-400 mb-1">3 · 太极石系列</div>
+                            <div class="text-xs text-gray-400">健康能量纤维 · 增强微循环</div>
+                            <div class="text-xs text-gray-500 mt-1">基础纤维体系</div>
+                        </div>
+                        <div class="relation-card text-center border-2 border-cyan-500/30">
+                            <div class="text-4xl mb-2"><i class="fas fa-snowflake text-cyan-400"></i></div>
+                            <div class="font-bold text-cyan-400 mb-1">3 · 太极冰系列</div>
+                            <div class="text-xs text-gray-400">凉感纤维 · 持续凉感速干</div>
+                            <div class="text-xs text-gray-500 mt-1">基础纤维体系</div>
+                        </div>
+                        <div class="relation-card text-center border-2 border-red-500/30">
+                            <div class="text-4xl mb-2"><i class="fas fa-fire text-red-400"></i></div>
+                            <div class="font-bold text-red-400 mb-1">3 · 太极碳系列</div>
+                            <div class="text-xs text-gray-400">热感纤维 · 蓄热保暖</div>
+                            <div class="text-xs text-gray-500 mt-1">基础纤维体系</div>
+                        </div>
+                        <div class="relation-card text-center border-2 border-green-500/30">
+                            <div class="text-4xl mb-2"><i class="fas fa-leaf text-green-400"></i></div>
+                            <div class="font-bold text-green-400 mb-1">N · 绿色环保系列</div>
+                            <div class="text-xs text-gray-400">可降解 · 再生 · 低碳</div>
+                            <div class="text-xs text-gray-500 mt-1">趋势产品体系</div>
+                        </div>
+                    </div>
+
+                    <!-- Fiber Functions -->
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="glass-card p-5">
+                            <h4 class="font-semibold text-amber-400 mb-3"><i class="fas fa-heartbeat mr-2"></i>四大健康功能</h4>
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div class="flex items-center space-x-2"><i class="fas fa-circle-notch text-amber-400 text-xs"></i><span>增强微循环</span></div>
+                                <div class="flex items-center space-x-2"><i class="fas fa-bed text-amber-400 text-xs"></i><span>提高睡眠质量</span></div>
+                                <div class="flex items-center space-x-2"><i class="fas fa-sun text-amber-400 text-xs"></i><span>抗紫外线</span></div>
+                                <div class="flex items-center space-x-2"><i class="fas fa-shield-virus text-amber-400 text-xs"></i><span>天然抗菌</span></div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5">
+                            <h4 class="font-semibold text-cyan-400 mb-3"><i class="fas fa-award mr-2"></i>太极石纤维品类</h4>
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div><i class="fas fa-circle text-cyan-400 text-xs mr-1"></i>太极石纤维素纤维</div>
+                                <div><i class="fas fa-circle text-cyan-400 text-xs mr-1"></i>太极石聚酯纤维</div>
+                                <div><i class="fas fa-circle text-cyan-400 text-xs mr-1"></i>太极石锦纶</div>
+                                <div><i class="fas fa-circle text-cyan-400 text-xs mr-1"></i>太极石腈纶</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-cyan-500/10 border border-amber-500/20">
+                        <p class="text-sm text-gray-300">
+                            <i class="fas fa-trophy text-amber-400 mr-2"></i>
+                            <b>创新成果：</b>"智养文胸"与"太极石纤维塑颜面罩"分别入选2023、2024年度<b class="text-amber-400">"十大类纺织创新产品"</b>，产品广泛应用于运动、休闲、内衣、家居、家纺、非织造等领域。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Matrix -->
+        <section id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-th-large text-purple-400 mr-3"></i>产品矩阵 · 创新纤维家族
+            </h2>
+            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-amber-400 mb-2"><i class="fas fa-yin-yang"></i></div>
+                    <h4 class="font-bold mb-1">太极石纤维3.0</h4>
+                    <p class="text-xs text-gray-400">经典升级 · 提升血氧含氯，提高运动表现力</p>
+                    <span class="tag-pill mt-2 inline-block">健康能量</span>
+                </div>
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-cyan-400 mb-2"><i class="fas fa-snowflake"></i></div>
+                    <h4 class="font-bold mb-1">冰氨3.0</h4>
+                    <p class="text-xs text-gray-400">持续凉感 · 超级吸湿速干功效</p>
+                    <span class="tag-pill mt-2 inline-block">凉感系列</span>
+                </div>
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-red-400 mb-2"><i class="fas fa-fire"></i></div>
+                    <h4 class="font-bold mb-1">Sunhot 多重发热纤维</h4>
+                    <p class="text-xs text-gray-400">爆款 · 快速升温、持久锁温多重发热</p>
+                    <span class="tag-pill-warm mt-2 inline-block">热感保暖</span>
+                </div>
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-green-400 mb-2"><i class="fas fa-leaf"></i></div>
+                    <h4 class="font-bold mb-1">兰丝尔 LANSIL</h4>
+                    <p class="text-xs text-gray-400">可降解 · 抑菌环保纤维</p>
+                    <span class="tag-pill mt-2 inline-block">绿色环保</span>
+                </div>
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-amber-700 mb-2"><i class="fas fa-mug-hot"></i></div>
+                    <h4 class="font-bold mb-1">RE-COFFEE</h4>
+                    <p class="text-xs text-gray-400">咖啡渣再生纤维 · 低碳循环</p>
+                    <span class="tag-pill mt-2 inline-block">再生材料</span>
+                </div>
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-gray-300 mb-2"><i class="fas fa-recycle"></i></div>
+                    <h4 class="font-bold mb-1">再生聚酯纤维</h4>
+                    <p class="text-xs text-gray-400">回收原料制作 · 降低碳排放</p>
+                    <span class="tag-pill mt-2 inline-block">再生材料</span>
+                </div>
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-purple-400 mb-2"><i class="fas fa-atom"></i></div>
+                    <h4 class="font-bold mb-1">石墨烯多功能复合纤维</h4>
+                    <p class="text-xs text-gray-400">重磅新品 · 多功能复合</p>
+                    <span class="tag-pill-warm mt-2 inline-block">新品首发</span>
+                </div>
+                <div class="glass-card glass-card-hover p-5 relation-card">
+                    <div class="text-3xl text-pink-400 mb-2"><i class="fas fa-tint-slash"></i></div>
+                    <h4 class="font-bold mb-1">拒水单导纤维</h4>
+                    <p class="text-xs text-gray-400">防水导湿 · 户外运动首选</p>
+                    <span class="tag-pill-warm mt-2 inline-block">新品首发</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Group Architecture -->
+        <section id="group" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-sitemap text-cyan-400 mr-3"></i>集团架构 · 福建联邦三禾集团
+            </h2>
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="text-center mb-6">
+                    <div class="inline-block px-8 py-4 rounded-2xl bg-gradient-to-br from-cyan-500/30 to-purple-500/30 border-2 border-cyan-500/40">
+                        <div class="text-xl font-bold gradient-text">福建联邦三禾集团</div>
+                        <div class="text-xs text-gray-400 mt-1">13家成员企业 · 林氏三兄弟控股</div>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="relation-card border-2 border-amber-500/30">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-bold text-amber-400">太极石股份有限公司</h4>
+                            <span class="tag-pill-warm">子公司</span>
+                        </div>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-calendar mr-1"></i>2015年成立</div>
+                            <div><i class="fas fa-map-marker-alt mr-1"></i>厦门湖里区(总部)</div>
+                            <div><i class="fas fa-globe mr-1"></i>上海青浦区(全球销售中心)</div>
+                            <div><i class="fas fa-yin-yang mr-1"></i>全球唯一太极石纤维供应商</div>
+                            <div><i class="fas fa-users mr-1"></i>18人 · 启信分650</div>
+                            <div><i class="fas fa-chart-pie mr-1"></i>林荣银持股82%</div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <h4 class="font-bold mb-2">石狮富华织造</h4>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-industry mr-1"></i>织造业务</div>
+                            <div><i class="fas fa-map-marker-alt mr-1"></i>石狮市</div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <h4 class="font-bold mb-2">泉州市冠禾服饰织造</h4>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-industry mr-1"></i>专业牛仔开发生产</div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <h4 class="font-bold mb-2">冠杰纺织</h4>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-th-large mr-1"></i>专业坯布经销商</div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <h4 class="font-bold mb-2">冠丰纺织</h4>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-tshirt mr-1"></i>中档休闲面料开发生产</div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <h4 class="font-bold mb-2">无锡申雅织造</h4>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-cogs mr-1"></i>毕佳乐OMNI+丰田710喷气织机100台</div>
+                            <div><i class="fas fa-chart-line mr-1"></i>年产坯布1200万米</div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <h4 class="font-bold mb-2">宏达洗水</h4>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-water mr-1"></i>洗水后整理</div>
+                        </div>
+                    </div>
+                    <div class="relation-card">
+                        <h4 class="font-bold mb-2">后整理公司</h4>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div><i class="fas fa-map-marker-alt mr-1"></i>晋江永和马坪工业区</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center text-xs text-gray-500">
+                    <i class="fas fa-info-circle mr-1"></i>集团共13家成员企业，在广州、苏州、绍兴、成都、石家庄、香港、台湾等地设有分公司或办事处
+                </div>
+            </div>
+        </section>
+
+        <!-- Intellectual Property -->
+        <section id="intellectual" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-lightbulb text-amber-400 mr-3"></i>知识产权与创新资质
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <div class="text-4xl mb-2"><i class="fas fa-file-alt text-cyan-400"></i></div>
+                    <div class="stat-number">12</div>
+                    <div class="text-gray-400 text-sm">专利(本公司)</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <div class="text-4xl mb-2"><i class="fas fa-layer-group text-purple-400"></i></div>
+                    <div class="stat-number">47</div>
+                    <div class="text-gray-400 text-sm">专利(集团合计)</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <div class="text-4xl mb-2"><i class="fas fa-trademark text-amber-400"></i></div>
+                    <div class="stat-number">7</div>
+                    <div class="text-gray-400 text-sm">商标</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <div class="text-4xl mb-2"><i class="fas fa-certificate text-green-400"></i></div>
+                    <div class="stat-number">3</div>
+                    <div class="text-gray-400 text-sm">资质证书</div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center"><i class="fas fa-award text-amber-400 mr-2"></i>荣誉资质</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>2021 纺织企业影响力TOP500</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>2019 市级企业技术中心(泉州市)</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>泉州市专家工作站</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>纺织行业成衣染色协同创新中心</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>国家成衣染色产品开发基地</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>中国流行面料入围企业</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>纺织行业"专精特新"中小企业(太极石)</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>2024 持续创新单位(太极石)</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>2023/2024 十大类纺织创新产品入选</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>ISO9001质量管理体系 / ISO14001环境管理体系认证</span></div>
+                        <div class="flex items-start space-x-2"><i class="fas fa-trophy text-amber-400 mt-1"></i><span>2025年税务信用A级</span></div>
+                    </div>
+                </div>
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center"><i class="fas fa-handshake text-cyan-400 mr-2"></i>产学研合作</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 rounded-lg bg-white/5">
+                            <div class="font-semibold text-cyan-400 mb-1"><i class="fas fa-university mr-1"></i>高校合作</div>
+                            <div class="text-gray-400 text-xs">东华大学 · 苏州大学 · 西安工程大学 · 福州大学 · 台湾新竹大学</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-white/5">
+                            <div class="font-semibold text-purple-400 mb-1"><i class="fas fa-building mr-1"></i>战略合作</div>
+                            <div class="text-gray-400 text-xs">道康宁 · 台湾纺合实业 · 意大来 · 华升</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-white/5">
+                            <div class="font-semibold text-amber-400 mb-1"><i class="fas fa-flask mr-1"></i>协同创新</div>
+                            <div class="text-gray-400 text-xs">联合开发助眠安睡服、山海游高端中老贴身衣物等市场爆款</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-white/5">
+                            <div class="font-semibold text-green-400 mb-1"><i class="fas fa-search mr-1"></i>研发机构</div>
+                            <div class="text-gray-400 text-xs">10+ 合作研发机构 · 厦门总部 + 上海全球销售中心 + 晋江/台湾两岸事业中心</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Layout -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-handshake text-green-400 mr-3"></i>客户布局与全球渠道
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center"><i class="fas fa-flag text-red-400 mr-2"></i>国内战略客户</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-wolf-pack-battalion text-2xl text-gray-300 mb-1"></i><div class="text-sm">七匹狼</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-male text-2xl text-blue-400 mb-1"></i><div class="text-sm">九牧王</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-fire text-2xl text-red-400 mb-1"></i><div class="text-sm">劲霸</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-tshirt text-2xl text-purple-400 mb-1"></i><div class="text-sm">利郎</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-home text-2xl text-green-400 mb-1"></i><div class="text-sm">海澜之家</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-running text-2xl text-orange-400 mb-1"></i><div class="text-sm">安踏</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-bed text-2xl text-cyan-400 mb-1"></i><div class="text-sm">梦洁</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-bed text-2xl text-pink-400 mb-1"></i><div class="text-sm">罗莱</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-heart text-2xl text-red-400 mb-1"></i><div class="text-sm">爱慕</div></div>
+                        <div class="text-center p-3 rounded-lg bg-white/5"><i class="fas fa-venus text-2xl text-purple-400 mb-1"></i><div class="text-sm">欧迪芬</div></div>
+                    </div>
+                </div>
+                <div class="glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center"><i class="fas fa-globe text-blue-400 mr-2"></i>海外出口市场</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-transparent">
+                            <span><i class="fas fa-flag-it text-blue-400 mr-2"></i>意大利</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-transparent">
+                            <span><i class="fas fa-flag text-blue-400 mr-2"></i>法国</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-transparent">
+                            <span><i class="fas fa-flag text-blue-400 mr-2"></i>英国</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-transparent">
+                            <span><i class="fas fa-flag-usa text-blue-400 mr-2"></i>美国</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-red-500/10 to-transparent">
+                            <span><i class="fas fa-flag text-red-400 mr-2"></i>土耳其</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300">
+                        <i class="fas fa-info-circle mr-1"></i>产品远销意大利、法国、英国、美国和土耳其等国家和地区，太极石面料市场供不应求。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Timeline -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-history text-purple-400 mr-3"></i>发展历程
+            </h2>
+            <div class="glass-card glass-card-hover p-8">
+                <div class="grid md:grid-cols-2 gap-x-12 gap-y-2">
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">1997年</div>
+                        <div class="text-gray-300 text-sm mt-1">联邦三禾中国有限公司创建于石狮市鸳鸯池公园边，专注中高档男装休闲面料研发生产销售。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2003年</div>
+                        <div class="text-gray-300 text-sm mt-1">联邦三禾（福建）股份有限公司正式成立（11月25日），注册资本5000万元。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2005年</div>
+                        <div class="text-gray-300 text-sm mt-1">通过ISO9001:2000质量管理体系认证，质量管理再上新台阶。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2015年</div>
+                        <div class="text-gray-300 text-sm mt-1">成立子公司太极石股份有限公司（厦门），正式布局功能性健康纤维赛道，成为全球唯一太极石纤维供应商。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2019年</div>
+                        <div class="text-gray-300 text-sm mt-1">获评市级企业技术中心，建立泉州市专家工作站。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2021年</div>
+                        <div class="text-gray-300 text-sm mt-1">3条太极石面料生产线投产，产品供不应求；荣登纺织企业影响力TOP500；与台湾新竹大学开展合作。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2022年</div>
+                        <div class="text-gray-300 text-sm mt-1">太极石股份上榜纺织行业"专精特新"中小企业名单（第三批）；获评国家成衣染色产品开发基地。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2023-2024年</div>
+                        <div class="text-gray-300 text-sm mt-1">"智养文胸"、"太极石纤维塑颜面罩"连续入选年度十大类纺织创新产品；太极石股份获2024持续创新单位。</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="text-cyan-400 font-bold text-lg">2025年</div>
+                        <div class="text-gray-300 text-sm mt-1">太极石纤维3.0、冰氨3.0、Sunhot发热纤维、兰丝尔、RE-COFFEE等新品矩阵亮相上海国际纺织纱线展；获评税务信用A级。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Assessment -->
+        <section id="risk" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-shield-alt text-red-400 mr-3"></i>风险评估
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <h3 class="text-lg font-semibold mb-4">启信分评级</h3>
+                    <div class="relative w-40 h-40 mx-auto">
+                        <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="10"/>
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="url(#riskGradient)" stroke-width="10"
+                                stroke-dasharray="314" stroke-dashoffset="138" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="riskGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#f59e0b"/>
+                                    <stop offset="100%" stop-color="#ef4444"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="text-4xl font-bold gradient-text-warm">617</div>
+                            <div class="text-xs text-gray-400 mt-1">中等偏下</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-sm text-gray-400">满分1000 · 风险总量38条</div>
+                </div>
+                <div class="md:col-span-2 glass-card glass-card-hover p-6">
+                    <h3 class="text-lg font-semibold mb-4">风险明细</h3>
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <div class="risk-item" style="border-color:#ef4444">
+                            <div class="flex justify-between"><span class="text-sm text-gray-300">自身风险</span><span class="font-bold text-red-400">4条</span></div>
+                        </div>
+                        <div class="risk-item" style="border-color:#f59e0b">
+                            <div class="flex justify-between"><span class="text-sm text-gray-300">关联风险</span><span class="font-bold text-amber-400">20条</span></div>
+                        </div>
+                        <div class="risk-item" style="border-color:#f59e0b">
+                            <div class="flex justify-between"><span class="text-sm text-gray-300">司法案件</span><span class="font-bold text-amber-400">12条</span></div>
+                        </div>
+                        <div class="risk-item" style="border-color:#f59e0b">
+                            <div class="flex justify-between"><span class="text-sm text-gray-300">裁判文书</span><span class="font-bold text-amber-400">15条</span></div>
+                        </div>
+                        <div class="risk-item" style="border-color:#f59e0b">
+                            <div class="flex justify-between"><span class="text-sm text-gray-300">立案信息</span><span class="font-bold text-amber-400">11条</span></div>
+                        </div>
+                        <div class="risk-item" style="border-color:#f59e0b">
+                            <div class="flex justify-between"><span class="text-sm text-gray-300">开庭公告</span><span class="font-bold text-amber-400">10条</span></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-2 rounded bg-red-500/5 border-l-2 border-red-400">
+                            <span class="text-red-400">●</span> 2024-01-15 新增立案，案由：合同纠纷（开庭2024-02-20）
+                        </div>
+                        <div class="p-2 rounded bg-amber-500/5 border-l-2 border-amber-400">
+                            <span class="text-amber-400">●</span> 司法涉诉以合同纠纷为主，多为纺织贸易货款类纠纷
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-xs text-green-300">
+                        <i class="fas fa-check-circle mr-1"></i><b>风险提示：</b>尽管存在涉诉，但企业经营五维评价中"日常经营/企业合规/内部管理/企业存续"均稳健向好，税务信用A级，整体经营正常，风险可控。司法案件多为面料贸易常见合同纠纷，非系统性风险。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Scope -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="glass-card glass-card-hover p-6">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-file-contract text-cyan-400 mr-3"></i>经营范围
+                </h2>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    批发、零售：针纺织品、鞋帽、无纺布、熔喷布、服装及辅料、非医用日用防护口罩、劳保用品、饰品、日用品；广告设计、制作、代理、发布；基础软件开发；化妆品、纺织纤维技术研发及销售；货物或技术进出口（国家禁止或涉及行政审批的货物和技术进出口除外）。（依法须经批准的项目，经相关部门批准后方可开展经营活动）
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼 · 企业画像</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-2 max-w-2xl mx-auto">
+                    本画像基于企查查、启信宝、福建日报、石狮日报、太极石官网等公开信息综合分析生成，仅供商业参考。
+                </p>
+                <p class="text-gray-500 text-xs mb-4">
+                    数据更新时间：2026年7月 | 数据来源：企查查 · 启信宝 · BOSS直聘 · 福建日报 · 石狮日报 · 中国纺联 · taijishi.com
+                </p>
+                <div class="inline-block px-4 py-2 rounded-full bg-white/5 text-xs text-gray-400">
+                    <i class="fas fa-code mr-1"></i>创作者：39139@胜天半子 | 森罗之眼智能体生成
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Chart.js: Profit comparison
+        const profitCtx = document.getElementById('profitChart').getContext('2d');
+        new Chart(profitCtx, {
+            type: 'bar',
+            data: {
+                labels: ['传统中低档面料', '太极石功能面料'],
+                datasets: [{
+                    label: '利润率(%)',
+                    data: [10, 30],
+                    backgroundColor: ['rgba(148, 163, 184, 0.6)', 'rgba(245, 158, 11, 0.8)'],
+                    borderColor: ['rgba(148, 163, 184, 1)', 'rgba(245, 158, 11, 1)'],
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 40,
+                        ticks: { color: '#9ca3af', callback: v => v + '%' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: { ticks: { color: '#9ca3af' }, grid: { display: false } }
+                }
+            }
+        });
+
+        // Chart.js: Equity structure
+        const equityCtx = document.getElementById('equityChart').getContext('2d');
+        new Chart(equityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['林荣银 (35%)', '林荣波 (32.5%)', '林荣铜 (32.5%)'],
+                datasets: [{
+                    data: [35, 32.5, 32.5],
+                    backgroundColor: ['rgba(0, 212, 255, 0.8)', 'rgba(245, 158, 11, 0.8)', 'rgba(124, 58, 237, 0.8)'],
+                    borderColor: 'rgba(255,255,255,0.1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#9ca3af', padding: 15, font: { size: 12 } } }
+                }
+            }
+        });
+
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.stat-card', {
+            scrollTrigger: { trigger: '#overview', start: 'top 80%' },
+            y: 30, opacity: 0, duration: 0.6, stagger: 0.1
+        });
+        gsap.from('.relation-card', {
+            scrollTrigger: { trigger: '#products', start: 'top 80%' },
+            y: 40, opacity: 0, duration: 0.5, stagger: 0.08
+        });
+        gsap.from('.timeline-item', {
+            scrollTrigger: { trigger: '.glass-card', start: 'top 85%' },
+            x: -30, opacity: 0, duration: 0.5, stagger: 0.1
+        });
+
+        // Nav active link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (window.scrollY >= top) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
