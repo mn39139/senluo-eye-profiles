@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>森罗之眼战略升级方案 | 从企业画像到商业智能平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-amber {
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-number {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00d4ff;
+        }
+        .tag-pill-amber {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); }
+        }
+        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+        .mindmap-node {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .mindmap-node:hover {
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.6));
+            transform: scale(1.05);
+        }
+        .mindmap-line {
+            transition: all 0.5s ease;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            padding-bottom: 28px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4ff, transparent);
+        }
+        .timeline-item:last-child::after { display: none; }
+        .action-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(124, 58, 237, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        .action-card:hover {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+        .priority-high { border-left: 4px solid #ef4444; }
+        .priority-medium { border-left: 4px solid #f59e0b; }
+        .priority-low { border-left: 4px solid #10b981; }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors">战略总览</a>
+                    <a href="#mindmap" class="text-gray-300 hover:text-cyan-400 transition-colors">思维导图</a>
+                    <a href="#upgrade" class="text-gray-300 hover:text-cyan-400 transition-colors">方法论升级</a>
+                    <a href="#actions" class="text-gray-300 hover:text-cyan-400 transition-colors">落地行动</a>
+                    <a href="#roadmap" class="text-gray-300 hover:text-cyan-400 transition-colors">路线图</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+        <!-- Hero -->
+        <section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <span class="tag-pill-amber">战略升级</span>
+                        <span class="tag-pill">方法论沉淀</span>
+                        <span class="tag-pill">商业智能平台</span>
+                        <span class="tag-pill">组织资产</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4">
+                        从企业画像到商业智能平台
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-semibold mb-6 gradient-text">
+                        森罗之眼战略升级方案 V1.0
+                    </h2>
+                    <p class="text-gray-300 text-lg max-w-3xl mb-8">
+                        我们已经走完了从0到1的阶段——成功构建了企业画像的标准工作流。现在需要思考的是如何从1到N：让这个工作流能够<b class="text-cyan-400">规模化复制</b>，并产生<b class="text-amber-400">持续价值</b>。关键在于把"一次性的企业画像"升级为"持续的经营辅助系统"。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">3</div>
+                            <div class="text-gray-400 text-sm">已画像企业</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">3</div>
+                            <div class="text-gray-400 text-sm">升级维度</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">3</div>
+                            <div class="text-gray-400 text-sm">落地改进</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">5</div>
+                            <div class="text-gray-400 text-sm">行动项目</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mindmap Section -->
+        <section id="mindmap" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-sitemap text-cyan-400 mr-3"></i>战略思维导图
+            </h2>
+            <div class="glass-card glass-card-hover p-8">
+                <div class="relative max-w-5xl mx-auto" style="height: 500px;">
+                    <!-- SVG Mindmap -->
+                    <svg viewBox="0 0 800 500" class="w-full h-full">
+                        <!-- Center Node -->
+                        <g class="mindmap-node" id="center-node">
+                            <circle cx="400" cy="250" r="60" fill="url(#centerGrad)" />
+                            <text x="400" y="240" text-anchor="middle" fill="white" font-size="14" font-weight="bold">森罗之眼</text>
+                            <text x="400" y="265" text-anchor="middle" fill="white" font-size="12">商业智能平台</text>
+                            <defs>
+                                <radialGradient id="centerGrad">
+                                    <stop offset="0%" stop-color="#00d4ff"/>
+                                    <stop offset="100%" stop-color="#7c3aed"/>
+                                </radialGradient>
+                            </defs>
+                        </g>
+
+                        <!-- First Level Nodes -->
+                        <!-- 1. 企业画像中心 -->
+                        <g class="mindmap-node" id="node-1">
+                            <circle cx="150" cy="150" r="40" fill="rgba(0, 212, 255, 0.3)" stroke="rgba(0, 212, 255, 0.8)" stroke-width="2" />
+                            <text x="150" y="150" text-anchor="middle" fill="white" font-size="11" font-weight="bold">企业画像中心</text>
+                            <line x1="340" y1="210" x2="190" y2="110" stroke="rgba(0, 212, 255, 0.5)" stroke-width="2" class="mindmap-line" />
+                        </g>
+
+                        <!-- 2. 行业知识库 -->
+                        <g class="mindmap-node" id="node-2">
+                            <circle cx="650" cy="150" r="40" fill="rgba(245, 158, 11, 0.3)" stroke="rgba(245, 158, 11, 0.8)" stroke-width="2" />
+                            <text x="650" y="150" text-anchor="middle" fill="white" font-size="11" font-weight="bold">行业知识库</text>
+                            <line x1="460" y1="210" x2="610" y2="110" stroke="rgba(245, 158, 11, 0.5)" stroke-width="2" class="mindmap-line" />
+                        </g>
+
+                        <!-- 3. 智能方案引擎 -->
+                        <g class="mindmap-node" id="node-3">
+                            <circle cx="650" cy="350" r="40" fill="rgba(124, 58, 237, 0.3)" stroke="rgba(124, 58, 237, 0.8)" stroke-width="2" />
+                            <text x="650" y="350" text-anchor="middle" fill="white" font-size="11" font-weight="bold">智能方案引擎</text>
+                            <line x1="460" y1="290" x2="610" y2="390" stroke="rgba(124, 58, 237, 0.5)" stroke-width="2" class="mindmap-line" />
+                        </g>
+
+                        <!-- 4. 经营监控系统 -->
+                        <g class="mindmap-node" id="node-4">
+                            <circle cx="150" cy="350" r="40" fill="rgba(34, 197, 94, 0.3)" stroke="rgba(34, 197, 94, 0.8)" stroke-width="2" />
+                            <text x="150" y="350" text-anchor="middle" fill="white" font-size="11" font-weight="bold">经营监控系统</text>
+                            <line x1="340" y1="290" x2="190" y2="390" stroke="rgba(34, 197, 94, 0.5)" stroke-width="2" class="mindmap-line" />
+                        </g>
+
+                        <!-- Second Level Nodes -->
+                        <!-- 1.1 信息采集 -->
+                        <circle cx="80" cy="80" r="25" fill="rgba(0, 212, 255, 0.2)" stroke="rgba(0, 212, 255, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="80" y="80" text-anchor="middle" fill="white" font-size="8">信息采集</text>
+                        <line x1="120" y1="120" x2="80" y2="80" stroke="rgba(0, 212, 255, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 1.2 数据结构化 -->
+                        <circle cx="220" cy="80" r="25" fill="rgba(0, 212, 255, 0.2)" stroke="rgba(0, 212, 255, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="220" y="80" text-anchor="middle" fill="white" font-size="8">数据结构化</text>
+                        <line x1="180" y1="120" x2="220" y2="80" stroke="rgba(0, 212, 255, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 1.3 可视化展示 -->
+                        <circle cx="150" cy="220" r="25" fill="rgba(0, 212, 255, 0.2)" stroke="rgba(0, 212, 255, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="150" y="220" text-anchor="middle" fill="white" font-size="8">可视化展示</text>
+                        <line x1="150" y1="190" x2="150" y2="220" stroke="rgba(0, 212, 255, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 2.1 行业分析 -->
+                        <circle cx="580" cy="80" r="25" fill="rgba(245, 158, 11, 0.2)" stroke="rgba(245, 158, 11, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="580" y="80" text-anchor="middle" fill="white" font-size="8">行业分析</text>
+                        <line x1="620" y1="120" x2="580" y2="80" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 2.2 案例库 -->
+                        <circle cx="720" cy="80" r="25" fill="rgba(245, 158, 11, 0.2)" stroke="rgba(245, 158, 11, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="720" y="80" text-anchor="middle" fill="white" font-size="8">案例库</text>
+                        <line x1="680" y1="120" x2="720" y2="80" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 2.3 方案模板 -->
+                        <circle cx="650" cy="220" r="25" fill="rgba(245, 158, 11, 0.2)" stroke="rgba(245, 158, 11, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="650" y="220" text-anchor="middle" fill="white" font-size="8">方案模板</text>
+                        <line x1="650" y1="190" x2="650" y2="220" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 3.1 痛点诊断 -->
+                        <circle cx="580" cy="420" r="25" fill="rgba(124, 58, 237, 0.2)" stroke="rgba(124, 58, 237, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="580" y="420" text-anchor="middle" fill="white" font-size="8">痛点诊断</text>
+                        <line x1="620" y1="380" x2="580" y2="420" stroke="rgba(124, 58, 237, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 3.2 ROI测算 -->
+                        <circle cx="720" cy="420" r="25" fill="rgba(124, 58, 237, 0.2)" stroke="rgba(124, 58, 237, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="720" y="420" text-anchor="middle" fill="white" font-size="8">ROI测算</text>
+                        <line x1="680" y1="380" x2="720" y2="420" stroke="rgba(124, 58, 237, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 3.3 路线图生成 -->
+                        <circle cx="650" cy="280" r="25" fill="rgba(124, 58, 237, 0.2)" stroke="rgba(124, 58, 237, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="650" y="280" text-anchor="middle" fill="white" font-size="8">路线图生成</text>
+                        <line x1="650" y1="310" x2="650" y2="280" stroke="rgba(124, 58, 237, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 4.1 风险预警 -->
+                        <circle cx="80" cy="420" r="25" fill="rgba(34, 197, 94, 0.2)" stroke="rgba(34, 197, 94, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="80" y="420" text-anchor="middle" fill="white" font-size="8">风险预警</text>
+                        <line x1="120" y1="380" x2="80" y2="420" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 4.2 舆情监控 -->
+                        <circle cx="220" cy="420" r="25" fill="rgba(34, 197, 94, 0.2)" stroke="rgba(34, 197, 94, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="220" y="420" text-anchor="middle" fill="white" font-size="8">舆情监控</text>
+                        <line x1="180" y1="380" x2="220" y2="420" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1" class="mindmap-line" />
+
+                        <!-- 4.3 商机匹配 -->
+                        <circle cx="150" cy="280" r="25" fill="rgba(34, 197, 94, 0.2)" stroke="rgba(34, 197, 94, 0.6)" stroke-width="1" class="mindmap-node" />
+                        <text x="150" y="280" text-anchor="middle" fill="white" font-size="8">商机匹配</text>
+                        <line x1="150" y1="310" x2="150" y2="280" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1" class="mindmap-line" />
+                    </svg>
+                </div>
+                <div class="mt-6 text-center text-sm text-gray-400">
+                    <i class="fas fa-info-circle mr-1"></i>点击节点查看详情（交互功能待开发）
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology Upgrade -->
+        <section id="upgrade" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-arrow-up-circle text-amber-400 mr-3"></i>方法论升级：三大维度
+            </h2>
+            
+            <!-- Dimension 1: 组织资产沉淀 -->
+            <div class="glass-card glass-card-hover p-8 mb-6">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mr-4">
+                        <i class="fas fa-archive text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">维度一：组织资产沉淀升级</h3>
+                        <p class="text-gray-400 text-sm">从单企业画像文件到企业知识图谱</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-300 mb-3">📊 当前状态</h4>
+                        <div class="space-y-2 text-sm text-gray-400">
+                            <div class="flex items-start"><i class="fas fa-circle text-xs text-gray-500 mr-2 mt-1"></i>单企业画像文件（HTML+文档），相互独立</div>
+                            <div class="flex items-start"><i class="fas fa-circle text-xs text-gray-500 mr-2 mt-1"></i>信息无法关联，无法进行跨企业分析</div>
+                            <div class="flex items-start"><i class="fas fa-circle text-xs text-gray-500 mr-2 mt-1"></i>知识资产分散，难以复用</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-cyan-400 mb-3">🚀 升级方向</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start"><i class="fas fa-check-circle text-xs text-cyan-400 mr-2 mt-1"></i><b>构建企业知识图谱</b>：企业节点→产品节点→客户节点→供应链节点</div>
+                            <div class="flex items-start"><i class="fas fa-check-circle text-xs text-cyan-400 mr-2 mt-1"></i><b>行业对比仪表盘</b>：同一页面展示多家同行业企业的关键指标对比</div>
+                            <div class="flex items-start"><i class="fas fa-check-circle text-xs text-cyan-400 mr-2 mt-1"></i><b>动态标签系统</b>：支持"专精特新""高新技术""行业龙头"等智能筛选</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-cyan-300"><i class="fas fa-lightbulb mr-2"></i>核心价值：把老板智慧转化为组织资产</span>
+                        <span class="tag-pill">已沉淀3家企业</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dimension 2: 思想对齐 -->
+            <div class="glass-card glass-card-hover p-8 mb-6">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center mr-4">
+                        <i class="fas fa-users text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">维度二：思想对齐升级</h3>
+                        <p class="text-gray-400 text-sm">从模板化方案到行业定制化方案库</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <div class="action-card">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-shoe-prints text-cyan-400 mr-2"></i>
+                            <span class="font-semibold">鞋材制造业</span>
+                        </div>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div>核心痛点：材料配方优化、质检自动化</div>
+                            <div>AI赋能：AI材料研发平台、视觉质检</div>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-battery-full text-amber-400 mr-2"></i>
+                            <span class="font-semibold">蓄电池配件业</span>
+                        </div>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div>核心痛点：生产工艺优化、海外合规</div>
+                            <div>AI赋能：智能生产调度、合规引擎</div>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-shapes text-purple-400 mr-2"></i>
+                            <span class="font-semibold">纺织面料业</span>
+                        </div>
+                        <div class="text-xs text-gray-400 space-y-1">
+                            <div>核心痛点：功能纤维研发、趋势预测</div>
+                            <div>AI赋能：AI纤维研发平台、流行趋势预测</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="glass-card p-4">
+                        <h4 class="font-semibold text-amber-400 mb-2"><i class="fas fa-book-open mr-2"></i>行业知识库</h4>
+                        <p class="text-xs text-gray-400">按行业沉淀典型痛点、解决方案、成功案例</p>
+                    </div>
+                    <div class="glass-card p-4">
+                        <h4 class="font-semibold text-amber-400 mb-2"><i class="fas fa-file-template mr-2"></i>方案模板库</h4>
+                        <p class="text-xs text-gray-400">针对不同行业的标准AI赋能方案框架</p>
+                    </div>
+                    <div class="glass-card p-4">
+                        <h4 class="font-semibold text-amber-400 mb-2"><i class="fas fa-tag mr-2"></i>客户画像标签</h4>
+                        <p class="text-xs text-gray-400">为每个客户打上行业标签，自动匹配最佳方案</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-amber-300"><i class="fas fa-lightbulb mr-2"></i>核心价值：经验不可复制，但方法论可以</span>
+                        <span class="tag-pill-amber">3大行业方案库</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dimension 3: 经营辅助 -->
+            <div class="glass-card glass-card-hover p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center mr-4">
+                        <i class="fas fa-chart-line text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">维度三：经营辅助升级</h3>
+                        <p class="text-gray-400 text-sm">从静态画像到动态经营监控系统</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="space-y-4">
+                        <h4 class="font-semibold text-gray-300">📡 数据采集层</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center p-3 rounded-lg bg-white/5">
+                                <i class="fas fa-database text-cyan-400 mr-3"></i>
+                                <span>企查查/启信宝数据</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-lg bg-white/5">
+                                <i class="fas fa-newspaper text-amber-400 mr-3"></i>
+                                <span>新闻舆情采集</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-lg bg-white/5">
+                                <i class="fas fa-search text-purple-400 mr-3"></i>
+                                <span>招聘平台数据</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-semibold text-green-400">🤖 智能分析层</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center p-3 rounded-lg bg-green-500/10">
+                                <i class="fas fa-exclamation-triangle text-red-400 mr-3"></i>
+                                <span>风险预警</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-lg bg-green-500/10">
+                                <i class="fas fa-bullhorn text-amber-400 mr-3"></i>
+                                <span>舆情监控</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-lg bg-green-500/10">
+                                <i class="fas fa-trending-up text-cyan-400 mr-3"></i>
+                                <span>经营趋势分析</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-semibold text-gray-300">💡 决策支持层</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center p-3 rounded-lg bg-white/5">
+                                <i class="fas fa-target text-amber-400 mr-3"></i>
+                                <span>商机洞察</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-lg bg-white/5">
+                                <i class="fas fa-shield-alt text-red-400 mr-3"></i>
+                                <span>风险提示</span>
+                            </div>
+                            <div class="flex items-center p-3 rounded-lg bg-white/5">
+                                <i class="fas fa-lightbulb text-green-400 mr-3"></i>
+                                <span>行动建议</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-green-300"><i class="fas fa-lightbulb mr-2"></i>核心价值：从信息采集到持续服务</span>
+                        <span class="tag-pill">实时监控</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actions -->
+        <section id="actions" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-check-circle text-green-400 mr-3"></i>三大落地改进
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Action 1 -->
+                <div class="action-card priority-high">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg">建立企业画像统一管理后台</h3>
+                        <span class="tag-pill-amber">P0 优先</span>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>统一管理入口</b>：展示所有已生成画像的企业卡片</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>多维度筛选</b>：按行业/地区/规模筛选</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>关键指标对比</b>：营收/专利/信用分雷达图</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>一键跳转</b>：详细画像和售前方案</div>
+                    </div>
+                    <div class="mt-4 p-3 rounded-lg bg-white/5 text-xs text-gray-400">
+                        <i class="fas fa-clock mr-1"></i>预计耗时：1-2周
+                    </div>
+                </div>
+
+                <!-- Action 2 -->
+                <div class="action-card priority-high">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg">增强跨企业对比功能</h3>
+                        <span class="tag-pill-amber">P0 优先</span>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>行业对标模块</b>：同行业企业关键指标对比表</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>行业平均线</b>：显示行业平均水平参考线</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>定位雷达图</b>：企业在行业中的位置可视化</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>竞争力分析</b>：对比优劣势和市场定位</div>
+                    </div>
+                    <div class="mt-4 p-3 rounded-lg bg-white/5 text-xs text-gray-400">
+                        <i class="fas fa-clock mr-1"></i>预计耗时：2-3周
+                    </div>
+                </div>
+
+                <!-- Action 3 -->
+                <div class="action-card priority-medium">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg">构建AI方案生成引擎</h3>
+                        <span class="tag-pill">P1</span>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>参数化输入</b>：行业+规模+核心业务+痛点</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>智能匹配</b>：自动匹配行业最佳实践和案例</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>ROI测算</b>：自动计算投入产出比</div>
+                        <div class="flex items-start"><i class="fas fa-check text-green-400 mr-2"></i><b>路线图生成</b>：定制化实施路线图</div>
+                    </div>
+                    <div class="mt-4 p-3 rounded-lg bg-white/5 text-xs text-gray-400">
+                        <i class="fas fa-clock mr-1"></i>预计耗时：3-4周
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section id="roadmap" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-map-signs text-purple-400 mr-3"></i>战略定位升级：行动路线图
+            </h2>
+
+            <div class="glass-card glass-card-hover p-8">
+                <!-- Current vs Future -->
+                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                    <div>
+                        <div class="text-center mb-6">
+                            <div class="inline-block px-6 py-2 rounded-full bg-gray-500/20 border border-gray-500/30">
+                                <span class="text-gray-400 font-semibold">当前定位</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-eye text-6xl text-gray-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-300 mb-2">森罗之眼·企业画像</h3>
+                            <p class="text-gray-400 text-sm">一次性信息采集与展示工具</p>
+                        </div>
+                        <div class="mt-6 space-y-2 text-sm text-gray-400">
+                            <div class="flex items-center"><i class="fas fa-check-circle text-gray-500 mr-2"></i>企业画像中心（已有）</div>
+                            <div class="flex items-center"><i class="fas fa-times-circle text-gray-600 mr-2"></i>行业知识库（待建）</div>
+                            <div class="flex items-center"><i class="fas fa-times-circle text-gray-600 mr-2"></i>智能方案引擎（待建）</div>
+                            <div class="flex items-center"><i class="fas fa-times-circle text-gray-600 mr-2"></i>经营监控系统（待建）</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-center mb-6">
+                            <div class="inline-block px-6 py-2 rounded-full bg-cyan-500/20 border border-cyan-500/30">
+                                <span class="text-cyan-400 font-semibold">未来定位</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-brain text-6xl text-cyan-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold gradient-text mb-2">森罗之眼·商业智能平台</h3>
+                            <p class="text-gray-400 text-sm">持续的经营辅助与商业洞察系统</p>
+                        </div>
+                        <div class="mt-6 space-y-2 text-sm">
+                            <div class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i>企业画像中心（已有）</div>
+                            <div class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i>行业知识库（新增）</div>
+                            <div class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i>智能方案引擎（新增）</div>
+                            <div class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i>经营监控系统（新增）</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <h3 class="text-xl font-semibold mb-6">🚀 行动路线图</h3>
+                <div class="space-y-4">
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第1-2周</span>
+                            <span class="tag-pill-amber">P0</span>
+                        </div>
+                        <div class="text-gray-300">创建企业画像总览页面，构建统一管理入口，支持多维度筛选和关键指标对比</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第3-4周</span>
+                            <span class="tag-pill-amber">P0</span>
+                        </div>
+                        <div class="text-gray-300">建立鞋材/纺织/电器三大行业知识库模板，沉淀典型痛点和解决方案</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第5-6周</span>
+                            <span class="tag-pill">P1</span>
+                        </div>
+                        <div class="text-gray-300">实现跨企业对比功能，在HTML画像中增加行业对标模块和定位雷达图</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第7-9周</span>
+                            <span class="tag-pill">P1</span>
+                        </div>
+                        <div class="text-gray-300">构建AI方案生成引擎，实现参数化输入和定制化方案输出</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第10-12周</span>
+                            <span class="tag-pill">P2</span>
+                        </div>
+                        <div class="text-gray-300">开发经营监控系统，实现风险预警和舆情监控功能</div>
+                    </div>
+                </div>
+
+                <!-- Value Proposition -->
+                <div class="mt-10 p-6 rounded-xl bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20">
+                    <h4 class="text-lg font-semibold gradient-text mb-4">核心价值主张升级</h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <i class="fas fa-search text-4xl text-cyan-400 mb-3"></i>
+                            <div class="font-semibold mb-1">从"信息采集"到"洞察生成"</div>
+                            <div class="text-xs text-gray-400">不只是展示数据，而是输出商业洞察</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-refresh text-4xl text-amber-400 mb-3"></i>
+                            <div class="font-semibold mb-1">从"一次性交付"到"持续服务"</div>
+                            <div class="text-xs text-gray-400">企业画像+动态监控+商机推送</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-network-wired text-4xl text-purple-400 mb-3"></i>
+                            <div class="font-semibold mb-1">从"单点工具"到"平台生态"</div>
+                            <div class="text-xs text-gray-400">整合企业信息、行业知识、AI方案三大能力</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼 · 战略升级方案</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-2">
+                    从企业画像工具到商业智能平台的战略升级路径
+                </p>
+                <p class="text-gray-500 text-xs">
+                    版本：V1.0 | 编制日期：2026年7月 | 创作者：39139@胜天半子 | 森罗之眼智能体生成
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // GSAP animations for mindmap
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate mindmap lines drawing
+        gsap.to('.mindmap-line', {
+            scrollTrigger: { trigger: '#mindmap', start: 'top 70%' },
+            strokeDashoffset: 0,
+            duration: 2,
+            stagger: 0.1,
+            ease: 'power2.out'
+        });
+
+        // Animate mindmap nodes appearing
+        gsap.from('.mindmap-node', {
+            scrollTrigger: { trigger: '#mindmap', start: 'top 70%' },
+            scale: 0,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: 'back.out(1.7)'
+        });
+
+        // Animate cards
+        gsap.from('.action-card', {
+            scrollTrigger: { trigger: '#actions', start: 'top 80%' },
+            y: 30,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1
+        });
+
+        gsap.from('.timeline-item', {
+            scrollTrigger: { trigger: '#roadmap', start: 'top 85%' },
+            x: -30,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1
+        });
+
+        // Navigation scroll active
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (window.scrollY >= top) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-cyan-400');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('text-cyan-400');
+            });
+        });
+    </script>
+</body>
+</html>
