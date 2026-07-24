@@ -144,6 +144,48 @@
             border-color: rgba(0, 212, 255, 0.3);
             background: rgba(0, 212, 255, 0.03);
         }
+
+        /* 精准工具箱卡片 */
+        .tool-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .tool-card:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+        }
+        .tool-card .sub-block {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        /* 决策人矩阵话术卡片 */
+        .role-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .role-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .role-card-purchasing { border-top: 3px solid #f59e0b; }
+        .role-card-cto { border-top: 3px solid #3b82f6; }
+        .role-card-ceo { border-top: 3px solid #a855f7; }
+
+        .stage-flow-arrow {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <body class="text-white">
@@ -160,6 +202,8 @@
                     <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors">战略总览</a>
                     <a href="#mindmap" class="text-gray-300 hover:text-cyan-400 transition-colors">思维导图</a>
                     <a href="#upgrade" class="text-gray-300 hover:text-cyan-400 transition-colors">升级维度</a>
+                    <a href="#toolbox" class="text-gray-300 hover:text-cyan-400 transition-colors">精准工具箱</a>
+                    <a href="#roles" class="text-gray-300 hover:text-cyan-400 transition-colors">决策人话术</a>
                     <a href="#cases" class="text-gray-300 hover:text-cyan-400 transition-colors">实战案例</a>
                     <a href="#actions" class="text-gray-300 hover:text-cyan-400 transition-colors">落地行动</a>
                     <a href="#roadmap" class="text-gray-300 hover:text-cyan-400 transition-colors">路线图</a>
@@ -538,6 +582,527 @@
                         <span class="tag-pill-green">实时监控</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Precision Toolbox -->
+        <section id="toolbox" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-toolbox text-cyan-400 mr-3"></i>精准工具箱
+            </h2>
+            <p class="text-gray-400 mb-8">8大核心工具覆盖销售全流程，每个工具含使用步骤、输入输出示例、六步法映射和真实应用场景</p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Tool 1: 决策人画像工具 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-user-circle text-blue-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-400 text-lg">决策人画像工具</h4>
+                            <p class="text-xs text-gray-400">LinkedIn Sales Navigator + 企查查高管图谱</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-blue-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>使用步骤</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>输入企业名称，获取高管团队名单</li>
+                            <li>分析决策人职业背景、任职时间、汇报关系</li>
+                            <li>识别关键决策链：决策人→影响人→把关人</li>
+                            <li>获取联系方式（邮箱/电话/社交账号）</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-blue-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">晋江国盛鞋材有限公司</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">陈总(总经理)、林总(采购)、张工(技术) + 决策链图</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-blue-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Step1 目标锁定</span>
+                            <span class="tag-pill">Step2 画像速建</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-blue-500/10">
+                        <h5 class="text-xs font-semibold text-blue-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">通过企查查高管图谱发现联邦三禾纺织的林氏三兄弟共同控股（35%+32.5%+32.5%），确认CEO林总为最终决策人，采购总监为关键影响人，技术总监为把关人。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 2: 邮件追踪工具 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-envelope-open-text text-green-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-400 text-lg">邮件追踪工具</h4>
+                            <p class="text-xs text-gray-400">Yesware / Mixmax 邮件追踪系统</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-green-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>使用步骤</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>安装邮件追踪插件，配置追踪规则</li>
+                            <li>发送触达邮件，实时追踪打开状态</li>
+                            <li>分析阅读时长和点击行为，判断兴趣度</li>
+                            <li>根据数据优化发送时间和跟进策略</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-green-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">发送企业画像链接邮件</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">3次打开/停留2分15秒 → 高意向客户</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-green-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Step1 目标锁定</span>
+                            <span class="tag-pill">Step2 画像速建</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-green-500/10">
+                        <h5 class="text-xs font-semibold text-green-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">向泉州一鸣交通戴总发送画像链接后，追踪到邮件被打开3次，停留时长超过2分钟，并在附件链接点击查看，判断为高意向客户，立即安排深度沟通。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 3: MEDDPICC清单 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-clipboard-check text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-purple-400 text-lg">MEDDPICC清单</h4>
+                            <p class="text-xs text-gray-400">大客户资质认证模型（8维度）</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-purple-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>八大维度</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>M-Metrics：量化业务指标与改善目标</li>
+                            <li>E-Economic Buyer：识别经济决策人</li>
+                            <li>D-Decision Criteria：明确决策标准</li>
+                            <li>D-Decision Process：梳理决策流程</li>
+                            <li>P-Paper Process：合同与采购流程</li>
+                            <li>I-Identify Pain：确认业务痛点</li>
+                            <li>C-Champion：培育内部支持者</li>
+                            <li>C-Competition：分析竞争态势</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-purple-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">联邦三禾纺织项目信息</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">资质评分 8/8 → 优先级最高</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-purple-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Step1 目标锁定</span>
+                            <span class="tag-pill">全流程评估</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-purple-500/10">
+                        <h5 class="text-xs font-semibold text-purple-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">对联邦三禾纺织进行MEDDPICC评估：Economic Buyer为CEO林总，Champion为IT主管，Pain为产品附加值低，Competition为传统软件供应商。8项全部命中，确认为A类优先客户。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 4: CRM流程模板 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-project-diagram text-orange-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-orange-400 text-lg">CRM流程模板</h4>
+                            <p class="text-xs text-gray-400">Salesforce / 钉钉CRM 销售流程管理</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-orange-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>使用步骤</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>配置六步法销售阶段：锁定→画像→诊断→方案→汇报→经营</li>
+                            <li>录入客户信息，关联企业画像和决策人</li>
+                            <li>记录每次沟通内容，自动推进商机阶段</li>
+                            <li>生成销售漏斗报表，预测成交概率</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-orange-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">客户信息 + 沟通记录</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">销售漏斗 + 成交预测 + 下一步动作</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-orange-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">全流程管理</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-orange-500/10">
+                        <h5 class="text-xs font-semibold text-orange-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">将三家已画像企业录入CRM，建立标准化的销售阶段管理。晋江国盛鞋材当前处于Step4方案定制阶段，预计成交概率60%，计划2周内推进到Step5高层汇报。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 5: 竞品分析模板 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-chess-knight text-red-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-red-400 text-lg">竞品分析模板</h4>
+                            <p class="text-xs text-gray-400">竞争情报收集与差异化分析</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-red-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>使用步骤</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>收集竞品产品功能、定价、客户案例</li>
+                            <li>对比核心功能矩阵，识别差异化优势</li>
+                            <li>分析客户使用反馈和口碑评价</li>
+                            <li>输出竞品对标卡和差异化话术</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-red-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">3家竞品功能/价格/案例</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">差异化优势卡 + 应对话术</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-red-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Step4 方案定制</span>
+                            <span class="tag-pill">Step5 高层汇报</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-red-500/10">
+                        <h5 class="text-xs font-semibold text-red-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">针对纺织行业竞品分析，发现对手主要提供标准化SaaS产品，而森罗之眼的核心优势在于"定制化企业画像+行业深度方案"，由此提炼差异化话术，在联邦三禾项目竞争中占据主动。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 6: 痛点诊断问卷 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-stethoscope text-cyan-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-cyan-400 text-lg">痛点诊断问卷</h4>
+                            <p class="text-xs text-gray-400">标准化需求调研问卷模板</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-cyan-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>使用步骤</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>根据行业模板准备针对性问题清单</li>
+                            <li>现场访谈前30分钟发送问卷预热</li>
+                            <li>深度访谈，记录客户回答</li>
+                            <li>总结痛点清单，与客户确认对齐</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-cyan-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">泉州一鸣交通，专利28项</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">Top3痛点：工艺优化/海外合规/质检</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-cyan-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Step3 痛点诊断</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-cyan-500/10">
+                        <h5 class="text-xs font-semibold text-cyan-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">泉州一鸣交通痛点诊断：通过深度访谈技术总监戴总，发现公司专利数量不少（28项），但生产环节数字化程度较低，质检主要依靠人工。最终确认"生产工艺优化"和"海外合规"为核心痛点。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 7: ROI测算器 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-calculator text-indigo-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-indigo-400 text-lg">ROI测算器</h4>
+                            <p class="text-xs text-gray-400">投资回报率测算工具</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-indigo-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>使用步骤</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>输入预计投入金额和实施周期</li>
+                            <li>输入年节省成本和年新增收益</li>
+                            <li>自动计算ROI、投资回收期、年综合收益</li>
+                            <li>生成可视化测算报告，用于方案汇报</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-indigo-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">投入50万/周期3月/省80万/增70万</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">ROI=300%，回收期=2个月</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-indigo-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Step4 方案定制</span>
+                            <span class="tag-pill">Step5 高层汇报</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-indigo-500/10">
+                        <h5 class="text-xs font-semibold text-indigo-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">晋江国盛鞋材ROI测算：方案投入50万元，实施周期3个月。年节省成本80万（AI质检替代人工），年新增收益70万（材料研发效率提升）。综合ROI达300%，投资回收期仅2个月，获陈总高度认可。</p>
+                    </div>
+                </div>
+
+                <!-- Tool 8: 商机监控系统 -->
+                <div class="tool-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-bell text-pink-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-pink-400 text-lg">商机监控系统</h4>
+                            <p class="text-xs text-gray-400">客户动态监控与商机推送</p>
+                        </div>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-pink-300 mb-2 flex items-center"><i class="fas fa-list-ol mr-2"></i>使用步骤</h5>
+                        <ol class="text-xs text-gray-400 space-y-1 list-decimal list-inside">
+                            <li>设置监控关键词：企业名称、行业关键词、招聘关键词</li>
+                            <li>定期获取客户舆情、招聘、招投标信息</li>
+                            <li>分析信息，识别潜在商机或风险</li>
+                            <li>推送商机给客户或预警风险给销售团队</li>
+                        </ol>
+                    </div>
+                    <div class="mb-4 sub-block">
+                        <h5 class="text-xs font-semibold text-pink-300 mb-2 flex items-center"><i class="fas fa-exchange-alt mr-2"></i>输入/输出示例</h5>
+                        <div class="text-xs">
+                            <div class="flex justify-between mb-1"><span class="text-gray-500">输入：</span><span class="text-gray-300">晋江国盛鞋材 + AI + 招聘</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">输出：</span><span class="text-gray-300">客户招聘AI工程师 → AI升级商机</span></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="text-xs font-semibold text-pink-300 mb-2 flex items-center"><i class="fas fa-map mr-2"></i>六步法映射</h5>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Step6 持续经营</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-pink-500/10">
+                        <h5 class="text-xs font-semibold text-pink-300 mb-1 flex items-center"><i class="fas fa-book-open mr-2"></i>真实应用场景</h5>
+                        <p class="text-xs text-gray-300">晋江国盛鞋材商机监控：通过监控发现客户在BOSS直聘发布"AI算法工程师"招聘信息，判断客户有意向进行AI升级。及时推送AI质检升级方案，成功推动二期项目的初步沟通。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 p-4 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
+                <div class="flex items-start">
+                    <i class="fas fa-lightbulb text-cyan-400 mr-3 mt-1"></i>
+                    <div>
+                        <span class="text-sm text-cyan-300"><strong>工具组合策略：</strong></span>
+                        <span class="text-sm text-gray-300">Step1用MEDDPICC清单筛选高价值客户，再用决策人画像工具精准定位关键联系人，最后用邮件追踪工具优化触达效果，形成完整的客户获取闭环。后续阶段，痛点诊断问卷用于Step3深入调研，竞品分析用于Step4方案差异化，ROI测算器用于Step5价值呈现，商机监控用于Step6持续经营。</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Maker Role Matrix -->
+        <section id="roles" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-users text-purple-400 mr-3"></i>决策人矩阵话术
+            </h2>
+            <p class="text-gray-400 mb-8">针对三类核心决策人，设计6阶段完整对话流程，包含真实企业案例参考</p>
+
+            <!-- Purchasing Director -->
+            <div class="mb-8 glass-card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-14 h-14 rounded-lg bg-amber-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-shopping-cart text-amber-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-amber-400 text-xl">采购总监</h3>
+                        <p class="text-sm text-gray-400">成本导向型决策者 | 核心关注点：总成本(TCO)控制、供应商资质、合同条款、ROI和投资回收期</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-6 gap-4">
+                    <div class="role-card role-card-purchasing p-4">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-3 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"林总，关注到国盛鞋材在质检环节有较大的优化空间，我们服务过的晋江某鞋材企业通过AI方案实现了质检成本降低30%的效果。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 晋江国盛鞋材</p>
+                    </div>
+                    <div class="role-card role-card-purchasing p-4">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-3 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"在采购和供应链方面，目前最大的成本压力来自哪里？质检环节的人工成本占比大概多少？"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 泉州一鸣交通</p>
+                    </div>
+                    <div class="role-card role-card-purchasing p-4">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-3 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到质检环节人工成本高、效率低，这确实是行业普遍痛点。如果能将质检效率提升50%，对您的年度预算意味着什么？"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                    <div class="role-card role-card-purchasing p-4">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-3 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"基于我们的测算，投入50万，实施周期3个月，年节省成本80万，年新增收益70万，ROI达300%，投资回收期仅2个月。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 晋江国盛鞋材</p>
+                    </div>
+                    <div class="role-card role-card-purchasing p-4">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-3 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"您可能会关心价格问题。我们的方案包含AI平台+实施服务+3年维护，综合性价比非常高。签订年度框架协议可享更优惠价格。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                    <div class="role-card role-card-purchasing p-4">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-3 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"基于我们的深度沟通，我建议先启动一个试点项目验证效果，试点成功后再推进全面合作。您看什么时候方便安排试点启动会？"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 泉州一鸣交通</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 rounded-lg bg-amber-500/10">
+                    <h5 class="text-xs font-semibold text-amber-300 mb-1 flex items-center"><i class="fas fa-quote-left mr-2"></i>价值主张</h5>
+                    <p class="text-xs text-gray-300">"通过AI赋能方案，帮您降低运营成本30%以上，缩短投资回收期至2个月，同时确保供应商的稳定性和服务质量。"</p>
+                </div>
+            </div>
+
+            <!-- CTO/Technical Director -->
+            <div class="mb-8 glass-card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-14 h-14 rounded-lg bg-blue-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-code text-blue-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-400 text-xl">CTO/技术总监</h3>
+                        <p class="text-sm text-gray-400">技术导向型决策者 | 核心关注点：技术架构先进性、系统集成难度、数据安全合规、技术团队能力</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-6 gap-4">
+                    <div class="role-card role-card-cto p-4">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-3 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"戴总，研究了一鸣交通的技术架构，发现专利28项但数字化程度较低，在生产工艺优化方面有很大的提升空间。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 泉州一鸣交通</p>
+                    </div>
+                    <div class="role-card role-card-cto p-4">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-3 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前技术团队最大的瓶颈是什么？是算法能力不足，还是数据积累不够？如果能通过AI突破这些瓶颈，对业务会带来什么影响？"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 晋江国盛鞋材</p>
+                    </div>
+                    <div class="role-card role-card-cto p-4">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-3 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到目前质检主要依靠人工，效率和准确率都有提升空间。我们的AI视觉质检方案可以将质检准确率提升到99.5%以上，同时效率提升50%。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 泉州一鸣交通</p>
+                    </div>
+                    <div class="role-card role-card-cto p-4">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-3 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"我们的方案采用Transformer架构+行业预训练模型，支持与现有MES系统无缝对接，数据安全符合ISO27001标准，实施周期仅8周。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                    <div class="role-card role-card-cto p-4">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-3 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"您可能会担心系统集成难度。我们已经服务过10+家制造企业，有成熟的集成方案和API接口，可以确保无缝对接，不会影响现有业务。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 晋江国盛鞋材</p>
+                    </div>
+                    <div class="role-card role-card-cto p-4">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-3 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"我建议先进行技术POC验证，我们提供免费的测试环境和技术支持，验证通过后再签订正式合同。您看什么时候方便安排技术对接？"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 泉州一鸣交通</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 rounded-lg bg-blue-500/10">
+                    <h5 class="text-xs font-semibold text-blue-300 mb-1 flex items-center"><i class="fas fa-quote-left mr-2"></i>价值主张</h5>
+                    <p class="text-xs text-gray-300">"提供领先的AI技术架构，无缝对接现有系统，确保数据安全合规，同时输出技术能力，帮助团队成长。"</p>
+                </div>
+            </div>
+
+            <!-- CEO/General Manager -->
+            <div class="glass-card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-14 h-14 rounded-lg bg-purple-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-chart-pie text-purple-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-purple-400 text-xl">CEO/总经理</h3>
+                        <p class="text-sm text-gray-400">战略导向型决策者 | 核心关注点：行业竞争优势、业务增长潜力、战略布局和创新、投资回报率</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-6 gap-4">
+                    <div class="role-card role-card-ceo p-4">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-3 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"林总，关注到联邦三禾作为太极石纤维全球唯一供应商的独特定位，AI技术正在成为纺织行业数字化转型的关键驱动力。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-4">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-3 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"在纺织行业数字化转型的背景下，您认为最大的战略机遇和挑战是什么？AI能在其中发挥什么作用？"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-4">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-3 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到希望通过数字化提升产品附加值和生产效率，这正是我们的优势所在。我们的五大AI引擎解决方案可以全面覆盖您的需求。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-4">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-3 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"基于我们的方案，预计12个月内实现业务增长30%，帮助贵司在纺织行业建立领先的竞争优势，ROI达300%-400%。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 晋江国盛鞋材</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-4">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-3 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"您可能会担心投入风险。我们提供效果保障条款，如果方案效果未达到预期，我们承诺全额退款或免费延长服务期。"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-4">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-3 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"基于我们的深度沟通和方案测算，我建议签订年度框架合作协议，分阶段推进五大AI引擎的落地。您看什么时候方便安排签约？"</p>
+                        <p class="text-xs text-gray-500 mt-2">📌 联邦三禾纺织</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 rounded-lg bg-purple-500/10">
+                    <h5 class="text-xs font-semibold text-purple-300 mb-1 flex items-center"><i class="fas fa-quote-left mr-2"></i>价值主张</h5>
+                    <p class="text-xs text-gray-300">"通过AI赋能，帮助企业建立差异化竞争优势，驱动业务增长30%+，实现战略目标，为股东创造更大价值。"</p>
+                </div>
+            </div>
+
+            <!-- Conversation Flow Summary -->
+            <div class="mt-8 glass-card glass-card-hover p-6">
+                <h3 class="font-semibold text-lg mb-4">💬 完整对话流程示意图</h3>
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <span class="tag-pill">开场破冰</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">需求挖掘</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">痛点确认</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">方案呈现</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">异议预处理</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill-amber">促成收尾</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-4 text-center">每个阶段都应结合对应决策人的关注点，使用针对性话术，同时引用真实案例增强说服力</p>
             </div>
         </section>
 
