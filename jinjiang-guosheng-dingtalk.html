@@ -342,8 +342,8 @@
                     <div class="p-4 rounded-lg bg-white/5">
                         <h4 class="font-semibold text-purple-400 mb-2">现有IT基础</h4>
                         <ul class="text-sm text-gray-300 space-y-1">
-                            <li>• 用友U9 cloud ERP（国产化）</li>
-                            <li>• 黑湖智造 MES（制造执行）</li>
+                            <li>• 金蝶云·星空 ERP（集团化国产ERP）</li>
+                            <li>• 维尔斯 MES（制造执行系统）</li>
                             <li>• 现有考勤机系统</li>
                             <li>• OA/审批流程分散</li>
                         </ul>
@@ -546,11 +546,11 @@
                     <h4 class="font-semibold text-green-400 mb-3"><i class="fas fa-server mr-2"></i>业务系统层</h4>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
                         <div class="p-3 rounded bg-green-500/20">
-                            <div class="font-semibold text-green-300">用友U9 cloud ERP</div>
+                            <div class="font-semibold text-green-300">金蝶云·星空 ERP</div>
                             <div class="text-gray-400 mt-1">财务/采购/库存/生产</div>
                         </div>
                         <div class="p-3 rounded bg-green-500/20">
-                            <div class="font-semibold text-green-300">黑湖智造 MES</div>
+                            <div class="font-semibold text-green-300">维尔斯 MES</div>
                             <div class="text-gray-400 mt-1">生产执行/质量/设备</div>
                         </div>
                         <div class="p-3 rounded bg-green-500/20">
@@ -591,6 +591,72 @@
                 <i class="fas fa-cubes text-cyan-400 mr-3"></i>5大业务场景详细方案
             </h2>
 
+            <!-- Integration Advantage Highlight -->
+            <div class="glass-card p-6 mb-6" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(124, 58, 237, 0.08)); border-color: rgba(0, 212, 255, 0.3);">
+                <div class="flex items-start mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-star text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold gradient-text">核心集成优势：金蝶云·星空 × 钉钉官方连接器</h3>
+                        <p class="text-sm text-gray-400">基于钉钉连接平台官方"金蝶云·星空"三方连接器，实现开箱即用的深度集成</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-cyan-400 mb-2"><i class="fas fa-bolt mr-2"></i>开箱即用</h4>
+                        <p class="text-xs text-gray-400">钉钉连接平台官方提供"金蝶云·星空"三方连接器，无需从零开发API，配置式对接，2周即可完成场景一上线</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-amber-400 mb-2"><i class="fas fa-cogs mr-2"></i>配置式集成</h4>
+                        <p class="text-xs text-gray-400">触发事件（审批实例变更）→ 执行动作（采购申请暂存/付款单/凭证生成），通过FaaS Python脚本做字段映射转换</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-purple-400 mb-2"><i class="fas fa-shield-alt mr-2"></i>稳定可靠</h4>
+                        <p class="text-xs text-gray-400">官方连接器持续维护，金蝶云·星空版本升级自动适配；支持公有云与私有云部署；双向身份认证+SSL加密</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 rounded-lg bg-cyan-500/10">
+                    <h5 class="text-xs font-semibold text-cyan-300 mb-2"><i class="fas fa-code mr-2"></i>典型对接流程示例（采购申请）</h5>
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                        <span class="tag-pill">钉钉OA审批</span>
+                        <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                        <span class="tag-pill">审批实例变更</span>
+                        <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                        <span class="tag-pill">获取审批详情</span>
+                        <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                        <span class="tag-pill">FaaS字段映射</span>
+                        <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                        <span class="tag-pill-amber">金蝶采购申请暂存</span>
+                        <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                        <span class="tag-pill-green">金蝶采购订单生成</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 grid md:grid-cols-2 gap-4">
+                    <div class="p-3 rounded-lg bg-white/5">
+                        <h5 class="text-xs font-semibold text-green-300 mb-1"><i class="fas fa-check-circle mr-2"></i>金蝶云·星空核心能力</h5>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• 多组织架构：天然支持集团+海外子公司</li>
+                            <li>• 多会计准则/多币别/多税制</li>
+                            <li>• 35种标准ERP领域模型/288个业务服务构件</li>
+                            <li>• 集中采购/多工厂计划/内部交易结算</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5">
+                        <h5 class="text-xs font-semibold text-green-300 mb-1"><i class="fas fa-check-circle mr-2"></i>维尔斯MES集成方式</h5>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• OpenAPI接口：工单下发/进度反馈/质量数据</li>
+                            <li>• Webhook事件推送：设备状态/异常报警</li>
+                            <li>• 钉钉宜搭低代码：补齐工单管理移动端</li>
+                            <li>• 中间件对接：轻易云/简道云做数据中转</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <!-- Scenario 1: Organization Integration -->
             <div class="glass-card glass-card-hover p-6 mb-6">
                 <div class="flex items-center mb-4">
@@ -609,19 +675,19 @@
                         <div class="space-y-3 text-sm">
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-cyan-400 mb-1">1. 组织主数据统一</div>
-                                <div class="text-gray-400 text-xs">钉钉作为组织架构主数据源，通过API同步至用友U9 cloud（部门、人员、岗位）和黑湖MES（工号、班组、岗位权限）</div>
+                                <div class="text-gray-400 text-xs">钉钉作为组织架构主数据源，通过钉钉连接平台官方"金蝶云·星空"连接器同步部门/人员/岗位至金蝶；维尔斯MES通过API接收工号、班组、岗位权限</div>
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-cyan-400 mb-1">2. 双向同步机制</div>
-                                <div class="text-gray-400 text-xs">钉钉事件订阅：人员入职/离职/调岗自动推送至ERP/MES；ERP部门变更反向同步至钉钉</div>
+                                <div class="text-gray-400 text-xs">钉钉事件订阅：人员入职/离职/调岗自动推送至金蝶云·星空和维尔斯MES；金蝶部门变更反向同步至钉钉（基于轻易云/钉钉连接平台）</div>
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-cyan-400 mb-1">3. 角色权限映射</div>
-                                <div class="text-gray-400 text-xs">钉钉角色（如"采购员"）→ U9 cloud角色（采购订单录入）→ MES角色（领料权限），三系统权限一键开通</div>
+                                <div class="text-gray-400 text-xs">钉钉角色（如"采购员"）→ 金蝶云·星空角色（采购订单录入）→ 维尔斯MES角色（领料权限），三系统权限一键开通</div>
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-cyan-400 mb-1">4. 海外组织隔离</div>
-                                <div class="text-gray-400 text-xs">越南/印尼工厂作为独立"子公司"挂在钉钉组织树下，数据权限隔离，但纳入总部管理视图</div>
+                                <div class="text-gray-400 text-xs">越南/印尼工厂作为独立"子公司"挂在钉钉组织树下，金蝶云·星空多组织架构天然支持，数据权限隔离，但纳入总部管理视图</div>
                             </div>
                         </div>
                     </div>
@@ -647,7 +713,7 @@
                         </div>
                         <div class="mt-4 p-3 rounded-lg bg-cyan-500/10">
                             <h5 class="text-xs font-semibold text-cyan-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
-                            <p class="text-xs text-gray-300">钉钉通讯录API + 用友U9 cloud OpenAPI + 黑湖智造API；通过钉钉"集成自动化"或中间件（如轻流/简道云）实现事件总线模式</p>
+                            <p class="text-xs text-gray-300">钉钉连接平台官方"金蝶云·星空"三方连接器（审批实例变更→采购申请暂存/付款单/凭证）；维尔斯MES通过OpenAPI+Webhook对接；复杂场景辅以轻易云数据集成平台做ETL与字段映射</p>
                         </div>
                     </div>
                 </div>
@@ -671,19 +737,19 @@
                         <div class="space-y-3 text-sm">
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-amber-400 mb-1">1. 费用申请 → ERP费用凭证</div>
-                                <div class="text-gray-400 text-xs">钉钉费用申请单（差旅/招待/办公）审批通过后，自动生成U9 cloud费用凭证，关联部门/项目/预算</div>
+                                <div class="text-gray-400 text-xs">钉钉费用申请单（差旅/招待/办公）审批通过后，通过钉钉连接平台官方连接器自动生成金蝶云·星空费用凭证，关联部门/项目/预算</div>
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-amber-400 mb-1">2. 采购申请 → ERP采购订单</div>
-                                <div class="text-gray-400 text-xs">钉钉采购申请单（物料/服务）审批通过后，自动创建U9 cloud采购订单，关联供应商/物料/BOM</div>
+                                <div class="text-gray-400 text-xs">钉钉采购申请单（物料/服务）审批通过后，自动调用金蝶"采购申请暂存"接口创建采购订单，关联供应商/物料/BOM</div>
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-amber-400 mb-1">3. 付款申请 → ERP付款单</div>
-                                <div class="text-gray-400 text-xs">钉钉付款申请单审批通过后，自动生成U9 cloud付款单，三单匹配（订单/收货/发票）自动核验</div>
+                                <div class="text-gray-400 text-xs">钉钉付款申请单审批通过后，自动生成金蝶云·星空付款单，三单匹配（订单/收货/发票）自动核验</div>
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-amber-400 mb-1">4. 预算控制前置</div>
-                                <div class="text-gray-400 text-xs">钉钉审批时实时查询U9 cloud预算余额，超预算自动拦截；预算执行情况钉钉仪表盘可视化</div>
+                                <div class="text-gray-400 text-xs">钉钉审批时实时查询金蝶云·星空预算余额，超预算自动拦截；预算执行情况钉钉仪表盘可视化</div>
                             </div>
                         </div>
                     </div>
@@ -709,7 +775,7 @@
                         </div>
                         <div class="mt-4 p-3 rounded-lg bg-amber-500/10">
                             <h5 class="text-xs font-semibold text-amber-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
-                            <p class="text-xs text-gray-300">钉钉宜搭/氚云低代码表单 + U9 cloud OpenAPI（采购/付款/凭证接口）+ 钉钉BPM流程引擎；通过"单据中台"统一管理单据状态</p>
+                            <p class="text-xs text-gray-300">钉钉连接平台"金蝶云·星空"官方三方连接器：触发事件（审批实例变更）→ 执行动作（采购申请暂存/付款单/凭证）；字段映射通过FaaS Python脚本转换；金蝶OpenAPI支持公有云与私有云部署</p>
                         </div>
                     </div>
                 </div>
@@ -745,7 +811,7 @@
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-pink-400 mb-1">4. 工资核算自动化</div>
-                                <div class="text-gray-400 text-xs">考勤数据自动推送至工资核算模块，结合基本工资+绩效+加班+扣款，一键生成工资单</div>
+                                <div class="text-gray-400 text-xs">考勤数据自动推送至工资核算模块，结合基本工资+绩效+加班+扣款，一键生成工资单；可对接金蝶云·星空薪酬模块</div>
                             </div>
                             <div class="p-3 rounded-lg bg-white/5">
                                 <div class="font-semibold text-pink-400 mb-1">5. 工资条推送</div>
@@ -775,7 +841,7 @@
                         </div>
                         <div class="mt-4 p-3 rounded-lg bg-pink-500/10">
                             <h5 class="text-xs font-semibold text-pink-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
-                            <p class="text-xs text-gray-300">钉钉智能人事（考勤+薪酬模块）+ 钉钉考勤机（人脸识别）+ 钉钉审批（请假/加班/调休）；通过OpenAPI对接U9 cloud薪酬模块</p>
+                            <p class="text-xs text-gray-300">钉钉智能人事（考勤+薪酬模块）+ 钉钉考勤机（人脸识别）+ 钉钉审批（请假/加班/调休）；通过OpenAPI对接金蝶云·星空薪酬模块或第三方薪酬系统</p>
                         </div>
                     </div>
                 </div>
@@ -803,7 +869,7 @@
                             <li>• <b class="text-purple-300">签署：</b>集成e签宝/法大大电子签</li>
                             <li>• <b class="text-purple-300">归档：</b>电子合同+纸质扫描件统一存档</li>
                             <li>• <b class="text-purple-300">履约：</b>关键节点钉钉提醒（付款/到期）</li>
-                            <li>• <b class="text-purple-300">归档：</b>合同台账自动同步至U9 cloud</li>
+                            <li>• <b class="text-purple-300">归档：</b>合同台账自动同步至金蝶云·星空</li>
                         </ul>
                     </div>
                     <!-- Supplier -->
@@ -926,14 +992,14 @@
                             <td class="partial">需第三方工具</td>
                         </tr>
                         <tr>
-                            <td>与用友U9 cloud深度集成</td>
-                            <td class="yes">★ 用友官方战略合作</td>
+                            <td>与金蝶云·星空深度集成</td>
+                            <td class="yes">★ 钉钉官方三方连接器</td>
                             <td class="partial">需API开发</td>
                             <td class="partial">需API开发</td>
                         </tr>
                         <tr>
-                            <td>与黑湖MES集成</td>
-                            <td class="yes">★ 黑湖钉钉小程序</td>
+                            <td>与维尔斯MES集成</td>
+                            <td class="yes">★ API+Webhook+低代码</td>
                             <td class="partial">需API开发</td>
                             <td class="partial">需API开发</td>
                         </tr>
@@ -1024,7 +1090,7 @@
                     <i class="fas fa-trophy text-cyan-400 mr-3 mt-1"></i>
                     <div>
                         <span class="text-sm text-cyan-300"><strong>选型结论：</strong></span>
-                        <span class="text-sm text-gray-300">钉钉在5大业务场景中均具有明显优势，特别是与用友U9 cloud的官方战略合作、黑湖MES的原生小程序、考勤硬件生态、海外本地化部署、制造业行业方案等核心能力，是晋江国盛这类跨国制造集团的最优选择。</span>
+                        <span class="text-sm text-gray-300">钉钉在5大业务场景中均具有明显优势，特别是与金蝶云·星空的官方三方连接器（开箱即用）、维尔斯MES的API+低代码集成、考勤硬件生态、海外本地化部署、制造业行业方案等核心能力，是晋江国盛这类跨国制造集团的最优选择。</span>
                     </div>
                 </div>
             </div>
@@ -1089,7 +1155,7 @@
                         </div>
                         <div class="p-2 rounded bg-blue-500/10">
                             <h5 class="font-semibold text-blue-300 mb-1">价值主张</h5>
-                            <p class="text-gray-300">钉钉+用友官方合作，开箱即用API；中间件统一集成；ISO27001认证；运维成本降低40%</p>
+                            <p class="text-gray-300">钉钉+金蝶官方三方连接器，开箱即用API；维尔斯MES通过OpenAPI+Webhook对接；ISO27001认证；运维成本降低40%</p>
                         </div>
                         <div class="p-2 rounded bg-white/5">
                             <h5 class="font-semibold text-blue-300 mb-1">关键数据</h5>
@@ -1204,7 +1270,7 @@
                             <span class="tag-pill-amber">P0 优先</span>
                         </div>
                         <div class="text-gray-300 text-sm">
-                            <b>场景一实施：</b>钉钉组织架构搭建（含越南/印尼子公司），与用友U9 cloud和黑湖MES的API联调，建立组织主数据统一机制；完成5000人通讯录迁移
+                            <b>场景一实施：</b>钉钉组织架构搭建（含越南/印尼子公司），通过钉钉连接平台官方"金蝶云·星空"连接器与维尔斯MES API联调，建立组织主数据统一机制；完成5000人通讯录迁移
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1222,7 +1288,7 @@
                             <span class="tag-pill">P1</span>
                         </div>
                         <div class="text-gray-300 text-sm">
-                            <b>场景二实施：</b>开发钉钉宜搭费用/采购/付款申请表单，配置审批流，与U9 cloud凭证接口联调，实现三单匹配自动化；预算控制前置上线
+                            <b>场景二实施：</b>开发钉钉宜搭费用/采购/付款申请表单，配置审批流，通过钉钉连接平台"金蝶云·星空"官方连接器对接凭证接口，实现三单匹配自动化；预算控制前置上线
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1441,7 +1507,7 @@
                 <div class="grid md:grid-cols-6 gap-3">
                     <div class="role-card role-card-cio p-3">
                         <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">1. 开场破冰</h5>
-                        <p class="text-xs text-gray-300">"戴总，了解到您正在用友U9 cloud和黑湖MES基础上做集成，钉钉是用友官方战略合作伙伴，开箱即用。"</p>
+                        <p class="text-xs text-gray-300">"戴总，了解到您正在金蝶云·星空和维尔斯MES基础上做集成，钉钉连接平台官方提供金蝶三方连接器，开箱即用。"</p>
                     </div>
                     <div class="role-card role-card-cio p-3">
                         <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">2. 需求挖掘</h5>
@@ -1453,7 +1519,7 @@
                     </div>
                     <div class="role-card role-card-cio p-3">
                         <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">4. 方案呈现</h5>
-                        <p class="text-xs text-gray-300">"通过钉钉OpenAPI+用友U9 cloud官方接口+黑湖小程序，组织/单据/凭证三流合一，运维成本降40%。"</p>
+                        <p class="text-xs text-gray-300">"通过钉钉连接平台官方金蝶连接器+维尔斯MES OpenAPI+Webhook，组织/单据/凭证三流合一，运维成本降40%。"</p>
                     </div>
                     <div class="role-card role-card-cio p-3">
                         <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">5. 异议预处理</h5>
@@ -1558,7 +1624,7 @@
                 <div class="grid md:grid-cols-6 gap-3">
                     <div class="role-card role-card-finance p-3">
                         <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">1. 开场破冰</h5>
-                        <p class="text-xs text-gray-300">"王总，5000人集团业财一体化是关键，钉钉+用友U9 cloud官方合作，凭证自动生成。"</p>
+                        <p class="text-xs text-gray-300">"王总，5000人集团业财一体化是关键，钉钉+金蝶云·星空官方连接器，凭证自动生成。"</p>
                     </div>
                     <div class="role-card role-card-finance p-3">
                         <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">2. 需求挖掘</h5>
@@ -1570,11 +1636,11 @@
                     </div>
                     <div class="role-card role-card-finance p-3">
                         <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">4. 方案呈现</h5>
-                        <p class="text-xs text-gray-300">"钉钉审批通过即生成U9 cloud凭证，预算实时控制，月末结账从2天降至2小时，准确率100%。"</p>
+                        <p class="text-xs text-gray-300">"钉钉审批通过即生成金蝶云·星空凭证，预算实时控制，月末结账从2天降至2小时，准确率100%。"</p>
                     </div>
                     <div class="role-card role-card-finance p-3">
                         <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">5. 异议预处理</h5>
-                        <p class="text-xs text-gray-300">"担心与U9 cloud对接复杂？用友官方合作接口，开箱即用；我们提供专业实施团队保障。"</p>
+                        <p class="text-xs text-gray-300">"担心与金蝶云·星空对接复杂？钉钉官方三方连接器开箱即用；金蝶OpenAPI支持公有云与私有云部署。"</p>
                     </div>
                     <div class="role-card role-card-finance p-3">
                         <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">6. 促成收尾</h5>
