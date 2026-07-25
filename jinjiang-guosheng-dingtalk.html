@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晋江国盛钉钉数字化升级方案 | 5大场景一体化解决方案</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-number {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00d4ff;
+            display: inline-block;
+        }
+        .tag-pill-amber {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+            display: inline-block;
+        }
+        .tag-pill-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #22c55e;
+            display: inline-block;
+        }
+        .tag-pill-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(168, 85, 247, 0.2));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #f87171;
+            display: inline-block;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); }
+        }
+        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            padding-bottom: 28px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4ff, transparent);
+        }
+        .timeline-item:last-child::after { display: none; }
+
+        .scenario-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .scenario-card:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .role-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .role-card-ceo { border-top: 3px solid #a855f7; }
+        .role-card-cio { border-top: 3px solid #3b82f6; }
+        .role-card-hrd { border-top: 3px solid #ec4899; }
+        .role-card-purchase { border-top: 3px solid #f59e0b; }
+        .role-card-finance { border-top: 3px solid #10b981; }
+
+        .stage-flow-arrow {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.5rem;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .compare-table th {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #d1d5db;
+            font-size: 0.875rem;
+        }
+        .compare-table td:first-child {
+            color: #f3f4f6;
+            font-weight: 500;
+            text-align: left;
+        }
+        .compare-table td.yes { color: #22c55e; text-align: center; }
+        .compare-table td.no { color: #ef4444; text-align: center; }
+        .compare-table td.partial { color: #f59e0b; text-align: center; }
+        .compare-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .architecture-layer {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .flow-arrow-down {
+            text-align: center;
+            color: rgba(0, 212, 255, 0.5);
+            font-size: 1.5rem;
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼 · 钉钉数字化升级方案</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-5 text-sm">
+                    <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors">方案概览</a>
+                    <a href="#painpoints" class="text-gray-300 hover:text-cyan-400 transition-colors">痛点诊断</a>
+                    <a href="#architecture" class="text-gray-300 hover:text-cyan-400 transition-colors">方案架构</a>
+                    <a href="#scenarios" class="text-gray-300 hover:text-cyan-400 transition-colors">5大场景</a>
+                    <a href="#compare" class="text-gray-300 hover:text-cyan-400 transition-colors">竞品对比</a>
+                    <a href="#value" class="text-gray-300 hover:text-cyan-400 transition-colors">决策人价值</a>
+                    <a href="#roadmap" class="text-gray-300 hover:text-cyan-400 transition-colors">路线图</a>
+                    <a href="#roi" class="text-gray-300 hover:text-cyan-400 transition-colors">ROI测算</a>
+                    <a href="#scripts" class="text-gray-300 hover:text-cyan-400 transition-colors">话术矩阵</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+        <!-- Hero / Overview -->
+        <section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <span class="tag-pill-amber">定制化方案</span>
+                        <span class="tag-pill">钉钉数字化升级</span>
+                        <span class="tag-pill-green">5大业务场景</span>
+                        <span class="tag-pill">5000员工集团</span>
+                        <span class="tag-pill">跨国制造企业</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4">
+                        晋江国盛新材料科技有限公司
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-semibold mb-6 gradient-text">
+                        钉钉数字化升级一体化解决方案
+                    </h2>
+                    <p class="text-gray-300 text-lg max-w-3xl mb-8">
+                        针对<b class="text-cyan-400">5000员工规模、8处生产基地、3个海外工厂（越南/印尼）</b>的跨国制造集团，提供覆盖<b class="text-amber-400">组织架构集成、费控流程对接、考勤工资一体化、合同供应商访客管理、海外组织支持</b>5大核心场景的钉钉数字化升级方案，实现"<b class="text-purple-400">一个平台管全球、一套流程通业财、一个入口办所有</b>"的数字化转型目标。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">5000</div>
+                            <div class="text-gray-400 text-sm">员工规模</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">8</div>
+                            <div class="text-gray-400 text-sm">生产基地</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">3</div>
+                            <div class="text-gray-400 text-sm">海外工厂</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">5</div>
+                            <div class="text-gray-400 text-sm">业务场景</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">12周</div>
+                            <div class="text-gray-400 text-sm">实施周期</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 Scenarios Quick Preview -->
+            <div class="grid md:grid-cols-5 gap-4 mt-8">
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-sitemap text-cyan-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-cyan-400">场景一</h3>
+                        <p class="text-xs text-gray-400">组织架构集成</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">钉钉组织架构与ERP/MES系统人员数据打通</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-file-invoice-dollar text-amber-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-amber-400">场景二</h3>
+                        <p class="text-xs text-gray-400">费控流程对接</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">费用/采购/付款申请与ERP凭证自动同步</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-clock text-pink-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-pink-400">场景三</h3>
+                        <p class="text-xs text-gray-400">考勤工资一体化</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">考勤数据自动汇总对接工资核算</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-handshake text-purple-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-purple-400">场景四</h3>
+                        <p class="text-xs text-gray-400">三库管理</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">合同/供应商/访客全生命周期管理</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-globe-asia text-green-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-green-400">场景五</h3>
+                        <p class="text-xs text-gray-400">海外组织支持</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">越南/印尼海外工厂合规部署</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pain Points Diagnosis -->
+        <section id="painpoints" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-stethoscope text-amber-400 mr-3"></i>客户情境与痛点诊断
+            </h2>
+
+            <!-- Current State -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-industry text-cyan-400 mr-2"></i>企业现状盘点
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-cyan-400 mb-2">规模与布局</h4>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 员工规模 5000人</li>
+                            <li>• 生产基地 8处（含3个海外）</li>
+                            <li>• 年产能 1000万双</li>
+                            <li>• 全球品牌客户 40+</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-amber-400 mb-2">海外业务</h4>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 越南工厂（鞋材制造）</li>
+                            <li>• 印尼工厂（鞋材制造）</li>
+                            <li>• 第3处海外基地（待确认）</li>
+                            <li>• 进出口备案齐全</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-purple-400 mb-2">现有IT基础</h4>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 用友U9 cloud ERP（国产化）</li>
+                            <li>• 黑湖智造 MES（制造执行）</li>
+                            <li>• 现有考勤机系统</li>
+                            <li>• OA/审批流程分散</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 Pain Points -->
+            <div class="grid md:grid-cols-5 gap-4">
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-sitemap text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点1：组织数据割裂</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 钉钉组织架构与ERP/MES人员数据需手动同步</li>
+                        <li>• 新员工入职需在3个系统重复录入</li>
+                        <li>• 部门调整后数据不一致</li>
+                        <li>• 离职人员账号清理滞后</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-file-invoice-dollar text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点2：费控断点</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 费用/采购/付款审批在钉钉，凭证在ERP</li>
+                        <li>• 财务手工二次录入，易出错</li>
+                        <li>• 预算执行情况无法实时查询</li>
+                        <li>• 三单匹配（订单/收货/发票）困难</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-clock text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点3：考勤工资断点</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 考勤机数据导出Excel，HR手工统计</li>
+                        <li>• 多工厂考勤规则不一致</li>
+                        <li>• 加班/调休/请假数据易错</li>
+                        <li>• 工资核算耗时3-5天</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-handshake text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点4：三库分散</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 合同纸质归档，到期无提醒</li>
+                        <li>• 供应商信息分散在Excel</li>
+                        <li>• 访客登记纸质，无法追溯</li>
+                        <li>• 缺乏统一管理入口</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-globe-asia text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点5：海外管控难</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 越南/印尼工厂数据回传慢</li>
+                        <li>• 跨国审批时差大</li>
+                        <li>• 当地合规要求不清</li>
+                        <li>• 总部管控力弱</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Digital Maturity -->
+            <div class="mt-6 glass-card p-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-chart-line text-cyan-400 mr-2"></i>数字化成熟度评估
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3">当前成熟度：1.5/5（起步期）</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>组织协同</span><span class="text-amber-400">40%</span></div>
+                                <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-2/5 bg-gradient-to-r from-amber-500 to-orange-400 rounded-full"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>业财一体化</span><span class="text-red-400">20%</span></div>
+                                <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-1/5 bg-gradient-to-r from-red-500 to-orange-400 rounded-full"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>HR数字化</span><span class="text-red-400">30%</span></div>
+                                <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-3/10 bg-gradient-to-r from-red-500 to-pink-400 rounded-full" style="width:30%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-cyan-400 mb-3">目标成熟度：4.5/5（领先期）</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>组织协同</span><span class="text-cyan-400">90%</span></div>
+                                <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-11/12 bg-gradient-to-r from-cyan-500 to-blue-400 rounded-full"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>业财一体化</span><span class="text-cyan-400">85%</span></div>
+                                <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-5/6 bg-gradient-to-r from-cyan-500 to-green-400 rounded-full"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1"><span>HR数字化</span><span class="text-cyan-400">90%</span></div>
+                                <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-11/12 bg-gradient-to-r from-cyan-500 to-purple-400 rounded-full"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Architecture -->
+        <section id="architecture" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-layer-group text-purple-400 mr-3"></i>总体方案架构
+            </h2>
+
+            <div class="glass-card glass-card-hover p-6">
+                <p class="text-gray-400 mb-6 text-sm">基于"一个平台（钉钉）+ 一套中台（业财一体）+ 五大场景"的总体架构，实现组织、流程、数据的全面打通</p>
+
+                <!-- Layer 1: User Layer -->
+                <div class="architecture-layer">
+                    <h4 class="font-semibold text-cyan-400 mb-3"><i class="fas fa-users mr-2"></i>用户接入层</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-xs">
+                        <div class="p-2 rounded bg-cyan-500/10">CEO/总经理</div>
+                        <div class="p-2 rounded bg-cyan-500/10">CIO/IT总监</div>
+                        <div class="p-2 rounded bg-cyan-500/10">HR总监</div>
+                        <div class="p-2 rounded bg-cyan-500/10">采购总监</div>
+                        <div class="p-2 rounded bg-cyan-500/10">财务总监</div>
+                    </div>
+                    <div class="grid grid-cols-3 md:grid-cols-6 gap-3 text-center text-xs mt-2">
+                        <div class="p-2 rounded bg-white/5">国内员工</div>
+                        <div class="p-2 rounded bg-white/5">越南员工</div>
+                        <div class="p-2 rounded bg-white/5">印尼员工</div>
+                        <div class="p-2 rounded bg-white/5">供应商</div>
+                        <div class="p-2 rounded bg-white/5">访客</div>
+                        <div class="p-2 rounded bg-white/5">外部合作伙伴</div>
+                    </div>
+                </div>
+                <div class="flow-arrow-down"><i class="fas fa-arrow-down"></i></div>
+
+                <!-- Layer 2: DingTalk Platform -->
+                <div class="architecture-layer" style="background: rgba(0, 212, 255, 0.08); border-color: rgba(0, 212, 255, 0.3);">
+                    <h4 class="font-semibold text-cyan-400 mb-3"><i class="fab fa-bluetooth-b mr-2"></i>钉钉数字化平台层（核心）</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
+                        <div class="p-3 rounded bg-cyan-500/20">
+                            <div class="font-semibold text-cyan-300">组织管理</div>
+                            <div class="text-gray-400 mt-1">组织架构/部门/人员/角色/海外子公司</div>
+                        </div>
+                        <div class="p-3 rounded bg-cyan-500/20">
+                            <div class="font-semibold text-cyan-300">流程引擎</div>
+                            <div class="text-gray-400 mt-1">审批/表单/规则引擎/低代码</div>
+                        </div>
+                        <div class="p-3 rounded bg-cyan-500/20">
+                            <div class="font-semibold text-cyan-300">协同办公</div>
+                            <div class="text-gray-400 mt-1">消息/文档/会议/日历/任务</div>
+                        </div>
+                        <div class="p-3 rounded bg-cyan-500/20">
+                            <div class="font-semibold text-cyan-300">应用市场</div>
+                            <div class="text-gray-400 mt-1">OA/HRM/CRM/费控/合同等</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-arrow-down"><i class="fas fa-arrow-down"></i></div>
+
+                <!-- Layer 3: Integration Middle Platform -->
+                <div class="architecture-layer" style="background: rgba(124, 58, 237, 0.08); border-color: rgba(124, 58, 237, 0.3);">
+                    <h4 class="font-semibold text-purple-400 mb-3"><i class="fas fa-random mr-2"></i>集成中台层（业财一体枢纽）</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-xs">
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">组织主数据</div>
+                            <div class="text-gray-400 mt-1">统一组织/人员数据源</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">审批中台</div>
+                            <div class="text-gray-400 mt-1">统一审批流转/规则配置</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">单据中台</div>
+                            <div class="text-gray-400 mt-1">费用/采购/付款单据流转</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">数据中台</div>
+                            <div class="text-gray-400 mt-1">BI分析/数据治理</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">API网关</div>
+                            <div class="text-gray-400 mt-1">RESTful/事件订阅</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-arrow-down"><i class="fas fa-arrow-down"></i></div>
+
+                <!-- Layer 4: Business Systems -->
+                <div class="architecture-layer" style="background: rgba(34, 197, 94, 0.08); border-color: rgba(34, 197, 94, 0.3);">
+                    <h4 class="font-semibold text-green-400 mb-3"><i class="fas fa-server mr-2"></i>业务系统层</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-xs">
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">用友U9 cloud ERP</div>
+                            <div class="text-gray-400 mt-1">财务/采购/库存/生产</div>
+                        </div>
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">黑湖智造 MES</div>
+                            <div class="text-gray-400 mt-1">生产执行/质量/设备</div>
+                        </div>
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">钉钉智能人事</div>
+                            <div class="text-gray-400 mt-1">考勤/工资/绩效</div>
+                        </div>
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">钉钉OA套件</div>
+                            <div class="text-gray-400 mt-1">合同/供应商/访客</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Value Proposition -->
+            <div class="grid md:grid-cols-3 gap-4 mt-6">
+                <div class="glass-card p-6 text-center">
+                    <i class="fas fa-globe text-4xl text-cyan-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">一个平台管全球</h4>
+                    <p class="text-xs text-gray-400">国内+越南+印尼统一钉钉组织，总部一屏管控</p>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <i class="fas fa-link text-4xl text-amber-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">一套流程通业财</h4>
+                    <p class="text-xs text-gray-400">审批→凭证→账务自动流转，告别二次录入</p>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <i class="fas fa-door-open text-4xl text-purple-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">一个入口办所有</h4>
+                    <p class="text-xs text-gray-400">员工/管理层/外部伙伴，钉钉统一入口</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Scenarios Detail -->
+        <section id="scenarios" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-cubes text-cyan-400 mr-3"></i>5大业务场景详细方案
+            </h2>
+
+            <!-- Scenario 1: Organization Integration -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-sitemap text-cyan-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-cyan-400">场景一：钉钉组织架构与ERP/MES系统集成</h3>
+                        <p class="text-sm text-gray-400">打通组织主数据，实现人员一处维护、三处生效</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-cyan-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>集成方案</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">1. 组织主数据统一</div>
+                                <div class="text-gray-400 text-xs">钉钉作为组织架构主数据源，通过API同步至用友U9 cloud（部门、人员、岗位）和黑湖MES（工号、班组、岗位权限）</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">2. 双向同步机制</div>
+                                <div class="text-gray-400 text-xs">钉钉事件订阅：人员入职/离职/调岗自动推送至ERP/MES；ERP部门变更反向同步至钉钉</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">3. 角色权限映射</div>
+                                <div class="text-gray-400 text-xs">钉钉角色（如"采购员"）→ U9 cloud角色（采购订单录入）→ MES角色（领料权限），三系统权限一键开通</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">4. 海外组织隔离</div>
+                                <div class="text-gray-400 text-xs">越南/印尼工厂作为独立"子公司"挂在钉钉组织树下，数据权限隔离，但纳入总部管理视图</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">90%</div>
+                                <div class="text-xs text-gray-400">人员数据一致性</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">3→1</div>
+                                <div class="text-xs text-gray-400">录入系统数</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">5min</div>
+                                <div class="text-xs text-gray-400">入职开通时效</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">0</div>
+                                <div class="text-xs text-gray-400">离职账号滞留</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-cyan-500/10">
+                            <h5 class="text-xs font-semibold text-cyan-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">钉钉通讯录API + 用友U9 cloud OpenAPI + 黑湖智造API；通过钉钉"集成自动化"或中间件（如轻流/简道云）实现事件总线模式</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 2: Finance Process Integration -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-file-invoice-dollar text-amber-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-amber-400">场景二：费用/采购/付款申请与ERP对接</h3>
+                        <p class="text-sm text-gray-400">审批流自动生成ERP凭证，实现业财一体化</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-amber-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>三大单据对接方案</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">1. 费用申请 → ERP费用凭证</div>
+                                <div class="text-gray-400 text-xs">钉钉费用申请单（差旅/招待/办公）审批通过后，自动生成U9 cloud费用凭证，关联部门/项目/预算</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">2. 采购申请 → ERP采购订单</div>
+                                <div class="text-gray-400 text-xs">钉钉采购申请单（物料/服务）审批通过后，自动创建U9 cloud采购订单，关联供应商/物料/BOM</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">3. 付款申请 → ERP付款单</div>
+                                <div class="text-gray-400 text-xs">钉钉付款申请单审批通过后，自动生成U9 cloud付款单，三单匹配（订单/收货/发票）自动核验</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">4. 预算控制前置</div>
+                                <div class="text-gray-400 text-xs">钉钉审批时实时查询U9 cloud预算余额，超预算自动拦截；预算执行情况钉钉仪表盘可视化</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">100%</div>
+                                <div class="text-xs text-gray-400">凭证自动生成率</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">2天→2h</div>
+                                <div class="text-xs text-gray-400">月末结账时效</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">0</div>
+                                <div class="text-xs text-gray-400">二次录入</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">实时</div>
+                                <div class="text-xs text-gray-400">预算控制</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-amber-500/10">
+                            <h5 class="text-xs font-semibold text-amber-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">钉钉宜搭/氚云低代码表单 + U9 cloud OpenAPI（采购/付款/凭证接口）+ 钉钉BPM流程引擎；通过"单据中台"统一管理单据状态</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 3: Attendance & Payroll -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-clock text-pink-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-pink-400">场景三：钉钉考勤与工资核算一体化</h3>
+                        <p class="text-sm text-gray-400">考勤数据自动汇总，对接工资核算，多工厂统一管理</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-pink-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>考勤工资一体化方案</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">1. 多工厂考勤规则配置</div>
+                                <div class="text-gray-400 text-xs">国内工厂（标准工时/综合工时）、越南工厂（当地劳动法）、印尼工厂（当地劳动法）独立配置考勤组</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">2. 考勤方式多元化</div>
+                                <div class="text-gray-400 text-xs">办公室：钉钉GPS+WIFI打卡；车间：钉钉人脸识别打卡；外勤：钉钉定位打卡</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">3. 加班/请假/调休自动核算</div>
+                                <div class="text-gray-400 text-xs">审批通过后自动计入考勤汇总，按规则换算加班费/调休额度，避免人工统计错误</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">4. 工资核算自动化</div>
+                                <div class="text-gray-400 text-xs">考勤数据自动推送至工资核算模块，结合基本工资+绩效+加班+扣款，一键生成工资单</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">5. 工资条推送</div>
+                                <div class="text-gray-400 text-xs">工资单通过钉钉工作通知推送给员工，支持电子签收，海外员工本地语言展示</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">3天→2h</div>
+                                <div class="text-xs text-gray-400">月度考勤核算</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">5天→1天</div>
+                                <div class="text-xs text-gray-400">工资核算周期</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">99.9%</div>
+                                <div class="text-xs text-gray-400">考勤数据准确率</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">8→1</div>
+                                <div class="text-xs text-gray-400">考勤系统数</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-pink-500/10">
+                            <h5 class="text-xs font-semibold text-pink-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">钉钉智能人事（考勤+薪酬模块）+ 钉钉考勤机（人脸识别）+ 钉钉审批（请假/加班/调休）；通过OpenAPI对接U9 cloud薪酬模块</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 4: Contract/Supplier/Visitor Management -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-handshake text-purple-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-purple-400">场景四：合同/供应商/访客三库管理</h3>
+                        <p class="text-sm text-gray-400">三库统一管理，全生命周期数字化</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <!-- Contract -->
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-purple-400 mb-3"><i class="fas fa-file-contract mr-2"></i>合同管理</h4>
+                        <ul class="text-xs text-gray-400 space-y-2">
+                            <li>• <b class="text-purple-300">起草：</b>钉钉宜搭合同模板，在线填写</li>
+                            <li>• <b class="text-purple-300">审批：</b>按金额/类型智能流转</li>
+                            <li>• <b class="text-purple-300">签署：</b>集成e签宝/法大大电子签</li>
+                            <li>• <b class="text-purple-300">归档：</b>电子合同+纸质扫描件统一存档</li>
+                            <li>• <b class="text-purple-300">履约：</b>关键节点钉钉提醒（付款/到期）</li>
+                            <li>• <b class="text-purple-300">归档：</b>合同台账自动同步至U9 cloud</li>
+                        </ul>
+                    </div>
+                    <!-- Supplier -->
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-purple-400 mb-3"><i class="fas fa-truck mr-2"></i>供应商管理</h4>
+                        <ul class="text-xs text-gray-400 space-y-2">
+                            <li>• <b class="text-purple-300">准入：</b>供应商自助注册钉钉表单</li>
+                            <li>• <b class="text-purple-300">资质：</b>营业执照/ISO等资质在线上传</li>
+                            <li>• <b class="text-purple-300">分级：</b>A/B/C/D四级分类管理</li>
+                            <li>• <b class="text-purple-300">评估：</b>季度评估问卷自动推送</li>
+                            <li>• <b class="text-purple-300">协同：</b>供应商通过钉钉外协接收订单</li>
+                            <li>• <b class="text-purple-300">对账：</b>对账单在线确认+电子签</li>
+                        </ul>
+                    </div>
+                    <!-- Visitor -->
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-purple-400 mb-3"><i class="fas fa-user-tie mr-2"></i>访客管理</h4>
+                        <ul class="text-xs text-gray-400 space-y-2">
+                            <li>• <b class="text-purple-300">预约：</b>被访人钉钉在线预约</li>
+                            <li>• <b class="text-purple-300">登记：</b>访客扫码自助登记</li>
+                            <li>• <b class="text-purple-300">核验：</b>身份证+人脸识别双重</li>
+                            <li>• <b class="text-purple-300">通行：</b>二维码通行证+闸机联动</li>
+                            <li>• <b class="text-purple-300">签离：</b>扫码签离，自动统计时长</li>
+                            <li>• <b class="text-purple-300">分析：</b>访客流量/频次数据分析</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 rounded-lg bg-purple-500/10">
+                    <h4 class="text-sm font-semibold text-purple-300 mb-2"><i class="fas fa-lightbulb mr-2"></i>三库联动价值</h4>
+                    <p class="text-xs text-gray-300">合同台账关联供应商档案，付款时自动核验合同状态；访客来访记录关联供应商评估，作为协同效率指标；三库数据沉淀为集团供应商画像，支撑战略采购决策。</p>
+                </div>
+            </div>
+
+            <!-- Scenario 5: Overseas Support -->
+            <div class="glass-card glass-card-hover p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-globe-asia text-green-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-green-400">场景五：越南/印尼海外组织支持</h3>
+                        <p class="text-sm text-gray-400">钉钉全球化部署，海外工厂合规运营</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-check-circle mr-2"></i>钉钉海外支持能力</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-green-500/10">
+                                <div class="font-semibold text-green-400 mb-1">✅ 全球可用性</div>
+                                <div class="text-gray-400 text-xs">钉钉国际版（DingTalk Lite）支持越南/印尼本地下载，全球节点加速，无访问障碍</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10">
+                                <div class="font-semibold text-green-400 mb-1">✅ 多语言支持</div>
+                                <div class="text-gray-400 text-xs">支持中文/英文/越南语/印尼语，海外员工本地语言界面，重要消息自动翻译</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10">
+                                <div class="font-semibold text-green-400 mb-1">✅ 合规与数据安全</div>
+                                <div class="text-gray-400 text-xs">符合越南《数据保护法》和印尼《个人数据保护法》；海外数据本地化存储选项；通过ISO27001/ISO27701认证</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10">
+                                <div class="font-semibold text-green-400 mb-1">✅ 跨国协同</div>
+                                <div class="text-gray-400 text-xs">总部-海外工厂统一通讯录，跨国审批流转，多时区会议预约，文档云端协同</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10">
+                                <div class="font-semibold text-green-400 mb-1">✅ 本地支付集成</div>
+                                <div class="text-gray-400 text-xs">对接越南Momo/ZaloPay，印尼GoPay/OVO等本地支付方式，支持本地货币结算</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-map-marker-alt mr-2"></i>海外部署方案</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-green-400 mb-1">越南工厂</div>
+                                <div class="text-gray-400 text-xs">独立子公司架构，本地管理员，越南语界面，对接越南劳动法考勤规则</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-green-400 mb-1">印尼工厂</div>
+                                <div class="text-gray-400 text-xs">独立子公司架构，本地管理员，印尼语界面，对接印尼BPJS社保</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-green-400 mb-1">总部管控</div>
+                                <div class="text-gray-400 text-xs">总部通过"集团管理台"查看全球组织架构、关键审批、经营数据，实现"一屏管控全球"</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-green-500/10">
+                            <h5 class="text-xs font-semibold text-green-300 mb-1"><i class="fas fa-shield-alt mr-2"></i>合规要点</h5>
+                            <p class="text-xs text-gray-300">建议聘请当地法务顾问审核数据出境合规；员工数据本地化存储；跨境数据传输使用钉钉企业版加密通道</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitor Comparison -->
+        <section id="compare" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-balance-scale text-amber-400 mr-3"></i>竞品对比：钉钉 vs 企业微信 vs 飞书
+            </h2>
+            <p class="text-gray-400 mb-6 text-sm">基于5大业务场景的厂商能力对比，钉钉在制造业集团、跨国协同、生态成熟度方面优势突出</p>
+
+            <div class="glass-card p-6 overflow-x-auto">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>能力维度</th>
+                            <th>钉钉（推荐）</th>
+                            <th>企业微信</th>
+                            <th>飞书</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>组织架构集成能力</td>
+                            <td class="yes">★ 主数据源 + 双向同步</td>
+                            <td class="partial">单向同步</td>
+                            <td class="partial">需第三方工具</td>
+                        </tr>
+                        <tr>
+                            <td>与用友U9 cloud深度集成</td>
+                            <td class="yes">★ 用友官方战略合作</td>
+                            <td class="partial">需API开发</td>
+                            <td class="partial">需API开发</td>
+                        </tr>
+                        <tr>
+                            <td>与黑湖MES集成</td>
+                            <td class="yes">★ 黑湖钉钉小程序</td>
+                            <td class="partial">需API开发</td>
+                            <td class="partial">需API开发</td>
+                        </tr>
+                        <tr>
+                            <td>费用/采购/付款流程对接ERP</td>
+                            <td class="yes">★ 宜搭/氚云低代码原生支持</td>
+                            <td class="partial">需第三方应用</td>
+                            <td class="partial">需多维表格开发</td>
+                        </tr>
+                        <tr>
+                            <td>考勤硬件生态</td>
+                            <td class="yes">★ 钉钉考勤机/人脸闸机</td>
+                            <td class="partial">部分支持</td>
+                            <td class="no">不支持</td>
+                        </tr>
+                        <tr>
+                            <td>工资核算模块</td>
+                            <td class="yes">★ 智能人事薪酬模块</td>
+                            <td class="partial">需第三方</td>
+                            <td class="partial">需第三方</td>
+                        </tr>
+                        <tr>
+                            <td>电子合同集成</td>
+                            <td class="yes">★ e签宝/法大大原生集成</td>
+                            <td class="partial">需API对接</td>
+                            <td class="partial">需API对接</td>
+                        </tr>
+                        <tr>
+                            <td>访客管理硬件联动</td>
+                            <td class="yes">★ 闸机/打印机联动</td>
+                            <td class="partial">部分支持</td>
+                            <td class="no">不支持</td>
+                        </tr>
+                        <tr>
+                            <td>越南/印尼本地化部署</td>
+                            <td class="yes">★ DingTalk Lite国际版</td>
+                            <td class="partial">WeChat Work海外版</td>
+                            <td class="partial">Lark国际版</td>
+                        </tr>
+                        <tr>
+                            <td>越南语/印尼语界面</td>
+                            <td class="yes">★ 原生支持</td>
+                            <td class="no">仅中英文</td>
+                            <td class="partial">部分支持</td>
+                        </tr>
+                        <tr>
+                            <td>跨国审批流转</td>
+                            <td class="yes">★ 跨组织审批原生支持</td>
+                            <td class="partial">需配置</td>
+                            <td class="yes">原生支持</td>
+                        </tr>
+                        <tr>
+                            <td>制造业行业方案</td>
+                            <td class="yes">★ 制造业解决方案包</td>
+                            <td class="partial">通用方案</td>
+                            <td class="partial">偏互联网</td>
+                        </tr>
+                        <tr>
+                            <td>集团多组织管控</td>
+                            <td class="yes">★ 集团管理台</td>
+                            <td class="partial">需多企业切换</td>
+                            <td class="yes">支持</td>
+                        </tr>
+                        <tr>
+                            <td>应用生态成熟度</td>
+                            <td class="yes">★ 1000+应用</td>
+                            <td class="partial">500+应用</td>
+                            <td class="partial">300+应用</td>
+                        </tr>
+                        <tr>
+                            <td>本地化服务支持</td>
+                            <td class="yes">★ 福建本地服务商</td>
+                            <td class="partial">官方为主</td>
+                            <td class="partial">官方为主</td>
+                        </tr>
+                        <tr>
+                            <td><b>综合评分</b></td>
+                            <td class="yes"><b>★ 9.5/10（推荐）</b></td>
+                            <td class="partial">6.5/10</td>
+                            <td class="partial">7.0/10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 p-4 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
+                <div class="flex items-start">
+                    <i class="fas fa-trophy text-cyan-400 mr-3 mt-1"></i>
+                    <div>
+                        <span class="text-sm text-cyan-300"><strong>选型结论：</strong></span>
+                        <span class="text-sm text-gray-300">钉钉在5大业务场景中均具有明显优势，特别是与用友U9 cloud的官方战略合作、黑湖MES的原生小程序、考勤硬件生态、海外本地化部署、制造业行业方案等核心能力，是晋江国盛这类跨国制造集团的最优选择。</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Maker Value Matrix -->
+        <section id="value" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-user-tie text-purple-400 mr-3"></i>5类决策人价值矩阵
+            </h2>
+            <p class="text-gray-400 mb-8 text-sm">针对CEO/CIO/HRD/采购总监/财务总监5类核心决策人，设计差异化价值主张和关注点回应</p>
+
+            <div class="grid md:grid-cols-5 gap-4">
+                <!-- CEO -->
+                <div class="role-card role-card-ceo p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-user-tie text-purple-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-purple-400">CEO/总经理</h4>
+                        <p class="text-xs text-gray-400">战略决策层</p>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-purple-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 集团管控力提升</li>
+                                <li>• 海外业务合规</li>
+                                <li>• 数字化转型战略</li>
+                                <li>• 投资回报率</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-purple-500/10">
+                            <h5 class="font-semibold text-purple-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">一个平台管全球8大基地，总部一屏管控；12周完成数字化转型，ROI 280%</p>
+                        </div>
+                        <div class="p-2 rounded bg-white/5">
+                            <h5 class="font-semibold text-purple-300 mb-1">关键数据</h5>
+                            <p class="text-gray-300">管理效率+50% | 决策周期-60% | 海外合规100%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CIO -->
+                <div class="role-card role-card-cio p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-code text-blue-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-blue-400">CIO/IT总监</h4>
+                        <p class="text-xs text-gray-400">技术决策层</p>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-blue-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 系统集成难度</li>
+                                <li>• 数据安全合规</li>
+                                <li>• 运维成本</li>
+                                <li>• 技术架构先进性</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-blue-500/10">
+                            <h5 class="font-semibold text-blue-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">钉钉+用友官方合作，开箱即用API；中间件统一集成；ISO27001认证；运维成本降低40%</p>
+                        </div>
+                        <div class="p-2 rounded bg-white/5">
+                            <h5 class="font-semibold text-blue-300 mb-1">关键数据</h5>
+                            <p class="text-gray-300">集成开发-50% | 运维-40% | 安全事件0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HRD -->
+                <div class="role-card role-card-hrd p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-pink-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-users-cog text-pink-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-pink-400">HR总监</h4>
+                        <p class="text-xs text-gray-400">人力决策层</p>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-pink-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 5000人考勤管理</li>
+                                <li>• 多工厂多规则</li>
+                                <li>• 海外员工本地化</li>
+                                <li>• 工资核算效率</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-pink-500/10">
+                            <h5 class="font-semibold text-pink-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">考勤工资一体化，月度核算从5天降至1天；海外员工越南语/印尼语界面；电子工资条自动推送</p>
+                        </div>
+                        <div class="p-2 rounded bg-white/5">
+                            <h5 class="font-semibold text-pink-300 mb-1">关键数据</h5>
+                            <p class="text-gray-300">考勤准确率99.9% | 核算-80% | 员工满意度+30%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase -->
+                <div class="role-card role-card-purchase p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-shopping-cart text-amber-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-amber-400">采购总监</h4>
+                        <p class="text-xs text-gray-400">采购决策层</p>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-amber-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 供应商管理效率</li>
+                                <li>• 合同履约监控</li>
+                                <li>• 采购流程合规</li>
+                                <li>• 三单匹配</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-amber-500/10">
+                            <h5 class="font-semibold text-amber-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">供应商全生命周期在线协同；合同到期自动提醒；三单匹配自动化，采购合规率100%</p>
+                        </div>
+                        <div class="p-2 rounded bg-white/5">
+                            <h5 class="font-semibold text-amber-300 mb-1">关键数据</h5>
+                            <p class="text-gray-300">采购周期-30% | 合同遗失0 | 合规100%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finance -->
+                <div class="role-card role-card-finance p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-coins text-green-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-green-400">财务总监</h4>
+                        <p class="text-xs text-gray-400">财务决策层</p>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-green-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 业财一体化</li>
+                                <li>• 预算实时控制</li>
+                                <li>• 月末结账效率</li>
+                                <li>• 资金安全</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-green-500/10">
+                            <h5 class="font-semibold text-green-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">费用/采购/付款单据自动生成ERP凭证；预算实时控制；月末结账从2天降至2小时</p>
+                        </div>
+                        <div class="p-2 rounded bg-white/5">
+                            <h5 class="font-semibold text-green-300 mb-1">关键数据</h5>
+                            <p class="text-gray-300">凭证自动100% | 结账-92% | 预算超支0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Roadmap -->
+        <section id="roadmap" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-map-signs text-cyan-400 mr-3"></i>12周实施路线图
+            </h2>
+
+            <div class="glass-card glass-card-hover p-8">
+                <div class="space-y-4">
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第1-2周：组织与基础</span>
+                            <span class="tag-pill-amber">P0 优先</span>
+                        </div>
+                        <div class="text-gray-300 text-sm">
+                            <b>场景一实施：</b>钉钉组织架构搭建（含越南/印尼子公司），与用友U9 cloud和黑湖MES的API联调，建立组织主数据统一机制；完成5000人通讯录迁移
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第3-4周：考勤工资</span>
+                            <span class="tag-pill-amber">P0 优先</span>
+                        </div>
+                        <div class="text-gray-300 text-sm">
+                            <b>场景三实施：</b>部署钉钉考勤机（车间人脸识别），配置多工厂考勤规则（国内/越南/印尼），完成考勤-工资核算流程联调，上线电子工资条
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第5-7周：费控流程</span>
+                            <span class="tag-pill">P1</span>
+                        </div>
+                        <div class="text-gray-300 text-sm">
+                            <b>场景二实施：</b>开发钉钉宜搭费用/采购/付款申请表单，配置审批流，与U9 cloud凭证接口联调，实现三单匹配自动化；预算控制前置上线
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第8-10周：三库管理</span>
+                            <span class="tag-pill">P1</span>
+                        </div>
+                        <div class="text-gray-300 text-sm">
+                            <b>场景四实施：</b>上线合同管理（含电子签）、供应商全生命周期管理、访客管理（含闸机联动）；三库数据沉淀与联动
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第11-12周：海外部署与培训</span>
+                            <span class="tag-pill-green">P2</span>
+                        </div>
+                        <div class="text-gray-300 text-sm">
+                            <b>场景五实施：</b>越南/印尼工厂本地化部署（语言/合规/数据），完成海外员工培训（越南语/印尼语），总部集团管理台上线，全集团正式切换
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestones -->
+                <div class="mt-8 grid md:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-lg bg-cyan-500/10 text-center">
+                        <div class="text-2xl font-bold text-cyan-400">2周</div>
+                        <div class="text-xs text-gray-400">里程碑1：组织打通</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-amber-500/10 text-center">
+                        <div class="text-2xl font-bold text-amber-400">4周</div>
+                        <div class="text-xs text-gray-400">里程碑2：HR上线</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-purple-500/10 text-center">
+                        <div class="text-2xl font-bold text-purple-400">10周</div>
+                        <div class="text-xs text-gray-400">里程碑3：业财一体</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-green-500/10 text-center">
+                        <div class="text-2xl font-bold text-green-400">12周</div>
+                        <div class="text-xs text-gray-400">里程碑4：全球上线</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Calculator -->
+        <section id="roi" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-calculator text-green-400 mr-3"></i>ROI测算与价值量化
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Investment -->
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-coins text-amber-400 mr-2"></i>投入测算
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">钉钉企业版授权（5000人/年）</span>
+                            <span class="text-amber-400">60万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">实施服务费（5大场景）</span>
+                            <span class="text-amber-400">80万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">考勤机等硬件（30台）</span>
+                            <span class="text-amber-400">15万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">第三方应用（e签宝/氚云等）</span>
+                            <span class="text-amber-400">10万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">培训与变更管理</span>
+                            <span class="text-amber-400">5万</span>
+                        </div>
+                        <div class="border-t border-white/10 pt-3 flex justify-between">
+                            <span class="font-bold text-white">总投入（首年）</span>
+                            <span class="font-bold text-amber-400 text-lg">170万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefit -->
+                <div class="glass-card p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-gift text-green-400 mr-2"></i>收益测算（年化）
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">HR效率提升（5天→1天）</span>
+                            <span class="text-green-400">+80万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">财务效率提升（结账-92%）</span>
+                            <span class="text-green-400">+60万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">采购合规提升（合规100%）</span>
+                            <span class="text-green-400">+50万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">海外管控加强（决策-60%）</span>
+                            <span class="text-green-400">+150万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">IT运维成本下降（-40%）</span>
+                            <span class="text-green-400">+40万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-3 rounded bg-white/5">
+                            <span class="text-gray-300">纸质/差旅节省</span>
+                            <span class="text-green-400">+25万</span>
+                        </div>
+                        <div class="border-t border-white/10 pt-3 flex justify-between">
+                            <span class="font-bold text-white">年化总收益</span>
+                            <span class="font-bold text-green-400 text-lg">405万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI Summary -->
+            <div class="glass-card p-6 mt-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-chart-pie text-cyan-400 mr-2"></i>综合ROI分析
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="p-4 rounded-lg bg-cyan-500/10 text-center">
+                        <div class="text-3xl font-bold text-cyan-400">138%</div>
+                        <div class="text-xs text-gray-400 mt-1">首年ROI</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-green-500/10 text-center">
+                        <div class="text-3xl font-bold text-green-400">9个月</div>
+                        <div class="text-xs text-gray-400 mt-1">投资回收期</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-purple-500/10 text-center">
+                        <div class="text-3xl font-bold text-purple-400">280%</div>
+                        <div class="text-xs text-gray-400 mt-1">3年综合ROI</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-amber-500/10 text-center">
+                        <div class="text-3xl font-bold text-amber-400">2.4倍</div>
+                        <div class="text-xs text-gray-400 mt-1">收益投入比</div>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-lg bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20">
+                    <h4 class="font-semibold text-cyan-300 mb-2 flex items-center"><i class="fas fa-lightbulb mr-2"></i>价值亮点</h4>
+                    <ul class="text-sm text-gray-300 space-y-1">
+                        <li>• <b>9个月回本：</b>首年ROI 138%，9个月即可收回全部投入</li>
+                        <li>• <b>3年累计收益1215万：</b>综合ROI 280%，3年总收益是投入的2.4倍</li>
+                        <li>• <b>战略价值：</b>支持集团全球化扩张，为未来新工厂快速复制奠定数字化基础</li>
+                        <li>• <b>隐性价值：</b>数据资产沉淀、决策效率提升、风险防控加强等隐性价值未计入</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts Matrix -->
+        <section id="scripts" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-comments text-purple-400 mr-3"></i>决策人话术矩阵
+            </h2>
+            <p class="text-gray-400 mb-8 text-sm">5类决策人 × 6阶段对话流程，含真实场景话术</p>
+
+            <!-- CEO Scripts -->
+            <div class="glass-card p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-user-tie text-purple-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-purple-400 text-xl">CEO/总经理</h3>
+                        <p class="text-sm text-gray-400">战略视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"张总，关注到国盛作为5000人规模、8大基地（含越南/印尼）的跨国鞋材龙头，数字化转型是支撑全球化扩张的关键。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"在海外扩张过程中，您觉得最大的管控挑战是什么？总部与海外工厂的协同效率如何？"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到海外管控弱、数据回传慢、决策周期长，这正是钉钉集团方案的强项：一个平台管全球，一屏决策。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"基于钉钉集团方案，12周完成5大场景数字化，首年ROI 138%，9个月回本，3年综合ROI 280%。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"投入170万看似不小，但相比海外工厂管控风险和效率损失，这是必要投资。我们提供效果保障条款。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议先启动POC验证场景一和场景五（海外），2周见效后再签正式合同。本周可否安排技术对接会？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CIO Scripts -->
+            <div class="glass-card p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-code text-blue-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-400 text-xl">CIO/IT总监</h3>
+                        <p class="text-sm text-gray-400">技术视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"戴总，了解到您正在用友U9 cloud和黑湖MES基础上做集成，钉钉是用友官方战略合作伙伴，开箱即用。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前IT团队最大的集成瓶颈是什么？组织数据是否还在多系统重复维护？"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到组织数据三处维护、API开发量大，这正是钉钉集成中台的价值：事件订阅+API网关，开发量降低50%。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"通过钉钉OpenAPI+用友U9 cloud官方接口+黑湖小程序，组织/单据/凭证三流合一，运维成本降40%。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"担心数据安全？钉钉通过ISO27001/ISO27701认证，海外数据本地化选项，福建本地服务商7×24支持。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议先做场景一的技术POC，2周验证组织数据打通效果，是否本周安排架构师对接？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HRD Scripts -->
+            <div class="glass-card p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-users-cog text-pink-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-pink-400 text-xl">HR总监</h3>
+                        <p class="text-sm text-gray-400">人力视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-hrd p-3">
+                        <h5 class="text-xs font-semibold text-pink-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"陈总，5000人考勤+多工厂多规则+海外员工，HR工作量大，钉钉智能人事可一站式解决。"</p>
+                    </div>
+                    <div class="role-card role-card-hrd p-3">
+                        <h5 class="text-xs font-semibold text-pink-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前月度考勤核算和工资发放要几天？越南/印尼员工怎么发工资条？加班统计准确率如何？"</p>
+                    </div>
+                    <div class="role-card role-card-hrd p-3">
+                        <h5 class="text-xs font-semibold text-pink-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到考勤核算3天、工资5天、海外纸质工资条，这正是钉钉智能人事的核心场景。"</p>
+                    </div>
+                    <div class="role-card role-card-hrd p-3">
+                        <h5 class="text-xs font-semibold text-pink-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"钉钉考勤+工资核算一体化，月度核算从5天降至1天；海外员工越南语/印尼语工资条自动推送。"</p>
+                    </div>
+                    <div class="role-card role-card-hrd p-3">
+                        <h5 class="text-xs font-semibold text-pink-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"担心考勤机迁移？钉钉考勤机支持人脸识别，30台设备2周部署完成，员工无感切换。"</p>
+                    </div>
+                    <div class="role-card role-card-hrd p-3">
+                        <h5 class="text-xs font-semibold text-pink-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议先在总部试点场景三，1个月验证效果后推广到越南/印尼工厂。本周可否安排HR系统对接？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purchase Scripts -->
+            <div class="glass-card p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-shopping-cart text-amber-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-amber-400 text-xl">采购总监</h3>
+                        <p class="text-sm text-gray-400">采购视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-purchase p-3">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"林总，40+全球品牌客户的供应链协同、合同履约监控、供应商管理，钉钉三库一体化方案。"</p>
+                    </div>
+                    <div class="role-card role-card-purchase p-3">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前供应商管理用什么系统？合同到期有没有提醒？三单匹配（订单/收货/发票）怎么做？"</p>
+                    </div>
+                    <div class="role-card role-card-purchase p-3">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到合同纸质归档、供应商Excel管理、三单匹配难，这正是钉钉三库管理的强项。"</p>
+                    </div>
+                    <div class="role-card role-card-purchase p-3">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"合同电子签+到期提醒、供应商全生命周期在线协同、三单匹配自动化，合规率100%。"</p>
+                    </div>
+                    <div class="role-card role-card-purchase p-3">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"担心供应商不会用钉钉？供应商通过钉钉外协，无需安装App，微信扫码即可协同。"</p>
+                    </div>
+                    <div class="role-card role-card-purchase p-3">
+                        <h5 class="text-xs font-semibold text-amber-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议先上线合同管理（最快见效），2周完成。可否安排合同科对接需求调研？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finance Scripts -->
+            <div class="glass-card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-coins text-green-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-green-400 text-xl">财务总监</h3>
+                        <p class="text-sm text-gray-400">财务视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-finance p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"王总，5000人集团业财一体化是关键，钉钉+用友U9 cloud官方合作，凭证自动生成。"</p>
+                    </div>
+                    <div class="role-card role-card-finance p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前月末结账要几天？费用/采购/付款单据是否需要二次录入？预算控制是否实时？"</p>
+                    </div>
+                    <div class="role-card role-card-finance p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到结账2天、二次录入易错、预算超支无预警，这正是业财一体化方案的核心价值。"</p>
+                    </div>
+                    <div class="role-card role-card-finance p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"钉钉审批通过即生成U9 cloud凭证，预算实时控制，月末结账从2天降至2小时，准确率100%。"</p>
+                    </div>
+                    <div class="role-card role-card-finance p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"担心与U9 cloud对接复杂？用友官方合作接口，开箱即用；我们提供专业实施团队保障。"</p>
+                    </div>
+                    <div class="role-card role-card-finance p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议先做场景二的费用申请POC，2周验证凭证自动生成效果。可否本周安排财务对接？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Flow Summary -->
+            <div class="mt-8 glass-card glass-card-hover p-6">
+                <h3 class="font-semibold text-lg mb-4">💬 完整对话流程示意图</h3>
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <span class="tag-pill">开场破冰</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">需求挖掘</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">痛点确认</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">方案呈现</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">异议预处理</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill-amber">促成收尾</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-4 text-center">每类决策人都遵循6阶段对话流程，话术针对其核心关注点定制，全程嵌入真实业务场景和量化数据</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼 · 钉钉数字化升级方案</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-2">
+                    为晋江国盛新材料科技有限公司定制 | 5大业务场景一体化解决方案
+                </p>
+                <p class="text-gray-500 text-xs">
+                    版本：V1.0 | 编制日期：2026年7月 | 基于5000人集团/8大基地/3海外工厂实战场景 | 森罗之眼智能体生成
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Card entrance animation
+        gsap.utils.toArray('.scenario-card, .role-card, .glass-card').forEach(card => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 30,
+                duration: 0.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        });
+    </script>
+</body>
+</html>
