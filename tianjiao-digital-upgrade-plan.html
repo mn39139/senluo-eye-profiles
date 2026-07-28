@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天娇妇幼数字化升级方案 | 5套系统集成+AI价值释放</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00d4ff, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-number {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(236, 72, 153, 0.2));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00d4ff;
+            display: inline-block;
+        }
+        .tag-pill-amber {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+            display: inline-block;
+        }
+        .tag-pill-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #22c55e;
+            display: inline-block;
+        }
+        .tag-pill-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(168, 85, 247, 0.2));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #f87171;
+            display: inline-block;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(236, 72, 153, 0.5); }
+        }
+        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            padding-bottom: 28px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #ec4899);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4ff, transparent);
+        }
+        .timeline-item:last-child::after { display: none; }
+
+        .scenario-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .scenario-card:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .role-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .role-card-ceo { border-top: 3px solid #a855f7; }
+        .role-card-cio { border-top: 3px solid #3b82f6; }
+        .role-card-cfo { border-top: 3px solid #10b981; }
+        .role-card-coo { border-top: 3px solid #f59e0b; }
+        .role-card-cmo { border-top: 3px solid #ec4899; }
+
+        .stage-flow-arrow {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.5rem;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .compare-table th {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #d1d5db;
+            font-size: 0.875rem;
+        }
+        .compare-table td:first-child {
+            color: #f3f4f6;
+            font-weight: 500;
+            text-align: left;
+        }
+        .compare-table td.yes { color: #22c55e; text-align: center; }
+        .compare-table td.no { color: #ef4444; text-align: center; }
+        .compare-table td.partial { color: #f59e0b; text-align: center; }
+        .compare-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .architecture-layer {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .flow-arrow-down {
+            text-align: center;
+            color: rgba(0, 212, 255, 0.5);
+            font-size: 1.5rem;
+            margin: 4px 0;
+        }
+
+        .system-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s;
+        }
+        .system-card:hover {
+            border-color: rgba(0, 212, 255, 0.4);
+            background: rgba(0, 212, 255, 0.04);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-pink-500 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼 · 天娇妇幼数字化升级方案</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-5 text-sm">
+                    <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors">方案概览</a>
+                    <a href="#current" class="text-gray-300 hover:text-cyan-400 transition-colors">现状盘点</a>
+                    <a href="#painpoints" class="text-gray-300 hover:text-cyan-400 transition-colors">痛点诊断</a>
+                    <a href="#architecture" class="text-gray-300 hover:text-cyan-400 transition-colors">方案架构</a>
+                    <a href="#scenarios" class="text-gray-300 hover:text-cyan-400 transition-colors">5大场景</a>
+                    <a href="#roadmap" class="text-gray-300 hover:text-cyan-400 transition-colors">路线图</a>
+                    <a href="#roi" class="text-gray-300 hover:text-cyan-400 transition-colors">ROI测算</a>
+                    <a href="#scripts" class="text-gray-300 hover:text-cyan-400 transition-colors">话术矩阵</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+        <!-- Hero / Overview -->
+        <section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <span class="tag-pill-amber">已有5套系统</span>
+                        <span class="tag-pill">集成升级</span>
+                        <span class="tag-pill-green">AI价值释放</span>
+                        <span class="tag-pill">妇幼用品行业</span>
+                        <span class="tag-pill">业财一体化</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4">
+                        天娇妇幼用品有限公司
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-semibold mb-6 gradient-text">
+                        数字化集成升级与AI价值释放一体化方案
+                    </h2>
+                    <p class="text-gray-300 text-lg max-w-3xl mb-8">
+                        针对已部署<b class="text-cyan-400">金蝶云·星空ERP（200万投入）+聚水潭电商+蓝凌OA+钉钉+DeepSeek本地部署</b>5套系统的现状，提供"<b class="text-amber-400">系统打通+业财一体+AI赋能</b>"三位一体升级方案，破解"<b class="text-pink-400">系统孤岛、数据断点、AI价值未释放</b>"三大核心痛点，8个月实现"5套系统→1个智能中枢"的数字化跃迁。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">5</div>
+                            <div class="text-gray-400 text-sm">现有系统数</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">500万+</div>
+                            <div class="text-gray-400 text-sm">已投入成本</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">5</div>
+                            <div class="text-gray-400 text-sm">升级场景</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">8个月</div>
+                            <div class="text-gray-400 text-sm">实施周期</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">3.2倍</div>
+                            <div class="text-gray-400 text-sm">3年ROI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 Scenarios Quick Preview -->
+            <div class="grid md:grid-cols-5 gap-4 mt-8">
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-shopping-bag text-cyan-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-cyan-400">场景一</h3>
+                        <p class="text-xs text-gray-400">业财一体打通</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">聚水潭×金蝶云星空电商订单自动生成凭证</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-mobile-screen text-amber-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-amber-400">场景二</h3>
+                        <p class="text-xs text-gray-400">移动办公升级</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">蓝凌OA×钉钉深度协同与知识管理</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-brain text-pink-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-pink-400">场景三</h3>
+                        <p class="text-xs text-gray-400">AI研发质检</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">DeepSeek赋能产品研发与质量检测</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-database text-purple-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-purple-400">场景四</h3>
+                        <p class="text-xs text-gray-400">数据中台</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">5套系统数据整合，统一决策视图</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-comments text-green-400 text-3xl mb-2"></i>
+                        <h3 class="font-bold text-green-400">场景五</h3>
+                        <p class="text-xs text-gray-400">智能客服营销</p>
+                    </div>
+                    <p class="text-xs text-gray-300 text-center">DeepSeek+聚水潭客户画像个性化营销</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current State Assessment -->
+        <section id="current" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-clipboard-check text-cyan-400 mr-3"></i>客户现状盘点：5套系统资产清查
+            </h2>
+
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-layer-group text-cyan-400 mr-2"></i>现有系统资产清单
+                </h3>
+                <div class="grid md:grid-cols-5 gap-4">
+                    <div class="system-card">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-cloud text-blue-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-400 text-sm">金蝶云·星空</h4>
+                                <p class="text-xs text-gray-400">ERP</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• 投入：<b class="text-blue-300">200万</b></li>
+                            <li>• 用途：财务/采购/库存</li>
+                            <li>• 状态：已部署运行</li>
+                            <li>• 痛点：电商数据未打通</li>
+                        </ul>
+                    </div>
+                    <div class="system-card">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-shopping-cart text-amber-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-amber-400 text-sm">聚水潭</h4>
+                                <p class="text-xs text-gray-400">电商ERP</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• 用途：电商订单管理</li>
+                            <li>• 覆盖：天猫/京东/抖音</li>
+                            <li>• 状态：已部署运行</li>
+                            <li>• 痛点：订单需二次录入</li>
+                        </ul>
+                    </div>
+                    <div class="system-card">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-file-signature text-purple-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-purple-400 text-sm">蓝凌OA</h4>
+                                <p class="text-xs text-gray-400">协同办公</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• 用途：流程审批/知识</li>
+                            <li>• 集成：与钉钉已对接</li>
+                            <li>• 状态：已部署运行</li>
+                            <li>• 痛点：未与业务系统打通</li>
+                        </ul>
+                    </div>
+                    <div class="system-card">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center mr-3">
+                                <i class="fab fa-bluetooth-b text-cyan-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-cyan-400 text-sm">钉钉</h4>
+                                <p class="text-xs text-gray-400">移动协同</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• 用途：即时通讯/考勤</li>
+                            <li>• 集成：与蓝凌已对接</li>
+                            <li>• 状态：已部署运行</li>
+                            <li>• 痛点：仅基础协同</li>
+                        </ul>
+                    </div>
+                    <div class="system-card">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center mr-3">
+                                <i class="fas fa-brain text-pink-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-pink-400 text-sm">DeepSeek</h4>
+                                <p class="text-xs text-gray-400">本地部署AI</p>
+                            </div>
+                        </div>
+                        <ul class="text-xs text-gray-400 space-y-1">
+                            <li>• 部署：本地化部署</li>
+                            <li>• 能力：大模型推理</li>
+                            <li>• 状态：已部署运行</li>
+                            <li>• 痛点：仅基础对话</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry Assumption -->
+            <div class="glass-card p-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-industry text-amber-400 mr-2"></i>行业与企业规模假设
+                </h3>
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-cyan-400 mb-2">主营产品</h4>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 纸尿裤（婴儿/成人）</li>
+                            <li>• 卫生巾/护垫</li>
+                            <li>• 湿巾/棉柔巾</li>
+                            <li>• 婴幼儿护理用品</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-amber-400 mb-2">规模假设</h4>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 年营收：3-8亿</li>
+                            <li>• 员工规模：800-1500人</li>
+                            <li>• 工厂：1-3个国内</li>
+                            <li>• SKU：500-2000个</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-purple-400 mb-2">渠道结构</h4>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 电商：天猫/京东/抖音</li>
+                            <li>• 线下：经销/商超/母婴店</li>
+                            <li>• 海外：跨境电商</li>
+                            <li>• OEM/ODM代工</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-lg bg-white/5">
+                        <h4 class="font-semibold text-pink-400 mb-2">数字化投入</h4>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• 金蝶云星空：200万</li>
+                            <li>• 聚水潭：30万/年</li>
+                            <li>• 蓝凌OA：50万</li>
+                            <li>• DeepSeek：80万硬件</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                    <p class="text-xs text-gray-300">
+                        <i class="fas fa-info-circle text-amber-400 mr-2"></i>
+                        <b>说明：</b>以上行业与企业规模为基于客户已有系统投入（金蝶云星空200万推断为中大型企业）的合理假设，实际方案细化需与客户确认具体数据。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pain Points Diagnosis -->
+        <section id="painpoints" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-stethoscope text-red-400 mr-3"></i>痛点诊断：5套系统的"孤岛困局"
+            </h2>
+
+            <div class="grid md:grid-cols-5 gap-4">
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-unlink text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点1：业财断点</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 聚水潭电商订单需手工录入金蝶</li>
+                        <li>• 月末对账5-7天，错误率8%</li>
+                        <li>• 库存账实差异率2.7%</li>
+                        <li>• 财务无法实时看到电商销售</li>
+                        <li>• 平台佣金/推广费手工分摊</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-mobile-screen text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点2：协同未深化</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 蓝凌OA仅做基础审批</li>
+                        <li>• 流程与业务系统未打通</li>
+                        <li>• 知识文档沉淀不足</li>
+                        <li>• 钉钉仅用作IM工具</li>
+                        <li>• 移动办公价值未释放</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-brain text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点3：AI未释放</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• DeepSeek仅用于基础对话</li>
+                        <li>• 未对接企业知识库</li>
+                        <li>• 研发/质检场景未应用</li>
+                        <li>• 客服仍为人工处理</li>
+                        <li>• 80万硬件投入ROI低</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-database text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点4：数据孤岛</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 5套系统5套数据</li>
+                        <li>• 缺乏统一数据中台</li>
+                        <li>• 经营报表手工汇总</li>
+                        <li>• 决策依赖经验而非数据</li>
+                        <li>• 客户画像碎片化</li>
+                    </ul>
+                </div>
+                <div class="scenario-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-headset text-red-400 text-3xl mb-2"></i>
+                        <h4 class="font-bold text-red-400">痛点5：客服营销弱</h4>
+                    </div>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li>• 客服响应慢，满意度低</li>
+                        <li>• 电商客户数据未整合</li>
+                        <li>• 缺乏个性化营销</li>
+                        <li>• 复购率提升乏力</li>
+                        <li>• 售后问题处理效率低</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pain Point Impact -->
+            <div class="mt-6 glass-card p-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-chart-line text-red-400 mr-2"></i>痛点带来的业务损失（年化估算）
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-lg bg-red-500/10 text-center">
+                        <div class="text-2xl font-bold text-red-400">120万</div>
+                        <div class="text-xs text-gray-400 mt-1">财务人工对账成本</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-red-500/10 text-center">
+                        <div class="text-2xl font-bold text-red-400">80万</div>
+                        <div class="text-xs text-gray-400 mt-1">库存差异损失</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-red-500/10 text-center">
+                        <div class="text-2xl font-bold text-red-400">200万</div>
+                        <div class="text-xs text-gray-400 mt-1">AI能力闲置机会成本</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-red-500/10 text-center">
+                        <div class="text-2xl font-bold text-red-400">150万</div>
+                        <div class="text-xs text-gray-400 mt-1">客服低效+客户流失</div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+                    <p class="text-sm text-gray-300">
+                        <i class="fas fa-exclamation-triangle text-red-400 mr-2"></i>
+                        <b>核心问题：</b>已投入500万的5套系统，因"孤岛困局"每年造成约550万的隐性损失，且错失AI赋能带来的增长机会。本方案核心价值就是<b class="text-cyan-400">"盘活存量资产、释放AI价值"</b>。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Architecture -->
+        <section id="architecture" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-layer-group text-purple-400 mr-3"></i>总体方案架构
+            </h2>
+
+            <div class="glass-card glass-card-hover p-6">
+                <p class="text-gray-400 mb-6 text-sm">基于"盘活存量+集成中台+AI赋能"的总体架构，5套系统不推翻重建，而是通过集成中台打通数据，通过AI中台释放价值</p>
+
+                <!-- Layer 1: User Layer -->
+                <div class="architecture-layer">
+                    <h4 class="font-semibold text-cyan-400 mb-3"><i class="fas fa-users mr-2"></i>用户接入层</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-xs">
+                        <div class="p-2 rounded bg-cyan-500/10">CEO/总经理</div>
+                        <div class="p-2 rounded bg-cyan-500/10">CIO/IT总监</div>
+                        <div class="p-2 rounded bg-cyan-500/10">CFO/财务总监</div>
+                        <div class="p-2 rounded bg-cyan-500/10">COO/运营总监</div>
+                        <div class="p-2 rounded bg-cyan-500/10">CMO/营销总监</div>
+                    </div>
+                </div>
+                <div class="flow-arrow-down"><i class="fas fa-arrow-down"></i></div>
+
+                <!-- Layer 2: AI Middle Platform -->
+                <div class="architecture-layer" style="background: rgba(236, 72, 153, 0.08); border-color: rgba(236, 72, 153, 0.3);">
+                    <h4 class="font-semibold text-pink-400 mb-3"><i class="fas fa-brain mr-2"></i>AI中台层（价值释放核心）</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-xs">
+                        <div class="p-3 rounded bg-pink-500/20">
+                            <div class="font-semibold text-pink-300">智能研发助手</div>
+                            <div class="text-gray-400 mt-1">DeepSeek+配方知识库</div>
+                        </div>
+                        <div class="p-3 rounded bg-pink-500/20">
+                            <div class="font-semibold text-pink-300">AI质检</div>
+                            <div class="text-gray-400 mt-1">视觉识别缺陷</div>
+                        </div>
+                        <div class="p-3 rounded bg-pink-500/20">
+                            <div class="font-semibold text-pink-300">智能客服</div>
+                            <div class="text-gray-400 mt-1">7×24自动应答</div>
+                        </div>
+                        <div class="p-3 rounded bg-pink-500/20">
+                            <div class="font-semibold text-pink-300">营销推荐</div>
+                            <div class="text-gray-400 mt-1">客户画像+个性化</div>
+                        </div>
+                        <div class="p-3 rounded bg-pink-500/20">
+                            <div class="font-semibold text-pink-300">决策助手</div>
+                            <div class="text-gray-400 mt-1">数据洞察+预测</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-arrow-down"><i class="fas fa-arrow-down"></i></div>
+
+                <!-- Layer 3: Integration Middle Platform -->
+                <div class="architecture-layer" style="background: rgba(124, 58, 237, 0.08); border-color: rgba(124, 58, 237, 0.3);">
+                    <h4 class="font-semibold text-purple-400 mb-3"><i class="fas fa-random mr-2"></i>集成中台层（数据打通枢纽）</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-xs">
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">轻易云/简道云</div>
+                            <div class="text-gray-400 mt-1">数据集成平台</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">主数据管理</div>
+                            <div class="text-gray-400 mt-1">统一物料/客户/供应商</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">单据中台</div>
+                            <div class="text-gray-400 mt-1">订单/凭证/收付款</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">API网关</div>
+                            <div class="text-gray-400 mt-1">统一接口管理</div>
+                        </div>
+                        <div class="p-3 rounded bg-purple-500/20">
+                            <div class="font-semibold text-purple-300">数据仓库</div>
+                            <div class="text-gray-400 mt-1">BI分析/报表</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-arrow-down"><i class="fas fa-arrow-down"></i></div>
+
+                <!-- Layer 4: Existing Systems -->
+                <div class="architecture-layer" style="background: rgba(34, 197, 94, 0.08); border-color: rgba(34, 197, 94, 0.3);">
+                    <h4 class="font-semibold text-green-400 mb-3"><i class="fas fa-server mr-2"></i>现有系统层（盘活存量资产）</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center text-xs">
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">金蝶云·星空</div>
+                            <div class="text-gray-400 mt-1">财务/采购/库存</div>
+                        </div>
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">聚水潭</div>
+                            <div class="text-gray-400 mt-1">电商订单管理</div>
+                        </div>
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">蓝凌OA</div>
+                            <div class="text-gray-400 mt-1">流程审批/知识</div>
+                        </div>
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">钉钉</div>
+                            <div class="text-gray-400 mt-1">移动协同</div>
+                        </div>
+                        <div class="p-3 rounded bg-green-500/20">
+                            <div class="font-semibold text-green-300">DeepSeek</div>
+                            <div class="text-gray-400 mt-1">本地AI算力</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Value Proposition -->
+            <div class="grid md:grid-cols-3 gap-4 mt-6">
+                <div class="glass-card p-6 text-center">
+                    <i class="fas fa-recycle text-4xl text-cyan-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">盘活存量</h4>
+                    <p class="text-xs text-gray-400">不推翻重建，5套系统资产100%保留，通过集成中台打通数据</p>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <i class="fas fa-link text-4xl text-amber-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">集成打通</h4>
+                    <p class="text-xs text-gray-400">轻易云数据中台+API网关，实现5套系统数据实时同步</p>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <i class="fas fa-brain text-4xl text-pink-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">AI释放</h4>
+                    <p class="text-xs text-gray-400">DeepSeek对接企业知识库，5大AI场景释放80万硬件投入价值</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Scenarios Detail -->
+        <section id="scenarios" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-cubes text-cyan-400 mr-3"></i>5大业务场景详细方案
+            </h2>
+
+            <!-- Scenario 1: Business-Finance Integration -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-shopping-bag text-cyan-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-cyan-400">场景一：聚水潭×金蝶云星空业财一体化</h3>
+                        <p class="text-sm text-gray-400">电商订单自动生成财务凭证，告别二次录入</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-cyan-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>四大对接流程</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">1. 销售流：订单→发货→收入+成本→收款</div>
+                                <div class="text-gray-400 text-xs">聚水潭审核订单→轻易云15分钟增量拉取→字段映射（店铺→客户、SKU→物料、税率自动判断）→金蝶自动生成销售订单+销售出库单+结转成本凭证+应收账款</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">2. 采购流：采购→收货→应付→付款</div>
+                                <div class="text-gray-400 text-xs">聚水潭采购入库→金蝶自动生成采购入库单+暂估应付凭证→发票到达自动冲暂估→付款单自动核销应付</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">3. 库存流：盘点/调拨→库存账→损益</div>
+                                <div class="text-gray-400 text-xs">聚水潭库存变动实时同步金蝶→盘点差异自动生成盘盈/盘亏单+凭证→调拨自动生成其他出入库单</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-cyan-400 mb-1">4. 资金流：平台账单→收款/退款→资金日报</div>
+                                <div class="text-gray-400 text-xs">聚水潭下载平台账单→金蝶自动生成收款单/退款单→平台佣金/推广费自动计入财务费用→银行到账自动对账</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">6天→30分钟</div>
+                                <div class="text-xs text-gray-400">月末结账时效</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">2.7%→0.2%</div>
+                                <div class="text-xs text-gray-400">库存账实差异率</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">100%→0</div>
+                                <div class="text-xs text-gray-400">业务财务重复录入</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">0</div>
+                                <div class="text-xs text-gray-400">资金对账差异</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-cyan-500/10">
+                            <h5 class="text-xs font-semibold text-cyan-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">轻易云数据集成中台：聚水潭OpenAPI（jst.sale.order.query）→字段映射规则（含税率自动判断：天猫13%/京东9%/分销9%）→金蝶batchSave API批量写入；定时增量拉取每15分钟一次</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 2: Mobile Office Upgrade -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-mobile-screen text-amber-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-amber-400">场景二：蓝凌OA×钉钉移动办公深化</h3>
+                        <p class="text-sm text-gray-400">流程审批+知识管理+业务集成三位一体</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-amber-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>深化方案</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">1. 蓝凌MK-iPaaS集成平台</div>
+                                <div class="text-gray-400 text-xs">部署蓝凌MK集成平台，可视化编排15分钟完成系统对接；OA流程与金蝶业务数据双向同步，审批时实时查询ERP库存/预算/客户信用</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">2. 流程审批升级</div>
+                                <div class="text-gray-400 text-xs">简单流程用钉钉审批（请假/报销/通知），复杂流程用蓝凌F4（采购/合同/付款）；蓝凌审批数据写入钉钉考勤；流程指数分析识别无效协作</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">3. 知识管理深化</div>
+                                <div class="text-gray-400 text-xs">产品手册/SOP/工艺文档沉淀至蓝凌知识库；钉钉群聊记录自动保存至知识问答系统；新员工培训周期缩短40%</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-amber-400 mb-1">4. 统一移动门户</div>
+                                <div class="text-gray-400 text-xs">钉钉工作台自定义门户，千人千面；集成金蝶/聚水潭/DeepSeek入口；统一待办、统一日程、统一消息</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">80%</div>
+                                <div class="text-xs text-gray-400">流程效率提升</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">40%</div>
+                                <div class="text-xs text-gray-400">新人培训周期缩短</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">5→1</div>
+                                <div class="text-xs text-gray-400">系统切换数</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">100%</div>
+                                <div class="text-xs text-gray-400">移动办公覆盖率</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-amber-500/10">
+                            <h5 class="text-xs font-semibold text-amber-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">蓝凌MK-iPaaS集成平台（支持50+类、1000+软件集成）+ 蓝凌F4流程引擎 + 钉钉连接平台；可视化拖拉拽编排，15分钟完成系统对接</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 3: AI R&D and Quality -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-brain text-pink-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-pink-400">场景三：DeepSeek AI赋能研发与质检</h3>
+                        <p class="text-sm text-gray-400">释放80万硬件投入价值，5大AI应用场景落地</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-pink-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>五大AI应用场景</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">1. 智能产品研发助手</div>
+                                <div class="text-gray-400 text-xs">DeepSeek-R1-14B对接配方知识库（纸尿裤材料配比/卫生巾吸水性能）；RAGFlow框架构建研发问答系统；材料选型效率提升200%</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">2. AI视觉质检</div>
+                                <div class="text-gray-400 text-xs">多模态模型识别产品缺陷（纸尿裤漏尿/卫生巾压痕/湿巾封口）；漏检率从0.3%降至0.05%；每年减少质量损失超200万</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">3. 设备维保AI助手</div>
+                                <div class="text-gray-400 text-xs">RAGFlow+DeepSeek构建设备手册知识库；故障诊断准确率85%→95%；新员工技能培养周期缩短50%</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">4. 智能产品选型系统</div>
+                                <div class="text-gray-400 text-xs">输入开放式参数信息提问，选型效率提升200%；多条件复合查询准确率95%以上</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-pink-400 mb-1">5. 售后问题智能响应</div>
+                                <div class="text-gray-400 text-xs">故障描述自动归类（准确率95%）；实时推送解决方案库，响应速度提升60%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">200%</div>
+                                <div class="text-xs text-gray-400">研发选型效率</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">0.05%</div>
+                                <div class="text-xs text-gray-400">质检漏检率</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">50%</div>
+                                <div class="text-xs text-gray-400">新人培养周期</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">60%</div>
+                                <div class="text-xs text-gray-400">售后响应速度</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-pink-500/10">
+                            <h5 class="text-xs font-semibold text-pink-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">DeepSeek-R1-14B本地部署 + RAGFlow框架 + Milvus向量数据库（亿级向量检索）；LoRA微调注入妇幼用品行业术语；Ollama一键部署支持7B/14B/32B参数版本</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 4: Data Middle Platform -->
+            <div class="glass-card glass-card-hover p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-database text-purple-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-purple-400">场景四：5套系统数据中台</h3>
+                        <p class="text-sm text-gray-400">统一数据视图，构建经营决策支持系统</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-purple-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>数据中台架构</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-purple-400 mb-1">1. 主数据统一</div>
+                                <div class="text-gray-400 text-xs">物料/SKU、客户/店铺、供应商、仓库四大主数据统一编码；金蝶云星空作为主数据源分发至其他4套系统</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-purple-400 mb-1">2. 数据采集层</div>
+                                <div class="text-gray-400 text-xs">SeaTunnel抽取金蝶/聚水潭/蓝凌/钉钉/DeepSeek数据库；实时CDC+定时批量双模式</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-purple-400 mb-1">3. 数据仓库</div>
+                                <div class="text-gray-400 text-xs">ODS原始层→DWD明细层→DWS汇总层→ADS应用层；按主题域划分（销售/采购/库存/财务/客户）</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-purple-400 mb-1">4. BI决策看板</div>
+                                <div class="text-gray-400 text-xs">CEO驾驶舱（销售/库存/利润/客户）；CFO财务看板；COO运营看板；CMO营销看板；移动端钉钉实时推送</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">5→1</div>
+                                <div class="text-xs text-gray-400">数据源统一</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">实时</div>
+                                <div class="text-xs text-gray-400">经营数据可视</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">7天→1小时</div>
+                                <div class="text-xs text-gray-400">报表生成时效</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">360°</div>
+                                <div class="text-xs text-gray-400">客户画像视图</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-purple-500/10">
+                            <h5 class="text-xs font-semibold text-purple-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">SeaTunnel数据采集 + 数据仓库（Greenplum/Doris） + BI工具（FineBI/观远） + 钉钉数据播报；DeepSeek对接数仓提供自然语言查询（NL2SQL）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario 5: Intelligent Customer Service & Marketing -->
+            <div class="glass-card glass-card-hover p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-comments text-green-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-green-400">场景五：智能客服与个性化营销</h3>
+                        <p class="text-sm text-gray-400">DeepSeek+聚水潭客户数据，打造7×24智能服务+精准营销</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-exchange-alt mr-2"></i>智能客服+营销方案</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-green-400 mb-1">1. 智能客服机器人</div>
+                                <div class="text-gray-400 text-xs">DeepSeek对接产品知识库+历史问答；7×24自动应答售前咨询（尺码/材质/使用方法）；人工客服仅处理复杂问题</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-green-400 mb-1">2. 客户画像整合</div>
+                                <div class="text-gray-400 text-xs">聚水潭电商数据+金蝶财务数据+客服互动数据→统一客户画像；RFM分层（最近购买/频次/金额）</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-green-400 mb-1">3. 个性化营销推荐</div>
+                                <div class="text-gray-400 text-xs">DeepSeek分析客户画像→自动生成个性化推荐；复购提醒（纸尿裤尺码升级/卫生巾周期补货）</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-white/5">
+                                <div class="font-semibold text-green-400 mb-1">4. 售后智能处理</div>
+                                <div class="text-gray-400 text-xs">售后问题描述自动归类（准确率95%）；自动匹配解决方案库；响应速度提升60%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-300 mb-3"><i class="fas fa-chart-line mr-2"></i>业务价值</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">60%</div>
+                                <div class="text-xs text-gray-400">客服成本下降</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">+30%</div>
+                                <div class="text-xs text-gray-400">复购率提升</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">95%</div>
+                                <div class="text-xs text-gray-400">客服满意度</div>
+                            </div>
+                            <div class="p-3 rounded-lg bg-green-500/10 text-center">
+                                <div class="text-2xl font-bold text-green-400">7×24</div>
+                                <div class="text-xs text-gray-400">全天候服务</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 rounded-lg bg-green-500/10">
+                            <h5 class="text-xs font-semibold text-green-300 mb-1"><i class="fas fa-code mr-2"></i>技术实现</h5>
+                            <p class="text-xs text-gray-300">DeepSeek-R1 + RAGFlow客服知识库 + 聚水潭OpenAPI（客户/订单数据） + 钉钉客服机器人；个性化推荐基于协同过滤+DeepSeek内容生成</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Roadmap -->
+        <section id="roadmap" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-map-signs text-cyan-400 mr-3"></i>8个月分阶段实施路线图
+            </h2>
+            <p class="text-gray-400 mb-6 text-sm">
+                <i class="fas fa-info-circle text-cyan-400 mr-2"></i>
+                站在项目总监视角：基于已有5套系统，采用"业财打通→协同深化→AI释放"三阶段策略，8个月完成集成升级
+            </p>
+
+            <!-- Phase Overview -->
+            <div class="glass-card p-6 mb-6">
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-lg bg-cyan-500/10 border border-cyan-500/30">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold">阶段一：业财打通</span>
+                            <span class="tag-pill-amber">3个月</span>
+                        </div>
+                        <p class="text-xs text-gray-400">第1-3月 | P0优先级</p>
+                        <p class="text-xs text-gray-300 mt-2">场景一：聚水潭×金蝶业财一体化；场景四启动：数据中台基础搭建</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-amber-500/10 border border-amber-500/30">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-amber-400 font-bold">阶段二：协同深化</span>
+                            <span class="tag-pill">2个月</span>
+                        </div>
+                        <p class="text-xs text-gray-400">第4-5月 | P1优先级</p>
+                        <p class="text-xs text-gray-300 mt-2">场景二：蓝凌OA×钉钉深化；场景四完善：数据中台BI上线</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-green-500/10 border border-green-500/30">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-green-400 font-bold">阶段三：AI释放</span>
+                            <span class="tag-pill-green">3个月</span>
+                        </div>
+                        <p class="text-xs text-gray-400">第6-8月 | P2优先级</p>
+                        <p class="text-xs text-gray-300 mt-2">场景三：DeepSeek研发质检；场景五：智能客服营销</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card glass-card-hover p-8">
+                <div class="space-y-4">
+                    <!-- Phase 1 -->
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第1月：数据中台基础+聚水潭金蝶调研</span>
+                            <span class="tag-pill-amber">P0</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>项目启动：</b>成立项目组，调研聚水潭和金蝶云星空现有接口与数据结构</div>
+                            <div><b>场景四启动：</b>部署轻易云数据集成平台；搭建数据仓库ODS层；主数据统一（物料/客户/供应商编码）</div>
+                            <div><b>关键交付：</b>数据中台基础架构搭建完成；主数据编码规范输出</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第2月：聚水潭×金蝶业财对接开发</span>
+                            <span class="tag-pill-amber">P0</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>场景一实施：</b>开发4条主流程（销售流/采购流/库存流/资金流）；字段映射规则配置；税率自动判断逻辑</div>
+                            <div><b>关键交付：</b>聚水潭订单15分钟增量同步金蝶；凭证自动生成；UAT测试通过</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-cyan-400 font-bold text-lg">第3月：业财一体上线+数据中台完善</span>
+                            <span class="tag-pill-amber">P0</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>场景一上线：</b>全量切换；月末结账30分钟SOP验证</div>
+                            <div><b>场景四推进：</b>数据仓库DWD/DWS/ADS层建设；BI看板原型设计</div>
+                            <div><b>关键里程碑1：</b>业财一体化完成；月末结账6天→30分钟</div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-amber-400 font-bold text-lg">第4月：蓝凌OA×钉钉深化</span>
+                            <span class="tag-pill">P1</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>场景二实施：</b>部署蓝凌MK-iPaaS集成平台；OA流程与金蝶业务数据双向同步；复杂流程迁移至蓝凌F4</div>
+                            <div><b>关键交付：</b>审批时实时查询ERP数据；流程指数分析上线</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-amber-400 font-bold text-lg">第5月：知识管理+BI看板上线</span>
+                            <span class="tag-pill">P1</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>场景二深化：</b>知识库沉淀；钉钉统一移动门户上线</div>
+                            <div><b>场景四上线：</b>CEO驾驶舱/CFO财务看板/COO运营看板上线；钉钉数据播报</div>
+                            <div><b>关键里程碑2：</b>协同深化完成；BI决策看板上线</div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-green-400 font-bold text-lg">第6月：DeepSeek研发质检场景</span>
+                            <span class="tag-pill-green">P2</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>场景三实施：</b>RAGFlow框架部署；研发助手+设备维保AI上线；AI视觉质检POC</div>
+                            <div><b>关键交付：</b>研发选型效率提升200%；设备故障诊断准确率95%</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-green-400 font-bold text-lg">第7月：智能客服+个性化营销</span>
+                            <span class="tag-pill-green">P2</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>场景五实施：</b>智能客服机器人上线；客户画像整合；个性化营销推荐</div>
+                            <div><b>关键交付：</b>7×24客服自动应答；复购率提升30%</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-green-400 font-bold text-lg">第8月：项目验收与持续运营</span>
+                            <span class="tag-pill-green">P2</span>
+                        </div>
+                        <div class="text-gray-300 text-sm space-y-2">
+                            <div><b>全面验收：</b>5大场景全部验收；输出《项目总结与持续运营建议》</div>
+                            <div><b>关键里程碑3：</b>数字化集成升级项目正式交付；AI价值释放完成</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Milestones -->
+                <div class="mt-8 grid md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-lg bg-cyan-500/10 text-center">
+                        <div class="text-2xl font-bold text-cyan-400">第3月</div>
+                        <div class="text-xs text-gray-400 mt-1">里程碑1：业财一体</div>
+                        <div class="text-xs text-gray-500 mt-1">结账6天→30分钟</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-amber-500/10 text-center">
+                        <div class="text-2xl font-bold text-amber-400">第5月</div>
+                        <div class="text-xs text-gray-400 mt-1">里程碑2：协同+BI</div>
+                        <div class="text-xs text-gray-500 mt-1">流程效率+80%</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-green-500/10 text-center">
+                        <div class="text-2xl font-bold text-green-400">第8月</div>
+                        <div class="text-xs text-gray-400 mt-1">里程碑3：AI释放</div>
+                        <div class="text-xs text-gray-500 mt-1">5大AI场景落地</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Calculator -->
+        <section id="roi" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-calculator text-green-400 mr-3"></i>ROI测算与价值量化
+            </h2>
+            <p class="text-gray-400 mb-6 text-sm">
+                <i class="fas fa-info-circle text-green-400 mr-2"></i>
+                站在项目总监视角：基于已有5套系统盘活，投入相对新建方案大幅降低；收益含爬坡期（首年60%释放）
+            </p>
+
+            <!-- Investment -->
+            <div class="glass-card p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-coins text-amber-400 mr-2"></i>投入测算（一次性 + 年度运营）
+                </h3>
+
+                <div class="mb-6">
+                    <h4 class="text-sm font-semibold text-amber-300 mb-3"><i class="fas fa-flag mr-2"></i>一次性投入（项目期8个月）</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">轻易云数据集成平台（3年授权）</span>
+                            <span class="text-amber-400">60万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">蓝凌MK-iPaaS集成平台（3年授权）</span>
+                            <span class="text-amber-400">45万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">实施服务费（5大场景集成开发）</span>
+                            <span class="text-amber-400">180万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">RAGFlow+Milvus向量数据库部署</span>
+                            <span class="text-amber-400">25万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">数据仓库建设（Doris+BI工具）</span>
+                            <span class="text-amber-400">40万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">AI场景定制开发（研发/质检/客服）</span>
+                            <span class="text-amber-400">60万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">培训与变更管理</span>
+                            <span class="text-amber-400">20万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">不可预见费（约10%）</span>
+                            <span class="text-amber-400">43万</span>
+                        </div>
+                        <div class="border-t border-amber-500/30 pt-2 flex justify-between">
+                            <span class="font-bold text-white">一次性投入小计</span>
+                            <span class="font-bold text-amber-400 text-lg">473万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-semibold text-amber-300 mb-3"><i class="fas fa-redo-alt mr-2"></i>年度运营成本（上线后每年）</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">现有5套系统续费（金蝶/聚水潭/蓝凌/钉钉）</span>
+                            <span class="text-amber-400">80万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">数据中台+AI平台年度维护</span>
+                            <span class="text-amber-400">35万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">运维支持（驻场+远程）</span>
+                            <span class="text-amber-400">40万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">持续优化与迭代</span>
+                            <span class="text-amber-400">30万</span>
+                        </div>
+                        <div class="border-t border-amber-500/30 pt-2 flex justify-between">
+                            <span class="font-bold text-white">年度运营成本小计</span>
+                            <span class="font-bold text-amber-400 text-lg">185万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-bold text-amber-300">首年总投入（一次性+运营）</span>
+                        <span class="text-xl font-bold text-amber-400">658万</span>
+                    </div>
+                    <div class="text-xs text-gray-400 mt-1">第2年起仅需年度运营成本185万</div>
+                </div>
+            </div>
+
+            <!-- Benefit -->
+            <div class="glass-card p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-gift text-green-400 mr-2"></i>收益测算（保守测算，含爬坡期）
+                </h3>
+
+                <p class="text-xs text-gray-400 mb-3 bg-white/5 p-3 rounded">
+                    <i class="fas fa-info-circle text-cyan-400 mr-1"></i>
+                    <b>测算前提：</b>首年仅释放60%收益（爬坡期），第2年达90%，第3年起100%释放；收益基于盘活500万存量资产+释放AI价值
+                </p>
+
+                <div class="mb-4">
+                    <h4 class="text-sm font-semibold text-cyan-300 mb-2"><i class="fas fa-seedling mr-2"></i>第1年收益（爬坡期，60%释放）</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">业财一体效率提升（财务对账成本节省）</span>
+                            <span class="text-green-400">+72万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">库存差异损失降低（账实差异2.7%→0.2%）</span>
+                            <span class="text-green-400">+48万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">协同效率提升（流程效率+80%）</span>
+                            <span class="text-green-400">+60万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">AI研发质检价值（选型效率+200%，漏检率↓）</span>
+                            <span class="text-green-400">+120万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">智能客服节省（客服成本-60%）</span>
+                            <span class="text-green-400">+54万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">个性化营销复购提升（+30%）</span>
+                            <span class="text-green-400">+90万</span>
+                        </div>
+                        <div class="flex justify-between text-sm p-2 rounded bg-white/5">
+                            <span class="text-gray-300">数据决策价值（决策周期-60%）</span>
+                            <span class="text-green-400">+36万</span>
+                        </div>
+                        <div class="border-t border-green-500/30 pt-2 flex justify-between">
+                            <span class="font-bold text-white">第1年总收益（60%释放）</span>
+                            <span class="font-bold text-green-400 text-lg">480万</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-3 rounded-lg bg-green-500/10">
+                        <h4 class="text-sm font-semibold text-green-300 mb-2"><i class="fas fa-tree mr-2"></i>第2年收益（90%释放）</h4>
+                        <div class="text-2xl font-bold text-green-400 mb-1">720万</div>
+                        <div class="text-xs text-gray-400">满额收益800万 × 90%</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-green-500/10">
+                        <h4 class="text-sm font-semibold text-green-300 mb-2"><i class="fas fa-mountain mr-2"></i>第3年起（100%释放）</h4>
+                        <div class="text-2xl font-bold text-green-400 mb-1">800万/年</div>
+                        <div class="text-xs text-gray-400">稳定运营期年化收益</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI Analysis -->
+            <div class="glass-card p-6">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    <i class="fas fa-chart-pie text-cyan-400 mr-2"></i>综合ROI分析（保守测算）
+                </h3>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="p-4 rounded-lg bg-red-500/10 text-center border border-red-500/20">
+                        <div class="text-xs text-gray-400 mb-1">第1年ROI</div>
+                        <div class="text-3xl font-bold text-red-400">-27%</div>
+                        <div class="text-xs text-gray-500 mt-1">投入期，正常亏损</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-amber-500/10 text-center border border-amber-500/20">
+                        <div class="text-xs text-gray-400 mb-1">第2年ROI</div>
+                        <div class="text-3xl font-bold text-amber-400">+289%</div>
+                        <div class="text-xs text-gray-500 mt-1">开始正向回报</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-cyan-500/10 text-center border border-cyan-500/20">
+                        <div class="text-xs text-gray-400 mb-1">3年累计ROI</div>
+                        <div class="text-3xl font-bold text-cyan-400">+122%</div>
+                        <div class="text-xs text-gray-500 mt-1">3年回本并盈利</div>
+                    </div>
+                    <div class="p-4 rounded-lg bg-green-500/10 text-center border border-green-500/20">
+                        <div class="text-xs text-gray-400 mb-1">5年累计ROI</div>
+                        <div class="text-3xl font-bold text-green-400">+320%</div>
+                        <div class="text-xs text-gray-500 mt-1">5年收益3.2倍</div>
+                    </div>
+                </div>
+
+                <div class="mb-6 p-4 rounded-lg bg-white/5">
+                    <h4 class="text-sm font-semibold text-cyan-300 mb-3">📊 累计现金流分析</h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between p-2 rounded bg-red-500/5">
+                            <span class="text-gray-300">第1年：投入658万 - 收益480万</span>
+                            <span class="text-red-400 font-bold">-178万</span>
+                        </div>
+                        <div class="flex justify-between p-2 rounded bg-green-500/5">
+                            <span class="text-gray-300">第2年：投入185万 - 收益720万（累计+357万）</span>
+                            <span class="text-green-400 font-bold">+357万</span>
+                        </div>
+                        <div class="flex justify-between p-2 rounded bg-green-500/5">
+                            <span class="text-gray-300">第3年：投入185万 - 收益800万（累计+972万）</span>
+                            <span class="text-green-400 font-bold">+972万</span>
+                        </div>
+                        <div class="flex justify-between p-2 rounded bg-green-500/5">
+                            <span class="text-gray-300">第4年：投入185万 - 收益800万（累计+1587万）</span>
+                            <span class="text-green-400 font-bold">+1587万</span>
+                        </div>
+                        <div class="flex justify-between p-2 rounded bg-green-500/5">
+                            <span class="text-gray-300">第5年：投入185万 - 收益800万（累计+2202万）</span>
+                            <span class="text-green-400 font-bold">+2202万</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 p-2 rounded bg-cyan-500/10 text-center">
+                        <span class="text-xs text-cyan-300">投资回收期：<b class="text-cyan-400">1.4年（约17个月）</b>，第2年开始持续盈利</span>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-lg bg-gradient-to-r from-cyan-500/10 to-pink-500/10 border border-cyan-500/20">
+                    <h4 class="font-semibold text-cyan-300 mb-2 flex items-center"><i class="fas fa-lightbulb mr-2"></i>价值亮点</h4>
+                    <ul class="text-sm text-gray-300 space-y-1">
+                        <li>• <b>1.4年回本：</b>第1年投入期小幅亏损，第2年开始持续盈利，5年累计净收益2202万</li>
+                        <li>• <b>盘活500万存量：</b>不推翻重建，5套系统资产100%保留，通过集成中台+AI中台释放价值</li>
+                        <li>• <b>3年ROI 122%：</b>第3年累计净收益972万，ROI 122%</li>
+                        <li>• <b>5年ROI 320%：</b>5年累计净收益2202万，是投入的3.2倍</li>
+                        <li>• <b>战略价值：</b>构建数据资产+AI能力双重壁垒，为未来品类扩张和新业务奠定基础</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decision Maker Value Matrix -->
+        <section id="value" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-user-tie text-purple-400 mr-3"></i>5类决策人价值矩阵
+            </h2>
+
+            <div class="grid md:grid-cols-5 gap-4">
+                <!-- CEO -->
+                <div class="role-card role-card-ceo p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-user-tie text-purple-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-purple-400">CEO/总经理</h4>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-purple-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 500万存量资产盘活</li>
+                                <li>• 数字化战略落地</li>
+                                <li>• 投资回报率</li>
+                                <li>• 数据驱动决策</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-purple-500/10">
+                            <h5 class="font-semibold text-purple-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">8个月完成5套系统集成升级，1.4年回本，5年ROI 320%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CIO -->
+                <div class="role-card role-card-cio p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-code text-blue-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-blue-400">CIO/IT总监</h4>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-blue-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 系统集成难度</li>
+                                <li>• 数据安全合规</li>
+                                <li>• 运维成本</li>
+                                <li>• AI能力释放</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-blue-500/10">
+                            <h5 class="font-semibold text-blue-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">轻易云+蓝凌MK双中台，15分钟完成系统对接；DeepSeek本地部署数据安全</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CFO -->
+                <div class="role-card role-card-cfo p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-coins text-green-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-green-400">CFO/财务总监</h4>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-green-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 业财一体化</li>
+                                <li>• 月末结账效率</li>
+                                <li>• 库存账实差异</li>
+                                <li>• 资金对账</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-green-500/10">
+                            <h5 class="font-semibold text-green-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">聚水潭×金蝶打通，月末结账6天→30分钟，库存差异2.7%→0.2%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COO -->
+                <div class="role-card role-card-coo p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-cogs text-amber-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-amber-400">COO/运营总监</h4>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-amber-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 订单履约效率</li>
+                                <li>• 库存周转</li>
+                                <li>• 生产质量</li>
+                                <li>• 协同效率</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-amber-500/10">
+                            <h5 class="font-semibold text-amber-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">AI质检漏检率0.05%，流程效率+80%，库存周转天数-18%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CMO -->
+                <div class="role-card role-card-cmo p-4">
+                    <div class="text-center mb-4">
+                        <div class="w-14 h-14 rounded-full bg-pink-500/20 flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-bullhorn text-pink-400 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-pink-400">CMO/营销总监</h4>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <h5 class="font-semibold text-pink-300 mb-1">核心关注</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• 客户复购率</li>
+                                <li>• 个性化营销</li>
+                                <li>• 客服满意度</li>
+                                <li>• 客户画像</li>
+                            </ul>
+                        </div>
+                        <div class="p-2 rounded bg-pink-500/10">
+                            <h5 class="font-semibold text-pink-300 mb-1">价值主张</h5>
+                            <p class="text-gray-300">DeepSeek+聚水潭客户画像，复购率+30%，客服满意度95%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts Matrix -->
+        <section id="scripts" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-comments text-purple-400 mr-3"></i>决策人话术矩阵
+            </h2>
+            <p class="text-gray-400 mb-8 text-sm">5类决策人 × 6阶段对话流程，含真实场景话术</p>
+
+            <!-- CEO Scripts -->
+            <div class="glass-card p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-user-tie text-purple-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-purple-400 text-xl">CEO/总经理</h3>
+                        <p class="text-sm text-gray-400">战略视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"王总，关注到天娇已投入500万建设5套系统，但系统孤岛导致每年约550万隐性损失。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前5套系统的数据是否打通？经营决策是否依赖数据还是经验？80万DeepSeek投入发挥了多少价值？"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到系统孤岛、AI未释放、决策缺数据，正是本方案核心解决的：盘活存量+集成打通+AI赋能。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"8个月完成5大场景集成升级，首年投入658万，1.4年回本，5年累计净收益2202万，ROI 320%。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"首年-27%是投入期正常亏损，第2年即正向回报+357万。盘活500万存量资产比新建方案风险更低。"</p>
+                    </div>
+                    <div class="role-card role-card-ceo p-3">
+                        <h5 class="text-xs font-semibold text-purple-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议先启动阶段一业财打通（3个月），验证月末结账30分钟效果后再推进。本周可否安排项目启动会？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CFO Scripts -->
+            <div class="glass-card p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-coins text-green-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-green-400 text-xl">CFO/财务总监</h3>
+                        <p class="text-sm text-gray-400">财务视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-cfo p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"李总，聚水潭电商订单与金蝶财务未打通，每月末对账5-7天、错误率8%，这是行业普遍痛点。"</p>
+                    </div>
+                    <div class="role-card role-card-cfo p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前月末结账要几天？平台佣金/推广费如何分摊？库存账实差异率多少？资金对账有无差异？"</p>
+                    </div>
+                    <div class="role-card role-card-cfo p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到结账6天、差异2.7%、手工对账易错，这正是聚水潭×金蝶业财一体方案的核心价值。"</p>
+                    </div>
+                    <div class="role-card role-card-cfo p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"通过轻易云中台，聚水潭订单15分钟自动同步金蝶，凭证自动生成，月末结账6天→30分钟。"</p>
+                    </div>
+                    <div class="role-card role-card-cfo p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"担心对接复杂？聚水潭与金蝶对接已有成熟方案（年销10亿3C案例验证），2周完成接口配置。"</p>
+                    </div>
+                    <div class="role-card role-card-cfo p-3">
+                        <h5 class="text-xs font-semibold text-green-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议优先启动场景一（3个月），验证月末结账30分钟效果。可否本月安排财务对接需求调研？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CIO Scripts -->
+            <div class="glass-card p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mr-4">
+                        <i class="fas fa-code text-blue-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-400 text-xl">CIO/IT总监</h3>
+                        <p class="text-sm text-gray-400">技术视角 | 6阶段对话流程</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-6 gap-3">
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">1. 开场破冰</h5>
+                        <p class="text-xs text-gray-300">"张总，5套系统数据孤岛是CIO最大挑战，蓝凌MK-iPaaS+轻易云双中台15分钟完成对接。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">2. 需求挖掘</h5>
+                        <p class="text-xs text-gray-300">"目前5套系统间数据同步方式？API开发工作量？DeepSeek 80万硬件利用率？运维成本占比？"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">3. 痛点确认</h5>
+                        <p class="text-xs text-gray-300">"您提到API开发量大、AI利用率低、运维成本高，这正是双中台+AI中台方案的核心价值。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">4. 方案呈现</h5>
+                        <p class="text-xs text-gray-300">"蓝凌MK可视化编排+轻易云数据集成+DeepSeek本地部署，运维成本-40%，AI利用率30%→85%。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">5. 异议预处理</h5>
+                        <p class="text-xs text-gray-300">"担心数据安全？DeepSeek本地部署数据不出内网；ISO27001认证；蓝凌18年大客户经验。"</p>
+                    </div>
+                    <div class="role-card role-card-cio p-3">
+                        <h5 class="text-xs font-semibold text-blue-400 mb-2 text-center">6. 促成收尾</h5>
+                        <p class="text-xs text-gray-300">"建议先做阶段一数据中台基础（1个月），验证主数据统一效果。是否本周安排架构师对接？"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversation Flow Summary -->
+            <div class="glass-card glass-card-hover p-6">
+                <h3 class="font-semibold text-lg mb-4">💬 完整对话流程示意图</h3>
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <span class="tag-pill">开场破冰</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">需求挖掘</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">痛点确认</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">方案呈现</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill">异议预处理</span>
+                    <i class="fas fa-arrow-right stage-flow-arrow"></i>
+                    <span class="tag-pill-amber">促成收尾</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-4 text-center">每类决策人都遵循6阶段对话流程，话术针对其核心关注点定制，全程嵌入真实业务场景和量化数据</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">森罗之眼 · 天娇妇幼数字化升级方案</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-2">
+                    为天娇妇幼用品有限公司定制 | 5套系统集成升级+AI价值释放一体化方案
+                </p>
+                <p class="text-gray-500 text-xs">
+                    版本：V1.0 | 编制日期：2026年7月 | 基于已有5套系统盘活+AI赋能 | 含8个月分阶段实施+658万投入测算 | 森罗之眼智能体生成
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        gsap.utils.toArray('.scenario-card, .role-card, .glass-card').forEach(card => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 30,
+                duration: 0.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        });
+    </script>
+</body>
+</html>
