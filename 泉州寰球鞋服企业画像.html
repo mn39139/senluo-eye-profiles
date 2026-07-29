@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泉州寰球鞋服有限公司 · 企业画像 | 森罗之眼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: #e2e8f0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-gold {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-number {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .stat-number-gold {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(167, 139, 250, 0.15));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #38bdf8;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.15));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #4ade80;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-amber {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.15));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-pink {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.15), rgba(236, 72, 153, 0.15));
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #f472b6;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(168, 85, 247, 0.15));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #f87171;
+            display: inline-block;
+            margin: 2px;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.6); }
+        }
+        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            padding-bottom: 28px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #38bdf8, transparent);
+        }
+        .timeline-item:last-child::after { display: none; }
+
+        .info-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.875rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label {
+            color: #94a3b8;
+            min-width: 110px;
+            font-weight: 500;
+        }
+        .info-value {
+            color: #e2e8f0;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .shareholder-bar {
+            height: 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .brand-card:hover {
+            border-color: rgba(244, 114, 182, 0.4);
+            background: rgba(244, 114, 182, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .patent-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 14px;
+            transition: all 0.3s;
+        }
+        .patent-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            background: rgba(56, 189, 248, 0.04);
+        }
+
+        .nav-link {
+            color: #cbd5e1;
+            transition: color 0.2s;
+            font-size: 0.875rem;
+        }
+        .nav-link:hover { color: #38bdf8; }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .section-subtitle {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .risk-meter {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        .risk-meter-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .org-node {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
+            padding: 12px 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .org-node:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.5);
+        }
+        .org-node-parent {
+            background: rgba(167, 139, 250, 0.12);
+            border-color: rgba(167, 139, 250, 0.4);
+        }
+
+        .footer-text {
+            color: #64748b;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10" style="border-radius: 0;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-purple-500 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-base font-bold gradient-text">森罗之眼</div>
+                        <div class="text-xs text-gray-400">泉州寰球鞋服企业画像</div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-5">
+                    <a href="#overview" class="nav-link">概览</a>
+                    <a href="#basic" class="nav-link">工商信息</a>
+                    <a href="#operation" class="nav-link">经营数据</a>
+                    <a href="#brands" class="nav-link">品牌矩阵</a>
+                    <a href="#ip" class="nav-link">知识产权</a>
+                    <a href="#structure" class="nav-link">集团架构</a>
+                    <a href="#digital" class="nav-link">数字化</a>
+                    <a href="#timeline" class="nav-link">发展历程</a>
+                    <a href="#honors" class="nav-link">荣誉资质</a>
+                    <a href="#risk" class="nav-link">风险洞察</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero / Overview -->
+        <section id="overview" class="mb-16 scroll-fade-in">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-2 mb-6">
+                        <span class="tag-pill-green">国家级绿色工厂</span>
+                        <span class="tag-pill">5G智能工厂</span>
+                        <span class="tag-pill-green">A级纳税人</span>
+                        <span class="tag-pill-amber">安踏集团成员</span>
+                        <span class="tag-pill-pink">中国驰名商标</span>
+                        <span class="tag-pill">SATRA会员</span>
+                        <span class="tag-pill-amber">省级工业龙头</span>
+                        <span class="tag-pill">省级技术中心</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-3">
+                        泉州寰球鞋服有限公司
+                    </h1>
+                    <p class="text-lg text-sky-300 mb-4">QUANZHOU HUANQIU SHOES & APPAREL CO., LTD.</p>
+                    <p class="text-gray-300 text-base md:text-lg max-w-4xl mb-8 leading-relaxed">
+                        成立于1988年、1995年正式工商注册的中外合资运动鞋制造企业，是<b class="text-sky-400">安踏体育用品集团</b>旗下核心制造基地。
+                        被业内誉为"<b class="text-purple-400">泉州鞋业先行者，中国运动鞋技术播种机</b>"，
+                        拥有自主品牌 <b class="text-pink-400">Athletic（亚礼得）</b>，
+                        产品畅销<b class="text-amber-400">全球50多个国家和地区</b>，
+                        2025年获评<b class="text-green-400">国家级绿色工厂</b>与<b class="text-green-400">福建省先进级智能工厂</b>。
+                    </p>
+                    <!-- Key Stats Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">37年</div>
+                            <div class="text-gray-400 text-xs mt-1">创立历程</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">2626万</div>
+                            <div class="text-gray-400 text-xs mt-1">注册资本(美元)</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number-gold">800万双</div>
+                            <div class="text-gray-400 text-xs mt-1">年产能</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">3000+</div>
+                            <div class="text-gray-400 text-xs mt-1">员工规模</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number-gold">50+</div>
+                            <div class="text-gray-400 text-xs mt-1">出口国家</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">91分</div>
+                            <div class="text-gray-400 text-xs mt-1">天眼查评分</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Grid: Key Highlights -->
+        <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-4 scroll-fade-in">
+            <div class="glass-card glass-card-hover p-6 md:col-span-2">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-industry text-sky-400 text-2xl mr-3"></i>
+                    <h3 class="text-lg font-bold text-sky-300">智能制造标杆</h3>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                    寰球5G新一代鞋业智能工厂入选<b class="text-sky-400">福建省2025年首批先进级智能工厂</b>，
+                    是晋江13家入选企业之一（占全省19.4%）。工厂部署5G专网、AI视觉检测、工业数采等场景，
+                    通过两化融合管理体系认证，在运动鞋动态稳定性、防水功能、自动化制造工艺上具备核心优势。
+                </p>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="tag-pill">5G专网</span>
+                    <span class="tag-pill">AI视觉检测</span>
+                    <span class="tag-pill">工业数采</span>
+                    <span class="tag-pill-green">两化融合认证</span>
+                </div>
+            </div>
+            <div class="glass-card glass-card-hover p-6">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-leaf text-green-400 text-2xl mr-3"></i>
+                    <h3 class="text-lg font-bold text-green-300">国家级绿色工厂</h3>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    2025年获评国家级绿色工厂，在可持续材料应用、低碳制造、能耗优化方面保持行业领先，
+                    契合泉州"智能、绿色、品牌"三大转型方向。
+                </p>
+                <div class="mt-4">
+                    <div class="text-2xl font-bold text-green-400">2025</div>
+                    <div class="text-xs text-gray-400">获评年份</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Basic Business Info -->
+        <section id="basic" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">工商基本信息</h2>
+            <p class="section-subtitle">Basic Business Information · 多平台交叉验证</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="glass-card p-6">
+                    <h3 class="text-base font-semibold text-sky-300 mb-4 flex items-center">
+                        <i class="fas fa-file-alt mr-2"></i>工商登记信息
+                    </h3>
+                    <div class="info-row"><span class="info-label">企业名称</span><span class="info-value">泉州寰球鞋服有限公司</span></div>
+                    <div class="info-row"><span class="info-label">统一信用代码</span><span class="info-value font-mono text-sky-300">9135058261156485X0</span></div>
+                    <div class="info-row"><span class="info-label">法定代表人</span><span class="info-value">赖世贤</span></div>
+                    <div class="info-row"><span class="info-label">注册资本</span><span class="info-value">2,626 万美元</span></div>
+                    <div class="info-row"><span class="info-label">实缴资本</span><span class="info-value">1,896.11 万美元</span></div>
+                    <div class="info-row"><span class="info-label">成立日期</span><span class="info-value">1995-01-12（实际创立于1988年）</span></div>
+                    <div class="info-row"><span class="info-label">营业期限</span><span class="info-value">1995-01-12 至 2045-01-12</span></div>
+                    <div class="info-row"><span class="info-label">核准日期</span><span class="info-value">2025-10-30</span></div>
+                    <div class="info-row"><span class="info-label">企业类型</span><span class="info-value">有限责任公司（外商投资、非独资）</span></div>
+                    <div class="info-row"><span class="info-label">所属行业</span><span class="info-value">皮革、毛皮、羽毛及其制品和制鞋业 (C1951 纺织面料鞋制造)</span></div>
+                    <div class="info-row"><span class="info-label">经营状态</span><span class="info-value"><span class="text-green-400">● 存续</span></span></div>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="text-base font-semibold text-sky-300 mb-4 flex items-center">
+                        <i class="fas fa-address-card mr-2"></i>联系与登记信息
+                    </h3>
+                    <div class="info-row"><span class="info-label">注册地址</span><span class="info-value">泉州市晋江池店寰球工业园</span></div>
+                    <div class="info-row"><span class="info-label">登记机关</span><span class="info-value">晋江市市场监督管理局</span></div>
+                    <div class="info-row"><span class="info-label">工商注册号</span><span class="info-value font-mono">350500400005550</span></div>
+                    <div class="info-row"><span class="info-label">组织机构代码</span><span class="info-value font-mono">61156485-X</span></div>
+                    <div class="info-row"><span class="info-label">纳税人识别号</span><span class="info-value font-mono text-sky-300">9135058261156485X0</span></div>
+                    <div class="info-row"><span class="info-label">纳税人资质</span><span class="info-value">增值税一般纳税人</span></div>
+                    <div class="info-row"><span class="info-label">税务信用等级</span><span class="info-value"><span class="text-green-400 font-bold">A级 (2025)</span></span></div>
+                    <div class="info-row"><span class="info-label">联系电话</span><span class="info-value">15860330036</span></div>
+                    <div class="info-row"><span class="info-label">邮箱</span><span class="info-value">chenxiaoli@athletic.com.cn</span></div>
+                    <div class="info-row"><span class="info-label">官网</span><span class="info-value"><span class="text-sky-400">www.qzhqxf.com</span></span></div>
+                    <div class="info-row"><span class="info-label">企业规模</span><span class="info-value">大型企业</span></div>
+                </div>
+            </div>
+            <!-- Business Scope -->
+            <div class="glass-card p-6 mt-4">
+                <h3 class="text-base font-semibold text-purple-300 mb-3 flex items-center">
+                    <i class="fas fa-briefcase mr-2"></i>经营范围
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    一般项目：鞋制造；服装制造；箱包制造；专业设计服务；技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广；货物进出口；技术进出口；招投标代理服务。（除依法须经批准的项目外，凭营业执照依法自主开展经营活动）（不得在《外商投资准入负面清单》禁止外商投资的领域开展经营活动）
+                </p>
+                <p class="text-gray-400 text-xs mt-2">
+                    原经营范围：生产各种鞋类、鞋用材料、运动服装及包袋（以上均不含危险化学品），鞋类设计服务、从事非配额许可证管理、非专营商品的收购出口业务及参加自产产品的出口配额招标。
+                </p>
+            </div>
+        </section>
+
+        <!-- Operational Data -->
+        <section id="operation" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">经营数据</h2>
+            <p class="section-subtitle">Operational Data · 产能、员工、出口规模</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-shoe-prints text-sky-400 text-3xl mb-3"></i>
+                    <div class="stat-number">800万双</div>
+                    <div class="text-gray-400 text-sm mt-2">运动鞋年产能</div>
+                    <div class="text-gray-500 text-xs mt-1">媒体报道数据</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-layer-group text-amber-400 text-3xl mb-3"></i>
+                    <div class="stat-number-gold">800万+</div>
+                    <div class="text-gray-400 text-sm mt-2">大中鞋底年产能</div>
+                    <div class="text-gray-500 text-xs mt-1">配套自产</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-users text-purple-400 text-3xl mb-3"></i>
+                    <div class="stat-number">2,621人</div>
+                    <div class="text-gray-400 text-sm mt-2">参保人数 (2025)</div>
+                    <div class="text-gray-500 text-xs mt-1">总员工近3000人</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-globe text-green-400 text-3xl mb-3"></i>
+                    <div class="stat-number-gold">50+</div>
+                    <div class="text-gray-400 text-sm mt-2">出口国家/地区</div>
+                    <div class="text-gray-500 text-xs mt-1">欧美、中东等</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-map-marked-alt text-pink-400 text-3xl mb-3"></i>
+                    <div class="stat-number">200+</div>
+                    <div class="text-gray-400 text-sm mt-2">占地面积(亩)</div>
+                    <div class="text-gray-500 text-xs mt-1">建筑面积9万+㎡</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-building text-sky-400 text-3xl mb-3"></i>
+                    <div class="stat-number">9万+㎡</div>
+                    <div class="text-gray-400 text-sm mt-2">建筑面积</div>
+                    <div class="text-gray-500 text-xs mt-1">集团总规模</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-coins text-amber-400 text-3xl mb-3"></i>
+                    <div class="stat-number-gold">3.5亿</div>
+                    <div class="text-gray-400 text-sm mt-2">固定资产(元)</div>
+                    <div class="text-gray-500 text-xs mt-1">历史峰值</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-chart-line text-green-400 text-3xl mb-3"></i>
+                    <div class="stat-number">158亿</div>
+                    <div class="text-gray-400 text-sm mt-2">财产线索估值(元)</div>
+                    <div class="text-gray-500 text-xs mt-1">196条线索</div>
+                </div>
+            </div>
+
+            <!-- Capacity Evolution -->
+            <div class="glass-card p-6 mt-4">
+                <h3 class="text-base font-semibold text-amber-300 mb-4 flex items-center">
+                    <i class="fas fa-chart-area mr-2"></i>产能演进历程
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                    <div class="glass-card p-4">
+                        <div class="text-2xl font-bold text-gray-300">40万双</div>
+                        <div class="text-xs text-gray-500 mt-1">1988年 创立初期</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <div class="text-2xl font-bold text-sky-300">500万双</div>
+                        <div class="text-xs text-gray-500 mt-1">2008年 集团化扩张</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <div class="text-2xl font-bold text-purple-300">600-700万双</div>
+                        <div class="text-xs text-gray-500 mt-1">2018-2024年</div>
+                    </div>
+                    <div class="glass-card p-4 border-2 border-amber-400/30">
+                        <div class="text-2xl font-bold text-amber-300">800万双</div>
+                        <div class="text-xs text-gray-500 mt-1">2026年 智能工厂</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Matrix -->
+        <section id="brands" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">品牌矩阵</h2>
+            <p class="section-subtitle">Brand Portfolio · 自主品牌 + 国际注册</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="brand-card border-l-4 border-pink-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold text-pink-300">ATHLETIC 亚礼得</h3>
+                        <span class="tag-pill-pink">核心品牌</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-2">创立于1988年（第二十四届奥运会举办年），中文含义"运动的"。通过马德里协定在全球30多个国家地区进行品牌运作，是中国运动休闲鞋行业唯一的SATRA会员。</p>
+                    <div class="text-xs text-amber-300"><i class="fas fa-crown mr-1"></i>中国驰名商标 · 中国名牌产品</div>
+                </div>
+                <div class="brand-card border-l-4 border-sky-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold text-sky-300">思铂纳</h3>
+                        <span class="tag-pill">运动子品牌</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-2">覆盖25类服装鞋帽、18类皮革皮具、28类健身器材、35类广告销售多类别注册商标，拓展运动功能细分市场。</p>
+                    <div class="text-xs text-sky-300"><i class="fas fa-tag mr-1"></i>多类别商标布局</div>
+                </div>
+                <div class="brand-card border-l-4 border-amber-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold text-amber-300">CITY DRY WATER PROOF</h3>
+                        <span class="tag-pill-amber">功能性品牌</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-2">防水功能性运动鞋品牌，2017年12月申请注册，覆盖25类服装鞋帽与35类广告销售，聚焦运动功能细分市场。</p>
+                    <div class="text-xs text-amber-300"><i class="fas fa-tint mr-1"></i>防水技术定位</div>
+                </div>
+                <div class="brand-card border-l-4 border-purple-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold text-purple-300">ZIP ZAP</h3>
+                        <span class="tag-pill">时尚品牌</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-2">运动时尚细分品牌，覆盖28类健身器材、35类广告销售类别，拓展年轻潮流市场。</p>
+                    <div class="text-xs text-purple-300"><i class="fas fa-bolt mr-1"></i>时尚潮流定位</div>
+                </div>
+                <div class="brand-card border-l-4 border-green-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold text-green-300">LIBER8</h3>
+                        <span class="tag-pill-green">新兴品牌</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-2">近期申请注册的新品牌，拓展运动时尚与个性化细分市场，体现品牌矩阵年轻化战略。</p>
+                    <div class="text-xs text-green-300"><i class="fas fa-rocket mr-1"></i>新兴布局</div>
+                </div>
+                <div class="brand-card border-l-4 border-sky-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold text-sky-300">寰球鞋服</h3>
+                        <span class="tag-pill">企业品牌</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-2">企业统一品牌项目，承载30余年制造积淀与"泉州鞋业先行者、中国运动鞋技术播种机"行业美誉。</p>
+                    <div class="text-xs text-sky-300"><i class="fas fa-industry mr-1"></i>企业母品牌</div>
+                </div>
+            </div>
+            <div class="glass-card p-4 mt-4 flex flex-wrap items-center gap-4">
+                <div class="flex items-center">
+                    <i class="fas fa-globe-asia text-sky-400 text-xl mr-2"></i>
+                    <span class="text-sm text-gray-300">国际注册：<b class="text-sky-300">马德里协定</b>覆盖 30+ 国家地区</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-medal text-amber-400 text-xl mr-2"></i>
+                    <span class="text-sm text-gray-300">出口免验：<b class="text-amber-300">福建省首家 · 全国第10家</b></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intellectual Property -->
+        <section id="ip" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">知识产权</h2>
+            <p class="section-subtitle">Intellectual Property · 商标 · 专利 · 软著 · 域名</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-tags text-pink-400 text-3xl mb-3"></i>
+                    <div class="stat-number">90</div>
+                    <div class="text-gray-400 text-sm mt-2">注册商标</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-lightbulb text-sky-400 text-3xl mb-3"></i>
+                    <div class="stat-number">121</div>
+                    <div class="text-gray-400 text-sm mt-2">专利信息</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-code text-purple-400 text-3xl mb-3"></i>
+                    <div class="stat-number">6</div>
+                    <div class="text-gray-400 text-sm mt-2">软件著作权</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-globe text-green-400 text-3xl mb-3"></i>
+                    <div class="stat-number-gold">4</div>
+                    <div class="text-gray-400 text-sm mt-2">备案域名</div>
+                </div>
+            </div>
+
+            <!-- Recent Patents -->
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-sky-300 mb-4 flex items-center">
+                    <i class="fas fa-flask mr-2"></i>近期专利布局（2025-2026）
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-sky-200">V字型分层式弹性延展结构的鞋</div>
+                                <div class="text-xs text-gray-500 mt-1">实用新型专利 · 2026-07-17 授权</div>
+                            </div>
+                            <span class="tag-pill">实用新型</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-purple-200">多色多密度鞋底</div>
+                                <div class="text-xs text-gray-500 mt-1">发明专利公开 · 2026-06-09</div>
+                            </div>
+                            <span class="tag-pill-pink">发明</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-purple-200">桥拉索联动包裹防倾倒鞋</div>
+                                <div class="text-xs text-gray-500 mt-1">发明专利授权 · 2026-05-26</div>
+                            </div>
+                            <span class="tag-pill-pink">发明</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-sky-200">护踝结构的鞋子</div>
+                                <div class="text-xs text-gray-500 mt-1">实用新型专利 · 2026-04-28</div>
+                            </div>
+                            <span class="tag-pill">实用新型</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-purple-200">复合鞋内鞋面材料</div>
+                                <div class="text-xs text-gray-500 mt-1">发明专利授权 · 2026-04-21</div>
+                            </div>
+                            <span class="tag-pill-pink">发明</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-sky-200">滴晶碳纤维布稳定片及运动鞋</div>
+                                <div class="text-xs text-gray-500 mt-1">实用新型专利 · 2026-04-07</div>
+                            </div>
+                            <span class="tag-pill">实用新型</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-sky-200">防绊倒的鞋子</div>
+                                <div class="text-xs text-gray-500 mt-1">实用新型专利 · 2026-02-27</div>
+                            </div>
+                            <span class="tag-pill">实用新型</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-sky-200">双峰峡口包裹支撑篮球鞋</div>
+                                <div class="text-xs text-gray-500 mt-1">实用新型专利 · 2026-02-13</div>
+                            </div>
+                            <span class="tag-pill">实用新型</span>
+                        </div>
+                    </div>
+                    <div class="patent-card">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <div class="text-sm font-semibold text-sky-200">蝉翼式3D打印包裹支撑鞋面</div>
+                                <div class="text-xs text-gray-500 mt-1">实用新型专利 · 2025-12-30</div>
+                            </div>
+                            <span class="tag-pill">实用新型</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-sky-500/5 border border-sky-500/20">
+                    <p class="text-xs text-sky-200">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <b>专利方向聚焦：</b>防侧翻结构、防水功能、智能化生产、动态稳定性、自动化制造工艺。体现公司在运动鞋功能性技术与智能制造工艺上的核心创新优势。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Domain Info -->
+            <div class="glass-card p-6 mt-4">
+                <h3 class="text-base font-semibold text-green-300 mb-3 flex items-center">
+                    <i class="fas fa-globe mr-2"></i>域名与备案
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="info-row"><span class="info-label">qzhqxf.com</span><span class="info-value text-xs">官网 · 闽ICP备18021135号-1 · 2018-09-05</span></div>
+                    <div class="info-row"><span class="info-label">athletic.com.cn</span><span class="info-value text-xs">品牌官网 · 闽ICP备18021135号-3 · 2025-03-12</span></div>
+                    <div class="info-row"><span class="info-label">qafshoes.com</span><span class="info-value text-xs">鞋类业务 · 闽ICP备18021135号-4 · 2025-03-12</span></div>
+                    <div class="info-row"><span class="info-label">qzhqscm.com</span><span class="info-value text-xs">供应链 · 闽ICP备18021135号-2 · 2025-03-12</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Group Structure & Shareholders -->
+        <section id="structure" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">集团架构与股权结构</h2>
+            <p class="section-subtitle">Group Structure & Shareholders · 安踏集团成员企业</p>
+
+            <!-- Shareholder Structure -->
+            <div class="glass-card p-6 mb-4">
+                <h3 class="text-base font-semibold text-purple-300 mb-4 flex items-center">
+                    <i class="fas fa-sitemap mr-2"></i>股东持股结构
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-pink-300 font-semibold"><i class="fas fa-crown mr-1 text-amber-400"></i>安踏体育用品集团有限公司</span>
+                            <span class="text-pink-300 font-bold">55.00%</span>
+                        </div>
+                        <div class="shareholder-bar bg-gradient-to-r from-pink-500 to-rose-500" style="width: 55%;">大股东 · 控股</div>
+                        <div class="text-xs text-gray-500 mt-1">投资企业38家 · 疑似实控人：安踏投资有限公司</div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-sky-300 font-semibold">陈永培</span>
+                            <span class="text-sky-300 font-bold">18.00%</span>
+                        </div>
+                        <div class="shareholder-bar bg-gradient-to-r from-sky-500 to-blue-500" style="width: 18%;">自然人</div>
+                        <div class="text-xs text-gray-500 mt-1">关联企业2家 · 联合创始人 · 董事</div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-amber-300 font-semibold">菲律宾亚兰大木材发展公司</span>
+                            <span class="text-amber-300 font-bold">15.00%</span>
+                        </div>
+                        <div class="shareholder-bar bg-gradient-to-r from-amber-500 to-orange-500" style="width: 15%;">外资股东</div>
+                        <div class="text-xs text-gray-500 mt-1">投资企业1家 · 体现中外合资背景</div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-green-300 font-semibold">黄雅芹</span>
+                            <span class="text-green-300 font-bold">12.00%</span>
+                        </div>
+                        <div class="shareholder-bar bg-gradient-to-r from-green-500 to-emerald-500" style="width: 12%;">自然人</div>
+                        <div class="text-xs text-gray-500 mt-1">关联企业8家</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organization Structure -->
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-sky-300 mb-4 flex items-center">
+                    <i class="fas fa-network-wired mr-2"></i>组织架构
+                </h3>
+                <div class="space-y-3">
+                    <!-- Parent -->
+                    <div class="flex justify-center">
+                        <div class="org-node org-node-parent" style="min-width: 240px;">
+                            <div class="text-xs text-purple-300">母公司 / 控股股东</div>
+                            <div class="font-bold text-purple-200">安踏体育用品集团有限公司</div>
+                            <div class="text-xs text-gray-400">持股 55% · 港股上市 (02020.HK)</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sky-400"><i class="fas fa-chevron-down"></i></div>
+                    <!-- Current Company -->
+                    <div class="flex justify-center">
+                        <div class="org-node border-2 border-sky-400/50" style="min-width: 280px; background: rgba(56, 189, 248, 0.12);">
+                            <div class="text-xs text-sky-300">本企业</div>
+                            <div class="font-bold text-sky-200 text-base">泉州寰球鞋服有限公司</div>
+                            <div class="text-xs text-gray-400">中外合资 · 大型运动鞋制造</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sky-400"><i class="fas fa-chevron-down"></i></div>
+                    <!-- Subsidiaries -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                        <div class="org-node">
+                            <div class="text-xs text-gray-400">关联企业</div>
+                            <div class="text-sm font-semibold text-sky-200">全锋(福建)鞋材</div>
+                            <div class="text-xs text-gray-500">鞋材制造</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="text-xs text-gray-400">关联企业</div>
+                            <div class="text-sm font-semibold text-sky-200">泉州东祎达轻工</div>
+                            <div class="text-xs text-gray-500">轻工发展</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="text-xs text-gray-400">关联企业</div>
+                            <div class="text-sm font-semibold text-sky-200">泉州鸿展模具</div>
+                            <div class="text-xs text-gray-500">模具制造</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="text-xs text-gray-400">对外投资</div>
+                            <div class="text-sm font-semibold text-sky-200">亚礼得篮球俱乐部</div>
+                            <div class="text-xs text-gray-500">注册资本200万</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20">
+                    <p class="text-xs text-purple-200">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <b>集团归属：</b>所属安踏体育集团，集团成员企业201家；疑似实控人为安踏投资有限公司（持股55%）。
+                        分支机构8家，含华宝亚礼得专卖店等。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Key Personnel -->
+            <div class="glass-card p-6 mt-4">
+                <h3 class="text-base font-semibold text-amber-300 mb-4 flex items-center">
+                    <i class="fas fa-user-tie mr-2"></i>主要管理人员
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="glass-card p-4 border-l-4 border-pink-400">
+                        <div class="font-bold text-pink-300">赖世贤 <span class="text-xs text-gray-500 ml-2">董事长</span></div>
+                        <div class="text-xs text-gray-400 mt-1">法定代表人 · 关联企业58-61家</div>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-sky-400">
+                        <div class="font-bold text-sky-300">毕明伟 <span class="text-xs text-gray-500 ml-2">董事</span></div>
+                        <div class="text-xs text-gray-400 mt-1">关联企业59-61家</div>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-amber-400">
+                        <div class="font-bold text-amber-300">黄青山 <span class="text-xs text-gray-500 ml-2">经理 / 董事</span></div>
+                        <div class="text-xs text-gray-400 mt-1">关联企业1家</div>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-sky-400">
+                        <div class="font-bold text-sky-300">陈永培 <span class="text-xs text-gray-500 ml-2">董事</span></div>
+                        <div class="text-xs text-gray-400 mt-1">联合创始人 · 股东18% · 关联企业3家</div>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-purple-400">
+                        <div class="font-bold text-purple-300">朱双虹 <span class="text-xs text-gray-500 ml-2">董事</span></div>
+                        <div class="text-xs text-gray-400 mt-1">关联企业2家</div>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-green-400">
+                        <div class="font-bold text-green-300">张昌 <span class="text-xs text-gray-500 ml-2">监事</span></div>
+                        <div class="text-xs text-gray-400 mt-1">关联企业17-20家</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Transformation -->
+        <section id="digital" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">数字化与智能制造现状</h2>
+            <p class="section-subtitle">Digital Transformation Status · 5G + AI + 绿色</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="glass-card glass-card-hover p-6 border-l-4 border-sky-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-broadcast-tower text-sky-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-sky-300">5G新一代鞋业智能工厂</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                        入选福建省2025年首批先进级智能工厂（晋江13家入选，占全省19.4%）。
+                        聚焦数字化转型、网络化协同，部署智能制造装备、工业软件和系统，
+                        实现生产经营数据互通共享、关键生产过程精准控制。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">5G专网</span>
+                        <span class="tag-pill">AI视觉检测</span>
+                        <span class="tag-pill">工业数采</span>
+                        <span class="tag-pill">数据互通</span>
+                    </div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 border-l-4 border-green-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-leaf text-green-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-green-300">国家级绿色工厂</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                        2025年获评国家级绿色工厂，在可持续材料应用和智能制造方面保持竞争力。
+                        通过两化融合管理体系认证，契合泉州"智能、绿色、品牌"三大转型方向，
+                        体现绿色制造与低碳生产的行业领先地位。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill-green">国家级认证</span>
+                        <span class="tag-pill-green">两化融合认证</span>
+                        <span class="tag-pill-green">可持续材料</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Capabilities -->
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-purple-300 mb-4 flex items-center">
+                    <i class="fas fa-microchip mr-2"></i>技术研发能力
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="glass-card p-4">
+                        <i class="fas fa-flask text-purple-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-purple-200 text-sm">运动鞋服研发中心</div>
+                        <div class="text-xs text-gray-500 mt-1">专业研发机构</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <i class="fas fa-atom text-sky-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-sky-200 text-sm">纳米技术应用实验室</div>
+                        <div class="text-xs text-gray-500 mt-1">前沿材料研究</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <i class="fas fa-certificate text-amber-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-amber-200 text-sm">SATRA中国首家</div>
+                        <div class="text-xs text-gray-500 mt-1">运动鞋企业技术检验认证</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <i class="fas fa-award text-green-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-green-200 text-sm">省级企业技术中心</div>
+                        <div class="text-xs text-gray-500 mt-1">2026年入选</div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-sky-500/5 border border-sky-500/20">
+                    <p class="text-xs text-sky-200">
+                        <i class="fas fa-lightbulb mr-1"></i>
+                        <b>技术沉淀：</b>30多年技术积淀，完备研发体系。专利布局聚焦防侧翻结构、防水功能、
+                        智能化生产、动态稳定性与自动化制造工艺，形成差异化竞争优势。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Timeline -->
+        <section id="timeline" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">发展历程</h2>
+            <p class="section-subtitle">Development Timeline · 37年砥砺前行</p>
+            <div class="glass-card p-6 md:p-8">
+                <div class="timeline-item">
+                    <div class="text-amber-400 font-bold text-sm">1988年</div>
+                    <div class="text-base font-semibold text-white mt-1">企业创立</div>
+                    <p class="text-gray-400 text-sm mt-1">在第二十四届奥运会举办年创立，孕育品牌"ATHLETIC"（亚礼得），由陈永培总经理带领，奠定品牌战略前瞻性基础。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-sky-400 font-bold text-sm">1995-01-12</div>
+                    <div class="text-base font-semibold text-white mt-1">工商注册成立</div>
+                    <p class="text-gray-400 text-sm mt-1">泉州寰球鞋服有限公司正式工商注册，注册资本2626万美元，中外合资企业，主营运动鞋研发、开发与制造。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-purple-400 font-bold text-sm">2001年</div>
+                    <div class="text-base font-semibold text-white mt-1">成为SATRA会员</div>
+                    <p class="text-gray-400 text-sm mt-1">成为国际鞋业权威认证研究机构SATRA会员，是迄今为止中国运动休闲鞋行业唯一的成员，标志寰球产品跻身世界强者行列。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-pink-400 font-bold text-sm">2004年</div>
+                    <div class="text-base font-semibold text-white mt-1">"亚礼得"全面进军国内市场</div>
+                    <p class="text-gray-400 text-sm mt-1">以"亚礼得"品牌全面进军国内市场，通过马德里协定在全球30多个国家地区进行品牌运作。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-sky-400 font-bold text-sm">2018-09-05</div>
+                    <div class="text-base font-semibold text-white mt-1">官网ICP备案</div>
+                    <p class="text-gray-400 text-sm mt-1">qzhqxf.com 完成ICP备案（闽ICP备18021135号-1），企业信息化基础建设。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-amber-400 font-bold text-sm">2022-01-25</div>
+                    <div class="text-base font-semibold text-white mt-1">企业类型变更</div>
+                    <p class="text-gray-400 text-sm mt-1">企业类型由"有限责任公司（台港澳与境内合资）"变更为"有限责任公司（港澳台投资、非独资）"，投资人结构优化。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-green-400 font-bold text-sm">2025年</div>
+                    <div class="text-base font-semibold text-white mt-1">国家级绿色工厂 + 省级先进级智能工厂</div>
+                    <p class="text-gray-400 text-sm mt-1">获评国家级绿色工厂；"寰球5G新一代鞋业智能工厂"入选福建省2025年先进级智能工厂项目；获评A级纳税人。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-purple-400 font-bold text-sm">2026年</div>
+                    <div class="text-base font-semibold text-white mt-1">省级工业龙头 + 省级企业技术中心</div>
+                    <p class="text-gray-400 text-sm mt-1">入选省级工业龙头企业和省级企业技术中心，持续强化技术积累与智能制造能力，保持运动鞋制造领域显著优势。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Honors & Qualifications -->
+        <section id="honors" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">荣誉资质</h2>
+            <p class="section-subtitle">Honors & Qualifications · 国家级 · 省级 · 行业级</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- National Level -->
+                <div class="glass-card glass-card-hover p-5 border-t-4 border-green-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-medal text-green-400 text-2xl mr-2"></i>
+                        <h3 class="font-bold text-green-300">国家级荣誉</h3>
+                    </div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>国家级绿色工厂（2025）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>中国驰名商标</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>中国名牌产品</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>国家出口免验证书（福建省首家、全国第10家、全国鞋类出口型企业第2家）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>全国守合同重信用单位</span></li>
+                    </ul>
+                </div>
+                <!-- Provincial Level -->
+                <div class="glass-card glass-card-hover p-5 border-t-4 border-sky-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-award text-sky-400 text-2xl mr-2"></i>
+                        <h3 class="font-bold text-sky-300">省级荣誉</h3>
+                    </div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>福建省工业龙头企业（2026）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>福建省企业技术中心（2026）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>福建省先进级智能工厂（2025）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>福建省著名商标</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>省级工业设计中心</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>泉州市市级企业技术中心</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>泉州市文明企业</span></li>
+                    </ul>
+                </div>
+                <!-- Industry & Certification -->
+                <div class="glass-card glass-card-hover p-5 border-t-4 border-amber-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-certificate text-amber-400 text-2xl mr-2"></i>
+                        <h3 class="font-bold text-amber-300">行业认证</h3>
+                    </div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>SATRA会员（中国运动休闲鞋行业唯一）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>SATRA中国首家运动鞋企业技术检验认证</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>两化融合管理体系认证</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>ISO9001 质量管理体系认证</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>ISO14001 环境管理体系认证</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>OHSAS18001 职业健康安全认证</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>中国皮革协会理事单位</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="glass-card p-4 mt-4">
+                <div class="flex items-center">
+                    <i class="fas fa-quote-left text-sky-400 text-xl mr-3"></i>
+                    <p class="text-sm text-gray-300 italic">
+                        被业内誉为"<b class="text-sky-300">泉州鞋业先行者，中国运动鞋技术播种机</b>"——凭借30多年的技术积淀和完备的研发体系，在运动鞋制造领域具有显著优势。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk & Credit -->
+        <section id="risk" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">风险洞察与信用评级</h2>
+            <p class="section-subtitle">Risk Insight & Credit Rating · 多维度评估</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                <div class="glass-card p-5 text-center">
+                    <div class="text-xs text-gray-400 mb-2">天眼查评分</div>
+                    <div class="stat-number">91</div>
+                    <div class="text-xs text-green-400 mt-2">优秀</div>
+                </div>
+                <div class="glass-card p-5 text-center">
+                    <div class="text-xs text-gray-400 mb-2">启信分</div>
+                    <div class="stat-number-gold">773</div>
+                    <div class="text-xs text-amber-400 mt-2">良好</div>
+                </div>
+                <div class="glass-card p-5 text-center">
+                    <div class="text-xs text-gray-400 mb-2">税务信用</div>
+                    <div class="stat-number text-green-400">A</div>
+                    <div class="text-xs text-green-400 mt-2">A级纳税人 (2025)</div>
+                </div>
+                <div class="glass-card p-5 text-center">
+                    <div class="text-xs text-gray-400 mb-2">财产线索估值</div>
+                    <div class="stat-number-gold">158亿</div>
+                    <div class="text-xs text-gray-400 mt-2">196条线索</div>
+                </div>
+            </div>
+
+            <!-- Risk Breakdown -->
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-amber-300 mb-4 flex items-center">
+                    <i class="fas fa-shield-alt mr-2"></i>风险分布
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">自身风险</span>
+                            <span class="text-green-400">0-8 条 <span class="text-xs text-gray-500">(平台差异)</span></span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-green-500" style="width: 10%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">关联风险（安踏集团）</span>
+                            <span class="text-amber-400">68 条</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-amber-500" style="width: 50%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">周边风险</span>
+                            <span class="text-amber-400">29 条</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-amber-500" style="width: 30%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">历史风险</span>
+                            <span class="text-orange-400">7 条（含4条被执行人历史）</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-orange-500" style="width: 25%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">预警提醒</span>
+                            <span class="text-sky-400">13 条（投资人变更等）</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-sky-500" style="width: 20%;"></div></div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-green-500/5 border border-green-500/20">
+                    <p class="text-xs text-green-200">
+                        <i class="fas fa-check-circle mr-1"></i>
+                        <b>风险综合评估：</b>企业自身风险较低，经营状态稳健向好。主要风险来自关联方（安踏集团）的周边风险。
+                        司法案件1起涉诉关系，整体合规表现正常。税务信用A级，财务表现稳健。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Strategic Value -->
+        <section class="mb-16 scroll-fade-in">
+            <div class="glass-card p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-sky-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl font-bold gradient-text mb-4">企业战略价值小结</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-industry text-sky-400 text-xl mr-2"></i>
+                                <h3 class="font-bold text-sky-300">制造实力</h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">37年制鞋积淀，年产800万双运动鞋，5G智能工厂+国家级绿色工厂双认证，安踏集团核心制造基地。</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-globe text-purple-400 text-xl mr-2"></i>
+                                <h3 class="font-bold text-purple-300">国际布局</h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">自主品牌Athletic覆盖全球50+国家，马德里协定30+国家注册，SATRA中国唯一会员，出口免验资质。</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-lightbulb text-amber-400 text-xl mr-2"></i>
+                                <h3 class="font-bold text-amber-300">创新驱动</h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">90商标+121专利+6软著，近期专利聚焦防侧翻、防水、3D打印等前沿技术，省级企业技术中心。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-text border-t border-white/5 mt-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                <div>
+                    <p>数据来源：企查查、天眼查、爱企查、启信宝、福建省工信厅、晋江市政府官网、泉州海关、东南网等公开渠道</p>
+                    <p class="mt-1">数据更新时间：2026-07-29 · 多平台交叉验证</p>
+                </div>
+                <div class="text-right">
+                    <p class="font-semibold gradient-text">森罗之眼 · 企业智能画像</p>
+                    <p>39139@胜天半子</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Scroll fade-in animation
+        gsap.utils.toArray('.scroll-fade-in').forEach((section) => {
+            gsap.fromTo(section,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+
+        // Stat number count-up animation
+        gsap.utils.toArray('.stat-number, .stat-number-gold').forEach((el) => {
+            const text = el.textContent.trim();
+            const numMatch = text.match(/^([\d,]+\.?\d*)(.*)$/);
+            if (numMatch) {
+                const targetNum = parseFloat(numMatch[1].replace(/,/g, ''));
+                const suffix = numMatch[2];
+                if (!isNaN(targetNum) && targetNum > 0) {
+                    const obj = { val: 0 };
+                    el.textContent = '0' + suffix;
+                    ScrollTrigger.create({
+                        trigger: el,
+                        start: 'top 90%',
+                        once: true,
+                        onEnter: () => {
+                            gsap.to(obj, {
+                                val: targetNum,
+                                duration: 1.5,
+                                ease: 'power2.out',
+                                onUpdate: () => {
+                                    let displayNum;
+                                    if (targetNum >= 1000) {
+                                        displayNum = Math.floor(obj.val).toLocaleString();
+                                    } else if (targetNum % 1 !== 0) {
+                                        displayNum = obj.val.toFixed(1);
+                                    } else {
+                                        displayNum = Math.floor(obj.val);
+                                    }
+                                    el.textContent = displayNum + suffix;
+                                },
+                                onComplete: () => {
+                                    el.textContent = text;
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Risk meter animation
+        ScrollTrigger.create({
+            trigger: '#risk',
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                document.querySelectorAll('.risk-meter-fill').forEach(el => {
+                    const width = el.style.width;
+                    el.style.width = '0%';
+                    setTimeout(() => {
+                        el.style.width = width;
+                    }, 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
