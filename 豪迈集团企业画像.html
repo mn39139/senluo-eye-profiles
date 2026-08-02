@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豪迈集团股份有限公司 · 企业画像 | 森罗之眼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: #e2e8f0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-gold {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-number {
+            font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .stat-number-gold {
+            font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(167, 139, 250, 0.15));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #38bdf8;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.15));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #4ade80;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-amber {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.15));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-pink {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.15), rgba(236, 72, 153, 0.15));
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #f472b6;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(168, 85, 247, 0.15));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #f87171;
+            display: inline-block;
+            margin: 2px;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.6); }
+        }
+        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            padding-bottom: 24px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38bdf8, #a78bfa);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #38bdf8, transparent);
+        }
+        .timeline-item:last-child::after { display: none; }
+        .timeline-item.alert::before {
+            background: linear-gradient(135deg, #ef4444, #f59e0b);
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+        }
+
+        .info-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.875rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label {
+            color: #94a3b8;
+            min-width: 120px;
+            font-weight: 500;
+        }
+        .info-value {
+            color: #e2e8f0;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .shareholder-bar {
+            height: 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .segment-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .segment-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            background: rgba(56, 189, 248, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            color: #cbd5e1;
+            transition: color 0.2s;
+            font-size: 0.875rem;
+        }
+        .nav-link:hover { color: #38bdf8; }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .section-subtitle {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .risk-meter {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        .risk-meter-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .org-node {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
+            padding: 12px 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .org-node:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.5);
+        }
+        .org-node-parent {
+            background: rgba(167, 139, 250, 0.12);
+            border-color: rgba(167, 139, 250, 0.4);
+        }
+
+        .footer-text {
+            color: #64748b;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .champion-badge {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2));
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            color: #fbbf24;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10" style="border-radius: 0;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-purple-500 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-eye text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-base font-bold gradient-text">森罗之眼</div>
+                        <div class="text-xs text-gray-400">豪迈集团企业画像</div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#overview" class="nav-link">概览</a>
+                    <a href="#basic" class="nav-link">工商信息</a>
+                    <a href="#operation" class="nav-link">经营数据</a>
+                    <a href="#segments" class="nav-link">业务板块</a>
+                    <a href="#ip" class="nav-link">知识产权</a>
+                    <a href="#structure" class="nav-link">集团架构</a>
+                    <a href="#digital" class="nav-link">数字化</a>
+                    <a href="#timeline" class="nav-link">发展历程</a>
+                    <a href="#honors" class="nav-link">荣誉资质</a>
+                    <a href="#risk" class="nav-link">风险洞察</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero / Overview -->
+        <section id="overview" class="mb-16 scroll-fade-in">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-2 mb-6">
+                        <span class="tag-pill-amber">轮胎模具全球第一</span>
+                        <span class="tag-pill">气门芯全球第一</span>
+                        <span class="tag-pill-green">国家级制造业单项冠军</span>
+                        <span class="tag-pill-green">国家企业技术中心</span>
+                        <span class="tag-pill-amber">深交所上市(002595)</span>
+                        <span class="tag-pill-pink">8家海外子公司</span>
+                        <span class="tag-pill-green">国家级绿色工厂</span>
+                        <span class="tag-pill">2万+员工</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-3">
+                        豪迈集团股份有限公司
+                    </h1>
+                    <p class="text-lg text-sky-300 mb-4">HIMILE GROUP CO., LTD. · 山东高密</p>
+                    <p class="text-gray-300 text-base md:text-lg max-w-4xl mb-8 leading-relaxed">
+                        始于1995年，由<b class="text-sky-400">张恭运</b>联合4位合伙人筹资4万元创立，
+                        现已发展为<b class="text-purple-400">全球最大的轮胎模具制造商</b>（市占率超30%）、
+                        <b class="text-pink-400">气门芯全球第一</b>（市占率约35%）。
+                        集团2024年产值<b class="text-amber-400">202亿元</b>，员工2万余人，
+                        拥有<b class="text-green-400">5项国家级/省级单项冠军产品</b>，
+                        同实控人旗下<b class="text-amber-400">豪迈科技(002595.SZ)</b>2011年深交所上市，
+                        2025年营收首破百亿(110.78亿元)。
+                    </p>
+                    <!-- Key Stats Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number-gold">202亿</div>
+                            <div class="text-gray-400 text-xs mt-1">2024年产值</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">30%+</div>
+                            <div class="text-gray-400 text-xs mt-1">轮胎模具全球市占</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">2万+</div>
+                            <div class="text-gray-400 text-xs mt-1">员工规模</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number-gold">8家</div>
+                            <div class="text-gray-400 text-xs mt-1">海外子公司</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">5项</div>
+                            <div class="text-gray-400 text-xs mt-1">单项冠军产品</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number-gold">605亿</div>
+                            <div class="text-gray-400 text-xs mt-1">豪迈科技市值</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Grid: Key Highlights -->
+        <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-4 scroll-fade-in">
+            <div class="glass-card glass-card-hover p-6 md:col-span-2">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-crown text-amber-400 text-2xl mr-3"></i>
+                    <h3 class="text-lg font-bold text-amber-300">全球制造业单项冠军矩阵</h3>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    豪迈集团拥有<b class="text-amber-300">5项国家级/省级单项冠军产品</b>，在全球多个细分领域占据绝对领先地位：
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="glass-card p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-amber-200">轮胎模具</span>
+                            <span class="champion-badge">全球第一</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">全球市占率30%+ · 年产能6万套</div>
+                    </div>
+                    <div class="glass-card p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-amber-200">气门芯</span>
+                            <span class="champion-badge">全球第一</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">全球市占率约35%</div>
+                    </div>
+                    <div class="glass-card p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-sky-200">海底采油树结构件</span>
+                            <span class="champion-badge">全球寡头</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">全球市占率40-50%</div>
+                    </div>
+                    <div class="glass-card p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-sky-200">深海隔水管</span>
+                            <span class="champion-badge">全球第四</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">全球市占率约40%</div>
+                    </div>
+                    <div class="glass-card p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-purple-200">螺旋绕管式换热器</span>
+                            <span class="champion-badge">单项冠军</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">省级标准制定者</div>
+                    </div>
+                    <div class="glass-card p-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-semibold text-purple-200">碳化硅换热器</span>
+                            <span class="champion-badge">单项冠军</span>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">高效节能换热</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card glass-card-hover p-6">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-handshake text-sky-400 text-2xl mr-3"></i>
+                    <h3 class="text-lg font-bold text-sky-300">全球顶级客户群</h3>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                    服务全球轮胎75强中<b class="text-sky-300">66家</b>，机械零部件客户包括<b class="text-amber-300">30+世界500强</b>。
+                </p>
+                <div class="space-y-2">
+                    <div class="text-xs"><span class="text-sky-400 font-semibold">轮胎：</span>米其林 · 普利司通 · 固特异 · 大陆 · 倍耐力</div>
+                    <div class="text-xs"><span class="text-sky-400 font-semibold">机械：</span>GE · 西门子 · 三菱重工 · 卡特彼勒 · 采埃孚</div>
+                    <div class="text-xs"><span class="text-sky-400 font-semibold">海工：</span>贝克休斯 · 斯伦贝谢 · MODEC · SBM</div>
+                </div>
+                <div class="mt-3 p-2 rounded bg-sky-500/10 border border-sky-500/20">
+                    <div class="text-xs text-sky-200">🏆 米其林"最佳供应商"(2018·亚洲唯一)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Basic Business Info -->
+        <section id="basic" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">工商基本信息</h2>
+            <p class="section-subtitle">Basic Business Information · 母公司主体（非上市）+ 上市平台</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="glass-card p-6">
+                    <h3 class="text-base font-semibold text-sky-300 mb-4 flex items-center">
+                        <i class="fas fa-building mr-2"></i>豪迈集团股份有限公司（母公司·非上市）
+                    </h3>
+                    <div class="info-row"><span class="info-label">企业名称</span><span class="info-value">豪迈集团股份有限公司</span></div>
+                    <div class="info-row"><span class="info-label">统一信用代码</span><span class="info-value font-mono text-sky-300">913707006954389137</span></div>
+                    <div class="info-row"><span class="info-label">法定代表人</span><span class="info-value">张恭运（董事长）</span></div>
+                    <div class="info-row"><span class="info-label">总经理</span><span class="info-value">单既强（2025-12-26接任）</span></div>
+                    <div class="info-row"><span class="info-label">注册资本</span><span class="info-value">49,593.05 万元（2025-12增资）</span></div>
+                    <div class="info-row"><span class="info-label">实缴资本</span><span class="info-value">42,093.05 万元</span></div>
+                    <div class="info-row"><span class="info-label">成立日期</span><span class="info-value">2009-10-17（业务始于1995年）</span></div>
+                    <div class="info-row"><span class="info-label">企业类型</span><span class="info-value">股份有限公司（非上市·自然人投资或控股）</span></div>
+                    <div class="info-row"><span class="info-label">所属行业</span><span class="info-value">商务服务业（实际：机械制造业）</span></div>
+                    <div class="info-row"><span class="info-label">经营状态</span><span class="info-value"><span class="text-green-400">● 开业</span></span></div>
+                    <div class="info-row"><span class="info-label">注册地址</span><span class="info-value">山东省潍坊市高密市经济开发区康成大街5655号</span></div>
+                    <div class="info-row"><span class="info-label">税务信用</span><span class="info-value"><span class="text-green-400 font-bold">A级（2025）</span></span></div>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="text-base font-semibold text-amber-300 mb-4 flex items-center">
+                        <i class="fas fa-chart-line mr-2"></i>山东豪迈机械科技股份有限公司（上市平台）
+                    </h3>
+                    <div class="info-row"><span class="info-label">企业名称</span><span class="info-value">山东豪迈机械科技股份有限公司</span></div>
+                    <div class="info-row"><span class="info-label">证券代码</span><span class="info-value font-mono text-amber-300">002595.SZ</span></div>
+                    <div class="info-row"><span class="info-label">上市时间</span><span class="info-value">2011年6月（深交所）</span></div>
+                    <div class="info-row"><span class="info-label">法定代表人</span><span class="info-value">张恭运</span></div>
+                    <div class="info-row"><span class="info-label">2025年营收</span><span class="info-value"><span class="text-amber-300 font-bold">110.78亿元</span> (+25.70%)</span></div>
+                    <div class="info-row"><span class="info-label">2025年净利润</span><span class="info-value">23.93亿元 (+18.99%)</span></div>
+                    <div class="info-row"><span class="info-label">总市值</span><span class="info-value">约605-670亿元（2026-08）</span></div>
+                    <div class="info-row"><span class="info-label">2025年员工</span><span class="info-value">18,383人</span></div>
+                    <div class="info-row"><span class="info-label">研发投入</span><span class="info-value">6.56亿元（2025，+41.58%）</span></div>
+                    <div class="info-row"><span class="info-label">累计分红</span><span class="info-value">39.76亿元（2011-2025）</span></div>
+                    <div class="info-row"><span class="info-label">实控人</span><span class="info-value">张恭运（持股30.25%）</span></div>
+                    <div class="info-row"><span class="info-label">官网</span><span class="info-value"><span class="text-sky-400">www.himile.com</span></span></div>
+                </div>
+            </div>
+            <!-- Business Scope -->
+            <div class="glass-card p-6 mt-4">
+                <h3 class="text-base font-semibold text-purple-300 mb-3 flex items-center">
+                    <i class="fas fa-briefcase mr-2"></i>经营范围与核心定位
+                </h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                    <b>核心定位：</b>立足轮胎模具、机械加工、铸钢铸铁、油气装备、换热器领域，在数控机床、压缩机、精工精锻等领域持续增长。
+                    <b>全球地位：</b>轮胎模具全球第一（市占率30%+）、气门芯全球第一（市占率35%）、海底采油树结构件全球寡头（市占率40-50%）。
+                </p>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="tag-pill-amber">轮胎模具</span>
+                    <span class="tag-pill">大型机械零部件</span>
+                    <span class="tag-pill">数控机床</span>
+                    <span class="tag-pill">化工装备</span>
+                    <span class="tag-pill">换热器</span>
+                    <span class="tag-pill">海工油气装备</span>
+                    <span class="tag-pill">压缩机</span>
+                    <span class="tag-pill">气门嘴&芯</span>
+                    <span class="tag-pill">工业防腐涂料</span>
+                    <span class="tag-pill">高效低毒杀虫剂</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operational Data -->
+        <section id="operation" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">经营数据</h2>
+            <p class="section-subtitle">Operational Data · 集团整体 + 上市平台财务</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-yen-sign text-amber-400 text-3xl mb-3"></i>
+                    <div class="stat-number-gold">202亿</div>
+                    <div class="text-gray-400 text-sm mt-2">2024年产值</div>
+                    <div class="text-gray-500 text-xs mt-1">出口10.3亿美元</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-users text-sky-400 text-3xl mb-3"></i>
+                    <div class="stat-number">2万+</div>
+                    <div class="text-gray-400 text-sm mt-2">员工总规模</div>
+                    <div class="text-gray-500 text-xs mt-1">上市公司18,383人</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-industry text-purple-400 text-3xl mb-3"></i>
+                    <div class="stat-number">200万㎡</div>
+                    <div class="text-gray-400 text-sm mt-2">占地面积</div>
+                    <div class="text-gray-500 text-xs mt-1">规划3000亩第八工业园</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-flask text-green-400 text-3xl mb-3"></i>
+                    <div class="stat-number-gold">6.56亿</div>
+                    <div class="text-gray-400 text-sm mt-2">2025年研发投入</div>
+                    <div class="text-gray-500 text-xs mt-1">同比+41.58%</div>
+                </div>
+            </div>
+
+            <!-- Revenue History -->
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-amber-300 mb-4 flex items-center">
+                    <i class="fas fa-chart-line mr-2"></i>豪迈科技(002595)营收与净利润历史（亿元）
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-white/10">
+                                <th class="text-left py-2 px-3 text-sky-300">年份</th>
+                                <th class="text-right py-2 px-3 text-sky-300">营业收入</th>
+                                <th class="text-right py-2 px-3 text-sky-300">同比</th>
+                                <th class="text-right py-2 px-3 text-sky-300">归母净利润</th>
+                                <th class="text-right py-2 px-3 text-sky-300">同比</th>
+                                <th class="text-right py-2 px-3 text-sky-300">备注</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300">
+                            <tr class="border-b border-white/5 bg-amber-500/5">
+                                <td class="py-2 px-3 font-bold text-amber-300">2025</td>
+                                <td class="text-right py-2 px-3 font-bold text-amber-300">110.78</td>
+                                <td class="text-right py-2 px-3 text-green-400">+25.70%</td>
+                                <td class="text-right py-2 px-3 font-bold text-amber-300">23.93</td>
+                                <td class="text-right py-2 px-3 text-green-400">+18.99%</td>
+                                <td class="text-right py-2 px-3 text-xs text-amber-200">首破百亿</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="py-2 px-3">2024</td>
+                                <td class="text-right py-2 px-3">88.13</td>
+                                <td class="text-right py-2 px-3 text-green-400">+22.99%</td>
+                                <td class="text-right py-2 px-3">20.11</td>
+                                <td class="text-right py-2 px-3 text-green-400">+24.77%</td>
+                                <td class="text-right py-2 px-3 text-xs text-gray-500">—</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="py-2 px-3">2023</td>
+                                <td class="text-right py-2 px-3">71.66</td>
+                                <td class="text-right py-2 px-3 text-green-400">+7.88%</td>
+                                <td class="text-right py-2 px-3">16.12</td>
+                                <td class="text-right py-2 px-3 text-green-400">+34.33%</td>
+                                <td class="text-right py-2 px-3 text-xs text-gray-500">—</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="py-2 px-3">2022</td>
+                                <td class="text-right py-2 px-3">66.42</td>
+                                <td class="text-right py-2 px-3 text-green-400">+10.55%</td>
+                                <td class="text-right py-2 px-3">12.00</td>
+                                <td class="text-right py-2 px-3 text-green-400">+13.96%</td>
+                                <td class="text-right py-2 px-3 text-xs text-gray-500">—</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="py-2 px-3">2020</td>
+                                <td class="text-right py-2 px-3">52.94</td>
+                                <td class="text-right py-2 px-3 text-green-400">+20.68%</td>
+                                <td class="text-right py-2 px-3">10.07</td>
+                                <td class="text-right py-2 px-3 text-green-400">+16.74%</td>
+                                <td class="text-right py-2 px-3 text-xs text-gray-500">—</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="py-2 px-3">2015</td>
+                                <td class="text-right py-2 px-3">23.09</td>
+                                <td class="text-right py-2 px-3 text-green-400">+27.24%</td>
+                                <td class="text-right py-2 px-3">6.44</td>
+                                <td class="text-right py-2 px-3 text-green-400">+28.32%</td>
+                                <td class="text-right py-2 px-3 text-xs text-gray-500">—</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="py-2 px-3">2011</td>
+                                <td class="text-right py-2 px-3">6.86</td>
+                                <td class="text-right py-2 px-3 text-green-400">+14.30%</td>
+                                <td class="text-right py-2 px-3">2.13</td>
+                                <td class="text-right py-2 px-3 text-green-400">+13.17%</td>
+                                <td class="text-right py-2 px-3 text-xs text-sky-300">深交所上市</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-3">2007</td>
+                                <td class="text-right py-2 px-3">3.04</td>
+                                <td class="text-right py-2 px-3 text-gray-500">—</td>
+                                <td class="text-right py-2 px-3">0.88</td>
+                                <td class="text-right py-2 px-3 text-gray-500">—</td>
+                                <td class="text-right py-2 px-3 text-xs text-gray-500">早期</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-green-500/5 border border-green-500/20">
+                    <p class="text-xs text-green-200">
+                        <i class="fas fa-chart-line mr-1"></i>
+                        <b>核心财务亮点：</b>连续17年营收正增长、连续16年ROE>16%。2025年营收首破百亿，三大业务（轮胎模具+大型零部件+数控机床）协同增长。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Segments -->
+        <section id="segments" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">十大业务板块</h2>
+            <p class="section-subtitle">Business Segments · 多元化高端制造布局</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="segment-card border-l-4 border-amber-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-amber-300">1. 轮胎模具</h3>
+                        <span class="champion-badge">全球第一</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">2025年营收55.09亿元 · 占比49.74% · 毛利率39.98%</p>
+                    <p class="text-sm text-gray-300">始于2002年，全球市占率超30%，年产能6万套。与全球轮胎75强中66家合作，涵盖全钢/半钢/工程胎/巨胎模具及再制造服务。</p>
+                </div>
+                <div class="segment-card border-l-4 border-sky-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-sky-300">2. 大型机械零部件</h3>
+                        <span class="tag-pill">35.78%</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">2025年营收39.64亿元 · 毛利率21.58%</p>
+                    <p class="text-sm text-gray-300">始于2006年，提供设计-铸造-焊接-机加工一站式服务。产品：燃机部件、压缩机、风电变速箱。客户：GE、西门子、三菱、采埃孚。</p>
+                </div>
+                <div class="segment-card border-l-4 border-purple-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-purple-300">3. 数控机床</h3>
+                        <span class="tag-pill-pink">+142.59%</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">2025年营收9.68亿元 · 占比8.73%</p>
+                    <p class="text-sm text-gray-300">2022年自研五轴机床下线，打破海外垄断。精度±0.02mm。产品：立式/卧式加工中心、激光机床、五轴龙门、五轴车铣复合。</p>
+                </div>
+                <div class="segment-card border-l-4 border-green-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-green-300">4. 化工装备</h3>
+                        <span class="champion-badge">连续流</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">连续流化工装备技术标准创新中心</p>
+                    <p class="text-sm text-gray-300">自主研发连续流化工装备，产品：连续流微通道反应器、连续流管式反应器。子公司友道化学生产氯虫苯甲酰胺原药（全球份额约30%）。</p>
+                </div>
+                <div class="segment-card border-l-4 border-pink-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-pink-300">5. 换热器</h3>
+                        <span class="champion-badge">2项冠军</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">螺旋绕管式 + 碳化硅热交换器</p>
+                    <p class="text-sm text-gray-300">山东省换热器行业标准制定者。拥有螺旋绕管式热交换器和碳化硅热交换器两项单项冠军产品。</p>
+                </div>
+                <div class="segment-card border-l-4 border-sky-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-sky-300">6. 海工油气装备</h3>
+                        <span class="champion-badge">全球寡头</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">始于2008年（豪迈重工）</p>
+                    <p class="text-sm text-gray-300">深海隔水管（全球市占40%）、海底采油树结构件（全球市占40-50%）、FPSO模块。客户：贝克休斯、斯伦贝谢、MODEC、SBM。</p>
+                </div>
+                <div class="segment-card border-l-4 border-amber-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-amber-300">7. 压缩机</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">高密/西安/美国研究中心</p>
+                    <p class="text-sm text-gray-300">产品：离心式压缩机、往复式压缩机、隔膜式压缩机。在高密、西安、美国等地设立研究中心。</p>
+                </div>
+                <div class="segment-card border-l-4 border-purple-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-purple-300">8. 高端工业防腐涂料</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">超低VOC排放</p>
+                    <p class="text-sm text-gray-300">产品体系覆盖石油化工、装备制造、工程机械、海洋工程、电力、车辆轮毂等。主推水性和高固体分溶剂型涂料。</p>
+                </div>
+                <div class="segment-card border-l-4 border-green-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-green-300">9. 气门嘴&芯</h3>
+                        <span class="champion-badge">全球第一</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">全球市占率约35%</p>
+                    <p class="text-sm text-gray-300">全球气门芯生产基地，通过自主研发生产气门芯专用装备，生产效率提升近百倍。</p>
+                </div>
+                <div class="segment-card border-l-4 border-pink-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-pink-300">10. 多元化业务</h3>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-2">感应加热·杀虫剂·教育·医疗</p>
+                    <p class="text-sm text-gray-300">山东荣泰感应科技（持股85.50%）、氯虫苯甲酰胺原药（友道化学）、地产、金融、教育、医院、餐饮、燃气等。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intellectual Property -->
+        <section id="ip" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">知识产权</h2>
+            <p class="section-subtitle">Intellectual Property · 母公司 + 上市平台</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-lightbulb text-amber-400 text-3xl mb-3"></i>
+                    <div class="stat-number-gold">371</div>
+                    <div class="text-gray-400 text-sm mt-2">发明专利（累计）</div>
+                    <div class="text-gray-500 text-xs mt-1">2025年底</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-tags text-pink-400 text-3xl mb-3"></i>
+                    <div class="stat-number">1,074</div>
+                    <div class="text-gray-400 text-sm mt-2">专利信息（天眼查）</div>
+                    <div class="text-gray-500 text-xs mt-1">含发明/实用新型/外观</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-code text-sky-400 text-3xl mb-3"></i>
+                    <div class="stat-number">22</div>
+                    <div class="text-gray-400 text-sm mt-2">软件著作权</div>
+                    <div class="text-gray-500 text-xs mt-1">自研信息化系统</div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 text-center">
+                    <i class="fas fa-globe text-purple-400 text-3xl mb-3"></i>
+                    <div class="stat-number">13</div>
+                    <div class="text-gray-400 text-sm mt-2">国际专利</div>
+                    <div class="text-gray-500 text-xs mt-1">海外布局</div>
+                </div>
+            </div>
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-sky-300 mb-3 flex items-center">
+                    <i class="fas fa-code mr-2"></i>自研软件著作权（信息化能力体现）
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="glass-card p-3 text-sm">
+                        <i class="fas fa-check-circle text-sky-400 mr-2 text-xs"></i>
+                        <span class="text-gray-300">轮胎模具设计数据管理平台V6.0</span>
+                    </div>
+                    <div class="glass-card p-3 text-sm">
+                        <i class="fas fa-check-circle text-sky-400 mr-2 text-xs"></i>
+                        <span class="text-gray-300">智能仓储管理系统</span>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-sky-500/5 border border-sky-500/20">
+                    <p class="text-xs text-sky-200">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <b>IP战略：</b>国家知识产权示范企业（2016年认定）。2025年新获专利授权51个，研发投入6.56亿元（同比+41.58%），专利布局覆盖轮胎模具、海工装备、数控机床、连续流化工等核心领域。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Group Structure & Shareholders -->
+        <section id="structure" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">集团架构与股权结构</h2>
+            <p class="section-subtitle">Group Structure · 张恭运实控 · 双平台架构</p>
+
+            <!-- Shareholder Structure - Parent -->
+            <div class="glass-card p-6 mb-4">
+                <h3 class="text-base font-semibold text-purple-300 mb-4 flex items-center">
+                    <i class="fas fa-sitemap mr-2"></i>豪迈集团股份有限公司（母公司）股东结构
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-pink-300 font-semibold"><i class="fas fa-crown mr-1 text-amber-400"></i>张恭运（董事长）</span>
+                            <span class="text-pink-300 font-bold">83.23%</span>
+                        </div>
+                        <div class="shareholder-bar bg-gradient-to-r from-pink-500 to-rose-500" style="width: 83.23%;">绝对控股 · 实控人</div>
+                        <div class="text-xs text-gray-500 mt-1">认缴出资35,034.78万元 · 个人身家超百亿</div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-sky-300 font-semibold">柳胜军（监事）</span>
+                            <span class="text-sky-300 font-bold">15.81%</span>
+                        </div>
+                        <div class="shareholder-bar bg-gradient-to-r from-sky-500 to-blue-500" style="width: 15.81%;">联合创始人</div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-amber-300 font-semibold">单既强（总经理）</span>
+                            <span class="text-amber-300 font-bold">0.48%</span>
+                        </div>
+                        <div class="shareholder-bar bg-gradient-to-r from-amber-500 to-orange-500" style="width: 5%;">2025年接任总经理</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organization Structure -->
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-sky-300 mb-4 flex items-center">
+                    <i class="fas fa-network-wired mr-2"></i>集团组织架构
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-center">
+                        <div class="org-node org-node-parent" style="min-width: 280px;">
+                            <div class="text-xs text-purple-300">实控人</div>
+                            <div class="font-bold text-purple-200">张恭运（身家超百亿）</div>
+                            <div class="text-xs text-gray-400">控股99家 · 间接持股149家 · 最终受益人120家</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sky-400"><i class="fas fa-chevron-down"></i></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="flex justify-center">
+                            <div class="org-node border-2 border-sky-400/50" style="min-width: 260px; background: rgba(56, 189, 248, 0.12);">
+                                <div class="text-xs text-sky-300">母公司（非上市）</div>
+                                <div class="font-bold text-sky-200">豪迈集团股份有限公司</div>
+                                <div class="text-xs text-gray-400">注册资本4.96亿 · 对外投资44家</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="org-node border-2 border-amber-400/50" style="min-width: 260px; background: rgba(251, 191, 36, 0.12);">
+                                <div class="text-xs text-amber-300">上市平台</div>
+                                <div class="font-bold text-amber-200">豪迈科技 (002595.SZ)</div>
+                                <div class="text-xs text-gray-400">市值605亿 · 对外投资14家</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sky-400"><i class="fas fa-chevron-down"></i></div>
+                    <!-- Overseas subsidiaries -->
+                    <div class="text-center text-xs text-gray-500 mb-2">🌍 海外8家子公司</div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                        <div class="org-node text-xs"><div class="text-sky-200">🇺🇸 美国</div><div class="text-gray-500">2013年收购GMS</div></div>
+                        <div class="org-node text-xs"><div class="text-sky-200">🇹🇭 泰国</div><div class="text-gray-500">2014年设立</div></div>
+                        <div class="org-node text-xs"><div class="text-sky-200">🇭🇺 匈牙利</div><div class="text-gray-500">2015年(欧洲)</div></div>
+                        <div class="org-node text-xs"><div class="text-sky-200">🇮🇳 印度</div><div class="text-gray-500">2016年</div></div>
+                        <div class="org-node text-xs"><div class="text-sky-200">🇧🇷 巴西</div><div class="text-gray-500">2020年</div></div>
+                        <div class="org-node text-xs"><div class="text-sky-200">🇻🇳 越南</div><div class="text-gray-500">2021年</div></div>
+                        <div class="org-node text-xs"><div class="text-sky-200">🇰🇭 柬埔寨</div><div class="text-gray-500">2023年</div></div>
+                        <div class="org-node text-xs"><div class="text-sky-200">🇲🇽 墨西哥</div><div class="text-gray-500">2024年4月开业</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Personnel -->
+            <div class="glass-card p-6 mt-4">
+                <h3 class="text-base font-semibold text-amber-300 mb-4 flex items-center">
+                    <i class="fas fa-user-tie mr-2"></i>核心管理团队
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="glass-card p-4 border-l-4 border-pink-400">
+                        <div class="font-bold text-pink-300">张恭运 <span class="text-xs text-gray-500 ml-2">董事长</span></div>
+                        <div class="text-xs text-gray-400 mt-1">1963年生 · 1983年山东工学院毕业 · 高级工程师</div>
+                        <div class="text-xs text-gray-500 mt-1">国家"万人计划"科技创业领军人才</div>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-amber-400">
+                        <div class="font-bold text-amber-300">单既强 <span class="text-xs text-gray-500 ml-2">总经理（2025接任）</span></div>
+                        <div class="text-xs text-gray-400 mt-1">董事 · 关联企业5家</div>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-sky-400">
+                        <div class="font-bold text-sky-300">柳胜军 <span class="text-xs text-gray-500 ml-2">监事</span></div>
+                        <div class="text-xs text-gray-400 mt-1">联合创始人 · 持股15.81% · 关联企业10家</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Transformation -->
+        <section id="digital" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">数字化与智能制造现状</h2>
+            <p class="section-subtitle">Digital Transformation · 自研信息化 + 智能工厂</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="glass-card glass-card-hover p-6 border-l-4 border-sky-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-microchip text-sky-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-sky-300">信息系统部署</h3>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex items-center text-sm"><i class="fas fa-check-circle text-green-400 mr-2 text-xs"></i><span class="text-gray-300">ERP系统（具体厂商未公开，制造业大型企业多用SAP/金蝶）</span></div>
+                        <div class="flex items-center text-sm"><i class="fas fa-check-circle text-green-400 mr-2 text-xs"></i><span class="text-gray-300">自研MES：轮胎模具设计数据管理平台V6.0</span></div>
+                        <div class="flex items-center text-sm"><i class="fas fa-check-circle text-green-400 mr-2 text-xs"></i><span class="text-gray-300">自研智能仓储管理系统</span></div>
+                        <div class="flex items-center text-sm"><i class="fas fa-check-circle text-green-400 mr-2 text-xs"></i><span class="text-gray-300">OA数字化办公协同（自研创新提案系统）</span></div>
+                        <div class="flex items-center text-sm"><i class="fas fa-check-circle text-green-400 mr-2 text-xs"></i><span class="text-gray-300">22项软件著作权（模具设计/生产管理/仓储）</span></div>
+                        <div class="flex items-center text-sm"><i class="fas fa-check-circle text-green-400 mr-2 text-xs"></i><span class="text-gray-300">自研股权管理系统（员工持股平台）</span></div>
+                    </div>
+                </div>
+                <div class="glass-card glass-card-hover p-6 border-l-4 border-green-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-robot text-green-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-green-300">智能工厂能力</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                        2021年被评为<b class="text-green-400">山东省智能工厂</b>，数控机床车间近<b class="text-green-400">70%为自主研制设备</b>。
+                        入选山东省数字经济"晨星工厂"入库培育企业。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill-green">山东省智能工厂</span>
+                        <span class="tag-pill-green">晨星工厂</span>
+                        <span class="tag-pill-green">国家级绿色工厂</span>
+                        <span class="tag-pill">70%自研设备</span>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-purple-300 mb-4 flex items-center">
+                    <i class="fas fa-flask mr-2"></i>研发平台体系
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="glass-card p-4">
+                        <i class="fas fa-landmark text-purple-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-purple-200 text-sm">国家企业技术中心</div>
+                        <div class="text-xs text-gray-500 mt-1">2018年获批</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <i class="fas fa-user-graduate text-sky-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-sky-200 text-sm">院士工作站</div>
+                        <div class="text-xs text-gray-500 mt-1">高端人才引入</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <i class="fas fa-dna text-amber-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-amber-200 text-sm">博士后科研工作站</div>
+                        <div class="text-xs text-gray-500 mt-1">科研人才培养</div>
+                    </div>
+                    <div class="glass-card p-4">
+                        <i class="fas fa-vial text-green-400 text-2xl mb-2"></i>
+                        <div class="font-semibold text-green-200 text-sm">轮胎模具重点实验室</div>
+                        <div class="text-xs text-gray-500 mt-1">行业核心研究</div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
+                    <p class="text-xs text-amber-200">
+                        <i class="fas fa-lightbulb mr-1"></i>
+                        <b>研发投入：</b>2025年研发投入6.56亿元（同比+41.58%），2024年4.63亿元（+30.42%）。
+                        省部级以上科研创新平台9处，2024年研发改善提案45万条。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Timeline -->
+        <section id="timeline" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">发展历程</h2>
+            <p class="section-subtitle">Development Timeline · 从4万元到202亿的30年传奇</p>
+            <div class="glass-card p-6 md:p-8">
+                <div class="timeline-item">
+                    <div class="text-amber-400 font-bold text-sm">1995年1月</div>
+                    <div class="text-base font-semibold text-white mt-1">4万元起步创业</div>
+                    <p class="text-gray-400 text-sm mt-1">张恭运联合3位合伙人筹资4万元，盘下高密第一纺织机械厂机修车间（500㎡、34名员工、负债96万元），创立高密豪迈机械有限公司。第一年亏损18-30万元。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-sky-400 font-bold text-sm">1997年</div>
+                    <div class="text-base font-semibold text-white mt-1">中国第一台轮胎模具专用电火花成型机床</div>
+                    <p class="text-gray-400 text-sm mt-1">研发成功，填补国内技术空白，奠定向轮胎模具转型的技术基础。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-purple-400 font-bold text-sm">2000年</div>
+                    <div class="text-base font-semibold text-white mt-1">推行员工持股制度</div>
+                    <p class="text-gray-400 text-sm mt-1">将员工从"打工者"转变为"合伙人"，奠定"合伙合作"企业文化基础（后入选清华大学经管学院案例库）。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-pink-400 font-bold text-sm">2001-2002年</div>
+                    <div class="text-base font-semibold text-white mt-1">战略转型轮胎模具</div>
+                    <p class="text-gray-400 text-sm mt-1">2001年放弃3000万元机床外销订单，转型专做高端子午线轮胎活络模具。2002年8月第一套活络模具在上海双钱轮胎试车成功。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-sky-400 font-bold text-sm">2005-2007年</div>
+                    <div class="text-base font-semibold text-white mt-1">国内龙头 + 进入GE供应链</div>
+                    <p class="text-gray-400 text-sm mt-1">2005年问鼎国内轮胎模具龙头。2007年为GE生产燃气轮机缸体，敲开GE大门；下开式子午线巨型轮胎模具开发成功。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-amber-400 font-bold text-sm">2010年</div>
+                    <div class="text-base font-semibold text-white mt-1">成为全球最大轮胎模具制造商</div>
+                    <p class="text-gray-400 text-sm mt-1">第一副精密铸造铝合金轮胎模具试制成功，正式成为全球最大轮胎模具制造商。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-green-400 font-bold text-sm">2011年6月</div>
+                    <div class="text-base font-semibold text-white mt-1">豪迈科技深交所上市</div>
+                    <p class="text-gray-400 text-sm mt-1">股票代码002595，市值47.08亿元，开启资本市场新征程。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-sky-400 font-bold text-sm">2013-2018年</div>
+                    <div class="text-base font-semibold text-white mt-1">全球化布局 + 米其林最佳供应商</div>
+                    <p class="text-gray-400 text-sm mt-1">2013年并购美国GMS公司开启全球布局。2018年从米其林全球6万家供应商中脱颖而出，成为5家"最佳供应商"之一（亚洲唯一）。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-purple-400 font-bold text-sm">2022年</div>
+                    <div class="text-base font-semibold text-white mt-1">自研五轴机床正式对外销售</div>
+                    <p class="text-gray-400 text-sm mt-1">打破海外垄断，开启数控机床业务新篇章。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-amber-400 font-bold text-sm">2024年</div>
+                    <div class="text-base font-semibold text-white mt-1">产值突破200亿 + 墨西哥工厂开业</div>
+                    <p class="text-gray-400 text-sm mt-1">实现产值202亿元，出口10.3亿美元。4月墨西哥工厂开业，海外子公司达8家。清华大学经管学院案例正式入库。</p>
+                </div>
+                <div class="timeline-item alert">
+                    <div class="text-red-400 font-bold text-sm">2025年5月27日</div>
+                    <div class="text-base font-semibold text-white mt-1">⚠️ 友道化学重大爆炸事故</div>
+                    <p class="text-gray-400 text-sm mt-1">控股子公司山东友道化学（豪迈化学持股97.375%）发生重大爆炸事故，12死19伤，直接经济损失5860.20万元。10名企业相关责任人被追究刑事责任，49名党纪政务处分。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="text-green-400 font-bold text-sm">2025年</div>
+                    <div class="text-base font-semibold text-white mt-1">豪迈科技营收首破百亿</div>
+                    <p class="text-gray-400 text-sm mt-1">豪迈科技2025年报：营收110.78亿元（+25.70%），净利润23.93亿元（+18.99%）。12月26日张恭运卸任总经理，单既强接任。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Honors & Qualifications -->
+        <section id="honors" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">荣誉资质</h2>
+            <p class="section-subtitle">Honors & Qualifications · 国家级 + 省级 + 客户奖项</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="glass-card glass-card-hover p-5 border-t-4 border-green-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-medal text-green-400 text-2xl mr-2"></i>
+                        <h3 class="font-bold text-green-300">国家级荣誉</h3>
+                    </div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>全国"五一劳动奖状"</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>第一批国家级制造业单项冠军示范企业（2017）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>国家企业技术中心（2018）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>国家技术创新示范企业（2020）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>国家第三批服务型制造示范企业（2021）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>国家知识产权示范企业（2016）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>国家级绿色工厂</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mr-2 mt-1 text-xs"></i><span>全国质量标杆</span></li>
+                    </ul>
+                </div>
+                <div class="glass-card glass-card-hover p-5 border-t-4 border-sky-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-award text-sky-400 text-2xl mr-2"></i>
+                        <h3 class="font-bold text-sky-300">省级荣誉</h3>
+                    </div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>山东省"十强"产业集群领军企业</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>山东省制造业单项冠军企业（第七批）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>山东省智能工厂（2021）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>山东省数字经济"晨星工厂"</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>"好品山东"品牌</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>山东民营企业高端制造/装备行业领军10强</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-sky-400 mr-2 mt-1 text-xs"></i><span>2023纪念彼得·德鲁克中国管理奖</span></li>
+                    </ul>
+                </div>
+                <div class="glass-card glass-card-hover p-5 border-t-4 border-amber-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-trophy text-amber-400 text-2xl mr-2"></i>
+                        <h3 class="font-bold text-amber-300">客户奖项与认证</h3>
+                    </div>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>米其林"最佳供应商"（2018·亚洲唯一）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>米其林"工程质量奖"（2019）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>米其林"工程安全奖"（2020）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>德国大陆年度最佳供应商</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>美国固铂年度最佳供应商</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>ISO 9001/14001/45001认证</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>AEO高级认证企业（海关）</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-amber-400 mr-2 mt-1 text-xs"></i><span>IATF 16949（汽车行业）</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk & Credit -->
+        <section id="risk" class="mb-16 scroll-fade-in">
+            <h2 class="section-title gradient-text">风险洞察与重大事件</h2>
+            <p class="section-subtitle">Risk Insight · 信用评级 + 重大风险事件</p>
+
+            <!-- Major Risk Alert -->
+            <div class="alert-box mb-4">
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-triangle text-red-400 text-2xl mr-3 mt-1"></i>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-red-300 mb-2">⚠️ 2025年5月27日 友道化学重大爆炸事故</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                            <div><span class="text-gray-400">事故单位：</span><span class="text-red-200">山东友道化学有限公司</span></div>
+                            <div><span class="text-gray-400">持股关系：</span><span class="text-red-200">豪迈化学持股97.375%</span></div>
+                            <div><span class="text-gray-400">伤亡：</span><span class="text-red-200 font-bold">12死19伤</span></div>
+                            <div><span class="text-gray-400">直接损失：</span><span class="text-red-200 font-bold">5860.20万元</span></div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2">
+                            重大生产安全责任事故。10名企业相关责任人被追究刑事责任（含友道化学总经理张本松、豪迈化学总经理王钦峰），49名党纪政务处分。
+                            友道化学列入严重失信名单，法人代表终身禁入化工主要负责人岗位。豪迈科技股价当日下跌超4%。
+                            <b class="text-amber-300">注：友道化学生产氯虫苯甲酰胺原药，全球市场份额约30%。</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Breakdown -->
+            <div class="glass-card p-6">
+                <h3 class="text-base font-semibold text-amber-300 mb-4 flex items-center">
+                    <i class="fas fa-shield-alt mr-2"></i>风险分布
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">豪迈集团自身风险</span>
+                            <span class="text-amber-400">司法6 + 裁判9 + 开庭4</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-amber-500" style="width: 25%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">豪迈科技自身风险</span>
+                            <span class="text-amber-400">19条</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-amber-500" style="width: 30%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">豪迈科技关联风险</span>
+                            <span class="text-orange-400">336-352条</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-orange-500" style="width: 65%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-300">友道化学爆炸事故影响</span>
+                            <span class="text-red-400">重大（已处置）</span>
+                        </div>
+                        <div class="risk-meter"><div class="risk-meter-fill bg-red-500" style="width: 80%;"></div></div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
+                    <p class="text-xs text-amber-200">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <b>风险综合评估：</b>主体经营稳健，连续17年营收正增长。友道化学爆炸事故为偶发重大事件，已进行刑事追责与失信处置。
+                        化工板块存在安全生产风险隐患，需重点关注。核心轮胎模具与机械零部件业务未受影响。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Strategic Value -->
+        <section class="mb-16 scroll-fade-in">
+            <div class="glass-card p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-sky-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl font-bold gradient-text mb-4">企业战略价值小结</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-crown text-amber-400 text-xl mr-2"></i>
+                                <h3 class="font-bold text-amber-300">全球单项冠军</h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">5项国家级/省级单项冠军产品，轮胎模具全球第一（30%+），气门芯全球第一（35%），海底采油树结构件全球寡头（40-50%）。</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-globe text-sky-400 text-xl mr-2"></i>
+                                <h3 class="font-bold text-sky-300">全球化布局</h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">8家海外子公司覆盖美国/泰国/匈牙利/印度/巴西/越南/柬埔寨/墨西哥，服务全球轮胎75强中66家，30+世界500强客户。</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-rocket text-purple-400 text-xl mr-2"></i>
+                                <h3 class="font-bold text-purple-300">创新驱动</h3>
+                            </div>
+                            <p class="text-gray-400 text-sm">371项发明专利，2025年研发投入6.56亿元（+41.58%），自研五轴机床打破海外垄断，70%设备自主研制。</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 rounded-lg bg-gradient-to-r from-sky-500/10 to-purple-500/10 border border-sky-500/20">
+                        <p class="text-sm text-sky-200">
+                            <i class="fas fa-quote-left mr-2"></i>
+                            从1995年4万元起步到2024年202亿产值，豪迈集团用30年时间，以"合伙合作"文化和持续创新，
+                            打造了全球轮胎模具和多个细分领域的绝对领先地位。尽管2025年友道化学事故带来挑战，
+                            但核心制造业务依然强劲，2025年豪迈科技营收首破百亿，展现出强大的业务韧性和增长动能。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-text border-t border-white/5 mt-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                <div>
+                    <p>数据来源：企查查、天眼查、爱企查、启信宝、豪迈集团官网、豪迈科技年报、深交所披露、新华社、上海证券报等公开渠道</p>
+                    <p class="mt-1">数据更新时间：2026-08-03 · 多平台交叉验证</p>
+                </div>
+                <div class="text-right">
+                    <p class="font-semibold gradient-text">森罗之眼 · 企业智能画像</p>
+                    <p>39139@胜天半子</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Scroll fade-in animation
+        gsap.utils.toArray('.scroll-fade-in').forEach((section) => {
+            gsap.fromTo(section,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+
+        // Stat number count-up animation
+        gsap.utils.toArray('.stat-number, .stat-number-gold').forEach((el) => {
+            const text = el.textContent.trim();
+            const numMatch = text.match(/^([\d,]+\.?\d*)(.*)$/);
+            if (numMatch) {
+                const targetNum = parseFloat(numMatch[1].replace(/,/g, ''));
+                const suffix = numMatch[2];
+                if (!isNaN(targetNum) && targetNum > 0) {
+                    const obj = { val: 0 };
+                    el.textContent = '0' + suffix;
+                    ScrollTrigger.create({
+                        trigger: el,
+                        start: 'top 90%',
+                        once: true,
+                        onEnter: () => {
+                            gsap.to(obj, {
+                                val: targetNum,
+                                duration: 1.5,
+                                ease: 'power2.out',
+                                onUpdate: () => {
+                                    let displayNum;
+                                    if (targetNum >= 1000) {
+                                        displayNum = Math.floor(obj.val).toLocaleString();
+                                    } else if (targetNum % 1 !== 0) {
+                                        displayNum = obj.val.toFixed(1);
+                                    } else {
+                                        displayNum = Math.floor(obj.val);
+                                    }
+                                    el.textContent = displayNum + suffix;
+                                },
+                                onComplete: () => {
+                                    el.textContent = text;
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Risk meter animation
+        ScrollTrigger.create({
+            trigger: '#risk',
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                document.querySelectorAll('.risk-meter-fill').forEach(el => {
+                    const width = el.style.width;
+                    el.style.width = '0%';
+                    setTimeout(() => {
+                        el.style.width = width;
+                    }, 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
