@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豪迈集团 · 经营战略全面方案 | 从4万元到202亿的组织密码</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            min-height: 100vh;
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Serif SC', serif;
+            color: #e2e8f0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-cool {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-number {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(167, 139, 250, 0.15));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #38bdf8;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-gold {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.15));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #fbbf24;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(168, 85, 247, 0.15));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #f87171;
+            display: inline-block;
+            margin: 2px;
+        }
+        .tag-pill-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.15));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #4ade80;
+            display: inline-block;
+            margin: 2px;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.6); }
+        }
+        .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+            padding-bottom: 28px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #fbbf24, transparent);
+        }
+        .timeline-item:last-child::after { display: none; }
+        .timeline-item.alert::before {
+            background: linear-gradient(135deg, #ef4444, #f59e0b);
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .section-subtitle {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 28px;
+        }
+
+        .culture-layer {
+            position: relative;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+        .culture-layer:hover { transform: translateX(4px); }
+
+        .principle-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .principle-card:hover {
+            border-color: rgba(251, 191, 36, 0.4);
+            background: rgba(251, 191, 36, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .swot-cell {
+            padding: 16px;
+            border-radius: 12px;
+            min-height: 200px;
+        }
+        .swot-s { background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.2); }
+        .swot-w { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2); }
+        .swot-o { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); }
+        .swot-t { background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.2); }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #fbbf24;
+            border-radius: 0 12px 12px 0;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+        .phase-card:hover { background: rgba(251, 191, 36, 0.06); }
+
+        .nav-link {
+            color: #cbd5e1;
+            transition: color 0.2s;
+            font-size: 0.8rem;
+        }
+        .nav-link:hover { color: #fbbf24; }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(167, 139, 250, 0.08));
+            border-left: 4px solid #fbbf24;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .footer-text {
+            color: #64748b;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .scroll-fade-in { opacity: 0; transform: translateY(20px); }
+
+        .matrix-cell {
+            padding: 14px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.75rem;
+            transition: all 0.3s;
+        }
+        .matrix-cell:hover { transform: scale(1.05); }
+
+        .priority-badge {
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .priority-high { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .priority-mid { background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.4); }
+        .priority-low { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10" style="border-radius: 0;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-400 to-purple-500 flex items-center justify-center pulse-glow">
+                        <i class="fas fa-chess-king text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-base font-bold gradient-text">豪迈集团 · 经营战略全面方案</div>
+                        <div class="text-xs text-gray-400">战略家与顾问视角 · 39139@胜天半子</div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#insight" class="nav-link">战略洞察</a>
+                    <a href="#culture" class="nav-link">文化体系</a>
+                    <a href="#method" class="nav-link">管理方法论</a>
+                    <a href="#diagnosis" class="nav-link">战略诊断</a>
+                    <a href="#strategy" class="nav-link">未来战略</a>
+                    <a href="#risk" class="nav-link">风险管控</a>
+                    <a href="#legacy" class="nav-link">传承规划</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero -->
+        <section id="insight" class="mb-20 scroll-fade-in">
+            <div class="relative overflow-hidden rounded-3xl glass-card p-8 md:p-12">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-wrap items-center gap-2 mb-6">
+                        <span class="tag-pill-gold">战略家视角</span>
+                        <span class="tag-pill">顾问诊断</span>
+                        <span class="tag-pill-green">文化驱动</span>
+                        <span class="tag-pill-gold">单项冠军</span>
+                        <span class="tag-pill">合伙合作</span>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+                        从4万元到202亿的组织密码
+                    </h1>
+                    <p class="text-xl md:text-2xl gradient-text-cool mb-6 font-semibold">
+                        豪迈集团经营战略全面方案 · 文化 · 管理 · 战略 · 传承
+                    </p>
+                    <p class="text-gray-300 text-base md:text-lg max-w-4xl mb-8 leading-relaxed">
+                        1995年，张恭运筹资4万元盘下一个负债96万的机修车间。30年后，这里长出了
+                        <b class="text-amber-300">全球最大的轮胎模具帝国</b>——年产值202亿、8国布局、5项单项冠军。
+                        这不是运气，是<b class="text-purple-300">"合伙合作"</b>文化与<b class="text-sky-300">"单项冠军"</b>战略的共振。
+                        本方案从战略家与顾问双重视角，解构豪迈的组织基因，诊断当下挑战，给出面向未来5年的战略路线图。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">50万倍</div>
+                            <div class="text-gray-400 text-xs mt-1">30年增长倍数</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">5项</div>
+                            <div class="text-gray-400 text-xs mt-1">单项冠军产品</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">45万条</div>
+                            <div class="text-gray-400 text-xs mt-1">年度改善提案</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="stat-number">17年</div>
+                            <div class="text-gray-400 text-xs mt-1">营收连续正增长</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第一章：战略洞察 -->
+        <section class="mb-20 scroll-fade-in">
+            <h2 class="section-title gradient-text">第一章 · 战略洞察：读懂豪迈的"组织密码"</h2>
+            <p class="section-subtitle">Strategic Insight · 三大基因的共振</p>
+
+            <div class="quote-box mb-8">
+                <p class="text-lg text-amber-200 italic mb-2">
+                    "豪迈不是一家制造企业，而是一个用'合伙合作'文化驱动的组织生命体。"
+                </p>
+                <p class="text-sm text-gray-400">—— 清华大学经管学院案例评语（2024年11月入库）</p>
+            </div>
+
+            <p class="text-gray-300 text-base leading-relaxed mb-8">
+                读懂豪迈，不能用常规的"财务分析+市场定位"框架。这家企业的底层逻辑，是
+                <b class="text-amber-300">三大基因密码</b>的共振——它们彼此咬合，构成了豪迈30年持续增长的飞轮。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 基因一 -->
+                <div class="principle-card border-t-4 border-amber-400">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-bullseye text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-amber-300">基因一：单项冠军</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>战略本质：</b>不追求"大而全"，而是"深而精"。在细分领域做到全球第一，建立不可替代的护城河。
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>实践路径：</b>2001年放弃3000万机床订单，转型专做轮胎活络模具。从"什么都做"到"只做最难的"。
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <b>结果验证：</b>5项单项冠军产品，轮胎模具全球市占30%+，气门芯35%，海底采油树结构件40-50%。
+                    </p>
+                </div>
+                <!-- 基因二 -->
+                <div class="principle-card border-t-4 border-purple-400">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-handshake text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-300">基因二：合伙合作</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>战略本质：</b>把员工从"打工者"变成"合伙人"，用利益共享撬动组织活力。这不是福利，是制度设计。
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>实践路径：</b>2000年推行员工持股，张恭运主动稀释股权。柳胜军15.81%、单既强0.48%，核心团队皆为股东。
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <b>结果验证：</b>2万人45万条改善提案，70%设备自主研制，入选清华案例+德鲁克中国管理奖。
+                    </p>
+                </div>
+                <!-- 基因三 -->
+                <div class="principle-card border-t-4 border-sky-400">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center mr-3">
+                            <i class="fas fa-infinity text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-sky-300">基因三：持续改善</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>战略本质：</b>不追求颠覆式创新，而是日复一日的微小改进累积成质变。这是丰田模式的中国实践。
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>实践路径：</b>建立全员改善提案制度，2024年45万条、2025年45.2万条，平均每人每年22条改善提案。
+                    </p>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        <b>结果验证：</b>从1997年第一台轮胎模具电火花机床，到2022年自研五轴打破海外垄断，30年技术积累。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 飞轮效应 -->
+            <div class="glass-card p-8 mt-8">
+                <h3 class="text-xl font-bold gradient-text-cool mb-6 text-center">豪迈增长飞轮：三大基因如何咬合转动</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                    <div class="glass-card p-6">
+                        <div class="text-3xl mb-3">🎯</div>
+                        <div class="font-bold text-amber-300 mb-2">单项冠军战略</div>
+                        <p class="text-xs text-gray-400">聚焦高难度细分领域，建立定价权和高毛利</p>
+                        <div class="mt-3 text-purple-400 text-2xl">↓</div>
+                        <p class="text-xs text-purple-300">高毛利反哺员工激励</p>
+                    </div>
+                    <div class="glass-card p-6">
+                        <div class="text-3xl mb-3">🤝</div>
+                        <div class="font-bold text-purple-300 mb-2">合伙合作文化</div>
+                        <p class="text-xs text-gray-400">利益共享激发全员活力，2万人45万条提案</p>
+                        <div class="mt-3 text-sky-400 text-2xl">↓</div>
+                        <p class="text-xs text-sky-300">改善提案推动技术突破</p>
+                    </div>
+                    <div class="glass-card p-6">
+                        <div class="text-3xl mb-3">∞</div>
+                        <div class="font-bold text-sky-300 mb-2">持续改善积累</div>
+                        <p class="text-xs text-gray-400">技术迭代形成新单项冠军，自研五轴打破垄断</p>
+                        <div class="mt-3 text-amber-400 text-2xl">↺</div>
+                        <p class="text-xs text-amber-300">新冠军巩固高毛利基本盘</p>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-gray-400 mt-6">
+                    <b class="text-amber-300">飞轮效应：</b>冠军战略→高毛利→激励员工→改善提案→技术突破→新冠军……循环30年，从4万到202亿。
+                </p>
+            </div>
+        </section>
+
+        <!-- 第二章：企业文化体系 -->
+        <section id="culture" class="mb-20 scroll-fade-in">
+            <h2 class="section-title gradient-text">第二章 · 企业文化体系：合伙合作的"道"</h2>
+            <p class="section-subtitle">Corporate Culture · 从价值观到行为的三层结构</p>
+
+            <p class="text-gray-300 text-base leading-relaxed mb-8">
+                文化不是墙上的标语，而是<b class="text-amber-300">一个组织在没人监督时如何做决定</b>。
+                豪迈的文化之所以有效，是因为它从精神层到行为层形成了闭环——
+                <b class="text-purple-300">价值观指导制度，制度塑造行为，行为沉淀为习惯，习惯强化价值观</b>。
+            </p>
+
+            <!-- 文化三层结构 -->
+            <div class="space-y-4 mb-8">
+                <!-- 精神层 -->
+                <div class="culture-layer" style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.2);">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-mountain text-amber-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-amber-300">精神层 · 价值观内核</h3>
+                        <span class="ml-auto text-xs text-gray-500">"为什么存在"</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <div class="font-semibold text-amber-200 mb-1">合伙合作</div>
+                            <p class="text-xs text-gray-400">"把企业办成大家的"——不是雇佣关系，是合伙关系。张恭运主动稀释股权至83%（母公司），核心团队全员持股。</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-amber-200 mb-1">持续改善</div>
+                            <p class="text-xs text-gray-400">"每天进步一点点"——不追求一夜暴富，相信微小改善的复利力量。45万条提案是这种信念的量化体现。</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-amber-200 mb-1">追求卓越</div>
+                            <p class="text-xs text-gray-400">"要做就做世界第一"——单项冠军战略背后的价值观驱动。不是"做到行业前列"，而是"做到全球第一"。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 制度层 -->
+                <div class="culture-layer" style="background: rgba(167, 139, 250, 0.08); border: 1px solid rgba(167, 139, 250, 0.2);">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-scroll text-purple-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-purple-300">制度层 · 机制保障</h3>
+                        <span class="ml-auto text-xs text-gray-500">"如何落地"</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <div class="font-semibold text-purple-200 mb-1">员工持股制度</div>
+                            <p class="text-xs text-gray-400">2000年推行，从"打工者"变"合伙人"。柳胜军持股15.81%，单既强0.48%。利益绑定→命运共同体。</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-purple-200 mb-1">改善提案制度</div>
+                            <p class="text-xs text-gray-400">全员可提，有奖有评。2024年45万条，平均每人22条。把创新权下放到一线员工。</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-purple-200 mb-1">扁平化组织</div>
+                            <p class="text-xs text-gray-400">减少层级，授权一线。让听得见炮声的人做决策，这是70%设备自研的组织前提。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 行为层 -->
+                <div class="culture-layer" style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2);">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-running text-sky-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-sky-300">行为层 · 日常实践</h3>
+                        <span class="ml-auto text-xs text-gray-500">"怎么做"</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <div class="font-semibold text-sky-200 mb-1">自主研制设备</div>
+                            <p class="text-xs text-gray-400">数控机床车间70%设备自主研制——不只是省钱，是"我们能行"的信念实践。</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-sky-200 mb-1">技术攻坚文化</div>
+                            <p class="text-xs text-gray-400">1997年第一台轮胎模具电火花机床，2022年自研五轴——遇到难题不是"买"，而是"造"。</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-sky-200 mb-1">客户至上实践</div>
+                            <p class="text-xs text-gray-400">米其林全球6万家供应商→5家最佳→亚洲唯一。不是喊口号，是用产品说话。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 文化量化价值 -->
+            <div class="glass-card p-6">
+                <h3 class="text-lg font-bold text-amber-300 mb-4 flex items-center">
+                    <i class="fas fa-chart-bar mr-2"></i>文化的量化价值：豪迈文化的"财务报表"
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 glass-card">
+                        <div class="stat-number">45万</div>
+                        <div class="text-xs text-gray-400 mt-1">年度改善提案</div>
+                        <div class="text-xs text-amber-300 mt-1">创新力的量化</div>
+                    </div>
+                    <div class="text-center p-4 glass-card">
+                        <div class="stat-number">70%</div>
+                        <div class="text-xs text-gray-400 mt-1">设备自主研制率</div>
+                        <div class="text-xs text-amber-300 mt-1">技术自信的量化</div>
+                    </div>
+                    <div class="text-center p-4 glass-card">
+                        <div class="stat-number">17年</div>
+                        <div class="text-xs text-gray-400 mt-1">营收连续正增长</div>
+                        <div class="text-xs text-amber-300 mt-1">韧性的量化</div>
+                    </div>
+                    <div class="text-center p-4 glass-card">
+                        <div class="stat-number">16年</div>
+                        <div class="text-xs text-gray-400 mt-1">ROE持续>16%</div>
+                        <div class="text-xs text-amber-300 mt-1">盈利能力的量化</div>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 rounded-lg bg-amber-500/5 border border-amber-500/20">
+                    <p class="text-sm text-amber-200">
+                        <i class="fas fa-lightbulb mr-1"></i>
+                        <b>顾问洞察：</b>豪迈的文化不是"软实力"，而是"硬资产"。它直接转化为45万条改善提案、70%设备自研、17年增长、16年高ROE。
+                        这才是豪迈真正的"无形资产"——不在资产负债表上，但支撑着202亿产值。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三章：管理方法论 -->
+        <section id="method" class="mb-20 scroll-fade-in">
+            <h2 class="section-title gradient-text">第三章 · 管理方法论：豪迈的"术"</h2>
+            <p class="section-subtitle">Management Methodology · 四大管理体系的实战拆解</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 战略管理 -->
+                <div class="glass-card glass-card-hover p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chess text-amber-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-amber-300">一、战略管理：单项冠军之道</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-amber-200 mb-1">1. 聚焦原则</div>
+                            <p class="text-xs text-gray-400">2001年放弃3000万机床订单，专做轮胎活络模具。"有所不为"比"有所为"更重要。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-amber-200 mb-1">2. 冠军复制</div>
+                            <p class="text-xs text-gray-400">从轮胎模具冠军→气门芯冠军→换热器冠军→海工装备冠军。把"如何成为冠军"的方法论复制到新领域。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-amber-200 mb-1">3. 客户锚定</div>
+                            <p class="text-xs text-gray-400">锁定米其林/GE/贝克休斯等顶级客户。顶级客户=最高标准=倒逼能力升级。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-amber-200 mb-1">4. 全球布局</div>
+                            <p class="text-xs text-gray-400">8国子公司跟随客户就近设厂。不是"卖出去"，是"走进去"。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 组织管理 -->
+                <div class="glass-card glass-card-hover p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-sitemap text-purple-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-purple-300">二、组织管理：合伙赋能之术</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-purple-200 mb-1">1. 持股激励</div>
+                            <p class="text-xs text-gray-400">员工持股→利益绑定→主人翁意识。张恭运稀释股权不是慷慨，是战略。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-purple-200 mb-1">2. 改善提案</div>
+                            <p class="text-xs text-gray-400">把"创新"从研发部下放到全员。45万条提案=45万个微创新。提案制度是创新的民主化。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-purple-200 mb-1">3. 扁平授权</div>
+                            <p class="text-xs text-gray-400">减少层级，让一线决策。70%设备自研的前提是"信任一线能搞定"。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-purple-200 mb-1">4. 内部培养</div>
+                            <p class="text-xs text-gray-400">单既强从内部接任总经理。文化传承靠内部人，不是空降兵。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 运营管理 -->
+                <div class="glass-card glass-card-hover p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cogs text-sky-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-sky-300">三、运营管理：精益自主之法</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-sky-200 mb-1">1. 自主研制</div>
+                            <p class="text-xs text-gray-400">70%设备自研——不只是降本，是"不被卡脖子"。五轴机床打破海外垄断就是例证。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-sky-200 mb-1">2. 精益生产</div>
+                            <p class="text-xs text-gray-400">山东省智能工厂。自研MES（轮胎模具设计数据管理平台V6.0）+智能仓储系统。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-sky-200 mb-1">3. 质量管控</div>
+                            <p class="text-xs text-gray-400">米其林最佳供应商（亚洲唯一）=质量体系的最高背书。客户标准倒逼内部标准。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-sky-200 mb-1">4. 研发投入</div>
+                            <p class="text-xs text-gray-400">2025年研发6.56亿（+41.58%）。研发不是成本，是未来的冠军种子。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人才管理 -->
+                <div class="glass-card glass-card-hover p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-users-cog text-green-400 text-2xl mr-3"></i>
+                        <h3 class="text-lg font-bold text-green-300">四、人才管理：合伙人养成</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-green-200 mb-1">1. 合伙人定位</div>
+                            <p class="text-xs text-gray-400">员工不是"人力资源"，是"合伙人"。持股+提案+授权=完整的合伙人身份。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-green-200 mb-1">2. 改善育人</div>
+                            <p class="text-xs text-gray-400">45万条提案=45万次学习。改善的过程就是培养人的过程。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-green-200 mb-1">3. 技术传承</div>
+                            <p class="text-xs text-gray-400">院士工作站+博士后工作站+企业技术中心。研发平台也是人才培养平台。</p>
+                        </div>
+                        <div class="p-3 glass-card">
+                            <div class="text-sm font-semibold text-green-200 mb-1">4. 长期主义</div>
+                            <p class="text-xs text-gray-400">张恭运1983年毕业到2025年卸任总经理，42年深耕。人才管理需要耐心。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第四章：战略诊断 -->
+        <section id="diagnosis" class="mb-20 scroll-fade-in">
+            <h2 class="section-title gradient-text">第四章 · 战略诊断：站在顾问角度</h2>
+            <p class="section-subtitle">Strategic Diagnosis · SWOT + 四大挑战</p>
+
+            <!-- SWOT -->
+            <div class="glass-card p-6 mb-8">
+                <h3 class="text-lg font-bold gradient-text-cool mb-6">SWOT 战略矩阵</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- S -->
+                    <div class="swot-cell swot-s">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-plus-circle text-green-400 text-xl mr-2"></i>
+                            <h4 class="font-bold text-green-300">优势 Strengths</h4>
+                        </div>
+                        <ul class="text-sm text-gray-300 space-y-2">
+                            <li>• <b>5项单项冠军</b>：轮胎模具全球第一(30%+)</li>
+                            <li>• <b>文化资产</b>：合伙合作+45万条提案</li>
+                            <li>• <b>客户壁垒</b>：米其林/GE/贝克休斯</li>
+                            <li>• <b>技术积累</b>：371项发明专利+70%设备自研</li>
+                            <li>• <b>财务韧性</b>：17年增长+16年ROE>16%</li>
+                            <li>• <b>全球化</b>：8国子公司+66家轮胎75强</li>
+                        </ul>
+                    </div>
+                    <!-- W -->
+                    <div class="swot-cell swot-w">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-minus-circle text-red-400 text-xl mr-2"></i>
+                            <h4 class="font-bold text-red-300">劣势 Weaknesses</h4>
+                        </div>
+                        <ul class="text-sm text-gray-300 space-y-2">
+                            <li>• <b>安全短板</b>：友道化学事故暴露化工管理弱</li>
+                            <li>• <b>数字化滞后</b>：自研MES但未全打通</li>
+                            <li>• <b>多元化分散</b>：10大板块管理跨度大</li>
+                            <li>• <b>文化稀释</b>：2万人后文化传承挑战</li>
+                            <li>• <b>传承风险</b>：张恭运卸任后的接力</li>
+                            <li>• <b>海外管控</b>：8国协同管理复杂</li>
+                        </ul>
+                    </div>
+                    <!-- O -->
+                    <div class="swot-cell swot-o">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-arrow-up-circle text-sky-400 text-xl mr-2"></i>
+                            <h4 class="font-bold text-sky-300">机会 Opportunities</h4>
+                        </div>
+                        <ul class="text-sm text-gray-300 space-y-2">
+                            <li>• <b>国产替代</b>：五轴机床打破海外垄断</li>
+                            <li>• <b>新能源</b>：风电变速箱+压缩机新需求</li>
+                            <li>• <b>出海深化</b>：8国基地可复制冠军模式</li>
+                            <li>• <b>AI赋能</b>：371专利数据AI化应用</li>
+                            <li>• <b>绿色制造</b>：国家级绿色工厂红利</li>
+                            <li>• <b>服务型制造</b>：从卖产品到卖服务</li>
+                        </ul>
+                    </div>
+                    <!-- T -->
+                    <div class="swot-cell swot-t">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-exclamation-triangle text-amber-400 text-xl mr-2"></i>
+                            <h4 class="font-bold text-amber-300">威胁 Threats</h4>
+                        </div>
+                        <ul class="text-sm text-gray-300 space-y-2">
+                            <li>• <b>地缘风险</b>：8国布局受贸易摩擦影响</li>
+                            <li>• <b>安全事故</b>：化工板块声誉与合规压力</li>
+                            <li>• <b>轮胎周期</b>：下游轮胎行业波动</li>
+                            <li>• <b>技术迭代</b>：3D打印等新工艺冲击</li>
+                            <li>• <b>人才争夺</b>：高端制造人才竞争</li>
+                            <li>• <b>规模管理</b>：2万人后的管理复杂度</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 四大核心挑战 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="glass-card p-6 border-l-4 border-red-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-fire-extinguisher text-red-400 text-2xl mr-3"></i>
+                        <h3 class="font-bold text-red-300">挑战一：化工板块安全短板</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        2025年5月友道化学爆炸事故（12死19伤）不是孤立事件，而是<b class="text-red-300">多元化扩张超过管理能力边界</b>的信号。
+                        氯虫苯甲酰胺原药（全球份额30%）本是优质资产，但化工安全管控能力与制造主业不匹配。
+                    </p>
+                    <div class="mt-3 p-2 rounded bg-red-500/10">
+                        <p class="text-xs text-red-200"><b>顾问诊断：</b>这不是"友道化学的问题"，是"豪迈化工板块管理体系"的问题。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 border-l-4 border-amber-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-user-minus text-amber-400 text-2xl mr-3"></i>
+                        <h3 class="font-bold text-amber-300">挑战二：二代传承与文化接力</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        2025年12月张恭运卸任总经理，单既强接任。"合伙合作"文化高度依赖创始人个人魅力与威望，
+                        <b class="text-amber-300">制度化传承</b>是未来5年最大挑战。张恭运持股83%（母公司）+30.25%（上市公司），个人色彩浓厚。
+                    </p>
+                    <div class="mt-3 p-2 rounded bg-amber-500/10">
+                        <p class="text-xs text-amber-200"><b>顾问诊断：</b>传承不是"换人"，是"换系统能否延续文化"。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 border-l-4 border-purple-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-project-diagram text-purple-400 text-2xl mr-3"></i>
+                        <h3 class="font-bold text-purple-300">挑战三：规模扩张与文化稀释</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        2万员工+8国子公司，"合伙合作"文化面临<b class="text-purple-300">规模稀释</b>。45万条提案是高峰，但人均22条的含金量是否下降？
+                        海外子公司的文化传递更难——高密的高密文化，能否扎根匈牙利、墨西哥？
+                    </p>
+                    <div class="mt-3 p-2 rounded bg-purple-500/10">
+                        <p class="text-xs text-purple-200"><b>顾问诊断：</b>文化不是"输出"，是"本土化再生"。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 border-l-4 border-sky-400">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-laptop-code text-sky-400 text-2xl mr-3"></i>
+                        <h3 class="font-bold text-sky-300">挑战四：数字化与智能化滞后</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        自研MES（轮胎模具设计数据管理平台V6.0）显示技术能力，但<b class="text-sky-300">系统间未完全打通</b>。
+                        10大业务板块数据孤岛、8国协同缺乏统一平台。2025年研发投入6.56亿，但数字化投入占比不明确。
+                    </p>
+                    <div class="mt-3 p-2 rounded bg-sky-500/10">
+                        <p class="text-xs text-sky-200"><b>顾问诊断：</b>豪迈有"自研基因"，但缺"集成思维"。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第五章：未来战略 -->
+        <section id="strategy" class="mb-20 scroll-fade-in">
+            <h2 class="section-title gradient-text">第五章 · 未来5年战略路线图</h2>
+            <p class="section-subtitle">Strategic Roadmap · 四大战略 + 三阶段实施</p>
+
+            <!-- 四大战略方向 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="glass-card p-6 border-t-4 border-amber-400">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-amber-300">战略一：冠军矩阵扩张</h3>
+                        <span class="priority-badge priority-high">核心战略</span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>战略目标：</b>从5项单项冠军扩展到10项，构建"冠军矩阵"。
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-amber-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">数控机床：五轴已破，冲刺单项冠军</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-amber-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">压缩机：离心/往复/隔膜全布局</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-amber-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">连续流化工：标准创新中心已建</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-amber-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">海工装备：深海隔水管冲全球第一</span></div>
+                    </div>
+                    <div class="mt-3 p-2 rounded bg-amber-500/10">
+                        <p class="text-xs text-amber-200"><b>方法论：</b>复制"如何成为冠军"的打法，用冠军DNA孵化新冠军。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 border-t-4 border-purple-400">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-purple-300">战略二：文化制度化传承</h3>
+                        <span class="priority-badge priority-high">核心战略</span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>战略目标：</b>把"张恭运的文化"变成"豪迈的制度"。
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-purple-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">合伙人制度2.0：扩大持股覆盖面</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-purple-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">改善提案质量升级：从数量到价值</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-purple-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">文化学院：系统化培养文化传人</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-purple-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">海外本土化：高密文化×当地文化</span></div>
+                    </div>
+                    <div class="mt-3 p-2 rounded bg-purple-500/10">
+                        <p class="text-xs text-purple-200"><b>方法论：</b>从"人治"到"法治"，但保留"合伙"的灵魂。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 border-t-4 border-sky-400">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-sky-300">战略三：数字化深化</h3>
+                        <span class="priority-badge priority-mid">支撑战略</span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>战略目标：</b>从"自研系统"到"系统集成"，从"智能工厂"到"智能集团"。
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-sky-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">钉钉×ERP×MES全打通</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-sky-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">10板块数据中台</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-sky-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">8国协同平台</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-sky-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">AI模具研发+安全管控</span></div>
+                    </div>
+                    <div class="mt-3 p-2 rounded bg-sky-500/10">
+                        <p class="text-xs text-sky-200"><b>方法论：</b>用"自研基因"+"集成思维"，把自研系统连成网络。</p>
+                    </div>
+                </div>
+                <div class="glass-card p-6 border-t-4 border-red-400">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-red-300">战略四：安全管控升级</h3>
+                        <span class="priority-badge priority-high">底线战略</span>
+                    </div>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                        <b>战略目标：</b>化工板块从"事故后处置"到"事前AI预警"。
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-red-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">化工板块独立安全体系</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-red-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">AI安全预警平台</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-red-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">设备健康监测</span></div>
+                        <div class="flex items-start"><i class="fas fa-chevron-right text-red-400 mr-2 mt-1 text-xs"></i><span class="text-gray-300">安全文化重塑</span></div>
+                    </div>
+                    <div class="mt-3 p-2 rounded bg-red-500/10">
+                        <p class="text-xs text-red-200"><b>方法论：</b>安全不是"成本"，是"生存权"。友道事故是血的教训。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 三阶段实施 -->
+            <div class="glass-card p-6">
+                <h3 class="text-lg font-bold gradient-text-cool mb-6">三阶段实施路线图（2026-2030）</h3>
+                <div class="phase-card">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-amber-300">阶段一：守正固本（2026-2027）</h4>
+                        <span class="tag-pill-gold">12-24个月</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2"><b>核心任务：</b>守住冠军基本盘 + 安全管控升级 + 文化制度化</p>
+                    <ul class="text-xs text-gray-400 space-y-1">
+                        <li>• 化工板块安全体系独立化，AI安全预警平台上线</li>
+                        <li>• 合伙人制度2.0发布，持股覆盖面扩大至核心骨干</li>
+                        <li>• 改善提案从"数量导向"转向"价值导向"</li>
+                        <li>• 钉钉×ERP×MES集成完成，业财一体基础</li>
+                        <li>• 文化学院成立，系统化培养文化传人</li>
+                    </ul>
+                </div>
+                <div class="phase-card" style="border-left-color: #a78bfa;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-purple-300">阶段二：创新突破（2028-2029）</h4>
+                        <span class="tag-pill">24-48个月</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2"><b>核心任务：</b>冠军矩阵扩张 + 数字化深化 + 全球化2.0</p>
+                    <ul class="text-xs text-gray-400 space-y-1">
+                        <li>• 数控机床/压缩机冲击新的单项冠军</li>
+                        <li>• 10板块数据中台上线，集团统一决策视图</li>
+                        <li>• 8国协同平台全面运行</li>
+                        <li>• AI模具研发平台投产，研发周期缩短40%</li>
+                        <li>• 海外本土化文化体系建立</li>
+                    </ul>
+                </div>
+                <div class="phase-card" style="border-left-color: #38bdf8;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-sky-300">阶段三：生态领先（2030）</h4>
+                        <span class="tag-pill-green">48-60个月</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2"><b>核心任务：</b>从"冠军企业"到"冠军生态"</p>
+                    <ul class="text-xs text-gray-400 space-y-1">
+                        <li>• 10项单项冠军产品矩阵成型</li>
+                        <li>• 全AI产品矩阵运行，数据资产化</li>
+                        <li>• 文化制度完整传承，二代平稳接班</li>
+                        <li>• 从"卖产品"升级为"卖服务+卖标准"</li>
+                        <li>• 产值冲击300亿，全球高端制造生态引领者</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第六章：风险管控 -->
+        <section id="risk" class="mb-20 scroll-fade-in">
+            <h2 class="section-title gradient-text">第六章 · 风险管控体系</h2>
+            <p class="section-subtitle">Risk Management · 四道防线</p>
+
+            <div class="alert-box mb-6">
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-triangle text-red-400 text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-red-300 mb-2">⚠️ 核心警示：友道化学事故的战略反思</h3>
+                        <p class="text-sm text-gray-300">
+                            2025年5月27日的爆炸事故（12死19伤，损失5860万）不应只当作"安全事故"处理。
+                            从战略层面看，这是<b class="text-red-300">多元化扩张速度超过管理能力建设速度</b>的必然结果。
+                            豪迈的冠军基因在"深耕"上有效，但在"扩张"上需要新的管理能力支撑。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="glass-card p-6">
+                    <h3 class="font-bold text-red-300 mb-3 flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i>第一道：化工板块独立安全体系
+                    </h3>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>• 化工板块独立安全总监，直接向董事会汇报</li>
+                        <li>• 引入杜邦安全管理体系或同等标准</li>
+                        <li>• 友道化学整改完成后方可复产</li>
+                        <li>• 化工板块与制造主业物理隔离管理</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="font-bold text-amber-300 mb-3 flex items-center">
+                        <i class="fas fa-brain mr-2"></i>第二道：AI安全预警平台
+                    </h3>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>• 关键设备AI健康监测，预测性维护</li>
+                        <li>• 化工生产实时监控+AI异常预警</li>
+                        <li>• 应急响应AI辅助决策</li>
+                        <li>• 安全数据资产化，形成安全知识库</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="font-bold text-purple-300 mb-3 flex items-center">
+                        <i class="fas fa-users-shield mr-2"></i>第三道：安全文化重塑
+                    </h3>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>• 从"制造文化"到"制造+安全文化"</li>
+                        <li>• DeepSeek安全知识培训全员化</li>
+                        <li>• 安全改善提案专项通道</li>
+                        <li>• 安全绩效与合伙人考核挂钩</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-6">
+                    <h3 class="font-bold text-sky-300 mb-3 flex items-center">
+                        <i class="fas fa-balance-scale mr-2"></i>第四道：多元化治理优化
+                    </h3>
+                    <ul class="text-sm text-gray-300 space-y-2">
+                        <li>• 10大板块分类管理：核心/战略/机会</li>
+                        <li>• 化工等高风险板块设独立风控委员会</li>
+                        <li>• 新业务进入需"管理能力评估"</li>
+                        <li>• 建立"冠军基因×新领域"适配模型</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第七章：传承规划 -->
+        <section id="legacy" class="mb-20 scroll-fade-in">
+            <h2 class="section-title gradient-text">第七章 · 传承规划：从"张恭运的豪迈"到"豪迈的豪迈"</h2>
+            <p class="section-subtitle">Succession Planning · 制度化传承四步法</p>
+
+            <div class="quote-box mb-8">
+                <p class="text-lg text-amber-200 italic">
+                    "伟大的企业，不是依赖某个伟大的人，而是能持续产生伟大的人的系统。"
+                </p>
+                <p class="text-sm text-gray-400 mt-2">—— 彼得·德鲁克（豪迈2023年获德鲁克中国管理奖）</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="phase-card" style="border-left-color: #fbbf24;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-amber-300">第一步：文化显性化（2026）</h4>
+                        <span class="priority-badge priority-high">立即启动</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2"><b>核心：</b>把张恭运脑子里的"合伙合作"变成可传承的制度文件。</p>
+                    <ul class="text-xs text-gray-400 space-y-1">
+                        <li>• 编纂《豪迈文化宪章》，明确价值观、原则、底线</li>
+                        <li>• 建立文化学院，系统化培养文化传人</li>
+                        <li>• 提炼"冠军方法论"成可复制的SOP</li>
+                        <li>• 张恭运担任"首席文化官"，专注文化传承</li>
+                    </ul>
+                </div>
+                <div class="phase-card" style="border-left-color: #a78bfa;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-purple-300">第二步：治理制度化（2027）</h4>
+                        <span class="priority-badge priority-high">12个月内</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2"><b>核心：</b>从"创始人决策"到"制度决策"。</p>
+                    <ul class="text-xs text-gray-400 space-y-1">
+                        <li>• 完善董事会治理，引入独立董事</li>
+                        <li>• 建立战略委员会、风控委员会、薪酬委员会</li>
+                        <li>• 单既强总经理完成全面接棒，张恭运仅任董事长</li>
+                        <li>• 合伙人大会制度，重大事项合伙人共决</li>
+                    </ul>
+                </div>
+                <div class="phase-card" style="border-left-color: #38bdf8;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-sky-300">第三步：人才梯队化（2028-2029）</h4>
+                        <span class="priority-badge priority-mid">持续推进</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2"><b>核心：</b>建立"冠军厂长"培养体系。</p>
+                    <ul class="text-xs text-gray-400 space-y-1">
+                        <li>• 每个业务板块培养2-3名接班人</li>
+                        <li>• 海外子公司本土化管理人才培养</li>
+                        <li>• "冠军孵化营"：复制张恭运式的创业者</li>
+                        <li>• 合伙人制度2.0：扩大至中层骨干</li>
+                    </ul>
+                </div>
+                <div class="phase-card" style="border-left-color: #4ade80;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-green-300">第四步：生态长期化（2030）</h4>
+                        <span class="priority-badge priority-low">长期目标</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-2"><b>核心：</b>从"豪迈集团"到"豪迈生态"。</p>
+                    <ul class="text-xs text-gray-400 space-y-1">
+                        <li>• 合伙人制度支撑"冠军孵化"，内部创业</li>
+                        <li>• 10大板块独立运营，集团持股+赋能</li>
+                        <li>• 张恭运转型为"战略顾问+文化守护者"</li>
+                        <li>• 豪迈成为"持续产生冠军企业和冠军人才"的生态</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 总结升华 -->
+        <section class="mb-20 scroll-fade-in">
+            <div class="glass-card p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-amber-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-6">结语：豪迈的下一个30年</h2>
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+                        豪迈的第一个30年，张恭运用4万元和"合伙合作"的信念，打造了一个全球冠军帝国。
+                        这是<b class="text-amber-300">一个人+一种文化+一个战略</b>的胜利。
+                    </p>
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+                        豪迈的下一个30年，挑战不再是"从0到1"，而是
+                        <b class="text-purple-300">"从1到N"——如何让冠军基因在2万人、8个国家、10个板块中持续生根</b>。
+                        这需要的不是另一个张恭运，而是<b class="text-sky-300">一套能持续产生张恭运式人物的系统</b>。
+                    </p>
+                    <div class="quote-box">
+                        <p class="text-lg text-amber-200 italic mb-2">
+                            "从4万元到202亿，是张恭运的传奇；<br>
+                            从202亿到持续百年，将是豪迈系统的胜利。"
+                        </p>
+                        <p class="text-sm text-gray-400">—— 顾问寄语</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-bullseye text-amber-400 text-2xl mb-2"></i>
+                            <div class="font-bold text-amber-300">守正</div>
+                            <p class="text-xs text-gray-400 mt-1">守住冠军基因与文化之根</p>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-rocket text-purple-400 text-2xl mb-2"></i>
+                            <div class="font-bold text-purple-300">出奇</div>
+                            <p class="text-xs text-gray-400 mt-1">冠军矩阵+数字化+全球化</p>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-infinity text-sky-400 text-2xl mb-2"></i>
+                            <div class="font-bold text-sky-300">持久</div>
+                            <p class="text-xs text-gray-400 mt-1">制度化传承，百年豪迈</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-text border-t border-white/5 mt-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                <div>
+                    <p>战略分析框架：SWOT + 文化三层结构 + 飞轮效应 + 传承四步法</p>
+                    <p class="mt-1">数据基准：2026年8月 · 豪迈科技2025年报 + 公开渠道交叉验证</p>
+                </div>
+                <div class="text-right">
+                    <p class="font-semibold gradient-text">森罗之眼 · 战略顾问视角</p>
+                    <p>39139@胜天半子</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.scroll-fade-in').forEach((section) => {
+            gsap.fromTo(section,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+                    scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' }
+                }
+            );
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
