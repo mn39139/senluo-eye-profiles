@@ -473,6 +473,13 @@ gsap.utils.toArray('.stat').forEach(el => {
   const form = document.getElementById('signup-form');
   if (!form) return;
   const KEY = 'jianzhi_saloon_signups';
+  // 钉钉AI表格配置（注意：前端暴露密钥，正式环境建议改用服务端中转）
+  const DING_APP_KEY = 'dingd0hqxztkox98pt12';
+  const DING_APP_SECRET = 'FiGX1pghZ2LjodoY8U1QdLVv9B4WeM7ksiInkjQHDurBqfndtfgL9xkPM4pz64uz';
+  const DING_BASE_ID = 'o14dA3GK8gard3qvIK1YKY46V9ekBD76';
+  const DING_SHEET_NAME = '报名表';
+  const DING_OPERATOR_ID = 'TSUgLE1qlXPhYTBrE5FcgwiEiE';
+
   const $ = id => document.getElementById(id);
   const showErr = (input, msg) => {
     const p = input.closest('div').querySelector('.err');
@@ -486,13 +493,56 @@ gsap.utils.toArray('.stat').forEach(el => {
     p.classList.add('hidden');
     input.classList.remove('border-rose-400/60');
   };
-  form.addEventListener('submit', function(e) {
+
+  // 获取钉钉 accessToken
+  async function getDingToken() {
+    const url = 'https://api.dingtalk.com/v1.0/oauth2/accessToken';
+    const resp = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ appKey: DING_APP_KEY, appSecret: DING_APP_SECRET })
+    });
+    const data = await resp.json();
+    if (!data.accessToken) throw new Error(data.message || '获取钉钉token失败');
+    return data.accessToken;
+  }
+
+  // 写入钉钉AI表格
+  async function writeToDing(record) {
+    const token = await getDingToken();
+    const url = `https://api.dingtalk.com/v1.0/notable/bases/${DING_BASE_ID}/sheets/${encodeURIComponent(DING_SHEET_NAME)}/records?operatorId=${encodeURIComponent(DING_OPERATOR_ID)}`;
+    const body = {
+      records: [{
+        fields: {
+          '公司名称': record.company,
+          '姓名': record.name,
+          '职位': record.title,
+          '手机': record.phone,
+          '备注': record.remark,
+          '报名时间': record.time
+        }
+      }]
+    };
+    const resp = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-acs-dingtalk-access-token': token
+      },
+      body: JSON.stringify(body)
+    });
+    const data = await resp.json();
+    if (!resp.ok || (data.code && data.code !== '0')) {
+      throw new Error(data.message || '写入钉钉AI表格失败');
+    }
+    return data;
+  }
+
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     let valid = true;
     const company = $('company'), name = $('name'), title = $('title'), phone = $('phone'), remark = $('remark');
-    // 重置
     [company, name, title, phone, remark].forEach(clearErr);
-    // 校验
     if (!company.value.trim()) { showErr(company, '请填写公司名称'); valid = false; }
     if (!name.value.trim()) { showErr(name, '请填写姓名'); valid = false; }
     if (!title.value.trim()) { showErr(title, '请填写职位'); valid = false; }
@@ -509,17 +559,40 @@ gsap.utils.toArray('.stat').forEach(el => {
       remark: remark.value.trim(),
       time: new Date().toLocaleString('zh-CN')
     };
+
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = '提交中...';
+    const msg = $('form-msg');
+    msg.className = 'mt-4 text-center text-sm font-semibold text-slate-300';
+    msg.textContent = '正在同步到钉钉...';
+
+    let syncedToDing = false;
+    try {
+      // 尝试实时写入钉钉AI表格
+      await writeToDing(record);
+      syncedToDing = true;
+    } catch (err) {
+      console.warn('钉钉同步失败，已保留本地存储:', err);
+    }
+
+    // 本地存储兜底（保证数据不丢失）
     let list = [];
     try { list = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(_) {}
     list.push(record);
     localStorage.setItem(KEY, JSON.stringify(list));
 
-    const msg = $('form-msg');
-    msg.textContent = '✓ 报名成功！我们已收到您的信息，稍后将与您联系确认。';
-    msg.className = 'mt-4 text-center text-sm font-semibold text-emerald-400';
-    form.querySelector('button[type=submit]').disabled = true;
-    form.querySelector('button[type=submit]').classList.add('opacity-50','cursor-not-allowed');
-    form.reset();
+    if (syncedToDing) {
+      msg.textContent = '✓ 报名成功！数据已实时同步至钉钉。';
+      msg.className = 'mt-4 text-center text-sm font-semibold text-emerald-400';
+      btn.classList.add('opacity-50','cursor-not-allowed');
+      form.reset();
+    } else {
+      msg.textContent = '⚠ 报名信息已保存，但钉钉同步暂未成功，我们稍后为您确认。';
+      msg.className = 'mt-4 text-center text-sm font-semibold text-amber-400';
+      btn.disabled = false;
+      btn.textContent = '确认报名';
+    }
   });
 })();
 </script>
