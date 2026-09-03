@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>总经理的AI认知课 · 见智思享会 · 课程大纲</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { font-family: 'Noto Sans SC', system-ui, sans-serif; }
+  body { background: #070b1a; color: #e6ecff; }
+
+  .glass {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .glass-strong {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg,#22d3ee,#60a5fa,#a78bfa);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .gradient-text-orange {
+    background: linear-gradient(135deg,#fb923c,#f472b6,#a78bfa);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .triangle { background-color: #0689ff; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1 4h22l-11 16z'/%3E%3C/svg%3E") center/contain no-repeat; }
+  .card-hover { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .card-hover:hover { transform: translateY(-6px); border-color: rgba(34,211,238,.4); box-shadow: 0 20px 50px -20px rgba(34,211,238,.35); }
+  .step-line { position: absolute; left: 28px; top: 40px; bottom: -20px; width: 2px; background: linear-gradient(180deg, rgba(34,211,238,.5), rgba(167,139,250,.1)); }
+  .reveal { opacity: 0; transform: translateY(40px); }
+  .chip { background: rgba(34,211,238,.12); border: 1px solid rgba(34,211,238,.3); }
+
+  .bg-grid {
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(34,211,238,.12), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(167,139,250,.15), transparent 40%),
+      radial-gradient(circle at 60% 90%, rgba(251,146,60,.10), transparent 40%);
+  }
+  .dot-grid {
+    background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+</style>
+</head>
+<body class="bg-grid antialiased overflow-x-hidden">
+
+<!-- ============ 导航 ============ -->
+<header class="sticky top-0 z-50 w-full glass-strong">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg triangle"></div>
+      <div class="font-bold text-lg">见智·思享会<span class="gradient-text ml-1">课程大纲</span></div>
+    </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+      <a href="#overview" class="hover:text-cyan-400 transition-colors">课程总览</a>
+      <a href="#ladder" class="hover:text-cyan-400 transition-colors">认知阶梯</a>
+      <a href="#cases" class="hover:text-cyan-400 transition-colors">实践案例</a>
+      <a href="#cocreate" class="hover:text-cyan-400 transition-colors">现场共创</a>
+      <a href="#roadmap" class="hover:text-cyan-400 transition-colors">落地路线</a>
+    </nav>
+    <a href="#overview" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-90 transition">
+      <i class="fas fa-arrow-down"></i> 开始
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="relative pt-20 pb-16 dot-grid">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full chip text-cyan-300 text-sm mb-6">
+      <i class="fas fa-calendar-check"></i> 2026.09 · 千问办公 · 总经理沙龙
+    </div>
+    <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+      <span class="gradient-text-orange">总经理的 AI 认知课</span><br>
+      <span class="text-slate-100">看见 · 重做 · 创造 · 跃迁</span>
+    </h1>
+    <p class="max-w-2xl mx-auto text-slate-400 text-lg mt-6">
+      在 2.5 小时里经历一次完整的<strong class="text-cyan-300">认知跃迁</strong>：<br>
+      看见 AI 能做什么 → 看见企业哪些事能被重做 → <strong class="text-orange-300">亲手做出结果</strong> → 回去知道怎么推进。
+    </p>
+    <div class="mt-8 inline-flex items-center gap-3 px-6 py-3 glass-strong rounded-2xl">
+      <i class="fas fa-clock text-cyan-400"></i>
+      <span class="text-slate-200 font-medium">9月10日 14:30 - 17:00</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 环节总览 BENTO ============ -->
+<section id="overview" class="py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="text-xs tracking-widest text-cyan-400 mb-2">FIVE STAGES</div>
+      <h2 class="text-3xl md:text-4xl font-black">五个环节 · 一次跃迁</h2>
+      <p class="text-slate-400 mt-3">不是听课，是带着一个作品和一张路线图回去</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <!-- 01 -->
+      <div class="glass card-hover reveal rounded-2xl p-5">
+        <div class="text-4xl font-black text-cyan-500/40 mb-3">01</div>
+        <i class="fas fa-eye text-cyan-400 text-xl mb-3"></i>
+        <h3 class="font-bold mb-1">见智</h3>
+        <p class="text-slate-400 text-sm mb-3">AI 正在改变什么</p>
+        <div class="flex items-center gap-2 text-xs text-slate-300"><i class="fas fa-stopwatch text-orange-400"></i> 20 min · 认知框架</div>
+      </div>
+      <!-- 02 -->
+      <div class="glass card-hover reveal rounded-2xl p-5">
+        <div class="text-4xl font-black text-blue-500/40 mb-3">02</div>
+        <i class="fas fa-book-open text-blue-400 text-xl mb-3"></i>
+        <h3 class="font-bold mb-1">见证</h3>
+        <p class="text-slate-400 text-sm mb-3">我们是怎么干的</p>
+        <div class="flex items-center gap-2 text-xs text-slate-300"><i class="fas fa-stopwatch text-orange-400"></i> 30 min · 本土实践</div>
+      </div>
+      <!-- 03 -->
+      <div class="glass card-hover reveal rounded-2xl p-5 border-cyan-400/40 lg:-mt-3">
+        <div class="text-4xl font-black text-violet-500/40 mb-3">03</div>
+        <i class="fas fa-wrench text-violet-400 text-xl mb-3"></i>
+        <h3 class="font-bold mb-1">见实</h3>
+        <p class="text-slate-400 text-sm mb-3">现场共创 AI 技能</p>
+        <div class="flex items-center gap-2 text-xs text-slate-300"><i class="fas fa-stopwatch text-orange-400"></i> 40 min · 核心动手</div>
+      </div>
+      <!-- 04 -->
+      <div class="glass card-hover reveal rounded-2xl p-5">
+        <div class="text-4xl font-black text-orange-500/40 mb-3">04</div>
+        <i class="fas fa-bolt text-orange-400 text-xl mb-3"></i>
+        <h3 class="font-bold mb-1">见效</h3>
+        <p class="text-slate-400 text-sm mb-3">马上有结果</p>
+        <div class="flex items-center gap-2 text-xs text-slate-300"><i class="fas fa-stopwatch text-orange-400"></i> 20 min · 成品产出</div>
+      </div>
+      <!-- 05 -->
+      <div class="glass card-hover reveal rounded-2xl p-5">
+        <div class="text-4xl font-black text-emerald-500/40 mb-3">05</div>
+        <i class="fas fa-route text-emerald-400 text-xl mb-3"></i>
+        <h3 class="font-bold mb-1">见未来</h3>
+        <p class="text-slate-400 text-sm mb-3">下一步做什么</p>
+        <div class="flex items-center gap-2 text-xs text-slate-300"><i class="fas fa-stopwatch text-orange-400"></i> 20 min · 路线图</div>
+      </div>
+    </div>
+
+    <!-- 时间轴统计 -->
+    <div class="glass rounded-2xl p-6 mt-6 reveal grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div><div class="stat text-3xl font-black gradient-text" data-target="2">0</div><div class="text-slate-400 text-sm">.5 小时</div></div>
+      <div><div class="stat text-3xl font-black gradient-text" data-target="5">0</div><div class="text-slate-400 text-sm">个环节</div></div>
+      <div><div class="stat text-3xl font-black gradient-text" data-target="4">0</div><div class="text-slate-400 text-sm">层认知跃迁</div></div>
+      <div><div class="stat text-3xl font-black gradient-text" data-target="2">0</div><div class="text-slate-400 text-sm">件现场产出</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ L1-L4 认知阶梯 ============ -->
+<section id="ladder" class="py-16 bg-white/[0.02]">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="text-xs tracking-widest text-blue-400 mb-2">COGNITIVE FRAMEWORK</div>
+      <h2 class="text-3xl md:text-4xl font-black">L1 → L4 认知跃迁阶梯</h2>
+      <p class="text-slate-400 mt-3">AI时代，总经理如何重新组织自己的工作</p>
+    </div>
+
+    <div class="relative pl-16 space-y-6">
+      <div class="step-line"></div>
+      <!-- L1 -->
+      <div class="glass card-hover reveal rounded-2xl p-6 relative">
+        <div class="absolute -left-16 top-1/2 -translate-y-1/2 w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center font-black shadow-lg">L1</div>
+        <div class="flex flex-wrap items-center gap-3 mb-2">
+          <h3 class="text-xl font-black">AI 办公助手</h3><span class="chip px-3 py-0.5 text-xs text-cyan-300 rounded-full">帮我干点活</span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-2 text-sm text-slate-300">
+          <span class="px-3 py-1 rounded-full bg-white/5">写方案</span><span class="px-3 py-1 rounded-full bg-white/5">做 PPT</span><span class="px-3 py-1 rounded-full bg-white/5">总结</span><span class="px-3 py-1 rounded-full bg-white/5">分析</span>
+        </div>
+        <div class="text-xs text-slate-500 mt-3">这是一次认知跃迁的起点</div>
+      </div>
+      <!-- L2 -->
+      <div class="glass card-hover reveal rounded-2xl p-6 relative">
+        <div class="absolute -left-16 top-1/2 -translate-y-1/2 w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center font-black shadow-lg">L2</div>
+        <div class="flex flex-wrap items-center gap-3 mb-2">
+          <h3 class="text-xl font-black">AI 专业员工</h3><span class="chip px-3 py-0.5 text-xs text-violet-300 rounded-full">替我完成专业任务</span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-2 text-sm text-slate-300">
+          <span class="px-3 py-1 rounded-full bg-white/5">竞对调研</span><span class="px-3 py-1 rounded-full bg-white/5">市场研究</span><span class="px-3 py-1 rounded-full bg-white/5">经营分析</span>
+        </div>
+        <div class="text-xs text-slate-500 mt-3">从"帮我干"到"替我专业地干"</div>
+      </div>
+      <!-- L3 -->
+      <div class="glass card-hover reveal rounded-2xl p-6 relative">
+        <div class="absolute -left-16 top-1/2 -translate-y-1/2 w-11 h-11 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center font-black shadow-lg">L3</div>
+        <div class="flex flex-wrap items-center gap-3 mb-2">
+          <h3 class="text-xl font-black">AI 经营助手</h3><span class="chip px-3 py-0.5 text-xs text-fuchsia-300 rounded-full">AI 参与我的经营</span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-2 text-sm text-slate-300">
+          <span class="px-3 py-1 rounded-full bg-white/5">战略分析</span><span class="px-3 py-1 rounded-full bg-white/5">经营诊断</span><span class="px-3 py-1 rounded-full bg-white/5">决策支持</span><span class="px-3 py-1 rounded-full bg-white/5">任务督办</span>
+        </div>
+        <div class="text-xs text-slate-500 mt-3">AI 开始参与决策与经营环节</div>
+      </div>
+      <!-- L4 -->
+      <div class="glass-strong card-hover reveal rounded-2xl p-6 relative border-fuchsia-400/40">
+        <div class="absolute -left-16 top-1/2 -translate-y-1/2 w-11 h-11 rounded-xl bg-gradient-to-br from-fuchsia-500 to-pink-600 flex items-center justify-center font-black shadow-lg">L4</div>
+        <div class="flex flex-wrap items-center gap-3 mb-2">
+          <h3 class="text-xl font-black gradient-text-orange">AI 组织能力</h3><span class="chip px-3 py-0.5 text-xs text-fuchsia-300 rounded-full">AI 成为组织的一部分</span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-2 text-sm text-slate-300">
+          <span class="px-3 py-1 rounded-full bg-white/5">知识蒸馏</span><span class="px-3 py-1 rounded-full bg-white/5">老板认知</span><span class="px-3 py-1 rounded-full bg-white/5">经验复制</span><span class="px-3 py-1 rounded-full bg-white/5">Agent</span>
+        </div>
+        <div class="text-xs text-slate-400 mt-3">AI 成为组织的能力底座，老板经验可复制、可留痕</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 实践案例 ============ -->
+<section id="cases" class="py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="text-xs tracking-widest text-orange-400 mb-2">LOCAL PRACTICE</div>
+      <h2 class="text-3xl md:text-4xl font-black">见证：我们是怎么干的</h2>
+      <p class="text-slate-400 mt-3 max-w-2xl mx-auto">AI 真正有价值的地方，不是多一个聊天机器人，而是把企业原本<strong class="text-cyan-300">依赖人的能力</strong>逐步变成<strong class="text-orange-300">机器可执行的能力</strong></p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <!-- 会议经营 -->
+      <div class="glass card-hover reveal rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center"><i class="fas fa-video text-white"></i></div>
+          <h3 class="text-lg font-black">案例① 会议经营</h3>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+            <span class="text-slate-500 text-xs font-bold block mb-1"><i class="fas fa-circle text-slate-500 mr-1"></i>以前</span>
+            <span class="text-slate-400">开会 → 录音 → 人工整理 → 找重点</span>
+          </div>
+          <div class="p-3 rounded-xl bg-cyan-500/5 border border-cyan-400/20">
+            <span class="text-cyan-400 text-xs font-bold block mb-1"><i class="fas fa-rocket mr-1"></i>现在</span>
+            <span class="text-slate-300">开会 → <strong>AI 蒸馏</strong> → 决策/行动/问题/风险/机制/经营信号 → <strong>组织资产</strong></span>
+          </div>
+          <div class="chip text-xs px-3 py-1.5 inline-flex items-center gap-1"><i class="fas fa-flask text-xs"></i> Demo：会议录音 → 六维纪要 → 责任到人</div>
+        </div>
+      </div>
+      <!-- 销售获客 -->
+      <div class="glass card-hover reveal rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center"><i class="fas fa-chart-line text-white"></i></div>
+          <h3 class="text-lg font-black">案例② 销售获客</h3>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+            <span class="text-slate-500 text-xs font-bold block mb-1"><i class="fas fa-circle text-slate-500 mr-1"></i>以前</span>
+            <span class="text-slate-400">销售写小记 → 主管看日报 → 人工判断 → 人工辅导</span>
+          </div>
+          <div class="p-3 rounded-xl bg-blue-500/5 border border-blue-400/20">
+            <span class="text-blue-400 text-xs font-bold block mb-1"><i class="fas fa-rocket mr-1"></i>现在</span>
+            <span class="text-slate-300">开启 <strong>AI 听记</strong> → 客户画像/商机质量/拜访质量/销售经验 → 生成 <strong>辅导建议</strong></span>
+          </div>
+          <div class="chip text-xs px-3 py-1.5 inline-flex items-center gap-1"><i class="fas fa-flask text-xs"></i> Demo：拜访录音 → 客户画像卡 + 商机评分</div>
+        </div>
+      </div>
+      <!-- 人才鉴别 -->
+      <div class="glass card-hover reveal rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center"><i class="fas fa-user-tie text-white"></i></div>
+          <h3 class="text-lg font-black">案例③ 人才鉴别</h3>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+            <span class="text-slate-500 text-xs font-bold block mb-1"><i class="fas fa-circle text-slate-500 mr-1"></i>以前</span>
+            <span class="text-slate-400">HR邀约 → 非结构化面试 → 凭感觉决策 → 适配度低</span>
+          </div>
+          <div class="p-3 rounded-xl bg-violet-500/5 border border-violet-400/20">
+            <span class="text-violet-400 text-xs font-bold block mb-1"><i class="fas fa-rocket mr-1"></i>现在</span>
+            <span class="text-slate-300"><strong>AI 岗位建模</strong> → AI招聘策划 → AI人才/面试官评估 → 沉淀<strong>面试资产</strong></span>
+          </div>
+          <div class="chip text-xs px-3 py-1.5 inline-flex items-center gap-1"><i class="fas fa-flask text-xs"></i> Demo：岗位模型 → 结构化问题 + 评估量表</div>
+        </div>
+      </div>
+      <!-- 老板分身 -->
+      <div class="glass-strong card-hover reveal rounded-2xl p-6 border-pink-400/30">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-pink-600 flex items-center justify-center"><i class="fas fa-robot text-white"></i></div>
+          <h3 class="text-lg font-black">案例④ 老板分身</h3>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+            <span class="text-slate-500 text-xs font-bold block mb-1"><i class="fas fa-circle text-slate-500 mr-1"></i>以前</span>
+            <span class="text-slate-400">老板的经验只存在老板的脑子里</span>
+          </div>
+          <div class="p-3 rounded-xl bg-pink-500/5 border border-pink-400/20">
+            <span class="text-pink-400 text-xs font-bold block mb-1"><i class="fas fa-rocket mr-1"></i>现在</span>
+            <span class="text-slate-300">会议 → 蒸馏 → 老板认知 → 决策案例 → 方法论 → <strong>老板 AI 分身</strong></span>
+          </div>
+          <div class="chip text-xs px-3 py-1.5 inline-flex items-center gap-1"><i class="fas fa-flask text-xs"></i> Demo：决策原则库 → 分身回应经营难题</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 现场共创 ============ -->
+<section id="cocreate" class="py-16 bg-white/[0.02]">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="text-xs tracking-widest text-violet-400 mb-2">HANDS-ON CO-CREATION</div>
+      <h2 class="text-3xl md:text-4xl font-black">见实 & 见效：现场共创 AI 技能</h2>
+      <p class="text-slate-400 mt-3">亲手做出一个结果，明天回去自己就能做</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- 共创流程 -->
+      <div class="glass rounded-2xl p-6 reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center"><i class="fas fa-user-cog text-white"></i></div>
+          <h3 class="text-lg font-black">首选：AI 竞对调研师</h3>
+        </div>
+        <ol class="space-y-3">
+          <li class="flex items-center gap-3 text-sm"><span class="w-7 h-7 shrink-0 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-xs font-bold">1</span>老板提出需求</li>
+          <li class="flex items-center gap-3 text-sm"><span class="w-7 h-7 shrink-0 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-xs font-bold">2</span>共同设计调研维度</li>
+          <li class="flex items-center gap-3 text-sm"><span class="w-7 h-7 shrink-0 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-xs font-bold">3</span>AI 补全模型</li>
+          <li class="flex items-center gap-3 text-sm"><span class="w-7 h-7 shrink-0 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-xs font-bold">4</span>AI 执行调研</li>
+          <li class="flex items-center gap-3 text-sm"><span class="w-7 h-7 shrink-0 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-xs font-bold">5</span>AI 形成竞争判断</li>
+          <li class="flex items-center gap-3 text-sm"><span class="w-7 h-7 shrink-0 rounded-full bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center text-xs font-bold">6</span>老板提出战略问题</li>
+          <li class="flex items-center gap-3 text-sm"><span class="w-7 h-7 shrink-0 rounded-full bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center text-xs font-bold">7</span>AI 生成战略选项</li>
+        </ol>
+      </div>
+
+      <!-- 见效作品 -->
+      <div class="glass rounded-2xl p-6 reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 flex items-center justify-center"><i class="fas fa-bolt text-white"></i></div>
+          <h3 class="text-lg font-black">见效：马上有结果</h3>
+        </div>
+        <p class="text-sm text-slate-400 mb-4">可选作品库 · 双路径教学（体验 / 动手）</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-400/30 text-sm">企业官网</span>
+          <span class="px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-400/30 text-sm">企业宣传册</span>
+          <span class="px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-400/30 text-sm">招商方案</span>
+          <span class="px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-400/30 text-sm">新品上市方案</span>
+        </div>
+        <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+          <div class="text-xs text-cyan-300 mb-2 font-bold"><i class="fas fa-flask mr-1"></i> Demo：招商方案 2 分钟速产</div>
+          <p class="text-sm text-slate-300">一句话简介 + 产品卖点 → <span class="gradient-text font-semibold">品牌故事 / 目标画像 / 招商权益 / 合约模板 / 邀约话术</span></p>
+        </div>
+        <div class="mt-3 chip text-xs px-3 py-1.5 inline-flex items-center gap-1"><i class="fas fa-check-circle text-xs"></i> 现场完成，带作品离场</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 落地路线图 ============ -->
+<section id="roadmap" class="py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="text-xs tracking-widest text-emerald-400 mb-2">ACTION ROADMAP</div>
+      <h2 class="text-3xl md:text-4xl font-black">见未来：你的企业下一步 AI 做什么</h2>
+      <p class="text-slate-400 mt-3">现场共绘《企业 AI 应用 L1-L4 路线图》，带着一张可执行图回去</p>
+    </div>
+
+    <div class="glass rounded-2xl p-6 reveal">
+      <h3 class="text-center font-black text-emerald-300 mb-6">《企业 AI 应用 L1-L4 路线图》示例</h3>
+      <div class="space-y-3">
+        <div class="flex items-center gap-4">
+          <div class="w-16 shrink-0 text-right"><span class="text-emerald-400 font-bold">L4</span></div>
+          <div class="flex-1 h-14 rounded-lg bg-gradient-to-r from-fuchsia-600/30 to-pink-500/20 border border-fuchsia-400/30 flex items-center px-4 text-sm"><span class="font-semibold">组织能力</span><span class="ml-2 text-slate-400">老板分身 · 经验复制 · Agent</span></div>
+          <div class="w-20 shrink-0 text-xs text-slate-400 text-center"><i class="fas fa-hourglass-end mr-1"></i>12个月</div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-16 shrink-0 text-right"><span class="text-violet-400 font-bold">L3</span></div>
+          <div class="flex-1 h-14 rounded-lg bg-gradient-to-r from-fuchsia-500/30 to-violet-500/20 border border-violet-400/30 flex items-center px-4 text-sm"><span class="font-semibold">经营助手</span><span class="ml-2 text-slate-400">经营诊断 · 投标决策支持</span></div>
+          <div class="w-20 shrink-0 text-xs text-slate-400 text-center"><i class="fas fa-hourglass-half mr-1"></i>6个月</div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-16 shrink-0 text-right"><span class="text-blue-400 font-bold">L2</span></div>
+          <div class="flex-1 h-14 rounded-lg bg-gradient-to-r from-blue-500/30 to-cyan-500/20 border border-blue-400/30 flex items-center px-4 text-sm"><span class="font-semibold">专业员工</span><span class="ml-2 text-slate-400">竞对调研师 · 市场研究</span></div>
+          <div class="w-20 shrink-0 text-xs text-slate-400 text-center"><i class="fas fa-hourglass-half mr-1"></i>3个月</div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-16 shrink-0 text-right"><span class="text-cyan-400 font-bold">L1</span></div>
+          <div class="flex-1 h-14 rounded-lg bg-gradient-to-r from-cyan-500/30 to-teal-500/20 border border-cyan-400/30 flex items-center px-4 text-sm"><span class="font-semibold">办公助手</span><span class="ml-2 text-slate-400">会议纪要 · 标书撰写 · 方案/PPT</span></div>
+          <div class="w-20 shrink-0 text-xs text-slate-400 text-center"><i class="fas fa-rocket mr-1"></i>第1个月</div>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-xl bg-emerald-500/5 border border-emerald-400/20 text-sm text-slate-300">
+        <strong class="text-emerald-300">路线图四问：</strong>① 最"贵"的认知环节在哪？ ② 哪块依赖人经验最值得机器化？ ③ 哪块流程重复、见效最快？ ④ 1 个月内能拿到什么结果？
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer class="py-12 mt-8 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <div class="w-12 h-12 rounded-xl triangle mx-auto mb-4"></div>
+    <h3 class="text-2xl font-black mb-2">9月10日，带上你的企业问题来见智</h3>
+    <p class="text-slate-400 mb-4">看见 AI · 重做自己企业 · 亲手做出结果 · 带着路线图回去</p>
+    <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-400 mb-6">
+      <span><i class="fas fa-map-marker-alt text-cyan-400 mr-1"></i> 泉州·丰泽区宝洲路禾丰沃客605</span>
+      <span><i class="fas fa-map-marker-alt text-cyan-400 mr-1"></i> 厦门·观音山富贵鸟科技大厦903</span>
+      <span><i class="fas fa-phone text-cyan-400 mr-1"></i> 17689490199</span>
+    </div>
+    <div class="text-xs text-slate-600">© 2026 福建成塾数字科技有限公司 · 千问办公 · 总经理认知课</div>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+// 滚动进入动画
+gsap.utils.toArray('.reveal').forEach(el => {
+  gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+    scrollTrigger: { trigger: el, start: "top 88%" } });
+});
+// 数字滚动
+gsap.utils.toArray('.stat').forEach(el => {
+  const target = parseFloat(el.dataset.target);
+  const obj = { val: 0 };
+  gsap.to(obj, { val: target, duration: 1.4, ease: "power1.out",
+    scrollTrigger: { trigger: el, start: "top 90%" },
+    onUpdate: () => { el.textContent = (target % 1 === 0 ? Math.round(obj.val) : obj.val.toFixed(1)); } });
+});
+</script>
+</body>
+</html>
