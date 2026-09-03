@@ -393,6 +393,51 @@
   </div>
 </section>
 
+<!-- ============ 报名入口 ============ -->
+<section id="register" class="py-16 bg-white/[0.02]">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-10 reveal">
+      <div class="text-xs tracking-widest text-orange-400 mb-2">REGISTER NOW</div>
+      <h2 class="text-3xl md:text-4xl font-black">立即报名 · 见智思享会</h2>
+      <p class="text-slate-400 mt-3">9月10日 14:30-17:00 · 名额有限，报名后我们会尽快与您确认</p>
+    </div>
+
+    <form id="signup-form" class="glass-strong rounded-2xl p-8 reveal" novalidate>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="md:col-span-2">
+          <label class="block text-sm text-slate-300 mb-2" for="company">公司名称 <span class="text-orange-400">*</span></label>
+          <input id="company" type="text" placeholder="请输入公司全称" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-400/60 transition placeholder:text-slate-500">
+          <p class="err hidden text-xs text-rose-400 mt-1"></p>
+        </div>
+        <div>
+          <label class="block text-sm text-slate-300 mb-2" for="name">姓名 <span class="text-orange-400">*</span></label>
+          <input id="name" type="text" placeholder="您的姓名" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-400/60 transition placeholder:text-slate-500">
+          <p class="err hidden text-xs text-rose-400 mt-1"></p>
+        </div>
+        <div>
+          <label class="block text-sm text-slate-300 mb-2" for="title">职位 <span class="text-orange-400">*</span></label>
+          <input id="title" type="text" placeholder="如：总经理 / 董事长" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-400/60 transition placeholder:text-slate-500">
+          <p class="err hidden text-xs text-rose-400 mt-1"></p>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm text-slate-300 mb-2" for="phone">手机 <span class="text-orange-400">*</span></label>
+          <input id="phone" type="tel" placeholder="请输入手机号" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-400/60 transition placeholder:text-slate-500">
+          <p class="err hidden text-xs text-rose-400 mt-1"></p>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm text-slate-300 mb-2" for="remark">备注</label>
+          <textarea id="remark" rows="3" placeholder="您希望在沙龙的现场共创中解决的企业问题（选填）" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-orange-400/60 transition placeholder:text-slate-500 resize-none"></textarea>
+          <p class="err hidden text-xs text-rose-400 mt-1"></p>
+        </div>
+      </div>
+      <button type="submit" class="mt-6 w-full py-3.5 rounded-xl font-bold text-white bg-gradient-to-r from-orange-500 to-pink-600 hover:opacity-90 transition shadow-lg shadow-orange-500/20">
+        <i class="fas fa-paper-plane mr-2"></i>确认报名
+      </button>
+      <p id="form-msg" class="hidden mt-4 text-center text-sm font-semibold"></p>
+    </form>
+  </div>
+</section>
+
 <!-- ============ 页脚 ============ -->
 <footer class="py-12 mt-8 border-t border-white/5">
   <div class="max-w-6xl mx-auto px-6 text-center">
@@ -423,6 +468,60 @@ gsap.utils.toArray('.stat').forEach(el => {
     scrollTrigger: { trigger: el, start: "top 90%" },
     onUpdate: () => { el.textContent = (target % 1 === 0 ? Math.round(obj.val) : obj.val.toFixed(1)); } });
 });
+// ===== 报名表单 =====
+(function() {
+  const form = document.getElementById('signup-form');
+  if (!form) return;
+  const KEY = 'jianzhi_saloon_signups';
+  const $ = id => document.getElementById(id);
+  const showErr = (input, msg) => {
+    const p = input.closest('div').querySelector('.err');
+    p.textContent = msg;
+    p.classList.remove('hidden');
+    input.classList.add('border-rose-400/60');
+  };
+  const clearErr = (input) => {
+    const p = input.closest('div').querySelector('.err');
+    p.textContent = '';
+    p.classList.add('hidden');
+    input.classList.remove('border-rose-400/60');
+  };
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+    const company = $('company'), name = $('name'), title = $('title'), phone = $('phone'), remark = $('remark');
+    // 重置
+    [company, name, title, phone, remark].forEach(clearErr);
+    // 校验
+    if (!company.value.trim()) { showErr(company, '请填写公司名称'); valid = false; }
+    if (!name.value.trim()) { showErr(name, '请填写姓名'); valid = false; }
+    if (!title.value.trim()) { showErr(title, '请填写职位'); valid = false; }
+    const phoneVal = phone.value.trim();
+    if (!phoneVal) { showErr(phone, '请填写手机号'); valid = false; }
+    else if (!/^1[3-9]\d{9}$/.test(phoneVal)) { showErr(phone, '请输入有效的11位手机号'); valid = false; }
+    if (!valid) return;
+
+    const record = {
+      company: company.value.trim(),
+      name: name.value.trim(),
+      title: title.value.trim(),
+      phone: phoneVal,
+      remark: remark.value.trim(),
+      time: new Date().toLocaleString('zh-CN')
+    };
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(_) {}
+    list.push(record);
+    localStorage.setItem(KEY, JSON.stringify(list));
+
+    const msg = $('form-msg');
+    msg.textContent = '✓ 报名成功！我们已收到您的信息，稍后将与您联系确认。';
+    msg.className = 'mt-4 text-center text-sm font-semibold text-emerald-400';
+    form.querySelector('button[type=submit]').disabled = true;
+    form.querySelector('button[type=submit]').classList.add('opacity-50','cursor-not-allowed');
+    form.reset();
+  });
+})();
 </script>
 </body>
 </html>
